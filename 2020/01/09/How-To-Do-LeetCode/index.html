@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="1. Know your motivationsWhy do you want to “get good at Leetcode”? Do you want to get your dream job? Win programming contests? Learn more about algorithms? Without a good motivation, you may struggle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How_To_Do_LeetCode">
+<meta property="og:url" content="http://yoursite.com/2020/01/09/How-To-Do-LeetCode/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="1. Know your motivationsWhy do you want to “get good at Leetcode”? Do you want to get your dream job? Win programming contests? Learn more about algorithms? Without a good motivation, you may struggle">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-09T22:18:55.000Z">
+<meta property="article:modified_time" content="2020-01-09T22:19:40.290Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/09/How-To-Do-LeetCode/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>How_To_Do_LeetCode | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/09/How-To-Do-LeetCode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How_To_Do_LeetCode
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-09 16:18:55 / Modified: 16:19:40" itemprop="dateCreated datePublished" datetime="2020-01-09T16:18:55-06:00">2020-01-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-Know-your-motivations"><a href="#1-Know-your-motivations" class="headerlink" title="1. Know your motivations"></a>1. Know your motivations</h2><p>Why do you want to “get good at Leetcode”? Do you want to get your dream job? Win programming contests? Learn more about algorithms? Without a good motivation, you may struggle. If your only motivation is to get your dream job, then you might also struggle to stay motivated, especially with the “risk” of not getting the job. If you don’t enjoy solving the questions, it might not be worth doing the advanced ones. There are plenty of good companies out there where you won’t need to be able to solve medium-level and hard-level Leetcode questions to get into them.</p>
+<p>So, think about what motivates you, and keep that motivation in mind!</p>
+<h2 id="2-Set-realistic-goals-for-yourself"><a href="#2-Set-realistic-goals-for-yourself" class="headerlink" title="2. Set realistic goals for yourself"></a>2. Set realistic goals for yourself</h2><p>Multiple times, I’ve seen people ask how many questions they should solve in a day. This is the wrong question to ask though. You shouldn’t have a number-of-questions-per-day target. Instead, you should decide how much time <em>you</em> are willing and able to put towards your learning, and then make it your goal to use that time as productively as you can, aiming to improve. You can only do your best, and you should be aiming to do <em>your</em> best, so comparing to other people won’t be helpful here.</p>
+<p>Aim to divide your time between learning new skills, mastering old skills and general problem solving (tackling questions without initially knowing what skills you’ll be applying).</p>
+<h2 id="3-If-you-don’t-have-a-CS-degree-do-an-online-data-structures-and-algorithms-course"><a href="#3-If-you-don’t-have-a-CS-degree-do-an-online-data-structures-and-algorithms-course" class="headerlink" title="3. If you don’t have a CS degree, do an online data structures and algorithms course"></a>3. If you don’t have a CS degree, do an online data structures and algorithms course</h2><p>If it wasn’t for the first year data structures and algorithms course I did back when I was in university, I don’t think I would have known where to start. Getting started can be daunting, and knowing what exactly to focus on can be even more so. As a rough guide, you’ll need a course that takes you over key ideas such as Arrays, Sorting, Searching, Linked Lists, Trees, Graphs, Stacks, Heaps, Queues, Hashing (maps, sets, and dictionaries), Big-O notation, and complexity analysis (cost). By the end of it, you should know the use cases for each data structure, and be able to justify the reasons in terms of cost.</p>
+<p>A good online course will have assignments and quizzes that’ll help you know whether or not you’re on track and picking up the most important ideas. This will then help you as you move towards self-directed learning on more advanced concepts.</p>
+<p>There are also many good resources on the more basic programming skills. Find one that suits your style and language of choice. Make sure you can design programs with loops and conditionals (if statements) with ease, as this is central to algorithm design.</p>
+<h2 id="4-Find-some-good-resources-for-learning-more-advanced-algorithms"><a href="#4-Find-some-good-resources-for-learning-more-advanced-algorithms" class="headerlink" title="4. Find some good resources for learning more advanced algorithms"></a>4. Find some good resources for learning more advanced algorithms</h2><p>It really does help to have a good resource to look at when needed. I use the <a href="https://en.wikipedia.org/wiki/Introduction_to_Algorithms" target="_blank" rel="noopener">CLRS algorithms book</a>. I’d highly recommend it, either go for the e-book version on Amazon or look for it in the library (if you’re a university student with access to a library) if the cost is a concern. The <a href="https://leetcode.com/explore/" target="_blank" rel="noopener">Leetcode Explore modules</a> are fantastic too. <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener">Geeks For Geeks</a> also has some useful content, although the writing quality varies a lot and the lack of proofreading on some of the articles can make it painful to read. If you can ignore that, great, if not, then you might need to find another resource. Wikipedia also has some good articles, although quality and clarity varies a lot.</p>
+<h2 id="5-Learn-techniques-not-solutions"><a href="#5-Learn-techniques-not-solutions" class="headerlink" title="5. Learn techniques, not solutions"></a>5. Learn techniques, not solutions</h2><p>I’ve seen a few people on the Leetcode forums and beyond asking how many Leetcode questions they’d need to have done to have a good chance of seeing all the questions they’ll get in their interview, and it amazes me that anybody thinks this is a good idea. Leetcode itself doesn’t help the cause by providing lists of questions sorted by company (for subscribers).</p>
+<p>If in an interview you’ve already seen the question, it’d be <strong>dishonest</strong> to pretend you hadn’t. You’d also have to be pretty good at faking the “solving a novel problem” thought process your interviewer is looking for.</p>
+<p>Instead, you should be aiming to do enough questions to learn about the common data structures, algorithms, and techniques that you’re likely to need to use. Your goal is to get yourself to a point where if you’re given a problem you’ve never seen before, you can work through it and decide which data structures, algorithms, and techniques you could apply to solve it. It will take a lot of practice to get to this point, and sometimes there’ll be a question where it takes you a few minutes to even know where to start. But the more you learn and practice, the better you will become.</p>
+<h2 id="6-Learn-the-fundamental-data-structures-Basic"><a href="#6-Learn-the-fundamental-data-structures-Basic" class="headerlink" title="6. Learn the fundamental data structures (Basic)"></a>6. Learn the fundamental data structures (Basic)</h2><p>These next 3 points are concerned with specific concepts you’ll need to learn. I’ve split them into 3 general categories, based on difficulty and how often they tend to come up. I’d recommend mastering all in one category before moving up to the next. The lists aren’t exhaustive, and the order isn’t absolute, but this is roughly the order I worked on learning and mastering concepts.</p>
+<p>If you have a lot of trouble with even the simplest questions in the fundamental data structures section (some are hard, I’m not saying you have to find them <em>all</em> easy!), then you might need to find an introduction to data structures and algorithms course to work through. Most of these topics have a Leetcode <a href="https://leetcode.com/explore/learn/" target="_blank" rel="noopener">Explore</a> module, I highly recommend using them. After that, find more problems by searching the problem list by the relevant tag. Focus mostly on easy-level questions for now.</p>
+<ul>
+<li><strong>Arrays and Strings</strong>: Leetcode’s module for <a href="https://leetcode.com/explore/learn/card/array-and-string/" target="_blank" rel="noopener">Arrays and Strings</a> is where you should start. This is a fundamental topic, so practice lots until you’re really confident.</li>
+<li><strong>Linked Lists</strong>: Again, check out the module for <a href="https://leetcode.com/explore/learn/card/linked-list/" target="_blank" rel="noopener">Linked Lists</a>. Don’t worry about the solution guides that are subscribers only—you don’t need them. Check out the discuss forum instead, click on posts until you find a good one. Linked lists can be confusing at first, but they’re easy as once you get your head around the idea of the next pointers.</li>
+<li><strong>Trees</strong>: Focus on the <a href="https://leetcode.com/explore/learn/card/n-ary-tree/" target="_blank" rel="noopener">N-ary trees</a> module and then the <a href="https://leetcode.com/explore/learn/card/data-structure-tree/" target="_blank" rel="noopener">Binary Trees</a> module. Don’t worry about Binary Search Trees yet, you can look at those a bit later. For some reason, the information documents about traversals are subscribers only. Don’t worry about this though, there are plenty of great free resources around, such as this <a href="https://www.tutorialspoint.com/data_structures_algorithms/tree_traversal" target="_blank" rel="noopener">overview</a> and these widgets that get you to <a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/BinaryTreeTraversal.html" target="_blank" rel="noopener">click on nodes in the correct order</a>. You’ll find lots more by googling.</li>
+<li><strong>Hashing</strong>: This is dictionaries/maps, and sets, and is covered under the <a href="https://leetcode.com/explore/learn/card/hash-table/" target="_blank" rel="noopener">Hash Tables</a> module. This is one of the most useful topics you’ll learn, so be sure to get lots of practice in, as most challenging questions use these data structures as part of the solution. Don’t worry about the few bits that are subscribers only.</li>
+<li><strong>Stacks, queues, and heaps (priority queues)</strong>: These are also fairly versatile, coming up in a lot of problems. <a href="https://leetcode.com/explore/learn/card/queue-stack/" target="_blank" rel="noopener">Stacks and Queues</a> have a module, although heaps/ priority queues don’t yet. Have a look on <a href="https://www.geeksforgeeks.org/binary-heap/" target="_blank" rel="noopener">Geeks For Geeks for some good articles on heaps</a>, and then find some questions on <a href="https://leetcode.com/tag/heap/" target="_blank" rel="noopener">Leetcode that are solved with a heap</a>. Check if your programming language of choice has a built-in heap type, it will be called either a heap or a priority queue.</li>
+<li><strong>Two pointer technique</strong>: If you didn’t do this with arrays, you should <a href="https://leetcode.com/explore/learn/card/array-and-string/205/array-two-pointer-technique/" target="_blank" rel="noopener">do it now</a>. It comes up <a href="https://leetcode.com/tag/two-pointers/" target="_blank" rel="noopener">a lot</a>.</li>
+</ul>
+<p>Make sure you know complexity costs of these basic data structures, for example, that finding whether or not something is in a linked list is <code>O(n)</code>, but finding whether or not its in a dictionary is <code>O(1)</code>. You should understand the costs inside and out, knowing exactly why they are what they are. Simply memorizing the costs won’t help you much.</p>
+<h2 id="7-Learn-the-more-advanced-data-structures-and-some-famous-algorithms-Intermediate"><a href="#7-Learn-the-more-advanced-data-structures-and-some-famous-algorithms-Intermediate" class="headerlink" title="7. Learn the more advanced data structures and some famous algorithms (Intermediate)"></a>7. Learn the more advanced data structures and some famous algorithms (Intermediate)</h2><p>There are some algorithms and a few more data structures that will come up over and over again. It is well worth putting time into studying each of these, much like with the fundamental data structures. Some of them will be in the easy category and some in medium. The hard ones tend to combine multiple concepts.</p>
+<ul>
+<li><strong>Recursion</strong>: This alternative to iteration is helpful for solving some problems, and once you’re used to it, is often quicker to write than iteration. Leetcode has a module for <a href="https://leetcode.com/explore/learn/card/recursion-i/" target="_blank" rel="noopener">recursion</a>. Just do this module, don’t worry too much about recursion 2 yet, there are more important concepts for you to learn first.</li>
+<li><strong>Graphs and graph algorithms</strong>: Graph algorithms come up everywhere. I’ve heard that in the interview processes of top companies, getting at least one graph question is inevitable. The main things they are looking for is that you know the <a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">3 main ways of representing a graph: linked, adjacency list, and adjacency matrix</a>, choosing the best one for a given situation, and then running algorithms over it such as breadth-first search, depth-first search, and topological sort. Often graph questions aren’t explicitly listed as such—you’ll be given some data as an input that you need to convert into a valid graph format, and then run the appropriate algorithm over it. You must get really good at recognizing graph questions instantly. Be aware too that a 2D array can represent a special kind of graph where each cell represents a node linked to its neighboring cells. Often these are breadth-first search questions. You should have already seen some of this in stacks and queues, and trees. But be sure you’re super confident with graphs. You should be able to BFS and DFS both iteratively and recursively, and with your eyes closed (okay, maybe not that extreme, but you should be really confident with them!).</li>
+<li><strong>Union find</strong>: This algorithm can initially seem scary, but it’s not. It’s useful for finding the connected components of graphs and solving a number of other problems. Have a look on <a href="https://www.geeksforgeeks.org/union-find/" target="_blank" rel="noopener">Geeks for Geeks to get started</a> or the CLRS textbook if you own a copy. There is no Leetcode module on it yet, but there are <a href="https://leetcode.com/tag/union-find/" target="_blank" rel="noopener">lots of relevant questions</a>. Learn the simple optimizations, in particular path compression, as while they sound advanced, they’re actually really simple and lead to huge efficiency gains.</li>
+<li><strong>Binary search</strong>: People tend to get quite bothered by this algorithm and its edge cases and resort to guessing and checking loop and conditional conditions. I’d recommend doing the <a href="https://leetcode.com/explore/learn/card/binary-search/" target="_blank" rel="noopener">binary search</a> module, but also trying to build intuition around the algorithm. Be cautious on relying too heavily on the templates given in the module, they are good to get started, but trying to memorize the templates will only lead to edge-case bugs that you will struggle to debug. It helps to know whether your “middle index” formula is getting the lower-middle or upper-middle (when there’s an even sized list) and then whether or not your low and high moving will definitely converge instead of infinite looping. Sometimes making it converge is as simple as using the upper-middle instead of lower-middle, but it depends on how you’re changing low and high. Overall, you <em>must</em> build an intuition rather than trying to memorize the algorithm. I might write a blog on this at some point.</li>
+<li><strong>Binary search trees</strong>: These, along with generic binary trees (i.e. not sorted tree), seem to come up almost every week in the weekly competition. Being able to quickly write a recursive function to traverse the tree and get the information you need is possibly the single biggest thing you can do to improve your competition performance. They tend to be medium-level questions, but if you know what you’re doing, they are easy to do in under 5 minutes! Start with the <a href="https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/" target="_blank" rel="noopener">Binary Search Tree</a> module, and then look for <a href="https://leetcode.com/tag/tree/" target="_blank" rel="noopener">more questions on trees</a>. Make sure to do lots of medium-level questions.</li>
+<li><strong>Tries and advanced string algorithms</strong>: Leetcode has a module on <a href="https://leetcode.com/explore/learn/card/trie/" target="_blank" rel="noopener">Tries</a> for you to work through. As for other string algorithms, Google them or look in the CLRS algorithms book.</li>
+<li><strong>Interval trees</strong>: These are probably the most advanced data structure you’ll see on a semi-regular basis. I’d recommend trying to code one. Unfortunately, Leetcode doesn’t have an Explore module on them.</li>
+</ul>
+<h2 id="8-Learn-the-versatile-algorithmic-design-techniques-Advanced"><a href="#8-Learn-the-versatile-algorithmic-design-techniques-Advanced" class="headerlink" title="8. Learn the versatile algorithmic design techniques (Advanced)"></a>8. Learn the versatile algorithmic design techniques (Advanced)</h2><p>This is the stage I’m currently at. It was working on these techniques that has really driven my improved performance in the competitions. They are not easy, and you’ll need to work and work and work at them. You’ll need to start by practicing questions where you already know which technique you’ll be using, and then on ones where you don’t. The competitions are useful for that, as you don’t get to see the tags until the end.</p>
+<ul>
+<li><strong>Bit manipulation</strong>: This isn’t that difficult once you get your head around it, and it’s also pretty fun. Leetcode <a href="https://leetcode.com/problemset/all/?topicSlugs=bit-manipulation" target="_blank" rel="noopener">has many questions on bit manipulation</a>, although no module for it at the time of writing. To get started, Google a guide for your programming language of choice, then have a go at some of the questions. Note that while it can be used standalone for most of the easy and medium level questions, it tends to be an optimization technique combined with other concepts in hard-level questions.</li>
+<li><strong>Backtracking</strong>: This is a strategy that many advanced recursive algorithms use, especially when coming up with solutions for NP-Complete problems. Before I learned how to do backtracking correctly, my exponential time algorithms would also use exponential space, with lists and sets getting copied everywhere. I see many hard-level questions that are straightforward with backtracking. Leetcode has a section on it, tucked inside the <a href="https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/" target="_blank" rel="noopener">Recursion 2</a> module.</li>
+<li><strong>Divide and conquer</strong>: This is another strategy that many advanced recursive algorithms use, in particular, those that run in <code>O(n log(n))</code> time (quasilinear). Mergesort and Quicksort are the most well-known examples of divide and conquer algorithms. Leetcode has a section on them, also tucked inside the <a href="https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/" target="_blank" rel="noopener">Recursion 2</a> module.</li>
+<li><strong>Parsing</strong>: Parsing questions are very difficult if you don’t know how to approach them, but very fun if you do. One technique is recursive descent, but there are also others such as using an explicit stack. Some good questions are <a href="https://leetcode.com/problems/number-of-atoms/" target="_blank" rel="noopener">Number of Atoms</a>, <a href="https://leetcode.com/problems/parse-lisp-expression/" target="_blank" rel="noopener">Parse Lisp Expression</a>, <a href="https://leetcode.com/problems/parsing-a-boolean-expression/" target="_blank" rel="noopener">Parsing a Boolean Expression</a>, and <a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank" rel="noopener">Evaluate Reverse Polish Notation</a>.</li>
+<li><strong>Dynamic programming</strong>: This may be the hardest technique, and unfortunately I’m still looking for a good resource on it. The CLRS algorithms book has some good content on it though, and Leetcode <a href="https://leetcode.com/tag/dynamic-programming/" target="_blank" rel="noopener">has many awesome dynamic programming questions</a>. Come on Leetcode, add an Explore module for this topic!</li>
+<li><strong>Memoization</strong>: This is an alternative to dynamic programming that instead uses recursion. It tends to be easier to reason about (for most people), so it might save you for the more challenging dynamic programming problems. In saying that, your goal should ultimately be to do as many questions as possible using dynamic programming instead of memoization. Leetcode has on it, tucked inside the <a href="https://leetcode.com/explore/learn/card/recursion-i/255/recursion-memoization/" target="_blank" rel="noopener">Recusion 1</a> module.</li>
+</ul>
+<p>Keep in mind too that there’s often more than one approach for a question, and the tags aren’t always exhaustive. For example, the <a href="https://leetcode.com/problems/smallest-sufficient-team/" target="_blank" rel="noopener">Smallest Sufficient Team problem</a> is tagged as two of these techniques, but also has really nice solutions with one of the others. I’m being intentionally vague as I don’t want to give spoilers.</p>
+<h2 id="9-Be-aware-of-the-intractable-problems-particularly-the-NP-Complete-ones"><a href="#9-Be-aware-of-the-intractable-problems-particularly-the-NP-Complete-ones" class="headerlink" title="9. Be aware of the intractable problems, particularly the NP-Complete ones."></a>9. Be aware of the intractable problems, particularly the NP-Complete ones.</h2><p>A computer scientist’s idea of a practical joke is to give the unsuspecting victim an NP-Complete problem to solve and watch them go around in circles, possibly discovering what they think is a solution and then discovering that it fails in some cases. Okay, maybe we’re not that mean. But I have definitely heard of people in interviews trying to come up with an efficient solution for a problem which is NP-Complete, and if they DID find a good solution, they wouldn’t be needing the job they’re interviewing for (as they’d be rich for it!). I have even heard of companies trying to solve them, not realizing. Or apps that promise to give you the shortest path between multiple stops.</p>
+<p>So, know what they are. <a href="https://en.wikipedia.org/wiki/NP-completeness#NP-complete_problems" target="_blank" rel="noopener">Wikipedia has some good lists of them</a>. Know what the best way to solve them is⁠—sometimes it’s a brute force, but with clever optimizations. Other problems have dynamic programming solutions which are what we call pseudo-polynomial. The knapsack problem is a good example of this. Sometimes an assumption you’re allowed to make (specified in the problem limits) will mean there’s a polynomial-time solution (or pseudo-polynomial).</p>
+<h2 id="10-Brush-up-on-those-math-skills"><a href="#10-Brush-up-on-those-math-skills" class="headerlink" title="10. Brush up on those math skills"></a>10. Brush up on those math skills</h2><p>If you feel a bit rusty in math, or you didn’t enjoy it in school, it might be time to get out the grid paper and pencil. I did this last year, and <a href="https://heidi-newton.com/blog/rediscovering-a-passion-for-math" target="_blank" rel="noopener">wrote a blog post on it</a>. Overall, it was a lot of fun, and it helped to improve my programming and algorithm skills too. I could ramble about this topic for hours, but we don’t have time for that, so here are some free resources I used and recommend:</p>
+<ul>
+<li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener">Khan Academy</a>: I can’t recommend this strongly enough. It covers all of primary (elementary) and high school math in great depth, and it’s actually really fun. It’s not just for school students, it’s equally awesome for adults. Sal has a talent for explaining things and the quizzes and content are broken up into manageable chunks. If you aren’t sure where your weaknesses are, have a go at the initial quizzes. They’ll tell you where you have work to do. Don’t be ashamed if you find there are a few primary school-level concepts that you need to work on. It happened to me, and I was amazed at how much addressing those weaknesses helped me with the more advanced stuff. If you aren’t already confident with it, I especially recommend the geometry stuff. The proofs and problem-solving there is a similar kind of thinking to the thinking you’re trying to develop on Leetcode.</li>
+<li><a href="https://www.coursera.org/learn/mathematical-thinking" target="_blank" rel="noopener">Introduction to Mathematical Thinking</a>: If you feel you possibly have some amount of math-PTSD from school, Keith Devlin is the doctor for you. Keith’s mission is to enlighten the general public on what it actually is mathematicians do (i.e. not arithmetic and solving pages and pages of equations for y’s x). Aside from that, the course goes over logic and proofs and aims to get you to see the difference between school math and being a mathematician. It’s helpful, especially if you aren’t keen on tackling the MIT OCW stuff yet.</li>
+<li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/" target="_blank" rel="noopener">MIT OCW Mathematics for Computer science</a>: This is more advanced, but well worth tackling if it aligns with your goals, i.e. being a top competitive programmer or getting into a top tier tech company. If you did a degree in computer science, you probably already did some discrete math. Unless you did discrete math beyond an introduction at a top school though, then this course will be helpful as there’ll almost certainly be stuff you didn’t know. At the very least, it’s great revision. Note that you’ll need to put hours into doing ALL of the “in class” questions to get the maximum benefit. We all learn best from doing, and the questions are of high quality.</li>
+</ul>
+<h2 id="11-Be-confident-knowing-the-asymptotic-complexity-of-an-algorithm-and-don’t-write-code-until-you-know-your-algorithm-will-be-good-enough"><a href="#11-Be-confident-knowing-the-asymptotic-complexity-of-an-algorithm-and-don’t-write-code-until-you-know-your-algorithm-will-be-good-enough" class="headerlink" title="11. Be confident knowing the asymptotic complexity of an algorithm, and don’t write code until you know your algorithm will be good enough."></a>11. Be confident knowing the asymptotic complexity of an algorithm, and don’t write code until you know your algorithm will be good enough.</h2><p>When given a question in an interview or a contest, don’t dive into writing code. The first thing you’ll need to do is think and brainstorm possible ways of solving it. For each one, you need to know how to determine the asymptotic complexity, paying particular attention to the worst cases. You’ll then need to look at the problem limits and make a judgement call as to whether or not your algorithm is likely to be fast enough. Over time, you’ll build a sense for how long things take. For me, I start to worry when plugging the maximum value into the big-O formula evaluates to over a million or so. It’s a very crude measurement, but it seems to serve me well.</p>
+<p>Sometimes you’ll need to come up with a better algorithm from scratch. Sometimes, you can optimize a bad algorithm so that it’s a lot better. But you’ll need to be fairly confident before you start coding, otherwise you’ll risk wasting time writing and debugging code, only to get the dreaded Time Limit Exceeded error that can only be fixed with a full re-design and re-write.</p>
+<h2 id="12-Read-the-problem-limits-well"><a href="#12-Read-the-problem-limits-well" class="headerlink" title="12. Read the problem limits well."></a>12. Read the problem limits well.</h2><p>Often, you’ll be told what the maximum input sizes to expect are. These will give you a lot of clues about the kind of algorithm you might be writing. As a very rough rule of thumb:</p>
+<ul>
+<li>If the limits are tiny, i.e. all under 50 or so, then your algorithm will probably be non-polynomial (and this is a “smell” for intractable problems).</li>
+<li>If it’s under about 1000, then you might be looking at quadratic or around that.</li>
+<li>If it’s over that, but under 1,000,000, then it’s probably linear or quasilinear.</li>
+<li>Over that, and it’s quite possibly logarithmic. If it’s ridiculously high (e.g. billions or trillions) like sometimes seen in the Google Code Jam, that can be a sign of being able to shrink it with modular arithmetic or even a constant time algorithm.</li>
+</ul>
+<p>These aren’t certain rules, but they definitely give a good indication. On the other hand, if your quadratic algorithm needs to run on sizes of 2000 or more, it’s probably not going to pass. Usually, but not always, quadratic algorithms can be replaced with quasilinear ones taking a divide and conquer approach, or using binary search somehow.</p>
+<h2 id="13-Choose-the-best-variable-to-scale-up-on"><a href="#13-Choose-the-best-variable-to-scale-up-on" class="headerlink" title="13. Choose the best variable to scale up on."></a>13. Choose the best variable to scale up on.</h2><p>Sometimes, what seems to be the main variable (e.g. number of items) is quite high, but another variable is surprisingly lower. Going back to one of my favourite questions – <a href="https://leetcode.com/problems/smallest-sufficient-team/" target="_blank" rel="noopener">Smallest Sufficient Team</a> – we are told this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;&#x3D; req_skills.length &lt;&#x3D; 16</span><br><span class="line">1 &lt;&#x3D; people.length &lt;&#x3D; 60</span><br><span class="line">1 &lt;&#x3D; people[i].length, req_skills[i].length, people[i][j].length &lt;&#x3D; 16</span><br><span class="line">Elements of req_skills and people[i] are (respectively) distinct.</span><br><span class="line">req_skills[i][j], people[i][j][k] are lowercase English letters.</span><br><span class="line">It is guaranteed a sufficient team exists.</span><br></pre></td></tr></table></figure>
+
+<p>The interesting detail here is that the maximum number of required skills is a lot lower than the maximum number of people. This is a <strong>big</strong> clue. It suggests that the cost will primarily scale with the number of skills required, not with the number of people. Instead of an approach that considers including or not including each person, we should instead be looking at a solution where the main looping is over the skill list.</p>
+<p>This is common in Google Code Jam questions. It’s worth having a really good look and think about the limits, especially if one seems unusually low/ is a surprising constraint. It can often mean there’s a good solution that wouldn’t have worked as well if it was bigger.</p>
+<h2 id="14-Share-your-solutions-and-teach-others"><a href="#14-Share-your-solutions-and-teach-others" class="headerlink" title="14. Share your solutions and teach others"></a>14. Share your solutions and teach others</h2><p>It’s widely known that to master something, you have to teach it. Writing up high-quality solutions and explanations on the discussion forums is a great way of doing this. It will also help you develop other software engineering skills, such as writing and explaining. Make sure you post with the goal of helping others, and <em>not</em> showing off. Nobody likes a code dump with no comments or explanations.</p>
+<p>Take pride in the code you share. Very few people like reading code where all the variable names appear to have been taken from the lyrics of the famous <a href="https://www.youtube.com/watch?v=75p-N9YKqNo" target="_blank" rel="noopener">alphabet song</a>. When writing your post and the code to put in it, pretend potential employers might be reading it. If you’re wanting to get into a top tech company, then write the kind of code you’d be expected to write there. For example, use descriptive variable names. During my Google internship, I noticed this in the Google codebase and my partner James also tells me that Canva’s codebase is the same.</p>
+<p><strong>ABOVE ALL OTHER ADVICE</strong>, <strong><em>put 3 backticks before and 3 backticks after your code.</em></strong> This will make it format nicely. It amazes me how many people don’t know to do this/ don’t bother to find out how when their code looks hideous and unreadable from the lack of it.</p>
+<h2 id="15-Practice-general-problem-solving"><a href="#15-Practice-general-problem-solving" class="headerlink" title="15. Practice general problem solving"></a>15. Practice <em>general</em> problem solving</h2><p>When learning algorithms, data structures, and techniques, I recommend you use the tags to find relevant problems. After all, your goal is to master a specific skill.</p>
+<p>But after that, you need to practice “problem solving”. This is where you have a problem to solve, and you do not know which of your skills you’ll be applying to it. To do this, the weekly contests and mock interview feature are amazing.</p>
+<p>Remember that sometimes a question will require a technique you’ve never seen before, or will require a major adaptation to one. You’ll need to learn to be creative and think outside the box if this doesn’t come naturally to you, memorizing solutions will not help you. A great example of this is questions such as <a href="https://leetcode.com/problems/minimize-max-distance-to-gas-station/" target="_blank" rel="noopener">Minimize Max Distance to Gas Station</a>. There is a quasilinear solution using binary search. It’s not at all what you might initially think.</p>
+<h2 id="16-Do-the-weekly-contests"><a href="#16-Do-the-weekly-contests" class="headerlink" title="16. Do the weekly contests"></a>16. Do the weekly contests</h2><p>These are great fun, and a great chance to practice your general problem solving, although they can be buggy as the questions are new to the site. Cheating is also an issue, particularly in the form of people hardcoding the answers to the largest test cases. This has reduced a lot though since Leetcode stopped displaying the answer to test cases where the result was Time Limit Exceeded. There are also issues with some programming languages being faster than others. Sometimes, a poor solution will slip through with C++ and Java, but not Python, for example.</p>
+<p>There is no rule against using previous code, although at the end of the day, one needs to decide what their goal is. Using previous code is not helping you learn. Most of the winners seem to be using previous code, their goal is generally to accumulate Leetcoins so that they can get their yearly subscription and a T-shirt (or so it seems)</p>
+<p>It also takes a lot of practice. Over time, you’ll get better at it. I wasn’t getting in the top 200 at first, it took practice.</p>
+<h2 id="17-Use-the-mock-interview-feature"><a href="#17-Use-the-mock-interview-feature" class="headerlink" title="17. Use the mock interview feature"></a>17. Use the mock interview feature</h2><p>I have a Leetcode subscription, so in theory, I could do the company-specific interviews. I actually never do though, I much prefer the random sets. They seem to be taken from the company-specific ones, with the difference being you don’t know which company it’s from. So don’t worry about not having a subscription, you’ll still find this feature useful.</p>
+<p>As a general rule, the 3 levels (screening, phone interview, and onsite) are more difficult than the last. So, start with the screening ones and then move up from there. Unfortunately, Leetcode will sometimes give you a mock interview you’ve seen previously, there’s not much you can do about this. Once it seems to be happening a lot though, that probably means you’ve done most of their mock interviews of that type. Because there is a finite number of them, it’s also best to not use them until you’ve done some practice (i.e. mastered at least the basic and intermediate skills I’ve listed above).</p>
+<p>Fun question: If there are 25 mock interview problem sets, and each has the same probability of appearing, around how many mock interviews will you need to do to see them all? How many repetitions can you expect to see?</p>
+<p>In all seriousness, the mock interview feature is great for keeping you focused (it’s timed!) and for forcing you to solve some problems without seeing their tags. Remember what I said about practicing your general problem solving?</p>
+<h2 id="18-Don’t-spend-all-your-time-doing-easy-level-questions"><a href="#18-Don’t-spend-all-your-time-doing-easy-level-questions" class="headerlink" title="18. Don’t spend all your time doing easy-level questions"></a>18. Don’t spend all your time doing easy-level questions</h2><p>I used to fall into this trap, I would do easy level questions, trying to do them as fast as I could. Then I realized that was a big waste of time, as it was the medium and hard level questions that I was struggling on in the weekly competitions, not the easy ones. Getting the easy ones solved quickly doesn’t mean much compared to getting the points of the hard ones.</p>
+<p>You need to do questions that are challenging, even if they take you over an hour. This is how you’ll learn and improve. As you get better at them, your speed will go up. Focus first on accuracy and skill, and then secondly on speed. Remember that if you can at least get to the point of answering all 4 competition questions in the 90 minutes available, you’re already doing better than most people.</p>
+<h2 id="19-Try-to-avoid-writing-bugs-in-the-first-place"><a href="#19-Try-to-avoid-writing-bugs-in-the-first-place" class="headerlink" title="19. Try to avoid writing bugs in the first place"></a>19. Try to avoid writing bugs in the first place</h2><p>We all know debugging sucks when you’re timed and seeing those precious minutes tick by. The best solution is to not write bugs in the first place. By programming mindfully, with your full attention, you’ll be able to consciously ensure each line is doing what you want it to.</p>
+<p>For particularly tricky <em>lines</em> of code, such as binary search boundaries, make a quick example if you have to, and make sure your code does what it’s supposed to on it. Do this as you’re writing the algorithm, not at the end. If you don’t remember the details of a particular library function perfectly, quickly look it up, don’t guess. In an interview, tell your interviewer you can’t remember. Most people forget these things, and there’s a chance they won’t remember either. They can tell you what assumption to make. Also, in competitions, it can help to have a shell up with your chosen language if it’s interpreted. Sometimes I forget how particular things in Python work (especially when it involves complex splicing) so being able to quickly type in an example really helps!</p>
+<p>Something else that helps me is writing code on paper first. I find there are less bugs, as I can’t handwrite as fast as I can type.</p>
+<h2 id="20-You-must-have-fun"><a href="#20-You-must-have-fun" class="headerlink" title="20. You must have fun!"></a>20. You must have fun!</h2><p>You’ll burn out in no time if you don’t enjoy it. Don’t go about your studying in a way that makes it feel like a torturous chore. Do what you need to enjoy it.</p>
+<p>And if you still just can’t enjoy it, then perhaps it isn’t for you, which is fine. We all have things we do and don’t enjoy.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/08/Java%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE/" rel="prev" title="Java学习建议">
+      <i class="fa fa-chevron-left"></i> Java学习建议
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Know-your-motivations"><span class="nav-number">1.</span> <span class="nav-text">1. Know your motivations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Set-realistic-goals-for-yourself"><span class="nav-number">2.</span> <span class="nav-text">2. Set realistic goals for yourself</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-If-you-don’t-have-a-CS-degree-do-an-online-data-structures-and-algorithms-course"><span class="nav-number">3.</span> <span class="nav-text">3. If you don’t have a CS degree, do an online data structures and algorithms course</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Find-some-good-resources-for-learning-more-advanced-algorithms"><span class="nav-number">4.</span> <span class="nav-text">4. Find some good resources for learning more advanced algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Learn-techniques-not-solutions"><span class="nav-number">5.</span> <span class="nav-text">5. Learn techniques, not solutions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Learn-the-fundamental-data-structures-Basic"><span class="nav-number">6.</span> <span class="nav-text">6. Learn the fundamental data structures (Basic)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Learn-the-more-advanced-data-structures-and-some-famous-algorithms-Intermediate"><span class="nav-number">7.</span> <span class="nav-text">7. Learn the more advanced data structures and some famous algorithms (Intermediate)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Learn-the-versatile-algorithmic-design-techniques-Advanced"><span class="nav-number">8.</span> <span class="nav-text">8. Learn the versatile algorithmic design techniques (Advanced)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Be-aware-of-the-intractable-problems-particularly-the-NP-Complete-ones"><span class="nav-number">9.</span> <span class="nav-text">9. Be aware of the intractable problems, particularly the NP-Complete ones.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Brush-up-on-those-math-skills"><span class="nav-number">10.</span> <span class="nav-text">10. Brush up on those math skills</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Be-confident-knowing-the-asymptotic-complexity-of-an-algorithm-and-don’t-write-code-until-you-know-your-algorithm-will-be-good-enough"><span class="nav-number">11.</span> <span class="nav-text">11. Be confident knowing the asymptotic complexity of an algorithm, and don’t write code until you know your algorithm will be good enough.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Read-the-problem-limits-well"><span class="nav-number">12.</span> <span class="nav-text">12. Read the problem limits well.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Choose-the-best-variable-to-scale-up-on"><span class="nav-number">13.</span> <span class="nav-text">13. Choose the best variable to scale up on.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Share-your-solutions-and-teach-others"><span class="nav-number">14.</span> <span class="nav-text">14. Share your solutions and teach others</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Practice-general-problem-solving"><span class="nav-number">15.</span> <span class="nav-text">15. Practice general problem solving</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-Do-the-weekly-contests"><span class="nav-number">16.</span> <span class="nav-text">16. Do the weekly contests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Use-the-mock-interview-feature"><span class="nav-number">17.</span> <span class="nav-text">17. Use the mock interview feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-Don’t-spend-all-your-time-doing-easy-level-questions"><span class="nav-number">18.</span> <span class="nav-text">18. Don’t spend all your time doing easy-level questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-Try-to-avoid-writing-bugs-in-the-first-place"><span class="nav-number">19.</span> <span class="nav-text">19. Try to avoid writing bugs in the first place</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-You-must-have-fun"><span class="nav-number">20.</span> <span class="nav-text">20. You must have fun!</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=536937691&auto=1&height=32"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
