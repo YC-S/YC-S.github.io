@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="When I ask people at trendy big tech companies why algorithms quizzes are mandatory, the most common answer I get is something like “we have so much scale, we can’t afford to have someone accidentall">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms interviews theory vs practice">
+<meta property="og:url" content="http://yoursite.com/2020/01/12/Algorithms-interviews-theory-vs-practice/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="When I ask people at trendy big tech companies why algorithms quizzes are mandatory, the most common answer I get is something like “we have so much scale, we can’t afford to have someone accidentall">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-13T04:52:23.000Z">
+<meta property="article:modified_time" content="2020-01-13T04:55:16.394Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="Algorithms">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/12/Algorithms-interviews-theory-vs-practice/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Algorithms interviews theory vs practice | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/12/Algorithms-interviews-theory-vs-practice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Algorithms interviews theory vs practice
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-12 22:52:23 / Modified: 22:55:16" itemprop="dateCreated datePublished" datetime="2020-01-12T22:52:23-06:00">2020-01-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<p>When I ask people at trendy big tech companies why algorithms quizzes are mandatory, the most common answer I get is something like “we have so much scale, we can’t afford to have someone accidentally write an <code>O(n^2)</code> algorithm and bring the site down”. One thing I find funny about this is, even though a decent fraction of the value I’ve provided for companies has been solving phone-screen level algorithms problems on the job, I can’t pass algorithms interviews! When I say that, people often think I mean that I fail half my interviews or something. It’s more than half.</p>
+<p>When I wrote a draft blog post of my interview experiences, draft readers panned it as too boring and repetitive because I’d failed too many interviews. I should summarize my failures as a table because no one’s going to want to read a 10k word blog post that’s just a series of failures, they said (which is good advice; I’m working on a version with a table). I’ve done maybe 40-ish “real” software interviews and passed maybe one or two of them (arguably zero).</p>
+<p>Let’s look at a few examples to make it clear what I mean by “phone-screen level algorithms problem”, above.</p>
+<p>At one big company I worked for, a team wrote a core library that implemented a resizable array for its own purposes. On each resize that overflowed the array’s backing store, the implementation added a constant number of elements and then copied the old array to the newly allocated, slightly larger, array. This is a classic example of how not to <a href="https://en.wikipedia.org/wiki/Dynamic_array" target="_blank" rel="noopener">implement a resizable array</a> since it results in linear time resizing instead of <a href="https://en.wikipedia.org/wiki/Amortized_analysis" target="_blank" rel="noopener">amortized constant time</a> resizing. It’s such a classic example that it’s often used as the canonical example when demonstrating amortized analysis.</p>
+<p>For people who aren’t used to big tech company phone screens, typical phone screens that I’ve received are one of:</p>
+<ul>
+<li>an “easy” coding/algorithms question, maybe with a “very easy” warm-up question in front.</li>
+<li>a series of “very easy” coding/algorithms questions,</li>
+<li>a bunch of trivia (rare for generalist roles, but not uncommon for low-level or performance-related roles)</li>
+</ul>
+<p>This array implementation problem is considered to be so easy that it falls into the “very easy” category and is either a warm-up for the “real” phone screen question or is bundled up with a bunch of similarly easy questions. And yet, this resizable array was responsible for roughly 1% of all GC pressure across all JVM code at the company (it was the second largest source of allocations across all code) as well as a significant fraction of CPU. Luckily, the resizable array implementation wasn’t used as a generic resizable array and it was only instantiated by a semi-special-purpose wrapper, which is what allowed this to “only” be responsible for 1% of all GC pressure at the company. If asked as an interview question, it’s overwhelmingly likely that most members of the team would’ve implemented this correctly in an interview. My fixing this made my employer more money annually than I’ve made in my life.</p>
+<p>That was the second largest source of allocations, the number one largest source was converting a pair of <code>long</code> values to byte arrays in the same core library. It appears that this was done because someone wrote or copy pasted a hash function that took a byte array as input, then modified it to take two inputs by taking two byte arrays and operating on them in sequence, which left the hash function interface as <code>(byte[], byte[])</code>. In order to call this function on two longs, they used a handy <code>long</code> to <code>byte[]</code> conversion function in a widely used utility library. That function, in addition to allocating an <code>byte[]</code> and stuffing a <code>long</code> into it, also reverses the endianness of the long (the function appears to have been intended to convert <code>long</code> values to network byte order).</p>
+<p>Unfortunately, switching to a more appropriate hash function would’ve been a major change, so my fix for this was to change the hash function interface to take a pair of longs instead of a pair of byte arrays and have the hash function do the endianness reversal instead of doing it as a separate step (since the hash function was already shuffling bytes around, this didn’t create additional work). Removing these unnecessary allocations made my employer more money annually than I’ve made in my life.</p>
+<p>Finding a constant factor speedup isn’t technically an algorithms question, but it’s also something you see in algorithms interviews. As a follow-up to an algorithms question, I commonly get asked “can you make this faster?” The answer is to these often involves doing a simple optimization that will result in a constant factor improvement.</p>
+<p>A concrete example that I’ve been asked twice in interviews is: you’re storing IDs as ints, but you already have some context in the question that lets you know that the IDs are densely packed, so you can store them as a bitfield instead. The difference between the bitfield interview question and the real-world superfluous array is that the real-world existing solution is so far afield from the expected answer that you probably wouldn’t be asked to find a constant factor speedup. More likely, you would’ve failed the interview at that point.</p>
+<p>To pick an example from another company, the configuration for BitFunnel, a search index used in Bing, is another example of an interview-level algorithms question.</p>
+<p>The full context necessary to describe the solution is a bit much for this blog post, but basically, there’s a set of bloom filters that needs to be configured. One way to do this (which I’m told was being done) is to write a black-box optimization function that uses gradient descent to try to find an optimal solution. I’m told this always resulted in some strange properties and the output configuration always resulted in non-idealities which were worked around by making the backing bloom filters less dense, i.e. throwing more resources (and therefore money) at the problem.</p>
+<p>To create a more optimized solution, you can observe that the fundamental operation in BitFunnel is equivalent to multiplying probabilities together, so, for any particular configuration, you can just multiply some probabilities together to determine how a configuration will perform. Since the configuration space isn’t all that large, you can then put this inside a few for loops and iterate over the space of possible configurations and then pick out the best set of configurations. This isn’t quite right because multiplying probabilities assumes a kind of independence that doesn’t hold in reality, but that seems to work ok for the same reason that <a href="https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering" target="_blank" rel="noopener">naive Bayesian spam filtering</a> worked pretty well when it was introduced even though it incorrectly assumes the probability of any two words appearing in an email are independent. And if you want the full solution, you can work out the non-independent details, although that’s probably beyond the scope of an interview.</p>
+<p>Those are just three examples that came to mind, I run into this kind of thing all the time and could come up with tens of examples off the top of my head, perhaps more than a hundred if I sat down and tried to list every example I’ve worked on, certainly more than a hundred if I list examples I know of that someone else (or no one) has worked on. Both the examples in this post as well as the ones I haven’t included have these properties:</p>
+<ul>
+<li>The example could be phrased as an interview question</li>
+<li>If phrased as an interview question, you’d expect most (and probably) all people on the relevant team to get the right answer in the timeframe of an interview</li>
+<li>The cost savings from fixing the example is worth more annually than my lifetime earnings to date</li>
+<li>The example persisted for long enough that it’s reasonable to assume that it wouldn’t have been discovered otherwise</li>
+</ul>
+<p>At the start of this post, we noted that people at big tech companies commonly claim that they have to do algorithms interviews since it’s so costly to have inefficiencies at scale. My experience is that these examples are legion at every company I’ve worked for that does algorithms interviews. Trying to get people to solve algorithms problems on the job by asking algorithms questions in interviews doesn’t work.</p>
+<p>One reason is that even though big companies try to make sure that the people they hire can solve algorithms puzzles they also incentivize many or most developers to avoid deploying that kind of reasoning to make money.</p>
+<p>Of the three solutions for the examples above, two are in production and one isn’t. That’s about my normal hit rate if I go to a random team with a diff and don’t persistently follow up (as opposed to a team that I have reason to believe will be receptive, or a team that’s asked for help, or if I keep pestering a team until the fix gets taken).</p>
+<p>If you’re very cynical, you could argue that it’s surprising the success rate is that high. If I go to a random team, it’s overwhelmingly likely that efficiency is in neither the team’s objectives or their org’s objectives. The company is likely to have spent a decent amount of effort incentivizing teams to hit their objectives – what’s the point of having objectives otherwise? Accepting my diff will require them to test, integrate, deploy the change and will create risk (because all deployments have non-zero risk). Basically, I’m asking teams to do some work and take on some risk to do something that’s worthless to them. Despite incentives, people will usually take the diff, but they’re not very likely to spend a lot of their own spare time trying to find efficiency improvements(and their normal work time will be spent on things that are aligned with the team’s objectives)<a href="https://danluu.com/algorithms-interviews/#fn:E" target="_blank" rel="noopener">4</a>.</p>
+<p>Hypothetically, let’s say a company didn’t try to ensure that its developers could pass algorithms quizzes but did incentivize developers to use relatively efficient algorithms. I don’t think any of the three examples above could have survived, undiscovered, for years nor could they have remained unfixed. Some hypothetical developer working at a company where people profile their code would likely have looked at the hottest items in the profile for the most computationally intensive library at the company. The “trick” for both isn’t any kind of algorithms wizardry, it’s just looking at all, which is something incentives can fix. The third example is less inevitable since there isn’t a standard tool that will tell you to look at the problem. It would also be easy to try to spin the result as some kind of wizardry – that example formed the core part of a paper that won “best paper award” at the top conference in its field (IR), but the reality is that the “trick” was applying high school math, which means the real trick was having enough time to look at places where high school math might be applicable to find one.</p>
+<p>I actually worked at a company that used the strategy of “don’t ask algorithms questions in interviews, but do incentivize things that are globally good for the company”. During my time there, I only found one single fix that nearly meets the criteria for the examples above (if the company had more scale, it would’ve met all of the criteria, but due to the company’s size, increases in efficiency were worth much less than at big companies – much more than I was making at the time, but the annual return was still less than my total lifetime earnings to date).</p>
+<p>I think the main reason that I only found one near-example is that enough people viewed making the company better as their job, so straightforward high-value fixes tended not exist because systems were usually designed such that they didn’t really have easy to spot improvements in the first place. In the rare instances where that wasn’t the case, there were enough people who were trying to do the right thing for the company (instead of being forced into obeying local incentives that are quite different from what’s globally beneficial to the company) that someone else was probably going to fix the issue before I ever ran into it.</p>
+<p>The algorithms/coding part of that company’s interview (initial screen plus onsite combined) was easier than the phone screen at major tech companies and we basically didn’t do a system design interview.</p>
+<p>For a while, we tried an algorithmic onsite interview question that was on the hard side but in the normal range of what you might see in a BigCo phone screen (but still easier than you’d expect to see at an onsite interview). We stopped asking the question because every new grad we interviewed failed the question (we didn’t give experienced candidates that kind of question). We simply weren’t prestigious enough to get candidates who can easily answer those questions, so it was impossible to hire using the same trendy hiring filters that everybody else had. In contemporary discussions on interviews, what we did is often called “lowering the bar”, but it’s unclear to me why we should care how high of a bar someone can jump over when little (and in some cases none) of the job they’re being hired to do involves jumping over bars. And, in the cases where you do want them to jump over bars, they’re maybe 2” high and can easily be walked over.</p>
+<p>When measured on actual productivity, that was the most productive company I’ve worked for. I believe the reasons for that are cultural and too complex to fully explore in this post, but I think it helped that we didn’t filter out perfectly good candidates with algorithms quizzes and assumed people could pick that stuff up on the job if we had a culture of people generally doing the right thing instead of focusing on local objectives.</p>
+<p>If other companies want people to solve interview-level algorithms problems on the job perhaps they could try incentivizing people to solve algorithms problems (when relevant). That could be done in addition to or even instead of filtering for people who can whiteboard algorithms problems.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/11/%E9%87%91%E8%9E%8D%E6%88%98/" rel="prev" title="金融战">
+      <i class="fa fa-chevron-left"></i> 金融战
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=536937691&auto=1&height=32"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
