@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一、Google Hacking介绍Google是一个伟大的信息收集工具，在如今的互联网时代，想想看一个人可以轻易的从搜索引擎中获取你详细的个人信息是件多么叫人激动又害怕的事情？Google也可以当作我们的第二个“社工库”。 搜索引擎的组成：  爬行器（机器人、蜘蛛） 索引生成器 查询检索器  二、Google Hacking基本搜索Intext 搜索出现的关键词 Inurl 搜索包含关键词的ur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Hacking Introduction">
+<meta property="og:url" content="http://yoursite.com/2020/01/16/google_hacking_introduction/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="一、Google Hacking介绍Google是一个伟大的信息收集工具，在如今的互联网时代，想想看一个人可以轻易的从搜索引擎中获取你详细的个人信息是件多么叫人激动又害怕的事情？Google也可以当作我们的第二个“社工库”。 搜索引擎的组成：  爬行器（机器人、蜘蛛） 索引生成器 查询检索器  二、Google Hacking基本搜索Intext 搜索出现的关键词 Inurl 搜索包含关键词的ur">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-17T02:27:57.000Z">
+<meta property="article:modified_time" content="2020-01-17T02:32:09.777Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="google">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/16/google_hacking_introduction/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Google Hacking Introduction | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/16/google_hacking_introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Google Hacking Introduction
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-16 20:27:57 / Modified: 20:32:09" itemprop="dateCreated datePublished" datetime="2020-01-16T20:27:57-06:00">2020-01-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、Google-Hacking介绍"><a href="#一、Google-Hacking介绍" class="headerlink" title="一、Google Hacking介绍"></a>一、Google Hacking介绍</h2><p>Google是一个伟大的信息收集工具，在如今的互联网时代，想想看一个人可以轻易的从搜索引擎中获取你详细的个人信息是件多么叫人激动又害怕的事情？Google也可以当作我们的第二个“社工库”。</p>
+<p>搜索引擎的组成：</p>
+<ul>
+<li>爬行器（机器人、蜘蛛）</li>
+<li>索引生成器</li>
+<li>查询检索器</li>
+</ul>
+<h2 id="二、Google-Hacking基本搜索"><a href="#二、Google-Hacking基本搜索" class="headerlink" title="二、Google Hacking基本搜索"></a>二、Google Hacking基本搜索</h2><p>Intext 搜索出现的关键词</p>
+<p>Inurl 搜索包含关键词的url</p>
+<p>Intitle 搜索包含关键词的标题</p>
+<p>Site 搜索包含关键词的站点</p>
+<p>filetype 搜索包含关键词的文件类型</p>
+<p>Link 对于页面包含的外部链接搜索</p>
+<p>Daterange 搜索特定的日期范围</p>
+<h2 id="三、Google搜索基本规则"><a href="#三、Google搜索基本规则" class="headerlink" title="三、Google搜索基本规则"></a>三、Google搜索基本规则</h2><p>Google 不分大小写</p>
+<p>Google 可以使用通配符：*表示一个词/字</p>
+<p>Google 会智能地保留一些内容，比如一些过时的词，一些不适合呈现的内容（比如违法信息）</p>
+<p>最常用的：”关键字” ，双引号会使Google强制搜索包含关键字的内容</p>
+<p>布尔操作符：AND(+) 、NOT(-) 、OR(|)，AND 现在已不需要，多个关键字google会都匹配到</p>
+<h2 id="四、Google-Hacking常用语法"><a href="#四、Google-Hacking常用语法" class="headerlink" title="四、Google Hacking常用语法"></a>四、Google Hacking常用语法</h2><p><strong>1、搜索标题</strong></p>
+<p>标题一般是一个网站内容的高度概括，比如后台登陆？WEBSHELL？例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intitle:&quot;Java &quot; [ Sec. Info ], [ Files ], [ Console ], [ Sql ], [ Php ], [ Safe mode ], [ String tools ], [ Bruteforce ], [ Network ], [ Self remove ]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2、搜索正文</strong></p>
+<p>正文的话就各式各样了，试试login?、admin?、内容编辑？往往会有意想不到的收获。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intitle:&quot;index&quot; intext:&quot;Login to the Administrative Interface&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3、关键网站/网址的搜索</strong></p>
+<p>网站-&gt;site:</p>
+<p>网址-&gt;inurl:</p>
+<p>site：往往我们在对一个大型厂商进行测试时，除了利用工具进行域名爆破，还可以通过Google来帮助，例如site:qq.com；</p>
+<p>inurl：是In-系指令中最强大的一个，换句话说，这个高级指令能够直接从网站的URL入手挖掘信息，只要略微了解普通网站的URL格式，就可以极具针对性地找到你所需要的资源，甚至隐藏内容。网站构建者通常将某一类信息集中在一个网站的目录中，所以搜索URL中的词本身就是对某一方面内容的一个限定。如果在加上一定的词进行组配，搜索结果将更贴近需求。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site:xxx.com inurl:phpmyadmin&#x2F;index.php &amp; (intext:username &amp; password &amp; &quot;Welcome to&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>4、文档类型的搜索</strong></p>
+<p>filetype 爱查资料的人应该不陌生，当它配合上我们其他的关键词时有意思的东西可能就会出现。</p>
+<p>目标文件类型：.pwl口令文件、.tmp临时文件、.cfg配置文件、.ini系统文件、.hlp帮助文件、.dat数据文件、.log日志文件、.par交换文件</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filetype:sql site:com and &quot;insert into&quot; admin &quot;2014&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>文档示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Filetype:xls username password email</span><br><span class="line">Filetype:xls inurl: “password.xls”</span><br><span class="line">Filetype;xls private</span><br><span class="line">Inurl:admin filetype:xls</span><br><span class="line">Filetype:xls inurl:contact</span><br><span class="line">Filetype:xls inurl: “email.xls”</span><br><span class="line">Allinurl:admin mdb</span><br><span class="line">Filetype:mdb inurl:users.mdb</span><br><span class="line">Inurl:email filetype:mdb</span><br><span class="line">Inurl:backup filetype:mdb</span><br><span class="line">Inurl:profiles filetype:mdb</span><br><span class="line">Inurl:*db filetype:mdb</span><br></pre></td></tr></table></figure>
+
+
+
+<p>SQL数据库示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nurl:nuke filetype:sql</span><br><span class="line">Filetype:sql password</span><br><span class="line">Filetype:sql “indetified by” –cvs</span><br><span class="line">“#dumping data for table username user users password”</span><br><span class="line">“#mysql dump” filetype:sql</span><br><span class="line">“#phpmyadmin mysql-dump” filetype:txt</span><br><span class="line">“#phpmyadmin mysql-dump”</span><br><span class="line">“insert into” –”the</span><br></pre></td></tr></table></figure>
+
+
+
+<p>数据库文件示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Filetype:cfm “cfapplication name ” password</span><br><span class="line">Filetype:mdb inurl:user.mdb</span><br><span class="line">Inurl:email filetype:mdb</span><br><span class="line">Inurl:forum filetype:mdb</span><br><span class="line">Inurl:&#x2F;db&#x2F;main.mdb</span><br><span class="line">Inurl:profiles filetype:mdb</span><br><span class="line">Filetype:asp dbq&#x3D;”* server.mappath(“mdb”)”</span><br><span class="line">Allinurl;admin mdb</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>5、link搜索</strong></p>
+<p>link: 可以得到一个所有包含了某个指定URL的页面列表；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查找后台地址：site:域名 inurl:login|admin|manage|member|admin_login|login_admin|system|login|user|main|cms</span><br><span class="line">查找文本内容：site:域名 intext:管理|后台|登陆|用户名|密码|验证码|系统|帐号|admin|login|sys|managetem|password|username</span><br><span class="line">查找可注入点：site:域名 inurl:aspx|jsp|php|asp</span><br><span class="line">查找上传漏洞：site:域名 inurl:file|load|editor|Files</span><br><span class="line">查找eweb编辑器：site:域名 inurl:ewebeditor|editor|uploadfile|eweb|edit</span><br><span class="line">查找存在的数据库：site:域名 filetype:mdb|asp|#</span><br><span class="line">查看脚本类型：site:域名 filetype:asp&#x2F;aspx&#x2F;php&#x2F;jsp</span><br><span class="line">迂回策略入侵：inurl:cms&#x2F;data&#x2F;templates&#x2F;images&#x2F;index&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>各种敏感数据收集：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filetyle:xls inurl:gov username passwordinurl:phpmyadmin&#x2F;main.php </span><br><span class="line">intitle:phpmyadminfiletype:inc inurl:config.inc hostfiletype:sql cdb_members </span><br><span class="line">inurl:forumdatafiletype:txt inurl:&quot;新建文本文档.txt&quot;密码inurl:phpinfo.php </span><br><span class="line">intitle:&quot;phpinfo()&quot;&quot;PHP Version&quot;+&quot;Server API&quot;filetype:log inurl:log mdb</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>6、缓存、快照搜索</strong></p>
+<p>没有突破口时，缓存可能是一大杀器。通过爬虫，快照，在管理者不经意的情况下记录下敏感信息。</p>
+<p>案例：</p>
+<p>曾经碰到过一个学生可能都比较熟悉的名为教育技术服务平台的信息泄露，它们无意中把自己gitlab公开在外网，当然没有任何防范爬虫的措施，虽然设有登陆密码但是可以通过google快照来查看里面的各种敏感代码。</p>
+<p><strong>如何访问谷歌的缓存链接？</strong></p>
+<ol>
+<li>在你的计算机上，使用 Google 搜索查找所需网页。</li>
+<li>点击相应网站网址右侧的绿色向下箭头。</li>
+<li>点击<strong>网页快照</strong>。</li>
+<li>打开缓存版页面后，点击“当前页”链接即可返回实际页面。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/google/" rel="tag"># google</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/15/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%9D%82%E8%B0%88/" rel="prev" title="软件设计杂谈">
+      <i class="fa fa-chevron-left"></i> 软件设计杂谈
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Google-Hacking介绍"><span class="nav-number">1.</span> <span class="nav-text">一、Google Hacking介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Google-Hacking基本搜索"><span class="nav-number">2.</span> <span class="nav-text">二、Google Hacking基本搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Google搜索基本规则"><span class="nav-number">3.</span> <span class="nav-text">三、Google搜索基本规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Google-Hacking常用语法"><span class="nav-number">4.</span> <span class="nav-text">四、Google Hacking常用语法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=536937691&auto=1&height=32"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
