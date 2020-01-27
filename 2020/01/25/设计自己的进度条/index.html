@@ -22,7 +22,7 @@
     hostname: new URL('http://yoursite.com').hostname,
     root: '/',
     scheme: 'Pisces',
-    version: '7.6.0',
+    version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
@@ -48,18 +48,18 @@
 
   <meta name="description" content="进度条的设计是一个很多人都知道的故事：同样的耗时，如果不给任何进度提示，只是在完成之后才弹出一个完成消息，中间没有任何动态变化，那么整个过程就会让人等得非常焦急，导致一些人干脆把程序关了了事。如果有进度不断更新，那么对整个过程耗时的心理感受就会远低于实际值，用户也不会郁闷到把程序关了。（你有多少次在银行处理手续的时候，看着工作人员把一堆材料不停地倒腾来去，心里多希望他们可以在柜台小窗口上投影一个进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计你自己的进度条">
-<meta property="og:url" content="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/index.html">
+<meta property="og:title" content="设计自己的进度条">
+<meta property="og:url" content="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/index.html">
 <meta property="og:site_name" content="Yuanchen&#39;s Blog">
 <meta property="og:description" content="进度条的设计是一个很多人都知道的故事：同样的耗时，如果不给任何进度提示，只是在完成之后才弹出一个完成消息，中间没有任何动态变化，那么整个过程就会让人等得非常焦急，导致一些人干脆把程序关了了事。如果有进度不断更新，那么对整个过程耗时的心理感受就会远低于实际值，用户也不会郁闷到把程序关了。（你有多少次在银行处理手续的时候，看着工作人员把一堆材料不停地倒腾来去，心里多希望他们可以在柜台小窗口上投影一个进">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-26T01:11:39.000Z">
-<meta property="article:modified_time" content="2020-01-26T01:12:29.364Z">
+<meta property="article:modified_time" content="2020-01-27T04:57:59.384Z">
 <meta property="article:author" content="Yuanchen">
 <meta property="article:tag" content="Chinese">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/">
+<link rel="canonical" href="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>设计你自己的进度条 | Yuanchen's Blog</title>
+  <title>设计自己的进度条 | Yuanchen's Blog</title>
   
 
 
@@ -170,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          设计你自己的进度条
+          设计自己的进度条
         </h1>
 
         <div class="post-meta">
@@ -192,10 +192,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-01-25 19:11:39 / Modified: 19:12:29" itemprop="dateCreated datePublished" datetime="2020-01-25T19:11:39-06:00">2020-01-25</time>
+              <time title="Created: 2020-01-25 19:11:39" itemprop="dateCreated datePublished" datetime="2020-01-25T19:11:39-06:00">2020-01-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-26 22:57:59" itemprop="dateModified" datetime="2020-01-26T22:57:59-06:00">2020-01-26</time>
+              </span>
 
           
 
@@ -209,7 +215,7 @@
 
       
         <p>进度条的设计是一个很多人都知道的故事：同样的耗时，如果不给任何进度提示，只是在完成之后才弹出一个完成消息，中间没有任何动态变化，那么整个过程就会让人等得非常焦急，导致一些人干脆把程序关了了事。如果有进度不断更新，那么对整个过程耗时的心理感受就会远低于实际值，用户也不会郁闷到把程序关了。（你有多少次在银行处理手续的时候，看着工作人员把一堆材料不停地倒腾来去，心里多希望他们可以在柜台小窗口上投影一个进度条？）</p>
-<p>这里的原因在于，没有进度提示的话，我们无法判断这个等待什么时候才是个尽头。如果有不断增长的进度条，那么我们对于什么时候会达到100%就会有一个粗略的估计，这个估计是一剂定心丸，让我们知道这事情总会并且会在不久的将来完成。</p>
+<p>这里的原因在于，没有进度提示的话，我们无法判断这个等待什么时候才是个尽头。如果有不断增长的进度条，那么我们对于什么s时候会达到100%就会有一个粗略的估计，这个估计是一剂定心丸，让我们知道这事情总会并且会在不久的将来完成。</p>
 <p>做事情也是同样的道理，善于规划的人，会将目标分割成一个个的里程碑，再将里程碑分割成TODO列表。前阵子流行的GTD方法学，核心的理念就在于，如果你把任务分割了，你就有了进度条，你就知道，事情在不断的进展，你总会完成任务或到达你的目标，你会有一个时间估计。反之如果没有这个分割，整个的任务或目标对你来说就只有两种状态——“完成”和“未完成”，如果不幸是一个比较漫长的目标，那么你会发现你的进度条总是“未完成”，一次又一次的等待未果会耗尽你的耐心，让你下意识的产生“这事什么时候才能完呢？”的疑惑，没有分而治之，你就不知道未来还需要付出多少努力才能达到目的，这就会让你心生怯意，不敢进一步投入时间，免得血本无归。在这样的心理下，不少人就会选择保守策略——退出，以免到头来花了时间还一事无成。</p>
 <p>而所谓的规划其实就是针对这种心理弱点的做事方法。如果你对整个目标的几个重大步骤有清晰的界定，能够对每个步骤的耗时作出靠谱的上界估计，你就不会被不确定的未来，不确定的时间投入感到恐惧，就不会被这种不确定感压迫到过早退出。</p>
 <p>不要过早退出循环</p>
@@ -374,7 +380,7 @@
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
   </div>
 
         
