@@ -165,6 +165,224 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4GraphQL%E5%8F%AF%E4%BB%A5%E5%8F%96%E4%BB%A3REST-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4GraphQL%E5%8F%AF%E4%BB%A5%E5%8F%96%E4%BB%A3REST-API/" class="post-title-link" itemprop="url">为什么说GraphQL可以取代REST_API</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-01 19:03:02 / Modified: 19:09:36" itemprop="dateCreated datePublished" datetime="2020-02-01T19:03:02-06:00">2020-02-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>几年前，我在 DocuSign 带领了一个开发团队，任务是重写一个有数千万个用户在使用的 Web 应用程序。当时还没有可以支持前端的 API，因为从一开始，Web 应用程序就是一个.NET 大单体。西雅图的 API 团队在将拆分单体，并逐步暴露出 RESTful API。这个 API 团队由两名工程师组成，发布周期为一个月，而我们在旧金山的前端团队每周都会发布新版本。</p>
+<p>API 团队的发布周期太长，因为很多（几乎所有）功能都必须进行手动测试，这是可以理解的。它毕竟是一个单体，而且没有适当的自动化测试——如果他们修改了一个地方，不知道在应用程序的其他地方会出现什么问题。</p>
+<p>我记得有一次，我们的前端团队面临为某大会交付新版本的压力，但我们忘记跟进一个重要的 API 变更，这个变更未被包含在即将发布的 API 版本中。我们要么一直等待，直到错过截止日期，要么有人愿意放弃优先权，以便让我们的变更包括在即将发布的版本中。所幸的是，这个变更最后被包含在新版本中，我们也及时发布了新的前端版本。我真的希望当时我们已经使用了 GraphQL，因为它可以消除对外部团队及其发布周期的重度依赖。</p>
+<p>在这篇文章中，我将介绍 GraphQL 的优势，以及为什么它会变得如此受欢迎。</p>
+<p>很多公司已经在内部从 RESTful 转向了 GraphQL API：IBM、Twitter、Walmart Labs、纽约时报、Intuit、Coursera，等等。</p>
+<p>其他一些公司不仅是在内部而且还将外部 API 也转为 GraphQL：AWS、Yelp、GitHub、Facebook 和 Shopify，等等。GitHub 甚至打算停止使用 REST API，他们的 v4 版本只使用 GraphQL。</p>
+<p>GraphQL 究竟是一个炒作流行语还是真正会带来一场变革？有趣的是，我之前列出的大多数从 GraphQL 获益的公司都有以下这些共同点。</p>
+<ul>
+<li>他们拥有包括移动端在内的多个客户端；</li>
+<li>他们正在转向或者已经采用了微服务架构；</li>
+<li>他们的遗留 REST API 数量暴增，变得十分复杂；</li>
+<li>他们希望消除客户端团队对 API 团队的依赖；</li>
+<li>他们注重良好的 API 文档和开发者体验。</li>
+</ul>
+<p>GitHub 工程团队表明了他们的动机：</p>
+<blockquote>
+<p>“GraphQL 弥合了发布的内容与可以使用的内容之间的差距。我们真的很期待能够同时发布它们。GraphQL 代表了 API 开发的巨大飞跃。类型安全、内省、生成文档和可预测的响应都为我们平台的维护者和消费者带来了好处。我们期待着由 GraphQL 提供支持的平台进入新时代，也希望你们也这样做！”</p>
+</blockquote>
+<p>GraphQL 加速了开发速度，提升了开发者体验，并提供了更好的工具。我并不是说这绝对是这样的，但我会尽力说明 GraphQL 与 REST 之间的争论点及其原因。</p>
+<h2 id="超级数据聚合器"><a href="#超级数据聚合器" class="headerlink" title="超级数据聚合器"></a>超级数据聚合器</h2><p>我是 Indeed（世界排名第一的求职网站）的软件工程负责人，所以让我们先来看看 Indeed.com 的主页和职位查询结果页面。它们分别发出了 10 和 11 个 XHR 请求。</p>
+<p>需要注意的是，在 REST 中使用 POST 进行页面浏览并不是很“正规”。</p>
+<p>以下是其中的一些调用：</p>
+<ul>
+<li>GET <a href="https://inbox.indeed.com/api/getConversationCount" target="_blank" rel="noopener">https://inbox.indeed.com/api/getConversationCount</a></li>
+<li>GET <a href="https://www.indeed.com/rpc/jobdescs" target="_blank" rel="noopener">https://www.indeed.com/rpc/jobdescs</a></li>
+<li>GET <a href="https://www.indeed.com/rpc/vjslog" target="_blank" rel="noopener">https://www.indeed.com/rpc/vjslog</a></li>
+<li>GET <a href="https://www.indeed.com/rpc/preccount" target="_blank" rel="noopener">https://www.indeed.com/rpc/preccount</a></li>
+<li>POST <a href="https://www.indeed.com/rpc/jobalert" target="_blank" rel="noopener">https://www.indeed.com/rpc/jobalert</a></li>
+<li>POST <a href="https://www.indeed.com/rpc/count" target="_blank" rel="noopener">https://www.indeed.com/rpc/count</a></li>
+</ul>
+<p>在使用 GraphQL 时，上面的这些请求可以被包含在单个查询和单个请求中。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">query HomePage &#123;</span><br><span class="line">  getConversationCount(...) &#123;</span><br><span class="line">     ...</span><br><span class="line">  &#125;</span><br><span class="line">  jobdescs(...) &#123;</span><br><span class="line">     ...</span><br><span class="line">  &#125;</span><br><span class="line">  vjslog(...) &#123;</span><br><span class="line">     ...</span><br><span class="line">  &#125;</span><br><span class="line">  preccount(...) &#123;</span><br><span class="line">     …</span><br><span class="line">  &#125;</span><br><span class="line">  jobalert(...) &#123;</span><br><span class="line">     …</span><br><span class="line">  &#125;</span><br><span class="line">  count(...) &#123;</span><br><span class="line">     …</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应结果可能是这样的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"data"</span>: &#123;</span><br><span class="line">    <span class="attr">"getConversationCount"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    "vjslog": [...],</span><br><span class="line">    "preccount": [...],</span><br><span class="line">      "jobalert": [...],</span><br><span class="line">    "count": &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  "errors": []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通常，单个调用比多个调用更方便、更有效，因为它需要更少的代码和更少的网络开销。来自 PayPal 过程团队的开发体验还证实，很多 UI 工作实际上不是 UI 工作，而是其他任务，例如前端和后端之间的通信：</p>
+<blockquote>
+<p>“我们发现，UI 开发人员实际用于构建 UI 的时间不到三分之一，剩下的时间用于确定在何处以及如何获取数据、过滤 / 映射数据以及编排 API 调用，还有一些用于构建和部署。”</p>
+</blockquote>
+<p>需要注意的是，有实时使多个请求也是有必要的，例如多个单独的请求可以快速且异步独立地获取不同的数据，如果采用了微服务架构，它们会增加部署灵活性，而且它们的故障点是多个，而不是一个。</p>
+<p>此外，如果页面是由多个团队开发的，GraphQL 提供了一个功能，可以将查询分解称为片段。稍后我们将详细介绍这方面的内容。</p>
+<p>从更大的角度来看，GraphQL API 的主要应用场景是 API 网关，在客户端和服务之间提供了一个抽象层。</p>
+<p>微服务架构很好，但也存在一些问题，GraphQL 可以用来解决这些问题。以下是来自 IBM 在微服务架构中使用 GraphQL 的经验：</p>
+<blockquote>
+<p>“总的来说，GraphQL 微服务的开发和部署都非常快。他们 5 月份开始开发，7 月份就进入了生产环境。因为他们不需要征得许可，直接开干。他强烈推荐这个方案，比开会讨论好太多了。”</p>
+</blockquote>
+<p>接下来，让我们逐一讨论 GraphQL 的每一个好处。</p>
+<h2 id="提高开发速度"><a href="#提高开发速度" class="headerlink" title="提高开发速度"></a>提高开发速度</h2><p>首先，GraphQL 有助于减少发出的请求数。通过单个调用来获取所需的数据比使用多个请求要容易得多。从工程师的角度来看，这加快了开发速度。后面我会解释更多有关为什么会提升开发速度的原因，但现在我想先说明另一个问题。</p>
+<p>后端和客户端团队需要通过密切合作来定义 API、测试它们，并做出更改。前端、移动、物联网（例如 Alexa）等客户端团队不断迭代功能，并尝试使用新的 UX 和设计。他们的数据需求经常发生变化，后端团队必须跟上他们的节奏。如果客户端和后端代码由同一团队负责，那么问题就没那么严重了。Indeed 的大多数工程团队都是由全栈工程师组成，但并非全部都是这样。对于非全栈团队，客户端团队经常因为依赖了后端团队开发速度受到影响。</p>
+<p>当我转到 Job Seeker API 团队时，移动团队开始我们的开发进度。我们之间有很多关于参数、响应字段和测试的事情需要沟通。</p>
+<p>在使用了 GraphQL 之后，客户端工程师就可以完全控制前端，不需要依赖任何人，因为他们可以告诉后端他们需要什么以及响应结构应该是怎样的。他们使用了 GraphQL 查询，它们会告诉后端 API 应该要提供哪些数据。</p>
+<p>客户端工程师不需要花时间让后端 API 团队添加或修改某些内容。GraphQL 具有自文档的特点，所以可以节省一些用于查找文档以便了解如何使用 API 的时间。我相信大多数人曾经在找出确切的请求参数方面浪费了很多时间。GraphQL 协议本身及其社区在文档方面为我们提供了一些有用的工具。在某些情况下，可以从模式自动生成文档。其他时候，只需使用 GraphiQL Web 界面就足以编写一个查询。</p>
+<p>来自纽约时报的工程师表示，他们在转到 GraphQL 和 Relay 之后，在做出变更时不需要改太多的东西：</p>
+<blockquote>
+<p>“当我们想要更新所有产品的设计时，不再需要修改多个代码库。这就是我们想要的。我们认为 Relay 和 GraphQL 是帮助我们实现这个伟大目标的完美工具。”</p>
+</blockquote>
+<p>当一家公司已经拥有大量 GraphQL API，然后有人想出了一个新的产品创意，这也是我最喜欢 GraphQL 的应用场景。使用已有的 GraphQL API 实现原型比调用各种 REST 端点（将提供太少或太多的数据）或为新应用程序构建新的 REST API 要快得多。</p>
+<p>开发速度的提升与开发者体验的提升密切相关。</p>
+<h2 id="提升开发者体验"><a href="#提升开发者体验" class="headerlink" title="提升开发者体验"></a>提升开发者体验</h2><p>GraphQL 提供了更好的开发者体验（DX），开发者将花更少的时间思考如何获取数据。在使用 Apollo 时，他们只需要在 UI 中声明数据。数据和 UI 放在一起，阅读代码和编写代码都变得更方便。</p>
+<p>通常，在开发 UI 时需要在 UI 模板、客户端代码和 UI 样式之间跳转。GraphQL 允许工程师在客户端开发 UI，减少摩擦，因为工程师在添加或修改代码时无需在文件之间切换。如果你熟悉 React，这里有一个很好的比喻：GraphQL 之于数据，就像 React 之于 UI。</p>
+<p>下面是一个简单的示例，UI 中直接包含了属性名称<code>launch.name</code>和 <code>launch.rocket.name</code> 。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">const GET_LAUNCHES = gql`</span><br><span class="line">  query launchList($after: String) &#123;</span><br><span class="line">    launches(after: $after) &#123;</span><br><span class="line">      launches &#123;</span><br><span class="line">        id</span><br><span class="line">        name</span><br><span class="line">        isBooked</span><br><span class="line">        rocket &#123;</span><br><span class="line">          id</span><br><span class="line">          name</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">`;</span><br><span class="line"> </span><br><span class="line">export default function Launches() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;Query query=&#123;GET_LAUNCHES&#125;&gt;</span><br><span class="line">      &#123;(&#123; data, loading, error &#125;) =&gt; &#123;</span><br><span class="line">        if (loading) return &lt;Loading /&gt;;</span><br><span class="line">        if (error) return &lt;p&gt;ERROR&lt;/p&gt;;</span><br><span class="line"> </span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">            &#123;data.launches.launches.map(launch =&gt; (</span><br><span class="line">                &lt;div</span><br><span class="line">                  key=&#123;launch.id&#125;</span><br><span class="line">                &gt;&#123;launch.name&#125;&lt;br/&gt;</span><br><span class="line">                Rocket: &#123;launch.rocket.name&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              ))&#125;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    &lt;/Query&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用这种方法，可以非常容易地修改或向 UI 或查询（gql）添加新字段。React 组件的可移植性更强了，因为它们描述了所需的所有数据。</p>
+<p>如前所述， GraphQL 提供了更好的文档，而且还有一个叫作 GraphiQL 的 IDE：</p>
+<p>前端工程师很喜欢 GraphiQL，下面引用 Indeed 的一位高级工程师说过的话：</p>
+<blockquote>
+<p>“我认为开发体验中最好的部分是能够使用 GraphiQL。对我来说，与典型的 API 文档相比，这是一种编写查询更有效的辅助方法”。</p>
+</blockquote>
+<p>GraphQL 的另一个很棒的功能是片段，因为它允许我们在更高的组件层面重用查询。</p>
+<p>这些功能改善了开发者体验，让开发人员更快乐，更不容易出现 JavaScript 疲劳。</p>
+<h2 id="提升性能"><a href="#提升性能" class="headerlink" title="提升性能"></a>提升性能</h2><p>工程师并不是唯一从 GraphQL 中受益的人。用户也会从中受益，因为应用程序的性能获得了提升（可以感知到的）：</p>
+<p>\1. 减少了有效载荷（客户端只需要必要的东西）；</p>
+<p>\2. 多个请求合并为一个请求可减少网络开销；</p>
+<p>\3. 使用工具可以更轻松地实现客户端缓存和后端批处理和后端缓存；<br>\4. 预取；<br>\5. 更快的 UI 更新。</p>
+<p>PayPal 使用 GraphQL 重新设计了他们的结账流程。下面是来自用户的反馈：</p>
+<blockquote>
+<p>“REST 的原则并没有为 Web 和移动应用及其用户的需求考虑，这个在结账优化交易中体现得尤为明显。用户希望能够尽快完成结账，如果应用程序使用了很多原子 REST API，就需要在客户端和服务器之间进行多次往返以获取数据。我们的结账每次往返网络时间至少需要 700 毫秒，这还不包括服务器处理请求的时间。每次往返都会导致渲染变慢，用户体验不好，结算转换率也会降低。”</p>
+</blockquote>
+<p>性能改进中有一项是“多个请求组合成一个请求可以减少网络开销”。对于 HTTP/1 而言，这是非常正确的，因为它没有 HTTP/2 那样的多路复用机制。但尽管 HTTP/2 提供的多路复用机制有助于优化单独的请求，但它对于图遍历（获取相关或嵌套对象）并没有实际帮助。让我们来看一看 REST 和 GraphQL 是如何处理嵌套对象和其他复杂请求的。</p>
+<h2 id="标准化和简化复杂的-API"><a href="#标准化和简化复杂的-API" class="headerlink" title="标准化和简化复杂的 API"></a>标准化和简化复杂的 API</h2><p>通常，客户端会发出复杂的请求来获取有序、排好序、被过滤过的数据或子集（用于分页），或者请求嵌套对象。GraphQL 支持嵌套数据和其他难以使用标准 REST API 资源（也叫端点或路由）实现的查询。</p>
+<p>例如，我们假设有三种资源：用户、订阅和简历。工程师需要按顺序进行两次单独的调用（这会降低性能）来获取一个用户简历，首先需要通过调用获取用户资源，拿到简历 ID，然后再使用简历 ID 来获取简历数据。对于订阅来说也是一样的。</p>
+<p>1.GET /users/123：响应中包含了简历 ID 和工作岗位通知订阅的 ID 清单；<br>2.GET /resumes/ABC：响应中包含了简历文本——依赖第一个请求；<br>3.GET /subscriptions/XYZ：响应中包含了工作岗位通知的内容和地址——依赖第一个请求。</p>
+<p>上面的示例很糟糕，原因有很多：客户端可能会获得太多数据，并且必须等待相关的请求完成了以后才能继续。此外，客户端需要实现如何获取子资源（例如建立或订阅）和过滤。</p>
+<p>想象一下，一个客户端可能只需要第一个订阅的内容和地址以及简历中的当前职位，另一个客户端可能需要所有订阅和整个简历列表。所以，如果使用 REST API，对第一个客户端来说有点不划算。</p>
+<p>另一个例子：用户表里可能会有用户的名字和姓氏、电子邮件、简历、地址、电话、社会保障号、密码（当然是经过混淆的）和其他私人信息。并非每个客户端都需要所有字段，有些应用程序可能只需要用户电子邮件，所以向这些应用程序发送社会保障号等信息就不太安全。</p>
+<p>当然，为每个客户端创建不同的端点也是不可行的，例如 /api/v1/users 和 /api/v1/usersMobile。事实上，各种客户端通常都有不同的数据需求：/api/v1/userPublic、/api/v1/userByName、/api/v1/usersForAdmin，如果这样的话，端点会呈指数级增长。</p>
+<p>GraphQL 允许客户要求 API 发送他们想要的字段，这将使后端工作变得更加容易：/api/gql——所有客户端只需要这个端点。</p>
+<p>注意：对于 REST 和 GraphQL，后端都需要使用访问控制级别。</p>
+<p>或者可以使用旧 REST 来实现 GraphQL 的很多功能。但是这样要付出什么代价？后端可以支持复杂的 RESTful 请求，这样客户端就可以使用字段和嵌套对象进行调用：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /users/?fields=name,address&amp;include=resumes,subscriptions</span><br></pre></td></tr></table></figure>
+
+<p>上面的请求将比使用多个 REST 请求更好，但它不是标准化的，不受客户端库支持，而且这样的代码也更难编写和维护。对于相对复杂的 API，工程师需要在查询中使用自己的查询字符串参数约定，最终得到类似 GraphQL 的东西。既然 GraphQL 已经提供了标准和库，为什么还要基于 REST 设计自己的查询约定呢？</p>
+<p>将复杂的 REST 端点与以下的 GraphQL 嵌套查询进行对比，嵌套查询使用了更多的过滤条件，例如“只要给我前 X 个对象”和“按时间按升序排列”（可以添加无限制的过滤选项）：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    user (id: 123) &#123;</span><br><span class="line">        id</span><br><span class="line">        firstName</span><br><span class="line">        lastName</span><br><span class="line">        address &#123;</span><br><span class="line">            city</span><br><span class="line">            country</span><br><span class="line">            zip</span><br><span class="line">        &#125;</span><br><span class="line">        resumes (first: 1, orderBy: time_ASC) &#123;</span><br><span class="line">            text</span><br><span class="line">            title</span><br><span class="line">            blob</span><br><span class="line">            time</span><br><span class="line">          &#125;</span><br><span class="line">          subscriptions(first: 10) &#123;</span><br><span class="line">            what</span><br><span class="line">            where</span><br><span class="line">            time</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用 GraphQL 时，我们可以在查询中保留嵌套对象，对于每个对象，我们将精确地获得我们需要的数据，不多也不少。</p>
+<p>响应消息的数据格式反映了请求查询的结构，如下所示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"data"</span>: &#123;</span><br><span class="line">        <span class="attr">"user"</span>: &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">123</span>,</span><br><span class="line">            <span class="attr">"firstName"</span>: <span class="string">"Azat"</span>,</span><br><span class="line">            <span class="attr">"lastName"</span>: <span class="string">"Mardan"</span>,</span><br><span class="line">            <span class="attr">"address"</span>: &#123;</span><br><span class="line">                <span class="attr">"city"</span>: <span class="string">"San Francisco"</span>,</span><br><span class="line">                <span class="attr">"country"</span>: <span class="string">"US"</span>,</span><br><span class="line">                <span class="attr">"zip"</span>: <span class="string">"94105"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            "resumes" [</span><br><span class="line">                  &#123;</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"some text here..."</span>,</span><br><span class="line">                    <span class="attr">"title"</span>: <span class="string">"My Resume"</span>,</span><br><span class="line">                    <span class="attr">"blob"</span>: <span class="string">"&lt;BLOB&gt;"</span>,</span><br><span class="line">                    <span class="attr">"time"</span>: <span class="string">"2018-11-13T21:23:16.000Z"</span></span><br><span class="line">                  &#125;,</span><br><span class="line">            ],</span><br><span class="line">              "subscriptions": [ ]</span><br><span class="line">        &#125;,</span><br><span class="line">    "errors": []    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相比复杂的 REST 端点，使用 GraphQL 的另一个好处是提高了安全性。这是因为 URL 经常会被记录下来，而 RESTful GET 端点依赖于查询字符串（是 URL 的一部分）。这可能会暴露敏感数据，所以 RESTful GET 请求的安全性低于 GraphQL 的 POST 请求。我打赌这就是为什么 Indeed 主页会使用 POST 发出“阅读”页面请求。</p>
+<p>使用 GraphQL 可有更容易地实现分页等关键功能，这要归功于查询以及 BaaS 提供商提供的标准，以及后端的实现和客户端库使用的标准。</p>
+<h2 id="改进的安全性、强类型和验证"><a href="#改进的安全性、强类型和验证" class="headerlink" title="改进的安全性、强类型和验证"></a>改进的安全性、强类型和验证</h2><p>GraphQL 的 schema 与语言无关。对前面的示例进行扩展，我们可以在 schema 中定义 Address 类型：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Address &#123;</span><br><span class="line">    city: String!</span><br><span class="line">    country: String!</span><br><span class="line">    zip: Int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>String 和 Int 是标量类型，! 表示字段不可为空。</p>
+<p>schema 验证是 GraphQL 规范的一部分，因此像这样的查询将返回错误，因为 name 和 phone 不是 Address 对象的字段：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    user (id: 123) &#123;</span><br><span class="line">        address &#123;</span><br><span class="line">            name</span><br><span class="line">            phone</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用我们的类型构建复杂的 GraphQL schema。例如，用户类型可能会使用我们的地址、简历和订阅类型，如下所示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type User &#123;</span><br><span class="line">    id: ID!</span><br><span class="line">    firstName: String!</span><br><span class="line">    lastName: String!</span><br><span class="line">    address: Address!</span><br><span class="line">    resumes: [Resume] </span><br><span class="line">    subscriptions: [Subscription]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Indeed 的大量对象和类型都是使用 ProtoBuf 定义的。类型化数据并不是什么新鲜事物，而且类型数据的好处也是众所周知。与发明新的 JSON 类型标准相比，GraphQL 的优点在于已经存在可以从 ProtoBuf 自动换换到 GraphQL 的库。即使其中一个库（<a href="https://github.com/google/rejoiner" target="_blank" rel="noopener"> rejoiner </a>）不能用，也可以开发自己的转换器。</p>
+<p>GraphQL 提供了比 JSON RESTful API 更强的安全性，主要有两个原因：强类型 schema（例如数据验证和无 SQL 注入）以及精确定义客户端所需数据的能力（不会无意泄漏数据）。</p>
+<p>静态验证是另一个优势，可以帮助工程师节省时间，并在进行重构时提升工程师的信心。诸如<a href="https://github.com/apollographql/eslint-plugin-graphql" target="_blank" rel="noopener"> eslint-plugin-graphql </a>之类的工具可以让工程师知道后端发生的变化，并让后端工程师确保不会破坏客户端代码。</p>
+<p>保持前端和后端之间的契约是非常重要的。在使用 REST API 时，我们要小心不要破坏了客户端代码，因为客户端无法控制响应消息。相反，GraphQL 为客户端提供了控制，GraphQL 可以频繁更新，而不会因为引入了新类型造成重大变更。因为使用了 schema，所以 GraphQL 是一种无版本的 API。</p>
+<h2 id="GraphQL-的实现"><a href="#GraphQL-的实现" class="headerlink" title="GraphQL 的实现"></a>GraphQL 的实现</h2><p>在选择实现 GraphQL API 的平台时，Node 是一个候选项，因为最初 GraphQL 用于 Web 应用程序和前端，而 Node 是开发 Web 应用程序的首选，因为它是基于 JavaScript 的。使用 Node 可以非常容易地实现 GraphQL（假设提供了 schema）。事实上，使用 Express 或 Koa 来实现只需要几行代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>); <span class="comment">// koa-router@7.x</span></span><br><span class="line"><span class="keyword">const</span> graphqlHTTP = <span class="built_in">require</span>(<span class="string">'koa-graphql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();</span><br><span class="line"></span><br><span class="line">router.all(<span class="string">'/graphql'</span>, graphqlHTTP(&#123;</span><br><span class="line">  schema: schema,</span><br><span class="line">  graphiql: <span class="literal">true</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.use(router.routes()).use(router.allowedMethods());</span><br></pre></td></tr></table></figure>
+
+<p>schema 是使用 npm 的 graphql 中的类型来定义的。Query 和 Mutation 是特殊的 schema 类型。</p>
+<p>GraphQL API 的大部分实现都在于 schema 和解析器。解析器可以包含任意代码，但最常见的是以下五个主要类别：</p>
+<ul>
+<li>调用 Thrift、gRPC 或其他 RPC 服务；</li>
+<li>调用 HTTP REST API（当优先事项不是重写现有 REST API 时）；</li>
+<li>直接调用数据存储；</li>
+<li>调用其他 GraphQL schema 查询或服务；</li>
+<li>调用外部 API。</li>
+</ul>
+<p>这里有一个<a href="https://medium.freecodecamp.org/graphql-zero-to-production-a7c4f786a57b" target="_blank" rel="noopener">示例</a>。</p>
+<p>Node 很棒，但在 Indeed，我们主要使用 Java。包括 Java 在内的很多语言都支持 GraphQL，例如<a href="https://github.com/graphql-go" target="_blank" rel="noopener"> https://github.com/graphql-go </a>和<a href="https://github.com/graphql-python" target="_blank" rel="noopener"> https://github.com/graphql-python </a>。</p>
+<p>由于 Indeed 主要使用了 Java，因此这里给出一个使用 graphql-java 的 Java GraphQL 示例，完整代码位于<a href="https://github.com/howtographql/graphql-java" target="_blank" rel="noopener">这里</a>。它定义了 /graphql 端点：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.coxautodev.graphql.tools.SchemaParser;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> graphql.servlet.SimpleGraphQLServlet;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/graphql"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GraphQLEndpoint</span> <span class="keyword">extends</span> <span class="title">SimpleGraphQLServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GraphQLEndpoint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(SchemaParser.newParser()</span><br><span class="line">                .file(<span class="string">"schema.graphqls"</span>) <span class="comment">//parse the schema file created earlier</span></span><br><span class="line">                .build()</span><br><span class="line">                .makeExecutableSchema());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GraphQL 的 schema 使用 POJO 来定义。GraphQL 端点类使用了 LinkRepository POJO。解析器包含了操作的（例如获取链接）实际代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/graphql"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GraphQLEndpoint</span> <span class="keyword">extends</span> <span class="title">SimpleGraphQLServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GraphQLEndpoint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(buildSchema());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> GraphQLSchema <span class="title">buildSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LinkRepository linkRepository = <span class="keyword">new</span> LinkRepository();</span><br><span class="line">        <span class="keyword">return</span> SchemaParser.newParser()</span><br><span class="line">                .file(<span class="string">"schema.graphqls"</span>)</span><br><span class="line">                .resolvers(<span class="keyword">new</span> Query(linkRepository))</span><br><span class="line">                .build()</span><br><span class="line">                .makeExecutableSchema();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在很多情况下，GraphQL 的 schema 可以从其他类型的 schema 自动生成，例如 gRPC、Boxcar、ProtoBuf 或 ORM/ODM。</p>
+<p>GraphQL 不一定需要客户端。一个简单的 GraphQL 请求就是一个常规的 POST HTTP 请求，其中包含了查询内容。我们可以使用任意的 HTTP 代理库（如 CURL、axios、fetch、superagent 等）来生成请求。例如，在终端中使用 curl 发送请求：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl \</span><br><span class="line">  -X POST \</span><br><span class="line">  -H <span class="string">"Content-Type: application/json"</span> \</span><br><span class="line">  --data <span class="string">'&#123; "query": "&#123; posts &#123; title &#125; &#125;" &#125;'</span> \</span><br><span class="line">  https:<span class="regexp">//</span><span class="number">1</span>jzxrj179.lp.gql.zone/graphql</span><br></pre></td></tr></table></figure>
+
+<p>以下代码可以在任意一个现代浏览器（为了避免 CORS，<a href="http://xn--launchpad-4840aurv07g.graphql.com/" target="_blank" rel="noopener">请访问 launchpad.graphql.com </a>）中运行。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'https://1jzxrj179.lp.gql.zone/graphql'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">  headers: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> &#125;,</span><br><span class="line">  body: JSON.stringify(&#123; query: <span class="string">'&#123; posts &#123; title &#125; &#125;'</span> &#125;),</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="string">res =&gt;</span> res.json())</span><br><span class="line">  .then(<span class="string">res =&gt;</span> console.log(res.data));</span><br></pre></td></tr></table></figure>
+
+<p>虽然构建 GraphQL 请求很容易，但是还需要实现很多其他东西，比如缓存，因为缓存可以极大地改善用户体验。构建客户端缓存不是那么容易，所幸的是，Apollo 和 Relay Modern 等提供了开箱即用的客户端缓存。</p>
+<h2 id="什么时候不该使用-GraphQL？"><a href="#什么时候不该使用-GraphQL？" class="headerlink" title="什么时候不该使用 GraphQL？"></a>什么时候不该使用 GraphQL？</h2><p>当然，完美的解决方案是不存在的（尽管 GraphQL 接近完美），还有一些问题需要注意，例如：</p>
+<p>\1. 它有单点故障吗？</p>
+<p>\2. 它可以扩展吗？</p>
+<p>\3. 谁在使用 GraphQL？</p>
+<p>最后，以下列出了我们自己的有关 GraphQL 可能不是一个好选择的主要原因：</p>
+<ul>
+<li>当客户端的需求很简单时：如果你的 API 很简单，例如 /users/resumes/123，那么 GraphQL 就显得有点重了；</li>
+<li>为了加快加载速度使用了异步资源加载；</li>
+<li>在开发新产品时使用新的 API，而不是基于已有的 API；</li>
+<li>不打算向公众公开 API；</li>
+<li>不需要更改 UI 和其他客户端；</li>
+<li>产品开发不活跃；</li>
+<li>使用了其他一些 JSON schema 或序列化格式。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>GraphQL 是一种协议和一种查询语言。GraphQL API 可以直接访问数据存储，但在大多数情况下，GraphQL API 是一个数据聚合器和一个抽象层，一个可以提升开发速度、减少维护工作并让开发人员更快乐的层。因此，GraphQL 比公共 API 更有意义。很多公司开始采用 GraphQL。IBM、PayPal 和 GitHub 声称在使用 GraphQL 方面取得了巨大的成功。如果 GraphQL 很有前途，我们现在是否可以停止构建过时且笨重的 REST API，并拥抱 GraphQL？</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/7-steps-to-become-a-UI-UX-designer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1121,208 +1339,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/23/%E5%B5%A9%E5%AD%A6%E8%9B%AE%E5%A4%B7%E8%AE%BA%E5%92%8C%E5%85%A5%E5%85%B3%E8%AE%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/23/%E5%B5%A9%E5%AD%A6%E8%9B%AE%E5%A4%B7%E8%AE%BA%E5%92%8C%E5%85%A5%E5%85%B3%E8%AE%BA/" class="post-title-link" itemprop="url">嵩学蛮夷论和入关论</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-01-23 23:35:00" itemprop="dateCreated datePublished" datetime="2020-01-23T23:35:00-06:00">2020-01-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-24 00:53:11" itemprop="dateModified" datetime="2020-01-24T00:53:11-06:00">2020-01-24</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作为一个时常混迹于中文网络“键政圈”的人，我深知“键政”的快乐在于看各种大佬针锋相对，互相打脸，晾出干货，表达私货，“嵩学”以其独特的叙事风格和独道观点引起各方键政大佬的交流，我作为吃瓜人看的是不亦乐乎。</p>
-<p>“键政”多年，我深感“键政”中多数人只不过是拾人牙慧、宗教狂热、党同伐异、复读机、说书人、追星狂，能自己生产“键政”话题，思想者寥寥。山高县作为“寥寥”和“大多数”人之间的人，其引人瞩目的各种臭屁，嬉闹，极端，严肃，欢乐的暴论是非常有趣的，希望看完本文的读者也能去关注他一波。</p>
-<p>本文力求还原山高县所谓“嵩学”的大部分观点，话术，同时附上一些我自己的理解，以馈那些后来入场的、忙着追星“嵩学”的或计划着批判“嵩学”的、有意研究中文网络“键政“的、甚至写小说的读者。</p>
-<p><strong>“嵩学”思想体系1——”蛮夷论“与“入关论”</strong></p>
-<p><strong>—————————————历史给皇罗的代号是拜占庭———————————</strong></p>
-<p>山高县其人所开创的所谓“嵩学”中最令人（至少是我）眼前一亮的核心理论即是：“蛮夷论”和“入关论”。</p>
-<p><strong>原理说明:</strong></p>
-<p>这其中，蛮夷论是嵩学叙事的<strong>框架：“它以17世纪中的“明朝灭亡，清朝建立”这个大背景作为隐喻，类比概括了当今国际上中国及世界其他国家/地区的哲学关系。”</strong></p>
-<table>
-<thead>
-<tr>
-<th>表： 女真人如何从东北一隅的小小部落最后成为打败了17世纪世界上最强大的国家-明朝，并建立了清朝。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>里： 中国作为一个懂呀黄种民族该如何打败盎格鲁撒克逊民族统治下的超级大国-美国及其国际秩序，并建立中国理想的秩序。</td>
-</tr>
-</tbody></table>
-<p>并由此得出（实际上我觉得他是先有结论，后有理论的，但这其中历史的启发起到什么角色，这只有山高县自己知道）：<strong>中国无法在当今世界获得理解和支持，并屡屡碰壁和挨打的核心原因在于——我们是美国主导的以盎格鲁撒克逊民族为“中华”正统的世界秩序中的“女贞”蛮夷。</strong></p>
-<p>为了解决这个问题，山高县给出了“入关论”这一<strong>解决方案</strong>。</p>
-<blockquote>
-<p>大清追上大明，靠的是入主中原，而不是在赫图阿拉读四书五经。</p>
-</blockquote>
-<p>其具体做法是：<strong>突破一二岛链，控制东南亚，扼住马六甲咽喉，维护印度洋航道，肢解印度。</strong></p>
-<p><strong>原理补充</strong>：“中华蛮夷”体系话术中的黑词：</p>
-<table>
-<thead>
-<tr>
-<th>大明</th>
-<th>美国</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>建州女真</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>入关</td>
-<td>马六甲</td>
-</tr>
-<tr>
-<td>成化梨庭</td>
-<td>种族屠杀</td>
-</tr>
-<tr>
-<td>赫图阿拉</td>
-<td>北京</td>
-</tr>
-<tr>
-<td>赫图阿拉各部旧账</td>
-<td>中国历史</td>
-</tr>
-<tr>
-<td>四书五经</td>
-<td>西方金融/政治/社会等各种思想</td>
-</tr>
-<tr>
-<td>儒学大师</td>
-<td>为西方思想唱赞歌的学者</td>
-</tr>
-<tr>
-<td>剃发易服</td>
-<td>全盘西化</td>
-</tr>
-<tr>
-<td>剿匪安民</td>
-<td>彻底消灭与清算北美匪帮的金融铁骑及其走狗</td>
-</tr>
-<tr>
-<td>闯王来了不纳粮</td>
-<td>不利用国际贸易结算体系为自己谋利</td>
-</tr>
-<tr>
-<td>挖参</td>
-<td>低端产业</td>
-</tr>
-<tr>
-<td>敕书</td>
-<td>国际贸易体系准入证</td>
-</tr>
-<tr>
-<td>叶赫部</td>
-<td>香港，台湾等受西方资助的分离势力总称</td>
-</tr>
-<tr>
-<td>金融铁骑</td>
-<td>全球金融投机客 ex：索罗斯</td>
-</tr>
-<tr>
-<td>颜色卫兵</td>
-<td>以策动颜色革命为生的人</td>
-</tr>
-<tr>
-<td>苏松二府，秦淮河畔，东林书院</td>
-<td>美国令人向往的繁荣生活</td>
-</tr>
-</tbody></table>
-<p><strong>评论：</strong></p>
-<p>很多知乎er在评价山高县时，常言：其故弄玄虚，腹中无物，说书先生，我同意这句评价的三分之二。首先，山高县所谓的“蛮夷论”我认为最为出彩，但其实这个理论并不新鲜，它就是“西方中心论”的本土化新视角重构，我之所以觉得它出彩，就在于他是中国人听得懂的本土化语言和本土化视角。</p>
-<p>山高县很喜欢民族主义叙事，本人有明显的民族主义倾向（虽然他否认<a href="https://zhuanlan.zhihu.com/p/96784759#ref_3" target="_blank" rel="noopener">[3]</a>），但显然也不是走火入魔的那一种（比如有人对这套已经“脱敏”了的“西方中心论”竟然还“过敏”，无法理解），他认为当今世界是美利坚天朝的世界，我们潜意识里的“自居天朝上国”是可笑和危险的。</p>
-<p>虽然观点缺乏内核创新，但我仍然认为他这套“蛮夷之论”非常有益于键政圈的发展，在中文键政圈中，不同的叙事方法，对于丰富思想是大有裨益的。例如在解释HK问题时，左壬用阶级叙事，右壬用自由民主“圣贤书”，用经济理论的，用文明冲突的，用社会心理学的，都对，都可以。代入这套“蛮夷论”中，也可以有精彩的回答。</p>
-<blockquote>
-<p><strong>你如何看待香港现状及未来发展？</strong></p>
-<p>现状：宁为大明狗，不做女真豚，杀进建奴，能做大明的狗就是最大的荣幸啊。</p>
-<p>未来：我叶赫那拉就算只剩一个女子，也要毁灭建州！</p>
-</blockquote>
-<p>但山高县的这套“蛮夷论”显然不是什么正经的科学，它像是文明冲突论，又像是社会心理学，你也可以再用回其他叙述体系，他们是相互涵盖和补充的。它诞生最初的目的是躲避知乎键政的审查体系（粉丝不明白他的苦心，非要冲塔献祭，炫耀自己所学，所以傲慢是中文键政生存的最大障碍啊！），方便粉丝理解。事实上一开始山高县对此并不上心，在他的回答中大清也可以用来类比西方，美国也可以用蒙古类比。</p>
-<blockquote>
-<p><strong>如何看待英国工党误国这一观点？</strong></p>
-<p>都说老佛爷卖国，没有老佛爷卖国，旗人这铁杆庄稼能发到辛亥年吗？</p>
-<p>大英乙烷的情况下，真以为大英祖产靠节衣缩食就能保住？趁着能卖，卖个好价钱，让百姓吃上几十年铁杆庄稼，某种程度上说也算没辜负大英祖宗打下的江山。</p>
-<p>苏伊士运河事件之后的大英，旗人们能吃几十年铁杆庄稼已经是最好的结局了，还要啥自行车？</p>
-</blockquote>
-<p>但这个“蛮夷论”的走红不能不引起引起我们的思考，它漏洞百出，机械类比，没有支撑，甚至“创始人”自己都不在意，为什么会引来那么多吃瓜群众呢？<strong>在“蛮夷论”中西方的各种思潮被比作“四书五经”，那么我们的“四书五经”呢，我们有载的三千年的历史教会了我们什么呢？</strong></p>
-<blockquote>
-<p><strong>如何评价中国的自由主义者？</strong></p>
-<p>长期脱离不了逆民族阶段的一群废物。</p>
-<p>自由主义想在中国真正登堂入室，必须是视美国为异端，极端反美的自由主义。</p>
-<p>中国自近代以来，长期作为思想输入国是现实，入关前很难摆脱。逆民作为主要受众这一阶段时每种思想传播的必经阶段，这本来没什么，问题是你自由主义一百多年了还摆脱不了逆民阶段，那就只能说是扶不上墙的烂泥，不能怪别人了。</p>
-</blockquote>
-<p>我深以为然，民族主义者接受不了“西方中心论”，“嵩学”换个视角换个说法，告诉你的也是“西方中心论”，大多数人就能接受了。积贫积弱的年代，民众还能觉得“逆民话术”是良药苦口，现在的普通民众只觉得自由主义者那套“逆向民族主义”话术臭不可闻。所以说，很多“四书五经”从“天朝”而来，不是让你“空中楼阁”的，赶紧本土化才是正途。本朝西来的原教旨“马拉车”主义导致了什么？“马拉车”主义最后是因为什么纠正了错误，实现了摧枯拉朽的成功？不就是本土化吗？</p>
-<p><strong>————————————入关！入关！入关！—————————————————</strong></p>
-<p>紧接着“蛮夷论”的，顺其自然就是脱离蛮夷的方法了——入关</p>
-<p>知乎对于“入关论”的批评远远多于“蛮夷论”。毕竟“蛮夷论”是对现状的总结，不管你讨不讨厌，你不能对现实视而不见。而“入关论”这种计划性的理论那就是谁都能说上一把的<strong>了。</strong></p>
-<p><strong>一个有趣的现象是，知乎上有人说：“无论左中右，都有同意入关论的。同时，无论左中右，也都有反对入关论的。”</strong></p>
-<p>举个例子，许多反对者将入关论类比为“昭和日本”“纳粹德国”的法西斯扩张理论，而反对他们的人则举出“美西战争”，“殖民战争”来反驳。</p>
-<p>仅从上面的例子其实我们就可以分析出为何左中右无法划分复杂的政治诉求。</p>
-<p>比如举出“法西斯”来反驳入关论的人。首先，假设他可能是个左派，他反对这种帝国主义行为，但显然反对法西斯的不止左派，那么显然你不能说反对法西斯就是某某派。然后就是，为什么反对法西斯呢？那就更是层层细分了，比如痛恨法西斯的反人类行为，有些人就举出“南京大屠杀”的例子，毕竟我们也是法西斯的受害者，比如看到了法西斯的悲惨下场，有人就举出“占领区”“两颗原子弹”“一亿玉碎”这样的例子。又比如有些人假设了别人的立场，认为维护西方立场的人，也不同意新法西斯，虽然他们并不管中国人死活。（当然我们也不能假设这种人不存在，毕竟我们大部分都翻墙看过）。</p>
-<p>我洋洋洒洒的举例了几百字是想说明什么呢？我是想说，“<strong>无论左中右都同意或反对入关论。”这是个伪命题</strong>，有这种观点的人可能只是从只言片语中就认定了一个人的左中右，十年来，我混键政的最大体会就是不要透过一两句话就给一个人定性，富丽堂皇的好话谁都会说，一个把马克思的话当成签名的人其实可能是最拥护资本主义体制的人，一个看起来懦弱的反战者可能是最勇敢的战士，一个满口反战的人在对同胞举起屠刀时会毫不犹豫，一口一个自由和民主的人，追求的可能不是你的自由民主。</p>
-<p>所以我认为所谓的“左中右”都同意或反对入关论并不存在，我甚至不认为在这件事上用左中右划分是科学的。</p>
-<p><strong>我认为，一个人可以同时同意和反对入关论。</strong></p>
-<p>比如我，我同意入关论，因为就我现在的知识、视野、思维深度以及立场来看，我认为中美在现如今的国际秩序下不能共存，我认为一直以牺牲中国人利益为代价的国际秩序不能接受。活用“蛮夷论”的表达就是“我不想在建州摸鱼给天朝上贡，天朝也容不得我建州女贞这么大一个边患。”同时我也不甚认同入关论，因为我认为，入关必然血雨腥风，难道要共和国和帝国主义同流合污？，我不认为入关是推翻美利坚天朝统治的唯一解，至少它不应该是第一选项。“我有祖宗之法，不愿兴刀兵扰黎民，然匪朝不灭，天怒人怨！”</p>
-<p>入关论说到底只是一种推翻“大明”的方法，代表了山高县对于解决“蛮夷论”的一种处理问题的哲学体现。山高县作为普通民众，既没有资源充分了解入关的可行性，也没有提供可以说服大众的可靠论据，可以说既没有资格也没有能力。为什么必须是马六甲？为什么必须要肢解印度？肢解印度的成本和后果呢？这些实际操作层面的东西我都保留意见。<strong>只能说山高县给我们指了一条路，虽然方向我认同，但怎么走我要再观察。</strong></p>
-<p>山高县是个复杂的人，说难听点，他前后矛盾，很可能其实真的只是玩一玩，是个说书先生。（当然就算是说书也不妨碍“嵩学”的严肃性，裸着生殖器洗澡就不能思考浮力定理了吗？山高县？他懂个锤子“嵩学”）</p>
-<p>他曾说：<strong>“1：剿兵安民，彻底消灭与清算北美匪帮的金融铁骑及其走狗。2：闯王来了不纳粮，不利用国际贸易与结算体系为自己牟利。”</strong><a href="https://zhuanlan.zhihu.com/p/96784759#ref_4" target="_blank" rel="noopener">[4]</a>想要表达自己“为万民乞活”的国际主义思想，转脸又表示“<strong>总有一天，我们要让他们知道，在寒冬腊月里摸鱼是什么滋味！要让他们，偿还这一切！用他们的土地，他们的手！”</strong><a href="https://zhuanlan.zhihu.com/p/96784759#ref_5" target="_blank" rel="noopener">[5]</a>关于入关后的秩序是怎样的，他一边画饼说平等，一边又想复仇。</p>
-<p>他曾说：“<strong>宁为一步甲，胜做挖参人</strong>”<a href="https://zhuanlan.zhihu.com/p/96784759#ref_6" target="_blank" rel="noopener">[6]</a>（曹大佐也有“苦战胜过强耕”的想法，他们真的有共同语言）又给下面的话点赞：<strong>“实现没有阶级之分的理想社会。”</strong><a href="https://zhuanlan.zhihu.com/p/96784759#ref_7" target="_blank" rel="noopener">[7]</a>到底打不打，什么时候打，他其实还没个准。</p>
-<p>综上，入关论应该是开放性的话题，怎么入关，何时入关，入关前干啥，到底入哪个关，开航母入关还是开集装箱船入关都可以讨论。<strong>这里的入关论其实指：打破美利坚天朝的压迫体系。这样就能解释为何那么多人“感觉”不光自己的派系同意入关论，对立派系也同意入关论，因为支持打破美利坚天朝压迫体系的人不分左中右，当然反对的也不分左中右啦。</strong></p>
-<p><strong>冲塔暴论金腰带，安分守己无尸骸</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1393,7 +1409,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
