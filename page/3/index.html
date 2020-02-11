@@ -165,6 +165,141 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/26/What-are-some-of-the-most-basic-things-every-programmer-should-know/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/26/What-are-some-of-the-most-basic-things-every-programmer-should-know/" class="post-title-link" itemprop="url">What-are-some-of-the-most-basic-things-every-programmer-should-know</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-26 23:23:50 / Modified: 23:27:24" itemprop="dateCreated datePublished" datetime="2020-01-26T23:23:50-06:00">2020-01-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>Calling a function from within a loop is no more efficient than running all the function’s code within said loop.</li>
+<li>Executing a loop of N iterations inside a loop of M iterations will consume at least M times as much time as executing the loop of N iterations once.</li>
+<li>Numeric values are not inherently binary, hexadecimal or base-10. A numeric value is the same no matter the base in which you choose to express it. Therefore it doesn’t make sense to ask how to convert an integer value to binary, only how to express it as binary.</li>
+<li>One byte is 8 bits and can represent 256 values. The number of values any variable can represent is determined by 2^n where n is there number of bits reserved for the variable</li>
+<li>Retrieving and removing a value from a stack is called popping and returns the most recent value added, while retrieving and removing a value from a queue is called dequeuing and returns the oldest value.</li>
+<li>A 1-dimensional array of X bytes consumes at least X bytes of memory. A 2-D array of X-by-Y bytes consumes at least X*Y bytes of memory.</li>
+<li>A 2-dimensional array is basically the same as a 1-dimensional array whose values are accessed by calculating the index with Y<em>width+X. *</em>Edit:** My point here is not that all 2 dimensional arrays are really just 1-D arrays. My point is that a simple 2-D array of 2 fixed dimensions can generally be implemented with a 1-D array.</li>
+<li>Printable text in a program is generally referred as a string. Every character in a string generally takes at least 1 byte.</li>
+<li>Unicode is a standard that allows most known characters in all languages around the world to be represented by a single coding scheme. (There’s much more to know here, but not all of it is basic and understood by all programmers.)</li>
+<li>UTF-8 is a Unicode encoding scheme that allows the most common Latin-based characters to be represented in 1 byte, while other characters can take 2 or more bytes.</li>
+<li>If it’s not tested, it doesn’t work.</li>
+<li>Source control is your friend - make sure you use it.</li>
+<li>Just because you wrote it doesn’t mean you own it — don’t be offended if someone else on your team has to change your code.</li>
+<li>Don’t reinvent the wheel, library code is there to help.</li>
+<li>The fastest code is code that’s never executed — look for early outs.</li>
+<li>Just because you didn’t write it doesn’t mean it’s crap.</li>
+<li>Source code is just a hint to the compiler about what you want to do, it won’t necessarily do it (e.g. You might declare a function as inline but the compiler doesn’t have to obey).</li>
+<li>Code that’s hard to understand is hard to maintain.</li>
+<li>Code that’s hard to maintain is next to useless.</li>
+<li>“Whilst I’m editing this file I’ll just…” is a great way to introduce feature creep and bugs.</li>
+<li>The neater your code layout, the easier it is to read. The easier it is to read, the easier it is to understand and maintain.</li>
+<li>Code is not self documenting. Help others by adding comments to guide them. You may understand it now but what about in 5 years time?</li>
+<li>Bad Code can and will come back to haunt you.</li>
+<li>There is no such thing as a 5 minute job. It’ll always take at least half a day.</li>
+<li>Magic numbers are bad.</li>
+<li>Constants don’t take up storage, they’re compile time text substitutions.</li>
+<li>Project management will always want you to do twice as much in half the time.</li>
+<li>If there is a bug, the user will find it.</li>
+<li>A code review is not a criticism.</li>
+<li>It’s not the quantity of code that matters, it’s the quality. Any idiot can bang out 40kloc but that doesn’t make it fit for purpose.</li>
+<li>The true cost of poorly written code is in the maintenance.</li>
+<li>Eat your own dog food — fixing bugs in your own code helps you code better and improves your understanding.</li>
+<li>Code rots over time.</li>
+<li>If the user didn’t ask for a feature, don’t add it.</li>
+<li>If it’s not tested, it doesn’t work (yes, I know I’ve included that twice but it’s really important).</li>
+<li>Networking basics - ssh tunnels, subnets, basic routing tables, TCP protocol, HTTP basics.</li>
+<li>Memory - probably should know a little about how memory is laid out, virtual addresses, paging, page frame; user space and kernel not details - but just an accurate higher level idea.</li>
+<li>Basic Data types and their sizes (uint, float, string, character/rune etc.</li>
+<li>If you are in JVM or any runtime oriented landscape probably should know how GC overall works; generational collection in JVM is interesting to follow. Mark and sweep.</li>
+<li>Basic and extremely <em>practical</em> knowledge of data structures and algorithms - you need to be able to apply things you’ve learned - I know many people who know all theory in the world but to them it seems no problem can be applicable to any catalogue full of algorithms and data structures they know off. Linked lists, stacks, queues, trees and graphs and some of the basic algorithms of sort, search etc.</li>
+<li>Working knowledge of computer hardware - if leave this to readers; I prefer to understand a lot of details.</li>
+<li>You probably should be proficient in one of those editors like Vim, Emacs, Sublime, IntelliJ, Eclipse (any but one) …</li>
+<li>Should be able to step through code. (Think gnu tool chain, gdb, IntelliJ debuggers for Java world for example).</li>
+<li>Understand relational calculus a bit - write sql queries . Know what is and how to use a relational DB - and a NoSql Db.</li>
+<li>Know what files are and how file system works in general from kernel and user space view points - understand why IO is a bottleneck - good if you know scatter gather, mmap and other voodoo ;-)</li>
+<li>Functional programming - know functions as data, first order functions, higher order functions, map, flatMap/bind, fold. You do not need to be a Haskeler or a Lisper for this. Fairly common to have such constructs in most modern languages today.</li>
+<li>Understand what pointers are (if you are in JVM world ignore this but it would still be worthwhile to know); and how things are allocated and accessed.</li>
+<li>Know about threads - Green threads, Coroutines; how concurrency maybe managed and how does it translate to core utilization.</li>
+<li>Knowledge of HTML5 canvas and other simple constructs.</li>
+<li>CSS Box model and general CSS</li>
+<li>Knowledge of ES 6 fundamentals.</li>
+<li>Knowledge of Node package manager and a JS build system</li>
+<li>There will always be someone somewhere, you’d write a better code</li>
+<li>Always test your code, for both, usual cases and edge cases</li>
+<li>Never trust the user input, always sanitize it</li>
+<li>Always check for buffer overflows</li>
+<li>Leave the code better than you got it</li>
+<li>You will spend more time thinking about the code, than actually coding</li>
+<li>A bad design will haunt you as soon as the requirement changes even slightly</li>
+<li>Under-commit and over-deliver, always</li>
+<li>Your success will depend more on your soft-skills and how you articulate the problems and solutions to them, than your technical ability</li>
+<li>When asked for an estimate on a feature, always overestimate for a 20% buffer</li>
+<li>Do not get emotionally attached with the code. The fact that you wrote it does not mean that someone else cannot change it</li>
+<li>You’ll see a few of your prototype implementations (POCs) making it to the product, and a lot of them being scrapped, don’t take it to heart, that’s the way things work</li>
+<li>Use source control, and do frequent commits (squash commits before pushing to remote), it will save you in case of a disaster</li>
+<li>Bad code will come back to haunt you in future</li>
+<li>Take code reviews positively. Do not get into a code review with an ego, take review positively and learn to improve</li>
+<li>Learn to read between the lines from the business requirements and try to convert them into technical requirements</li>
+<li>It is a good idea to discuss your solution with another programmer before starting to implement it, you might learn more</li>
+<li>Always document the code well, it will help others (including yourself) in the future</li>
+<li>Improve your skills over time, otherwise you will become obsolete in the industry</li>
+<li>Your QA folks should be your friends, that will save you a lot of trouble</li>
+<li>Try going into meetings with solutions to problems, rather than just problems, your folks will start liking you</li>
+<li>Never, ever, push a feature in production unless it is well-tested</li>
+<li>Love your job, but not your company, you never know when your company might stop loving you</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/25/%E8%AE%BE%E8%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BF%9B%E5%BA%A6%E6%9D%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1911,149 +2046,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/17/%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/17/%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">技术的发展方式</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-01-17 22:28:35 / Modified: 22:32:11" itemprop="dateCreated datePublished" datetime="2020-01-17T22:28:35-06:00">2020-01-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这两部分的目的都是拓宽我们讨论“技术”的术语。技术应以三种不同的形式理解：作为嵌入工具（例如锅，锅，炉子）的过程；明确的指示（如食谱）；以及过程知识，或者我们也可以称为隐性知识，专有技术和技术经验。过程知识是一种很难作为指令写下来的知识。您可以给一个人一个设备齐全的厨房和一个非常详尽的食谱，但是除非他已经有烹饪经验，否则我们不应该指望他准备一道好菜。</p>
-<p>我认为在谈论技术时，我们有两个很大的偏见。首先，我们在工具和配方方面考虑得太多，而实际上我们应该在过程知识和技术经验方面考虑得更多。其次，我们大多数人过多地关注数字世界，而对工业世界则关注不足。我们对数字世界的痴迷将我们对技术未来的期望朝着计算机朋克反乌托邦的方向发展。相反，我希望我们可以期待在工业进步的推动下，对技术未来充满喜悦。</p>
-<h3 id="过程知识由经验丰富的员工代表"><a href="#过程知识由经验丰富的员工代表" class="headerlink" title="过程知识由经验丰富的员工代表"></a>过程知识由经验丰富的员工代表</h3><p><strong>过程知识由经验丰富的员工代表。</strong>我一直在研究半导体行业，这有助于更广泛地阐明我对技术创新的想法。在半导体生产中很容易识别出所有三种技术形式：工具，指令和工艺知识。TSMC，英特尔和三星是执行摩尔定律最负责的三家公司。这三家公司每年投资超过100亿美元，以推动这一技术前沿。</p>
-<p>这些公司拥有的工具和知识产权很容易观察。我认为他们拥有的过程知识甚至更重要。工艺知识也可以称为技术和工业专长；就半导体而言，这包括如何存储晶圆，如何进入洁净室，在晶圆厂工艺的不同阶段应使用多少电流以及不计其数的其他知识。这种知识是通过经验赢得的。任何有详细说明但没有实际制造芯片经验的人都可能会搞砸。</p>
-<p>我相信，技术最终会因为人和他们所拥有的过程知识的深入而进步。我将新工具和IP的创建视为我们积累的过程知识的认证。我不想将工具和IP视为技术进步的最终目的，而是希望将它们视为培训更好的科学家，工程师和技术人员的里程碑。</p>
-<p>积累的工艺知识和资本使半导体公司能够继续生产越来越复杂的芯片。如果这些公司还不具备深厚的工艺知识储备，则不可能每24个月将晶体管密度提高一倍。这不仅是任何资本充足的公司都可以购买的工具；或蓝图，如果没有经验将它们编成代码，很难遵循这些蓝图。美国在设计和制造半导体方面拥有数十年的经验，并且已经开发了人才生态系统，成功地推动了摩尔定律的发展。这些人才库使美国能够在至关重要的技术上保持领先地位。</p>
-<h3 id="美国的工业基础一直在下降"><a href="#美国的工业基础一直在下降" class="headerlink" title="美国的工业基础一直在下降"></a>美国的工业基础一直在下降</h3><p><strong>美国的工业基础一直在下降。</strong>但是，半导体领域的持续创新是美国制造业的一个例外。该国过去曾培育充满活力的工程实践社区（我喜欢布拉德·德龙（Brad DeLong）这个<a href="https://ftalphaville-cdn.ft.com/wp-content/uploads/2016/05/DeLongTranscript.pdf" target="_blank" rel="noopener">词</a>），这是谈论许多行业领域积累的过程知识的另一种方式。但是，并非所有的工程实践社区都处于良好状态。</p>
-<p>美国制造业的<a href="https://fred.stlouisfed.org/series/OUTMS" target="_blank" rel="noopener">实际产出</a>低于2008年经济衰退之前的水平。这意味着整整十年美国制造业并没有真正的增长。（实际上，这一措施可能太过乐观了-ITIF提出了一个<a href="http://www2.itif.org/2017-trade-vs-productivity.pdf?_ga=2.190785960.2044634082.1518783223-2101981348.1518102856" target="_blank" rel="noopener">论据</a>，即由于计算机速度的过度质量调整而导致了制造业产出措施的偏差。带走了计算机，如今购买的计算机越来越少，而美国的实际产出却越来越少。制造业将进行有意义的降低）。<a href="https://fred.stlouisfed.org/series/MANEMP" target="_blank" rel="noopener">制造业就业人数</a>在1979年达到高峰，近20万工人; 它在2000年下降到1700万，在2008年下降到1400万，今天是1200万。自1979年以来，美国人口增长了40％，而制造业工人的数量几乎减少了一半。</p>
-<p>当企业和工厂离开时，积累的过程知识也消失了。行业经验，扩展专业知识以及边做边学带来的所有事物都会衰减。我今年初访问了德国，与行业人士进行了交谈。德国人不断提出的一个观点是，美国已经实现了自身的工业化并分散了生产网络。尽管德国通过提升价值链来应对全球化，但美国制造业基地大多通过放弃生产来应对。</p>
-<p>布拉德·塞瑟（Brad Setser）<a href="https://www.cfr.org/blog/us-needs-more-manufactured-exports" target="_blank" rel="noopener">表明</a>，美国的制成品出口水平低，在富裕国家中脱颖而出。叫我头脑简单，但我认为世界上最发达国家应该负责 向世界各地<em>出口商品</em>。相反，美国既有贸易赤字，也有经常账户赤字。美国的贸易逆差之所以高，不仅是因为它进口了很多商品。它之所以很高，是因为它的出口不多。为了使其他国家从美国进口更多商品，首先，美国应该出售更好的商品。</p>
-<h3 id="知识应在整个供应链中传播，并在堆栈中上下流动"><a href="#知识应在整个供应链中传播，并在堆栈中上下流动" class="headerlink" title="知识应在整个供应链中传播，并在堆栈中上下流动"></a>知识应在整个供应链中传播，并在堆栈中上下流动</h3><p><strong>知识应在整个供应链中传播，并在堆栈中上下流动。</strong>成功的行业倾向于聚集到紧密的生产网络中。欣赏集群奇迹的最简单方法是看硅谷，那里的资本，学术界，大量急切的劳动力以及大小不一的公司彼此相邻。对于在硅谷待了一段时间的任何人来说，显而易见的是，这种经济联系的集中是使该系统运转的魔力的一部分。</p>
-<p>工业集群还有许多其他例子。台湾的半导体产业成立，至今仍以台北南部的一个小型工业园区为中心。硅谷之所以被命名是因为它是半导体生产的中心（并且附近有足够的有毒<a href="https://en.wikipedia.org/wiki/List_of_Superfund_sites_in_California" target="_blank" rel="noopener">超级基金</a>站点可以证明这一遗产）。不仅仅是芯片：汽车，电子，生物技术，航空和机器零件都倾向于在地理位置上聚集。</p>
-<p>接近使得更容易生成过程知识。但是，当我们通过<a href="https://twitter.com/teasri/status/984611523548073989" target="_blank" rel="noopener">分离</a>设计和制造来<a href="https://twitter.com/teasri/status/984611523548073989" target="_blank" rel="noopener">拆分</a>这些生产网络时会发生什么呢？有时候没什么大不了的，有时候效果很好。但是我相信，在大多数情况下，位错会使维护过程知识变得更加困难。</p>
-<p>设计过程和生产过程都会生成有用的信息，而位错使该信息难以传播。我认为我们倾向于打折我们在生产过程中可以获得多少知识，以及如何将其反馈到设计过程中。也许更容易从计算示例中体会到这一点。 <a href="https://ristret.com/arjun" target="_blank" rel="noopener">Arjun Narayan</a>告诉我，好的软件设计需要对芯片有深刻的了解，反之亦然。最好的开发人员是那些了解流程如何在堆栈上下交互的人员。</p>
-<p>当我们停止知识流向上堆积时会发生什么？我认为美国工业机器人行业的弱势具有启发意义。美国在制造高端精密制造设备方面<a href="https://www.wsj.com/articles/powering-americas-manufacturing-renaissance-foreign-robots-1490549611" target="_blank" rel="noopener">几乎没有地位</a>。在工厂自动化系统，机床，机器人手臂和其他类型的生产机械方面，最先进的供应商是日本，德国和瑞士。我认为，美国地位低下的原因可以直接归因于公司从众多制造业领域撤离。如果工程师不接触工业流程，他们将如何进行自动化系统的设计？</p>
-<p>从A报价<a href="https://www.wsj.com/articles/powering-americas-manufacturing-renaissance-foreign-robots-1490549611" target="_blank" rel="noopener">文章</a>：“关于先进制造业，以总统奥巴马的一份报告，他在2012年的科学顾问委员会，编制得出的结论是‘硬道理’是美国落后于制造业创新等富裕国家。”</p>
-<p>我看不出有足够的美国人为美国没有制造先进的工业机器人而烦恼。认为机器人将在将来完成所有制造工作可能很好。但是必须有人来制造这些机器人，并拥有先进机器人制造的知识产权，而且在大多数情况下，有人不是美国。工程实践界最健康的国家也率先为该行业设计工具，这绝非偶然。他们能够将知识嵌入到新工具中，因为它们继续生成过程知识。</p>
-<h3 id="让我们尝试保留过程知识。"><a href="#让我们尝试保留过程知识。" class="headerlink" title="让我们尝试保留过程知识。"></a>让我们尝试保留过程知识。</h3><p><strong>让我们尝试保留过程知识。</strong>工业工作的减少使积累工艺知识变得更加困难。如果一个州失去了大部分电气工程师，土木工程师或核工程师的工作，那么进入这些领域的年轻人就会减少。技术发展放慢，这变成了自我强化的下降周期。</p>
-<p>我认为我们应该尝试继续处理知识。</p>
-<p>日本的<a href="https://www.smithsonianmag.com/smart-news/this-japanese-shrine-has-been-torn-down-and-rebuilt-every-20-years-for-the-past-millennium-575558/" target="_blank" rel="noopener">伊势神宫</a> 就是这种类型的非凡例子。每隔20年，看护人都会彻底拆除神殿并重新建造。木制神rine已经被重建了1200年。当地人希望确保他们永远不会忘记建造神社的生产知识。很明显，年长的一代想向年轻的一代传授建筑技术：“下次我将把这些职责留给您。”</p>
-<p>定期拆除和重建木庙听起来不像是在浪费时间。但是我不确定本地优先事项是否在这里完全搞砸了。这些人知道，写下甚至建造单个木结构所需的每条指令都太困难了。想象为机械零件或芯片创建指令要困难得多。我们每隔一段时间就会发现不知道如何使用的古老工具。这些神社看守人认为，保存生产知识很重要，我认为这令人钦佩。</p>
-<p>建立广阔的工业基础并实践实践学习曾经是美国的方式。<a href="https://ftalphaville-cdn.ft.com/wp-content/uploads/2016/05/DeLongTranscript.pdf" target="_blank" rel="noopener">布拉德·德隆（Brad DeLong）</a> 再次<a href="https://ftalphaville-cdn.ft.com/wp-content/uploads/2016/05/DeLongTranscript.pdf" target="_blank" rel="noopener">说道</a>：“当第二次工业革命的技术<a href="https://ftalphaville-cdn.ft.com/wp-content/uploads/2016/05/DeLongTranscript.pdf" target="_blank" rel="noopener">问世</a>时，美国凭借其广阔的棉花市场和丰富的自然资源以及卓越的工程技术社区，能够突飞猛进，并且实际上大大超过了英国几乎每个地方的生产效率 这样一来，二十世纪就变成了美国世纪，而不是第二个英国世纪，这在很大程度上是因为汉密尔顿的赌注促使美国不仅仅追随比较优势。</p>
-<h3 id="未来不只是服务"><a href="#未来不只是服务" class="headerlink" title="未来不只是服务"></a>未来不只是服务</h3><p><strong>未来不只是服务。</strong>制造业不是总是低附加值的东西吗，而是应该由服务来驱动未来？我不确定。我怀疑我们能否将所有希望寄托在服务领域，因为它往往会遇到两个大问题：很多问题都是赢家通吃，其余大部分是零和。</p>
-<p>美国服务业工作的问题之一是，大多数收益是由很少的工人获得的。两个服务部门生产率很高：技术和金融。但是其他行业，例如零售业，酒店业和食品服务业，并没有那么快地促进生产力的增长。因此，尽管总产量可以增加，但消费却不会保持上升趋势。这是因为对冲基金经理和机器学习工程师（而不是酒店员工和零售员工）非对称地产生了服务的整体生产收益，而这些高生产率的工人只能消耗那么多。</p>
-<p>大量服务工作中的另一个问题是其中很多都是零和，<a href="https://www.ineteconomics.org/perspectives/blog/is-productivity-growth-becoming-irrelevant" target="_blank" rel="noopener">Adair Turner</a>很好地说明了这一点。太多的服务工作是要抵消其他服务工作的努力，例如在诉讼中，原告的律师为被告的律师创造了工作。通常，零和是不对称的：十几个黑客盗窃，随后各地的公司都需要花费数十亿美元来保护员工或承包商，以保护自己。一个州遭受了几次刑事灾难，政府随后需要雇用数百名官员，以使人们感到安全；少数人实施会计欺诈，随之而来的轩然大波迫使公司和银行将合规部门的规模扩大了数万个。</p>
-<p>我之前链接到Brad Setser <a href="https://www.cfr.org/blog/us-needs-more-manufactured-exports" target="_blank" rel="noopener">作品中</a>有一条有趣的台词。他告诉我们，美国服务贸易盈余如此之高的原因之一是，美国人出国旅行的倾向很低。我认为这不是赚取贸易盈余的好方法。</p>
-<p>我最喜欢的彭博列的类型已经成为诺亚史密斯<a href="https://www.bloomberg.com/view/articles/2018-05-04/u-k-economy-needs-to-break-its-dependence-on-the-finance" target="_blank" rel="noopener">扣篮上</a>的<a href="https://www.bloomberg.com/view/articles/2017-07-20/the-u-s-special-relationship-with-britain-needs-a-rest" target="_blank" rel="noopener">英国</a>。服务业约占英国经济的80％，这带来了许多问题。其中包括过去二十年来生产力的低水平增长，对金融危机的极大脆弱性以及最大公司的研发支出水平低下。马特·克莱因（Matt Klein）提出了一个有趣的<a href="https://www.barrons.com/articles/italy-without-the-euro-would-not-be-argentina-or-turkeyit-would-be-the-u-k-1527078883" target="_blank" rel="noopener">主张</a>：“带走大伦敦-繁荣的程度在一定程度上取决于是否愿意为来自中东和前苏联的寡头提供服务-英国是最贫穷的国家之一西欧国家。”</p>
-<p>关于英国的另一件事：我真的很喜欢《<a href="http://armscoop.com/wp-content/uploads/2016/08/The_Power_to_Compete_-_Hiroshi_Mikitani.pdf" target="_blank" rel="noopener"><em>权力竞争》</em></a>（<a href="http://armscoop.com/wp-content/uploads/2016/08/The_Power_to_Compete_-_Hiroshi_Mikitani.pdf" target="_blank" rel="noopener"><em>Power to Compete）</em></a>，这本书是两位日本思想家之间对话的组成部分。（感谢诺亚提出建议。）有很多好的建议，其中一个是：“如果你看英国，我认为优先辩论和思考的政策使他们失败了。”（我会也表明这种对论据的博雅艺术强调将大学变成了<a href="https://danwang.co/college-girardian-terror/" target="_blank" rel="noopener">吉拉迪安恐怖的</a>孵化器。）</p>
-<p><em>竞争</em>能力值得一读，因为只有两个人清楚地认识到了低增长的问题，并且认真地提供解决方案。没有一种态度让我觉得更清新。</p>
-<h3 id="没有工业基础，我们如何做科幻小说"><a href="#没有工业基础，我们如何做科幻小说" class="headerlink" title="没有工业基础，我们如何做科幻小说"></a>没有工业基础，我们如何做科幻小说</h3><p><strong>没有工业基础，我们该如何做科幻小说？</strong>我已经否定了服务的理由；工业有积极的理由吗？是的，我想是这样。</p>
-<p>互联网很重要，我们可能仍会低估其影响。但是我不认为我们应该让创新完全局限于数字世界，因为还有很多东西需要建设。这个世界还不够发达，每个人都只能以较低的收入获得住房，食物，水和能源。数以亿计的人仍然生活在极端贫困中，这意味着制造和物流还没有克服为所有人提供廉价物质舒适的障碍。</p>
-<p>而且我认为，除非我们建立了许多其他东西，否则我们不能将自己称为“发达”世界。我们在20年代安装的信号设备的引导下，在20世纪70年代建造的地铁上工作。自从协和飞机退役以来，我们在地球上的行驶速度一直比较缓慢，而此时全球旅行者都希望能够更快地到达主要枢纽。我们确定发达国家不会经历过早的去工业化吗？当人们提到数字世界变得非常有趣的事实时，我倾向于认为这种回应带有“让他们吃iPhone”的口号。</p>
-<p>我并不是说制造业具有特殊的道德价值，而且我之前<a href="https://danwang.co/definite-optimism-as-human-capital/" target="_blank" rel="noopener">已经承认</a>制造业中的许多都是令人不快和危险的。我对工业感兴趣，因为我认为维护工业基础是构建未来科幻技术的前提。</p>
-<p>我在寻找什么？对于初学者：能源太便宜而无法计量；火星及以后的殖民地；我们的沙漠重新造林；纳米技术使我们可以印刷基本材料；预防，治疗或治愈大多数疾病的医疗器械和药品；对材料有更深刻的理解；还有很多其他事情。为了实现所有这些，我们需要开发更多的工具和机械。</p>
-<p>在太空时代成长的人提醒我们，我们重新调整了技术期望值要低得多。这是弗里曼的儿子<a href="https://www.youtube.com/watch?v=QtYv3OjWCpE" target="_blank" rel="noopener">乔治·戴森</a>（<a href="https://www.youtube.com/watch?v=QtYv3OjWCpE" target="_blank" rel="noopener">George Dyson）</a>，他观看了从拜科努尔发射的太空旅游火箭后说：“我小时候，弗里曼正在建造这艘太空船，该太空船原本打算在1965年与50个人一起离开，前往火星和土星。然后的问题是，美国人还是俄罗斯人将接管太阳系。距人造卫星50年后，我们来到了这里，我正看着一个美国人支付3500万美元，乘坐苏维埃时代的火箭进入低地球轨道。”</p>
-<p>让我们继续关注太空旅行的话题。木星的各个卫星上可能都有 <a href="https://europa.nasa.gov/about-europa/faq/" target="_blank" rel="noopener">温暖的海洋</a>。为什么我们没有优先考虑在我们自己的太阳系中可能存在于我们行星门口的外星生命？我现在正在自愿参加探索这些海洋的任务。如果我必须在那里筹集资金，我将提议写下一个<em>Moby-Dick</em>或《<em>海底两万个同盟》</em>，这当然取决于居住在这些深处的怪物的性质和经济价值。</p>
-<p>我承认，所有这些创新都有可能出现。汽车正在变得无人驾驶，甚至可能很快就飞起来。私人空间的工作确实看起来很酷。繁荣可能会带回超音速喷气机。但是我发现它们的潜在总和并不令人兴奋。而且我们可能无法全部获得：美国无法建立全国性的收费系统，因为要求不同的州将其应答器转移到相同的无线电频率太困难了（<a href="https://www.wired.com/story/national-tolling-system/" target="_blank" rel="noopener">即使在</a>国会法案要求他们这样做之后也是如此） ）。如果我们无法确定各州之间可互操作的收费系统，那么我们多久才能制定出自动驾驶汽车的监管系统？</p>
-<h3 id="美国应该效仿德国"><a href="#美国应该效仿德国" class="headerlink" title="美国应该效仿德国"></a>美国应该效仿德国</h3><p><strong>美国应该效仿另一个国家。</strong>我钦佩有一个国家，这个国家的经验将本文的许多主题融合在一起：我认为美国应该向德国学习。我认为德国是在培养工程实践社区方面做得最好的国家。几十年来，甚至数百年来，德国一直在进行工业深化。</p>
-<p>我今年早些时候到那里研究了其在行业中的卓越表现。我不能声称完全了解系统如何工作，但是我至少可以确定成功的几个因素：学术合作，公司鼓励和对技能传承的承诺都可以发挥作用。老年工人的态度令我特别震惊，他们认为他们有责任将知识传授给年轻工人。今天，德国公司仍然是工业技术许多领域的领导者。</p>
-<p>这并不是说德国一切都很好。德国和欧洲其他地区似乎错过了通向数字时代的巴士。这是 <a href="https://marginalrevolution.com/marginalrevolution/2018/03/bruno-macaes-trump-europe.html" target="_blank" rel="noopener">很难</a>说出许多欧洲公司在过去30年来在他们的行业领导者开始; 我能想到的最好的例子是英飞凌（Infineon），它是西门子公司的一个半导体分拆公司，市值为300亿美元，我想我们可以加入Spotify，尽管我不确定它是否真的是领导者。这里有一个显着的线<a href="http://media.economist.com/news/business/21738401-they-are-last-europes-makers-mobile-devices-and-network-equipment-which-once-ruled" target="_blank" rel="noopener">从</a>经济学：“如果爱立信和诺基亚继续萎缩，只有一个欧洲公司，施耐德电气公司，将成为世界上最大的35家科技公司的收入中离开了。”</p>
-<p>德国和美国有不同的优势。前者擅长工业，后者擅长信息技术。但是我觉得奇怪的是，每个人都在对方擅长的方面很差。我无法辨别强迫我们选择其中一个的原则，而且我乐观地认为，一个国家应该能够在行业和互联网上都表现出色。</p>
-<p>在过去的几十年中，美国和德国的增长都令人失望。我可以确定每个国家的关键数据点。在美国，主要城市的租金增长已经<a href="https://www.wsj.com/articles/rising-rents-outpace-wages-in-wide-swaths-of-the-u-s-1438117026" target="_blank" rel="noopener">超过了</a>收入的增长。由于我仍无法理解的原因，旧金山等城市的房主有能力否决新住房的创建。谁能相信他们能够摆脱<em>这个</em>困境？在德国，现在继承了全部财富的一半<a href="https://www.ft.com/content/894689c2-4933-11e8-8ee8-cae73aab7ccb" target="_blank" rel="noopener">以上，高于</a> 1970年代的20％（使财富几乎达到英国的水平）。似乎人们大多放弃了通过做新事物来创造财富的想法。</p>
-<p>这是另一个问题：美国政府正在慢慢放弃其 <a href="https://www.taxpolicycenter.org/taxvox/federal-government-autopilot-mandatory-spending-and-entitlement-crisis" target="_blank" rel="noopener">财政回旋的余地</a>。1962年，非国防性可支配支出占联邦预算的60％以上。到2017年，这一数字已降至15％，并且预计将继续下降。随着份额的下降，我想知道这将如何影响立法者的思维方式，他们预计分配资金的责任将会减少。绝对而言，他们控制的预算仍然很大。但是我怀疑这会剥夺美国政客的主动权：他们可以让政府继续自动驾驶，因为他们的前任已经承诺了大多数可用资金。如果立法者不再有空间确定新的支出计划，除了找到要禁止的新事物然后与另一方争论之外，该怎么办？</p>
-<p>美国和德国的创新方式不同，各自都有很大的缺陷。我希望他们能够修复这些缺陷。我相信，我们可以有一个国家，其财富主要是通过新的经济活动而不是通过继承来创造的；建造新的住房，而不是允许现有居民否决建筑；该国政府愿意考虑应该启动的新项目，而不是让预算自动执行。我认为我们不必在行业和互联网之间进行选择；我们的国家既可以拥有蓬勃发展的工业部门，也可以拥有蓬勃发展的互联网部门。</p>
-<h3 id="发展是硬道理"><a href="#发展是硬道理" class="headerlink" title="发展是硬道理"></a>发展是硬道理</h3><p><strong>发展是唯一的硬道理（或经济增长的社会后果）。</strong>如果一个人在一个低增长的社会中生活了太长时间，那么就很容易忽视经济增长的好处。在我所读的大多数评论中，接受低速经济增长是隐藏的前提。我认为这是当今美国和欧洲知识社会中最深的偏见：它几乎遍及所有话题，从博客文章和畅销书到电影和流行歌曲。我发现没有比经济增长太低的普遍沮丧更加激进和令人耳目一新的话题。</p>
-<p>我希望更多的人认为经济高速增长会产生重大的积极影响。当人们经历了几年的高增长之后，他们就有条件期望更多的增长。这种期望增加了公司和个人的风险偏好：在过去的40年中，人们已经看到自己的生活以一百种不同的方式变得越来越好，并且他们对更多的事情会有所改善感到乐观。他们会更乐于创业或尝试新的职业，而这些活动甚至都不会感觉像是冒险活动，因为新的机会一直在不断涌现。</p>
-<p>所有这些都是基于以下事实：更高的增长提高了我们处理各种问题的能力。如果我们习惯了低增长，那么除非我们能够强迫财富重新分配，否则很难想象我们的生活会得到重大改善。但是，如果几十年来我们经历了高收入增长，那么就更容易想象我们可以解决我们的问题，因为我们不断积累更多的资源来解决这些问题。</p>
-<p>对于企业来说，情况也是一样，因为他们希望明年的需求会比今天更大，因此他们有胆量去扩展和尝试新事物。我认为这些原则对于硅谷的公司很清楚，因为硅谷的公司高管根据六个月的预期职位而不是当前职位做出决策。我怀疑增长的历史也会对政府政策产生积极影响。它鼓励政府参与长期规划，因为立法者已经看到情况会好转，并期望有更大的回旋余地。</p>
-<p>布赖恩·卡普兰（Bryan Caplan）的<a href="http://www.econlib.org/library/Columns/y2004/Caplanidea.html" target="_blank" rel="noopener">想法陷阱</a>为这种<a href="http://www.econlib.org/library/Columns/y2004/Caplanidea.html" target="_blank" rel="noopener">观点</a>提供了帮助，在撰写原始作品时我并不陌生。我发现卡普兰的想法引人注目，它影响了我的世界基线模型。低增长的国家将继续停滞不前，因为经济僵化是自我强化。高增长的国家将继续增长，因为活力是自我增强的。后者将拥有乐观的人，而前者将变得<a href="https://danwang.co/the-complacent-class-tyler-cowen/" target="_blank" rel="noopener">自满</a>。</p>
-<p>反乌托邦的科幻小说是停滞增长的自然产物。难怪过去几十年来出版的许多科幻小说是如此惨淡。当数字技术加速发展但我们无能为力时，我们还能期待什么呢？如果更好的商店和更多的潮人咖啡馆是人们面对物理变化的唯一机会，那么很难想象未来会发生怎样的根本变化。另一方面，如果城市每十年重新划分自己的地盘并重塑自己，那么期待变化就容易得多。</p>
-<p>我给美国，日本和欧洲选民的信息是，请<a href="https://www.amazon.com/Stubborn-Attachments-Tyler-Cowen/dp/1732265135/" target="_blank" rel="noopener">消除</a>对低速经济增长的这种冷漠态度。除了认真讨论如何实现GDP的持续增长之外，似乎您可以在任何政治问题上激怒选民。选举能够提出一项计划以实现GDP增长3％并维持几十年的领导人怎么样？不幸的是，甚至连卡普兰都不确定如何摆脱想法陷阱，因为他说打破这种平衡的唯一方法是“运气”。</p>
-<h3 id="乐观是增长的推动力"><a href="#乐观是增长的推动力" class="headerlink" title="乐观是增长的推动力"></a>乐观是增长的推动力</h3><p><strong>乐观是增长的推动力（或者，更多的行业而更少的Twitter）。</strong>我不想挥舞着声称增长归结为运气，而是想以另一种方式挥舞着双手，并说要归结为乐观。我承认论点是圆滑的，因为乐观情绪可能是增长的内生因素。但是我建议，乐观主义也可能是由于接近行业，更多地享受科幻小说以及避免使用Twitter和政治。</p>
-<p>我希望我们更多的人<a href="https://amzn.to/2A4BNnv" target="_blank" rel="noopener">学习30年代</a>，这个十年见证了美国人的创造力在机械改进方面的系统应用。那是在化学，橡胶，电机，科学仪器和许多其他事物上取得飞跃发展的时期。在过去的十年中，“技术”指的是航空，无线电，石油开采，电影院等领域的进步。人们认为技术在许多方面（不仅是少数几个方面）正在加速发展是多么令人耳目一新。</p>
-<p>1939年是纽约世界博览会的一年。巨大的生产量鼓励人们去想象工业技术的前景，并思考未来将如何比过去更好。阅读Futurama展览的一些<a href="https://www.believermag.com/issues/201205/?read=article_szerlip" target="_blank" rel="noopener">报道</a>很有趣：“由通用汽车赞助700万美元，相当于今天的9,100万美元，它是有史以来最大的动画模型：35,738平方英尺。它需要约三千名木匠，电工，制图员和模型制作者的劳动，以及五十万个规模不等的微型建筑物的制造，以及五万辆未来派的银色汽车，其中有上万辆设计用于移动。</p>
-<p>我认为，当我们决定取笑<a href="https://www.youtube.com/watch?v=PSxihhBzCjk" target="_blank" rel="noopener">塑料制品</a>并随后庆祝华尔街时，美国文化发生了错误的转变。塑料是非同寻常的，但是我们顶尖大学的毕业生对加入投资银行的热情要高得多，而不是提高我们对材料的掌握程度。如果我们将优秀人才视为稀缺资源，那么我认为很遗憾资产管理吸引了这么多聪明的年轻人。我不确定改善资本配置是否是我们技术文明的最关键的推动力。从边缘上讲，更直接的改善可能来自于有聪明的人在行业中谋生。</p>
-<p>我希望我们更多的人能够更多地接触工业流程。让我们更多地看一下重型机械，化学制品，火箭以及工业界的所有奇迹。还有其他人想订阅有关工业发展的杂志吗？我希望每月出版一次，以采访不同行业的工程师为特色。我们可以了解到当前的技术水平，它们如何到达这里，当前的约束是什么，即将发生的事情以及接下来的推测：如果我们解决了一些大的约束，我们可以取得什么样的进步期待？</p>
-<p>这些都是我希望我们更多的人感兴趣的东西。从边缘看，我们应该转移注意力从什么？轻松：Twitter和政治。</p>
-<p>我的意思是消除Twitter的愤怒面。Twitter的各个部分确实非常出色，每天我都为追随者在我的摘要中丢弃多少个重要链接而感到惊奇。<a href="https://twitter.com/danwwang" target="_blank" rel="noopener">我鸣叫/转发三件事</a>：信息密集的片段，有趣的图片和好玩的笑话。通常，我会尝试跟随同样的人。偶尔，愤怒的Twitter浪潮会在我的快乐小岛上消失，但这并不常见。</p>
-<p>有无数的社会问题令人生气：我们可以整天在Facebook，Reddit或Twitter上争论，就像我们中的某些人一样。我对Twitter可以激起“接管”的愤怒感到惊讶。Twitter的全国性运动是谴责<em>《纽约时报》的</em>专栏作家，任何人都可以在场外玩。我认为我们不必屈服，让大家都知道我们觉得专栏很垃圾，专栏作家很糟糕，而且论文值得整体谴责。我们应该抵制这种<a href="https://harpers.org/archive/2018/04/forget-about-it/?single=1" target="_blank" rel="noopener">趋势</a>，认为大声的推文具有对另一端造成毁灭性打击的能力：“您只会失去一次纯真。”</p>
-<p>不管媒体试图说服我们多少，我们大多数人都不需要关注日常的政治事务。让我们把目光转向更具生产力的用途，例如读书和学习技能。在2016年大选之后，我要做的第一件事就是取消订阅<em>《纽约客》</em>；我为自己迅速采取果断行动而感到自豪。像我一样，另一种可能性是离开美国。我知道这不是每个人的选择，但至少对于某些年轻人来说，也许这是度过国外的好时机。当无聊的辩论是周围的国家情绪时，请出去，转而到一个更理智的环境，在这里您可以真正地学到一些东西。</p>
-<p>我知道很少有人对物质世界和工业技术充满好奇。我希望我们可以将注意力转向研究它们，而不必关注政治。</p>
-<h3 id="优先事项正确的人呢"><a href="#优先事项正确的人呢" class="headerlink" title="优先事项正确的人呢"></a>优先事项正确的人呢</h3><p><strong>优先事项正确的人。</strong>在<a href="https://danwang.co/definite-optimism-as-human-capital/" target="_blank" rel="noopener">上一篇文章中</a>，我广泛引用了尼尔·斯蒂芬森的想法。他的小说强调物质世界的重要性。他相信科幻小说能够激发乐观情绪。我发现Matt Levine是另一位清楚了解数字技术局限性的作家。他的新闻通讯中有许多实例说明现实世界是如何混乱的，并且不能完全将其视为 <a href="https://www.bloomberg.com/view/articles/2018-05-15/cbs-wants-to-get-rid-of-a-shareholder" target="_blank" rel="noopener">财务</a>或 <a href="https://www.bloomberg.com/view/articles/2017-04-20/juice-machines-and-red-flags" target="_blank" rel="noopener">数字</a>抽象。</p>
-<p>以下是我要强调的其他人，因为他们有适当的优先事项。他们每个人都在帮助建立数字世界方面发挥了作用。在完成这项工作之后，他们大多将注意力转移到改善物质世界上。</p>
-<p><em>比尔盖茨</em>。微软的联合创始人离开公司后决定将精力集中在什么方面？不是计算机，互联网或移动设备。相反，它是慈善事业，着重于健康，教育和能源。他认为有足够的人致力于数字世界，而他（和他的首都）应该主要尝试改善物质世界。</p>
-<p><em>弗里曼·戴森（Freeman Dyson）</em>拥有丰富的想象力，通常他的疯狂想法与数字世界无关。从来没有我不喜欢阅读戴森（Dyson）访谈。<a href="https://www.wired.com/2014/03/quanta-freeman-dyson-qa/" target="_blank" rel="noopener">这</a>是他早期的项目之一：“我们决定，我们将由一枚由核弹驱动的太空船绕太阳系。我们将飞船发射到太空中-“炸弹，炸弹，炸弹，炸弹”，每秒约四枚炸弹-一直上升到火星，然后又到达木星和土星，我们打算自己走。”</p>
-<p><em>安迪·格罗夫（Andy Grove）</em>。这位前英特尔首席执行官在晚年成为了美国制造业的拥护者。他在2010年《彭博商业周刊》的一篇文章中阐述了<a href="https://www.bloomberg.com/news/articles/2010-07-01/andy-grove-how-america-can-create-jobs" target="_blank" rel="noopener">他的案情</a>。在这里，我只列出最不完整的摘要：格罗夫（Grove）怀疑初创企业能否提供大量工作；美国应该专注于将初创公司扩大为大公司；而且，当美国出口工作岗位时，它还出口了创新能力和扩展专业知识。换句话说，他对过程知识的丧失感到遗憾。他认识到，当制造业工作岗位离开美国时，“我们打破了经验链，这对技术创新至关重要。”</p>
-<p>这是格罗夫的更多内容：“我们对个人业务的追求通常涉及将制造和大量工程转移到国外，这阻碍了我们将创新带入国内规模的能力。如果不扩大规模，我们不仅会失去工作，还会失去对新技术的控制。失去扩展能力最终将损害我们的创新能力。”</p>
-<p>格鲁夫在他的论文结尾呼吁重建美国工业共同体。或正如我所说的，重新获得过程知识。大部分内容是由我对半导体行业的学习所推动的，我发现发现业界最重要的人物之一以相似的眼光令人振奋。我很高兴地指出，安迪·格罗夫（Andy Grove），泰勒·科恩（Tyler Cowen）和彼得·泰尔（Peter Thiel）的想法是本文的推动力。</p>
-<h3 id="更好的资本配置不会导致技术加速。"><a href="#更好的资本配置不会导致技术加速。" class="headerlink" title="更好的资本配置不会导致技术加速。"></a>更好的资本配置不会导致技术加速。</h3><p><strong>更好的资本配置会始终导致技术加速吗？</strong>我不这么认为。实际上，我认为，过程知识流失的部分责任可以归因于美国金融业，包括投资者和金融分析师，其重点是资本回报率。（这也是Andy Grove提出的。）</p>
-<p>我的基本观点是，技术最终会因为人而进步，尤其是因为他们设法积累了很多过程知识。我认为，美国金融部门没有充分认识到拥有大量技术经验丰富的工人的重要性。确定和衡量工具和IP的存量，而不是人们头脑中存在的过程知识，当然要容易得多。结果，投资者和财务分析师系统地奖励了最渴望减少员工人数的公司，他们认为这是成本。但是，仅仅因为我们不能直接测量过程知识，并不意味着我们应该忽略它的存在。</p>
-<p>我相信工具和IP是开发过程知识的自然结果。但是，相反的顺序并不成立：仅拥有大量工具和IP并不能保证我们可以创建更多的工具。因此，我对工艺知识的流失感到不安，并敬佩像德国和日本这样的国家，它们一直在保持其工程实践社区的健康。</p>
-<p><strong>这些观点有哪些挑战？</strong>我想保留过程知识，因为我认为这对于增长和构建未来的工业技术很重要。我也承认，我的论点面临许多挑战。以下是一些我觉得最有趣的内容。</p>
-<p><em>德国制造业工人的数量也在下降</em>。是的，德国制造业的雇员人数也在下降（请参阅<a href="https://www-genesis.destatis.de/genesis/online/data;jsessionid=CF7194DC417A91F63D99BEF7F37C5F00.tomcat_GO_2_1?operation=ergebnistabelleUmfang&levelindex=2&levelid=1531651280340&downloadname=42111-0004" target="_blank" rel="noopener">统计信息</a>以及<a href="https://www.vox.com/the-big-idea/2017/1/24/14363148/trade-deals-nafta-wto-china-job-loss-trump" target="_blank" rel="noopener">Brad DeLong文章中</a>的图表）。这是否表明我最喜欢的国家也没有保留其工程实践社区？我想说几句话，它保存了它们。首先，尽管美国制造业的实际产出仍低于2008年的水平，但<a href="https://fred.stlouisfed.org/series/DEUPROMANMISMEI" target="_blank" rel="noopener">德国的实际制造业产出</a>已大大超过衰退前的水平，并已恢复到长期的增长趋势。如果我们看看遭受<a href="https://www-genesis.destatis.de/genesis/online/data;jsessionid=CF7194DC417A91F63D99BEF7F37C5F00.tomcat_GO_2_1?operation=ergebnistabelleUmfang&levelindex=2&levelid=1531651280340&downloadname=42111-0004" target="_blank" rel="noopener">失业</a>的行业，我们可以看到它们集中在采矿和纺织品生产等低价值行业；在过去十年中，德国在化学，汽车，机械和电气设备等高价值领域<em>获得了</em>就业。深入研究数据使我对德国以正确的方式做出反应的主张更加自信，因为它通过减少不太可能在过程知识中获得重大收益的工作，并继续在价值链中向上发展。</p>
-<p><em>非物质化</em>。我记得读过Scott Sumner的一篇文章，概述了我们不再对物理事物感兴趣的所有方式。萨姆纳（Sumner）多产，我找不到职位了；我只记得他提供了许多例子，这些例子表明年轻人对经验的兴趣比对拥有东西的兴趣更大。（如果有人可以通过电子邮件将该帖子发送给我，我很乐意在此处链接。<em>更新</em>：该帖子在<a href="https://www.econlib.org/archives/2016/10/non-materialist.html" target="_blank" rel="noopener">这里</a>。）如果确实是这样，我们对通过音乐会和异国情调确立地位更加感兴趣休假，那么我们可能无法满足维持不断增长的工业基础所需的总需求。</p>
-<p><em>大多数过程知识已经嵌入到工具中了吗？</em>我最近读过的最好的论文之一是Willy Shih，他<a href="http://sloanreview.mit.edu/article/why-high-tech-commoditization-is-accelerating" target="_blank" rel="noopener">主张</a>是肯定的。我建议阅读全文，该文章是本文的提示之一。我不确定是否容易引用任何汇总统计数据来试图反驳它，但是我可以提出一些建议。我认为目前还不是每个人都能有效使用最新工具的情况。我们看到半导体，航空和互联网领域的公司主要集中在少数几个国家。与此相关，国家间的收入继续<a href="https://marginalrevolution.com/marginalrevolution/2018/07/technology-arrived-everywhere-income-diverged.html" target="_blank" rel="noopener">分化</a>即使有足够资本的公司也可以购买相同的先进机械。这些事实表明，某些国家比其他国家更有效地使用工具，这可能是因为它们拥有更多的过程知识。</p>
-<p>我很高兴地认识到，还有许多尚未解决的挑战。我并不是说我已经确定了哪些行业应该得到更好的发展，什么时候应该放开一个非生产性行业。如果我认为合理的业务决策摆脱了流程知识，那么批判它可能是错误的。我的文章的目的是要求更多的人考虑过程知识的增长方式，并建议我们应该在更多的方面推动技术前沿。</p>
-<p><strong>作为人力资本的绝对乐观。</strong>我想通过回到半导体来解决这一问题。我相信技术进步不是不可避免的，并且我们有力地推动技术进步。每24个月使晶体管密度增加一倍，并不是天生的恩典，这是天生的恩赐。除非我们对此有所考虑，否则这种进展不会发生。摩尔定律不是一个承诺，而是一个挑战，到目前为止，我们已经很好地实现了。</p>
-<p>有一天，我们可以举起手来宣布我们已经在半导体领域进行了足够的创新。“相反，未来是服务，而不是这种有毒的制造工作。”我们可以解雇所有书呆子，扔掉他们所有的书，并关闭所有这些工厂。假设我们要花几年的时间才能恢复常识。当我们随后想要振兴该行业时，它可能不像插入机器，清除蓝图上的灰尘，然后高兴地期望生产恢复到先前的水平那样简单。这些工程师所获得的来之不易的过程知识将逐渐消失，而工人将不得不重新学习一堆东西。</p>
-<p>我认为过程知识的这种衰退已经发生在许多行业。在德国，情况并非完全如此（尽管它有自己的问题）。当我与德国人谈论工业时，他们宣称他们对去工业化保持警惕。他们说工程学是德国人身份的一部分，他们不太可能轻易放弃。我发现这是一件令人难以置信的事情。让我们再看一看英国，它似乎已经做出了一个有意识的 <a href="http://news.mit.edu/2018/faculty-profile-john-van-reenen-0108" target="_blank" rel="noopener">决定</a>，即它将不再从事工业生产：国家的工业部门。1980年代政府对研发的大量支持被取消，这种情况进一步恶化。如果我们愿意的话，很容易让行业下滑。</p>
-<p>我希望我们更多的人 <a href="https://patrickcollison.com/labs" target="_blank" rel="noopener">学习生产网络</a>。这意味着更多地考虑系统。健康的生态系统很难维护，但是如果您构建它们并继续为其注入活力，它们将带来持续的突破。服务和技术等<a href="https://www.nytimes.com/2018/07/09/opinion/supreme-court-conservative-republicans.html" target="_blank" rel="noopener">法律</a>行业的人们可以很好地掌握这些生产系统 ; 我希望我们也可以从这些角度考虑工业基础。</p>
-<p>我不认为互联网不过是令人惊叹的东西。但是我认为，数字世界的奇迹使人们很难看清其他所有事物的移动速度。许多技术领域都取得了谨慎的进展，但我们忽略了这一点，因为我们的手机使我们如此。当我们的物理世界停滞不前时，我们的应用程序会不断完善；我认为，消费者互联网的奇迹使我们迷惑了我们的技术基础有多强大。</p>
-<p><a href="https://danwang.co/why-is-peter-thiel-pessimistic-about-technological-innovation/" target="_blank" rel="noopener">彼得·泰尔</a>（ <a href="https://danwang.co/why-is-peter-thiel-pessimistic-about-technological-innovation/" target="_blank" rel="noopener">Peter Thiel）</a>：“第一步是了解我们的位置。我们已经在沙漠中流浪了40年，我们认为这是一片迷人的森林。如果我们要找到一条摆脱沙漠和通往未来的道路，那么第一步就是要看到我们已经进入了沙漠。”</p>
-<p>可能的后果之一是，过去几十年来出版的许多科幻小说都趋向于网络朋克反乌托邦。（<a href="https://danwang.co/liu-cixins-three-body/" target="_blank" rel="noopener">三体问题</a>是一个例外。）我们在城市的自然景观中看不到太多变化，相反，我们得到了传感器，信息和屏幕的大量增加。相比之下，50年代和60年代的科幻小说更为乐观。那是太空时代，那时我们正忙于重塑物理世界，到那时，30年代的工业成就已使他们显而易见。产业的深入发展导致人们对科幻小说持乐观态度，而数字扩散则将其推向反乌托邦。</p>
-<p>1939年世界博览会上的Futurama展览非常受欢迎：人们认为该展览的科幻技术确实会在1960年出现。但是随后人们开始降低期望值。这是一<a href="https://amzn.to/2A4BNnv" target="_blank" rel="noopener">本</a>关于30年代技术<a href="https://amzn.to/2A4BNnv" target="_blank" rel="noopener">的书</a>的摘录：“ 25年后，通用汽车试图用新的未来世界来复制其早期的成功，展望了25年甚至更久……它无法捕捉大众的想象力，并且它对未来的预测已远远超出了预期。这两个标题相似的展品形成鲜明对比，这与总体数据和行业数据试图告诉我们的是一致的。”</p>
-<p>我希望我们恢复乐观。仅仅告诉每个人还不够：“仅仅选择保持乐观。”相反，我建议我们可以通过对工业的更大理解以及实现更高的经济增长来培养乐观情绪。推进技术前沿不应该仅仅是别人的问题。取而代之的是，如何做到这一点应该让我们更多的人关注。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2124,12 +2116,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
