@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="System design questions are an important part of programming job interviews, and if you want to do well, you must prepare this topic. In the past, when I shared my list of programming interview questi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="System_Design_Questions">
+<meta property="og:url" content="http://yoursite.com/2020/02/13/System-Design-Questions/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="System design questions are an important part of programming job interviews, and if you want to do well, you must prepare this topic. In the past, when I shared my list of programming interview questi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-13T15:27:37.000Z">
+<meta property="article:modified_time" content="2020-02-13T15:29:30.819Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/13/System-Design-Questions/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>System_Design_Questions | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/System-Design-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          System_Design_Questions
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-13 09:27:37 / Modified: 09:29:30" itemprop="dateCreated datePublished" datetime="2020-02-13T09:27:37-06:00">2020-02-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>System design questions are an important part of programming job interviews, and if you want to do well, you must prepare this topic. In the past, when I shared my list of <a href="http://www.java67.com/2018/05/top-75-programming-interview-questions-answers.html" target="_blank" rel="noopener">programming interview questions</a>, I shared a couple of system design questions, but my readers kept asking me for more questions, as it is a hard topic to master and more and more practice is needed.</p>
+<p>I had my own list of questions that I collected from various interviews with friends and colleagues, but I needed more questions for this article and my own preparation. Then, I stumbled upon the <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">Grokking System Design Interview</a> course.</p>
+<p>It’s an excellent resource because it not only asks you a lot of system design questions but also provides the knowledge and tools you need to solve these problems. I have yet to find a similar or better resource than this one on system design, one of the important topics for <a href="http://javarevisited.blogspot.sg/2012/06/20-design-pattern-and-software-design.html#axzz55mVSPFfH" target="_blank" rel="noopener">software engineering interviews</a>.</p>
+<p>In other words, this course teaches you to step by step how to proceed with designing a real-world system like Facebook, Twitter, Uber, etc.</p>
+<p>When you combine this course with this list of questions, you have the best material to prepare for your system design interview. You can also first try all these questions by yourself before joining the course or looking at my solutions for some of the questions.</p>
+<h2 id="System-Design-Interview-Questions-for-Programmers"><a href="#System-Design-Interview-Questions-for-Programmers" class="headerlink" title="System Design Interview Questions for Programmers"></a>System Design Interview Questions for Programmers</h2><p>Without any further ado, here is the list of some of the most popular system design or object-oriented analysis and design questions to crack any programming job interview.</p>
+<h3 id="1-How-to-design-a-vending-machine-in-Java-solution"><a href="#1-How-to-design-a-vending-machine-in-Java-solution" class="headerlink" title="1. How to design a vending machine in Java? (solution)"></a><strong>1. How to design a vending machine in Java?</strong> (<a href="http://javarevisited.blogspot.sg/2016/06/design-vending-machine-in-java.html#axzz4sZVwtCgs" target="_blank" rel="noopener">solution</a>)</h3><p>You need to write code to implement a vending machine that has a bunch of products, e.g. chocolates, candy, cold drinks, and accepts different coins, e.g. nickles, dimes, quarters, cent, etc. Make sure you insert a coin, get a product back, and get your change back. Also, write the unit test to demonstrate that these common use cases work. If you get stuck, you can read my two-part series (<a href="http://javarevisited.blogspot.sg/2016/06/design-vending-machine-in-java.html#axzz4sZVwtCgs" target="_blank" rel="noopener">Part 1</a> and <a href="http://javarevisited.blogspot.sg/2016/06/java-object-oriented-analysis-and-design-vending-machine-part-2.html" target="_blank" rel="noopener">Part 2</a>) about solving these classical system design questions.</p>
+<h3 id="2-How-to-design-a-URL-shortening-service-like-goo-gl"><a href="#2-How-to-design-a-URL-shortening-service-like-goo-gl" class="headerlink" title="2. How to design a URL shortening service like goo.gl?"></a><strong>2. How to design a URL shortening service like goo.gl?</strong></h3><p>This one is another common system design question. If you are given a (typically) long URL, how would you design a service that would generate a shorter and unique alias for it? If you are not familiar with the URL shortener service, have a look at some of the popular ones like goo.gl from <a href="https://javarevisited.blogspot.com/2012/01/google-interview-questions-answers-top.html" target="_blank" rel="noopener">Google</a> and bit.ly, which is used by Twitter.</p>
+<p>Make sure to provide a database schema and rationale behind some design decisions, e.g. how long you keep the data, how to get stats and analytics, etc. If you get stuck, you can follow the solution given on <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</p>
+<h3 id="3-How-to-design-a-limit-order-book"><a href="#3-How-to-design-a-limit-order-book" class="headerlink" title="3. How to design a limit order book?"></a><strong>3. How to design a limit order book?</strong></h3><p>A limit order book is used in stock exchanges to match a buy order with a sell order based on price and time priority. How would you go about that? Which <a href="https://hackernoon.com/10-data-structure-algorithms-and-programming-courses-to-crack-any-coding-interview-e1c50b30b927" target="_blank" rel="noopener">data structure</a> you will use? Remember: the speed of matching is key, as well as the reliability. If you need a refresher on data structures, then you can check out a data structure and algorithm Java course, and if you feel stuck, you can check out my solution <a href="https://javarevisited.blogspot.sg/2017/03/2-practical-data-structure-algorithm-interview-questions-java.html" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="4-How-to-design-a-traffic-control-system"><a href="#4-How-to-design-a-traffic-control-system" class="headerlink" title="4. How to design a traffic control system?"></a><strong>4. How to design a traffic control system?</strong></h3><p>A classical system design question from old age is still popular. Make sure you know how to transition from one state to another like RED to GREEN and from GREEN to ORANGE to RED, etc. One tip is you can use the <a href="http://javarevisited.blogspot.sg/2014/04/difference-between-state-and-strategy-design-pattern-java.html" target="_blank" rel="noopener">state design pattern</a> because there is a clear transition of state from one to other. For example, you cannot go from RED to GREEN before ORANGE or so on.</p>
+<p>You can also use the <a href="http://www.java67.com/2018/07/java-enum-tutorial-10-things-java-devs.html" target="_blank" rel="noopener">Enum</a> to represent the state and implement the pattern, just as we did with the <a href="https://javarevisited.blogspot.com/2014/11/strategy-design-pattern-in-java-using-Enum-Example.html" target="_blank" rel="noopener">strategy design pattern</a> in my last article.</p>
+<p>If you are not familiar with these essential patterns, then I suggest you to first take a look at this <strong><a href="https://pluralsight.pxf.io/c/1193463/424552/7490?u=https%3A%2F%2Fwww.pluralsight.com%2Fcourses%2Fpatterns-library" target="_blank" rel="noopener">Design Pattern Library </a></strong>course on Pluarslight, one of the better resources to learn this pattern and get insight on how and when to use them in the real world.</p>
+<h3 id="5-How-to-design-a-website-like-Pastebin"><a href="#5-How-to-design-a-website-like-Pastebin" class="headerlink" title="5. How to design a website like Pastebin?"></a><strong>5. How to design a website like Pastebin?</strong></h3><p>Pastebin allows you to paste text or code and then share a link to that code anywhere you want. It’s not an online code editor but you can use this to store any kind of text.</p>
+<h3 id="6-How-would-you-create-your-own-Instagram"><a href="#6-How-would-you-create-your-own-Instagram" class="headerlink" title="6. How would you create your own Instagram?"></a><strong>6. How would you create your own Instagram?</strong></h3><p>Instagram is a photo sharing application that provides some custom filters to enhance your photo quality.</p>
+<h3 id="7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox"><a href="#7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox" class="headerlink" title="7. How to design a global file sharing and storage apps like Google Drive or Dropbox?"></a><strong>7. How to design a global file sharing and storage apps like Google Drive or Dropbox?</strong></h3><p>These are used to store and share files, photos, and other media. How do you go about designing things like allowing users to upload/view/search/share files or photos, track permissions for file sharing, and allow multiple users to edit the same document?</p>
+<h3 id="8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger"><a href="#8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger" class="headerlink" title="8. How to design a chat application like WhatsApp or Facebook Messenger?"></a><strong>8. How to design a chat application like WhatsApp or Facebook Messenger?</strong></h3><p>You have surely used WhatsApp and Facebook, right? No? If not, let me tell you that a chat application allows you to send messages to your friend. It’s a point-to-point connection. You keep a friends list, view their status, and chat with them.</p>
+<p>In WhatsApp, you can also connect groups, but that is for advanced and experienced developers. At a minimum, you should provide a design to keep the friends list and send and receive messages from them.</p>
+<h3 id="9-How-to-design-a-Twitter-Clone"><a href="#9-How-to-design-a-Twitter-Clone" class="headerlink" title="9. How to design a Twitter Clone?"></a><strong>9. How to design a Twitter Clone?</strong></h3><p>Twitter is a popular messaging service that lets you broadcast messages to all of your followers. You post a tweet and your followers see those messages. Additionally, they can like or retweet your post. Make sure you implement common features like followers, hashtags, tweets, deletes, etc. If you do not feel like going anywhere and are stuck, you can follow the solution on <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</p>
+<h3 id="10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix"><a href="#10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix" class="headerlink" title="10. How to design a global video streaming service, e.g. YouTube or Netflix?"></a><strong>10. How to design a global video streaming service, e.g. YouTube or Netflix?</strong></h3><p>While designing a video streaming service like NetFlix or YouTube, the key concept to remember is to smooth streaming and buffering and functioning over low bandwidth connection and how you manage those challenges.</p>
+<h3 id="11-How-to-design-an-ATM-machine"><a href="#11-How-to-design-an-ATM-machine" class="headerlink" title="11. How to design an ATM machine?"></a><strong>11. How to design an ATM machine?</strong></h3><p>An ATM machine allows a user to deposit and withdraw cash. It also allows a user to check their balance. How do you design such a system? What are your main challenges?</p>
+<h3 id="12-How-to-design-an-API-Rate-Limiter"><a href="#12-How-to-design-an-API-Rate-Limiter" class="headerlink" title="12. How to design an API Rate Limiter?"></a><strong>12. How to design an API Rate Limiter?</strong></h3><p>This is a challenging one. You may want to find more information about it, starting with a Google search.</p>
+<h3 id="13-How-to-design-Twitter-Search"><a href="#13-How-to-design-Twitter-Search" class="headerlink" title="13. How to design Twitter Search?"></a><strong>13. How to design Twitter Search?</strong></h3><p>To be honest, Twitter search is poor — unless you enter the exact title of your tweet, you won’t be able to find anything. So, this one should be easy to implement<strong>.</strong></p>
+<h3 id="14-How-to-design-a-web-crawler-like-Google"><a href="#14-How-to-design-a-web-crawler-like-Google" class="headerlink" title="14. How to design a web crawler like Google?"></a><strong>14. How to design a web crawler like Google?</strong></h3><p>A web crawler goes to a website and crawls all links and indexes, like Google, so that they can later appear in a search result. A crawler can also be used for searching a particular file in a set of directories. But be sure to ask yourself about some of the major challenges.</p>
+<h3 id="15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use"><a href="#15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use" class="headerlink" title="15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?"></a><strong>15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?</strong></h3><p>The newsfeed is an important part of Facebook that allows a user to see what’s happening around the world, including friends, families, pages he has liked, a group he has followed, and of course, the Facebook ads.</p>
+<p>The job of the newsfeed algorithm is to show messages that are most important to the user and which can generate high engagement. Obviously, messages from friends and family should take priority. If you feel not going anywhere and stuck, you can follow the solution on<strong><a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</strong></p>
+<h3 id="16-How-to-design-Yelp-or-Nearby-Friends"><a href="#16-How-to-design-Yelp-or-Nearby-Friends" class="headerlink" title="16. How to design Yelp or Nearby Friends?"></a><strong>16. How to design Yelp or Nearby Friends?</strong></h3><p>Have you used Yelp? If not first use it to understand how it works before you can design a similar system. For those who don’t know Yelp is a local-search service powered by crowd-sourced review forum</p>
+<h3 id="17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend"><a href="#17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend" class="headerlink" title="17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?"></a><strong>17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?</strong></h3><p>Uber and Ola are two of the most popular ride-hailing services, it brings both drivers and passengers together. How do you go about designing to allow a passenger to see nearby taxis and book them?</p>
+<h3 id="18-How-to-design-BookMyShow"><a href="#18-How-to-design-BookMyShow" class="headerlink" title="18. How to design BookMyShow?"></a><strong>18. How to design BookMyShow?</strong></h3><p>A website that allows you to book cinema and event tickets.</p>
+<h3 id="19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews"><a href="#19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews" class="headerlink" title="19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?"></a><strong>19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?</strong></h3><p>Reddit, Quora, and HackerNews are some of the most popular social network sites where users can post questions or share links. Other users can answer questions or comment on the shared links.</p>
+<h3 id="20-How-do-you-design-an-application-like-Airbnb"><a href="#20-How-do-you-design-an-application-like-Airbnb" class="headerlink" title="20. How do you design an application like Airbnb?"></a><strong>20. How do you design an application like Airbnb?</strong></h3><p>This allows users to upload rooms for rent and other users to rent them. Some features are only available to admins, publishers, and subscribers.</p>
+<p>That’s all for now on some of the <strong>frequently asked system design interview questions for Java programmers</strong>. These questions are not just useful for Java programmers but also for <a href="https://javarevisited.blogspot.com/2018/12/10-free-python-courses-for-programmers.html" target="_blank" rel="noopener">Python</a>, <a href="https://hackernoon.com/top-5-free-c-courses-to-learn-programming-in-2019-d27352277da0" target="_blank" rel="noopener">C++</a>, and <a href="http://www.java67.com/2018/02/5-free-ruby-and-rails-courses-to-learn-online.html" target="_blank" rel="noopener">Ruby</a> programmers. These questions are actually independent of programming languages and test your software design and architecture skills.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/12/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%A0%88/" rel="prev" title="分布式系统技术栈">
+      <i class="fa fa-chevron-left"></i> 分布式系统技术栈
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Design-Interview-Questions-for-Programmers"><span class="nav-number">1.</span> <span class="nav-text">System Design Interview Questions for Programmers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-How-to-design-a-vending-machine-in-Java-solution"><span class="nav-number">1.1.</span> <span class="nav-text">1. How to design a vending machine in Java? (solution)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-How-to-design-a-URL-shortening-service-like-goo-gl"><span class="nav-number">1.2.</span> <span class="nav-text">2. How to design a URL shortening service like goo.gl?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-How-to-design-a-limit-order-book"><span class="nav-number">1.3.</span> <span class="nav-text">3. How to design a limit order book?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-How-to-design-a-traffic-control-system"><span class="nav-number">1.4.</span> <span class="nav-text">4. How to design a traffic control system?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-How-to-design-a-website-like-Pastebin"><span class="nav-number">1.5.</span> <span class="nav-text">5. How to design a website like Pastebin?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-How-would-you-create-your-own-Instagram"><span class="nav-number">1.6.</span> <span class="nav-text">6. How would you create your own Instagram?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox"><span class="nav-number">1.7.</span> <span class="nav-text">7. How to design a global file sharing and storage apps like Google Drive or Dropbox?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger"><span class="nav-number">1.8.</span> <span class="nav-text">8. How to design a chat application like WhatsApp or Facebook Messenger?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-How-to-design-a-Twitter-Clone"><span class="nav-number">1.9.</span> <span class="nav-text">9. How to design a Twitter Clone?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix"><span class="nav-number">1.10.</span> <span class="nav-text">10. How to design a global video streaming service, e.g. YouTube or Netflix?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-How-to-design-an-ATM-machine"><span class="nav-number">1.11.</span> <span class="nav-text">11. How to design an ATM machine?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-How-to-design-an-API-Rate-Limiter"><span class="nav-number">1.12.</span> <span class="nav-text">12. How to design an API Rate Limiter?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-How-to-design-Twitter-Search"><span class="nav-number">1.13.</span> <span class="nav-text">13. How to design Twitter Search?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-How-to-design-a-web-crawler-like-Google"><span class="nav-number">1.14.</span> <span class="nav-text">14. How to design a web crawler like Google?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use"><span class="nav-number">1.15.</span> <span class="nav-text">15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-How-to-design-Yelp-or-Nearby-Friends"><span class="nav-number">1.16.</span> <span class="nav-text">16. How to design Yelp or Nearby Friends?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend"><span class="nav-number">1.17.</span> <span class="nav-text">17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-How-to-design-BookMyShow"><span class="nav-number">1.18.</span> <span class="nav-text">18. How to design BookMyShow?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews"><span class="nav-number">1.19.</span> <span class="nav-text">19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-How-do-you-design-an-application-like-Airbnb"><span class="nav-number">1.20.</span> <span class="nav-text">20. How do you design an application like Airbnb?</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=26924746&auto=1&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
