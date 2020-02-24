@@ -46,20 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="DP has always been an obstacle when preparing for interviews. For me it is one of the hardest topic. There were several times in the past that I tried to master it, but all attempts failed. Either bec">
+  <meta name="description" content="评分 0 - you are unfamiliar with the subject area.(0 -你不熟悉主题领域。)   1 - you can read &#x2F; understand the most fundamental aspects of the subject area.(1 -你可以阅读&#x2F;了解主题领域最基本的方面。)   2 - ability to implement smal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Notes_For_Learning_DP">
-<meta property="og:url" content="http://yoursite.com/2020/01/13/Notes-For-Learning-DP/index.html">
+<meta property="og:title" content="google技术评分卡">
+<meta property="og:url" content="http://yoursite.com/2020/02/23/google%E6%8A%80%E6%9C%AF%E8%AF%84%E5%88%86%E5%8D%A1/index.html">
 <meta property="og:site_name" content="Yuanchen&#39;s Blog">
-<meta property="og:description" content="DP has always been an obstacle when preparing for interviews. For me it is one of the hardest topic. There were several times in the past that I tried to master it, but all attempts failed. Either bec">
+<meta property="og:description" content="评分 0 - you are unfamiliar with the subject area.(0 -你不熟悉主题领域。)   1 - you can read &#x2F; understand the most fundamental aspects of the subject area.(1 -你可以阅读&#x2F;了解主题领域最基本的方面。)   2 - ability to implement smal">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-14T04:27:34.000Z">
-<meta property="article:modified_time" content="2020-01-14T04:31:47.800Z">
+<meta property="article:published_time" content="2020-02-24T02:43:36.000Z">
+<meta property="article:modified_time" content="2020-02-24T02:44:56.793Z">
 <meta property="article:author" content="Yuanchen">
-<meta property="article:tag" content="Dynamic Programming">
+<meta property="article:tag" content="Google">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/13/Notes-For-Learning-DP/">
+<link rel="canonical" href="http://yoursite.com/2020/02/23/google%E6%8A%80%E6%9C%AF%E8%AF%84%E5%88%86%E5%8D%A1/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>Notes_For_Learning_DP | Yuanchen's Blog</title>
+  <title>google技术评分卡 | Yuanchen's Blog</title>
   
 
 
@@ -170,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/13/Notes-For-Learning-DP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/google%E6%8A%80%E6%9C%AF%E8%AF%84%E5%88%86%E5%8D%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Notes_For_Learning_DP
+          google技术评分卡
         </h1>
 
         <div class="post-meta">
@@ -194,7 +194,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-01-13 22:27:34 / Modified: 22:31:47" itemprop="dateCreated datePublished" datetime="2020-01-13T22:27:34-06:00">2020-01-13</time>
+              <time title="Created: 2020-02-23 20:43:36 / Modified: 20:44:56" itemprop="dateCreated datePublished" datetime="2020-02-23T20:43:36-06:00">2020-02-23</time>
             </span>
 
           
@@ -208,30 +208,59 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>DP has always been an obstacle when preparing for interviews. For me it is one of the hardest topic. There were several times in the past that I tried to master it, but all attempts failed. Either because I could not find good resources, or because I did not have enough time to really dive into it, have a lot of practice, and identify different patterns. To tell the truth, I even feared that I would never be able to understand it well.</p>
-<p>This winter I had another attempt, and made up my mind to grasp the techique. I solved/read 45 DP problems of different patterns in 4 days (yes, you might think that is quite slow). At the begining, I struggled as much as all my previous attempts, but slowly I found I am getting better and I started to be able to think in the DP-way. Today I solved several problems independently, with memoization and tabulation and even space optimizations, I think I am finally understand this category of problem. The process is hard and frustrating, I know! Thus, I want to share my experience so that you might get some help.</p>
-<h2 id="Resources-My-way-of-learning"><a href="#Resources-My-way-of-learning" class="headerlink" title="Resources / My way of learning"></a>Resources / My way of learning</h2><p>The resources I recommend for learning DP. I use them in the order as listed.</p>
-<ol>
-<li><a href="https://www.geeksforgeeks.org/dynamic-programming/" target="_blank" rel="noopener">Dynamic Programming</a><br>If you are not familiar with DP yet, there’s no point in diving into Leetcode problems directly. The explanation of <a href="https://www.geeksforgeeks.org/dynamic-programming/#concepts" target="_blank" rel="noopener">Basic Concepts</a> is very clear. You could also try the first several basic problems to have a taste of DP.</li>
-<li>Some typical/famous DP problems (OPTIONAL)<br>I would recommend you to try to read (you might not be able to solve it, which is totally fine!) several DP problems to have a tiny peek into DP. You do not really need try to identify the pattern or memorize the solution. Just to get some <em>feeling</em> about DP. You may not need it, but this is helpful for me. I recommend Longest Common Subsequence, 0/1 Knapsack, Climbing Stairs.</li>
-<li><a href="https://leetcode.com/problems/house-robber/discuss/156523/From-good-to-great.-How-to-approach-most-of-DP-problems." target="_blank" rel="noopener">From good to great. How to approach most of DP problems.</a><br>A very good illustration of the motivation behind DP. DP is essentially an optimizaton for pure recursion. If we are solving overlapping subproblems, we can save result to subproblems, we avoid repeated computations. This also shows the implementaion: how to convert recursion code to memoization, and to tabulation. For me, it is very helpful.</li>
-<li><a href="https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns" target="_blank" rel="noopener">Dynamic Programming Patterns</a> (MUST READ)<br>Best post on DP ever! The summarized pattern, problem statement and approach are very helpful. I would say my previous efforts of learning DP brings me at point 3 (which is not easy as to understand the motivation and the implementation of DP are hard already!). For the last 4 days, I spent most of my time working on problems, grouped by patterns, mentioned in the post. All my previous nightmares on DP gone! You cannot afford to miss this post!<br>Other notes I made when reading the post:<ul>
-<li>The statement, approach and code snippet for each pattern in the original post is helpful and comprehensive.</li>
-<li>Pattern 1 and 2 are kind of similar.</li>
-<li>One hint of pattern 3 problems is that they usually involve a list/array of numbers, either explicitly or implicity, like in 1130, 96 and 1039.</li>
-<li>DP on strings is usually, if not always, done by comparing two chars at a time.</li>
-</ul>
-</li>
-<li><a href="https://www.youtube.com/channel/UCmJz2DV1a3yfgrR7GqRtUUA" target="_blank" rel="noopener">Back to Back SWE</a><br>Video explanation on many algorithm problems, including DPs. Detailed, slow and clear. There are several sentences from this guy, which I always remind myself when solving DP problems: “<em>DP is not about building dp table. It is about identifying subproblem, and caching answers to subproblems in order to solve the original problem</em>“.</li>
-</ol>
-<h3 id="DP-implementation-tips"><a href="#DP-implementation-tips" class="headerlink" title="DP implementation tips"></a>DP implementation tips</h3><p>With the following tips in mind, the implementation for memoization and tabulation is trivial!</p>
-<ul>
-<li>The most important step, and also the first step, in solving DP problem is to identify the recursive equation. Then the implementation just follows <code>recursion -&gt; memoization -&gt; tabulation</code>.</li>
-<li>For <strong>tabulation</strong>, every entry, like <code>dp[i][j]</code>, that could be used must be filled. However for <strong>memoization</strong>, the value might not exist in the dp table because you can directly provide it in the return value of <code>solve(mem, i, j)</code>.</li>
-<li>It is easy to convert recursion to memoization. For tabulation, draw graph to see clearly how the dp table is filled up(Lower rows to higher rows, or reverse? Left to right, or reverse? Upper left to lower right, or reverse?). The direction of filling up the dp table affects the values of the loop variables used in tabulation. A common error occurs when the for loop does not conform to the way in which the dp table is filled.</li>
-</ul>
-<h3 id="Two-styles-of-dp-table"><a href="#Two-styles-of-dp-table" class="headerlink" title="Two styles of dp table"></a>Two styles of dp table</h3><p>Quite commonly, dp tables are built such that <code>dp[m][n]</code> is the ultimate solution. However, there are also a number of DP problems where a variable is updated when building the dp table and the variables contains the final answer(e.g., 647).</p>
-<p>Last note: keeps practicing! I think I would review those problems for several rounds in the coming weeks, just to keep my self comfortable with DP. When practicing, try to solve with recursive, memoization, tabulation, and even optimize the space when possible.</p>
+        <h1 id="评分"><a href="#评分" class="headerlink" title="评分"></a>评分</h1><blockquote>
+<p>0 - you are unfamiliar with the subject area.(0 -你不熟悉主题领域。)</p>
+</blockquote>
+<blockquote>
+<p>1 - you can read / understand the most fundamental aspects of the subject area.(1 -你可以阅读/了解主题领域最基本的方面。)</p>
+</blockquote>
+<blockquote>
+<p>2 - ability to implement small changes, understand basic principles and able to figure out additional details with minimal help.(2 -能够实现小的变化，理解基本原理，并能在最小的帮助下找出更多的细节。)</p>
+</blockquote>
+<blockquote>
+<p>3 - basic proficiency in a subject area without relying on help.(3 -在不依赖帮助的情况下，熟练掌握某一科目。)</p>
+</blockquote>
+<blockquote>
+<p>4 - you are comfortable with the subject area and all routine work on it: (4 -你对主题领域和所有日常工作都很熟悉:)</p>
+<p>For software areas - ability to develop medium programs using all basic language features w/o book, awareness of more esoteric features (with book).(对于软件领域来说，能够使用所有基本的语言来开发中等的程序，使用w/o book，了解更深奥的特性(带书)。)</p>
+<p>For systems areas - understanding of many fundamentals of networking and systems administration, ability to run a small network of systems including recovery, debugging and nontrivial troubleshooting that relies on the knowledge of internals.(对于系统领域——了解网络和系统管理的许多基础知识，能够运行一个小型的系统网络，包括恢复、调试和依赖于内部知识的重要故障排除。)</p>
+</blockquote>
+<blockquote>
+<p>5 - an even lower degree of reliance on reference materials. Deeper skills in a field or specific technology in the subject area.(5 -对参考资料的依赖程度更低。在某一领域或某一特定技术领域有较深的技能。)</p>
+</blockquote>
+<blockquote>
+<p>6 - ability to develop large programs and systems from scratch. Understanding of low level details and internals. Ability to design / deploy most large, distributed systems from scratch.(6 -能够从头开始开发大型程序和系统。了解低层次的细节和内部信息。能够设计/部署大多数大型的分布式系统。)</p>
+</blockquote>
+<blockquote>
+<p>7 - you understand and make use of most lesser known language features, technologies, and associated internals. Ability to automate significant amounts of systems administration.(7 -你理解并利用最不知名的语言特征、技术和相关的内部信息。能够自动化大量的系统管理。)</p>
+</blockquote>
+<blockquote>
+<p>8 - deep understanding of corner cases, esoteric features, protocols and systems including “theory of operation”. Demonstrated ability to design, deploy and own very critical or large infrastructure, build accompanying automation.(8 -深刻理解角落案例，深奥的特点，协议和系统，包括“操作理论”。演示了设计、部署和拥有非常关键或大型基础设施的能力，并建立了相应的自动化。)</p>
+</blockquote>
+<blockquote>
+<p>9 - could have written the book about the subject area but didn’t; works with standards committees on defining new standards and methodologies.(9 -本可以写关于主题领域的书，但没有;与标准委员会一起制定新的标准和方法。)</p>
+</blockquote>
+<blockquote>
+<p>10 - wrote the book on the subject area (there actually has to be a book). Recognized industry expert in the field, might have invented it.(10 -写在主题领域的书(实际上必须有一本书)。业内公认的业内专家，可能已经发明了它。)</p>
+</blockquote>
+<h1 id="Subject-Areas"><a href="#Subject-Areas" class="headerlink" title="Subject Areas"></a>Subject Areas</h1><blockquote>
+<p>TCP/IP Networking (OSI stack, DNS etc)</p>
+<p>Unix/Linux internals</p>
+<p>Unix/Linux Systems administration</p>
+<p>Algorithms and Data Structures</p>
+<p>C</p>
+<p>C++</p>
+<p>Python</p>
+<p>Java</p>
+<p>Perl</p>
+<p>Go</p>
+<p>Shell Scripting (sh, Bash, ksh, csh)</p>
+<p>SQL and/or Database Admin</p>
+<p>Scripting language of your choice (not already mentioned) _</p>
+<p>People Management</p>
+<p>Project Management</p>
+</blockquote>
+<p>作者：carolsanders<br>链接：<a href="https://www.jianshu.com/p/b1f57417320d" target="_blank" rel="noopener">https://www.jianshu.com/p/b1f57417320d</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
     </div>
 
@@ -241,7 +270,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+              <a href="/tags/Google/" rel="tag"># Google</a>
           </div>
 
         
@@ -250,13 +279,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/12/Algorithms-interviews-theory-vs-practice/" rel="prev" title="Algorithms interviews theory vs practice">
-      <i class="fa fa-chevron-left"></i> Algorithms interviews theory vs practice
+    <a href="/2020/02/23/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/" rel="prev" title="配置中心">
+      <i class="fa fa-chevron-left"></i> 配置中心
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/14/How-is-computer-programming-different-from-20-years-ago/" rel="next" title="How is computer programming different from 20 years ago">
-      How is computer programming different from 20 years ago <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -316,7 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources-My-way-of-learning"><span class="nav-number">1.</span> <span class="nav-text">Resources &#x2F; My way of learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-implementation-tips"><span class="nav-number">1.1.</span> <span class="nav-text">DP implementation tips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-styles-of-dp-table"><span class="nav-number">1.2.</span> <span class="nav-text">Two styles of dp table</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#评分"><span class="nav-number">1.</span> <span class="nav-text">评分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Subject-Areas"><span class="nav-number">2.</span> <span class="nav-text">Subject Areas</span></a></li></ol></div>
       </div>
       <!--/noindex-->
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=26924746&auto=1&height=66"></iframe>
