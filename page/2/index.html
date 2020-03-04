@@ -165,6 +165,210 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/26/%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">异步处理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-26 12:40:10" itemprop="dateCreated datePublished" datetime="2020-02-26T12:40:10-06:00">2020-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-27 12:41:21" itemprop="dateModified" datetime="2020-02-27T12:41:21-06:00">2020-02-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在弹力设计篇中我们讲过，异步通讯的设计模式有助于提高系统的稳定性和容错能力。其实，异步通讯在分布式系统中还可以增加整个系统的吞吐量，从而可以面对更高的并发，并可以更多地利用好现有的系统资源。为什么这么说呢？</p>
+<p>我们试想一下，在你的工作中，有很多人会来找你，让你帮着做事。如果你是这种请求响应式的工作方式，那么本质上来说，你是在被动工作，也就是被别人驱动的工作方式。</p>
+<p>当你在做一件事的时候，如果有别人来找你做其它事，你就会被打断而要去干别的事。另外，没办法把这些事统筹安排。如果可以统筹安排，本来五件事只需要 2 个小时，如果不能，你可能要做出 5 个小时来。异步处理任务可以让你更好地利用好时间和资源。利用好了时间和资源，性能自然就会提升上来。</p>
+<p>这就好像邮递业务一样，你寄东西的时候，邮递公司会把大量的去往同一个方向的订单合并处理，并统一地调配物流交通工具，从而在整体上更为节省资源和时间。</p>
+<p>在分布式架构中，我们的系统被拆成了很多的子系统。如果想把这堆系统合理地用好，并更快地处理大量的任务，我们就需要统一地规划和统筹整体，这样可以达到整体的最优。本质上，这和邮递公司处理邮件一样，是相同的道理。</p>
+<p>在计算机的世界里，到处都是异步处理。比如：当程序读写文件时，我们的操作系统并不会真正同步地去操作硬盘，而是把硬盘读写请求先在内存中 hold 上一小会儿（几十毫秒），然后，对这些读写请求做 merge 和 sort。</p>
+<p>也就是说，merge 是把相同的操作合并，相同的读操作只读一次，相同的写操作，只写最后一次，而 sort 是把不同的操作排个序，这样可以让硬盘向一个方向转一次就可以把所有的数据读出来，而不是来来回回地转。这样可以极大地提高硬盘的吞吐率。</p>
+<p>再如，我们的 TCP 协议向网络发包的时候，会把我们要发的数据先在缓冲区中进行囤积，当囤积到一定尺寸时（MTU），才向网络发送，这样可以最大化利用我们的网络带宽。而传输速度和性能也会变得很快。</p>
+<p><strong>这就是异步系统所带来的好处——让我们的系统可以统一调度。</strong></p>
+<p>另外，我举上面这两个例子是想告诉你，我们可能会觉得异步通讯慢，其实并不然，我们同样也可以把异步做得比较实时。</p>
+<p>多说一句，就算是有延时，异步处理在用户体验上也可以给用户带来一个不错的用户体验，那就是用户可以有机会反悔之前的操作。</p>
+<h1 id="异步处理的设计"><a href="#异步处理的设计" class="headerlink" title="异步处理的设计"></a>异步处理的设计</h1><p>之前，我们在弹力设计中讲的是异步通讯，这里，我们想讲的是异步任务处理。当然，这里面没有什么冲突的，只不过是，异步通讯讲的是怎么把系统连接起来，而我们这里想讲的是怎么处理任务。</p>
+<p>首先，我们需要一个前台系统，把用户发来的请求一一记录下来。这有点像请求日志。这样，我们的操作在数据库或是存储上只会有追加的操作，性能会很高。我们收到请求后，给客户端返回 “ 收到请求，正在处理中 “。</p>
+<p>然后，我们有个任务处理系统来真正地处理收到的这些请求。为了解耦，我们需要一个任务派发器，这里就会出来两个事，一个是推模型 Push，一个是拉模型 Pull。</p>
+<p>所谓 Push 推模型，就是把任务派发给相应的人去处理，有点像是一个工头的调度者的角色。而 Pull 拉模型，则是由处理的人来拉取任务处理。这两种模型各有各的好坏。一般来说，Push 模型可以做调度，但是它需要知道下游工作结点的情况。</p>
+<p>除了要知道哪些是活着的，还要知道它们的忙闲程度。这样一来，当下游工作结点扩容缩容或是有故障需要维护等一些情况发生时，Push 结点都需要知道，这会增加一定的系统复杂度。而 Pull 的好处则是可以让上游结点不用关心下游结点的状态，只要自己忙得过来，就会来拿任务处理，这样可以减少一定的复杂度，但是少了整体任务调度。</p>
+<p>一般来说，我们构建的都是推拉结合的系统，Push 端会做一定的任务调度，比如它可以像物流那样把相同商品的订单都合并起来，打成一个包，交给下游系统让其一次处理掉；也可以把同一个用户的订单中的不同商品给拆成多个订单。然后 Pull 端来订阅 Push 端发出来的异步消息，处理相应的任务。</p>
+<h1 id="事件溯源"><a href="#事件溯源" class="headerlink" title="事件溯源"></a>事件溯源</h1><p>在这里，我们需要提一下 Event Sourcing（事件溯源）这个设计模式。</p>
+<p>所谓 Event Sourcing，其主要想解决的问题是，我们可以看到数据库中的一个数据的值（状态），但我们完全不知道这个值是怎么得出来的。就像银行的存折一样，我们可以在银行的存折看到我们收支的所有记录，也能看得到每一笔记录后的余额。</p>
+<p>当然，如果我们有了所有的收支流水账的记录，我们完全不需要保存余额，因为我们只需要回放一下所有的收支事件，就可以得到最终的数据状态。这样一来，我们的系统就会变得非常简单，只需要追加不可修改的数据操作事件，而不是保存最终状态。除了可以提高性能和响应时间之外，还可以提供事务数据一致性，并保留了可以启用补偿操作的完整记录和历史记录。</p>
+<p>还有一个好处，就是如果我们的代码里有了 bug，在记录状态的系统里，我们修改 bug 后还需要做数据修正。然而，在 Event Sourcing 的系统里，我们只需要把所有事件重新播放一遍就好了，因为整个系统没有状态了。</p>
+<p>事件不可变，并且可使用只追加操作进行存储。 用户界面、工作流或启动事件的进程可继续，处理事件的任务可在后台异步运行。 此外，处理事务期间不存在争用，这两点可极大提高应用程序的性能和可伸缩性。</p>
+<p>事件是描述已发生操作的简单对象以及描述事件代表的操作所需的相关数据。 事件不会直接更新数据存储，只会对事件进行记录，以便在合适的时间进行处理。 这可简化实施和管理。</p>
+<p>事件溯源不需要直接更新数据存储中的对象，因而有助于防止并发更新造成冲突。</p>
+<p>最重要的是，异步处理 + 事件溯源的方式，可以很好地让我们的整个系统进行任务的统筹安排、批量处理，可以让整体处理过程达到性能和资源的最大化利用。</p>
+<p>关于 Event Sourcing 一般会和 CQRS 一起提。另外，你可以去 GitHub 上看看<a href="https://github.com/cer/event-sourcing-examples" target="_blank" rel="noopener">这个项目的示例</a>以得到更多的信息。</p>
+<h1 id="异步处理的分布式事务"><a href="#异步处理的分布式事务" class="headerlink" title="异步处理的分布式事务"></a>异步处理的分布式事务</h1><p>在前面的《分布式系统的本质》一文中，我们说过，对于分布式事务，在强一致性下，在业务层上只能做两阶段提交，而在数据层面上需要使用 Raft/Paxos 的算法。但是，我想说，在现实生活中，需要用到强一致性的场景实在不多，真是不是所有的场景都必须要强一致性的事务的。</p>
+<p>我们仔细想想现实生活当中的很多例子。比如，我们去餐馆吃饭，先付钱，然后拿个小票去领吃的。这种情况下，把交钱和取货这两个动作分开，可以让我们的餐馆有更高的并发和接客能力。如果要做成两阶段提交，顾客锁定好钱，餐馆锁定好食材，最后一手交钱一手交饭，那么这是一件非常恐怖的事。</p>
+<p>是的，你可以看到，我们的现实世界中有很多这样先付钱，拿小票去领货的场景，也有先消费，然后拿一个账单去付钱的场景。总之，完全不需要两阶段提交这种方式。我们完全可以使用异步的方式来达到一致性，当然，是最终一致性。</p>
+<p>要达到最终一致性，我们需要有个交易凭证。也就是说，如果一个事务需要做 A 和 B 两件事，比如，把我的钱转给我的朋友，首先先做扣钱交易，然后，记录下扣钱的凭证，拿这个凭证去给我朋友的账号上加钱。</p>
+<p>在达成这个事务的过程中，有几点需要注意。</p>
+<ul>
+<li>凭证需要非常好地保存起来，不然会导致事务做不下去。</li>
+<li>凭证处理的幂等性问题，不然在重试时就会出现多次交易的情况。</li>
+<li>如果事务完成不了，需要做补偿事务处理。</li>
+</ul>
+<h1 id="异步处理的设计要点"><a href="#异步处理的设计要点" class="headerlink" title="异步处理的设计要点"></a>异步处理的设计要点</h1><p>异步处理中的事件驱动和事件溯源是两个比较关键的技术。</p>
+<p>异步处理可能会因为一些故障导致我们的一些任务没有被处理，比如消息丢失，没有通知到，或通知到了，没有处理。有这一系列的问题，异步通知的方式需要任务处理方处理完成后，给任务发起方回传状态，这样确保不会有漏掉的。</p>
+<p>另外，发起方也需要有个定时任务，把一些超时没有回传状态的任务再重新做一遍，你可以认为这是异步系统中的 “ 对账 “ 功能。当然，如果要重做的话，就需要处理方支持幂等性处理。</p>
+<p>异步处理的整体业务事务问题，也就是说，异步处理在处理任务的时候，并不知道能否处理成功，于是其会一步一步地处理，如果到最后一步不能成功，那么你就需要回滚。这个时候，需要走我们在弹力设计中说的补偿事务的流程。</p>
+<p>并不是所有的业务都可以用异步的方式，比如一些需要强一致性的业务，使用异步的方式可能就不适合，这里需要我们小心地分析业务。我相信绝大多数的业务场景都用不到强一致性，包括银行业务。另外，在需要性能的时候，需要牺牲强一致性，变为最终一致性。</p>
+<p>在运维时，我们要监控任务队列里的任务积压情况。如果有任务积压了，要能做到快速地扩容。如果不能扩容，而且任务积压太多，可能会导致整个系统挂掉，那么就要开始对前端流量进行限流。</p>
+<p>最后，还想强调一下，异步处理系统的本质是把被动的任务处理变成主动的任务处理，其本质是在对任务进行调度和统筹管理。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/%E7%BC%93%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/25/%E7%BC%93%E5%AD%98/" class="post-title-link" itemprop="url">缓存</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-25 22:20:10 / Modified: 22:22:14" itemprop="dateCreated datePublished" datetime="2020-02-25T22:20:10-06:00">2020-02-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>基本上来说，在分布式系统中最耗性能的地方就是最后端的数据库了。一般来说，只要小心维护好，数据库四种操作（select、update、insert 和 delete）中的三个写操作 insert、update 和 delete 不太会出现性能问题（insert 一般不会有性能问题，update 和 delete 一般会有主键，所以也不会太慢）。除非索引建得太多，而数据库里的数据又太多，这三个操作才会变慢。</p>
+<p>绝大多数情况下，select 是出现性能问题最大的地方。一方面，select 会有很多像 join、group、order、like 等这样丰富的语义，而这些语义是非常耗性能的；另一方面，大多数应用都是读多写少，所以加剧了慢查询的问题。</p>
+<p>分布式系统中远程调用也会耗很多性能，因为有网络开销，会导致整体的响应时间下降。为了挽救这样的性能开销，在业务允许的情况（不需要太实时的数据）下，使用缓存是非常必要的事情。</p>
+<p>从另一个方面说，缓存在今天的移动互联网中是必不可少的一部分，因为网络质量不总是最好的，所以前端也会为所有的 API 加上缓存。不然，网络不通畅的时候，没有数据，前端都不知道怎么展示 UI 了。既然因为移动互联网的网络质量而导致我们必需容忍数据的不实时性，那么，从业务上来说，在大多数情况下是可以使用缓存的。</p>
+<p>缓存是提高性能最好的方式，一般来说，缓存有以下三种模式。</p>
+<h1 id="Cache-Aside-更新模式"><a href="#Cache-Aside-更新模式" class="headerlink" title="Cache Aside 更新模式"></a>Cache Aside 更新模式</h1><p>这是最常用的设计模式了，其具体逻辑如下。</p>
+<ul>
+<li><strong>失效</strong>：应用程序先从 cache 取数据，没有得到，则从数据库中取数据，成功后，放到缓存中。</li>
+<li><strong>命中</strong>：应用程序从 cache 中取数据，取到后返回。</li>
+<li><strong>更新</strong>：先把数据存到数据库中，成功后，再让缓存失效。</li>
+</ul>
+<p><img src="../images/0a39fbce98c0d43e15b56b0ed09099d4.png" alt="img"></p>
+<p><img src="../images/e0ecbc94d474f7bd0c8eb53dfd8bde94.png" alt="img"></p>
+<p>这是标准的设计模式，包括 Facebook 的论文《<a href="https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf" target="_blank" rel="noopener">Scaling Memcache at Facebook</a>》中也使用了这个策略。为什么不是写完数据库后更新缓存？可以看一下 Quora 上的这个问答《<a href="https://www.quora.com/Why-does-Facebook-use-delete-to-remove-the-key-value-pair-in-Memcached-instead-of-updating-the-Memcached-during-write-request-to-the-backend" target="_blank" rel="noopener">Why does Facebook use delete to remove the key-value pair in Memcached instead of updating the Memcached during write request to the backend?</a>》，主要是怕两个并发的写操作导致脏数据。</p>
+<p>那么，是不是这个 Cache Aside 就不会有并发问题了？不是的。比如，一个是读操作，但是没有命中缓存，就会到数据库中取数据。而此时来了一个写操作，写完数据库后，让缓存失效，然后之前的那个读操作再把老的数据放进去，所以会造成脏数据。</p>
+<p>这个案例理论上会出现，但实际上出现的概率可能非常低，因为这个条件需要发生在读缓存时缓存失效，而且有一个并发的写操作。实际上数据库的写操作会比读操作慢得多，而且还要锁表，而读操作必需在写操作前进入数据库操作，又要晚于写操作更新缓存，所有这些条件都具备的概率并不大。</p>
+<p><strong>所以，这也就是 Quora 上的那个答案里说的，要么通过 2PC 或是 Paxos 协议保证一致性，要么就是拼命地降低并发时脏数据的概率。而 Facebook 使用了这个降低概率的玩法，因为 2PC 太慢，而 Paxos 太复杂。当然，最好还是为缓存设置好过期时间。</strong></p>
+<h1 id="Read-Write-Through-更新模式"><a href="#Read-Write-Through-更新模式" class="headerlink" title="Read/Write Through 更新模式"></a>Read/Write Through 更新模式</h1><p>我们可以看到，在上面的 Cache Aside 套路中，应用代码需要维护两个数据存储，一个是缓存（cache），一个是数据库（repository）。所以，应用程序比较啰嗦。而 Read/Write Through 套路是把更新数据库（repository）的操作由缓存自己代理了，所以，对于应用层来说，就简单很多了。可以理解为，应用认为后端就是一个单一的存储，而存储自己维护自己的 Cache。</p>
+<h2 id="Read-Through"><a href="#Read-Through" class="headerlink" title="Read Through"></a>Read Through</h2><p>Read Through 套路就是在查询操作中更新缓存，也就是说，当缓存失效的时候（过期或 LRU 换出），Cache Aside 是由调用方负责把数据加载入缓存，而 Read Through 则用缓存服务自己来加载，从而对应用方是透明的。</p>
+<h2 id="Write-Through"><a href="#Write-Through" class="headerlink" title="Write Through"></a>Write Through</h2><p>Write Through 套路和 Read Through 相仿，不过是在更新数据时发生。当有数据更新的时候，如果没有命中缓存，直接更新数据库，然后返回。如果命中了缓存，则更新缓存，然后由 Cache 自己更新数据库（这是一个同步操作）。</p>
+<p>下图自来 Wikipedia 的 <a href="">https://en.wikipedia.org/wiki/Cache_(computing">Cache 词条</a> 。其中的 Memory，可以理解为就是我们例子里的数据库。</p>
+<p><img src="../images/2ce5afe305e60d98bf3b647ef23f3edd.png" alt="img"></p>
+<h1 id="Write-Behind-Caching-更新模式"><a href="#Write-Behind-Caching-更新模式" class="headerlink" title="Write Behind Caching 更新模式"></a>Write Behind Caching 更新模式</h1><p>Write Behind 又叫 Write Back。一些了解 Linux 操作系统内核的同学对 write back 应该非常熟悉，这不就是 Linux 文件系统的 page cache 算法吗？基础知识全都是相通的。所以，基础很重要。</p>
+<p>Write Back 套路就是，在更新数据的时候，只更新缓存，不更新数据库，而我们的缓存会异步地批量更新数据库。这个设计的好处就是让数据的 I/O 操作飞快无比（因为直接操作内存嘛）。因为异步，Write Back 还可以合并对同一个数据的多次操作，所以性能的提高是相当可观的。</p>
+<p>但其带来的问题是，数据不是强一致性的，而且可能会丢失（我们知道 Unix/Linux 非正常关机会导致数据丢失，就是因为这个事）。在软件设计上，我们基本上不可能做出一个没有缺陷的设计，就像算法设计中的时间换空间、空间换时间一个道理。有时候，强一致性和高性能，高可用和高性能是有冲突的。软件设计从来都是 trade-off（取舍）。</p>
+<p>另外，Write Back 实现逻辑比较复杂，因为它需要 track 有哪些数据是被更新了的，需要刷到持久层上。操作系统的 Write Back 会在仅当这个 cache 需要失效的时候，才会把它真正持久起来。比如，内存不够了，或是进程退出了等情况，这又叫 lazy write。</p>
+<p>在 Wikipedia 上有一张 Write Back 的流程图，基本逻辑可以在下图中看到。</p>
+<p><img src="../images/dd7281e669f64165eedbbf228d74d756.png" alt="img"></p>
+<h1 id="缓存设计的重点"><a href="#缓存设计的重点" class="headerlink" title="缓存设计的重点"></a>缓存设计的重点</h1><p>缓存更新的模式基本如前面所说，不过这还没完，缓存已经成为高并发高性能架构的一个关键组件了。现在，很多公司都在用 Redis 来搭建他们的缓存系统。一方面是因为 Redis 的数据结构比较丰富。另一方面，我们不能在 Service 内放 local cache，一是每台机器的内存不够大，二是我们的 Service 有多个实例，负载均衡器会把请求随机分布到不同的实例。缓存需要在所有的 Service 实例上都建好，这让我们的 Service 有了状态，更难管理了。</p>
+<p>所以，在分布式架构下，一般都需要一个外部的缓存集群。关于这个缓存集群，需要保证的是内存要足够大，网络带宽也要好，因为缓存本质上是个内存和 IO 密集型的应用。</p>
+<p>另外，如果需要内存很大，那么还要动用数据分片技术来把不同的缓存分布到不同的机器上。这样，可以保证我们的缓存集群可以不断地 scale 下去。</p>
+<p>缓存的好坏要看命中率。缓存的命中率高说明缓存有效，一般来说命中率到 80% 以上就算很高了。当然，有的网络为了追求更高的性能，要做到 95% 以上，甚至可能会把数据库里的数据几乎全部装进缓存中。这当然是不必要的，也是没有效率的，因为通常来说，热点数据只会是少数。</p>
+<p>另外，缓存是通过牺牲强一致性来提高性能的，这世上任何事情都不是免费的，所以并不是所有的业务都适合用缓存，这需要在设计的时候仔细调研好需求。使用缓存提高性能，就是会有数据更新的延迟。</p>
+<p>缓存数据的时间周期也需要好好设计，太长太短都不好，过期期限不宜太短，因为可能导致应用程序不断从数据存储检索数据并将其添加到缓存。同样，过期期限不宜太长，因为这会导致一些没人访问的数据还在内存中不过期，而浪费内存。</p>
+<p>使用缓存的时候，一般会使用 LRU 策略。也就是说，当内存不够需要有数据被清出内存时，会找最不活跃的数据清除。所谓最不活跃的意思是最长时间没有被访问过了。所以，开启 LRU 策略会让缓存在每个数据访问的时候把其调到前面，而要淘汰数据时，就从最后面开始淘汰。</p>
+<p>于是，对于 LRU 的缓存系统来说，其需要在 key-value 这样的非顺序的数据结构中维护一个顺序的数据结构，并在读缓存时，需要改变被访问数据在顺序结构中的排位。于是，我们的 LRU 在读写时都需要加锁（除非是单线程无并发），因此 LRU 可能会导致更慢的缓存存取的时间。这点要小心。</p>
+<p>最后，我们的世界是比较复杂的，很多网站都会被爬虫爬，要小心这些爬虫。因为这些爬虫可能会爬到一些很古老的数据，而程序会把这些数据加入到缓存中去，而导致缓存中那些真实的热点数据被挤出去（因为机器的速度足够快）。对此，一般来说，我们需要有一个爬虫保护机制，或是我们引导这些人去使用我们提供的外部 API。在那边，我们可以有针对性地做多租户的缓存系统（也就是说，把用户和第三方开发者的缓存系统分离开来）。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>好了，我们来总结一下今天分享的主要内容。首先，缓存是为了加速数据访问，在数据库之上添加的一层机制。讲了几种典型的缓存模式，包括 Cache Aside、Read/Write Through 和 Write Behind Caching 以及它们各自的优缺点。</p>
+<p>最后，介绍了缓存设计的重点，除了性能之外，在分布式架构下和公网环境下，对缓存集群、一致性、LRU 的锁竞争、爬虫等多方面都需要考虑。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/%E5%BA%94%E5%AF%B9%E6%95%85%E9%9A%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1310,388 +1514,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="post-title-link" itemprop="url">机器学习和人工智能</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-17 22:24:59 / Modified: 22:31:28" itemprop="dateCreated datePublished" datetime="2020-02-17T22:24:59-06:00">2020-02-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="基本原理简介"><a href="#基本原理简介" class="headerlink" title="基本原理简介"></a>基本原理简介</h1><p>我们先来介绍一下机器学习的基本原理。</p>
-<p>机器学习主要有两种方式，一种是监督式学习（Supervised Learning），另一种是非监督式学习（Unsupervised Learning）。下面简单地说一下这两者的不同。</p>
-<ul>
-<li><p><strong>监督式学习（Supervised Learning）</strong>。所谓监督式学习，也就是说，我们需要提供一组学习样本，包括相关的特征数据和相应的标签。我们的程序可以通过这组样本来学习相关的规律或是模式，然后通过得到的规律或模式来判断没有被打过标签的数据是什么样的数据。</p>
-<p>举个例子，假设需要识别一些手写的数字，我们要找到尽可能多的手写体的数字的图像样本，然后人工或是通过某种算法来明确地标注上什么是这些手写体的图片，谁是 1，谁是 2，谁是 3…… 这组数据叫样本数据，又叫训练数据（training data）。然后通过机器学习的算法，找到每个数字在不同手写体下的特征，找到规律和模式。通过得到的规律或模式来识别那些没有被打过标签的手写数据，以此完成识别手写体数字的目的。</p>
-</li>
-<li><p><strong>非监督式学习（Unsupervised Learning）</strong>。对于非监督式学习，也就是说，数据是没有被标注过的，所以相关的机器学习算法需要找到这些数据中的共性。因为大量的数据是没被被标识过的，所以这种学习方式可以让大量的未标识的数据能够更有价值。而且，非监督式学习，可以为我们找到人类很难发现的数据里的规律或模型，所以也有人称这种学习为 “ 特征点学习 “，其可以让我们自动地为数据进行分类，并找到分类的模型。</p>
-<p>一般来说，非监督式学习会应用在一些交易型的数据中。比如，你有一堆堆的用户购买数据，但是对于人类来说，我们很难找到用户属性和购买商品类型之间的关系。所以，非监督式学习算法可以帮助我们找到它们之间的关系。比如，一个在某个年龄段的女性购买了某种肥皂，有可能说明这个女性在怀孕期，或是某人购买儿童用品，有可能说明这个人的关系链中有孩子，等等。于是，这些信息会被用作一些所谓的精准市场营销活动，从而可以增加商品销量。</p>
-</li>
-</ul>
-<p>监督式学习是在被告诉过了正确的答案后的学习，而非监督式学习是在没有被告诉正确答案时的学习。所以，非监督式学习是在大量的非常乱的数据中找寻一些潜在的关系，这个成本也比较高。非监督式学习经常被用来检测一些不正常的事情发生，比如信用卡的诈骗或是盗刷。也被用在推荐系统，比如买了这个商品的人又买了别的什么商品，或是如果某个人喜欢某篇文章、某个音乐、某个餐馆，那么他可能会喜欢某个车、某个明星或某个地方。</p>
-<p>在监督式学习算法下，可以用一组 “ 狗 “ 的照片来确定某个照片中的物体是不是狗。而在非监督式学习算法下，我们可以通过一个照片来找到其中有与其相似的事物的照片。这两种学习方式都有些有用的场景。</p>
-<p>关于机器学习，你可以读一读 <a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471" target="_blank" rel="noopener">Machine Learning is Fun!</a> ，这篇文章（<a href="https://zhuanlan.zhihu.com/p/24339995" target="_blank" rel="noopener">中文翻译版</a>）恐怕是全世界最简单的入门资料了。</p>
-<ul>
-<li><a href="https://becominghuman.ai/data-science-simplified-principles-and-process-b06304d63308" target="_blank" rel="noopener">Data Science Simplified Part 1: Principles and Process</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-key-concepts-of-statistical-learning-45648049709e" target="_blank" rel="noopener">Data Science Simplified Part 2: Key Concepts of Statistical Learning</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-hypothesis-testing-56e180ef2f71" target="_blank" rel="noopener">Data Science Simplified Part 3: Hypothesis Testing</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-simple-linear-regression-models-3a97811a6a3d" target="_blank" rel="noopener">Data Science Simplified Part 4: Simple Linear Regression Models</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-5-multivariate-regression-models-7684b0489015" target="_blank" rel="noopener">Data Science Simplified Part 5: Multivariate Regression Models</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-6-model-selection-methods-2511cbdf7cb0" target="_blank" rel="noopener">Data Science Simplified Part 6: Model Selection Methods</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-7-log-log-regression-models-499ecd1495f0" target="_blank" rel="noopener">Data Science Simplified Part 7: Log-Log Regression Models</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-8-qualitative-variables-in-regression-models-d1817d56245c" target="_blank" rel="noopener">Data Science Simplified Part 8: Qualitative Variables in Regression Models</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-9-interactions-and-limitations-of-regression-models-4702dff03820" target="_blank" rel="noopener">Data Science Simplified Part 9: Interactions and Limitations of Regression Models</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-10-an-introduction-to-classification-models-82490f6c171f" target="_blank" rel="noopener">Data Science Simplified Part 10: An Introduction to Classification Models</a></li>
-<li><a href="https://towardsdatascience.com/data-science-simplified-part-11-logistic-regression-5ae8d994bf0e" target="_blank" rel="noopener">Data Science Simplified Part 11: Logistic Regression</a></li>
-</ul>
-<h1 id="相关课程"><a href="#相关课程" class="headerlink" title="相关课程"></a>相关课程</h1><p>在学习机器学习之前，我们需要学习数据分析，所以，我们得先学一些大数据相关的东西，也就是 Data Science 相关的内容。下面是两个不错的和数据科学相关的教程以及一个资源列表。</p>
-<ul>
-<li><a href="http://data8.org/" target="_blank" rel="noopener">UC Berkeley’s Data 8: The Foundations of Data Science</a> 和电子书 <a href="https://www.inferentialthinking.com/" target="_blank" rel="noopener">Computational and Inferential Thinking</a> 会讲述数据科学方面非常关键的概念，会教会你在数据中找到数据的关联、预测和相关的推断。</li>
-<li><a href="https://github.com/nborwankar/LearnDataScience" target="_blank" rel="noopener">Learn Data Science</a> ，这是 GitHub 上的一本电子书，主要是一些数据挖掘的算法，比如线性回归、逻辑回归、随机森林、K-Means 聚类的数据分析。然后，<a href="https://github.com/donnemartin/data-science-ipython-notebooks#scikit-learn" target="_blank" rel="noopener">donnemartin/data-science-ipython-notebooks</a> 这个代码仓库中用 TensorFlow、scikit-learn、Pandas、NumPy、Spark 等把这些经典的例子实现了个遍。</li>
-<li><a href="https://www.datascienceweekly.org/data-science-resources/the-big-list-of-data-science-resources" target="_blank" rel="noopener">Data Science Resources List</a> ，这个网站上有一个非常长的和数据科学相关的资源列表，你可以从中得到很多你想要的东西。</li>
-</ul>
-<p>之后，有下面几门不错的在线机器学习的课程供你入门，也是非常不错。</p>
-<ul>
-<li>吴恩达教授（Andrew Ng）在 <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Coursera 上的免费机器学习课程</a> 非常棒。我强烈建议从此入手。对于任何拥有计算机或科学学位的人，或是还能记住一点点数学知识的人来说，都应该非常容易入门。这个斯坦福大学的课程请尽量拿满分。可以在 <a href="http://open.163.com/special/opencourse/machinelearning.html" target="_blank" rel="noopener">网易公开课</a> 中找到这一课程。除此之外，吴恩达教授还有一组新的和深度学习相关的课程，现在可以在网易公开课上免费学习——<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">Deep Learning Specialization</a>。</li>
-<li><a href="https://www.udacity.com/course/deep-learning--ud730" target="_blank" rel="noopener">Deep Learning by Google</a> ，Google 的一个关于深度学习的在线免费课程，其支持中英文。这门课会教授你如何训练和优化基本神经网络、卷积神经网络和长短期记忆网络。你将通过项目和任务接触完整的机器学习系统 TensorFlow。</li>
-<li>卡内基梅隆大学汤姆·米切尔（Tom Mitchell）的机器学习 <a href="http://www.cs.cmu.edu/~tom/10701_sp11/lectures.shtml" target="_blank" rel="noopener">英文原版视频与课件 PDF</a> 。</li>
-<li>2013 年加利福尼亚理工学院亚瑟·阿布 - 穆斯塔法（Yaser Abu-Mostafa）的 Learning from Data <a href="http://work.caltech.edu/lectures.html" target="_blank" rel="noopener">课程视频及课件 PDF</a>，内容更适合进阶。</li>
-<li>关于神经网络方面，YouTube 上有一个非常火的课程视频，由宾夕法尼亚大学的雨果·拉罗歇尔（Hugo Larochelle）的教学课程 - <a href="https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH" target="_blank" rel="noopener">Neural networks class - Université de Sherbrooke </a>。</li>
-</ul>
-<p>除此之外，还有很多的在线大学课程可以学习。比如：</p>
-<ul>
-<li>斯坦福大学的《<a href="https://lagunita.stanford.edu/courses/HumanitiesandScience/StatLearning/Winter2015/about" target="_blank" rel="noopener">统计学学习</a>》、《<a href="http://cs229.stanford.edu/" target="_blank" rel="noopener">机器学习</a>》、《<a href="http://cs231n.stanford.edu/" target="_blank" rel="noopener">卷积神经网络</a>》、《<a href="http://cs224d.stanford.edu/" target="_blank" rel="noopener">深度学习之自然语言处理</a>》等。</li>
-<li>麻省理工大学的《<a href="http://ocw.mit.edu/courses/brain-and-cognitive-sciences/9-641j-introduction-to-neural-networks-spring-2005/index.htm" target="_blank" rel="noopener">神经网络介绍</a> 》、《<a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/" target="_blank" rel="noopener">机器学习</a>》、《<a href="http://ocw.mit.edu/courses/sloan-school-of-management/15-097-prediction-machine-learning-and-statistics-spring-2012/index.htm" target="_blank" rel="noopener">预测</a>》等。</li>
-</ul>
-<p>更多的列表，请参看——<a href="https://github.com/RatulGhosh/awesome-machine-learning" target="_blank" rel="noopener">Awesome Machine Learning Courses</a>。</p>
-<h1 id="相关图书"><a href="#相关图书" class="headerlink" title="相关图书"></a>相关图书</h1><ul>
-<li><p>《<a href="https://book.douban.com/subject/2061116/" target="_blank" rel="noopener">Pattern Recognition and Machine Learning</a>》，这本书是机器学习领域的圣经之作。该书也是众多高校机器学习研究生课程的教科书，Google 上有[PDF 版的下载](<a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop" target="_blank" rel="noopener">http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop</a> - Pattern Recognition And Machine Learning - Springer  2006.pdf)。这本书很经典，但并不适合入门来看。GitHub 上有这本中的 <a href="https://github.com/PRML/PRMLT" target="_blank" rel="noopener">Matlab 实现</a>。</p>
-</li>
-<li><p>下面这两本电子书也是比较经典的，其中讲了很多机器学习的知识，可以当做手册或字典。</p>
-<ul>
-<li>《<a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf" target="_blank" rel="noopener">Understanding Machine Learning: From Theory to Algorithms</a>》。</li>
-<li>《<a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf" target="_blank" rel="noopener">The Elements of Statistical Learning - Second Edition</a>》。</li>
-</ul>
-</li>
-<li><p>《<a href="https://book.douban.com/subject/27087503/" target="_blank" rel="noopener">Deep Learning: Adaptive Computation and Machine Learning series</a>》 中文翻译为《深度学习》，又叫 “ 花书 “。这本书由全球知名的三位专家伊恩·古德费洛（Ian Goodfellow）、友华·本吉奥（Yoshua Bengio）和亚伦·考维尔（Aaron Courville）撰写，是深度学习领域奠基性的经典教材。</p>
-<p>全书内容包括 3 部分：第 1 部分介绍基本的数学工具和机器学习的概念，它们是深度学习的预备知识；第 2 部分系统深入地讲解现今已成熟的深度学习方法和技术；第 3 部分讨论某些具有前瞻性的方向和想法，它们被公认为是深度学习未来的研究重点。这本书的官网为 “<a href="http://www.deeplearningbook.org/" target="_blank" rel="noopener">deeplearningbook.org</a>”，在 GitHub 上也有中文翻译 - 《<a href="https://github.com/exacity/deeplearningbook-chinese" target="_blank" rel="noopener">Deep Learning 中文翻译</a>》。</p>
-</li>
-<li><p>《<a href="http://neuralnetworksanddeeplearning.com/" target="_blank" rel="noopener">Neural Networks and Deep Learning</a>》（<a href="https://tigerneil.gitbooks.io/neural-networks-and-deep-learning-zh/content/" target="_blank" rel="noopener">中文翻译版</a>），这是一本非常不错的神经网络的入门书，在<a href="https://book.douban.com/subject/26727997/" target="_blank" rel="noopener">豆瓣上评分 9.5 分</a>，从理论讲到了代码。虽然有很多数学公式，但是有代码相助，就不难理解了。其中讲了很多如激活函数、代价函数、随机梯度下降、反向传播、过度拟合和规范化、权重初始化、超参数优化、卷积网络的局部感受野、混合层、特征映射的东西。</p>
-</li>
-<li><p>《<a href="https://book.douban.com/subject/26279609/" target="_blank" rel="noopener">Introduction to Machine Learning with Python</a>》，算是本不错的入门书，也是本比较易读的英文书。其是以 Scikit-Learn 框架来讲述的。如果你用过 Scikit 这个框架，那么你学这本书还是很不错的。</p>
-</li>
-<li><p>《<a href="https://book.douban.com/subject/26840215/" target="_blank" rel="noopener">Hands-On Machine Learning with Scikit-Learn and TensorFlow</a> 》，这是一门以 TensorFlow 为工具的入门书，其用丰富的例子从实站的角度来让你学习。这本书对于无基础的人也是适合的，对于小白来说虽然略难但是受益匪浅。</p>
-</li>
-</ul>
-<h1 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h1><p>除了上述的那些课程和图书外，下面这些文章也很不错。</p>
-<ul>
-<li>YouTube 上的 Google Developers 的 <a href="https://www.youtube.com/playlist?list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal" target="_blank" rel="noopener">Machine Learning Recipes with Josh Gordon</a> ，这 9 集视频，每集不到 10 分钟，从 Hello World 讲到如何使用 TensorFlow，非常值得一看。</li>
-<li>还有 <a href="https://pythonprogramming.net/machine-learning-tutorial-python-introduction/" target="_blank" rel="noopener">Practical Machine Learning Tutorial with Python Introduction</a> 上面一系列的用 Python 带着你玩 Machine Learning 的教程。</li>
-<li>Medium 上的 <a href="https://medium.com/machine-learning-101" target="_blank" rel="noopener">Machine Learning - 101</a> ，讲述了好些我们上面提到过的经典算法。</li>
-<li>Medium 上的 <a href="https://medium.com/machine-learning-for-humans" target="_blank" rel="noopener">Marchine Learning for Humans</a>。</li>
-<li><a href="https://machinelearningmastery.com/blog/" target="_blank" rel="noopener">Dr. Jason Brownlee 的博客</a> ，也非常值得一读，其中好多的 “How-To”，会让你有很多的收获。</li>
-<li><a href="http://martin.zinkevich.org/rules_of_ml/rules_of_ml.pdf" target="_blank" rel="noopener">Rules of Machine Learning: Best Practices for ML Engineering</a> ，一些机器学习相关的最佳实践。</li>
-<li><a href="http://iamtrask.github.io" target="_blank" rel="noopener">i am trask</a> ，也是一个很不错的博客。</li>
-<li>关于 Deep Learning 中的神经网络，YouTube 上有介绍视频 <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks</a>。</li>
-<li>麻省理工学院的电子书 <a href="http://www.deeplearningbook.org" target="_blank" rel="noopener">Deep Learning</a>。</li>
-<li>用 Python 做自然语言处理<a href="http://www.nltk.org/book/" target="_blank" rel="noopener">Natural Language Processing with Python</a>。</li>
-<li>最后一个是 Machine Learning 和 Deep Learning 的相关教程列表，<a href="https://github.com/ujjwalkarn/Machine-Learning-Tutorials" target="_blank" rel="noopener">Machine Learning &amp; Deep Learning Tutorials</a>。</li>
-</ul>
-<p>下面是一些和神经网络相关的不错的文章。</p>
-<ul>
-<li><a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="noopener">The Unreasonable Effectiveness of Recurrent Neural Networks</a> ，这是一篇必读的文章 ，告诉你为什么要学 RNN，以及展示了最简单的 NLP 形式。</li>
-<li><a href="http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/" target="_blank" rel="noopener">Neural Networks, Manifolds, and Topology</a> ，这篇文章可以帮助你理解神经网络的一些概念。</li>
-<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">Understanding LSTM Networks</a> ，解释了什么是 LSTM 的内在工作原理。</li>
-<li><a href="http://distill.pub/2016/augmented-rnns/" target="_blank" rel="noopener">Attention and Augmented Recurrent Neural Networks</a> ，用了好多图来说明了 RNN 的 attention 机制。</li>
-<li><a href="http://benanne.github.io/2014/08/05/spotify-cnns.html" target="_blank" rel="noopener">Recommending music on Spotify with deep learning</a> ，一个在 Spotify 的实习生分享的音乐聚类的文章。</li>
-</ul>
-<h1 id="相关算法"><a href="#相关算法" class="headerlink" title="相关算法"></a>相关算法</h1><p>下面是 10 个非常经典的机器学习的算法。</p>
-<ul>
-<li>对于监督式学习，有如下经典算法。<ol>
-<li><a href="https://en.wikipedia.org/wiki/Decision_tree" target="_blank" rel="noopener">决策树（Decision Tree）</a>，比如自动化放贷、风控。</li>
-<li><a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="_blank" rel="noopener">朴素贝叶斯分类器（Naive Bayesian classifier)</a>，可以用于判断垃圾邮件、对新闻的类别进行分类，比如科技、政治、运动、判断文本表达的感情是积极的还是消极的、人脸识别等。</li>
-<li><a href="https://en.wikipedia.org/wiki/Ordinary_least_squares" target="_blank" rel="noopener">最小二乘法（Ordinary Least Squares Regression）</a>，是一种线性回归。</li>
-<li><a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="noopener">逻辑回归（Logisitic Regression）</a>，一种强大的统计学方法，可以用一个或多个变量来表示一个二项式结果。可以用于信用评分，计算营销活动的成功率，预测某个产品的收入。</li>
-<li><a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="noopener">支持向量机（Support Vector Machine，SVM）</a>，可以用于基于图像的性别检测、图像分类等。</li>
-<li><a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">集成方法（Ensemble methods）</a>，通过构建一组分类器，然后通过它们的预测结果进行加权投票来对新的数据点进行分类。原始的集成方法是贝叶斯平均，但最近的算法包括纠错输出编码、Bagging 和 Boosting。</li>
-</ol>
-</li>
-<li>对于无监督式的学习，有如下经典算法。<ol>
-<li><a href="https://en.wikipedia.org/wiki/Cluster_analysis" target="_blank" rel="noopener">聚类算法（Clustering Algorithms）</a>。聚类算法有很多，目标是给数据分类。有 5 个比较著名的聚类算法你必需要知道：<a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank" rel="noopener">K-Means</a>、<a href="https://en.wikipedia.org/wiki/Mean_shift" target="_blank" rel="noopener">Mean-Shift</a>、<a href="https://en.wikipedia.org/wiki/DBSCAN" target="_blank" rel="noopener">DBSCAN</a>、<a href="https://en.wikipedia.org/wiki/Expectation–maximization_algorithm" target="_blank" rel="noopener">EM/GMM</a>、和 <a href="https://en.wikipedia.org/wiki/Hierarchical_clustering" target="_blank" rel="noopener">Agglomerative Hierarchical</a>。</li>
-<li><a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noopener">主成分分析（Principal Component Analysis，PCA）</a>。PCA 的一些应用包括压缩、简化数据便于学习、可视化等。</li>
-<li><a href="https://en.wikipedia.org/wiki/Singular-value_decomposition" target="_blank" rel="noopener">奇异值分解（Singular Value Decomposition，SVD）</a>。实际上，PCA 是 SVD 的一个简单应用。在计算机视觉中，第一个人脸识别算法使用 PCA 和 SVD 来将面部表示为 “ 特征面 “ 的线性组合，进行降维，然后通过简单的方法将面部匹配到身份。虽然现代方法更复杂，但很多方面仍然依赖于类似的技术。</li>
-<li><a href="https://en.wikipedia.org/wiki/Independent_component_analysis" target="_blank" rel="noopener">独立成分分析（Independent Component Analysis，ICA）</a>。ICA 是一种统计技术，主要用于揭示随机变量、测量值或信号集中的隐藏因素。</li>
-</ol>
-</li>
-</ul>
-<p>如果你想了解更全的机器学习的算法列表，你可以看一下 Wikipedia 上的 <a href="https://en.wikipedia.org/wiki/Outline_of_machine_learning#Machine_learning_algorithms" target="_blank" rel="noopener">List of Machine Learning Algorithms</a>。</p>
-<p>在 <a href="https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/" target="_blank" rel="noopener">A Tour of Machine Learning Algorithms</a> ，这篇文章带你概览了一些机器学习算法，其中还有一个 “ 脑图 “ 可以下载，并还有一些 How-To 的文章供你参考。</p>
-<p>对于这些算法，<a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">SciKit-Learn</a>有一些文档供你学习。</p>
-<ul>
-<li><a href="http://scikit-learn.org/stable/supervised_learning.html#supervised-learning" target="_blank" rel="noopener">1. Supervised learning</a></li>
-<li><a href="http://scikit-learn.org/stable/modules/clustering.html#clustering" target="_blank" rel="noopener">2.3 Clustering</a></li>
-<li><a href="http://scikit-learn.org/stable/modules/decomposition.html#decompositions" target="_blank" rel="noopener">2.5. Decomposing signals in components (matrix factorization problems)</a></li>
-<li><a href="http://scikit-learn.org/stable/model_selection.html#model-selection" target="_blank" rel="noopener">3. Model selection and evaluation</a></li>
-<li><a href="http://scikit-learn.org/stable/modules/preprocessing.html#preprocessing" target="_blank" rel="noopener">4.3. Preprocessing data</a></li>
-</ul>
-<h1 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h1><ul>
-<li>对于初学者来说，动手是非常非常重要的，不然，你会在理论的知识里迷失掉自己，这里有篇文章 “<a href="https://elitedatascience.com/machine-learning-projects-for-beginners" target="_blank" rel="noopener">8 Fun Machine Learning Projects for Beginners</a>“，其中为初学者准备了 8 个很有趣的项目，你可以跟着练练。</li>
-<li>学习机器学习或是人工智能你需要数据，这里有一个非常足的列表给你足够多的公共数据 – 《<a href="https://github.com/awesomedata/awesome-public-datasets" target="_blank" rel="noopener">Awesome Public Datasets</a>》，其中包括农业、生物、天气、计算机网络、地球科学、经济、教育、金融、能源、政府、健康、自然语言、体育等。</li>
-<li>GitHub 上的一些 Awesome 资源列表。<ul>
-<li><a href="https://github.com/ChristosChristofidis/awesome-deep-learning" target="_blank" rel="noopener">Awesome Deep Learning</a></li>
-<li><a href="https://github.com/terryum/awesome-deep-learning-papers" target="_blank" rel="noopener">Awesome - Most Cited Deep Learning Papers</a></li>
-<li><a href="https://github.com/endymecy/awesome-deeplearning-resources" target="_blank" rel="noopener">Awesome Deep learning papers and other resources</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>总结一下今天的内容。首先介绍了机器学习的基本原理：监督式学习和非监督式学习，然后给出了全世界最简单的入门资料 <a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471" target="_blank" rel="noopener">Machine Learning is Fun!</a>。随后给出了与机器学习密切相关的数据分析方面的内容和资料，然后推荐了深入学习机器学习知识的在线课程、图书和文章等，尤其列举了神经网络方面的学习资料。最后描述了机器学习的十大经典算法及相关的学习资料。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E5%AE%B9%E5%99%A8%E5%8C%96%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/16/%E5%AE%B9%E5%99%A8%E5%8C%96%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="post-title-link" itemprop="url">容器化和自动化运维</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-16 21:34:27 / Modified: 21:37:47" itemprop="dateCreated datePublished" datetime="2020-02-16T21:34:27-06:00">2020-02-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这篇文章重点学习 Docker 和 Kubernetes，它们已经是分布式架构和自动化运维的必需品了，也是你必需要学习的。对于这两个东西，你千万不要害怕，因为技术方面都不算复杂，只是它们的玩法和传统运维不一样，所以你不用担心，只要你花上一点时间，一定会学好的。</p>
-<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><ul>
-<li>你可以先看一下 Docker 的官方介绍 <a href="https://docs.docker.com/engine/docker-overview/" target="_blank" rel="noopener">Docker Overview</a> 。</li>
-<li>然后再去一个 Web 在线的 Playground 上体验一下， <a href="https://www.katacoda.com/courses/docker/playground" target="_blank" rel="noopener">Katacoda Docker Playground</a> 或者是 <a href="https://training.play-with-docker.com/" target="_blank" rel="noopener">Play With Docker</a> 。</li>
-<li>接下来，跟着 <a href="https://github.com/dwyl/learn-docker" target="_blank" rel="noopener">Learn Docker</a> 这个文档中的教程自己安装一个 Docker 的环境，实操一把。</li>
-<li>然后跟着 <a href="https://docker-curriculum.com/" target="_blank" rel="noopener">Docker Curriculum</a> 这个超详细的教程玩一下 Docker。</li>
-</ul>
-<p>有了上述的一些感性体会之后，你就可以阅读 Docker 官方文档 <a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Documentation</a> 了，这是学习 Docker 最好的方式。</p>
-<p>如果你想了解一下 Docker 的底层技术细节，你可以参看我的文章。</p>
-<ul>
-<li><a href="https://coolshell.cn/articles/17010.html" target="_blank" rel="noopener">Docker 基础技术：Linux Namespace（上）</a></li>
-<li><a href="https://coolshell.cn/articles/17029.html" target="_blank" rel="noopener">Docker 基础技术：Linux Namespace（下）</a></li>
-<li><a href="https://coolshell.cn/articles/17049.html" target="_blank" rel="noopener">Docker 基础技术：Cgroup</a></li>
-<li><a href="https://coolshell.cn/articles/17061.html" target="_blank" rel="noopener">Docker 基础技术：AUFS</a></li>
-<li><a href="https://coolshell.cn/articles/17200.html" target="_blank" rel="noopener">Docker 基础技术：DeviceMapper</a></li>
-</ul>
-<p>还有一些不错的与 Docker 网络有关的文章需要阅读及实践一下。</p>
-<ul>
-<li><a href="https://jvns.ca/blog/2016/12/22/container-networking/" target="_blank" rel="noopener">A container networking overview</a></li>
-<li><a href="http://www.dasblinkenlichten.com/docker-networking-101-user-defined-networks/" target="_blank" rel="noopener">Docker networking 101 - User defined networks</a></li>
-<li><a href="http://www.dasblinkenlichten.com/understanding-cni-container-networking-interface/" target="_blank" rel="noopener">Understanding CNI (Container Networking Interface)</a></li>
-<li><a href="http://www.dasblinkenlichten.com/using-cni-docker/" target="_blank" rel="noopener">Using CNI with Docker</a></li>
-</ul>
-<p>Docker 有下面几种网络解决方案：<a href="https://www.projectcalico.org/getting-started/docker/" target="_blank" rel="noopener">Calico</a> 、<a href="https://github.com/coreos/flannel/" target="_blank" rel="noopener">Flannel</a> 和 <a href="https://github.com/weaveworks/weave" target="_blank" rel="noopener">Weave</a> ，你需要学习一下。另外，还需要学习一下 <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">netshoot</a> 。这是一个很不错的用来诊断 Docker 网络问题的工具集。</p>
-<p>关于这几个容器网络解决方案的性能对比，你可以看一下下面这几篇文章或报告。</p>
-<ul>
-<li><a href="http://chunqi.li/2015/11/15/Battlefield-Calico-Flannel-Weave-and-Docker-Overlay-Network/" target="_blank" rel="noopener">Battlefield: Calico, Flannel, Weave and Docker Overlay Network</a></li>
-<li><a href="http://machinezone.github.io/research/networking-solutions-for-kubernetes/" target="_blank" rel="noopener">Comparison of Networking Solutions for Kubernetes</a></li>
-<li><a href="http://www.delaat.net/rp/2015-2016/p50/report.pdf" target="_blank" rel="noopener">Docker Overlay Networks: Performance analysis in high-latency enviroments</a></li>
-</ul>
-<p>如果你对 Docker 的性能有什么问题的话，你可以看一下下面这些文章。</p>
-<ul>
-<li><a href="https://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf" target="_blank" rel="noopener">IBM Research Report: An Updated Performance Comparison of Virtual Machines and Linux Containers</a></li>
-<li><a href="http://paper.ijcsns.org/07_book/201703/20170327.pdf" target="_blank" rel="noopener">An Introduction to Docker and Analysis of its Performance</a></li>
-</ul>
-<p>下面是一些和存储相关的文章。</p>
-<ul>
-<li><a href="http://cloud-mechanic.blogspot.de/2014/10/storage-concepts-in-docker-network-and.html" target="_blank" rel="noopener">Storage Concepts in Docker: Network and Cloud Storage</a></li>
-<li><a href="http://cloud-mechanic.blogspot.de/2014/10/storage-concepts-in-docker-persistent.html" target="_blank" rel="noopener">Storage Concepts in Docker: Persistent Storage</a></li>
-<li><a href="http://cloud-mechanic.blogspot.de/2014/10/storage-concepts-in-docker.html" target="_blank" rel="noopener">Storage Concepts in Docker: Shared Storage and the VOLUME directive</a></li>
-</ul>
-<p>然后是跟运维相关的文章。</p>
-<ul>
-<li><a href="https://logz.io/learn/docker-monitoring-elk-stack/" target="_blank" rel="noopener">Docker Monitoring with the ELK Stack: A Step-by-Step Guide</a></li>
-</ul>
-<p>最后，推荐看看 <a href="http://www.nkode.io/2014/08/24/valuable-docker-links.html" target="_blank" rel="noopener">Valuable Docker Links</a> ，其中收集并罗列了一系列非常不错的 Docker 文章。</p>
-<p><strong>最佳实践</strong></p>
-<p>下面分享一些与 Docker 相关的最佳实践。</p>
-<ul>
-<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_blank" rel="noopener">Best Practices for Dockerfile</a> ，Docker 官方文档里的 Dockerfile 的最佳实践。</li>
-<li><a href="https://github.com/FuriKuri/docker-best-practices" target="_blank" rel="noopener">Docker Best Practices</a> ，这里收集汇总了存在于各个地方的使用 Docker 的建议和实践。</li>
-<li><a href="http://docs.projectatomic.io/container-best-practices/" target="_blank" rel="noopener">Container Best Practices</a> ，来自 Atomic 项目，是一个介绍容器化应用程序的架构、创建和管理的协作型文档项目。</li>
-<li><a href="http://hokstad.com/docker/patterns" target="_blank" rel="noopener">Eight Docker Development Patterns</a> ，八个 Docker 的开发模式：共享基础容器、共享同一个卷的多个开发容器、开发工具专用容器、测试环境容器、编译构建容器、防手误的安装容器、默认服务容器、胶黏容器。</li>
-</ul>
-<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><p>Kubernetes 是 Google 开源的容器集群管理系统，是 Google 多年大规模容器管理技术 Borg 的开源版本，也是 CNCF 最重要的项目之一，主要功能包括：</p>
-<ul>
-<li>基于容器的应用部署、维护和滚动升级；</li>
-<li>负载均衡和服务发现；</li>
-<li>跨机器和跨地区的集群调度；</li>
-<li>自动伸缩；</li>
-<li>无状态服务和有状态服务；</li>
-<li>广泛的 Volume 支持；</li>
-<li>插件机制保证扩展性。</li>
-</ul>
-<p>Kubernetes 发展非常迅速，已经成为容器编排领域的领导者。</p>
-<p>首先，阅读 Kubernetes 前世今生的一篇论文。</p>
-<ul>
-<li><a href="https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/44843.pdf" target="_blank" rel="noopener">Borg, Omega, and Kubernetes</a> ，看看 Google 这十几年来从这三个容器管理系统中得到的经验教训。</li>
-</ul>
-<p>学习 kubernetes，有两个免费的开源电子书。</p>
-<ul>
-<li>《<a href="https://jimmysong.io/kubernetes-handbook/" target="_blank" rel="noopener">Kubernetes Handbook</a>》，这本书记录了作者从零开始学习和使用 Kubernetes 的心路历程，着重于经验分享和总结，同时也会有相关的概念解析。希望能够帮助你少踩坑，少走弯路，还会指引你关注 kubernetes 生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native 等领域。</li>
-<li>《<a href="https://kubernetes.feisky.xyz/zh/" target="_blank" rel="noopener">Kubernetes 指南</a>》，这本书旨在整理平时在开发和使用 Kubernetes 时的参考指南和实践总结，形成一个系统化的参考指南以方便查阅。</li>
-</ul>
-<p>这两本电子书都不错，前者更像是一本学习教程，而且面明显广一些，还包括 Cloud Natvie、Service Mesh 以及微服务相关的东西。而后者聚焦于 Kubernetes 本身，更像一本参考书。</p>
-<p>但是也别忘了 Kubernetes 的官方网站：<a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes.io</a>，上面不但有<a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener">全面的文档</a> ，也包括一个很不错的 <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank" rel="noopener">官方教程</a> 。</p>
-<p>此外，还有一些交互式教程，帮助你理解掌握，以及一些很不错的文章推荐你阅读。</p>
-<p><strong>一些交互式教程</strong></p>
-<ul>
-<li><a href="https://www.katacoda.com/courses/kubernetes" target="_blank" rel="noopener">Katacoda</a></li>
-<li><a href="https://kubernetesbootcamp.github.io/kubernetes-bootcamp/" target="_blank" rel="noopener">Kubernetes Bootcamp</a></li>
-</ul>
-<p><strong>一些文章</strong></p>
-<p>这里还有一些不错的文档，你应该去读一下。</p>
-<ul>
-<li><a href="https://opsnotice.xyz/kubernetes-tips-tricks/" target="_blank" rel="noopener">Kubernetes tips &amp; tricks</a></li>
-<li><a href="http://theremotelab.com/blog/achieving-ci-cd-with-k8s/" target="_blank" rel="noopener">Achieving CI/CD with Kubernetes</a></li>
-<li><a href="https://dzone.com/articles/how-to-setup-scalable-jenkins-on-top-of-a-kubernet" target="_blank" rel="noopener">How to Set Up Scalable Jenkins on Top of a Kubernetes Cluster</a></li>
-<li>10 Most Common Reasons Kubernetes Deployments Fail <a href="https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/" target="_blank" rel="noopener">Part I</a> 和 <a href="https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-2/" target="_blank" rel="noopener">Part II</a></li>
-<li><a href="http://sysdig.com/blog/monitoring-kubernetes-with-sysdig-cloud/" target="_blank" rel="noopener">How to Monitor Kubernetes</a> ，一共有 4 个篇章</li>
-<li><a href="http://www.dasblinkenlichten.com/logging-in-kubernetes-with-fluentd-and-elasticsearch/" target="_blank" rel="noopener">Logging in Kubernetes with Fluentd and Elasticsearch</a></li>
-<li><a href="https://dzone.com/articles/kubernetes-monitoring-best-practices-methods-and-e" target="_blank" rel="noopener">Kubernetes Monitoring: Best Practices, Methods, and Existing Solutions</a></li>
-</ul>
-<p><strong>网络相关的文章</strong></p>
-<p>要学习 Kubernetes，你只需要读一下，下面这个 Kubernetes 101 系列的文章。</p>
-<ul>
-<li><a href="http://www.dasblinkenlichten.com/kubernetes-101-networking/" target="_blank" rel="noopener">Kubernetes 101 - Networking</a></li>
-<li><a href="http://www.dasblinkenlichten.com/kubernetes-networking-101-pods/" target="_blank" rel="noopener">Kubernetes networking 101 - Pods</a></li>
-<li><a href="http://www.dasblinkenlichten.com/kubernetes-networking-101-services/" target="_blank" rel="noopener">Kubernetes networking 101 - Services</a></li>
-<li><a href="http://www.dasblinkenlichten.com/kubernetes-networking-101-basic-external-access-into-the-cluster/" target="_blank" rel="noopener">Kubernetes networking 101 - (Basic) External access into the cluster</a></li>
-<li><a href="http://www.dasblinkenlichten.com/kubernetes-networking-101-ingress-resources/" target="_blank" rel="noopener">Kubernetes Networking 101 - Ingress resources</a></li>
-<li><a href="http://www.dasblinkenlichten.com/getting-started-with-calico-on-kubernetes/" target="_blank" rel="noopener">Getting started with Calico on Kubernetes</a></li>
-</ul>
-<p><strong>CI/CD 相关的文章</strong></p>
-<ul>
-<li><a href="https://cloud.google.com/solutions/automated-build-images-with-jenkins-kubernetes#kubernetes_architecture" target="_blank" rel="noopener">Automated Image Builds with Jenkins, Packer, and Kubernetes</a></li>
-<li><a href="http://iocanel.blogspot.in/2015/09/jenkins-setups-for-kubernetes-and.html" target="_blank" rel="noopener">Jenkins setups for Kubernetes and Docker Workflow</a></li>
-<li><a href="https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes" target="_blank" rel="noopener">Lab: Build a Continuous Deployment Pipeline with Jenkins and Kubernetes</a></li>
-</ul>
-<p><strong>最佳实践</strong></p>
-<ul>
-<li><a href="https://medium.com/@sachin.arote1/kubernetes-best-practices-9b1435a4cb53" target="_blank" rel="noopener">Kubernetes Best Practices</a> by <a href="https://medium.com/@sachin.arote1?source=post_header_lockup" target="_blank" rel="noopener">Sachin Arote</a> ，AWS 工程师总结的最佳实践。</li>
-<li><a href="https://speakerdeck.com/thesandlord/kubernetes-best-practices" target="_blank" rel="noopener">Kubernetes Best Practices</a> by <a href="https://github.com/thesandlord" target="_blank" rel="noopener">Sandeep Dinesh</a> ，Google 云平台工程师总结的最佳实践。</li>
-</ul>
-<p><strong>Docker 和 Kubernetes 资源汇总</strong></p>
-<p>下面是 Github 上和 Docker &amp; Kubernetes 相关的 Awesome 系列。</p>
-<ul>
-<li><a href="https://github.com/veggiemonk/awesome-docker" target="_blank" rel="noopener">Awesome Docker</a>。</li>
-<li><a href="https://github.com/ramitsurana/awesome-kubernetes" target="_blank" rel="noopener">Awesome Kubernetes</a>。</li>
-</ul>
-<p>虽然上面的这些系列非常全的罗列了很多资源，但是我觉得很不系统。对于系统的说明 Docker 和 Kubernetes 生态圈，我非常推荐大家看一下 The New Stack 为 Kubernetes 出的一系列的电子书或报告。</p>
-<ul>
-<li><a href="http://thenewstack.io/ebookseries/" target="_blank" rel="noopener">The New Stack eBook Series</a> ，非常完整和详实的 Docker 和 Kubernetes 生态圈的所有东西。<ul>
-<li>Book 01: <a href="https://thenewstack.io/ebooks/docker-and-containers/the-docker-container-ecosystem/" target="_blank" rel="noopener">The Docker Container Ecosystem</a></li>
-<li>Book 02: <a href="https://thenewstack.io/ebooks/docker-and-containers/applications-microservices-docker-containers/" target="_blank" rel="noopener">Applications &amp; Microservices with Docker &amp; Containers</a></li>
-<li>Book 03: <a href="https://thenewstack.io/ebooks/docker-and-containers/automation-orchestration-docker-containers/" target="_blank" rel="noopener">Automation &amp; Orchestration with Docker &amp; Containers</a></li>
-<li>Book 04: <a href="https://thenewstack.io/ebooks/docker-and-containers/networking-security-storage-docker-containers/" target="_blank" rel="noopener">Network, Security &amp; Storage with Docker &amp; Containers</a></li>
-<li>Book 05: <a href="https://thenewstack.io/ebooks/docker-and-containers/monitoring-management-docker-containers/" target="_blank" rel="noopener">Monitoring &amp; Management with Docker &amp; Containers</a></li>
-<li>Book 06: <a href="https://thenewstack.io/ebooks/use-cases/use-cases-for-kubernetes/" target="_blank" rel="noopener">Use Cases for Kubernetes</a></li>
-<li>Book 07: <a href="https://thenewstack.io/ebooks/kubernetes/state-of-kubernetes-ecosystem/" target="_blank" rel="noopener">State of the Kubernetes Ecosystem</a></li>
-<li>Book 08: <a href="https://thenewstack.io/ebooks/kubernetes/kubernetes-deployment-and-security-patterns/" target="_blank" rel="noopener">Kubernetes Deployment &amp; Security Patterns</a></li>
-<li>Book 09: <a href="https://thenewstack.io/ebooks/kubernetes/ci-cd-with-kubernetes/" target="_blank" rel="noopener">CI/CD with Kubernetes</a></li>
-<li>Book 10: <a href="https://thenewstack.io/ebooks/kubernetes/kubernetes-solutions-directory/" target="_blank" rel="noopener">Kubernetes solutions Directory</a></li>
-<li>Book 11: <a href="https://thenewstack.io/ebooks/microservices/cloud-native-microservices-2018/" target="_blank" rel="noopener">Guid to Cloud-Native Microservices</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>总结一下今天的内容。Docker 和 Kubernetes 已经成为分布式架构和自动化运维方面的不可或缺的两大基本构成，是必需要学习的。虽然它们的玩法跟传统运维不一样，但技术方面并不算复杂，只要你花上一点时间，一定会学好的。</p>
-<p>文章包括Docker 和 Kubernetes 基础技术方面的学习资料，并给出了存储、运维、网络、CI/CD 等多方面的资料，同时列出了与之相关的最佳实践。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1762,7 +1584,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
