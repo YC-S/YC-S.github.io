@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Everyone who started coding started out pretty much in the same seat as you. It can be extremely frustrating. A lot of people tend to give up when they start teaching themselves to code. It can be ove">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20_Things_to_know_before_you_start_programming">
+<meta property="og:url" content="http://yoursite.com/2020/03/07/20-Things-to-know-before-you-start-programming/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="Everyone who started coding started out pretty much in the same seat as you. It can be extremely frustrating. A lot of people tend to give up when they start teaching themselves to code. It can be ove">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/images/What-subject-do-students-like-a-lot.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/images/The-top-programming-languages-of-2019.jpeg">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/images/SDK-usage-shows-the-most-popular-programming-language.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/images/Pair-programming-is-similar-to-having-a-navigator-while-you-drive.jpeg">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/images/Big-mistakes-can-lead-to-a-more-sustainable-future.jpeg">
+<meta property="article:published_time" content="2020-03-07T20:25:45.000Z">
+<meta property="article:modified_time" content="2020-03-07T20:36:15.645Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="tips">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/07/images/What-subject-do-students-like-a-lot.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/07/20-Things-to-know-before-you-start-programming/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>20_Things_to_know_before_you_start_programming | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/20-Things-to-know-before-you-start-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20_Things_to_know_before_you_start_programming
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-07 14:25:45 / Modified: 14:36:15" itemprop="dateCreated datePublished" datetime="2020-03-07T14:25:45-06:00">2020-03-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Everyone who started coding started out pretty much in the same seat as you. It can be <em>extremely frustrating.</em> A lot of people tend to give up when they start teaching themselves to code. It can be overwhelming, and not bearable at times. That’s why the CTO and Co-found of TheFireHouseProject.com were nice enough to tell us 20 things to know before you start programming.</p>
+<p>Here are the top things to know before you start programming:</p>
+<ul>
+<li>You learn by doing</li>
+<li>Programming is not like studying for a test</li>
+<li>Cheating is very well acceptable</li>
+<li>Letting problems pile up is a poor strategy</li>
+<li>You do not need 5 monitors</li>
+<li>Pair programming as much as possible</li>
+<li>There’s a right way to ask for help</li>
+<li>Always celebrate small wins</li>
+<li>Never stop learning</li>
+</ul>
+<p><img src="../images/What-subject-do-students-like-a-lot.png" alt="What subject do students like a lot?" style="zoom:200%;" />What subject do students like a lot?</p>
+<h4 id="Memorizing-does-not-apply-on-programming"><a href="#Memorizing-does-not-apply-on-programming" class="headerlink" title="Memorizing does not apply on programming"></a>Memorizing does not apply on programming</h4><p><strong>You learn by doing</strong> is on the first place of “20 Things to know before you start programming” list for a reason. The only way to get better at programming is to actually code. Do not let paralysis prevent you from starting. Ever.</p>
+<p><strong>Programming is not like studying for a test</strong> by a mile. When you study, you memorize things in order to get a better grade. This does not apply to programming, at all. It doesn’t matter at all if you forget how to do a <strong>switch case,</strong> or an <strong>if/else</strong> statement for that matter. As long as you know that <em>something does that,</em> you’re golden.</p>
+<p><strong>Cheating is completely acceptable.</strong> Hell, it’s even encouraged. The top programmers I’ve had to deal with use Google on a regular basis. This way, you’ll save tremendously much time on trying to fix something yourself. This doesn’t mean that you shouldn’t write any piece of code on yourself. But, if you’re stuck Google is your friend.</p>
+<p><img src="../images/The-top-programming-languages-of-2019.jpeg" alt="The top programming languages of 2019">The top programming languages of 2019</p>
+<p><strong>Letting problems pile up is the poorest strategy there is.</strong> I used to make countless changes on my code and expected it to work right away with no errors. The problem with this path is that it stacks problems one over another. It <strong>will</strong> become difficult to deal with them because you will not know where the problem is. So take them one by one.</p>
+<p><strong>Learning by yourself is very tough.</strong> The majority of people started off programming by trying to learn by themselves. It’s not that bad of a choice, but it’s very time-consuming. I remember when I didn’t know how the <strong>map</strong> function worked on JavaScript. I spent all weekend trying to figure it out, and I didn’t get very far. Then, on Monday a friend of mine explained it for 5 minutes and I got it completely.</p>
+<h4 id="Your-ego-doesn’t-have-a-place-while-you’re-learning-to-code"><a href="#Your-ego-doesn’t-have-a-place-while-you’re-learning-to-code" class="headerlink" title="Your ego doesn’t have a place while you’re learning to code"></a>Your ego doesn’t have a place while you’re learning to code</h4><p><strong>Let go of your emotions</strong>. You’re going to see errors on your journey to programming a lot. A lot lot. You’ll even get familiarized with them. When screwing up is such a big part of the process, you have to be okay with the mistakes you made. Don’t hold grudges, as you’ll only lose time and patience.</p>
+<p><strong>You don’t need 5 monitors</strong>. Can’t stress that enough. Despite what Hollywood shows on movies, you never need an insane external monitor to be a programmer. The computer you’re on right now is probably good enough for you to start programming. Don’t waste money on something that might not be useful. I’ve been using 2 monitors for the past 15 years and I’m pretty okay.</p>
+<p><strong>Capitalization matters</strong>. It took me a while to understand this. There’s a subtle difference between similar symbols, and it can be pretty frustrating until you get used to it. I remember pointing out to the computer “Hey, here’s the variable I declared. Are you blind?”</p>
+<p><img src="../images/SDK-usage-shows-the-most-popular-programming-language.png" alt="SDK usage shows the most popular programming language">SDK usage shows the most popular programming language</p>
+<p><strong>Trying to understand everything is a lost cause.</strong> In the beginning, you’re full of energy. You chase down the “why” of every single problem you encounter. This is not necessary by a mile. Computers are so complex and there is a sea full of things to learn. And you’re never going to know everything. And that’s really okay.</p>
+<p><strong>Pair the program as much as possible</strong>. There’s no faster way until to this day to learn how to code. Pair program as much as you can, and you’ll be amazed at the results.</p>
+<h4 id="Ask-for-help-without-feeling-embarrassed"><a href="#Ask-for-help-without-feeling-embarrassed" class="headerlink" title="Ask for help without feeling embarrassed"></a>Ask for help without feeling embarrassed</h4><p><strong>Changing code is a huge part of the process</strong>. I used to think back in my young days that every piece of code I wrote had to be perfect. But making improvements to your code is normal. Hell, it’s essential. You’re not writing a book that can’t be changed once it’s published. So if you feel like your code might run faster another way, do it.</p>
+<p><strong>There’s a right way to ask for help.</strong> Everybody has to ask for help at some point in their career. And when you do, remember these four things:</p>
+<ol>
+<li>Overcommunicate details that you see</li>
+<li>Explain just what’s happening, nothing more</li>
+<li>Explain what should be happening</li>
+<li>State why you think it has to be working differently</li>
+</ol>
+<p>Go through this process, and you’ll often come across a solution <strong>without having to ask for help.</strong> It makes you think about your problem in a holistic way.</p>
+<p><strong>You don’t have to be a math genius.</strong> If you’re not a math person, or into math at all, it doesn’t mean that you won’t succeed in programming. It’s a huge advantage if you do, but if not, it’s not an indicator that you will fail programming. I know someone who doesn’t know how to multiply numbers without a calculator and he excels in Python.</p>
+<p><strong>Always celebrate small wins.</strong> Building stuff with code is extremely cool. I would’ve never arrived where I’m at if I hadn’t celebrated every win. It’s amazing to see how well your code runs once you optimize it. And it’s a very powerful tool to pat yourself in the back if no one is doing it for you.</p>
+<p><img src="../images/Pair-programming-is-similar-to-having-a-navigator-while-you-drive.jpeg" alt="Pair programming is similar to having a navigator while you drive">Pair programming is similar to having a navigator while you drive</p>
+<p><strong>Meet-ups are extremely valuable.</strong> In the beginning, I found it pretty intimidating to get myself to the point where I found myself comfortable enough to attend these. But once I did, I realized that there were a lot of programmers just like me. And you will be amazed by how many people are going through the same things as you.</p>
+<h4 id="It’s-okay-to-make-big-mistakes"><a href="#It’s-okay-to-make-big-mistakes" class="headerlink" title="It’s okay to make big mistakes"></a>It’s okay to make big mistakes</h4><p><strong>Avoid merge conflicts and you’ll be happy.</strong> Merge conflicts are probably the most annoying thing that can happen. Especially on a Friday. When I realized that I could sneak a feature in before a teammate so that he has to deal with it instead of me, I was super excited. This isn’t the most morally advise I give, but it helps.</p>
+<p><strong>It’s okay to admit what you don’t know.</strong> When you land your first programming job, you might stick to the “fake it till you make it” agenda. Don’t. Nobody expects you to know everything right away. And the truth will get you farther than a lie ever will. Don’t expect people to believe you know everything on your first job. Having the ability to know it’s okay is crucial to the “20 Things to know before you start programming” list.</p>
+<p><strong>It doesn’t take 10,000 hours to land a good job.</strong> There’s a saying “you need 10,000 hours of work to be good at something”. This doesn’t apply to programming at all. In reality, you need to be good enough to know how to self-correct and get back on track when some problem arises. And, this goes without saying, that it takes less than 10,000 hours.</p>
+<p><strong>You’re going to wake up thinking about code.</strong> And when it happens, it’s amazing. You’ll find out that you love what you’re doing. In fact, you’re loving it so much that it’s the first thing you think about when you wake up.</p>
+<p><strong>It’s okay to make big mistakes.</strong> I once made a mistake so big that it cost my company 10,000. And in the process, I realized the most important lesson of my programming language: it’s okay to make mistakes. Through this mistake, I realized what I shouldn’t do. Ever. And I passed this lesson further below and we never had to pay ​10,000 again.</p>
+<p><img src="../images/Big-mistakes-can-lead-to-a-more-sustainable-future.jpeg" alt="Big mistakes can lead to a more sustainable future">Big mistakes can lead to a more sustainable future </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tips/" rel="tag"># tips</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/06/1971%E5%B9%B4%E4%B8%AD%E5%9B%BD%E6%81%A2%E5%A4%8D%E8%81%94%E5%90%88%E5%9B%BD%E5%B8%AD%E4%BD%8D/" rel="prev" title="1971年中国恢复联合国席位">
+      <i class="fa fa-chevron-left"></i> 1971年中国恢复联合国席位
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Memorizing-does-not-apply-on-programming"><span class="nav-number">1.</span> <span class="nav-text">Memorizing does not apply on programming</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Your-ego-doesn’t-have-a-place-while-you’re-learning-to-code"><span class="nav-number">2.</span> <span class="nav-text">Your ego doesn’t have a place while you’re learning to code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ask-for-help-without-feeling-embarrassed"><span class="nav-number">3.</span> <span class="nav-text">Ask for help without feeling embarrassed</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#It’s-okay-to-make-big-mistakes"><span class="nav-number">4.</span> <span class="nav-text">It’s okay to make big mistakes</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=26924746&auto=1&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
