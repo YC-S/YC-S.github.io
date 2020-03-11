@@ -165,6 +165,147 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E6%8C%91%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/02/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E6%8C%91%E6%88%98/" class="post-title-link" itemprop="url">分布式系统相关挑战</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-02 22:23:50 / Modified: 22:24:43" itemprop="dateCreated datePublished" datetime="2020-03-02T22:23:50-06:00">2020-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>从我们添加第二台服务器的那一刻起，分布式系统就已融入 Amazon。1999 年，我初到 Amazon 之时，服务器非常少，少到我们甚至可以给部分服务器命名（如“fishy”或“online-01”），以便于识别它们。然而，即便是在 1999 年，分布式计算也并非易事。与现在一样，分布式系统同样面临着诸多挑战，包括延迟、扩展、理解网络 API、数据编组和解组以及 Paxos 等算法的复杂性。随着系统的不断快速扩展和分布程度的不断提高，理论上的边缘情况成为了常态。</p>
+<p>开发分布式实用程序计算服务（例如可靠的长途电话网络或 Amazon Web Services (AWS) 服务）比较困难。与其他形式的计算相比，分布式计算也<em>更古怪</em>，而且<em>不够直观</em>，因为它存在两个相互关联的问题。在分布式系统中，造成最大问题的是<strong>故障独立性</strong>和<a href="https://sampa.cs.washington.edu/new/papers/asplos021-hunt.pdf" target="_blank" rel="noopener">不确定性</a>。在分布式系统中，除了大多数工程师习以为常的计算故障外，故障还会以许多其他方式出现。更糟糕的是，不可能时刻知晓某事项是否发生了故障。</p>
+<p>在整个 Amazon 构建者库中，我们介绍了 AWS 如何处理分布式系统产生的复杂的开发和运营问题。在探讨其他文章对于这些技术的详细介绍之前，我们有必要先来了解一下为什么分布式计算如此古怪。首先，我们来了解一下分布式系统的类型。</p>
+<h2 id="分布式系统的类型"><a href="#分布式系统的类型" class="headerlink" title="分布式系统的类型"></a>分布式系统的类型</h2><p>实际上，分布式系统在实施过程中是存在难易差异的。一方面，我们有 <em>离线</em>分布式系统。其中包括批处理系统、大数据分析集群、电影场景渲染农场、蛋白质折叠集群等。虽然离线分布式系统实现起来并不容易，但它却几乎囊括了分布式计算的所有优点（可扩展性和容错能力），而且几乎没有缺点（复杂的故障模式和不确定性）。</p>
+<p>另一方面，我们有 <em>软实时</em>分布式系统。这些是必须不断产生或更新结果的重要系统，但是它们有一个相对充裕的时间窗口来执行这些操作。此类系统包括部分搜索索引生成器、搜寻受损服务器的系统、Elastic Compute Cloud (Amazon EC2) 的角色等等。搜索索引器可能会有 10 分钟到数小时的时间（具体取决于应用程序）处于离线状态，但不会对客户造成不当影响。Amazon EC2 的角色必须将更新的凭证推送到（基本上）每个 EC2 实例，但是它有几个小时的时间来执行此操作，因为旧凭证在一段时间过后才会过期。</p>
+<p>最后一方面，我们有 <em>硬实时</em>分布式系统，这也是最难实现的分布式系统。我们通常将其称之为请求/回复服务。在 Amazon，当我们考虑构建分布式系统时，首先想到的类型是硬实时系统。然而，硬实时分布式系统是最难实现的。难以实现的原因是，无法预计请求的到达但又必须迅速对其做出响应（例如，客户正在热切等待响应）。示例包括前端 Web 服务器、订单管道、信用卡交易、每个 AWS API、电话通讯等。本文将重点介绍硬实时分布式系统。</p>
+<h2 id="硬实时系统非常古怪"><a href="#硬实时系统非常古怪" class="headerlink" title="硬实时系统非常古怪"></a>硬实时系统非常古怪</h2><p>在《超人》漫画中有这样一个故事情节：超人遇到了名叫 <em>Bizarro</em> 的另一个自我，Bizarro 生活在一个规则相反的行星 (<em>Bizarro World</em>) 上。Bizarro <em>外表</em>与超人相似，但他实际上是个反派人物。硬实时分布式系统亦是如此。它们表面上酷似常规计算，但实际上并不相同；坦率地说，有点“邪恶”。</p>
+<p>硬实时分布式系统的开发之所以奇怪是因为：请求/回复网络。我们并<em>不</em>是指 TCP/IP、DNS、套接字或其他此类协议的具体细节。这些主题可能难以理解，但与计算中的其他难题相似。</p>
+<p>硬实时分布式系统的难点在于网络允许将消息从一个<em>容错域</em>发送到另一个容错域。发送消息似乎没有什么危害。但事实上，发送消息是一切变得比正常情况更加复杂的源头。</p>
+<p>举一个简单的例子，我们来看一下 Pac-Man 实施中的以下代码段。它只在单台计算机上运行，不通过任何网络发送任何消息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">board.move(pacman, user.joystickDirection())</span><br><span class="line">ghosts = board.findAll(":ghost")</span><br><span class="line">for (ghost in ghosts)</span><br><span class="line">  if board.overlaps(pacman, ghost)</span><br><span class="line">    user.slayBy(":ghost")</span><br><span class="line">    board.remove(pacman)</span><br><span class="line">    return</span><br></pre></td></tr></table></figure>
+
+<p>现在，我们假设要开发此代码的联网版本，在一个单独的服务器上维护 board 对象的状态。对 board 对象（例如 findAll()）的每次调用都会导致在两台服务器之间发送和接收消息。</p>
+<p>每当在两台服务器之间发送请求/回复消息时，<em>从始至终</em>一定会至少发生同样的一组八个步骤。要了解联网的 Pac-Man 代码，我们先来了解请求/回复消息收发的基础知识。 </p>
+<h2 id="通过网络进行请求-回复消息收发"><a href="#通过网络进行请求-回复消息收发" class="headerlink" title="通过网络进行请求/回复消息收发"></a>通过网络进行请求/回复消息收发</h2><p>一个请求/回复往返操作始终需要执行相同的步骤。如下图所示，客户端计算机 CLIENT 通过网络 NETWORK 向服务器计算机 SERVER 发送请求 MESSAGE，SERVER 也通过网络 NETWORK 回复消息 REPLY。</p>
+<p><img src="../images/reply-messaging-across-network.e70d2f48b08da1b3b4b234fee7f4ee6f335a8373.png" alt="reply-messaging-across-network"></p>
+<p>在一切正常的情况下，会执行以下步骤：</p>
+<p>1.<strong>POST REQUEST</strong>：CLIENT 将请求 MESSAGE 放到 NETWORK 上。<br>2.<strong>DELIVER REQUEST</strong>：NETWORK 将 MESSAGE 传送到 SERVER。<br>3.<strong>VALIDATE REQUEST</strong>：SERVER 验证 MESSAGE。<br>4.<strong>UPDATE SERVER STATE</strong>：如有必要，SERVER 根据 MESSAGE 更新其状态。<br>5.<strong>POST REPLY</strong>：SERVER 将回复 REPLY 放到 NETWORK 上。<br>6.<strong>DELIVER REPLY</strong>：NETWORK 将 REPLY 传送到 CLIENT。<br>7.<strong>VALIDATE REPLY</strong>：CLIENT 验证 REPLY。<br>8.<strong>UPDATE CLIENT STATE</strong>：如有必要，CLIENT 根据 REPLY 更新其状态。</p>
+<p>这只是往返一次就发生的诸多步骤！ 然而，这些步骤就是通过网络请求/回复通信的<em>定义</em>，无法跳过它们之中的任何一个步骤。例如，不可能跳过步骤 1。客户端必须以某种方式将 MESSAGE 放到网络 NETWORK 上。从物理角度讲，这意味着要通过网络适配器发送数据包，这会导致电子信号通过一系列路由器（构成 CLIENT 和 SERVER 之间的网络）在电线上传输。这与步骤 2 是分开的，因为步骤 2 可能由于自主原因出现问题，例如 SERVER 突然断电并且无法接受传入的数据包。这一逻辑同样适用于其余步骤。</p>
+<p>因此，通过网络的单个请求/回复会将<em>一件</em>事（调用方法）分解为<em>八件</em>事。更糟糕的是，如上所述，CLIENT、SERVER 和 NETWORK 可能会彼此<em>独立地</em>发生故障。工程师的代码必须处理上文提及的<em>任何</em>步骤发生的故障。典型的工程设计中很少会这样做。要想知晓原因，我们先来了解一下单机版代码中的以下表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board.find("pacman")</span><br></pre></td></tr></table></figure>
+
+<p>从技术角度讲，即使 board.find 的实施本身没有错误，这段代码在运行时也会以一些古怪的方式发生故障。例如，CPU 可能在运行时自发过热。计算机的电源也可能自发地出现故障。内核可能出现恐慌。内存可能已满，无法创建 board.find 想要创建的某些对象。或者，它正在运行的计算机上的磁盘可能已满，board.find 无法更新某些统计文件，然后返回错误（即使可能不应该这样做）。伽马射线可能击中了服务器并剐蹭到 RAM。但是，在大多数情况下，工程师们并不担心这些问题。例如，单元测试永远不会涵盖“如果 CPU 发生故障”的情况，同时也很少涉及内存不足的情况。</p>
+<p>在常见的工程设计中，这些类型的故障发生在一台计算机上；即一个<em>容错域</em>。例如，如果 board.find 方法由于 CPU 自发过热而发生故障，则可以肯定地说，整个计算机都处于故障状态。即使是从概念上也不可能处理该错误。可以对上文列出的其他类型的错误做出类似的假设。您可以尝试为其中一些情况编写测试，但是对于典型的工程设计来说，这毫无意义。如果确实发生了这些故障，可以肯定所有其他项也会发生故障。从技术角度讲，我们称他们<em>共担命运</em>。命运共担可极大地减少工程师必须处理的不同故障模式。</p>
+<h2 id="硬实时分布式系统中的故障处理模式"><a href="#硬实时分布式系统中的故障处理模式" class="headerlink" title="硬实时分布式系统中的故障处理模式"></a>硬实时分布式系统中的故障处理模式</h2><p>硬实时分布式系统工程师必须对网络故障的所有方面都进行测试，因为服务器和网络<em>不会</em>共担命运。与单台计算机的情况不同，如果网络出现故障，客户端计算机将继续工作。如果远程计算机出现故障，客户端计算机将继续工作，如此等等。</p>
+<p>为了详尽测试上文所述的请求/回复步骤的故障情况，工程师必须假定每个步骤都可能发生故障。而且，他们必须确保客户端和服务器上的代码始终能够针对这些故障正确运行。<br>让我们看一下出现问题的请求/回复的一次往返操作：</p>
+<p>1.<strong>POST REQUEST 失败</strong>：NETWORK 无法传送消息（例如，中间路由器恰好不合时宜地崩溃），或者 SERVER 明确拒绝了该消息。<br>2.<strong>DELIVER REQUEST</strong> <strong>失败</strong>：NETWORK 已成功将 MESSAGE 传送到 SERVER，但是 SERVER 收到 MESSAGE 后立即崩溃。<br>\3. <strong>VALIDATE REQUEST 失败</strong>：SERVER 判定 MESSAGE 无效。原因可能无所不有。例如，数据包损坏、软件版本不兼容，或者客户端或服务器出现错误。<br>4.<strong>UPDATE SERVER STATE</strong> <strong>失败</strong>：SERVER 尝试更新其状态，但无法更新。<br>5.<strong>POST REPLY 失败</strong>：无论尝试回复成功还是失败，SERVER 都可能无法发布回复。例如，它的网卡可能恰好不合时宜地过热。<br>6.<strong>DELIVER REPLY 失败</strong>：即使 NETWORK 在上文的步骤中可以正常运行，NETWORK 仍可能无法像上文描述的那样将 REPLY 传送给 CLIENT。<br>7.<strong>VALIDATE REPLY 失败</strong>：CLIENT 判定 REPLY 无效。<br>8.<strong>UPDATE CLIENT STATE 失败</strong>：CLIENT 可能会收到消息 REPLY，但是无法更新其自身的状态、无法理解消息（由于不兼容）或由于其他原因而失败。</p>
+<p>正是这些故障模式使得分布式计算变得困难重重。我将其称之为<em>天启的八种故障模式</em>。鉴于这些故障模式，让我们再次从 Pac-Man 代码中查看该表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board.find("pacman")</span><br></pre></td></tr></table></figure>
+
+<p>该表达式扩展为以下客户端活动：</p>
+<p>1.在网络上发布一条消息（例如 {action: “find”, name: “pacman”, userId: “8765309”}），该网络寻址到 Board 计算机。<br>2.如果网络不可用，或者显式拒绝了与 Board 计算机的连接，则会引发错误。这种情况有些特殊，因为客户端确切地知道服务器计算机可能未收到该请求。<br>3.等待回复。<br>4.如果从未收到回复，则超时。在此步骤中，超时意味着请求的结果为 UNKNOWN。它可能发生过也可能没发生过。客户端必须正确处理 UNKNOWN。<br>5.如果收到回复，则确定是成功回复、错误回复还是回复难以理解/发生损坏。<br>6.如果不是错误，则解组响应并将其转换为代码可以理解的对象。<br>7.如果是错误或无法理解的回复，则会引发异常。<br>8.无论如何处理异常，都必须确定应<em>重试</em>该请求还是放弃并停止操作。</p>
+<p>该表达式还会启动以下服务器端活动：</p>
+<p>1.收到请求（这可能根本不会发生）。<br>2.验证请求。<br>3.查找用户以查看该用户是否还处于活动状态。（服务器可能已经放弃该用户，因为它很长时间没有收到来自用户的任何消息。）<br>4.更新用户的保持活动表，以便服务器知道他们（可能）仍然还在。<br>5.查找用户的位置。<br>6.发布包含类似 {xPos: 23, yPos: 92, clock: 23481984134} 的响应。<br>7.任何其他服务器逻辑都必须正确处理客户端的后续影响。例如，无法接收消息、接收消息但不理解消息、接收消息但消息崩溃或成功处理消息。</p>
+<p>总之，普通代码中的<em>一个表达式</em>在硬实时分布式系统代码中变成了<em>十五个</em>额外的步骤。发生这种扩展的原因是客户端和服务器之间的每次往返通信在八个不同的点都有可能发生故障。任何表示网络往返的表达式（例如 board.find(“pacman”)），都会产生以下结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(error, reply) = network.send(remote, actionData)</span><br><span class="line">switch error</span><br><span class="line">  case POST_FAILED:</span><br><span class="line">    // handle case where you know server didn't get it</span><br><span class="line">  case RETRYABLE:</span><br><span class="line">    // handle case where server got it but reported transient failure</span><br><span class="line">  case FATAL:</span><br><span class="line">    // handle case where server got it and definitely doesn't like it</span><br><span class="line">  case UNKNOWN: // i.e., time out</span><br><span class="line">    // handle case where the *only* thing you know is that the server received</span><br><span class="line">    // the message; it may have been trying to report SUCCESS, FATAL, or RETRYABLE</span><br><span class="line">  case SUCCESS:</span><br><span class="line">    if validate(reply)</span><br><span class="line">      // do something with reply object</span><br><span class="line">    else</span><br><span class="line">      // handle case where reply is corrupt/incompatible</span><br></pre></td></tr></table></figure>
+
+<p>这种复杂性是难以避免的。如果代码无法正确处理所有情况，则该服务最终将以奇怪的方式发生故障。想象一下，若尝试为客户端/服务器系统（例如 Pac-Man 示例）可能遇到的所有故障模式编写测试，难度何其之大！</p>
+<h2 id="测试硬实时分布式系统"><a href="#测试硬实时分布式系统" class="headerlink" title="测试硬实时分布式系统"></a>测试硬实时分布式系统</h2><p>测试单机版本的 Pac-Man 代码段相对比较简单。创建一些不同的 Board 对象，将它们置于不同的状态，创建一些不同状态的 User 对象，如此等等。工程师会特别认真地考虑边缘条件，可能会使用生成式测试或模糊测试。</p>
+<p>在 Pac-Man 代码中，有四个地方使用 board 对象。在分布式 Pac-Man 中，该代码中有四个点具有五种不同的可能结果，如上文所示（POST_FAILED、RETRYABLE、FATAL、UNKNOWN 或 SUCCESS）。这极大地增加了测试的状态空间。例如，硬实时分布式系统的工程师必须处理许多排列。假设对 board.find() 调用失败，并显示 POST_FAILED。那么，您必须测试当它失败并显示 RETRYABLE 时会发生什么，然后必须测试当它失败并显示 FATAL 时会发生什么，如此等等。</p>
+<p>但即使这样，测试也是不够的。在常规代码中，工程师可能会认为，如果 board.find() 有效，那么对 board 的下一个调用 board.move() 也将有效。在硬实时分布式系统工程中，没有这样的保证。服务器计算机随时都有可能发生独立故障。最终，工程师每次调用 board 时都必须针对所有五种情况编写测试。假设工程师提出了 10 种可以在单机版 Pac-Man 中进行测试的情况。但是，在分布式系统版本中，他们必须针对每种情况测试 <em>20</em> 次。这意味着测试矩阵会从 10 膨胀到 200！</p>
+<p>但是等等，情况不止如此。工程师<em>也</em>可能拥有<em>服务器</em>代码。无论客户端、网络和服务器端出现怎样的错误组合，工程师都必须进行测试，以便客户端和服务器最终不会处于损坏状态。服务器代码可能如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">handleFind(channel, message)</span><br><span class="line">  if !validate(message)</span><br><span class="line">    channel.send(INVALID_MESSAGE)</span><br><span class="line">    return</span><br><span class="line">  if !userThrottle.ok(message.user())</span><br><span class="line">    channel.send(RETRYABLE_ERROR)</span><br><span class="line">    return</span><br><span class="line">  location = database.lookup(message.user())</span><br><span class="line">  if location.error()</span><br><span class="line">    channel.send(USER_NOT_FOUND)</span><br><span class="line">    return</span><br><span class="line">  else</span><br><span class="line">    channel.send(SUCCESS, location)</span><br><span class="line"></span><br><span class="line">handleMove(...)</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">handleFindAll(...)</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">handleRemove(...)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<p>需要测试四个服务器端函数。假设一台计算机上的每个函数都需进行五次测试，那么就需要进行 20 次测试。由于客户端将多条消息发送到同一服务器，因此测试应模拟不同请求的序列，以确保服务器保持稳健运行。请求的示例包括 find、move、remove 和 findAll。</p>
+<p>假设一个构造有 10 种不同的场景，每种场景平均有 3 个调用，那么就需要进行超过 30 次测试。此外，一个场景还需要测试故障案例。对于每一个测试，您都需要模拟以下情况：如果客户端收到四种失败类型（POST_FAILED、RETRYABLE、FATAL 和 UNKNOWN）中的任何一种，然后使用无效请求再次调用服务器，将会发生什么情况。例如，客户端可能成功调用了 find，但是在调用 move 时，有时会收到 UNKNOWN。然后出于某种原因，它可能会再次调用 find。服务器是否可以正确处理这种情况？ 也许可以处理。但是如果不进行测试，您就无从知晓。因此，与客户端代码一样，服务器端测试矩阵的复杂性也会呈爆炸式增长。</p>
+<h2 id="处理未知的未知情况"><a href="#处理未知的未知情况" class="headerlink" title="处理未知的未知情况"></a>处理未知的未知情况</h2><p>如果要考虑分布式系统可能会遇到的所有故障排列，尤其是在有多个请求时，这简直难以想象。我们发现处理分布式工程设计的一种方法是不信任<em>任何事物</em>。除非不会引发网络不通信，否则每一行代码都可能无法达到预期的效果。</p>
+<p>也许最难处理的是上一节中所述的 UNKNOWN 错误类型。客户端无法时时知晓请求是否成功。也许它<em>确实</em>移动了 Pac-Man（或者在银行服务中，从用户的银行账户中提款），或者也许<em>没有</em>。工程师应该如何处理此类情形？ 这很难处理，因为工程师是人，而人往往要在真正的不确定性中挣扎。人类习惯于像下面这样查看代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bool isEven(number)</span><br><span class="line">  switch number % 2</span><br><span class="line">    case 0</span><br><span class="line">      return true</span><br><span class="line">    case 1</span><br><span class="line">      return false</span><br></pre></td></tr></table></figure>
+
+<p>人类理解此代码，是因为它执行了它<em>应该</em>执行的操作。分布式版本的代码让人类苦不堪言，它会将一些工作分配给服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bool distributedIsEven(number)</span><br><span class="line">  switch mathServer.mod(number, 2)</span><br><span class="line">    case 0</span><br><span class="line">      return true</span><br><span class="line">    case 1</span><br><span class="line">      return false</span><br><span class="line">    case UNKNOWN</span><br><span class="line">      return WHAT_THE_FARG?</span><br></pre></td></tr></table></figure>
+
+<p>人类几乎不可能弄清楚如何正确处理 UNKNOWN。UNKNOWN 的真正含义为何？ 是否应重试代码？ 如果应该，要重试多少次？ 重试之间应等待多长时间？ 当代码有副作用时，情况甚至会更糟。在单台计算机上运行的预算应用程序内部，从账户中提取资金非常容易，如以下示例所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Teller</span><br><span class="line">  bool doWithdraw(account, amount)</span><br><span class="line">    switch account.withdraw(amount)</span><br><span class="line">      case SUCCESS</span><br><span class="line">        return true</span><br><span class="line">      case INSUFFICIENT_FUNDS</span><br><span class="line">        return false</span><br></pre></td></tr></table></figure>
+
+<p>但是，由于出现 UNKNOWN，该应用程序的分布式版本很古怪。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class DistributedTeller</span><br><span class="line">  bool doWithdraw(account, amount)</span><br><span class="line">    switch this.accountService.withdraw(account, amount)</span><br><span class="line">      case SUCCESS</span><br><span class="line">        return true</span><br><span class="line">      case INSUFFICIENT_FUNDS</span><br><span class="line">        return false</span><br><span class="line">      case UNKNOWN</span><br><span class="line">        return WHAT_THE_FARG?</span><br></pre></td></tr></table></figure>
+
+<p>在分布式工程设计中，要想知道为什么<em>事情并非总如表现的那样</em>，就需要弄清楚如何处理 UNKNOWN 错误类型。</p>
+<h2 id="硬实时分布式系统群"><a href="#硬实时分布式系统群" class="headerlink" title="硬实时分布式系统群"></a>硬实时分布式系统群</h2><p>天启的八种故障模式可以发生在分布式系统中的任何抽象层。上文的示例仅限于一台客户端计算机、一个网络和一台服务器计算机。即使在这种简单的场景中，故障状态矩阵的复杂性也会呈爆炸式增长。与单台客户端计算机示例相比，实时分布式系统具有更复杂的故障状态矩阵。实时分布式系统由多台计算机组成，可以在多个抽象层上进行查看：</p>
+<p>1.个别计算机<br>2.计算机组<br>3.计算机组群<br>4.其他（潜在）</p>
+<p>例如，在 AWS 上构建的服务可能会将专用于处理特定可用区资源的计算机分成一组。可能还会有另外两组用于处理另外两个可用区的计算机。然后，可以将这些组划分到一个 AWS 区域组。而且，该区域组（逻辑上）可与其他区域组进行通信。然而，即使在这一更高、更合乎逻辑的抽象层，<em>仍然会出现所有相同的问题。</em></p>
+<p>假设服务已将某些服务器划分到一个逻辑组 GROUP1。GROUP1 组有时可能会将消息发送到另一组服务器 GROUP2。这是<em>递归分布式工程设计</em>的一个示例。上文所述的所有相同的网络故障模式在此都适用。假设 GROUP1 想要向 GROUP2 发送请求。如下图所示，两台计算机的请求/回复交互就像上文所述的单台计算机一样。</p>
+<p><img src="../images/two-machine-request-reply.1e17ff385870b005b8d260d809e34a2e78c7ea95.png" alt="two-machine-request-reply"></p>
+<p>无论如何，GROUP1 中的某些计算机必须在（逻辑上）寻址到 GROUP2 的网络 NETWORK 上放置一条消息。GROUP2 中的某些计算机必须处理该请求等等。GROUP1 和 GROUP2 是由计算机组组成的这一事实并未改变基本原则。GROUP1、GROUP2 和 NETWORK 仍然可以彼此独立发生故障。</p>
+<p>然而，这只是组级视图。每个组中还存在计算机到计算机级别的交互。例如，GROUP2 的结构可能如下图所示。</p>
+<p><img src="../images/group-2-load-balancer.8ca4bed7e09adb925f696172f61b858a50cb1770.png" alt="group-2-load-balancer"></p>
+<p>首先，通过负载均衡器将发送到 GROUP2 的消息发送到组中的一台计算机（可能是 S20）。系统设计人员知道 S20 在 UPDATE STATE 阶段可能会发生故障。因此，S20 可能需要将该消息传递给至少一台其他计算机，要么是同组的计算机，要么是其他组的计算机。S20 实际上是如何做到的？ 通过发送请求/回复消息，比如发送给 S25，如下图所示。</p>
+<p><img src="../images/send-request.reply-message.ee869a6e7bfeded543dd25150a22f8a562457547.png" alt="send-request.reply-message"></p>
+<p>因此，S20 正在递归地执行联网。同样的八个故障可能会再次各自独立地发生。分布式工程设计发生两次，而不是一次。在逻辑层级上，从 GROUP1 传递到 GROUP2 的消息可能会以所有八种方式发生故障。该消息会导致另一条消息（可能自己发生故障）以上文所述的所有八种方式独立发生故障。测试此场景至少涉及以下方面：</p>
+<p>• 针对 GROUP1 到 GROUP2 组级消息传递的所有八种方式的测试均可能失败。<br>• 针对 S20 到 S25 服务器级消息传递的所有八种方式的测试均可能失败。</p>
+<p>这个请求/回复消息传递示例告诉我们为什么即使在使用分布式系统 20 多年后，测试分布式系统仍然是一个特别棘手的问题。由于存在大量的边缘情况，因此测试颇具挑战性，但它在此类系统中特别重要。部署系统后，错误可能需要很长时间才能浮出水面。而且，错误可能会对系统及相邻系统产生难以预料的广泛影响。</p>
+<h2 id="分布式错误通常是潜在的"><a href="#分布式错误通常是潜在的" class="headerlink" title="分布式错误通常是潜在的"></a>分布式错误通常是潜在的</h2><p>如果故障终究要发生，人们普遍认为越早越好。例如，最好找出服务中的扩展问题，这将需要六个月的时间来解决，<em>至少</em>在六个月后，服务才能达到如此规模。同样，最好在错误影响生产之前就找到它们。如果错误确实影响了生产，则最好快速找到它们，以免影响诸多客户或产生其他不利影响。</p>
+<p>分布式错误，即那些由于无法处理天启的八个故障模式的所有排列而导致的错误，通常非常严重。随着时间的推移，从电信系统到核心 Internet 系统，大型分布式系统的例子比比皆是。这些故障不仅普遍而且成本高昂，而且几个月前部署到生产中的错误也可能引发这些故障。然后需要一段时间来触发实际导致这些错误发生（并蔓延到整个系统）的场景的组合。</p>
+<h2 id="分布式错误的病毒式传播"><a href="#分布式错误的病毒式传播" class="headerlink" title="分布式错误的病毒式传播"></a>分布式错误的病毒式传播</h2><p>我来介绍另一个对于分布式错误至关重要的问题：</p>
+<p>1.分布式错误必定涉及网络的使用。<br>2.因此，分布式错误更有可能传播到其他计算机（或计算机组），因为按照定义，它们<em>已经涉及将计算机链接到一起的唯一事项。</em></p>
+<p>Amazon 也经历过这些分布式错误。这是一个时间久远但切题的示例，那就是 <a href="http://www.amazon.com" target="_blank" rel="noopener">www.amazon.com</a> 发生全站故障。该故障是由远程目录服务中的一个服务器在其磁盘被填满时出现故障引起的。</p>
+<p>由于对该错误状况处理不当，远程目录服务器开始对收到的每个请求返回空响应。此外，它还开始非常快速地返回它们，因为不返回任何东西都比返回东西要快得多（至少在这种情况下如此）。同时，网站和远程目录服务之间的负载均衡器没有注意到所有响应的长度均为零。但是，它<em>确实</em>注意到它们比所有其他远程目录服务器快得多。因此，它从 <a href="http://www.amazon.com" target="_blank" rel="noopener">www.amazon.com</a> 向磁盘已满的一台远程目录服务器发送了大量流量。事实上，整个网站都瘫痪了，因为一台远程服务器无法显示任何产品信息。</p>
+<p>我们迅速找到了故障服务器，并将其从服务中移除，恢复了网站。然后，我们遵循常规流程来确定根本原因并找到问题，以防止情况再次发生。我们在 Amazon 上分享了这些经验教训，以帮助预防其他系统出现相同的问题。除了学习有关此故障模式的特定经验教训之外，此事件还很好地说明了故障模式如何在分布式系统中快速且不可预测地传播。</p>
+<h2 id="分布式系统中的问题总结"><a href="#分布式系统中的问题总结" class="headerlink" title="分布式系统中的问题总结"></a>分布式系统中的问题总结</h2><p>简而言之，为分布式系统进行工程设计很困难，因为：</p>
+<p>• 工程师无法对错误状况进行组合。相反，他们必须考虑许多故障排列。大多数错误可以随时发生，与任何其他错误状况无关（因此，可能会与其他错误状况相结合）。<br>• 任何网络操作的结果都可能是 UNKNOWN，在这种情况下，请求可能已成功、失败或已接收但未处理。<br>• 分布式问题发生在分布式系统的所有逻辑层级，而不仅仅是低层级的物理计算机。<br>• 由于递归，分布式问题在更高层级的系统上会变得更加严重。<br>• 分布式错误通常会在部署到系统后很长时间才出现。<br>• 分布式错误可能会蔓延到整个系统。<br>• 上述许多问题都源自联网的物理定律，无法更改。</p>
+<p>这仅仅是因为分布式计算既困难又古怪，但并不意味着没有办法解决这些问题。在整个 Amazon 创建者库中，我们深入研究了 AWS 如何管理分布式系统。希望您在为客户构建时能够利用我们所学到的一些知识，发挥它们的价值。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/Developer-RoadMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1211,99 +1352,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/%E5%BA%94%E5%AF%B9%E6%95%85%E9%9A%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/24/%E5%BA%94%E5%AF%B9%E6%95%85%E9%9A%9C/" class="post-title-link" itemprop="url">应对故障</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-24 17:44:07 / Modified: 17:47:23" itemprop="dateCreated datePublished" datetime="2020-02-24T17:44:07-06:00">2020-02-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>或多或少我们都会经历线上的故障。在我的职业生涯中，就经历过很多的线上故障。老实说，线上故障是技术人员成长中必须要经历的事。从故障中我们可以吸取到很多教训，能让我们学到很多书本上学不到的知识。坑踩多了，会变得越来越有经验，也就成为老司机了。</p>
-<p>不过，很多公司处理线上故障的方式并不科学，而且存在很多问题，所以，分享一些我的经验。这些经验主要来自亚马逊和阿里这两家互联网公司，以及个人的经验总结。希望这套方法能够有帮助。</p>
-<h1 id="故障发生时"><a href="#故障发生时" class="headerlink" title="故障发生时"></a>故障发生时</h1><p>在故障发生时，最重要的是快速恢复故障。而快速恢复故障的前提是快速定位故障源。因为在很多分布式系统中，一旦发生故障就会出现“多米诺骨牌效应”。也就是说，系统会随着一个故障开始一点一点地波及到其它系统，而且这个过程可能会很快。一旦很多系统都在报警，要想快速定位到故障源就不是一件简单的事了。</p>
-<p>在亚马逊内部，每个开发团队至少都会有一位 oncall 的工程师。在 oncall 的时候，工程师要专心处理线上故障，轮换周期为每人一周。一旦发生比较大的故障，比如，S1 全部不可用，或 S2 某功能不可用，而且找不到替代方案，那么这个故障就会被提交到一个工单系统里。几乎所有相关团队 oncall 的工程师都会被叫到线上处理问题。</p>
-<p>工作流是，先线上签到，然后自查自己的服务，如果自己的服务没有问题，那么就可以在旁边待命（standby），以备在需要时进行配合。如果问题没有被及时解决，就会自动升级到高层，直到 SVP 级别。</p>
-<p>大家都知道，在亚马逊，不是按技能分工，而是按职责分工，也就是一个团队不是按前端、后端、运维等来分工，而是按所负责的 Service 来分工。所以，亚马逊的开发人员都是前端、后端、测试、运维全部都要干的。而亚马逊内部有很多的服务，一旦出现问题，为了避免一个工单在各个团队流转，需要所有团队上线处理，这样是最快的。</p>
-<p>如果我们的系统架构是分布式服务化的，那么一个用户的请求可能会经过很多的服务，开发和运维起来是非常麻烦的。此时，跨团队跨部门的开发和运维就变得非常的重要了。就我的经历而言，在故障发生时，亚马逊的处理过程是比较有效和快速的，尤其是能够快速地定位故障源。对于被影响的其他团队也可以做一定的处理，比如做降级处理，这样可以控制故障的范围不被扩散。</p>
-<p>故障源团队通常会有以下几种手段来恢复系统。</p>
-<ul>
-<li><strong>重启和限流</strong>。重启和限流主要解决的是可用性的问题，不是功能性的问题。重启还好说，但是限流这个事就需要相关的流控中间件了。</li>
-<li><strong>回滚操作</strong>。回滚操作一般来说是解决新代码的 bug，把代码回滚到之前的版本是快速的方式。</li>
-<li><strong>降级操作</strong>。并不是所有的代码变更都是能够被回滚的，如果无法回滚，就需要降级功能了。也就是说，需要挂一个停止服务的故障公告，主要是不要把事态扩大。</li>
-<li><strong>紧急更新</strong>。紧急更新是常用的手段，这个需要强大的自动化系统，尤其是自动化测试和自动化发布系统。假如你要紧急更新 1000 多台服务器，没有一个强大的自动化发布系统是很难做到的。</li>
-</ul>
-<p>也就是说，出现故障时，<strong>最重要的不是 debug 故障，而是尽可能地减少故障的影响范围，并尽可能快地修复问题</strong>。</p>
-<p>国内的很多公司，都是由专职的运维团队来处理线上问题的。然而，运维团队通常只能处理一些基础设施方面的问题，或是非功能性的问题。对于一些功能性的问题，运维团队是完全没有能力处理的，只能通过相应的联系人，把相关的开发人员叫到线上来看。而可能这个开发人员看到的是别的系统有问题，又会叫上其它团队的人来。所以，一级一级地传递下去，会浪费很多时间。</p>
-<h1 id="故障前的准备工作"><a href="#故障前的准备工作" class="headerlink" title="故障前的准备工作"></a>故障前的准备工作</h1><p>为了能够在面临故障时做得有条不紊，我们需要做一些前期的准备工作。这些准备工作做得越细，那么故障处理起来也就越有条理。我们知道，故障来临时，一切都会变得混乱。此时，对于需要处理故障的我们来说，事可以乱，但人不能乱。如果人跟着事一起乱，那就是真正的混乱了。</p>
-<p>所以，我们需要做一些故障前的准备工作。在这里，我给出一些我的经验。</p>
-<ul>
-<li><strong>以用户功能为索引的服务和资源的全视图</strong>。首先，我们需要一个系统来记录前端用户操作界面和后端服务，以及服务所使用到的硬件资源之间的关联关系。这个系统有点像 CMDB（配置管理数据库），但是比 CMDB 要大得多，是以用户端的功能来做索引的。然后，把后端的服务、服务的调用关系，以及服务使用到的资源都关联起来做成一个视图。</li>
-</ul>
-<p>这个视图最好是由相应的自动化监控系统生成。有了这个资源图后，我们就可以很容易地找到处理故障的路径了。<strong>这就好像一张地图，如果没有地图，我们只能像个无头苍蝇一样乱试了</strong>。</p>
-<ul>
-<li><strong>为地图中的各个服务制订关键指标，以及一套运维流程和工具，包括应急方案</strong>。以用户功能为索引，为每个用户功能的服务都制订一个服务故障的检测、处理和恢复手册，以及相关的检测、查错或是恢复的运维工具。对于基础层和一些通用的中间件，也需要有相应的最佳实践的方法。</li>
-</ul>
-<p>比如 Redis，怎样检查其是否存在问题，怎样查看其健康和运行状态？哪些是关键指标，面对常见的故障应该怎么应对，服务不可用的服务方案是什么，服务需要回滚了应该怎么操作，等等。<strong>这就好像一个导航仪，能够告诉你怎么做。而没有导航仪，就没有章法，会导致混乱</strong>。</p>
-<ul>
-<li><strong>设定故障的等级</strong>。还要设定不同故障等级的处理方式。比如，亚马逊一般将故障分为 4 级：1 级是全站不可用；2 级是某功能不可用，且无替代方案；3 级是某功能不可用，但有替代方案；4 级是非功能性故障，或是用户不关心的故障。阿里内的分类更多样一些，有时会根据影响多少用户来定故障等级。</li>
-</ul>
-<p>制定故障等级，主要是为了确定该故障要牵扯进多大规模的人员来处理。故障级别越高，牵扯进来的人就越多，参与进来的管理层级别也就越高。就像亚马逊内的全员上线 oncall 一样。<strong>这就好像是我们社会中常用的“红色警报”、“橙色警报”、“黄色警报”之类的，会触发不同的处理流程</strong>。</p>
-<ul>
-<li><strong>故障演练</strong>。故障是需要演练的。因为故障并不会时常发生，但我们又需要不断提升处理故障的能力，所以需要经常演练。一些大公司，如 Netflix，会有一个叫 Chaos Monkey 的东西，随机地在生产线上乱来。Facebook 也会有一些故障演习，比如，随机关掉线上的一些服务器。总之，要提升故障处理水平，最好的方式就是实践。见得多了，处理得多了，才能驾轻就熟。<strong>故障演练是一个非常好的实践</strong>。</li>
-<li><strong>灰度发布系统</strong>。要减少线上故障的影响范围，通过灰度发布系统来发布是一个很不错的方式。毕竟，我们在测试环境中很难模拟出线上环境的所有情况，所以，在生产线上进行灰度发布或是 A/B 测试是一件很好的事。</li>
-</ul>
-<p>在亚马逊，发布系统中有一个叫 Weblab 的系统，就是用来做灰度发布的。另外，亚马逊全球会有多个站点。一般来说，会先发中国区。如果中国区没什么问题了，就发日本区，然后发欧洲区，最后是美国区。而如果没有很多站点的话，那么你就需要一个流量分配系统来做这个事了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1374,7 +1422,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
