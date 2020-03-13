@@ -165,6 +165,191 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="post-title-link" itemprop="url">机器学习和人工智能</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-17 22:24:59 / Modified: 22:31:28" itemprop="dateCreated datePublished" datetime="2020-02-17T22:24:59-06:00">2020-02-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基本原理简介"><a href="#基本原理简介" class="headerlink" title="基本原理简介"></a>基本原理简介</h1><p>我们先来介绍一下机器学习的基本原理。</p>
+<p>机器学习主要有两种方式，一种是监督式学习（Supervised Learning），另一种是非监督式学习（Unsupervised Learning）。下面简单地说一下这两者的不同。</p>
+<ul>
+<li><p><strong>监督式学习（Supervised Learning）</strong>。所谓监督式学习，也就是说，我们需要提供一组学习样本，包括相关的特征数据和相应的标签。我们的程序可以通过这组样本来学习相关的规律或是模式，然后通过得到的规律或模式来判断没有被打过标签的数据是什么样的数据。</p>
+<p>举个例子，假设需要识别一些手写的数字，我们要找到尽可能多的手写体的数字的图像样本，然后人工或是通过某种算法来明确地标注上什么是这些手写体的图片，谁是 1，谁是 2，谁是 3…… 这组数据叫样本数据，又叫训练数据（training data）。然后通过机器学习的算法，找到每个数字在不同手写体下的特征，找到规律和模式。通过得到的规律或模式来识别那些没有被打过标签的手写数据，以此完成识别手写体数字的目的。</p>
+</li>
+<li><p><strong>非监督式学习（Unsupervised Learning）</strong>。对于非监督式学习，也就是说，数据是没有被标注过的，所以相关的机器学习算法需要找到这些数据中的共性。因为大量的数据是没被被标识过的，所以这种学习方式可以让大量的未标识的数据能够更有价值。而且，非监督式学习，可以为我们找到人类很难发现的数据里的规律或模型，所以也有人称这种学习为 “ 特征点学习 “，其可以让我们自动地为数据进行分类，并找到分类的模型。</p>
+<p>一般来说，非监督式学习会应用在一些交易型的数据中。比如，你有一堆堆的用户购买数据，但是对于人类来说，我们很难找到用户属性和购买商品类型之间的关系。所以，非监督式学习算法可以帮助我们找到它们之间的关系。比如，一个在某个年龄段的女性购买了某种肥皂，有可能说明这个女性在怀孕期，或是某人购买儿童用品，有可能说明这个人的关系链中有孩子，等等。于是，这些信息会被用作一些所谓的精准市场营销活动，从而可以增加商品销量。</p>
+</li>
+</ul>
+<p>监督式学习是在被告诉过了正确的答案后的学习，而非监督式学习是在没有被告诉正确答案时的学习。所以，非监督式学习是在大量的非常乱的数据中找寻一些潜在的关系，这个成本也比较高。非监督式学习经常被用来检测一些不正常的事情发生，比如信用卡的诈骗或是盗刷。也被用在推荐系统，比如买了这个商品的人又买了别的什么商品，或是如果某个人喜欢某篇文章、某个音乐、某个餐馆，那么他可能会喜欢某个车、某个明星或某个地方。</p>
+<p>在监督式学习算法下，可以用一组 “ 狗 “ 的照片来确定某个照片中的物体是不是狗。而在非监督式学习算法下，我们可以通过一个照片来找到其中有与其相似的事物的照片。这两种学习方式都有些有用的场景。</p>
+<p>关于机器学习，你可以读一读 <a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471" target="_blank" rel="noopener">Machine Learning is Fun!</a> ，这篇文章（<a href="https://zhuanlan.zhihu.com/p/24339995" target="_blank" rel="noopener">中文翻译版</a>）恐怕是全世界最简单的入门资料了。</p>
+<ul>
+<li><a href="https://becominghuman.ai/data-science-simplified-principles-and-process-b06304d63308" target="_blank" rel="noopener">Data Science Simplified Part 1: Principles and Process</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-key-concepts-of-statistical-learning-45648049709e" target="_blank" rel="noopener">Data Science Simplified Part 2: Key Concepts of Statistical Learning</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-hypothesis-testing-56e180ef2f71" target="_blank" rel="noopener">Data Science Simplified Part 3: Hypothesis Testing</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-simple-linear-regression-models-3a97811a6a3d" target="_blank" rel="noopener">Data Science Simplified Part 4: Simple Linear Regression Models</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-5-multivariate-regression-models-7684b0489015" target="_blank" rel="noopener">Data Science Simplified Part 5: Multivariate Regression Models</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-6-model-selection-methods-2511cbdf7cb0" target="_blank" rel="noopener">Data Science Simplified Part 6: Model Selection Methods</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-7-log-log-regression-models-499ecd1495f0" target="_blank" rel="noopener">Data Science Simplified Part 7: Log-Log Regression Models</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-8-qualitative-variables-in-regression-models-d1817d56245c" target="_blank" rel="noopener">Data Science Simplified Part 8: Qualitative Variables in Regression Models</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-9-interactions-and-limitations-of-regression-models-4702dff03820" target="_blank" rel="noopener">Data Science Simplified Part 9: Interactions and Limitations of Regression Models</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-10-an-introduction-to-classification-models-82490f6c171f" target="_blank" rel="noopener">Data Science Simplified Part 10: An Introduction to Classification Models</a></li>
+<li><a href="https://towardsdatascience.com/data-science-simplified-part-11-logistic-regression-5ae8d994bf0e" target="_blank" rel="noopener">Data Science Simplified Part 11: Logistic Regression</a></li>
+</ul>
+<h1 id="相关课程"><a href="#相关课程" class="headerlink" title="相关课程"></a>相关课程</h1><p>在学习机器学习之前，我们需要学习数据分析，所以，我们得先学一些大数据相关的东西，也就是 Data Science 相关的内容。下面是两个不错的和数据科学相关的教程以及一个资源列表。</p>
+<ul>
+<li><a href="http://data8.org/" target="_blank" rel="noopener">UC Berkeley’s Data 8: The Foundations of Data Science</a> 和电子书 <a href="https://www.inferentialthinking.com/" target="_blank" rel="noopener">Computational and Inferential Thinking</a> 会讲述数据科学方面非常关键的概念，会教会你在数据中找到数据的关联、预测和相关的推断。</li>
+<li><a href="https://github.com/nborwankar/LearnDataScience" target="_blank" rel="noopener">Learn Data Science</a> ，这是 GitHub 上的一本电子书，主要是一些数据挖掘的算法，比如线性回归、逻辑回归、随机森林、K-Means 聚类的数据分析。然后，<a href="https://github.com/donnemartin/data-science-ipython-notebooks#scikit-learn" target="_blank" rel="noopener">donnemartin/data-science-ipython-notebooks</a> 这个代码仓库中用 TensorFlow、scikit-learn、Pandas、NumPy、Spark 等把这些经典的例子实现了个遍。</li>
+<li><a href="https://www.datascienceweekly.org/data-science-resources/the-big-list-of-data-science-resources" target="_blank" rel="noopener">Data Science Resources List</a> ，这个网站上有一个非常长的和数据科学相关的资源列表，你可以从中得到很多你想要的东西。</li>
+</ul>
+<p>之后，有下面几门不错的在线机器学习的课程供你入门，也是非常不错。</p>
+<ul>
+<li>吴恩达教授（Andrew Ng）在 <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Coursera 上的免费机器学习课程</a> 非常棒。我强烈建议从此入手。对于任何拥有计算机或科学学位的人，或是还能记住一点点数学知识的人来说，都应该非常容易入门。这个斯坦福大学的课程请尽量拿满分。可以在 <a href="http://open.163.com/special/opencourse/machinelearning.html" target="_blank" rel="noopener">网易公开课</a> 中找到这一课程。除此之外，吴恩达教授还有一组新的和深度学习相关的课程，现在可以在网易公开课上免费学习——<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">Deep Learning Specialization</a>。</li>
+<li><a href="https://www.udacity.com/course/deep-learning--ud730" target="_blank" rel="noopener">Deep Learning by Google</a> ，Google 的一个关于深度学习的在线免费课程，其支持中英文。这门课会教授你如何训练和优化基本神经网络、卷积神经网络和长短期记忆网络。你将通过项目和任务接触完整的机器学习系统 TensorFlow。</li>
+<li>卡内基梅隆大学汤姆·米切尔（Tom Mitchell）的机器学习 <a href="http://www.cs.cmu.edu/~tom/10701_sp11/lectures.shtml" target="_blank" rel="noopener">英文原版视频与课件 PDF</a> 。</li>
+<li>2013 年加利福尼亚理工学院亚瑟·阿布 - 穆斯塔法（Yaser Abu-Mostafa）的 Learning from Data <a href="http://work.caltech.edu/lectures.html" target="_blank" rel="noopener">课程视频及课件 PDF</a>，内容更适合进阶。</li>
+<li>关于神经网络方面，YouTube 上有一个非常火的课程视频，由宾夕法尼亚大学的雨果·拉罗歇尔（Hugo Larochelle）的教学课程 - <a href="https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH" target="_blank" rel="noopener">Neural networks class - Université de Sherbrooke </a>。</li>
+</ul>
+<p>除此之外，还有很多的在线大学课程可以学习。比如：</p>
+<ul>
+<li>斯坦福大学的《<a href="https://lagunita.stanford.edu/courses/HumanitiesandScience/StatLearning/Winter2015/about" target="_blank" rel="noopener">统计学学习</a>》、《<a href="http://cs229.stanford.edu/" target="_blank" rel="noopener">机器学习</a>》、《<a href="http://cs231n.stanford.edu/" target="_blank" rel="noopener">卷积神经网络</a>》、《<a href="http://cs224d.stanford.edu/" target="_blank" rel="noopener">深度学习之自然语言处理</a>》等。</li>
+<li>麻省理工大学的《<a href="http://ocw.mit.edu/courses/brain-and-cognitive-sciences/9-641j-introduction-to-neural-networks-spring-2005/index.htm" target="_blank" rel="noopener">神经网络介绍</a> 》、《<a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/" target="_blank" rel="noopener">机器学习</a>》、《<a href="http://ocw.mit.edu/courses/sloan-school-of-management/15-097-prediction-machine-learning-and-statistics-spring-2012/index.htm" target="_blank" rel="noopener">预测</a>》等。</li>
+</ul>
+<p>更多的列表，请参看——<a href="https://github.com/RatulGhosh/awesome-machine-learning" target="_blank" rel="noopener">Awesome Machine Learning Courses</a>。</p>
+<h1 id="相关图书"><a href="#相关图书" class="headerlink" title="相关图书"></a>相关图书</h1><ul>
+<li><p>《<a href="https://book.douban.com/subject/2061116/" target="_blank" rel="noopener">Pattern Recognition and Machine Learning</a>》，这本书是机器学习领域的圣经之作。该书也是众多高校机器学习研究生课程的教科书，Google 上有[PDF 版的下载](<a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop" target="_blank" rel="noopener">http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop</a> - Pattern Recognition And Machine Learning - Springer  2006.pdf)。这本书很经典，但并不适合入门来看。GitHub 上有这本中的 <a href="https://github.com/PRML/PRMLT" target="_blank" rel="noopener">Matlab 实现</a>。</p>
+</li>
+<li><p>下面这两本电子书也是比较经典的，其中讲了很多机器学习的知识，可以当做手册或字典。</p>
+<ul>
+<li>《<a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf" target="_blank" rel="noopener">Understanding Machine Learning: From Theory to Algorithms</a>》。</li>
+<li>《<a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf" target="_blank" rel="noopener">The Elements of Statistical Learning - Second Edition</a>》。</li>
+</ul>
+</li>
+<li><p>《<a href="https://book.douban.com/subject/27087503/" target="_blank" rel="noopener">Deep Learning: Adaptive Computation and Machine Learning series</a>》 中文翻译为《深度学习》，又叫 “ 花书 “。这本书由全球知名的三位专家伊恩·古德费洛（Ian Goodfellow）、友华·本吉奥（Yoshua Bengio）和亚伦·考维尔（Aaron Courville）撰写，是深度学习领域奠基性的经典教材。</p>
+<p>全书内容包括 3 部分：第 1 部分介绍基本的数学工具和机器学习的概念，它们是深度学习的预备知识；第 2 部分系统深入地讲解现今已成熟的深度学习方法和技术；第 3 部分讨论某些具有前瞻性的方向和想法，它们被公认为是深度学习未来的研究重点。这本书的官网为 “<a href="http://www.deeplearningbook.org/" target="_blank" rel="noopener">deeplearningbook.org</a>”，在 GitHub 上也有中文翻译 - 《<a href="https://github.com/exacity/deeplearningbook-chinese" target="_blank" rel="noopener">Deep Learning 中文翻译</a>》。</p>
+</li>
+<li><p>《<a href="http://neuralnetworksanddeeplearning.com/" target="_blank" rel="noopener">Neural Networks and Deep Learning</a>》（<a href="https://tigerneil.gitbooks.io/neural-networks-and-deep-learning-zh/content/" target="_blank" rel="noopener">中文翻译版</a>），这是一本非常不错的神经网络的入门书，在<a href="https://book.douban.com/subject/26727997/" target="_blank" rel="noopener">豆瓣上评分 9.5 分</a>，从理论讲到了代码。虽然有很多数学公式，但是有代码相助，就不难理解了。其中讲了很多如激活函数、代价函数、随机梯度下降、反向传播、过度拟合和规范化、权重初始化、超参数优化、卷积网络的局部感受野、混合层、特征映射的东西。</p>
+</li>
+<li><p>《<a href="https://book.douban.com/subject/26279609/" target="_blank" rel="noopener">Introduction to Machine Learning with Python</a>》，算是本不错的入门书，也是本比较易读的英文书。其是以 Scikit-Learn 框架来讲述的。如果你用过 Scikit 这个框架，那么你学这本书还是很不错的。</p>
+</li>
+<li><p>《<a href="https://book.douban.com/subject/26840215/" target="_blank" rel="noopener">Hands-On Machine Learning with Scikit-Learn and TensorFlow</a> 》，这是一门以 TensorFlow 为工具的入门书，其用丰富的例子从实站的角度来让你学习。这本书对于无基础的人也是适合的，对于小白来说虽然略难但是受益匪浅。</p>
+</li>
+</ul>
+<h1 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h1><p>除了上述的那些课程和图书外，下面这些文章也很不错。</p>
+<ul>
+<li>YouTube 上的 Google Developers 的 <a href="https://www.youtube.com/playlist?list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal" target="_blank" rel="noopener">Machine Learning Recipes with Josh Gordon</a> ，这 9 集视频，每集不到 10 分钟，从 Hello World 讲到如何使用 TensorFlow，非常值得一看。</li>
+<li>还有 <a href="https://pythonprogramming.net/machine-learning-tutorial-python-introduction/" target="_blank" rel="noopener">Practical Machine Learning Tutorial with Python Introduction</a> 上面一系列的用 Python 带着你玩 Machine Learning 的教程。</li>
+<li>Medium 上的 <a href="https://medium.com/machine-learning-101" target="_blank" rel="noopener">Machine Learning - 101</a> ，讲述了好些我们上面提到过的经典算法。</li>
+<li>Medium 上的 <a href="https://medium.com/machine-learning-for-humans" target="_blank" rel="noopener">Marchine Learning for Humans</a>。</li>
+<li><a href="https://machinelearningmastery.com/blog/" target="_blank" rel="noopener">Dr. Jason Brownlee 的博客</a> ，也非常值得一读，其中好多的 “How-To”，会让你有很多的收获。</li>
+<li><a href="http://martin.zinkevich.org/rules_of_ml/rules_of_ml.pdf" target="_blank" rel="noopener">Rules of Machine Learning: Best Practices for ML Engineering</a> ，一些机器学习相关的最佳实践。</li>
+<li><a href="http://iamtrask.github.io" target="_blank" rel="noopener">i am trask</a> ，也是一个很不错的博客。</li>
+<li>关于 Deep Learning 中的神经网络，YouTube 上有介绍视频 <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks</a>。</li>
+<li>麻省理工学院的电子书 <a href="http://www.deeplearningbook.org" target="_blank" rel="noopener">Deep Learning</a>。</li>
+<li>用 Python 做自然语言处理<a href="http://www.nltk.org/book/" target="_blank" rel="noopener">Natural Language Processing with Python</a>。</li>
+<li>最后一个是 Machine Learning 和 Deep Learning 的相关教程列表，<a href="https://github.com/ujjwalkarn/Machine-Learning-Tutorials" target="_blank" rel="noopener">Machine Learning &amp; Deep Learning Tutorials</a>。</li>
+</ul>
+<p>下面是一些和神经网络相关的不错的文章。</p>
+<ul>
+<li><a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="noopener">The Unreasonable Effectiveness of Recurrent Neural Networks</a> ，这是一篇必读的文章 ，告诉你为什么要学 RNN，以及展示了最简单的 NLP 形式。</li>
+<li><a href="http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/" target="_blank" rel="noopener">Neural Networks, Manifolds, and Topology</a> ，这篇文章可以帮助你理解神经网络的一些概念。</li>
+<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">Understanding LSTM Networks</a> ，解释了什么是 LSTM 的内在工作原理。</li>
+<li><a href="http://distill.pub/2016/augmented-rnns/" target="_blank" rel="noopener">Attention and Augmented Recurrent Neural Networks</a> ，用了好多图来说明了 RNN 的 attention 机制。</li>
+<li><a href="http://benanne.github.io/2014/08/05/spotify-cnns.html" target="_blank" rel="noopener">Recommending music on Spotify with deep learning</a> ，一个在 Spotify 的实习生分享的音乐聚类的文章。</li>
+</ul>
+<h1 id="相关算法"><a href="#相关算法" class="headerlink" title="相关算法"></a>相关算法</h1><p>下面是 10 个非常经典的机器学习的算法。</p>
+<ul>
+<li>对于监督式学习，有如下经典算法。<ol>
+<li><a href="https://en.wikipedia.org/wiki/Decision_tree" target="_blank" rel="noopener">决策树（Decision Tree）</a>，比如自动化放贷、风控。</li>
+<li><a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="_blank" rel="noopener">朴素贝叶斯分类器（Naive Bayesian classifier)</a>，可以用于判断垃圾邮件、对新闻的类别进行分类，比如科技、政治、运动、判断文本表达的感情是积极的还是消极的、人脸识别等。</li>
+<li><a href="https://en.wikipedia.org/wiki/Ordinary_least_squares" target="_blank" rel="noopener">最小二乘法（Ordinary Least Squares Regression）</a>，是一种线性回归。</li>
+<li><a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="noopener">逻辑回归（Logisitic Regression）</a>，一种强大的统计学方法，可以用一个或多个变量来表示一个二项式结果。可以用于信用评分，计算营销活动的成功率，预测某个产品的收入。</li>
+<li><a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="noopener">支持向量机（Support Vector Machine，SVM）</a>，可以用于基于图像的性别检测、图像分类等。</li>
+<li><a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">集成方法（Ensemble methods）</a>，通过构建一组分类器，然后通过它们的预测结果进行加权投票来对新的数据点进行分类。原始的集成方法是贝叶斯平均，但最近的算法包括纠错输出编码、Bagging 和 Boosting。</li>
+</ol>
+</li>
+<li>对于无监督式的学习，有如下经典算法。<ol>
+<li><a href="https://en.wikipedia.org/wiki/Cluster_analysis" target="_blank" rel="noopener">聚类算法（Clustering Algorithms）</a>。聚类算法有很多，目标是给数据分类。有 5 个比较著名的聚类算法你必需要知道：<a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank" rel="noopener">K-Means</a>、<a href="https://en.wikipedia.org/wiki/Mean_shift" target="_blank" rel="noopener">Mean-Shift</a>、<a href="https://en.wikipedia.org/wiki/DBSCAN" target="_blank" rel="noopener">DBSCAN</a>、<a href="https://en.wikipedia.org/wiki/Expectation–maximization_algorithm" target="_blank" rel="noopener">EM/GMM</a>、和 <a href="https://en.wikipedia.org/wiki/Hierarchical_clustering" target="_blank" rel="noopener">Agglomerative Hierarchical</a>。</li>
+<li><a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noopener">主成分分析（Principal Component Analysis，PCA）</a>。PCA 的一些应用包括压缩、简化数据便于学习、可视化等。</li>
+<li><a href="https://en.wikipedia.org/wiki/Singular-value_decomposition" target="_blank" rel="noopener">奇异值分解（Singular Value Decomposition，SVD）</a>。实际上，PCA 是 SVD 的一个简单应用。在计算机视觉中，第一个人脸识别算法使用 PCA 和 SVD 来将面部表示为 “ 特征面 “ 的线性组合，进行降维，然后通过简单的方法将面部匹配到身份。虽然现代方法更复杂，但很多方面仍然依赖于类似的技术。</li>
+<li><a href="https://en.wikipedia.org/wiki/Independent_component_analysis" target="_blank" rel="noopener">独立成分分析（Independent Component Analysis，ICA）</a>。ICA 是一种统计技术，主要用于揭示随机变量、测量值或信号集中的隐藏因素。</li>
+</ol>
+</li>
+</ul>
+<p>如果你想了解更全的机器学习的算法列表，你可以看一下 Wikipedia 上的 <a href="https://en.wikipedia.org/wiki/Outline_of_machine_learning#Machine_learning_algorithms" target="_blank" rel="noopener">List of Machine Learning Algorithms</a>。</p>
+<p>在 <a href="https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/" target="_blank" rel="noopener">A Tour of Machine Learning Algorithms</a> ，这篇文章带你概览了一些机器学习算法，其中还有一个 “ 脑图 “ 可以下载，并还有一些 How-To 的文章供你参考。</p>
+<p>对于这些算法，<a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">SciKit-Learn</a>有一些文档供你学习。</p>
+<ul>
+<li><a href="http://scikit-learn.org/stable/supervised_learning.html#supervised-learning" target="_blank" rel="noopener">1. Supervised learning</a></li>
+<li><a href="http://scikit-learn.org/stable/modules/clustering.html#clustering" target="_blank" rel="noopener">2.3 Clustering</a></li>
+<li><a href="http://scikit-learn.org/stable/modules/decomposition.html#decompositions" target="_blank" rel="noopener">2.5. Decomposing signals in components (matrix factorization problems)</a></li>
+<li><a href="http://scikit-learn.org/stable/model_selection.html#model-selection" target="_blank" rel="noopener">3. Model selection and evaluation</a></li>
+<li><a href="http://scikit-learn.org/stable/modules/preprocessing.html#preprocessing" target="_blank" rel="noopener">4.3. Preprocessing data</a></li>
+</ul>
+<h1 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h1><ul>
+<li>对于初学者来说，动手是非常非常重要的，不然，你会在理论的知识里迷失掉自己，这里有篇文章 “<a href="https://elitedatascience.com/machine-learning-projects-for-beginners" target="_blank" rel="noopener">8 Fun Machine Learning Projects for Beginners</a>“，其中为初学者准备了 8 个很有趣的项目，你可以跟着练练。</li>
+<li>学习机器学习或是人工智能你需要数据，这里有一个非常足的列表给你足够多的公共数据 – 《<a href="https://github.com/awesomedata/awesome-public-datasets" target="_blank" rel="noopener">Awesome Public Datasets</a>》，其中包括农业、生物、天气、计算机网络、地球科学、经济、教育、金融、能源、政府、健康、自然语言、体育等。</li>
+<li>GitHub 上的一些 Awesome 资源列表。<ul>
+<li><a href="https://github.com/ChristosChristofidis/awesome-deep-learning" target="_blank" rel="noopener">Awesome Deep Learning</a></li>
+<li><a href="https://github.com/terryum/awesome-deep-learning-papers" target="_blank" rel="noopener">Awesome - Most Cited Deep Learning Papers</a></li>
+<li><a href="https://github.com/endymecy/awesome-deeplearning-resources" target="_blank" rel="noopener">Awesome Deep learning papers and other resources</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>总结一下今天的内容。首先介绍了机器学习的基本原理：监督式学习和非监督式学习，然后给出了全世界最简单的入门资料 <a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471" target="_blank" rel="noopener">Machine Learning is Fun!</a>。随后给出了与机器学习密切相关的数据分析方面的内容和资料，然后推荐了深入学习机器学习知识的在线课程、图书和文章等，尤其列举了神经网络方面的学习资料。最后描述了机器学习的十大经典算法及相关的学习资料。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E5%AE%B9%E5%99%A8%E5%8C%96%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1416,145 +1601,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">分布式架构入门</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-08 14:56:10 / Modified: 14:58:49" itemprop="dateCreated datePublished" datetime="2020-02-08T14:56:10-06:00">2020-02-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>分布式系统涵盖的面非常广，如下：</p>
-<ul>
-<li><strong>服务调度</strong>，涉及服务发现、配置管理、弹性伸缩、故障恢复等。</li>
-<li><strong>资源调度</strong>，涉及对底层资源的调度使用，如计算资源、网络资源和存储资源等。</li>
-<li><strong>流量调度</strong>，涉及路由、负载均衡、流控、熔断等。</li>
-<li><strong>数据调度</strong>，涉及数据复本、数据一致性、分布式事务、分库、分表等。</li>
-<li><strong>容错处理</strong>，涉及隔离、幂等、重试、业务补偿、异步、降级等。</li>
-<li><strong>自动化运维</strong>，涉及持续集成、持续部署、全栈监控、调用链跟踪等。</li>
-</ul>
-<p>所有这些形成了分布式架构的整体复杂度，也造就了分布式系统中的很多很多论文、图书以及很多很多的项目。要学好分布式系统及其架构，我们需要大量的时间和实践才能真正掌握这些技术。</p>
-<p>这里有几点需要你注意一下。</p>
-<ul>
-<li><strong>分布式系统之所以复杂，就是因为其太容易也太经常出错了</strong>。这意味着，<strong>你要把处理错误的代码当成正常功能的代码来处理</strong>。</li>
-<li><strong>开发一个健壮的分布式系统的成本是单体系统的几百倍甚至几万倍</strong>。这意味着，<strong>我们要自己开发一个，需要能力很强的开发人员</strong>。</li>
-<li><strong>非常健壮的开源的分布式系统并不多，或者说基本没有</strong>。这意味着，<strong>如果你要用开源的，那么你需要 hold 得住其源码</strong>。</li>
-<li><strong>管理或是协调多个服务或机器是非常难的</strong>。这意味着，<strong>我们要去读很多很多的分布式系统的论文</strong>。</li>
-<li><strong>在分布式环境下，出了问题是很难 debug 的</strong>。这意味着，<strong>我们需要非常好的监控和跟踪系统，还需要经常做演练和测试</strong>。</li>
-<li><strong>在分布式环境下，你需要更科学地分析和统计</strong>。这意味着，<strong>我们要用 P90 这样的统计指标，而不是平均值，我们还需要做容量计划和评估</strong>。</li>
-<li><strong>在分布式环境下，需要应用服务化</strong>。这意味着，<strong>我们需要一个服务开发框架，比如 SOA 或微服务</strong>。</li>
-<li><strong>在分布式环境下，故障不可怕，可怕的是影响面过大，时间过长</strong>。这意味着，<strong>我们需要花时间来开发我们的自动化运维平台</strong>。</li>
-</ul>
-<p>总之，在分布式环境下，一切都变得非常复杂。要进入这个领域，你需要有足够多的耐性和足够强的心态来接受各式各样的失败。当拥有丰富的实践和经验后，你才会有所建树。这并不是一日之功，你可能要在这个领域花费数年甚至数十年的时间。</p>
-<h2 id="分布式架构入门"><a href="#分布式架构入门" class="headerlink" title="分布式架构入门"></a>分布式架构入门</h2><p>学习如何设计可扩展的架构将会有助于你成为一个更好的工程师。系统设计是一个很宽泛的话题。在互联网上，关于架构设计原则的资源也是多如牛毛。所以，你需要知道一些基本概念，对此，这里你先读一下下面两篇文章，都非常不错。</p>
-<ul>
-<li><a href="http://www.aosabook.org/en/distsys.html" target="_blank" rel="noopener">Scalable Web Architecture and Distributed Systems</a> ，这篇文章会给你一个大概的分布式架构是怎么来解决系统扩展性问题的粗略方法。</li>
-<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns" target="_blank" rel="noopener">Scalability, Availability &amp; Stability Patterns</a> ，这个 PPT 能在扩展性、可用性、稳定性等方面给你一个非常大的架构设计视野和思想，可以让你感受一下大概的全景图。</li>
-</ul>
-<p>然后，强烈推荐 GitHub 上的一篇文档 - <a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a> ，这个仓库主要组织收集分布式系统的一些与扩展性相关的资源，它可以帮助你学习如何构建可扩展的架构。</p>
-<p>目前这个仓库收集到了好些系统架构和设计的基本方法。其中包括：CAP 理论、一致性模型、可用性模式、DNS、CDN、负载均衡、反向代理、应用层的微服务和服务发现、关系型数据库和 NoSQL、缓存、异步通讯、安全等。</p>
-<p>上面这几篇文章基本足够可以让你入门了，因为其中基本涵盖了所有与系统架构相关的技术。这些技术，足够这世上 90% 以上的公司用了，只有超级巨型的公司才有可能使用更高层次的技术。</p>
-<h2 id="分布式理论"><a href="#分布式理论" class="headerlink" title="分布式理论"></a>分布式理论</h2><p>下面学习一下分布式方面的理论知识。</p>
-<p>首先，你需要看一下 <a href="https://github.com/aphyr/distsys-class" target="_blank" rel="noopener">An introduction to distributed systems</a>。 这只是某个教学课程的提纲，几乎涵盖了分布式系统方面的所有知识点，而且辅以简洁并切中要害的说明文字，非常适合初学者提纲挈领地了解知识全貌，快速与现有知识结合，形成知识体系。这也是一个分布式系统的知识图谱，可以让你看到分布式系统的整体全貌。你可以根据这个知识图 Google 下去，然后你会学会所有的东西。</p>
-<p>然后，你需要了解一下拜占庭将军问题（<a href="https://en.wikipedia.org/wiki/Byzantine_fault_tolerance" target="_blank" rel="noopener">Byzantine Generals Problem</a>）。这个问题是莱斯利·兰波特（Leslie Lamport）于 1982 年提出用来解释一致性问题的一个虚构模型（<a href="https://www.microsoft.com/en-us/research/uploads/prod/2016/12/The-Byzantine-Generals-Problem.pdf" target="_blank" rel="noopener">论文地址</a>）。拜占庭是古代东罗马帝国的首都，由于地域宽广，守卫边境的多个将军（系统中的多个节点）需要通过信使来传递消息，达成某些一致的决定。但由于将军中可能存在叛徒（系统中节点出错），这些叛徒将努力向不同的将军发送不同的消息，试图会干扰一致性的达成。拜占庭问题即为在此情况下，如何让忠诚的将军们能达成行动的一致。</p>
-<p>对于拜占庭问题来说，假如节点总数为 <code>N</code>，叛变将军数为 <code>F</code>，则当 <code>N &gt;= 3F + 1</code> 时，问题才有解，即拜占庭容错（Byzantine Fault Tolerant，BFT）算法。拜占庭容错算法解决的是，网络通信可靠但节点可能故障情况下一致性该如何达成的问题。</p>
-<p>最早由卡斯特罗（Castro）和利斯科夫（Liskov）在 1999 年提出的实用拜占庭容错（Practical Byzantine Fault Tolerant，PBFT）算法，是第一个得到广泛应用的 BFT 算法。只要系统中有 2/3 的节点是正常工作的，则可以保证一致性。PBFT 算法包括三个阶段来达成共识：预准备（Pre-Prepare）、准备（Prepare）和提交（Commit）。</p>
-<p>这里有几篇和这个问题相关的文章，推荐阅读。</p>
-<ul>
-<li><a href="http://www.drdobbs.com/cpp/the-byzantine-generals-problem/206904396" target="_blank" rel="noopener">Dr.Dobb’s - The Byzantine Generals Problem</a></li>
-<li><a href="http://blog.jameslarisch.com/the-byzantine-generals-problem" target="_blank" rel="noopener">The Byzantine Generals Problem</a></li>
-<li><a href="http://pmg.csail.mit.edu/papers/osdi99.pdf" target="_blank" rel="noopener">Practicle Byzantine Fault Tolerance</a></li>
-</ul>
-<p>拜占庭容错系统研究中有三个重要理论：CAP、FLP 和 DLS。</p>
-<ul>
-<li><p><a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener">CAP 定理</a>，CAP 理论相信你应该听说过不下 N 次了。CAP 定理是分布式系统设计中最基础也是最为关键的理论。CAP 定理指出，分布式数据存储不可能同时满足以下三个条件：一致性（Consistency）、可用性（Availability）和 分区容忍（Partition tolerance）。 “在网络发生阻断（partition）时，你只能选择数据的一致性（consistency）或可用性（availability），无法两者兼得”。</p>
-<p>论点比较直观：如果网络因阻断而分隔为二，在其中一边我送出一笔交易：“将我的十元给 A”；在另一半我送出另一笔交易：” 将我的十元给 B “。此时系统要不是，a）无可用性，即这两笔交易至少会有一笔交易不会被接受；要不就是，b）无一致性，一半看到的是 A 多了十元而另一半则看到 B 多了十元。要注意的是，CAP 理论和扩展性（scalability）是无关的，在分片（sharded）或非分片的系统皆适用。</p>
-</li>
-<li><p><a href="http://the-paper-trail.org/blog/a-brief-tour-of-flp-impossibility/" target="_blank" rel="noopener">FLP impossibility</a>- 在异步环境中，如果节点间的网络延迟没有上限，只要有一个恶意的节点存在，就没有算法能在有限的时间内达成共识。但值得注意的是， <a href="https://en.wikipedia.org/wiki/Las_Vegas_algorithm" target="_blank" rel="noopener">“Las Vegas” algorithms</a>（这个算法又叫撞大运算法，其保证结果正确，只是在运算时所用资源上进行赌博，一个简单的例子是随机快速排序，它的 pivot 是随机选的，但排序结果永远一致）在每一轮皆有一定机率达成共识，随着时间增加，机率会越趋近于 1。而这也是许多成功的共识算法会采用的解决问题的办法。</p>
-</li>
-<li><p>容错的上限 - 由 <a href="http://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf" target="_blank" rel="noopener">DLS 论文</a> ，我们可以得到以下结论。</p>
-<ul>
-<li>在部分同步（partially synchronous）的网络环境中（即网络延迟有一定的上限，但我们无法事先知道上限是多少），协议可以容忍最多 1/3 的拜占庭故障（Byzantine fault）。</li>
-<li>在异步（asynchronous）的网络环境中，具有确定性质的协议无法容忍任何错误，但这篇论文并没有提及 <a href="http://link.springer.com/chapter/10.1007%2F978-3-540-77444-0_7" target="_blank" rel="noopener">randomized algorithms</a>，在这种情况下可以容忍最多 1/3 的拜占庭故障。</li>
-<li>在同步（synchronous）网络环境中（即网络延迟有上限且上限是已知的），协议可以容忍 100% 的拜占庭故障，但当超过 1/2 的节点为恶意节点时，会有一些限制条件。要注意的是，我们考虑的是 “ 具有认证特性的拜占庭模型（authenticated Byzantine）”，而不是 “ 一般的拜占庭模型 “；具有认证特性指的是将如今已经过大量研究且成本低廉的公私钥加密机制应用在我们的算法中。</li>
-</ul>
-</li>
-</ul>
-<p>当然，还有一个著名的“8 条荒谬的分布式假设（<a href="http://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener">Fallacies of Distributed Computing</a>）”。</p>
-<ol>
-<li>网络是稳定的。</li>
-<li>网络传输的延迟是零。</li>
-<li>网络的带宽是无穷大。</li>
-<li>网络是安全的。</li>
-<li>网络的拓扑不会改变。</li>
-<li>只有一个系统管理员。</li>
-<li>传输数据的成本为零。</li>
-<li>整个网络是同构的。</li>
-</ol>
-<p>阿尔农·罗特姆 - 盖尔 - 奥兹（Arnon Rotem-Gal-Oz）写了一篇长文 <a href="http://www.rgoarchitects.com/Files/fallacies.pdf" target="_blank" rel="noopener">Fallacies of Distributed Computing Explained</a> 来解释为什么这些观点是错误的。另外，<a href="http://blog.fogcreek.com/eight-fallacies-of-distributed-computing-tech-talk/" target="_blank" rel="noopener">加勒思·威尔逊（Gareth Wilson）的文章</a> 则用日常生活中的例子，对这些点做了通俗的解释。为什么我们深刻地认识到这 8 个错误？是因为，这要我们清楚地认识到——在分布式系统中错误是不可能避免的，我们在分布式系统中，能做的不是避免错误，而是要把错误的处理当成功能写在代码中。</p>
-<p>下面分享几篇一致性方面的论文。</p>
-<ul>
-<li><p>当然，关于经典的 CAP 理论，也存在一些误导的地方，这个问题在 2012 年有一篇论文 <a href="https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed" target="_blank" rel="noopener">CAP Twelve Years Later: How the Rules Have Changed</a> （<a href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed" target="_blank" rel="noopener">中译版</a>）中做了一些讨论，主要是说，在 CAP 中最大的问题就是分区，也就是 P，在 P 发生的情况下，非常难以保证 C 和 A。然而，这是强一致性的情况。</p>
-<p>其实，在很多时候，我们并不需要强一致性的系统，所以后来，人们争论关于数据一致性和可用性时，主要是集中在强一致性的 ACID 或最终一致性的 BASE。当时，BASE 还不怎么为世人所接受，主要是大家都觉得 ACID 是最完美的模型，大家很难接受不完美的 BASE。在 CAP 理论中，大家总是觉得需要 “ 三选二 “，也就是说，P 是必选项，那 “ 三选二 “ 的选择题不就变成数据一致性 (consistency)、服务可用性 (availability) 间的 “ 二选一 “ ？</p>
-<p>然而，现实却是，P 很少遇到，而 C 和 A 这两个事，工程实践中一致性有不同程度，可用性也有不同等级，在保证分区容错性的前提下，放宽约束后可以兼顾一致性和可用性，两者不是非此即彼。其实，在一个时间可能允许的范围内是可以取舍并交替选择的。</p>
-</li>
-<li><p><a href="https://pdfs.semanticscholar.org/5015/8bc1a8a67295ab7bce0550886a9859000dc2.pdf" target="_blank" rel="noopener">Harvest, Yield, and Scalable Tolerant Systems</a> ，这篇论文是基于上面那篇 “CAP 12 年后 “ 的论文写的，它主要提出了 Harvest 和 Yield 概念，并把上面那篇论文中所讨论的东西讲得更为仔细了一些。</p>
-</li>
-<li><p><a href="https://queue.acm.org/detail.cfm?id=1394128" target="_blank" rel="noopener">Base: An Acid Alternative</a> （<a href="http://www.cnblogs.com/savorboard/p/base-an-acid-alternative.html" target="_blank" rel="noopener">中译版</a>），本文是 eBay 的架构师在 2008 年发表给 ACM 的文章，是一篇解释 BASE 原则，或者说最终一致性的经典文章。文中讨论了 BASE 与 ACID 原则的基本差异, 以及如何设计大型网站以满足不断增长的可伸缩性需求，其中有如何对业务做调整和折中，以及一些具体的折中技术的介绍。一个比较经典的话是——“在对数据库进行分区后, 为了可用性（Availability）牺牲部分一致性（Consistency）可以显著地提升系统的可伸缩性 (Scalability)”。</p>
-</li>
-<li><p><a href="https://www.allthingsdistributed.com/2008/12/eventually_consistent.html" target="_blank" rel="noopener">Eventually Consistent</a> ，这篇文章是 AWS 的 CTO 维尔纳·沃格尔（Werner Vogels）在 2008 年发布在 ACM Queue 上的一篇数据库方面的重要文章，阐述了 NoSQL 数据库的理论基石——最终一致性，对传统的关系型数据库（ACID，Transaction）做了较好的补充。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1625,12 +1671,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
