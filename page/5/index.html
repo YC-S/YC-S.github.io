@@ -165,6 +165,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/System-Design-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/13/System-Design-Questions/" class="post-title-link" itemprop="url">System_Design_Questions</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-13 09:27:37 / Modified: 09:29:30" itemprop="dateCreated datePublished" datetime="2020-02-13T09:27:37-06:00">2020-02-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>System design questions are an important part of programming job interviews, and if you want to do well, you must prepare this topic. In the past, when I shared my list of <a href="http://www.java67.com/2018/05/top-75-programming-interview-questions-answers.html" target="_blank" rel="noopener">programming interview questions</a>, I shared a couple of system design questions, but my readers kept asking me for more questions, as it is a hard topic to master and more and more practice is needed.</p>
+<p>I had my own list of questions that I collected from various interviews with friends and colleagues, but I needed more questions for this article and my own preparation. Then, I stumbled upon the <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">Grokking System Design Interview</a> course.</p>
+<p>It’s an excellent resource because it not only asks you a lot of system design questions but also provides the knowledge and tools you need to solve these problems. I have yet to find a similar or better resource than this one on system design, one of the important topics for <a href="http://javarevisited.blogspot.sg/2012/06/20-design-pattern-and-software-design.html#axzz55mVSPFfH" target="_blank" rel="noopener">software engineering interviews</a>.</p>
+<p>In other words, this course teaches you to step by step how to proceed with designing a real-world system like Facebook, Twitter, Uber, etc.</p>
+<p>When you combine this course with this list of questions, you have the best material to prepare for your system design interview. You can also first try all these questions by yourself before joining the course or looking at my solutions for some of the questions.</p>
+<h2 id="System-Design-Interview-Questions-for-Programmers"><a href="#System-Design-Interview-Questions-for-Programmers" class="headerlink" title="System Design Interview Questions for Programmers"></a>System Design Interview Questions for Programmers</h2><p>Without any further ado, here is the list of some of the most popular system design or object-oriented analysis and design questions to crack any programming job interview.</p>
+<h3 id="1-How-to-design-a-vending-machine-in-Java-solution"><a href="#1-How-to-design-a-vending-machine-in-Java-solution" class="headerlink" title="1. How to design a vending machine in Java? (solution)"></a><strong>1. How to design a vending machine in Java?</strong> (<a href="http://javarevisited.blogspot.sg/2016/06/design-vending-machine-in-java.html#axzz4sZVwtCgs" target="_blank" rel="noopener">solution</a>)</h3><p>You need to write code to implement a vending machine that has a bunch of products, e.g. chocolates, candy, cold drinks, and accepts different coins, e.g. nickles, dimes, quarters, cent, etc. Make sure you insert a coin, get a product back, and get your change back. Also, write the unit test to demonstrate that these common use cases work. If you get stuck, you can read my two-part series (<a href="http://javarevisited.blogspot.sg/2016/06/design-vending-machine-in-java.html#axzz4sZVwtCgs" target="_blank" rel="noopener">Part 1</a> and <a href="http://javarevisited.blogspot.sg/2016/06/java-object-oriented-analysis-and-design-vending-machine-part-2.html" target="_blank" rel="noopener">Part 2</a>) about solving these classical system design questions.</p>
+<h3 id="2-How-to-design-a-URL-shortening-service-like-goo-gl"><a href="#2-How-to-design-a-URL-shortening-service-like-goo-gl" class="headerlink" title="2. How to design a URL shortening service like goo.gl?"></a><strong>2. How to design a URL shortening service like goo.gl?</strong></h3><p>This one is another common system design question. If you are given a (typically) long URL, how would you design a service that would generate a shorter and unique alias for it? If you are not familiar with the URL shortener service, have a look at some of the popular ones like goo.gl from <a href="https://javarevisited.blogspot.com/2012/01/google-interview-questions-answers-top.html" target="_blank" rel="noopener">Google</a> and bit.ly, which is used by Twitter.</p>
+<p>Make sure to provide a database schema and rationale behind some design decisions, e.g. how long you keep the data, how to get stats and analytics, etc. If you get stuck, you can follow the solution given on <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</p>
+<h3 id="3-How-to-design-a-limit-order-book"><a href="#3-How-to-design-a-limit-order-book" class="headerlink" title="3. How to design a limit order book?"></a><strong>3. How to design a limit order book?</strong></h3><p>A limit order book is used in stock exchanges to match a buy order with a sell order based on price and time priority. How would you go about that? Which <a href="https://hackernoon.com/10-data-structure-algorithms-and-programming-courses-to-crack-any-coding-interview-e1c50b30b927" target="_blank" rel="noopener">data structure</a> you will use? Remember: the speed of matching is key, as well as the reliability. If you need a refresher on data structures, then you can check out a data structure and algorithm Java course, and if you feel stuck, you can check out my solution <a href="https://javarevisited.blogspot.sg/2017/03/2-practical-data-structure-algorithm-interview-questions-java.html" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="4-How-to-design-a-traffic-control-system"><a href="#4-How-to-design-a-traffic-control-system" class="headerlink" title="4. How to design a traffic control system?"></a><strong>4. How to design a traffic control system?</strong></h3><p>A classical system design question from old age is still popular. Make sure you know how to transition from one state to another like RED to GREEN and from GREEN to ORANGE to RED, etc. One tip is you can use the <a href="http://javarevisited.blogspot.sg/2014/04/difference-between-state-and-strategy-design-pattern-java.html" target="_blank" rel="noopener">state design pattern</a> because there is a clear transition of state from one to other. For example, you cannot go from RED to GREEN before ORANGE or so on.</p>
+<p>You can also use the <a href="http://www.java67.com/2018/07/java-enum-tutorial-10-things-java-devs.html" target="_blank" rel="noopener">Enum</a> to represent the state and implement the pattern, just as we did with the <a href="https://javarevisited.blogspot.com/2014/11/strategy-design-pattern-in-java-using-Enum-Example.html" target="_blank" rel="noopener">strategy design pattern</a> in my last article.</p>
+<p>If you are not familiar with these essential patterns, then I suggest you to first take a look at this <strong><a href="https://pluralsight.pxf.io/c/1193463/424552/7490?u=https%3A%2F%2Fwww.pluralsight.com%2Fcourses%2Fpatterns-library" target="_blank" rel="noopener">Design Pattern Library </a></strong>course on Pluarslight, one of the better resources to learn this pattern and get insight on how and when to use them in the real world.</p>
+<h3 id="5-How-to-design-a-website-like-Pastebin"><a href="#5-How-to-design-a-website-like-Pastebin" class="headerlink" title="5. How to design a website like Pastebin?"></a><strong>5. How to design a website like Pastebin?</strong></h3><p>Pastebin allows you to paste text or code and then share a link to that code anywhere you want. It’s not an online code editor but you can use this to store any kind of text.</p>
+<h3 id="6-How-would-you-create-your-own-Instagram"><a href="#6-How-would-you-create-your-own-Instagram" class="headerlink" title="6. How would you create your own Instagram?"></a><strong>6. How would you create your own Instagram?</strong></h3><p>Instagram is a photo sharing application that provides some custom filters to enhance your photo quality.</p>
+<h3 id="7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox"><a href="#7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox" class="headerlink" title="7. How to design a global file sharing and storage apps like Google Drive or Dropbox?"></a><strong>7. How to design a global file sharing and storage apps like Google Drive or Dropbox?</strong></h3><p>These are used to store and share files, photos, and other media. How do you go about designing things like allowing users to upload/view/search/share files or photos, track permissions for file sharing, and allow multiple users to edit the same document?</p>
+<h3 id="8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger"><a href="#8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger" class="headerlink" title="8. How to design a chat application like WhatsApp or Facebook Messenger?"></a><strong>8. How to design a chat application like WhatsApp or Facebook Messenger?</strong></h3><p>You have surely used WhatsApp and Facebook, right? No? If not, let me tell you that a chat application allows you to send messages to your friend. It’s a point-to-point connection. You keep a friends list, view their status, and chat with them.</p>
+<p>In WhatsApp, you can also connect groups, but that is for advanced and experienced developers. At a minimum, you should provide a design to keep the friends list and send and receive messages from them.</p>
+<h3 id="9-How-to-design-a-Twitter-Clone"><a href="#9-How-to-design-a-Twitter-Clone" class="headerlink" title="9. How to design a Twitter Clone?"></a><strong>9. How to design a Twitter Clone?</strong></h3><p>Twitter is a popular messaging service that lets you broadcast messages to all of your followers. You post a tweet and your followers see those messages. Additionally, they can like or retweet your post. Make sure you implement common features like followers, hashtags, tweets, deletes, etc. If you do not feel like going anywhere and are stuck, you can follow the solution on <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</p>
+<h3 id="10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix"><a href="#10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix" class="headerlink" title="10. How to design a global video streaming service, e.g. YouTube or Netflix?"></a><strong>10. How to design a global video streaming service, e.g. YouTube or Netflix?</strong></h3><p>While designing a video streaming service like NetFlix or YouTube, the key concept to remember is to smooth streaming and buffering and functioning over low bandwidth connection and how you manage those challenges.</p>
+<h3 id="11-How-to-design-an-ATM-machine"><a href="#11-How-to-design-an-ATM-machine" class="headerlink" title="11. How to design an ATM machine?"></a><strong>11. How to design an ATM machine?</strong></h3><p>An ATM machine allows a user to deposit and withdraw cash. It also allows a user to check their balance. How do you design such a system? What are your main challenges?</p>
+<h3 id="12-How-to-design-an-API-Rate-Limiter"><a href="#12-How-to-design-an-API-Rate-Limiter" class="headerlink" title="12. How to design an API Rate Limiter?"></a><strong>12. How to design an API Rate Limiter?</strong></h3><p>This is a challenging one. You may want to find more information about it, starting with a Google search.</p>
+<h3 id="13-How-to-design-Twitter-Search"><a href="#13-How-to-design-Twitter-Search" class="headerlink" title="13. How to design Twitter Search?"></a><strong>13. How to design Twitter Search?</strong></h3><p>To be honest, Twitter search is poor — unless you enter the exact title of your tweet, you won’t be able to find anything. So, this one should be easy to implement<strong>.</strong></p>
+<h3 id="14-How-to-design-a-web-crawler-like-Google"><a href="#14-How-to-design-a-web-crawler-like-Google" class="headerlink" title="14. How to design a web crawler like Google?"></a><strong>14. How to design a web crawler like Google?</strong></h3><p>A web crawler goes to a website and crawls all links and indexes, like Google, so that they can later appear in a search result. A crawler can also be used for searching a particular file in a set of directories. But be sure to ask yourself about some of the major challenges.</p>
+<h3 id="15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use"><a href="#15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use" class="headerlink" title="15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?"></a><strong>15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?</strong></h3><p>The newsfeed is an important part of Facebook that allows a user to see what’s happening around the world, including friends, families, pages he has liked, a group he has followed, and of course, the Facebook ads.</p>
+<p>The job of the newsfeed algorithm is to show messages that are most important to the user and which can generate high engagement. Obviously, messages from friends and family should take priority. If you feel not going anywhere and stuck, you can follow the solution on<strong><a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</strong></p>
+<h3 id="16-How-to-design-Yelp-or-Nearby-Friends"><a href="#16-How-to-design-Yelp-or-Nearby-Friends" class="headerlink" title="16. How to design Yelp or Nearby Friends?"></a><strong>16. How to design Yelp or Nearby Friends?</strong></h3><p>Have you used Yelp? If not first use it to understand how it works before you can design a similar system. For those who don’t know Yelp is a local-search service powered by crowd-sourced review forum</p>
+<h3 id="17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend"><a href="#17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend" class="headerlink" title="17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?"></a><strong>17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?</strong></h3><p>Uber and Ola are two of the most popular ride-hailing services, it brings both drivers and passengers together. How do you go about designing to allow a passenger to see nearby taxis and book them?</p>
+<h3 id="18-How-to-design-BookMyShow"><a href="#18-How-to-design-BookMyShow" class="headerlink" title="18. How to design BookMyShow?"></a><strong>18. How to design BookMyShow?</strong></h3><p>A website that allows you to book cinema and event tickets.</p>
+<h3 id="19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews"><a href="#19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews" class="headerlink" title="19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?"></a><strong>19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?</strong></h3><p>Reddit, Quora, and HackerNews are some of the most popular social network sites where users can post questions or share links. Other users can answer questions or comment on the shared links.</p>
+<h3 id="20-How-do-you-design-an-application-like-Airbnb"><a href="#20-How-do-you-design-an-application-like-Airbnb" class="headerlink" title="20. How do you design an application like Airbnb?"></a><strong>20. How do you design an application like Airbnb?</strong></h3><p>This allows users to upload rooms for rent and other users to rent them. Some features are only available to admins, publishers, and subscribers.</p>
+<p>That’s all for now on some of the <strong>frequently asked system design interview questions for Java programmers</strong>. These questions are not just useful for Java programmers but also for <a href="https://javarevisited.blogspot.com/2018/12/10-free-python-courses-for-programmers.html" target="_blank" rel="noopener">Python</a>, <a href="https://hackernoon.com/top-5-free-c-courses-to-learn-programming-in-2019-d27352277da0" target="_blank" rel="noopener">C++</a>, and <a href="http://www.java67.com/2018/02/5-free-ruby-and-rails-courses-to-learn-online.html" target="_blank" rel="noopener">Ruby</a> programmers. These questions are actually independent of programming languages and test your software design and architecture skills.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%A0%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2241,151 +2331,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">计算机编程语言</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-06 16:55:49 / Modified: 16:57:46" itemprop="dateCreated datePublished" datetime="2020-02-06T16:55:49-06:00">2020-02-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>编程语言</strong>。你需要学习 C、C++ 和 Java 这三个工业级的编程语言。为什么说它们是工业级的呢？主要是，C 和 C++ 语言规范都由 ISO 标准化过，而且都有工业界厂商组成的标准化委员会来制定工业标准。次要原因是，它们已经在业界应用于许多重要的生产环境中。</p>
-<ul>
-<li>C 语言不用多说，现今这个世界上几乎所有重要的软件都跟 C 有直接和间接的关系，操作系统、网络、硬件驱动等等。说得霸气一点儿，这个世界就是在 C 语言之上运行的。</li>
-<li>而对于 C++ 来说，现在主流的浏览器、数据库、Microsoft Office、主流的图形界面、著名的游戏引擎等都是用 C++ 编写的。而且，很多公司都用 C++ 开发核心架构，如 Google、腾讯、百度、阿里云等。</li>
-<li>而金融电商公司则广泛地使用 Java 语言，因为 Java 的好处太多了，代码稳定性超过 C 和 C++，生产力远超 C 和 C++。有 JVM 在，可以轻松地跨平台，做代码优化，做 AOP 和 IoC 这样的高级技术。以 Spring 为首的由庞大的社区开发的高质量的各种轮子让你只需关注业务，是能够快速搭建企业级应用的不二之选。</li>
-</ul>
-<p>此外，推荐学习 Go 语言。一方面，Go 语言现在很受关注，它是取代 C 和 C++ 的另一门有潜力的语言。C 语言太原始了，C++ 太复杂了，Java 太高级了，所以 Go 语言就在这个夹缝中出现了。这门语言已经 10 多年了，其已成为云计算领域事实上的标准语言，尤其是在 Docker/Kubernetes 等项目中。Go 语言社区正在不断地从 Java 社区移植各种 Java 的轮子过来，Go 社区现在也很不错。</p>
-<p>如果要写一些 PaaS 层的应用，Go 语言会比 C 和 C++ 更好，目前和 Java 有一拼。而且，Go 语言在国内外一些知名公司中有了一定的应用和实践，所以，是可以学习的（参看：《<a href="https://coolshell.cn/articles/18190.html" target="_blank" rel="noopener">Go 语言、Docker 和新技术</a>》一文）。此外，Go 语言语法特别简单，有了 C 和 C++ 的基础，学习 Go 的学习成本基本为零。</p>
-<p><strong>理论学科</strong>。你需要学习像算法、数据结构、网络模型、计算机原理等计算机科学专业需要学习的知识。为什么要学好这些理论上的知识呢？</p>
-<ul>
-<li>其一，这些理论知识可以说是计算机科学这门学科最精华的知识了。说得大一点，这些是人类智慧的精华。你只要想成为高手，这些东西是你必需要掌握和学习的。</li>
-<li>其二，当你在解决一些很复杂或是很难的问题时，这些基础理论知识可以帮到你很多。我过去这 20 年从这些基础理论知识中受益匪浅。</li>
-<li>其三，这些理论知识的思维方式可以让你有触类旁通，一通百通的感觉。虽然知识比较难啃，但啃过以后，你将获益终生。</li>
-</ul>
-<p>另外，你千万不要觉得在你的日常工作或是生活当中根本用不上，学了也白学，这样的思维方式千万不要有，因为这是平庸的思维方式。如果你想等我用到了再学也不晚，那么你有必要看一下这篇文章《<a href="https://coolshell.cn/articles/4235.html" target="_blank" rel="noopener">程序员的荒谬之言还是至理名言？</a>》。</p>
-<p><strong>系统知识</strong>。系统知识是理论知识的工程实践，这里面有很多很多的细节。比如像 Unix/Linux、TCP/IP、C10K 挑战等这样专业的系统知识。这些知识是你能不能把理论应用到实际项目当中，能不能搞定实际问题的重要知识。</p>
-<p>当你在编程的时候，如何和系统进行交互或是获取操作系统的资源，如何进行通讯，当系统出了性能问题，当系统出了故障等，你有大量需要落地的事需要处理和解决。这个时候，这些系统知识就会变得尤为关键和重要了。</p>
-<p>这些东西，你可以认为是计算机世界的物理世界，上层无论怎么玩，无论是 Java NIO，还是 Nginx，还是 Node.js，它们都逃脱不掉最下层的限制。所以，你要好好学习这方面的知识。</p>
-<h1 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h1><h2 id="Java-语言"><a href="#Java-语言" class="headerlink" title="Java 语言"></a>Java 语言</h2><p>学习 Java 语言有以下<strong>入门级的书</strong>（注意：下面一些书在入门篇中有所提及，但为了完整性，还是要在这里提一下，因为可能有朋友是跳着看的）。</p>
-<ul>
-<li>《<a href="https://book.douban.com/subject/26880667/" target="_blank" rel="noopener">Java 核心技术：卷 1 基础知识</a>》，这本书本来是 Sun 公司的官方用书，是一本 Java 的入门参考书。对于 Java 初学者来说，是一本非常不错的值得时常翻阅的技术手册。书中有较多地方进行 Java 与 C++ 的比较，因为当时 Java 面世的时候，又被叫作 “C++ Killer”。而我在看这本书的时候，发现书中有很多 C++ 的东西，于是又去学习了 C++。学习 C++ 的时候，发现有很多 C 的东西不懂，又顺着去学习了 C。然后，C -&gt; C++ -&gt; Java 整条线融汇贯通，这对我未来的技术成长有非常大的帮助。</li>
-<li>有了上述的入门后，Java 的 Spring 框架是你玩 Java 所无法回避的东西，所以接下来是两本 Spring 相关的书，《<a href="https://book.douban.com/subject/26767354/" target="_blank" rel="noopener">Spring 实战</a>》和《<a href="https://book.douban.com/subject/26857423/" target="_blank" rel="noopener">Spring Boot 实战</a>》。前者是传统的 Spring，后者是新式的微服务的 Spring。如果你只想看一本的话，那么就看后者吧。</li>
-</ul>
-<p>认真学习前面的书可以让你成功入门 Java，但想要进一步成长，就要看下面我推荐的几本<strong>提升级的书</strong>。</p>
-<ul>
-<li>接下来，你需要了解了一下如何编写高效的代码，于是必需看一下《<a href="https://book.douban.com/subject/27047716/" target="_blank" rel="noopener">Effective Java</a>》（注意，这里我给的引用是第三版的，也是 2017 年末出版的书），这本书是模仿 Scott Meyers 的经典图书《Effective C++》的。Effective 这种书基本上都是各种经验之谈，所以，这是一本非常不错的书，你一定要读。这里需要推荐一下 <a href="https://github.com/google/guava" target="_blank" rel="noopener">Google Guava 库</a> ，这个库不但是 JDK 的升级库，其中有如：集合（collections）、缓存（caching）、原生类型支持（primitives support）、并发库（concurrency libraries）、通用注解（common annotations）、字符串处理（string processing）、I/O 等库，其还是 Effective Java 这本书中的那些经验的实践代表。</li>
-<li>《<a href="https://book.douban.com/subject/10484692/" target="_blank" rel="noopener">Java 并发编程实战</a>》，是一本完美的 Java 并发参考手册。书中从并发性和线程安全性的基本概念出发，介绍了如何使用类库提供的基本并发构建块，用于避免并发危险、构造线程安全的类及验证线程安全的规则，如何将小的线程安全类组合成更大的线程安全类，如何利用线程来提高并发应用程序的吞吐量，如何识别可并行执行的任务，如何提高单线程子系统的响应性，如何确保并发程序执行预期任务，如何提高并发代码的性能和可伸缩性等内容。最后介绍了一些高级主题，如显式锁、原子变量、非阻塞算法以及如何开发自定义的同步工具类。</li>
-<li>了解如何编写出并发的程序，你还需要了解一下如何优化 Java 的性能。我推荐《<a href="https://book.douban.com/subject/26740520/" target="_blank" rel="noopener">Java 性能权威指南</a>》。通过学习这本书，你可以比较大程度地提升性能测试的效果。其中包括：使用 JDK 中自带的工具收集 Java 应用的性能数据，理解 JIT 编译器的优缺点，调优 JVM 垃圾收集器以减少对程序的影响，学习管理堆内存和 JVM 原生内存的方法，了解如何最大程度地优化 Java 线程及同步的性能，等等。看完这本书后，如果你还有余力，想了解更多的底层细节，那么，你有必要去读一下《<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">深入理解 Java 虚拟机</a>》。</li>
-<li>《<a href="https://book.douban.com/subject/2130190/" target="_blank" rel="noopener">Java 编程思想</a>》，真是一本透着编程思想的书。上面的书让你从微观角度了解 Java，而这本书则可以让你从一个宏观角度了解 Java。这本书和 Java 核心技术的厚度差不多，但这本书的信息密度比较大。所以，读起来是非常耗大脑的，因为它会让你不断地思考。对于想学好 Java 的程序员来说，这是一本必读的书。</li>
-<li>《<a href="https://book.douban.com/subject/26952826/" target="_blank" rel="noopener">精通 Spring 4.x</a>》，也是一本很不错的书，就是有点厚，一共有 800 多页，都是干货。我认为其中最不错的是在分析原理，尤其是针对前面提到的 Spring 技术，应用与原理都讲得很透彻，IOC 和 AOP 也分析得很棒，娓娓道来。其对任何一个技术都分析得很细致和全面，不足之处就是内容太多了，所以导致很厚，但这并不影响它是一本不错的工具书。</li>
-</ul>
-<p>当然，学 Java 你一定要学面向对象的设计模式，这里就只有一本经典的书《<a href="https://book.douban.com/subject/1052241/" target="_blank" rel="noopener">设计模式</a>》。如果你觉得有点儿难度了，那么可以看一下《<a href="https://book.douban.com/subject/2243615/" target="_blank" rel="noopener">Head First 设计模式</a>》。学习面向对象的设计模式时，你不要迷失在那 23 个设计模式中，你一定要明白这两个原则：</p>
-<ul>
-<li><strong>Program to an ‘interface’, not an ‘implementation’</strong><ul>
-<li>使用者不需要知道数据类型、结构、算法的细节。</li>
-<li>使用者不需要知道实现细节，只需要知道提供的接口。</li>
-<li>利于抽象、封装，动态绑定，多态。符合面向对象的特质和理念。</li>
-</ul>
-</li>
-<li><strong>Favor ‘object composition’ over ‘class inheritance’</strong><ul>
-<li>继承需要给子类暴露一些父类的设计和实现细节。</li>
-<li>父类实现的改变会造成子类也需要改变。</li>
-<li>我们以为继承主要是为了代码重用，但实际上在子类中需要重新实现很多父类的方法。</li>
-<li>继承更多的应该是为了多态。</li>
-</ul>
-</li>
-</ul>
-<p>至此，如果你把上面的这些知识都融汇贯通的话，那么，你已是一个高级的 Java 程序员了，我保证你已经超过了绝大多数程序员了。基本上来说，你在技术方面是可以进入到一线公司的，而且还不是一般的岗位，至少是高级程序员或是初级架构师的级别了。</p>
-<h2 id="C-C-语言"><a href="#C-C-语言" class="headerlink" title="C/C++ 语言"></a>C/C++ 语言</h2><p>不像我出道那个时候，几乎所有的软件都要用 C 语言来写。现在，可能不会有多少人学习 C 语言了，因为一方面有 Java、Python 这样的高级语言为你屏蔽了很多的底层细节，另一方面也有像 Go 语言这样的新兴语言可以让你更容易地写出来也是高性能的软件。但是，我还是想说，C 语言是你必须学习的语言，因为这个世界上绝大多数编程语言都是 C-like 的语言，也是在不同的方面来解决 C 语言的各种问题。<strong>这里，我想放个比较武断话——如果你不学 C 语言，你根本没有资格说你是一个合格的程序员！</strong></p>
-<ul>
-<li>这里尤其推荐，已故的 C 语言之父 Dennis M. Ritchie 和著名科学家 Brian W. Kernighan 合作的圣经级的教科书《<a href="https://book.douban.com/subject/1139336/" target="_blank" rel="noopener">C 程序设计语言</a>》。注意，这本书是 C 语言原作者写的，其 C 语言的标准不是我们平时常说的 ANSI 标准，而是原作者的标准，又被叫作 K&amp;R C。但是这本书很轻薄，也简洁，不枯燥，是一本你可以拿着躺在床上看还不会看着看着睡着的书。</li>
-<li>然后，还有一本非常经典的 C 语言的书《<a href="https://book.douban.com/subject/2280547/" target="_blank" rel="noopener">C 语言程序设计现代方法</a>》。有人说，这本书配合之前的 <a href="https://en.wikipedia.org/wiki/The_C_Programming_Language" target="_blank" rel="noopener">The C Programming Language</a> 那本书简真是无敌。我想说，这本书更实用，也够厚，完整覆盖了 C99 标准，习题的质量和水准也比较高。更好的是，探讨了现代编译器的实现，以及和 C++ 的兼容，还揭穿了各种古老的 C 语言的神话和信条……是相当相当干的一本学习 C 语言的书。</li>
-</ul>
-<p><strong>对了，千万不要看谭浩强的 C 语言的书。各种误导，我大学时就是用这本书学的 C，后来工作时被坑得不行</strong>。</p>
-<p>在学习 C 语言的过程中，你一定会感到，C 语言这么底层，而且代码经常性地崩溃，经过一段时间的挣扎，你才开始觉得你从这个烂泥坑里快要爬出来了。但你还需要看看《<a href="https://book.douban.com/subject/2778632/" target="_blank" rel="noopener">C 陷阱与缺陷</a>》这本书，你会发现，这里面的坑不是一般大。</p>
-<p>此时，如果你看过我的《编程范式游记》那个系列文章，你可能会发现 C 语言在泛型编程上的各种问题，这个时候我推荐你学习一下 C++ 语言。可能会有很多人觉得我说的 C++ 是个大坑。是的，这是世界目前来说最复杂也是最难的编程语言了。但是，<strong>C++ 是目前世界上范式最多的语言了，其做得最好的范式就是 “ 泛型编程 “，这在静态语言中，是绝对地划时代的一个事</strong>。</p>
-<p>所以，你有必要学习一下 C++，看看 C++ 是如何解决 C 语言中的各种问题的。你可以先看看我的这篇文章 “<a href="https://coolshell.cn/articles/7992.html" target="_blank" rel="noopener">C++ 的坑真的多吗？</a>” ，有个基本认识。下面推荐几本 C++ 的书。</p>
-<ul>
-<li>《<a href="https://book.douban.com/subject/25708312/" target="_blank" rel="noopener">C++ Primer 中文版</a>》，这本书是久负盛名的 C++ 经典教程。书是有点厚，前面 1/3 讲 C 语言，后面讲 C++。C++ 的知识点实在是太多了，而且又有点晦涩。但是你主要就看几个点，一个是面向对象的多态，一个是模板和重载操作符，以及一些 STL 的东西。看看 C++ 是怎么玩泛型和函数式编程的。</li>
-<li>如果你想继续研究，你需要看另外两本更为经典的书《<a href="https://book.douban.com/subject/5387403/" target="_blank" rel="noopener">Effective C++</a>》和《<a href="https://book.douban.com/subject/5908727/" target="_blank" rel="noopener">More Effective C++</a>》。 这两本书不厚，但是我读了 10 多年，每过一段时间再读一下，就会发现有更多的收获。这两本书的内容会随着你经历的丰富而变得丰富，这也是对我影响最大的两本书，其中影响最大的不是书中的那些 C++ 的东西，而是作者的思维方式和不断求真的精神，这真是太赞了。</li>
-<li>学习 C/C++ 都是需要好好了解一下编译器到底干了什么事的。就像 Java 需要了解 JVM 一样，所以，这里还有一本非常非常难啃的书你可以挑战一下《<a href="https://book.douban.com/subject/10427315/" target="_blank" rel="noopener">深度探索 C++ 对象模型
-</a>》。这本书是非常之经典的，看完后，C++ 对你来说就再也没有什么秘密可言。我以前写过的《<a href="https://coolshell.cn/articles/12165.html" target="_blank" rel="noopener">C++ 虚函数表解析</a>》，还有《<a href="https://coolshell.cn/articles/12176.html" target="_blank" rel="noopener">C++ 对象内存布局</a>》属于这个范畴。</li>
-<li>还有 C++ 的作者 Bjarne Stroustrup 写的 <a href="http://www.stroustrup.com/bs_faq.html" target="_blank" rel="noopener">C++ FAQ</a> （<a href="http://www.stroustrup.com/bsfaqcn.html" target="_blank" rel="noopener">中文版</a>），也是非常值得一读的。</li>
-</ul>
-<h2 id="学习-Go-语言"><a href="#学习-Go-语言" class="headerlink" title="学习 Go 语言"></a>学习 Go 语言</h2><p>C 语言太原始了，C++ 太复杂了，Go 语言是不二之选。有了 C/C++ 的功底，学习 Go 语言非常简单。</p>
-<p>首推 <a href="https://gobyexample.com/" target="_blank" rel="noopener">Go by Example</a> 作为你的入门教程。然后，<a href="https://go101.org/article/101.html" target="_blank" rel="noopener">Go 101</a> 也是一个很不错的在线电子书。如果你想看纸书的话，<a href="https://book.douban.com/subject/26337545/" target="_blank" rel="noopener">The Go Programming Language</a> 一书在豆瓣上有 9.2 分，但是国内没有卖的。（当然，我以前也写过两篇入门的供你参考 “<a href="https://coolshell.cn/articles/8460.html" target="_blank" rel="noopener">GO 语言简介（上）- 语法</a>” 和 “<a href="https://coolshell.cn/articles/8489.html" target="_blank" rel="noopener">GO 语言简介（下）- 特性</a>”）。</p>
-<p>另外，Go 语言官方的 <a href="https://golang.org/doc/effective_go.html" target="_blank" rel="noopener">Effective Go</a> 是必读的，这篇文章告诉你如何更好地使用 Go 语言，以及 Go 语言中的一些原理。</p>
-<p>Go 语言最突出之处是并发编程，Unix 老牌黑客罗勃·派克（Rob Pike）在 Google I/O 上的两个分享，可以让你学习到一些并发编程的模式。</p>
-<ul>
-<li>Go Concurrency Patterns（ <a href="https://talks.golang.org/2012/concurrency.slide" target="_blank" rel="noopener">幻灯片</a>和<a href="https://www.youtube.com/watch?v=f6kdp27TYZs" target="_blank" rel="noopener">演讲视频</a>）。</li>
-<li>Advanced Go Concurrency Patterns（<a href="https://talks.golang.org/2013/advconc.slide" target="_blank" rel="noopener">幻灯片</a>、<a href="https://youtu.be/QDDwwePbDtw" target="_blank" rel="noopener">演讲视频</a>）。</li>
-</ul>
-<p>然后，Go 在 GitHub 的 wiki 上有好多不错的学习资源，你可以从中学习到多。比如：</p>
-<ul>
-<li><a href="https://github.com/golang/go/wiki/Articles" target="_blank" rel="noopener">Go 精华文章列表</a>。</li>
-<li><a href="https://github.com/golang/go/wiki/Blogs" target="_blank" rel="noopener">Go 相关博客列表</a>。</li>
-<li><a href="https://github.com/golang/go/wiki/GoTalks" target="_blank" rel="noopener">Go Talks</a>。</li>
-</ul>
-<p>此外，还有个内容丰富的 Go 资源列表 <a href="https://github.com/avelino/awesome-go" target="_blank" rel="noopener">Awesome Go</a>，推荐看看。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>在编程语言方面，推荐学习 C、C++、Java 和 Go 四门语言，并分别阐释了推荐的原因。</p>
-<ul>
-<li>我认为，C 语言是必须学习的语言，因为这个世界上绝大多数编程语言都是 C-like 的语言，也是在不同的方面来解决 C 语言的各种问题。</li>
-<li>而 C++ 虽然复杂难学，但它几乎是目前世界上范式最多的语言了，其做得最好的范式就是 “ 泛型编程 “，这在静态语言中，是绝对地划时代的一个事。尤其要看看 C++ 是如何解决 C 语言中的各种问题的。</li>
-<li>Java 是综合能力最强的语言。其实我是先学了 Java，然后又去学了 C++，之后去学了 C 语言的。C -&gt; C++ -&gt; Java 整条线融汇贯通，这对我未来的技术成长有非常大的帮助。</li>
-<li>在文章最末，我推荐了 Go 语言，并给出了相关的学习资料。</li>
-</ul>
-<p>一个合格的程序员应该掌握几门语言。一方面，这会让你对不同的语言进行比较，让你有更多的思考。另一方面，这也是一种学习能力的培养，会让你对于未来的新技术学习得更快。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2456,7 +2401,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">94</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
