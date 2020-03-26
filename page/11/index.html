@@ -165,6 +165,422 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/DataBase-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/05/DataBase-Review/" class="post-title-link" itemprop="url">DataBase Review</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-05 14:00:56" itemprop="dateCreated datePublished" datetime="2019-12-05T14:00:56-05:00">2019-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-06 21:37:11" itemprop="dateModified" datetime="2019-12-06T21:37:11-05:00">2019-12-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>整理学习到的databse知识。</p>
+<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3><h6 id="Hierachy-speed-fast-to-slow"><a href="#Hierachy-speed-fast-to-slow" class="headerlink" title="Hierachy (speed fast to slow):"></a>Hierachy (speed fast to slow):</h6><p>​    CPU Register -&gt; Cache -&gt; Main Memory -&gt; Disk -&gt; Tapes</p>
+<h6 id="Disk-Capacity"><a href="#Disk-Capacity" class="headerlink" title="Disk Capacity"></a>Disk Capacity</h6><p>​    Disk Capacity = #tracks per surface x (2 x #platter) x #sector per track x     byte per sector.</p>
+<ul>
+<li><p><strong>Access time = seek time + rotational delay + transfer time + other delay</strong></p>
+<ul>
+<li>Seek time: time to move the arm to position disk head on the right track.</li>
+<li>Rotational delay: time to wait for sector to rotate under the disk head.</li>
+<li>Average rotational delay: time for 1/2 revolution.</li>
+<li>transfer time: block size / transfer rate.</li>
+</ul>
+<h6 id="Buffer-Management"><a href="#Buffer-Management" class="headerlink" title="Buffer Management"></a>Buffer Management</h6></li>
+</ul>
+<p>​    Pages in memory is like blocks in hard disk.</p>
+<h6 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given a total revolution of 7200 RPM.</span><br><span class="line">One rotation &#x3D; 1&#x2F;(7200&#x2F;60s)*1000ms &#x3D; 8.33ms</span><br><span class="line">Average rotational latency &#x3D; 4.16ms</span><br></pre></td></tr></table></figure>
+
+<h6 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">3600 RPM &#x3D; 60 revolutions&#x2F;s -&gt; 1 rev &#x3D; 16.66 ms</span><br><span class="line">128 cylinders &#x3D; 2^7</span><br><span class="line">10% overhead between blocks</span><br><span class="line">time over useful data &#x3D; 16.66 x 0.9 &#x3D; 14.99ms</span><br><span class="line">time over gaps &#x3D; 16.66 x 0.1 &#x3D; 1.66ms</span><br><span class="line"></span><br><span class="line">T1 &#x3D; time to read one random block</span><br><span class="line">T1 &#x3D; seek + rotational delay + transfer time </span><br><span class="line">T1 &#x3D; 25 + 16.66&#x2F;2 + 0.117 &#x3D; 33.45ms</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Record-Layout"><a href="#Record-Layout" class="headerlink" title="Record Layout"></a>Record Layout</h3><h4 id="Conventional-Indexes"><a href="#Conventional-Indexes" class="headerlink" title="Conventional Indexes"></a>Conventional Indexes</h4><h6 id="Types"><a href="#Types" class="headerlink" title="Types:"></a>Types:</h6><ol>
+<li>Dense index: index record appears for every search-key value</li>
+<li>Sparse index: contains index records for only some search-key value</li>
+<li>Multilevel index: if primary index does not fit in memory, access becomes expensive.<ol>
+<li>Outer index: a sparse index of primary index.</li>
+<li>Inner index: the primary index file</li>
+</ol>
+</li>
+<li>Duplicate keys:<ol>
+<li>Dense index: only keep record in index for first data record with each search key value.</li>
+<li>Sparse index: has key-pointer pairs corresponding to the first search key on each block of the data file.</li>
+</ol>
+</li>
+</ol>
+<h4 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+ Tree"></a>B+ Tree</h4><h6 id="Characteristics"><a href="#Characteristics" class="headerlink" title="Characteristics:"></a>Characteristics:</h6><p>​    full(packed) and balanced(almost uniform height).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Consider a DBMS has following characteristics: Pointers:4 bytes. Keys: 4 bytes. Blocks:100 bytes.</span><br><span class="line">Compute the maximum number of records we can index with:</span><br><span class="line">a).2-level B Tree</span><br><span class="line">b).2-level B+ Tree</span><br><span class="line"></span><br><span class="line">a).2-level B Tree</span><br><span class="line">Find largest integer value of n such that 4n+4(2n+1)&lt;100. n&#x3D;8.</span><br><span class="line">Root has 8 keys + 8 record pointers + 9 children pointers </span><br><span class="line">&#x3D; 8 x 4 + 8 x 4 + 9 x 4 &#x3D; 100bytes.</span><br><span class="line">Each of 9 children has 12 records pointers</span><br><span class="line">&#x3D; 12 x (4 + 4) + 4 &#x3D; 100bytes.</span><br><span class="line">So maximum # of records &#x3D; 12 x 9 + 8 &#x3D; 116.</span><br><span class="line"></span><br><span class="line">b).2-level B+ Tree</span><br><span class="line">Find largest integer value of n such that 4n+(4n+1)&lt;100. n&#x3D;12.</span><br><span class="line">Root has 12 keys + 13 children pointers</span><br><span class="line">&#x3D; 12 x 4 + 13 x 4 &#x3D; 100 bytes.</span><br><span class="line">Each of 13 children has 12 record pointers</span><br><span class="line">&#x3D; 12 x (4 + 4) + 4 &#x3D; 100 bytes.</span><br><span class="line">So maximum # of records &#x3D; 13 x 12 &#x3D; 156.</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="B-Tree-1"><a href="#B-Tree-1" class="headerlink" title="B Tree"></a>B Tree</h4><h4 id="Hashing"><a href="#Hashing" class="headerlink" title="Hashing"></a>Hashing</h4><h6 id="Characteristics-1"><a href="#Characteristics-1" class="headerlink" title="Characteristics:"></a>Characteristics:</h6><p>$$<br>Avg\ occupancy = \frac{r}{n\times\gamma}<br>$$</p>
+<p>n: The number of buckets that is currently in use.</p>
+<p>r: current number of search keys stored in the buckets.</p>
+<p>$\gamma$: block size(# search keys that can be stored in 1 block).</p>
+<h3 id="Relational-Algebra"><a href="#Relational-Algebra" class="headerlink" title="Relational Algebra"></a>Relational Algebra</h3><h4 id="Algebra-expressions-Translate-SQL-into-relational-algebra-Equivlaence"><a href="#Algebra-expressions-Translate-SQL-into-relational-algebra-Equivlaence" class="headerlink" title="Algebra expressions / Translate SQL into relational algebra / Equivlaence."></a>Algebra expressions / Translate SQL into relational algebra / Equivlaence.</h4><h6 id="Query-Process"><a href="#Query-Process" class="headerlink" title="Query Process"></a>Query Process</h6><ul>
+<li>parsing: translating the query into a parsing tree.</li>
+<li>query rewrite: the parse tree is transformed into an expression tree of relational algebra (logical query plan)</li>
+<li>physical plan generation: translate the logical plan into a physical plan<ul>
+<li>select algorithms to implement each operator</li>
+<li>choose order of operations.</li>
+</ul>
+</li>
+</ul>
+<h6 id="Physical-Query-Plan"><a href="#Physical-Query-Plan" class="headerlink" title="Physical Query Plan"></a>Physical Query Plan</h6><ul>
+<li>Sequential-Scan<ul>
+<li>Read tuples from the relation R by reading data blocks - one block at a time from disk to memory.</li>
+</ul>
+</li>
+<li>Index-Scan<ul>
+<li>The relation R must have an index</li>
+<li>The index is scanned to find blocks that contain the desired tuples.</li>
+<li>All the blocks containing desired tuples are then read into the memory - one block at a time.</li>
+</ul>
+</li>
+</ul>
+<h6 id="Clustered-and-unclustered-files-relations-indexes"><a href="#Clustered-and-unclustered-files-relations-indexes" class="headerlink" title="Clustered and unclustered files/relations/indexes"></a>Clustered and unclustered files/relations/indexes</h6><ul>
+<li>Clustered file: A file that stores records of one relation.</li>
+<li>Unclustered file: A file that stores records of multiple relations.</li>
+<li>Clustered index: Index that allows tuples to be read in an order that corresponds to physical order.</li>
+<li>Relation R is clustered.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>I/O cost</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sequential-Scan</td>
+<td>B(R)</td>
+<td>Read all blocks, and there are B(R) blocks.</td>
+</tr>
+<tr>
+<td>Index-Scan</td>
+<td>≤B(R)</td>
+<td>Depends on number of values in the index is scanned.</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Relation R is unclustered.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>I/O cost</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sequential-Scan</td>
+<td>~T(R)</td>
+<td>Assuming next tuple is not found in the current block. We will read 1 block per tuple</td>
+</tr>
+<tr>
+<td>Index-Scan</td>
+<td>≤T(R)</td>
+<td>Depends on number of values in the index is scanned.</td>
+</tr>
+</tbody></table>
+<h6 id="SQL-grammer"><a href="#SQL-grammer" class="headerlink" title="SQL grammer"></a>SQL grammer</h6><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;Query&gt; ::= SELECT &lt;SelList&gt;</span><br><span class="line">						FROM   &lt;From List&gt;</span><br><span class="line">						WHERE  &lt;Condition&gt;</span><br><span class="line">						</span><br><span class="line">&lt;SelList&gt; ::= &lt;Attribute&gt; | &lt;Attribute&gt; , &lt;SelList&gt;</span><br><span class="line"></span><br><span class="line">&lt;FromList&gt; ::= &lt;Relation&gt; | &lt;Relation&gt; , &lt;FromList&gt;</span><br><span class="line"></span><br><span class="line">&lt;Condition&gt; ::= &lt;Condition&gt; AND &lt;Condition&gt;  |</span><br><span class="line">								&lt;Attribute&gt; IN (&lt;Query&gt;)     |</span><br><span class="line">								&lt;Attribute&gt; = &lt;Attribute&gt;</span><br><span class="line">								&lt;Attribute&gt; LIKE &lt;Pattern&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Example-of-parse-trees"><a href="#Example-of-parse-trees" class="headerlink" title="Example of parse trees"></a>Example of parse trees</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> movieTitle</span><br><span class="line"><span class="keyword">FROM</span>   StarsIn, MovieStar</span><br><span class="line"><span class="keyword">WHERE</span>  starName = <span class="keyword">name</span></span><br><span class="line">       <span class="keyword">AND</span> birthdate <span class="keyword">LIKE</span> <span class="string">'%1960'</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/exampleOfParseTrees.png" alt=""></p>
+<h6 id="Example-2-of-parse-trees"><a href="#Example-2-of-parse-trees" class="headerlink" title="Example 2 of parse trees"></a>Example 2 of parse trees</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> movieTitle</span><br><span class="line"><span class="keyword">FROM</span>   StarsIn</span><br><span class="line"><span class="keyword">WHERE</span>  starName <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">name</span></span><br><span class="line">                    <span class="keyword">FROM</span>   MovieStar</span><br><span class="line">                    <span class="keyword">WHERE</span>  birthdate <span class="keyword">LIKE</span> <span class="string">'%1960'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/example2OfParseTrees.png" alt="example2OfParseTrees"></p>
+<h6 id="Virtual-Relation-Pre-Processing"><a href="#Virtual-Relation-Pre-Processing" class="headerlink" title="Virtual Relation Pre-Processing"></a>Virtual Relation Pre-Processing</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> Paramount_Movies <span class="keyword">AS</span></span><br><span class="line">	(<span class="keyword">SELECT</span> title, <span class="keyword">year</span></span><br><span class="line">	<span class="keyword">FROM</span>   Movies</span><br><span class="line">	<span class="keyword">WHERE</span>  StudioName = <span class="string">'Paramount'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/image-20191206021435872.png" alt="image-20191206021435872"></p>
+<h6 id="Consider-the-following-query-on-the-virtual-table-Paramount-Movies"><a href="#Consider-the-following-query-on-the-virtual-table-Paramount-Movies" class="headerlink" title="Consider the following query on the virtual table Paramount_Movies:"></a>Consider the following query on the virtual table Paramount_Movies:</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	title</span><br><span class="line"><span class="keyword">FROM</span>		Paramount_Movies</span><br><span class="line"><span class="keyword">WHERE</span>		<span class="keyword">year</span> = <span class="number">1979</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/image-20191206021508616.png" alt="image-20191206021508616"></p>
+<h6 id="Then-the-virtual-table-is-replaced-by-the-corresponding-logical-query-plan"><a href="#Then-the-virtual-table-is-replaced-by-the-corresponding-logical-query-plan" class="headerlink" title="Then, the virtual table is replaced by the corresponding logical query plan"></a>Then, the virtual table is replaced by the corresponding logical query plan</h6><p><img src="../images/image-20191206021527531.png" alt="image-20191206021527531"></p>
+<h4 id="Convert-Parse-Tree-into-initial-L-Q-P"><a href="#Convert-Parse-Tree-into-initial-L-Q-P" class="headerlink" title="Convert Parse Tree into initial L.Q.P"></a>Convert Parse Tree into initial L.Q.P</h4><p><img src="../images/convertParseTreeIntoInitialLQP.png" alt="convertParseTreeIntoInitialLQP"></p>
+<h6 id="Set-vs-Bag-semantics"><a href="#Set-vs-Bag-semantics" class="headerlink" title="Set vs Bag semantics"></a>Set vs Bag semantics</h6><ul>
+<li>Set semantics: No duplicate entries.</li>
+<li>Bag semantics: Allow duplicate entries.</li>
+</ul>
+<h6 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h6><ul>
+<li>Selection<ul>
+<li>Syntax: σ c (R)</li>
+<li>Set: { t | t ∈ R AND t fulfills c} </li>
+<li>Bag: { $t^n$ | $t^n$ ∈ R AND t fulfills c}</li>
+</ul>
+</li>
+<li>Renaming<ul>
+<li>Syntax: ρ A (R)</li>
+<li>Set: { t.A | t∈R} </li>
+<li>Bag: { $(t.A)^n$ | $t^n$ ∈R}</li>
+<li>Example: $ρ_c$←a(R)</li>
+</ul>
+</li>
+<li>Projection<ul>
+<li>Syntax: π A (R)</li>
+<li>Set: { t.A | t∈R} </li>
+<li>Bag: { $(t.A)^n$ | $t^n$ ∈R}</li>
+</ul>
+</li>
+<li>Joins<ul>
+<li>Theta, natural, cross-product, outer, anti</li>
+<li>Cross Product<ul>
+<li>Syntax: R × S</li>
+<li>Set: { (t,s) | t∈R AND s∈S} </li>
+<li>Bag: { (t,s)^n×m | t^n ∈R AND s^m ∈S}</li>
+</ul>
+</li>
+<li>Join<ul>
+<li>Syntax: $R\bowtie_{c}S$</li>
+<li>Set: { (t,s) | t∈R AND s∈S AND (t,s) matches c} </li>
+<li>Bag: { $(t,s)^{n×m}$ |$t^n$ ∈R AND $s^m$ ∈S AND (t,s) matches c}</li>
+</ul>
+</li>
+<li>Natural Join<ul>
+<li>Syntax: $R\bowtie S$</li>
+<li>All combinations of tuples from R and S that match on common attributes</li>
+<li>A = common attributes of R and S</li>
+<li>C = exclusive attributes of S</li>
+<li>Set: {(t,s.C) | t∈R AND s∈S AND t.A=s.A}</li>
+<li>Bag: {$(t,s.C)^{n×m}$ | $t^n$ ∈R AND $s^m$ ∈S AND t.A=s.A}</li>
+</ul>
+</li>
+<li>Left-outer Join<ul>
+<li>Syntax:$R=\bowtie{c} S$</li>
+<li>Contains all tuples in R join S</li>
+<li>Also includes every tuple in R that is not joined with a tuple in S, after padding a NULL</li>
+<li>$R=\bowtie _{a=d}S$</li>
+<li><img src="../images/left_outer_join_example.png" alt="left_outer_join_example"></li>
+</ul>
+</li>
+<li>Right-outer Join<ul>
+<li>Syntax:$R\bowtie =S$</li>
+<li>s∈S without match, ﬁll R attributes with NULLrigh</li>
+<li>$R\bowtie =_{a=d}S$</li>
+<li><img src="../images/right_outer_join_example.png" alt="right_outer_join_example"></li>
+</ul>
+</li>
+<li>Full-outer Join<ul>
+<li>Syntax: $R=\bowtie =_{c}S$</li>
+<li>$R=\bowtie=_{a=d}S$</li>
+<li><img src="../images/full_outer_join_example.png" alt="full_outer_join_example"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aggregation<ul>
+<li>All operators treat a relation as a bag of tuples.</li>
+<li>SUM: computes the sum of a column with numerical values.</li>
+<li>AVG: computes the average of a column with numerical values.</li>
+<li>MIN and MAX: Natural Order</li>
+<li>COUNT: computes the number of non-NULL tuples in a column.</li>
+<li>Grouping and aggregation generally need to be implemented and optimized together</li>
+<li>Syntax: $G\gamma A(R)$<ul>
+<li>A is list of aggregation functions </li>
+<li>G is list of group by attributes</li>
+</ul>
+</li>
+<li>Build groups of tuples according G and compute the aggregation functions from each group</li>
+<li>$b\gamma sum(a)(R)$</li>
+<li><img src="../images/aggregation_example.png" alt="aggregation_example"></li>
+</ul>
+</li>
+<li>Duplicate removal<ul>
+<li>Syntax: $\delta(R)$: is the relation containing exactly one copy of each tuple in R.</li>
+<li>$\delta(R)$</li>
+<li><img src="../images/duplicate_removal.png" alt="duplicate_removal"></li>
+</ul>
+</li>
+<li>Set operations.</li>
+<li>Union, Intersection and Difference<ul>
+<li>Union<ul>
+<li>Syntax: $R\cup S$</li>
+<li><img src="../images/unionExample.png" alt="unionExample"></li>
+</ul>
+</li>
+<li>Intersection<ul>
+<li>Syntax: $R\cap S$</li>
+<li><img src="../images/intersectionExample.png" alt="intersectionExample"></li>
+</ul>
+</li>
+<li>Set Difference<ul>
+<li>Syntax: $R-S$</li>
+<li><img src="../images/setExample.png" alt="setExample"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Canonical-Translation-to-Relational-Algebra"><a href="#Canonical-Translation-to-Relational-Algebra" class="headerlink" title="Canonical Translation to Relational Algebra"></a>Canonical Translation to Relational Algebra</h4><ul>
+<li><strong>FROM</strong> clause into joins and crossproducts </li>
+<li><strong>WHERE</strong> clause into selection </li>
+<li><strong>SELECT</strong> clause into projection and renaming<ul>
+<li>If it has aggregation functions use aggregation </li>
+<li><strong>DISTINCT</strong> into duplicate removal</li>
+</ul>
+</li>
+<li><strong>GROUP BY</strong> clause into aggregation </li>
+<li><strong>HAVING</strong> clause into selection </li>
+<li><strong>ORDER BY</strong> - no counter-part</li>
+</ul>
+<h4 id="Set-Operations"><a href="#Set-Operations" class="headerlink" title="Set Operations"></a>Set Operations</h4><ul>
+<li><strong>UNION ALL</strong> into union </li>
+<li><strong>UNION</strong> duplicate removal over union </li>
+<li><strong>INTERSECT ALL</strong> into intersection </li>
+<li><strong>INTERSECT</strong> add duplicate removal </li>
+<li><strong>EXCEPT ALL</strong> into set diﬀerence </li>
+<li><strong>EXCEPT</strong> apply duplicate removal to inputs and then apply set diﬀerence</li>
+</ul>
+<h4 id="Conversion-into-Relational-Algebra"><a href="#Conversion-into-Relational-Algebra" class="headerlink" title="Conversion into Relational Algebra"></a>Conversion into Relational Algebra</h4><h5 id="Example-1-1"><a href="#Example-1-1" class="headerlink" title="Example 1"></a>Example 1</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> MovieStar <span class="keyword">WHERE</span> birthdate <span class="keyword">LIKE</span> <span class="string">'%1960'</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/image-20191206021614275.png" alt="image-20191206021614275"></p>
+<h5 id="Example-2-1"><a href="#Example-2-1" class="headerlink" title="Example 2"></a>Example 2</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> movieTitle</span><br><span class="line"><span class="keyword">FROM</span>   StarsIn, MovieStar</span><br><span class="line"><span class="keyword">WHERE</span>  starName = <span class="keyword">name</span> <span class="keyword">AND</span> birthdate <span class="keyword">LIKE</span> <span class="string">'%1960'</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/image-20191206021630157.png" alt="image-20191206021630157"></p>
+<h5 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">sum</span>(a)</span><br><span class="line"><span class="keyword">FROM</span> R</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> b</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/image-20191206021643102.png" alt="image-20191206021643102"></p>
+<h5 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> dep, headcnt</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">AS</span> headcnt, dep</span><br><span class="line">     <span class="keyword">FROM</span> Employee</span><br><span class="line">     <span class="keyword">GROUP</span> <span class="keyword">BY</span> dep)</span><br><span class="line"><span class="keyword">WHERE</span> headcnt &gt; <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/image-20191206021656629.png" alt="image-20191206021656629"></p>
+<h5 id="Example-5"><a href="#Example-5" class="headerlink" title="Example 5"></a>Example 5</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title <span class="keyword">FROM</span> StarsIn <span class="keyword">WHERE</span> starName <span class="keyword">IN</span> (&lt;<span class="keyword">Query</span>&gt;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/conversion_into_relationExample5.png" alt="conversion_into_relationExample5"></p>
+<h3 id="Query-Processing-and-Optimization"><a href="#Query-Processing-and-Optimization" class="headerlink" title="Query Processing and Optimization"></a>Query Processing and Optimization</h3><h4 id="Query-Optimization"><a href="#Query-Optimization" class="headerlink" title="Query Optimization"></a>Query Optimization</h4><p><img src="../images/image-20191206022236925.png" alt="image-20191206022236925"></p>
+<h5 id="Relational-Algebra-Optimization"><a href="#Relational-Algebra-Optimization" class="headerlink" title="Relational Algebra Optimization"></a>Relational Algebra Optimization</h5><h6 id="Algebraic-Laws"><a href="#Algebraic-Laws" class="headerlink" title="Algebraic Laws:"></a>Algebraic Laws:</h6><ul>
+<li>Joins and Products<ul>
+<li>Natural joins and product are both associative and commutative</li>
+<li>theta-join is commutative but not always associative.</li>
+</ul>
+</li>
+<li>Union and Intersect<ul>
+<li>Union and intersection are both associative and commutative</li>
+</ul>
+</li>
+<li>Laws for Bags and Sets can differ<ul>
+<li>Holds for sets, but guarentee for bags</li>
+</ul>
+</li>
+<li>Select<ul>
+<li>reduces the number of tuples (size of relation)</li>
+<li>an important general rule in optimization is to push selects as far down the tree as possible</li>
+<li>commutative</li>
+<li>must be pushed through both arguments for union:<ul>
+<li>Union: σ p (R ∪ S) = σ p (R) ∪ σ p (S)</li>
+</ul>
+</li>
+<li>must be pushed through ﬁrst arguments, optionally second for diﬀerence:<ul>
+<li>Diﬀerence: σ p (R - S) = σ p (R) - S</li>
+</ul>
+</li>
+<li>For the other operators it is only required that the selection be pushed to one argument.<ul>
+<li>σ p (R × S) = σ p (R) × S, if p contains only attributes from R</li>
+</ul>
+</li>
+<li>Derivation<ul>
+<li><img src="../images/image-20191206024632637.png" alt="image-20191206024632637"></li>
+</ul>
+</li>
+<li>Amendment to the simple push down the select<ul>
+<li>Use this algebraic law in the reverse order: $\sigma _p(R\bowtie S) = \sigma _p(R)\bowtie S$ to push the σ year=1996 operation up the tree</li>
+<li><img src="../images/image-20191206025216352.png" alt="image-20191206025216352"></li>
+<li>Then use the algebraic law in the forward order: $\sigma _p(R\bowtie S) = \sigma _p(R)\bowtie \sigma _p(S)$ push the $\sigma _{year=1996}$ operation down the tree.</li>
+<li><img src="../images/image-20191206025413264.png" alt="image-20191206025413264"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Projection<ul>
+<li><img src="../images/image-20191206025519667.png" alt="image-20191206025519667"></li>
+</ul>
+</li>
+<li>Example<ul>
+<li><img src="../images/image-20191206030745130.png" alt="image-20191206030745130"></li>
+<li><img src="../images/image-20191206030801787.png" alt="image-20191206030801787"></li>
+<li><img src="../images/image-20191206030815185.png" alt="image-20191206030815185"></li>
+<li><img src="../images/image-20191206030824074.png" alt="image-20191206030824074"></li>
+<li><img src="../images/image-20191206030838597.png" alt="image-20191206030838597"></li>
+</ul>
+</li>
+<li>Summary<ul>
+<li>Selections<ul>
+<li>push down tree as far as possible </li>
+<li>if condition is an AND, split and push separately </li>
+<li>sometimes need to push up before pushing down</li>
+</ul>
+</li>
+<li>Projections<ul>
+<li>can be pushed down</li>
+<li>new ones can be added (but be careful)</li>
+</ul>
+</li>
+<li>duplicate eliminations can sometimes be removed (e.g., if one key)</li>
+<li>Selection/product combinations<ul>
+<li>can sometimes be replaced with join</li>
+</ul>
+</li>
+<li>Many transformations lead to “promising” plans</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/Maven-Lesson/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -329,7 +745,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
