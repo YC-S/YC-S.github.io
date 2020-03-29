@@ -165,6 +165,154 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/Ops-Lessons/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/28/Ops-Lessons/" class="post-title-link" itemprop="url">Ops_Lessons</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-28 22:41:41 / Modified: 23:43:30" itemprop="dateCreated datePublished" datetime="2020-01-28T22:41:41-05:00">2020-01-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>Email is the worst monitoring and alerting mechanism except for all the others.</li>
+<li>Absence of a signal is itself a signal.</li>
+<li>The severity of an incident is measured by the number of rules broken in resolving it.</li>
+<li>The mobile hotspot you’re paying for so you can leave your house while you’re oncall only works at home and in the office.</li>
+<li>The only other person who knows how this works is also on vacation.</li>
+<li>If a post-mortem follow-up task is not picked up within a week, it’s unlikely to be completed at all.</li>
+<li>That janky script you put together during the outage – the one that uses <code>expect(1)</code> and ‘<code>ssh -t -t</code>‘ – now is the foundation of the entire team’s toolchest.</li>
+<li>NTP being off may not be a root cause, but it sure didn’t help.</li>
+<li><a href="https://teespring.com/utc-or-gtfo" target="_blank" rel="noopener">UTC or GTFO</a>.</li>
+<li>Your infrastructure uses a lot more self-signed certificates than you think. A <em>lot</em> more. In places that make you weep.</li>
+<li>Self-signed certificates beget long lived certs, which beget lack of certificate validity monitoring, which begets <code>curl -k</code>, which begets a lack of certificate deployment automation, which begets self-signed certificates.</li>
+<li>For any N applications, at most N/2+1 use the same certificate bundle.</li>
+<li>The system you’re troubleshooting doesn’t use the one the tool you’re troubleshooting it with does.</li>
+<li>An <a href="https://twitter.com/jschauma/status/1086305575443542017" target="_blank" rel="noopener">API without a reference</a> implementation and command-line client is called a gray box.</li>
+<li>Restricted shells are not as restricted as you think.</li>
+<li>Very few operations are truly idempotent.</li>
+<li>“Asserting state” beats “monitoring for compliance” any day.</li>
+<li><a href="https://docs.microsoft.com/en-us/archive/blogs/larryosterman/one-in-a-million-is-next-tuesday" target="_blank" rel="noopener">One in a Million is next Tuesday.</a></li>
+<li>People give talks at conferences not to convince others that their work is awesome and totally worth the time and effort they put in, but themselves.</li>
+<li>It’s ok to use shell for complex stuff; it often times is easier, faster, and still less of a mess than juggling libraries and dependencies.</li>
+<li>There’s nothing wrong with Perl.</li>
+<li>Ok, we all at times keep adding <code>$</code>, <code>{</code>, <code>}</code>, and <code>@</code> in random places trying to make things work, but still.</li>
+<li>Serverless isn’t.</li>
+<li><a href="https://en.wikipedia.org/wiki/Year_2038_problem" target="_blank" rel="noopener">Y38K</a> is <a href="https://twitter.com/jxxf/status/1219009308438024200" target="_blank" rel="noopener">already here</a>, it’s just not evenly distributed.</li>
+<li>If you determine “<a href="https://www.netmeister.org/blog/humanerrno.html" target="_blank" rel="noopener">human error</a>“ as the root cause, then you’re doing it wrong.</li>
+<li>Your network team has a way into the network that your security team doesn’t know about.</li>
+<li>And don’t even as much as <em>mention</em> the serial console and IPMI networks, but boy are you glad you have ‘em.</li>
+<li>Blocking TCP port 53 traffic leads to very strange failures. Don’t.</li>
+<li>Somewhere in your infrastructure a service you didn’t know uses DNS for endpoint discovery in a very surprising way.</li>
+<li>Do. Not. Monkey. Around. With. <code>/etc/hosts</code>.</li>
+<li>If you break it, you own it - for now; if you fix it, you own it - forever.</li>
+<li>Turning it off and on again is actually quite a reasonable way to fix many things.</li>
+<li>A <code>README.md</code> in git is no substitute for a manual page that’s shipped with your tool.</li>
+<li>A search for a document you know exists will only turn up links to documents referencing <em>but not actually linking to</em> the one you’re looking for.</li>
+<li>The document you’re looking for was marked as obsolete and not migrated to the new content management solution.</li>
+<li>Sure, your current content management system sucks, but it’s still better than the one you’re moving to.</li>
+<li>Nobody knows how git works; everybody simply <code>rm -fr &amp;&amp; git checkout</code>‘s periodically.</li>
+<li>There are very few network restrictions creative and determined use of <code>ssh(1)</code> port forwarding can’t overcome.</li>
+<li>This is both incredibly useful and concerning.</li>
+<li>It is tempting to jump right into implementing a solution when the right thing may well be to not do the thing that requires the solution in the first place.</li>
+<li>Turning things off permanently is <a href="https://twitter.com/jschauma/status/1074684924588974080" target="_blank" rel="noopener">surprisingly difficult</a>.</li>
+<li>“<em>Ancient</em>“ is a very relative term when it comes to software and protocols.</li>
+<li>“<em>Obsolete</em>“ doesn’t mean it’s not in use and relied on.</li>
+<li>The sets of systems online before and after a data center power outage only intersect. Some of the old systems coming online will immediately cause a different outage.</li>
+<li>Some of your most critical services are kept alive by a handful of people whose job description does not mention those services at all.</li>
+<li>After the initial “down for everybody or just me ermahgehrd Slack is down” drop, productivity increases linearly throughout the duration of the outage.</li>
+<li>You’re bound by the <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener">CAP theorem</a> much more often than you may think. <a href="https://en.wikipedia.org/wiki/Halting_problem" target="_blank" rel="noopener">Halting Problem</a>‘s a bitch, too.</li>
+<li>Eventual consistency doesn’t help when the system you’re debugging hasn’t converged yet.</li>
+<li>The source you’re looking at is not the code running in production.</li>
+<li><code>strace(1)</code>/<code>ktrace(1)</code> doesn’t lie.</li>
+<li>Unless somebody’s been playing <code>LD_PRELOAD</code> games.</li>
+<li>Schrödinger’s Backup – “The condition of any backup is unknown until a restore is attempted.” – is overly optimistic.</li>
+<li>There’s <a href="https://xkcd.com/305/" target="_blank" rel="noopener">an xkcd</a> for the precise situation you find yourself in. (There’s also one for at least half of these.)</li>
+<li>At some point in your career you will implement <a href="https://twitter.com/jschauma/status/643444266300239873" target="_blank" rel="noopener">half of kerberos</a>. Poorly.</li>
+<li>Any sufficiently successful product launch is indistinguishable from a DDoS; any sufficiently advanced user indistinguishable from an attacker.</li>
+<li>Debugging any sufficiently complex open source product is indistinguishable from reverse engineering a black box.</li>
+<li>“We’ve always done it this way.” is not a good reason by itself, but there’s bound to be one for why.</li>
+<li>That reason may or may not be valid any longer, however.</li>
+<li>A junior engineer asking “why” and pointing out the docs don’t reflect reality is at least as valuable as the senior engineer working blindly off tribal knowledge.</li>
+<li>Your herculean efforts to upgrade the OS across your entire fleet completed just in time for the EOL announcement of the version you upgraded to.</li>
+<li>This phenomenon was first described in Dante’s <em>Inferno</em> as the Ninth Circle of Hell, Ring Four, aka <code>RedHat Canto XXXIV</code>.</li>
+<li>Containers create at least as many problems as they solve.</li>
+<li>The most ninja move the expert you hired for that third party black box product you rely on is to say “Let me ping the support team”.</li>
+<li>Somewhere, somebody ran into this <em>exact</em> problem, but they never bothered to post a solution.</li>
+<li>That completely automated solution you set up requires at least three manual steps you didn’t document.</li>
+<li>CAPEX budget always increases, OPEX budget always decreases.</li>
+<li>CAPEX costs can be reasonably estimated, OPEX costs can only be ballparked.</li>
+<li>Doubling your time estimate in the hopes of beating expectations won’t work because your manager takes your estimate, has a hardy laugh, and then resets it back to what they already promised upchain.</li>
+<li>Your quarterly planning means bubkes when the next re-org rolls around.</li>
+<li>Most of your actual work is not covered by your <a href="https://www.netmeister.org/blog/okr-distractions.html" target="_blank" rel="noopener">OKRs</a>.</li>
+<li>Recursively applying the <a href="https://en.wikipedia.org/wiki/Pareto_principle" target="_blank" rel="noopener">Pareto Principle</a> is a surprisingly accurate way to gauge your low hanging fruit, determine your high impact objectives, and ballpark your required effort.</li>
+<li>Although, to be honest, it <a href="https://twitter.com/jschauma/status/962448995690967041" target="_blank" rel="noopener">only works in about 80% of cases</a>.</li>
+<li>Management will always happily <a href="https://www.netmeister.org/blog/crazy-like-a-fox.html" target="_blank" rel="noopener">spend $$$ on outside consultants</a> to tell them what you’ve been saying for years.</li>
+<li>Management will much rather invest in inventing a new, square wheel than fixing an old round one.</li>
+<li>In any organization practicing continuous integration, half of all commits are to fake out CI tests.</li>
+<li>Good software development practices do not always translate well to ops and friends.</li>
+<li>Mandatory <a href="https://twitter.com/jschauma/status/1019410471999467525" target="_blank" rel="noopener">code reviews</a> do not automatically improve code quality nor reduce the frequency of incidents.</li>
+<li>Every new paradigm tends to mostly add layers of abstractions; cutting through them and identifying what basic principles continue to apply is half the battle.</li>
+<li>change can only be implemented <a href="https://en.wikipedia.org/wiki/Layer_8" target="_blank" rel="noopener">above layer 7</a>.</li>
+<li>“Prod” is just another name for “staging”.</li>
+<li>Your source of truth lies.</li>
+<li>Also: it’s incomplete.</li>
+<li><code>pcap</code> or it didn’t happen.</li>
+<li><code>grep(1)</code> &gt; Splunk (there, I said it)</li>
+<li>Multithreading is rarely worth the added complexity.</li>
+<li>Parallelism is not Concurrency.</li>
+<li>Simplicity is King.</li>
+<li>Nobody knows what exactly it is you do.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/%E7%BE%8E%E4%B8%BD%E6%96%B0%E4%B8%96%E7%95%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1325,211 +1473,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/19/teach-yourself-programming-in-10-years/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/19/teach-yourself-programming-in-10-years/" class="post-title-link" itemprop="url">Teach Yourself Programming in 10 years</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-01-19 18:57:49" itemprop="dateCreated datePublished" datetime="2020-01-19T18:57:49-05:00">2020-01-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-20 01:43:58" itemprop="dateModified" datetime="2020-01-20T01:43:58-05:00">2020-01-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Why-is-everyone-in-such-a-rush"><a href="#Why-is-everyone-in-such-a-rush" class="headerlink" title="Why is everyone in such a rush?"></a>Why is everyone in such a rush?</h2><p>Walk into any bookstore, and you’ll see how to <em>Teach Yourself Java in 24 Hours</em> alongside endless variations offering to teach C, SQL, Ruby, Algorithms, and so on in a few days or hours. The Amazon advanced search for [<a href="http://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-keywords=&field-author=&field-title=teach+yourself+hours&field-isbn=&field-publisher=&node=&field-p_n_condition-type=&field-feature_browse-bin=&field-subject=&field-language=&field-dateop=After&field-datemod=&field-dateyear=2000&sort=relevanceexprank&Adv-Srch-Books-Submit.x=16&Adv-Srch-Books-Submit.y=5" target="_blank" rel="noopener">title: teach, yourself, hours, since: 2000</a> and found 512 such books. Of the top ten, nine are programming books (the other is about bookkeeping). Similar results come from replacing “teach yourself” with “learn” or “hours” with “days.”</p>
-<p>The conclusion is that either people are in a big rush to learn about programming, or that programming is somehow fabulously easier to learn than anything else. Felleisen <em>et al.</em> give a nod to this trend in their book <em><a href="http://www.ccs.neu.edu/home/matthias/HtDP2e/index.html" target="_blank" rel="noopener">How to Design Programs</a></em>, when they say “Bad programming is easy. <em>Idiots</em> can learn it in <em>21 days</em>, even if they are <em>dummies</em>.” The Abtruse Goose comic also had <a href="http://abstrusegoose.com/249" target="_blank" rel="noopener">their take</a>.</p>
-<p>Let’s analyze what a title like <em><a href="http://www.amazon.com/Sams-Teach-Yourself-Hours-5th/dp/0672333317/ref=sr_1_6?s=books&ie=UTF8&qid=1412708443&sr=1-6&keywords=learn+c%2B%2B+days" target="_blank" rel="noopener">Teach Yourself C++ in 24 Hours</a></em> could mean:</p>
-<ul>
-<li>Teach Yourself:</li>
-</ul>
-<p>  In 24 hours you won’t have time to write several significant programs, and learn from your successes and failures with them. You won’t have time to work with an experienced programmer and understand what it is like to live in a C++ environment. In short, you won’t have time to learn much. So the book can only be talking about a superficial familiarity, not a deep understanding. As Alexander Pope said, a little learning is a dangerous thing.</p>
-<ul>
-<li>C++:</li>
-</ul>
-<p>  In 24 hours you might be able to learn some of the syntax of C++ (if you already know another language), but you couldn’t learn much about how to use the language. In short, if you were, say, a Basic programmer, you could learn to write programs in the style of Basic using C++ syntax, but you couldn’t learn what C++ is actually good (and bad) for. So what’s the point?</p>
-<p>  Alan Perlis</p>
-<p>  once said: “A language that doesn’t affect the way you think about programming, is not worth knowing”. One possible point is that you have to learn a tiny bit of C++ (or more likely, something like JavaScript or Processing) because you need to interface with an existing tool to accomplish a specific task. But then you’re not learning how to program; you’re learning to accomplish that task.</p>
-<ul>
-<li><strong>in 24 Hours:</strong> Unfortunately, this is not enough, as the next section shows.</li>
-</ul>
-<h2 id="Teach-Yourself-Programming-in-Ten-Years"><a href="#Teach-Yourself-Programming-in-Ten-Years" class="headerlink" title="Teach Yourself Programming in Ten Years"></a>Teach Yourself Programming in Ten Years</h2><p>Researchers (<a href="http://www.amazon.com/exec/obidos/ASIN/034531509X/" target="_blank" rel="noopener">Bloom (1985)</a>, <a href="https://norvig.com/21-days.html#bh" target="_blank" rel="noopener">Bryan &amp; Harter (1899)</a>, <a href="http://www.amazon.com/exec/obidos/ASIN/0805803092" target="_blank" rel="noopener">Hayes (1989)</a>, <a href="https://norvig.com/21-days.html#sc" target="_blank" rel="noopener">Simmon &amp; Chase (1973)</a>) have shown it takes about ten years to develop expertise in any of a wide variety of areas, including chess playing, music composition, telegraph operation, painting, piano playing, swimming, tennis, and research in neuropsychology and topology. The key is <em>deliberative</em> practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability, trying it, analyzing your performance while and after doing it, and correcting any mistakes. Then repeat. And repeat again. There appear to be no real shortcuts: even Mozart, who was a musical prodigy at age 4, took 13 more years before he began to produce world-class music. In another genre, the Beatles seemed to burst onto the scene with a string of #1 hits and an appearance on the Ed Sullivan show in 1964. But they had been playing small clubs in Liverpool and Hamburg since 1957, and while they had mass appeal early on, their first great critical success, <em>Sgt. Peppers</em>, was released in 1967.</p>
-<p><a href="http://www.amazon.com/Outliers-Story-Success-Malcolm-Gladwell/dp/0316017922" target="_blank" rel="noopener">Malcolm Gladwell</a> has popularized the idea, although he concentrates on 10,000 hours, not 10 years. Henri Cartier-Bresson (1908-2004) had another metric: “Your first 10,000 photographs are your worst.” (He didn’t anticipate that with digital cameras, some people can reach that mark in a week.) True expertise may take a lifetime: Samuel Johnson (1709-1784) said “Excellence in any department can be attained only by the labor of a lifetime; it is not to be purchased at a lesser price.” And Chaucer (1340-1400) complained “the lyf so short, the craft so long to lerne.” Hippocrates (c. 400BC) is known for the excerpt “ars longa, vita brevis”, which is part of the longer quotation “Ars longa, vita brevis, occasio praeceps, experimentum periculosum, iudicium difficile”, which in English renders as “Life is short, [the] craft long, opportunity fleeting, experiment treacherous, judgment difficult.” Of course, no single number can be the final answer: it doesn’t seem reasonable to assume that all skills (e.g., programming, chess playing, checkers playing, and music playing) could all require exactly the same amount of time to master, nor that all people will take exactly the same amount of time. As Prof. <a href="http://www.amazon.com/K.-Anders-Ericsson/e/B000APB8AQ/ref=dp_byline_cont_book_1" target="_blank" rel="noopener">K. Anders Ericsson</a> puts it, “In most domains it’s remarkable how much time even the most talented individuals need in order to reach the highest levels of performance. The 10,000 hour number just gives you a sense that we’re talking years of 10 to 20 hours a week which those who some people would argue are the most innately talented individuals still need to get to the highest level.”</p>
-<h2 id="So-You-Want-to-be-a-Programmer"><a href="#So-You-Want-to-be-a-Programmer" class="headerlink" title="So You Want to be a Programmer"></a>So You Want to be a Programmer</h2><p>Here’s my recipe for programming success:</p>
-<ul>
-<li>Get interested in programming, and do some because it is fun. Make sure that it keeps being enough fun so that you will be willing to put in your ten years/10,000 hours.</li>
-</ul>
-<ul>
-<li><p>Program. </p>
-<p>The best kind of learning is learning by doing. To put it more technically, “the maximal level of performance for individuals in a given domain is not attained automatically as a function of extended experience, but the level of performance can be increased even by highly experienced individuals as a result of deliberate efforts to improve.” </p>
-<p>and “the most effective learning requires a well-defined task with an appropriate difficulty level for the particular individual, informative feedback, and opportunities for repetition and corrections of errors.” The book <a href="http://www.amazon.com/exec/obidos/ASIN/0521357349" target="_blank" rel="noopener">Cognition in Practice: Mind, Mathematics, and Culture in Everyday Life</a> is an interesting reference for this viewpoint.</p>
-</li>
-</ul>
-<ul>
-<li><p>Talk with other programmers; read other programs. This is more important than any book or training course.</p>
-</li>
-<li><p>If you want, put in four years at acollege (or more at a graduate school). This will give you access to some jobs that require credentials, and it will give you a deeper understanding of the field, but if you don’t enjoy school, you can (with some dedication) get similar experience on your own or on the job. In any case, book learning alone won’t be enough. “Computer science education cannot make anybody an expert programmer any more than studying brushes and pigment can make somebody an expert painter” says Eric Raymond, author ofThe New Hacker’s Dictionary. One of the best programmers I ever hired had only a High School degree; he’s produced a lot ofgreatsoftware, has his own news group, and made enough in stock options to buy his own nightclub.</p>
-</li>
-</ul>
-<ul>
-<li>Work on projects with other programmers. Be the best programmer on some projects; be the worst on some others. When you’re the best, you get to test your abilities to lead a project, and to inspire others with your vision. When you’re the worst, you learn what the masters do, and you learn what they don’t like to do (because they make you do it for them).</li>
-</ul>
-<ul>
-<li>Work on projects <em>after</em> other programmers. Understand a program written by someone else. See what it takes to understand and fix it when the original programmers are not around. Think about how to design your programs to make it easier for those who will maintain them after you.</li>
-</ul>
-<ul>
-<li>Learn at least a half dozen programming languages. Include one language that emphasizes class abstractions (like Java or C++), one that emphasizes functional abstraction (like Lisp or ML or Haskell), one that supports syntactic abstraction (like Lisp), one that supports declarative specifications (like Prolog or C++ templates), and one that emphasizes parallelism (like Clojure or Go).</li>
-</ul>
-<ul>
-<li>Remember that there is a “computer” in “computer science”. Know how long it takes your computer to execute an instruction, fetch a word from memory (with and without a cache miss), read consecutive words from disk, and seek to a new location on disk. (Answers here.)</li>
-</ul>
-<ul>
-<li>Get involved in a language standardization effort. It could be the ANSI C++ committee, or it could be deciding if your local coding style will have 2 or 4 space indentation levels. Either way, you learn about what other people like in a language, how deeply they feel so, and perhaps even a little about why they feel so.</li>
-</ul>
-<ul>
-<li>Have the good sense to <strong>get off</strong> the language standardization effort as quickly as possible.</li>
-</ul>
-<p>With all that in mind, its questionable how far you can get just by book learning. Before my first child was born, I read all the <em>How To</em> books, and still felt like a clueless novice. 30 Months later, when my second child was due, did I go back to the books for a refresher? No. Instead, I relied on my personal experience, which turned out to be far more useful and reassuring to me than the thousands of pages written by experts.</p>
-<p>Fred Brooks, in his essay <em><a href="http://en.wikipedia.org/wiki/No_Silver_Bullet" target="_blank" rel="noopener">No Silver Bullet</a></em> identified a three-part plan for finding great software designers:</p>
-<ol>
-<li>Systematically identify top designers as early as possible.</li>
-</ol>
-<ol start="2">
-<li>Assign a career mentor to be responsible for the development of the prospect and carefully keep a career file.</li>
-</ol>
-<ol start="3">
-<li>Provide opportunities for growing designers to interact and stimulate each other.</li>
-</ol>
-<p>This assumes that some people already have the qualities necessary for being a great designer; the job is to properly coax them along. <a href="http://www-pu.informatik.uni-tuebingen.de/users/klaeren/epigrams.html" target="_blank" rel="noopener">Alan Perlis</a> put it more succinctly: “Everyone can be taught to sculpt: Michelangelo would have had to be taught how not to. So it is with the great programmers”. Perlis is saying that the greats have some internal quality that transcends their training. But where does the quality come from? Is it innate? Or do they develop it through diligence? As Auguste Gusteau (the fictional chef in <em>Ratatouille</em>) puts it, “anyone can cook, but only the fearless can be great.” I think of it more as willingness to devote a large portion of one’s life to deliberative practice. But maybe <em>fearless</em> is a way to summarize that. Or, as Gusteau’s critic, Anton Ego, says: “Not everyone can become a great artist, but a great artist can come from anywhere.”</p>
-<p>So go ahead and buy that Java/Ruby/Javascript/PHP book; you’ll probably get some use out of it. But you won’t change your life, or your real overall expertise as a programmer in 24 hours or 21 days. How about working hard to continually improve over 24 months? Well, now you’re starting to get somewhere…</p>
-<hr>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Bloom, Benjamin (ed.) <em><a href="http://www.amazon.com/exec/obidos/ASIN/034531509X" target="_blank" rel="noopener">Developing Talent in Young People</a></em>, Ballantine, 1985.</p>
-<p>Brooks, Fred, <em><a href="http://citeseer.nj.nec.com/context/7718/0" target="_blank" rel="noopener">No Silver Bullets</a></em>, IEEE Computer, vol. 20, no. 4, 1987, p. 10-19.</p>
-<p>Bryan, W.L. &amp; Harter, N. “Studies on the telegraphic language: The acquisition of a hierarchy of habits. <em>Psychology Review</em>, 1899, 8, 345-375</p>
-<p>Hayes, John R., <em><a href="http://www.amazon.com/exec/obidos/ASIN/0805803092" target="_blank" rel="noopener">Complete Problem Solver</a></em> Lawrence Erlbaum, 1989.</p>
-<p>Chase, William G. &amp; Simon, Herbert A. <a href="http://books.google.com/books?id=dYPSHAAACAAJ&dq=" target="_blank" rel="noopener"perception+in+chess"+simon&ei=z4PyR5iIAZnmtQPbyLyuDQ">“Perception in Chess”</a> <em>Cognitive Psychology</em>, 1973, 4, 55-81.</p>
-<p>Lave, Jean, <em><a href="http://www.amazon.com/exec/obidos/ASIN/0521357349" target="_blank" rel="noopener">Cognition in Practice: Mind, Mathematics, and Culture in Everyday Life</a></em>, Cambridge University Press, 1988.</p>
-<hr>
-<p>AnswersApproximate timing for various operations on a typical PC:</p>
-<table>
-<thead>
-<tr>
-<th>execute typical instruction</th>
-<th>1/1,000,000,000 sec = 1 nanosec</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>fetch from L1 cache memory</td>
-<td>0.5 nanosec</td>
-</tr>
-<tr>
-<td>branch misprediction</td>
-<td>5 nanosec</td>
-</tr>
-<tr>
-<td>fetch from L2 cache memory</td>
-<td>7 nanosec</td>
-</tr>
-<tr>
-<td>Mutex lock/unlock</td>
-<td>25 nanosec</td>
-</tr>
-<tr>
-<td>fetch from main memory</td>
-<td>100 nanosec</td>
-</tr>
-<tr>
-<td>send 2K bytes over 1Gbps network</td>
-<td>20,000 nanosec</td>
-</tr>
-<tr>
-<td>read 1MB sequentially from memory</td>
-<td>250,000 nanosec</td>
-</tr>
-<tr>
-<td>fetch from new disk location (seek)</td>
-<td>8,000,000 nanosec</td>
-</tr>
-<tr>
-<td>read 1MB sequentially from disk</td>
-<td>20,000,000 nanosec</td>
-</tr>
-<tr>
-<td>send packet US to Europe and back</td>
-<td>150 milliseconds = 150,000,000 nanosec</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="Appendix-Language-Choice"><a href="#Appendix-Language-Choice" class="headerlink" title="Appendix: Language Choice"></a>Appendix: Language Choice</h2><p>Several people have asked what programming language they should learn first. There is no one answer, but consider these points:</p>
-<ul>
-<li><em>Use your friends</em>. When asked “what operating system should I use, Windows, Unix, or Mac?”, my answer is usually: “use whatever your friends use.” The advantage you get from learning from your friends will offset any intrinsic difference between OS, or between programming languages. Also consider your future friends: the community of programmers that you will be a part of if you continue. Does your chosen language have a large growing community or a small dying one? Are there books, web sites, and online forums to get answers from? Do you like the people in those forums?</li>
-<li><em>Keep it simple</em>. Programming languages such as C++ and Java are designed for professional development by large teams of experienced programmers who are concerned about the run-time efficiency of their code. As a result, these languages have complicated parts designed for these circumstances. You’re concerned with learning to program. You don’t need that complication. You want a language that was designed to be easy to learn and remember by a single new programmer.</li>
-<li><em>Play.</em> Which way would you rather learn to play the piano: the normal, interactive way, in which you hear each note as soon as you hit a key, or “batch” mode, in which you only hear the notes after you finish a whole song? Clearly, interactive mode makes learning easier for the piano, and also for programming. Insist on a language with an interactive mode and use it.</li>
-</ul>
-<p>Given these criteria, my recommendations for a first programming language would be <strong><a href="http://python.org/" target="_blank" rel="noopener">Python</a></strong> or <strong><a href="http://www.schemers.org/" target="_blank" rel="noopener">Scheme</a></strong>. Another choice is Javascript, not because it is perfectly well-designed for beginners, but because there are so many online tutorials for it, such as <a href="https://www.khanacademy.org/computing/cs/programming" target="_blank" rel="noopener">Khan Academy’s tutorial</a>. But your circumstances may vary, and there are other good choices. If your age is a single-digit, you might prefer <a href="http://alice.org/" target="_blank" rel="noopener">Alice</a> or <a href="http://www.squeak.org/" target="_blank" rel="noopener">Squeak</a> or <a href="https://blockly-demo.appspot.com/static/apps/index.html" target="_blank" rel="noopener">Blockly</a> (older learners might also enjoy these). The important thing is that you choose and get started.</p>
-<hr>
-<h2 id="Appendix-Books-and-Other-Resources"><a href="#Appendix-Books-and-Other-Resources" class="headerlink" title="Appendix: Books and Other Resources"></a>Appendix: Books and Other Resources</h2><p>Several people have asked what books and web pages they should learn from. I repeat that “book learning alone won’t be enough” but I can recommend the following:</p>
-<ul>
-<li><strong>Scheme:</strong> <a href="http://www.amazon.com/gp/product/0262011530" target="_blank" rel="noopener">Structure and Interpretation of Computer Programs (Abelson &amp; Sussman)</a> is probably the best introduction to computer science, and it does teach programming as a way of understanding the computer science. You can see <a href="http://www.swiss.ai.mit.edu/classes/6.001/abelson-sussman-lectures/" target="_blank" rel="noopener">online videos of lectures</a> on this book, as well as the <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html" target="_blank" rel="noopener">complete text online</a>. The book is challenging and will weed out some people who perhaps could be successful with another approach.</li>
-<li><strong>Scheme:</strong> <a href="http://www.amazon.com/gp/product/0262062186" target="_blank" rel="noopener">How to Design Programs (Felleisen <em>et al.</em>)</a> is one of the best books on how to actually design programs in an elegant and functional way.</li>
-<li><strong>Python:</strong> <a href="http://www.amazon.com/gp/product/1887902996" target="_blank" rel="noopener">Python Programming: An Intro to CS (Zelle)</a> is a good introduction using Python.</li>
-<li><strong>Python:</strong> Several online <a href="http://wiki.python.org/moin/BeginnersGuide" target="_blank" rel="noopener">tutorials</a> are available at <a href="http://python.org/" target="_blank" rel="noopener">Python.org</a>.</li>
-<li><strong>Oz:</strong> <a href="http://www.amazon.com/gp/product/0262220695" target="_blank" rel="noopener">Concepts, Techniques, and Models of Computer Programming (Van Roy &amp; Haridi)</a> is seen by some as the modern-day successor to Abelson &amp; Sussman. It is a tour through the big ideas of programming, covering a wider range than Abelson &amp; Sussman while being perhaps easier to read and follow. It uses a language, Oz, that is not widely known but serves as a basis for learning other languages. &lt;</li>
-</ul>
-<hr>
-<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><p>T. Capey points out that the <a href="http://www.amazon.com/exec/obidos/ASIN/0805803092" target="_blank" rel="noopener">Complete Problem Solver</a> page on Amazon now has the “Teach Yourself Bengali in 21 days” and “Teach Yourself Grammar and Style” books under the “Customers who shopped for this item also shopped for these items” section. I guess that a large portion of the people who look at that book are coming from this page. Thanks to Ross Cohen for help with Hippocrates.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1600,7 +1543,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
