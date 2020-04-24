@@ -165,6 +165,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/23/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/" class="post-title-link" itemprop="url">配置中心</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-23 20:34:56 / Modified: 21:42:26" itemprop="dateCreated datePublished" datetime="2020-02-23T20:34:56-05:00">2020-02-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>软件还有一些配置信息，比如数据库的用户名和密码，还有一些我们不想写死在代码里的东西，像线程池大小、队列长度等运行参数，以及日志级别、算法策略等，还有一些是软件运行环境的参数，如 Java 的内存大小，应用启动的参数，包括操作系统的一些参数配置……</p>
+<p>所有这些东西，我们都叫做软件配置。以前，我们把软件配置写在一个配置文件中，就像 Windows 下的 ini 文件，或是 Linux 下的 conf 文件。然而，在分布式系统下，这样的方式就变得非常不好管理，并容易出错。于是，为了便于管理，我们引入了一个集中式的配置管理系统，这就是配置中心的由来。</p>
+<p>现在，软件的配置中心是分布式系统的一个必要组件。这个系统听起来很简单，但其实并不是。</p>
+<h1 id="配置中心的设计"><a href="#配置中心的设计" class="headerlink" title="配置中心的设计"></a>配置中心的设计</h1><h2 id="区分软件的配置"><a href="#区分软件的配置" class="headerlink" title="区分软件的配置"></a>区分软件的配置</h2><p>首先，我们要区分软件的配置，软件配置的区分有多种方式。</p>
+<p>有一种方式是把软件的配置分成静态配置和动态配置。所谓静态配置其实就是在软件启动时的一些配置，运行时基本不会进行修改，也可以理解为是环境或软件初始化时需要用到的配置。</p>
+<p>例如，操作系统的网络配置，软件运行时 Docker 进程的配置，这些配置在软件环境初始化时就确定了，未来基本不会修改了。而所谓动态配置其实就是软件运行时的一些配置，在运行时会被修改。比如，日志级别、降级开关、活动开关。</p>
+<p>当然，我们这里的内容主要针对动态配置的管理。</p>
+<p>对于动态配置的管理，我们还要做好区分。一般来说，会有三个区分的维度。</p>
+<ul>
+<li><strong>按运行环境分</strong>。一般来说，会有开发环境、测试环境、预发环境、生产环境。这些环境上的运行配置都不完全一样，但是理论来说，应该是大同小异的。</li>
+<li><strong>按依赖区分</strong>。一种是依赖配置，一种是不依赖的内部配置。比如，外部依赖的 MySQL 或 Redis 的连接配置。还有一种完全是自己内部的配置。</li>
+<li><strong>按层次分</strong>。就像云计算一样，配置也可以分成 IaaS、PaaS、SaaS 三层。基础层的配置是操作系统的配置，中间平台层的配置是中间件的配置，如 Tomcat 的配置，上层软件层的配置是应用自己的配置。</li>
+</ul>
+<p>这些分类方式其实是为了更好地管理我们的配置项。小公司无所谓，而当一个公司变大了以后了，如果这些东西没有被很好地管理起来，那么会增加太多系统维护的复杂度。</p>
+<h2 id="配置中心的模型"><a href="#配置中心的模型" class="headerlink" title="配置中心的模型"></a>配置中心的模型</h2><p>有了上面为配置项的分类，我们就可以设计软件配置模型了。</p>
+<p>首先，软件配置基本上来说，每个配置项就是 key/value 的模型。</p>
+<p>然后，我们把软件的配置分成三层。操作系统层和平台层的配置项得由专门的运维人员或架构师来配置。其中的 value 应该是选项，而不是让用户可以自由输入的，最好是有相关的模板来初始化全套的配置参数。而应用层的配置项，需要有相应的命名规范，最好有像 C++ 那样的名字空间的管理，确保不同应用的配置项不会冲突。</p>
+<p>另外，配置参数中，如果有外部服务依赖的配置，强烈建议不要放在配置中心里，而要放在服务发现系统中。因为一方面这在语义上更清楚一些，另外，这样会减少因为运行不同环境而导致配置不同的差异性（如测试环境和生产环境的不同）。</p>
+<p>对于不同运行环境中配置的差异来说，比如在开发环境和测试环境下，日志级别是 Debug 级，对于生产环境则是 Warning 或 Error 级，因为环境的不一样，会导致我们需要不同的配置项的值。这点需要考虑到。</p>
+<p>还有，配置需要有一个整体的版本管理，每次变动都能将版本差异记录下来。当然，如果可能，最好能和软件的版本号做关联。</p>
+<p>可以看到，其中有些配置是通过模板来选择的，有的配置需要在不同环境下配置不同值。所以，还需要一个配置管理的工具，可能是命令行的，也可以是 Web 的。这个工具的界面在文本中（下面这个 UI 的 mockup 只是想表明一个模型）。</p>
+<p><img src="../images/5aeb4055738bd15188a007ccbbbc38b7.png" alt="img"></p>
+<p>用户可以根据不同的机器型号还有不同的环境直接调出后台配置好的相关标准配置的模板。对于一些用户需要自己调整的参数也可以在这个模板上进行调整和配置（当然，为了方便运维和管理最好不要进行调整）。然后，用户可以在下面的那个表格中填写好自己的应用要用的参数和各个环境中的值。</p>
+<p>这样一来，这个工具就可以非常方便地让开发人员来配置他们自己的软件配置。而我们的配置中心还需要提 API 来让应用获取配置。这个 API 上至少需要有如下参数：服务名，配置的版本号，配置的环境。</p>
+<h2 id="配置中心的架构"><a href="#配置中心的架构" class="headerlink" title="配置中心的架构"></a>配置中心的架构</h2><p>接下来，要来解决配置落地的问题。我们可以看到，和一个软件运行有关系的各种配置隶属于不同的地方，所以，要让它们落地还需要些不一样的细节要处理。文本中，我们给了一个大概的架构图。</p>
+<p><img src="../images/745c444c53457239de884a943adff1b5.png" alt="img"></p>
+<p>在这个图中可以看到，我们把配置录入后，配置中心发出变更通知，配置变更控制器会来读取最新的配置，然后应用配置。这看上去很简单，但是有很多细节问题，下面我来一一说明。</p>
+<ul>
+<li><strong>为什么需要一个变更通知的组件，而不是让配置中心直接推送？</strong>原因是，分布式环境下，服务器太多，推送不太现实，而采用一个 Pub/Sub 的通知服务可以让数据交换经济一些。</li>
+<li><strong>为什么不直接 Pub 数据过去，还要订阅方反向拉数据？</strong>直接推数据当然可以，但让程序反过来用 API 读配置的好处是，一方面，API 可以校验请求者的权限，另一方面，有时候还是需要调用配置中心的基本 API，比如下载最新的证书之类的。还有就是，服务启动时需要从服务中心拉一份配置下来。</li>
+<li><strong>配置变更控制器部署在哪里？是在每个服务器上呢，还是在一个中心的地方？</strong>我觉得因为这个事是要变更配置，变更配置又是有很多步骤的，所以这些步骤算是一个事务。为了执行效率更好，事务成功率更大，建议把这个配置变更的控制放在每一台主机上。</li>
+<li><strong>平台层的配置变更，有的参数是在服务启动的命令行上，这个怎么变更呢？</strong>一般来说，命令行上的参数需要通过 Shell 环境变量做成配置项，然后通过更改系统环境变量，并重启服务达到配置变更。</li>
+<li><strong>操作系统的配置变更和平台层的配置变更最好模块化掉，就像云服务中的不同尺寸的主机型号一样。</strong>这样有利于维护和减少配置的复杂性。</li>
+<li><strong>应用服务配置更新的标准化。</strong>因为一个公司的应用由不同的团队完成，所以，可能其配置会因为应用的属性不同而不一样。为了便于管理，最好有统一的配置更新。一般来说，有的应用服务的配置是在配置文件中，有的应用服务的配置是通过调用 Admin API 的方式变更，不同的应用系统完全不一样，你似乎完全没有方法做成统一的。这里给几个方案。</li>
+<li>可以通过一个开发框架或 SDK 的方式来解决，也就是应用代码找你这个 SDK 来要配置，并通过 observer 模式订阅配置修改的事件，或是直接提供配置变更的 Admin 的 API。这种方式的好处在于在开发期标准化，并可以规范开发；不好的是，耦合语言。</li>
+<li>通过一个标准应用运维脚本，让应用方自己来提供应用变更时的脚本动作。这种方式虽然通过运维的方式标准化掉配置变更的接口，就可以通过一个配置控制器来统一操作各个应用变更，但是在这个脚本中各个应用方依然使用着各种不同的方式来变更配置。这种方式的好处是不耦合语言，灵活，但对于标准化的建设可能不利，而且使用或者调用脚本是 Bug 很多的东西，容易出问题。</li>
+<li>或是结合上述两种方案，不使用开发阶段的 SDK 方式嵌入到应用服务中，而是为每个应用服务单独做一个 Agent。这个 Agent 对外以 Admin API 的方式服务，后面则适配应用的配置变更手段，如更新配置文件，或者调用应用的 API 等。这种方式在落地方面是很不错的（这其中是另一种设计模式，后面会讲到）。</li>
+</ul>
+<h1 id="配置中心的设计重点"><a href="#配置中心的设计重点" class="headerlink" title="配置中心的设计重点"></a>配置中心的设计重点</h1><p>配置中心主要的用处是统一和规范化管理所有的服务配置，也算是一种配置上的治理活动。所以，配置中心的设计重点应该放在如何统一和标准化软件的配置项，其还会涉及到软件版本、运行环境、平台、中间件等一系列的配置参数。如果你觉得软件配置非常复杂，那么，你应该静下心来仔细梳理或治理一下现有的配置参数，并简化相应的配置，使用模块会是一种比较好的简化手段。</p>
+<p>根据我们前面《编程范式游记》中所说的，编程的本质是对 logic 和 control 的分离，所以，对于配置也一样，其也有控制面上的配置和业务逻辑面上的配置，控制面上的配置最好能标准统一。</p>
+<p>配置更新的时候是一个事务处理，需要考虑事务的问题，如果变更不能继续，需要回滚到上个版本的配置。配置版本最好和软件版本对应上。</p>
+<p>配置更新控制器，需要应用服务的配合，比如，配置的 reload，服务的优雅重启，服务的 Admin API，或是通过环境变量……这些最好是由一个统一的开发框架搞定。</p>
+<p>配置更新控制器还担任服务启动的责任，由配置更新控制器来启动服务。这样，配置控制器会从配置中心拉取所有的配置，更新操作系统，设置好启动时用的环境变量，并更新好服务需要的配置文件 ，然后启动服务。（当然，你也可以在服务启动的脚本中真正启动服务前放上一段让配置更新控制器更新配置的脚本。无论怎么样，这些都可以在运维层面实现，不需要业务开发人员知道。）</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>好了，我们来总结一下今天分享的主要内容。首先，传统单机软件的配置通常保存在文件中，但在分布式系统下，为了管理方便，必须有一个配置中心。然后我讲了配置的区分：按静态和动态、运行环境、依赖和层次来区分。进一步，从区分出的情况出发，层次方面，平台、中间件和应用三个层次由不同职责的运维人员来配置。</p>
+<p>外部依赖的配置并不适合放在配置中心里，而最好是由服务发现系统来提供。开发环境和生产环境的日志级别配置也会不同。出于这些特点，可以用一个配置管理工具来管理这些配置。接着，介绍了配置管理架构中几个关键问题的解决思路。最后，介绍了配置中心的几个设计重点。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E5%92%8C%E7%BD%91%E7%BB%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1702,96 +1805,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/System-Design-Questions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/13/System-Design-Questions/" class="post-title-link" itemprop="url">System_Design_Questions</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-13 09:27:37 / Modified: 10:29:30" itemprop="dateCreated datePublished" datetime="2020-02-13T09:27:37-05:00">2020-02-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>System design questions are an important part of programming job interviews, and if you want to do well, you must prepare this topic. In the past, when I shared my list of <a href="http://www.java67.com/2018/05/top-75-programming-interview-questions-answers.html" target="_blank" rel="noopener">programming interview questions</a>, I shared a couple of system design questions, but my readers kept asking me for more questions, as it is a hard topic to master and more and more practice is needed.</p>
-<p>I had my own list of questions that I collected from various interviews with friends and colleagues, but I needed more questions for this article and my own preparation. Then, I stumbled upon the <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">Grokking System Design Interview</a> course.</p>
-<p>It’s an excellent resource because it not only asks you a lot of system design questions but also provides the knowledge and tools you need to solve these problems. I have yet to find a similar or better resource than this one on system design, one of the important topics for <a href="http://javarevisited.blogspot.sg/2012/06/20-design-pattern-and-software-design.html#axzz55mVSPFfH" target="_blank" rel="noopener">software engineering interviews</a>.</p>
-<p>In other words, this course teaches you to step by step how to proceed with designing a real-world system like Facebook, Twitter, Uber, etc.</p>
-<p>When you combine this course with this list of questions, you have the best material to prepare for your system design interview. You can also first try all these questions by yourself before joining the course or looking at my solutions for some of the questions.</p>
-<h2 id="System-Design-Interview-Questions-for-Programmers"><a href="#System-Design-Interview-Questions-for-Programmers" class="headerlink" title="System Design Interview Questions for Programmers"></a>System Design Interview Questions for Programmers</h2><p>Without any further ado, here is the list of some of the most popular system design or object-oriented analysis and design questions to crack any programming job interview.</p>
-<h3 id="1-How-to-design-a-vending-machine-in-Java-solution"><a href="#1-How-to-design-a-vending-machine-in-Java-solution" class="headerlink" title="1. How to design a vending machine in Java? (solution)"></a><strong>1. How to design a vending machine in Java?</strong> (<a href="http://javarevisited.blogspot.sg/2016/06/design-vending-machine-in-java.html#axzz4sZVwtCgs" target="_blank" rel="noopener">solution</a>)</h3><p>You need to write code to implement a vending machine that has a bunch of products, e.g. chocolates, candy, cold drinks, and accepts different coins, e.g. nickles, dimes, quarters, cent, etc. Make sure you insert a coin, get a product back, and get your change back. Also, write the unit test to demonstrate that these common use cases work. If you get stuck, you can read my two-part series (<a href="http://javarevisited.blogspot.sg/2016/06/design-vending-machine-in-java.html#axzz4sZVwtCgs" target="_blank" rel="noopener">Part 1</a> and <a href="http://javarevisited.blogspot.sg/2016/06/java-object-oriented-analysis-and-design-vending-machine-part-2.html" target="_blank" rel="noopener">Part 2</a>) about solving these classical system design questions.</p>
-<h3 id="2-How-to-design-a-URL-shortening-service-like-goo-gl"><a href="#2-How-to-design-a-URL-shortening-service-like-goo-gl" class="headerlink" title="2. How to design a URL shortening service like goo.gl?"></a><strong>2. How to design a URL shortening service like goo.gl?</strong></h3><p>This one is another common system design question. If you are given a (typically) long URL, how would you design a service that would generate a shorter and unique alias for it? If you are not familiar with the URL shortener service, have a look at some of the popular ones like goo.gl from <a href="https://javarevisited.blogspot.com/2012/01/google-interview-questions-answers-top.html" target="_blank" rel="noopener">Google</a> and bit.ly, which is used by Twitter.</p>
-<p>Make sure to provide a database schema and rationale behind some design decisions, e.g. how long you keep the data, how to get stats and analytics, etc. If you get stuck, you can follow the solution given on <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</p>
-<h3 id="3-How-to-design-a-limit-order-book"><a href="#3-How-to-design-a-limit-order-book" class="headerlink" title="3. How to design a limit order book?"></a><strong>3. How to design a limit order book?</strong></h3><p>A limit order book is used in stock exchanges to match a buy order with a sell order based on price and time priority. How would you go about that? Which <a href="https://hackernoon.com/10-data-structure-algorithms-and-programming-courses-to-crack-any-coding-interview-e1c50b30b927" target="_blank" rel="noopener">data structure</a> you will use? Remember: the speed of matching is key, as well as the reliability. If you need a refresher on data structures, then you can check out a data structure and algorithm Java course, and if you feel stuck, you can check out my solution <a href="https://javarevisited.blogspot.sg/2017/03/2-practical-data-structure-algorithm-interview-questions-java.html" target="_blank" rel="noopener">here</a>.</p>
-<h3 id="4-How-to-design-a-traffic-control-system"><a href="#4-How-to-design-a-traffic-control-system" class="headerlink" title="4. How to design a traffic control system?"></a><strong>4. How to design a traffic control system?</strong></h3><p>A classical system design question from old age is still popular. Make sure you know how to transition from one state to another like RED to GREEN and from GREEN to ORANGE to RED, etc. One tip is you can use the <a href="http://javarevisited.blogspot.sg/2014/04/difference-between-state-and-strategy-design-pattern-java.html" target="_blank" rel="noopener">state design pattern</a> because there is a clear transition of state from one to other. For example, you cannot go from RED to GREEN before ORANGE or so on.</p>
-<p>You can also use the <a href="http://www.java67.com/2018/07/java-enum-tutorial-10-things-java-devs.html" target="_blank" rel="noopener">Enum</a> to represent the state and implement the pattern, just as we did with the <a href="https://javarevisited.blogspot.com/2014/11/strategy-design-pattern-in-java-using-Enum-Example.html" target="_blank" rel="noopener">strategy design pattern</a> in my last article.</p>
-<p>If you are not familiar with these essential patterns, then I suggest you to first take a look at this <strong><a href="https://pluralsight.pxf.io/c/1193463/424552/7490?u=https%3A%2F%2Fwww.pluralsight.com%2Fcourses%2Fpatterns-library" target="_blank" rel="noopener">Design Pattern Library </a></strong>course on Pluarslight, one of the better resources to learn this pattern and get insight on how and when to use them in the real world.</p>
-<h3 id="5-How-to-design-a-website-like-Pastebin"><a href="#5-How-to-design-a-website-like-Pastebin" class="headerlink" title="5. How to design a website like Pastebin?"></a><strong>5. How to design a website like Pastebin?</strong></h3><p>Pastebin allows you to paste text or code and then share a link to that code anywhere you want. It’s not an online code editor but you can use this to store any kind of text.</p>
-<h3 id="6-How-would-you-create-your-own-Instagram"><a href="#6-How-would-you-create-your-own-Instagram" class="headerlink" title="6. How would you create your own Instagram?"></a><strong>6. How would you create your own Instagram?</strong></h3><p>Instagram is a photo sharing application that provides some custom filters to enhance your photo quality.</p>
-<h3 id="7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox"><a href="#7-How-to-design-a-global-file-sharing-and-storage-apps-like-Google-Drive-or-Dropbox" class="headerlink" title="7. How to design a global file sharing and storage apps like Google Drive or Dropbox?"></a><strong>7. How to design a global file sharing and storage apps like Google Drive or Dropbox?</strong></h3><p>These are used to store and share files, photos, and other media. How do you go about designing things like allowing users to upload/view/search/share files or photos, track permissions for file sharing, and allow multiple users to edit the same document?</p>
-<h3 id="8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger"><a href="#8-How-to-design-a-chat-application-like-WhatsApp-or-Facebook-Messenger" class="headerlink" title="8. How to design a chat application like WhatsApp or Facebook Messenger?"></a><strong>8. How to design a chat application like WhatsApp or Facebook Messenger?</strong></h3><p>You have surely used WhatsApp and Facebook, right? No? If not, let me tell you that a chat application allows you to send messages to your friend. It’s a point-to-point connection. You keep a friends list, view their status, and chat with them.</p>
-<p>In WhatsApp, you can also connect groups, but that is for advanced and experienced developers. At a minimum, you should provide a design to keep the friends list and send and receive messages from them.</p>
-<h3 id="9-How-to-design-a-Twitter-Clone"><a href="#9-How-to-design-a-Twitter-Clone" class="headerlink" title="9. How to design a Twitter Clone?"></a><strong>9. How to design a Twitter Clone?</strong></h3><p>Twitter is a popular messaging service that lets you broadcast messages to all of your followers. You post a tweet and your followers see those messages. Additionally, they can like or retweet your post. Make sure you implement common features like followers, hashtags, tweets, deletes, etc. If you do not feel like going anywhere and are stuck, you can follow the solution on <a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</p>
-<h3 id="10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix"><a href="#10-How-to-design-a-global-video-streaming-service-e-g-YouTube-or-Netflix" class="headerlink" title="10. How to design a global video streaming service, e.g. YouTube or Netflix?"></a><strong>10. How to design a global video streaming service, e.g. YouTube or Netflix?</strong></h3><p>While designing a video streaming service like NetFlix or YouTube, the key concept to remember is to smooth streaming and buffering and functioning over low bandwidth connection and how you manage those challenges.</p>
-<h3 id="11-How-to-design-an-ATM-machine"><a href="#11-How-to-design-an-ATM-machine" class="headerlink" title="11. How to design an ATM machine?"></a><strong>11. How to design an ATM machine?</strong></h3><p>An ATM machine allows a user to deposit and withdraw cash. It also allows a user to check their balance. How do you design such a system? What are your main challenges?</p>
-<h3 id="12-How-to-design-an-API-Rate-Limiter"><a href="#12-How-to-design-an-API-Rate-Limiter" class="headerlink" title="12. How to design an API Rate Limiter?"></a><strong>12. How to design an API Rate Limiter?</strong></h3><p>This is a challenging one. You may want to find more information about it, starting with a Google search.</p>
-<h3 id="13-How-to-design-Twitter-Search"><a href="#13-How-to-design-Twitter-Search" class="headerlink" title="13. How to design Twitter Search?"></a><strong>13. How to design Twitter Search?</strong></h3><p>To be honest, Twitter search is poor — unless you enter the exact title of your tweet, you won’t be able to find anything. So, this one should be easy to implement<strong>.</strong></p>
-<h3 id="14-How-to-design-a-web-crawler-like-Google"><a href="#14-How-to-design-a-web-crawler-like-Google" class="headerlink" title="14. How to design a web crawler like Google?"></a><strong>14. How to design a web crawler like Google?</strong></h3><p>A web crawler goes to a website and crawls all links and indexes, like Google, so that they can later appear in a search result. A crawler can also be used for searching a particular file in a set of directories. But be sure to ask yourself about some of the major challenges.</p>
-<h3 id="15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use"><a href="#15-How-to-design-Facebook’s-Newsfeed-What-kind-of-algorithm-will-you-use" class="headerlink" title="15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?"></a><strong>15. How to design Facebook’s Newsfeed? What kind of algorithm will you use?</strong></h3><p>The newsfeed is an important part of Facebook that allows a user to see what’s happening around the world, including friends, families, pages he has liked, a group he has followed, and of course, the Facebook ads.</p>
-<p>The job of the newsfeed algorithm is to show messages that are most important to the user and which can generate high engagement. Obviously, messages from friends and family should take priority. If you feel not going anywhere and stuck, you can follow the solution on<strong><a href="https://www.educative.io/collection/5668639101419520/5649050225344512?affiliate_id=5073518643380224" target="_blank" rel="noopener">System Design Interviews: Grokking the System Design Interview</a>.</strong></p>
-<h3 id="16-How-to-design-Yelp-or-Nearby-Friends"><a href="#16-How-to-design-Yelp-or-Nearby-Friends" class="headerlink" title="16. How to design Yelp or Nearby Friends?"></a><strong>16. How to design Yelp or Nearby Friends?</strong></h3><p>Have you used Yelp? If not first use it to understand how it works before you can design a similar system. For those who don’t know Yelp is a local-search service powered by crowd-sourced review forum</p>
-<h3 id="17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend"><a href="#17-How-to-design-a-global-ride-hailing-service-e-g-Uber-Grab-or-Ola-backend" class="headerlink" title="17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?"></a><strong>17. How to design a global ride-hailing service e.g. Uber, Grab, or Ola backend?</strong></h3><p>Uber and Ola are two of the most popular ride-hailing services, it brings both drivers and passengers together. How do you go about designing to allow a passenger to see nearby taxis and book them?</p>
-<h3 id="18-How-to-design-BookMyShow"><a href="#18-How-to-design-BookMyShow" class="headerlink" title="18. How to design BookMyShow?"></a><strong>18. How to design BookMyShow?</strong></h3><p>A website that allows you to book cinema and event tickets.</p>
-<h3 id="19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews"><a href="#19-How-to-design-a-social-network-message-board-service-sites-like-Quora-Reddit-or-HackerNews" class="headerlink" title="19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?"></a><strong>19. How to design a social network + message board service sites like Quora, Reddit, or HackerNews?</strong></h3><p>Reddit, Quora, and HackerNews are some of the most popular social network sites where users can post questions or share links. Other users can answer questions or comment on the shared links.</p>
-<h3 id="20-How-do-you-design-an-application-like-Airbnb"><a href="#20-How-do-you-design-an-application-like-Airbnb" class="headerlink" title="20. How do you design an application like Airbnb?"></a><strong>20. How do you design an application like Airbnb?</strong></h3><p>This allows users to upload rooms for rent and other users to rent them. Some features are only available to admins, publishers, and subscribers.</p>
-<p>That’s all for now on some of the <strong>frequently asked system design interview questions for Java programmers</strong>. These questions are not just useful for Java programmers but also for <a href="https://javarevisited.blogspot.com/2018/12/10-free-python-courses-for-programmers.html" target="_blank" rel="noopener">Python</a>, <a href="https://hackernoon.com/top-5-free-c-courses-to-learn-programming-in-2019-d27352277da0" target="_blank" rel="noopener">C++</a>, and <a href="http://www.java67.com/2018/02/5-free-ruby-and-rails-courses-to-learn-online.html" target="_blank" rel="noopener">Ruby</a> programmers. These questions are actually independent of programming languages and test your software design and architecture skills.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1862,7 +1875,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">135</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
