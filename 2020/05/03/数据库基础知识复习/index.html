@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="数据视图与数据模型  数据抽象共有三个层次：物理层、逻辑层和视图层。在逻辑层使用的数据模型包括两类：一类是概念数据模型，主要用于数据库设计，它能被一般的用户理解，与人的思维表达方式比较接近。这样的模型有实体-联系模型（ERM）；另一类是逻辑数据模型，按计算机系统的观点对数据建模，使得数据更适合用计算机加以表示。这里模型主要用于DBMS的实现，比如关系模型、面向对象模型、层次模型和网状模型。设计师">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础知识复习">
+<meta property="og:url" content="http://yoursite.com/2020/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="数据视图与数据模型  数据抽象共有三个层次：物理层、逻辑层和视图层。在逻辑层使用的数据模型包括两类：一类是概念数据模型，主要用于数据库设计，它能被一般的用户理解，与人的思维表达方式比较接近。这样的模型有实体-联系模型（ERM）；另一类是逻辑数据模型，按计算机系统的观点对数据建模，使得数据更适合用计算机加以表示。这里模型主要用于DBMS的实现，比如关系模型、面向对象模型、层次模型和网状模型。设计师">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-03T17:37:56.000Z">
+<meta property="article:modified_time" content="2020-05-03T19:11:14.178Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>数据库基础知识复习 | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库基础知识复习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-03 13:37:56 / Modified: 15:11:14" itemprop="dateCreated datePublished" datetime="2020-05-03T13:37:56-04:00">2020-05-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li>数据视图与数据模型</li>
+</ol>
+<p>数据抽象共有三个层次：物理层、逻辑层和视图层。在逻辑层使用的数据模型包括两类：一类是概念数据模型，主要用于数据库设计，它能被一般的用户理解，与人的思维表达方式比较接近。这样的模型有实体-联系模型（ERM）；另一类是逻辑数据模型，按计算机系统的观点对数据建模，使得数据更适合用计算机加以表示。这里模型主要用于DBMS的实现，比如关系模型、面向对象模型、层次模型和网状模型。设计师构建数据库模式的方法通常是首先使用E-R模型在高层对数据建模，然后再将其转变成关系模型。在物理层使用的数据模型称为物理数据模型。</p>
+<p>数据模型通常由数据结构、数据操作和完整性约束三部分组成。</p>
+<ol start="2">
+<li>数据库语言</li>
+</ol>
+<p>根据功能不同，可以将数据库系统提供的语言分成三种类型：1）数据定义语言（DDL），用于定义数据库模式；2）数据操纵语言（DML），用于对数据库进行查询和更新；3）数据控制语言（DCL），用于对数据进行权限管理。</p>
+<ol start="3">
+<li>数据库模式</li>
+</ol>
+<p>根据数据的不同抽象层次，数据库有三级模式：物理模式（内模式）在物理层描述数据库中全体存储结构和存取方法，而逻辑模式（概念模式）则在逻辑层描述数据库中全体数据的逻辑结构和特征。在视图层也可分为若干模式，称为子模式（外模式），它描述了数据库用户能够看见和使用的局部数据的逻辑结构和特征。通常一个数据库只有一个物理模式和一个逻辑模式，但是子模式有若干个。</p>
+<ol start="4">
+<li>E-R图</li>
+</ol>
+<p>E-R图由以下元素构成：1）矩形，代表实体型；2）椭圆，代表属性；3）菱形，代表联系；4）线段，将属性和实体性相连，或将实体型和联系相连。</p>
+<ol start="5">
+<li>关系模型</li>
+</ol>
+<p>关系模型由关系数据结构、关系操作集合和关系完整性约束三部分构成。在关系模型中，现实世界实体以及实体间的联系均用关系来表示。</p>
+<p>关系模型中常用的关系操作包括：选择、投影、连接、除、并、交、差等查询操作和增加、删除、修改两大部分。关系操作的特点是集合操作方式，即操作的对象和结果都是集合。关系操作可以使用两种方式定义：基于代数的定义称为关系代数；基于逻辑的定义称为关系演算。由于使用变量的不同，关系演算又分为元组关系演算和域关系演算。</p>
+<p>关系模型允许定义三类完整性约束：实体完整性、参照完整性和用户定义完整性。其中实体完整性和参照完整性是关系模型必须满足的完整性约束条件。实体完整性规则是：关系的主码不能取空值。参照完整性规则是：外码必须是另一个表中主码的有效值，或者是“空值”。</p>
+<ol start="6">
+<li>连接运算</li>
+</ol>
+<p>连接运算是从两个关系的乘运算结果中选取属性间满足一定条件的元组，构成新的关系。连接运算有两种：等值连接和自然连接。自然连接要求两个关系中进行比较的分量必须是相同的属性组，并且在结果中把重复的属性列去掉。</p>
+<ol start="7">
+<li>SQL</li>
+</ol>
+<p>关系数据库系统支持三级模式结构，其模式（数据库）、外模式和内模式中的基本对象有表、视图和索引。因此SQL的数据定义功能包括模式定义、表定义、视图定义和索引定义。SQL通常不提供修改模式定义、修改视图定义和修改索引定义。用户如果想修改这些对象，只能先将它们删除，然后再重建。</p>
+<ol start="8">
+<li>基本表的操作</li>
+</ol>
+<p>1)       创建表</p>
+<p>create table 基本表名</p>
+<p>(列名类型，</p>
+<p>……</p>
+<p>完整性约束，</p>
+<p>……</p>
+<p>)</p>
+<p>完整性约束主要有三种子句：主键子句（primary key）、外键子句（foreignkey）和检查子句（check）。</p>
+<p>2)       修改表</p>
+<p>alter  table  &lt;基本表名&gt;  add  &lt;列名&gt;  &lt;类型&gt;</p>
+<p>alter  table  &lt;基本表名&gt;  drop  &lt;列名&gt;  &lt;类型&gt;  [cascade | restrict]（cascade表示所有引用到该列的视图和约束也要一起自动删除；restrict表示在没有视图或约束引用该属性时，才能在本表中删除该列，否则拒绝删除。）</p>
+<p>alter  table  &lt;基本表名&gt;  modify  &lt;列名&gt;  &lt;类型&gt;</p>
+<p>3)       撤销表</p>
+<p>drop  table  &lt;基本表名&gt;  [cascade | restrict]</p>
+<ol start="9">
+<li>SQL查询</li>
+</ol>
+<p>where子句中可以使用下列运算符：</p>
+<p>l  算术运算符</p>
+<p>l  逻辑运算符</p>
+<p>l  字符串匹配运算符，包括like，not like</p>
+<p>l  集合成员资格运算符，包括in，not in</p>
+<p>l  谓词，包括exists，all，some，unique</p>
+<p>l  聚合函数，包括avg，min，max，sum和count</p>
+<p>l  还可以是另一个select语句</p>
+<p>select语句完整语法：</p>
+<pre><code>select  目标表的列名或列表达式序列
+
+from 基本表名和（或）视图序列
+
+[where 行条件表达式]
+
+[group by  列名序列]
+
+       [having  组条件表达式]
+
+[order by 列名[asc | desc]]</code></pre><p>整个语句的执行过程如下：</p>
+<p>1)       读取from子句中基本表、视图的数据，执行笛卡尔积操作；</p>
+<p>2)       选取满足where子句中给出的条件表达式的元组；</p>
+<p>3)       按group子句中指定列的值分组，同时提取满足having子句中组条件表达式的那些组；</p>
+<p>4)       按select子句中给出的列名或列表达式求值输出；</p>
+<p>5)       order子句对输出的目标表进行排序，按附加说明asc升序排列，或按desc降序排列。</p>
+<ol start="10">
+<li>视图</li>
+</ol>
+<p>创建视图：</p>
+<pre><code>create view &lt;视图名&gt; [&lt;列名&gt; &lt;列名&gt;…]
+
+as &lt;子查询&gt;
+
+[with check option]</code></pre><p>with checkoption表示对视图进行增删改是要保证操作的行满足视图定义中的谓词条件（即子查询中的条件表达式）。</p>
+<p>视图最终是定义在基本表之上的，对视图的一切操作最终也要转换为对基本表的操作。视图的好处：</p>
+<p>l  视图能够简化用户的操作</p>
+<p>l  视图是用户能以多种角度看待同一数据</p>
+<p>l  视图对重构数据库提供了一定程度的逻辑独立性</p>
+<p>l  视图能够对机密数据提供安全保护</p>
+<ol start="11">
+<li>事务</li>
+</ol>
+<p>事务是一系列的数据库操作，是数据库应用程序的基本单元，是反映现实世界需要以完整单位提交的一项工作。事务是用户定义的一个数据库操作序列。</p>
+<p>事务的四个特征：原子性、一致性、隔离性和持久性。</p>
+<p>事务处理包括数据库恢复和并发控制。数据库恢复有两个目的：保证事务的原子性和使数据库能恢复到正确状态。</p>
+<p>数据恢复的原理概括为冗余，建立冗余数据最常用的技术是数据转储和登录日志文件。数据转储是由DBA定期地将整个数据库复制到磁盘或另一个磁盘上保存起来的过程。</p>
+<ol start="12">
+<li>触发器</li>
+</ol>
+<p>一个触发器用来定义一个条件以及在该条件为真时需要执行的动作。通常，触发器的条件以断言的形式定义。动作以过程的形式定义。</p>
+<ol start="13">
+<li>索引</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/database/" rel="tag"># database</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/02/%E4%B8%BA%E5%95%A5%E6%84%9F%E8%A7%89%E7%BE%8E%E5%9B%BD%E7%8E%B0%E5%9C%A8%E6%81%A8%E4%B8%8D%E5%BE%97%E4%B8%AD%E5%9B%BD%E5%BD%BB%E5%BA%95%E5%BA%9F%E6%8E%89%E6%89%8D%E7%94%98%E5%BF%83/" rel="prev" title="为啥感觉美国现在恨不得中国彻底废掉才甘心">
+      <i class="fa fa-chevron-left"></i> 为啥感觉美国现在恨不得中国彻底废掉才甘心
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1436668936&auto=0&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
