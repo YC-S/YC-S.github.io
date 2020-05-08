@@ -165,6 +165,117 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/Spring%E6%98%AF%E5%90%A6%E4%BB%A3%E8%A1%A8%E7%9D%80%E7%9B%AE%E5%89%8DJava%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B6%E5%B3%B0%EF%BC%8C%E6%9C%AA%E6%9D%A5%E7%9A%84Java%E5%B0%86%E5%A6%82%E4%BD%95%E5%8F%91%E5%B1%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/07/Spring%E6%98%AF%E5%90%A6%E4%BB%A3%E8%A1%A8%E7%9D%80%E7%9B%AE%E5%89%8DJava%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B6%E5%B3%B0%EF%BC%8C%E6%9C%AA%E6%9D%A5%E7%9A%84Java%E5%B0%86%E5%A6%82%E4%BD%95%E5%8F%91%E5%B1%95/" class="post-title-link" itemprop="url">Spring是否代表着目前Java技术的顶峰，未来的Java将如何发展</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-07 22:01:13 / Modified: 22:03:51" itemprop="dateCreated datePublished" datetime="2020-05-07T22:01:13-04:00">2020-05-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>先说一个笑话：</p>
+<p>电梯里有三个人，一个人拼命做俯卧撑，一个人在跑圈，还有一个人拿头撞墙，电梯升到了 10 楼，然后人家问他们怎么上来的，一个人说我做俯卧撑上来的，还有一个人说我跑圈上来的，最后一个人我撞墙撞上来的……</p>
+<p>当然不是 java 的巅峰</p>
+<p><strong>是这些年，国内这种搞技术的闭关自守，不思进取给你带来的错觉</strong></p>
+<p>因为你没有在国内看到这些技术的进步，所以你觉得，哇，这应该就是巅峰了</p>
+<p>你应该看看老外在说什么，再对比国内这些信息</p>
+<p>你就会觉得，国内这些人就像是满清，墙外的世界已经各种科技革命了，墙内还在做着天朝上国的迷梦，还在骑马射箭，人家已经船坚炮利了</p>
+<p>所以英语很重要，你要学会英语，<strong>这样搞技术的二道贩子就骗不了你了</strong>，就没有中间商赚差价了，不要怕学不会英语，英语也是工具，use it or lose it，用多了自然会，不用担心语法错误，老外看得懂，看不懂痛苦的也是老外，管他那么多</p>
+<p>这其实是我国政府的牛逼之处，政府牛逼，所以我国长期处于一种增量市场中，也就是技术其实不重要，不需要改良，重复做以前做过的事，因为市场自然在增长，所以不愁没有客户，所以牛逼的是我国的政府，跟墙内这帮搬砖的没关系，这群搬砖的放墙外早就被开掉了，因为在墙内被政府保护得很好，所以不思进取，就以为自己引领了世界潮流了，其实只是沾了政府的便宜，现在行情不好了，资本家自己都养不活，也就不想养这些搬砖的了，于是一堆人就开始焦虑</p>
+<p>我国政府和市场就是那台上升的电梯，而这些搬砖的就是电梯里那些拿头撞墙的家伙</p>
+<p>然后你看看 java 这些年做了什么，我一个一个说，提醒你注意，这些技术都是近 10 年出现的</p>
+<p>graal，世界各国的大学，研究了 7，8 年之后，正式发布，特性是：polgylot，native image，请问你会用吗？你听说过吗？</p>
+<p>就算你只是一个后端，那么 native image 可以解决 faas 和 cloud native 的问题，你了解过吗？</p>
+<p>好，graal 不算是 java，只能算是 java 的扩展，我就说 java 自身，你看这些年的项目</p>
+<p>zgc，shenandoah，panama，amber，metropolis，valhalla，loom，skara……</p>
+<p>这些项目你用了吗？你知道这些项目在解决什么问题吗？</p>
+<p>我一个个说吧</p>
+<p>zgc 解决了 java gc 停顿太长的问题，一定在 10ms 以内完成，实测在 1-2ms 之间完成 gc，代价是吞吐下降不超过 15%</p>
+<p>shenandoah 类似 zgc，但是它没有承诺一定在 10ms 以内完成，但是同样没有代价，所以是一个比较合适的 g1 的替代品</p>
+<p>panama，强化 java 跟 c，c++ 等 native 代码的互操作性，就是方便 java 调用 c，c++ 写的代码，对 jni 做出了优化，不仅是代码写起来更加简单，而且性能更好</p>
+<p>amber，强化 java 的语法，增强 java 代码的可读性，确切滴说是简化 java 的写法，比如可以在 switch 中使用 -&gt; 和 yield，就很像 kotlin 的 when</p>
+<p>metropolis，替换 jdk 里面缺省的 c1，c2 编译器，用 graal 的编译器</p>
+<p>valhalla，这是 java 的 value type，值类型</p>
+<p>loom，这是 java 的虚拟线程</p>
+<p>skara，将 openjdk 迁移到 github 上去</p>
+<p>这些都是大的项目，具体到每一个 java 的技术细节，jcp 会发布 jep</p>
+<p><a href="https://openjdk.java.net/jeps/0" target="_blank" rel="noopener">https://openjdk.java.net/jeps/0</a></p>
+<p>你看这里有多少个 jep，你能看懂每一个 jep 并想出如何使用这些新增加的特性吗？</p>
+<p>比如开了 zgc 之后，有些实时系统就可以开始尝试了，比如短程货运的自动驾驶，就那种送快递的带轮子的自动运输车</p>
+<p>而且 java 现在也有了 arm 上的 build，你可以在树莓派上 build java，java 也可以写手机 app 了，对此你试过吗？你知道吗？</p>
+<p>你看 maven central 上，java 写的 jar 依赖都上千万了，还在以每年几百万的速度递增，而你只会用其中很小的一部分，which is spring related，你觉得你对 java 真的了解吗？maven central 上那么多类库，你会用吗？我随便选一个类库，你能在短时间内上手用起来吗？比如这个 guava</p>
+<p>这个生态里面什么都有，比如 hadoop，这个你总知道吧？会用吗？cassandra？kafka？上千万的类库我一个个列举过去不可能，自己看吧</p>
+<p>请问你对此了解多少？</p>
+<p>不，你不了解，<strong>你只会用 spring，你不是 java 程序员</strong>，你是 spring 程序员，你不会 java，你只会 spring，所以 spring 如果不给你的工具，你就不会用了，连最简单的升级都不敢升，连 unit test 都不会写，不信你面试 spring 开发的时候，让写一个 unit test 试试看，信不信很多人写不出来？</p>
+<p>你要说这些需求都不存在吗？肿么可能，不会做所以自我欺骗说，需求不存在</p>
+<p>需求当然存在，技术也客观存在，只是你不会用而已</p>
+<p>你看完我说的 java，graal 和 maven central 上的依赖，你还认为 spring 是巅峰吗？</p>
+<p>就这么说吧，spring 在这里面，犹如 php 之于整个挨踢生态</p>
+<p>没说错吧？</p>
+<p>php 就是一个 web framework，傻瓜化使用，用 spring 的不就正在做跟 php 同样的事？</p>
+<p>所以很多时候我都在想，这帮人天天嘲笑 php，哪里来的勇气哦，做出来的玩意不也是另外一种 php 嘛？从需求上看，spring 做的，跟 php 做的，有多大区别？不都是搞了个网站吗？</p>
+<p>然后一天到晚在那边强调大病发，先不说 php 也有异步的实现</p>
+<p>就说需求面，有多少公司的网站有大病发的需求？</p>
+<p>小病发才是大多数企业网站和内部信息管理系统的常态吧？</p>
+<p>那你整那些大病发给谁用？</p>
+<p>就算做到了大病发，你也有钱了，因为你有足够的用户了，那优化 php 就是了，facebook 不就这么干的？要是不懂就抄 fb 的开源</p>
+<p>当然问题不是只有你一个，其它领域的程序员也有同样的问题</p>
+<p>比如 ios 的开发很多都只会 objc，不会 swift，安卓也类似</p>
+<p><strong>但是世界不会因为你的保守而停止进步</strong></p>
+<p>这些先进技术一定会在现在或者将来冲击现有的陈旧的技术体系，你要小心，将来你有可能会因为你的保守而付出代价，而这个代价其实也很简单，就是裁员失业，其实现在已经开始了</p>
+<p>因为你不会，中国这么大，有的是人会，而且新技术上手难度也不高，没啥难的，压根不需要什么 985 或者本科才能学会，随便一个智商正常的人都能学会，你要想，老外那种连 100 以内加减乘除都算不清楚的，都能噼里啪啦写出代码来，难道你比这种人还笨？显然不是，原因是你不会做，而不是你学不会，学不会的原因估计是没有人教你，但是教会他人，只是一层窗户纸，很容易就捅破了，找个会的人给你解释一下就行了，都是些概念，没啥难的，比初中数学简单多了</p>
+<p>最直接的方式就是直接阅读老外的英语材料，这样效率最高，也不需要麻烦他人给你解释</p>
+<p>现在愿意花上万工资去养一个 web 开发（无论前端还是后端）的老板，我都很佩服，贵司素真滴有钱，因为上万块钱，拿去外包，都能找到很好用的，想怎么整都行，你可以指定技术栈，php，spring 还有 node 这种烂大街的技术外包到处都是</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%82%A3%E4%B9%88%E5%A4%9A%E5%85%AC%E7%9F%A5%E9%83%BD%E6%98%AF%E9%AB%98%E6%A0%A1%E7%9F%A5%E8%AF%86%E5%88%86%E5%AD%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1386,71 +1497,6 @@ as &lt;子查询&gt;
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/%E4%B8%AD%E5%9B%BD%E4%B8%BA%E4%BD%95%E5%9C%A8%E5%9B%BD%E9%99%85%E7%A4%BE%E4%BC%9A%E4%B8%8A%E7%BC%BA%E4%B9%8F%E7%9B%9F%E5%8F%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/29/%E4%B8%AD%E5%9B%BD%E4%B8%BA%E4%BD%95%E5%9C%A8%E5%9B%BD%E9%99%85%E7%A4%BE%E4%BC%9A%E4%B8%8A%E7%BC%BA%E4%B9%8F%E7%9B%9F%E5%8F%8B/" class="post-title-link" itemprop="url">中国为何在国际社会上缺乏盟友</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-29 23:08:03 / Modified: 23:09:33" itemprop="dateCreated datePublished" datetime="2020-04-29T23:08:03-04:00">2020-04-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>鹅城的百姓，谁赢他们帮谁，谁强他们是谁的盟友。</p>
-<p>国际的国与国之间，更像一条街上不良青年之间的关系，有个词叫“打便宜手”，谁强他们帮谁，谁弱他们对谁打便宜手。———这就像一颗大树的根干树枝结构，和树叶叶脉形状之间的自同构，数学上叫分形。</p>
-<p>很多人看不懂，在高端政治中，比如特朗普一边公开在国会讲话，后面民主党党魁故意对着摄像机镜头撕掉了特朗普递交的文件。或者有段时间俄日关系不好，安倍去俄罗斯见普京，公开国际场合，安倍晋三主动老远伸手做示好握手状走向普京，普京当着新闻媒体蹲下来玩儿他的狗，根本不接安倍的茬。……还有很多……</p>
-<p>有人觉得，美国民主党主席和普京太没素质太没礼貌了，就像街头青年或者农村怨妇。这就是看不懂高端政治了，注意政治与一条街的分形。</p>
-<p><strong>国际级老大和老二的争霸，是“全或无”的结果，赢了，就都是盟友；输了就都来分一杯羹；平时就都在观望，伺机而动。新冠期间，中国援助的国家，心理感激中国，看看美国的黑脸，都不敢明着表达对中国的感激之情。</strong></p>
-<p><strong>所以，中国和美国争霸，决不能输，输了，不但美国来捡尸体，一帮其他国家就像秃鹫一样，一起刮干净骨头上的肉。</strong></p>
-<p><strong>中国必须赢，到时候对于衰败的美国，会有一堆小国跳出来，先声明是中国的盟友，然后低三下四像只秃鹫一样，说“美国脚趾头上那点肉，让我捋捋？”。</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1521,7 +1567,7 @@ as &lt;子查询&gt;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">151</span>
+          <span class="site-state-item-count">152</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
