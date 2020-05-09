@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="我一直觉得比尔盖茨有着科技乌托邦的信仰。对于任何不看数据不讲逻辑的治理行为，他大概都是很看不上的。 比尔盖茨06年就全身心投入了比尔梅琳达基金会。如果要窥视他对社会治理的态度，基金会的规划大概能反映一二。 来，让我们康康钱花哪了（美元）： 传染病控制：55亿 疟疾控制：14亿 性病控制（包括艾滋）：13亿 结核病控制：10亿 生殖健康：9亿农业研究：8亿 计划生育（！）：7亿 卫生政策与管理：6亿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何看待比尔盖茨称美国低收入者得不到新冠病毒检测，有钱人可以检测多次？">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%AF%94%E5%B0%94%E7%9B%96%E8%8C%A8%E7%A7%B0%E7%BE%8E%E5%9B%BD%E4%BD%8E%E6%94%B6%E5%85%A5%E8%80%85%E5%BE%97%E4%B8%8D%E5%88%B0%E6%96%B0%E5%86%A0%E7%97%85%E6%AF%92%E6%A3%80%E6%B5%8B%EF%BC%8C%E6%9C%89%E9%92%B1%E4%BA%BA%E5%8F%AF%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%A4%9A%E6%AC%A1%EF%BC%9F/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="我一直觉得比尔盖茨有着科技乌托邦的信仰。对于任何不看数据不讲逻辑的治理行为，他大概都是很看不上的。 比尔盖茨06年就全身心投入了比尔梅琳达基金会。如果要窥视他对社会治理的态度，基金会的规划大概能反映一二。 来，让我们康康钱花哪了（美元）： 传染病控制：55亿 疟疾控制：14亿 性病控制（包括艾滋）：13亿 结核病控制：10亿 生殖健康：9亿农业研究：8亿 计划生育（！）：7亿 卫生政策与管理：6亿">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-09T20:47:30.000Z">
+<meta property="article:modified_time" content="2020-05-09T20:48:20.710Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="Chinese">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/09/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%AF%94%E5%B0%94%E7%9B%96%E8%8C%A8%E7%A7%B0%E7%BE%8E%E5%9B%BD%E4%BD%8E%E6%94%B6%E5%85%A5%E8%80%85%E5%BE%97%E4%B8%8D%E5%88%B0%E6%96%B0%E5%86%A0%E7%97%85%E6%AF%92%E6%A3%80%E6%B5%8B%EF%BC%8C%E6%9C%89%E9%92%B1%E4%BA%BA%E5%8F%AF%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%A4%9A%E6%AC%A1%EF%BC%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>如何看待比尔盖茨称美国低收入者得不到新冠病毒检测，有钱人可以检测多次？ | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%AF%94%E5%B0%94%E7%9B%96%E8%8C%A8%E7%A7%B0%E7%BE%8E%E5%9B%BD%E4%BD%8E%E6%94%B6%E5%85%A5%E8%80%85%E5%BE%97%E4%B8%8D%E5%88%B0%E6%96%B0%E5%86%A0%E7%97%85%E6%AF%92%E6%A3%80%E6%B5%8B%EF%BC%8C%E6%9C%89%E9%92%B1%E4%BA%BA%E5%8F%AF%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%A4%9A%E6%AC%A1%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何看待比尔盖茨称美国低收入者得不到新冠病毒检测，有钱人可以检测多次？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-09 16:47:30 / Modified: 16:48:20" itemprop="dateCreated datePublished" datetime="2020-05-09T16:47:30-04:00">2020-05-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我一直觉得比尔盖茨有着科技乌托邦的信仰。对于任何不看数据不讲逻辑的治理行为，他大概都是很看不上的。</p>
+<p>比尔盖茨06年就全身心投入了比尔梅琳达基金会。如果要窥视他对社会治理的态度，基金会的规划大概能反映一二。</p>
+<p>来，让我们康康钱花哪了（美元）：</p>
+<p>传染病控制：55亿</p>
+<p>疟疾控制：14亿</p>
+<p>性病控制（包括艾滋）：13亿</p>
+<p>结核病控制：10亿</p>
+<p>生殖健康：9亿农业研究：8亿</p>
+<p>计划生育（！）：7亿</p>
+<p>卫生政策与管理：6亿</p>
+<p>农业发展：5亿</p>
+<p>农业政策与管理：5亿</p>
+<p>推广发展理念：4亿</p>
+<p>基础卫生服务：4亿</p>
+<p>基础营养：4亿</p>
+<p>基础卫生：3亿</p>
+<p>相关财务政策及管理：2亿</p>
+<p>以上是基金会09年到15年可以披露的，花在发展中国家身上的钱。</p>
+<p>注意这不是基金会的支出大头，基金会同时也资助了大量组织，单在全球疫苗联盟身上就投了30亿。</p>
+<p>之所以单拉出基金会在发展中国家的投入，是因为这些投入最能直接反映基金会所关注的领域。</p>
+<p>农业与卫生。</p>
+<p>发展中国家能够实现有效治理的两大基石。没有这两块，即使用国家暴力强制维持稳定，也持续不了太久。</p>
+<p>有了这两块基石，才能谈工业化。而且就算不能实现工业化，也还能做条咸鱼。没有这两块，恐怕就直接沦为失败国家了。</p>
+<p>基金会对这两块不是孤立处理，还兼顾了这背后的数据与金融。一方面投资了相当多中小微企业银行网，专门为这些基础农业提供资金支持；另一方面以Our World in Data为核心，积累成一个可供决策的全球数据库。</p>
+<p>不说基金会其他那些密如蛛网的布局，单这两块，已经形成了虚拟与实体的数据穿透，而且是在农业和卫生两大板块上。</p>
+<p>老哥，你已经是多个小国之君了。</p>
+<p>说实话，我真不觉得比尔盖茨有什么野心。相反，我认为他是在贯彻工程师的理想：</p>
+<p>反正我有钱、有技术、有数据，我能不能以此来实现社会治理，绕开那些烦人的政治？</p>
+<p>闲着也是闲着，来场盛大的社会实验。搞砸了，亏的也是我的钱（还有巴菲特）；搞成了，人类真的能有第三道路，而且我也能突破技术和财富的边界，人生价值再上一层。</p>
+<p>没想到啊老哥，你也是加速主义者，还是技术加速主义，最正统的那支。</p>
+<p>玩笑话。不过比尔盖茨轻政治重技术的立场世人皆知。所以有理由相信，他在努力形成一个经济与社区治理上能够自洽的范式。</p>
+<p>就像工程师常说的MVP：最小可行产品。</p>
+<p>一旦最小可行产品成立，并且快速复制，那是能最终改变整个上层建筑的。最小的范式是生产大队还是自耕农，这会形成两个完全不同的国家。</p>
+<p>这大概就是“不碰政治而最终改变政治”。</p>
+<p>基金会能改变多大的未来，这个交给历史来判断。不过比尔盖茨的思想，稍微能摸点边。</p>
+<p>基于这些边角料，再看看美帝的防疫措施：</p>
+<p>有做大规模检测以掌握疫情规模么？没有；有做传染跟踪以掌握疫情走向么？没有。</p>
+<p>重复检测富人有啥用？富人能永远生活在绝对隔离区里吗？穷人传来传去，最后还是会传到富人身上。</p>
+<p>在这个时候讲市场定价那就是屑。</p>
+<p>比尔盖茨能看到不少小国的全国数据，比该国政府所掌握的还精准。结果当祖国爆发疫情时，这些基本的科学理念都被抛诸脑后。</p>
+<p>只有Fauci博士日渐僵硬的脸。</p>
+<p>你要是一位混到这层地位、有着这等视野、掌握这种资源的工程师，你会是什么心情。</p>
+<p>不过比尔盖茨还是很懂政治的，他总是微妙地与政治保持距离，就是因为他懂。</p>
+<p>再说直白点，就到政府有效治理这个层面了。这话说出口，他当晚就是美帝的国家叛徒。</p>
+<p>所以他只能天天苦口婆心地讲数据讲科学。</p>
+<p>就这样，比尔盖茨已经是美帝红脖子心中的国家公敌了：病毒是你造的，疫苗是你卖的，你接下来是不是要用疫情把大好美帝送入军管？改造成你们硅谷左翼梦想的集权国家？</p>
+<p>别笑，在病毒是“中国制造”还是“比尔盖茨制造”这个问题上，MAGA们已经分裂了。</p>
+<p>我想，等十年二十年后盖茨出自传时，这段历史读起来一定非常精彩。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Chinese/" rel="tag"># Chinese</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/08/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%90%8E%E6%B5%AA/" rel="prev" title="如何看后浪">
+      <i class="fa fa-chevron-left"></i> 如何看后浪
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1436668936&auto=0&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
