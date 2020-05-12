@@ -165,6 +165,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/12/Algorithms-interviews-theory-vs-practice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/12/Algorithms-interviews-theory-vs-practice/" class="post-title-link" itemprop="url">Algorithms interviews theory vs practice</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-12 22:52:23 / Modified: 23:55:16" itemprop="dateCreated datePublished" datetime="2020-01-12T22:52:23-05:00">2020-01-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>When I ask people at trendy big tech companies why algorithms quizzes are mandatory, the most common answer I get is something like “we have so much scale, we can’t afford to have someone accidentally write an <code>O(n^2)</code> algorithm and bring the site down”. One thing I find funny about this is, even though a decent fraction of the value I’ve provided for companies has been solving phone-screen level algorithms problems on the job, I can’t pass algorithms interviews! When I say that, people often think I mean that I fail half my interviews or something. It’s more than half.</p>
+<p>When I wrote a draft blog post of my interview experiences, draft readers panned it as too boring and repetitive because I’d failed too many interviews. I should summarize my failures as a table because no one’s going to want to read a 10k word blog post that’s just a series of failures, they said (which is good advice; I’m working on a version with a table). I’ve done maybe 40-ish “real” software interviews and passed maybe one or two of them (arguably zero).</p>
+<p>Let’s look at a few examples to make it clear what I mean by “phone-screen level algorithms problem”, above.</p>
+<p>At one big company I worked for, a team wrote a core library that implemented a resizable array for its own purposes. On each resize that overflowed the array’s backing store, the implementation added a constant number of elements and then copied the old array to the newly allocated, slightly larger, array. This is a classic example of how not to <a href="https://en.wikipedia.org/wiki/Dynamic_array" target="_blank" rel="noopener">implement a resizable array</a> since it results in linear time resizing instead of <a href="https://en.wikipedia.org/wiki/Amortized_analysis" target="_blank" rel="noopener">amortized constant time</a> resizing. It’s such a classic example that it’s often used as the canonical example when demonstrating amortized analysis.</p>
+<p>For people who aren’t used to big tech company phone screens, typical phone screens that I’ve received are one of:</p>
+<ul>
+<li>an “easy” coding/algorithms question, maybe with a “very easy” warm-up question in front.</li>
+<li>a series of “very easy” coding/algorithms questions,</li>
+<li>a bunch of trivia (rare for generalist roles, but not uncommon for low-level or performance-related roles)</li>
+</ul>
+<p>This array implementation problem is considered to be so easy that it falls into the “very easy” category and is either a warm-up for the “real” phone screen question or is bundled up with a bunch of similarly easy questions. And yet, this resizable array was responsible for roughly 1% of all GC pressure across all JVM code at the company (it was the second largest source of allocations across all code) as well as a significant fraction of CPU. Luckily, the resizable array implementation wasn’t used as a generic resizable array and it was only instantiated by a semi-special-purpose wrapper, which is what allowed this to “only” be responsible for 1% of all GC pressure at the company. If asked as an interview question, it’s overwhelmingly likely that most members of the team would’ve implemented this correctly in an interview. My fixing this made my employer more money annually than I’ve made in my life.</p>
+<p>That was the second largest source of allocations, the number one largest source was converting a pair of <code>long</code> values to byte arrays in the same core library. It appears that this was done because someone wrote or copy pasted a hash function that took a byte array as input, then modified it to take two inputs by taking two byte arrays and operating on them in sequence, which left the hash function interface as <code>(byte[], byte[])</code>. In order to call this function on two longs, they used a handy <code>long</code> to <code>byte[]</code> conversion function in a widely used utility library. That function, in addition to allocating an <code>byte[]</code> and stuffing a <code>long</code> into it, also reverses the endianness of the long (the function appears to have been intended to convert <code>long</code> values to network byte order).</p>
+<p>Unfortunately, switching to a more appropriate hash function would’ve been a major change, so my fix for this was to change the hash function interface to take a pair of longs instead of a pair of byte arrays and have the hash function do the endianness reversal instead of doing it as a separate step (since the hash function was already shuffling bytes around, this didn’t create additional work). Removing these unnecessary allocations made my employer more money annually than I’ve made in my life.</p>
+<p>Finding a constant factor speedup isn’t technically an algorithms question, but it’s also something you see in algorithms interviews. As a follow-up to an algorithms question, I commonly get asked “can you make this faster?” The answer is to these often involves doing a simple optimization that will result in a constant factor improvement.</p>
+<p>A concrete example that I’ve been asked twice in interviews is: you’re storing IDs as ints, but you already have some context in the question that lets you know that the IDs are densely packed, so you can store them as a bitfield instead. The difference between the bitfield interview question and the real-world superfluous array is that the real-world existing solution is so far afield from the expected answer that you probably wouldn’t be asked to find a constant factor speedup. More likely, you would’ve failed the interview at that point.</p>
+<p>To pick an example from another company, the configuration for BitFunnel, a search index used in Bing, is another example of an interview-level algorithms question.</p>
+<p>The full context necessary to describe the solution is a bit much for this blog post, but basically, there’s a set of bloom filters that needs to be configured. One way to do this (which I’m told was being done) is to write a black-box optimization function that uses gradient descent to try to find an optimal solution. I’m told this always resulted in some strange properties and the output configuration always resulted in non-idealities which were worked around by making the backing bloom filters less dense, i.e. throwing more resources (and therefore money) at the problem.</p>
+<p>To create a more optimized solution, you can observe that the fundamental operation in BitFunnel is equivalent to multiplying probabilities together, so, for any particular configuration, you can just multiply some probabilities together to determine how a configuration will perform. Since the configuration space isn’t all that large, you can then put this inside a few for loops and iterate over the space of possible configurations and then pick out the best set of configurations. This isn’t quite right because multiplying probabilities assumes a kind of independence that doesn’t hold in reality, but that seems to work ok for the same reason that <a href="https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering" target="_blank" rel="noopener">naive Bayesian spam filtering</a> worked pretty well when it was introduced even though it incorrectly assumes the probability of any two words appearing in an email are independent. And if you want the full solution, you can work out the non-independent details, although that’s probably beyond the scope of an interview.</p>
+<p>Those are just three examples that came to mind, I run into this kind of thing all the time and could come up with tens of examples off the top of my head, perhaps more than a hundred if I sat down and tried to list every example I’ve worked on, certainly more than a hundred if I list examples I know of that someone else (or no one) has worked on. Both the examples in this post as well as the ones I haven’t included have these properties:</p>
+<ul>
+<li>The example could be phrased as an interview question</li>
+<li>If phrased as an interview question, you’d expect most (and probably) all people on the relevant team to get the right answer in the timeframe of an interview</li>
+<li>The cost savings from fixing the example is worth more annually than my lifetime earnings to date</li>
+<li>The example persisted for long enough that it’s reasonable to assume that it wouldn’t have been discovered otherwise</li>
+</ul>
+<p>At the start of this post, we noted that people at big tech companies commonly claim that they have to do algorithms interviews since it’s so costly to have inefficiencies at scale. My experience is that these examples are legion at every company I’ve worked for that does algorithms interviews. Trying to get people to solve algorithms problems on the job by asking algorithms questions in interviews doesn’t work.</p>
+<p>One reason is that even though big companies try to make sure that the people they hire can solve algorithms puzzles they also incentivize many or most developers to avoid deploying that kind of reasoning to make money.</p>
+<p>Of the three solutions for the examples above, two are in production and one isn’t. That’s about my normal hit rate if I go to a random team with a diff and don’t persistently follow up (as opposed to a team that I have reason to believe will be receptive, or a team that’s asked for help, or if I keep pestering a team until the fix gets taken).</p>
+<p>If you’re very cynical, you could argue that it’s surprising the success rate is that high. If I go to a random team, it’s overwhelmingly likely that efficiency is in neither the team’s objectives or their org’s objectives. The company is likely to have spent a decent amount of effort incentivizing teams to hit their objectives – what’s the point of having objectives otherwise? Accepting my diff will require them to test, integrate, deploy the change and will create risk (because all deployments have non-zero risk). Basically, I’m asking teams to do some work and take on some risk to do something that’s worthless to them. Despite incentives, people will usually take the diff, but they’re not very likely to spend a lot of their own spare time trying to find efficiency improvements(and their normal work time will be spent on things that are aligned with the team’s objectives)<a href="https://danluu.com/algorithms-interviews/#fn:E" target="_blank" rel="noopener">4</a>.</p>
+<p>Hypothetically, let’s say a company didn’t try to ensure that its developers could pass algorithms quizzes but did incentivize developers to use relatively efficient algorithms. I don’t think any of the three examples above could have survived, undiscovered, for years nor could they have remained unfixed. Some hypothetical developer working at a company where people profile their code would likely have looked at the hottest items in the profile for the most computationally intensive library at the company. The “trick” for both isn’t any kind of algorithms wizardry, it’s just looking at all, which is something incentives can fix. The third example is less inevitable since there isn’t a standard tool that will tell you to look at the problem. It would also be easy to try to spin the result as some kind of wizardry – that example formed the core part of a paper that won “best paper award” at the top conference in its field (IR), but the reality is that the “trick” was applying high school math, which means the real trick was having enough time to look at places where high school math might be applicable to find one.</p>
+<p>I actually worked at a company that used the strategy of “don’t ask algorithms questions in interviews, but do incentivize things that are globally good for the company”. During my time there, I only found one single fix that nearly meets the criteria for the examples above (if the company had more scale, it would’ve met all of the criteria, but due to the company’s size, increases in efficiency were worth much less than at big companies – much more than I was making at the time, but the annual return was still less than my total lifetime earnings to date).</p>
+<p>I think the main reason that I only found one near-example is that enough people viewed making the company better as their job, so straightforward high-value fixes tended not exist because systems were usually designed such that they didn’t really have easy to spot improvements in the first place. In the rare instances where that wasn’t the case, there were enough people who were trying to do the right thing for the company (instead of being forced into obeying local incentives that are quite different from what’s globally beneficial to the company) that someone else was probably going to fix the issue before I ever ran into it.</p>
+<p>The algorithms/coding part of that company’s interview (initial screen plus onsite combined) was easier than the phone screen at major tech companies and we basically didn’t do a system design interview.</p>
+<p>For a while, we tried an algorithmic onsite interview question that was on the hard side but in the normal range of what you might see in a BigCo phone screen (but still easier than you’d expect to see at an onsite interview). We stopped asking the question because every new grad we interviewed failed the question (we didn’t give experienced candidates that kind of question). We simply weren’t prestigious enough to get candidates who can easily answer those questions, so it was impossible to hire using the same trendy hiring filters that everybody else had. In contemporary discussions on interviews, what we did is often called “lowering the bar”, but it’s unclear to me why we should care how high of a bar someone can jump over when little (and in some cases none) of the job they’re being hired to do involves jumping over bars. And, in the cases where you do want them to jump over bars, they’re maybe 2” high and can easily be walked over.</p>
+<p>When measured on actual productivity, that was the most productive company I’ve worked for. I believe the reasons for that are cultural and too complex to fully explore in this post, but I think it helped that we didn’t filter out perfectly good candidates with algorithms quizzes and assumed people could pick that stuff up on the job if we had a culture of people generally doing the right thing instead of focusing on local objectives.</p>
+<p>If other companies want people to solve interview-level algorithms problems on the job perhaps they could try incentivizing people to solve algorithms problems (when relevant). That could be done in addition to or even instead of filtering for people who can whiteboard algorithms problems.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/11/%E9%87%91%E8%9E%8D%E6%88%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3150,609 +3245,6 @@ and this is the second one
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/bash-commands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/02/bash-commands/" class="post-title-link" itemprop="url">Bash Commands</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-01-02 11:59:59 / Modified: 13:01:43" itemprop="dateCreated datePublished" datetime="2020-01-02T11:59:59-05:00">2020-01-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-Basic-Operations"><a href="#1-Basic-Operations" class="headerlink" title="1. Basic Operations"></a>1. Basic Operations</h1><h3 id="a-export"><a href="#a-export" class="headerlink" title="a. export"></a>a. <code>export</code></h3><p>Displays all environment variables. If you want to get details of a specific variable, use <code>echo $VARIABLE_NAME</code>.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span></span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span></span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LC_CTYPE=en_US.UTF-8</span><br><span class="line">LESS=-R</span><br></pre></td></tr></table></figure>
-
-<h3 id="b-whatis"><a href="#b-whatis" class="headerlink" title="b. whatis"></a>b. <code>whatis</code></h3><p>whatis shows description for user commands, system calls, library functions, and others in manual pages</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatis something</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whatis bash</span><br><span class="line">bash (1)             - GNU Bourne-Again SHell</span><br></pre></td></tr></table></figure>
-
-<h3 id="c-whereis"><a href="#c-whereis" class="headerlink" title="c. whereis"></a>c. <code>whereis</code></h3><p>whereis searches for executables, source files, and manual pages using a database built by system automatically.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis name</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whereis java</span><br><span class="line">/usr/bin/java</span><br></pre></td></tr></table></figure>
-
-<h3 id="d-which"><a href="#d-which" class="headerlink" title="d. which"></a>d. <code>which</code></h3><p>which searches for executables in the directories specified by the environment variable PATH. This command will print the full path of the executable(s).</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> program_name</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> java</span><br><span class="line">/usr/bin/java</span><br></pre></td></tr></table></figure>
-
-<h3 id="e-clear"><a href="#e-clear" class="headerlink" title="e. clear"></a>e. clear</h3><p>Clears content on window.</p>
-<h2 id="1-1-File-Operations"><a href="#1-1-File-Operations" class="headerlink" title="1.1. File Operations"></a>1.1. File Operations</h2><table>
-   <tr>
-      <td><a href="#a-cat">cat</a></td>
-      <td><a href="#b-chmod">chmod</a></td>
-      <td><a href="#c-chown">chown</a></td>
-      <td><a href="#d-cp">cp</a></td>
-      <td><a href="#e-diff">diff</a></td>
-      <td><a href="#f-file">file</a></td>
-      <td><a href="#g-find">find</a></td>
-      <td><a href="#h-gunzip">gunzip</a></td>
-      <td><a href="#i-gzcat">gzcat</a></td>
-      <td><a href="#j-gzip">gzip</a></td>
-      <td><a href="#k-head">head</a></td>
-   </tr>
-   <tr>
-      <td><a href="#l-lpq">lpq</a></td>
-      <td><a href="#m-lpr">lpr</a></td>
-      <td><a href="#n-lprm">lprm</a></td>
-      <td><a href="#o-ls">ls</a></td>
-      <td><a href="#p-more">more</a></td>
-      <td><a href="#q-mv">mv</a></td>
-      <td><a href="#r-rm">rm</a></td>
-      <td><a href="#s-tail">tail</a></td>
-      <td><a href="#t-touch">touch</a></td>
-   </tr>
-</table>
-
-<h3 id="a-cat"><a href="#a-cat" class="headerlink" title="a. cat"></a>a. <code>cat</code></h3><p>It can be used for the following purposes under UNIX or Linux.  </p>
-<ul>
-<li>Display text files on screen</li>
-<li>Copy text files  </li>
-<li>Combine text files  </li>
-<li>Create new text files  </li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat filename</span><br><span class="line">cat file1 file2 </span><br><span class="line">cat file1 file2 &gt; newcombinedfile</span><br><span class="line">cat &lt; file1 &gt; file2 <span class="comment">#copy file1 to file2</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="b-chmod"><a href="#b-chmod" class="headerlink" title="b. chmod"></a>b. <code>chmod</code></h3><p>The chmod command stands for “change mode” and allows you to change the read, write, and execute permissions on your files and folders. For more information on this command check this <a href="https://ss64.com/bash/chmod.html" target="_blank" rel="noopener">link</a>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -options filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="c-chown"><a href="#c-chown" class="headerlink" title="c. chown"></a>c. <code>chown</code></h3><p>The chown command stands for “change owner”, and allows you to change the owner of a given file or folder, which can be a user and a group. Basic usage is simple forward first comes the user (owner), and then the group, delimited by a colon.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -options user:group filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="d-cp"><a href="#d-cp" class="headerlink" title="d. cp"></a>d. <code>cp</code></h3><p>Copies a file from one location to other.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp filename1 filename2</span><br></pre></td></tr></table></figure>
-
-<p>Where <code>filename1</code> is the source path to the file and <code>filename2</code> is the destination path to the file.</p>
-<h3 id="e-diff"><a href="#e-diff" class="headerlink" title="e. diff"></a>e. <code>diff</code></h3><p>Compares files, and lists their differences.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff filename1 filename2</span><br></pre></td></tr></table></figure>
-
-<h3 id="f-file"><a href="#f-file" class="headerlink" title="f. file"></a>f. <code>file</code></h3><p>Determine file type.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file filename</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ file index.html</span><br><span class="line"> index.html: HTML document, ASCII text</span><br></pre></td></tr></table></figure>
-
-<h3 id="g-find"><a href="#g-find" class="headerlink" title="g. find"></a>g. <code>find</code></h3><p>Find files in directory</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find directory options pattern</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name README.md</span><br><span class="line">$ find /home/user1 -name <span class="string">'*.png'</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="h-gunzip"><a href="#h-gunzip" class="headerlink" title="h. gunzip"></a>h. <code>gunzip</code></h3><p>Un-compresses files compressed by gzip.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="i-gzcat"><a href="#i-gzcat" class="headerlink" title="i. gzcat"></a>i. <code>gzcat</code></h3><p>Lets you look at gzipped file without actually having to gunzip it.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzcat filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="j-gzip"><a href="#j-gzip" class="headerlink" title="j. gzip"></a>j. <code>gzip</code></h3><p>Compresses files.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="k-head"><a href="#k-head" class="headerlink" title="k. head"></a>k. <code>head</code></h3><p>Outputs the first 10 lines of file  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="l-lpq"><a href="#l-lpq" class="headerlink" title="l. lpq"></a>l. <code>lpq</code></h3><p>Check out the printer queue.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpq</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ lpq</span><br><span class="line">Rank    Owner   Job     File(s)                         Total Size</span><br><span class="line">active  adnanad 59      demo                            399360 bytes</span><br><span class="line">1st     adnanad 60      (stdin)                         0 bytes</span><br></pre></td></tr></table></figure>
-
-<h3 id="m-lpr"><a href="#m-lpr" class="headerlink" title="m. lpr"></a>m. <code>lpr</code></h3><p>Print the file.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpr filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="n-lprm"><a href="#n-lprm" class="headerlink" title="n. lprm"></a>n. <code>lprm</code></h3><p>Remove something from the printer queue.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lprm jobnumber</span><br></pre></td></tr></table></figure>
-
-<h3 id="o-ls"><a href="#o-ls" class="headerlink" title="o. ls"></a>o. <code>ls</code></h3><p>Lists your files. <code>ls</code> has many options: <code>-l</code> lists files in ‘long format’, which contains the exact size of the file, who owns the file, who has the right to look at it, and when it was last modified. <code>-a</code> lists all files, including hidden files. For more information on this command check this <a href="https://ss64.com/bash/ls.html" target="_blank" rel="noopener">link</a>.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls option</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<pre>
-$ ls -la
-rwxr-xr-x   33 adnan  staff    1122 Mar 27 18:44 .
-drwxrwxrwx  60 adnan  staff    2040 Mar 21 15:06 ..
--rw-r--r--@  1 adnan  staff   14340 Mar 23 15:05 .DS_Store
--rw-r--r--   1 adnan  staff     157 Mar 25 18:08 .bumpversion.cfg
--rw-r--r--   1 adnan  staff    6515 Mar 25 18:08 .config.ini
--rw-r--r--   1 adnan  staff    5805 Mar 27 18:44 .config.override.ini
-drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
--rwxr-xr-x   1 adnan  staff    2702 Mar 25 18:08 .gitignore
-</pre>
-
-<h3 id="p-more"><a href="#p-more" class="headerlink" title="p. more"></a>p. <code>more</code></h3><p>Shows the first part of a file (move with space and type q to quit).  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="q-mv"><a href="#q-mv" class="headerlink" title="q. mv"></a>q. <code>mv</code></h3><p>Moves a file from one location to other.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv filename1 filename2</span><br></pre></td></tr></table></figure>
-
-<p>Where <code>filename1</code> is the source path to the file and <code>filename2</code> is the destination path to the file.</p>
-<p>Also it can be used for rename a file.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv old_name new_name</span><br></pre></td></tr></table></figure>
-
-<h3 id="r-rm"><a href="#r-rm" class="headerlink" title="r. rm"></a>r. <code>rm</code></h3><p>Removes a file. Using this command on a directory gives you an error.<br><code>rm: directory: is a directory</code><br>To remove a directory you have to pass <code>-r</code> which will remove the content of the directory recursively. Optionally you can use <code>-f</code> flag to force the deletion i.e. without any confirmations etc.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="s-tail"><a href="#s-tail" class="headerlink" title="s. tail"></a>s. <code>tail</code></h3><p>Outputs the last 10 lines of file. Use <code>-f</code> to output appended data as the file grows.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="t-touch"><a href="#t-touch" class="headerlink" title="t. touch"></a>t. <code>touch</code></h3><p>Updates access and modification time stamps of your file. If it doesn’t exists, it’ll be created.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch filename</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch trick.md</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-2-Text-Operations"><a href="#1-2-Text-Operations" class="headerlink" title="1.2. Text Operations"></a>1.2. Text Operations</h2><table>
-    <tr>
-      <td><a href="#a-awk">awk</a></td>
-      <td><a href="#b-cut">cut</a></td>
-      <td><a href="#c-echo">echo</a></td>
-      <td><a href="#d-egrep">egrep</a></td>
-      <td><a href="#e-fgrep">fgrep</a></td>
-      <td><a href="#f-fmt">fmt</a></td>
-      <td><a href="#g-grep">grep</a></td>
-      <td><a href="#h-nl">nl</a></td>
-      <td><a href="#i-sed">sed</a></td>
-      <td><a href="#j-sort">sort</a></td>
-   </tr>
-   <tr>
-      <td><a href="#k-tr">tr</a></td>
-      <td><a href="#l-uniq">uniq</a></td>
-      <td><a href="#m-wc">wc</a></td>
-   </tr>
-</table>
-
-<h3 id="a-awk"><a href="#a-awk" class="headerlink" title="a. awk"></a>a. <code>awk</code></h3><p>awk is the most useful command for handling text files. It operates on an entire file line by line. By default it uses whitespace to separate the fields. The most common syntax for awk command is</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'/search_pattern/ &#123; action_to_take_if_pattern_matches; &#125;'</span> file_to_parse</span><br></pre></td></tr></table></figure>
-
-<p>Lets take following file <code>/etc/passwd</code>. Here’s the sample data that this file contains:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:&#x2F;root:&#x2F;usr&#x2F;bin&#x2F;zsh</span><br><span class="line">daemon:x:1:1:daemon:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;sbin&#x2F;nologin</span><br><span class="line">bin:x:2:2:bin:&#x2F;bin:&#x2F;usr&#x2F;sbin&#x2F;nologin</span><br><span class="line">sys:x:3:3:sys:&#x2F;dev:&#x2F;usr&#x2F;sbin&#x2F;nologin</span><br><span class="line">sync:x:4:65534:sync:&#x2F;bin:&#x2F;bin&#x2F;sync</span><br></pre></td></tr></table></figure>
-
-<p>So now lets get only username from this file. Where <code>-F</code> specifies that on which base we are going to separate the fields. In our case it’s <code>:</code>. <code>{ print $1 }</code> means print out the first matching field.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F<span class="string">':'</span> <span class="string">'&#123; print $1 &#125;'</span> /etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p>After running the above command you will get following output.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">daemon</span><br><span class="line">bin</span><br><span class="line">sys</span><br><span class="line">sync</span><br></pre></td></tr></table></figure>
-
-<p>For more detail on how to use <code>awk</code>, check following <a href="https://www.cyberciti.biz/faq/bash-scripting-using-awk" target="_blank" rel="noopener">link</a>.</p>
-<h3 id="b-cut"><a href="#b-cut" class="headerlink" title="b. cut"></a>b. <code>cut</code></h3><p>Remove sections from each line of files</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">red riding hood went to the park to play</span><br></pre></td></tr></table></figure>
-
-<p><em>show me columns 2 , 7 , and 9 with a space as a separator</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d <span class="string">" "</span> -f2,7,9 example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">riding park play</span><br></pre></td></tr></table></figure>
-
-<h3 id="c-echo"><a href="#c-echo" class="headerlink" title="c. echo"></a>c. <code>echo</code></h3><p>Display a line of text</p>
-<p><em>display “Hello World”</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> Hello World</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br></pre></td></tr></table></figure>
-
-<p><em>display “Hello World” with newlines between words</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -ne <span class="string">"Hello\nWorld\n"</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">World</span><br></pre></td></tr></table></figure>
-
-<h3 id="d-egrep"><a href="#d-egrep" class="headerlink" title="d. egrep"></a>d. <code>egrep</code></h3><p>Print lines matching a pattern - Extended Expression (alias for: ‘grep -E’)</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet, </span><br><span class="line">consetetur</span><br><span class="line">sadipscing elitr,</span><br><span class="line">sed diam nonumy</span><br><span class="line">eirmod tempor</span><br><span class="line">invidunt ut labore</span><br><span class="line">et dolore magna</span><br><span class="line">aliquyam erat, sed</span><br><span class="line">diam voluptua. At</span><br><span class="line">vero eos et</span><br><span class="line">accusam et justo</span><br><span class="line">duo dolores et ea</span><br><span class="line">rebum. Stet clita</span><br><span class="line">kasd gubergren,</span><br><span class="line">no sea takimata</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br><span class="line">amet.</span><br></pre></td></tr></table></figure>
-
-<p><em>display lines that have either “Lorem” or “dolor” in them.</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">egrep <span class="string">'(Lorem|dolor)'</span> example.txt</span><br><span class="line">or</span><br><span class="line">grep -E <span class="string">'(Lorem|dolor)'</span> example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet,</span><br><span class="line">et dolore magna</span><br><span class="line">duo dolores et ea</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br></pre></td></tr></table></figure>
-
-<h3 id="e-fgrep"><a href="#e-fgrep" class="headerlink" title="e. fgrep"></a>e. <code>fgrep</code></h3><p>Print lines matching a pattern - FIXED pattern matching  (alias for: ‘grep -F’)</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet,</span><br><span class="line">consetetur</span><br><span class="line">sadipscing elitr,</span><br><span class="line">sed diam nonumy</span><br><span class="line">eirmod tempor</span><br><span class="line">foo (Lorem|dolor) </span><br><span class="line">invidunt ut labore</span><br><span class="line">et dolore magna</span><br><span class="line">aliquyam erat, sed</span><br><span class="line">diam voluptua. At</span><br><span class="line">vero eos et</span><br><span class="line">accusam et justo</span><br><span class="line">duo dolores et ea</span><br><span class="line">rebum. Stet clita</span><br><span class="line">kasd gubergren,</span><br><span class="line">no sea takimata</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br><span class="line">amet.</span><br></pre></td></tr></table></figure>
-
-<p><em>Find the exact string ‘(Lorem|dolor)’ in example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fgrep <span class="string">'(Lorem|dolor)'</span> example.txt</span><br><span class="line">or</span><br><span class="line">grep -F <span class="string">'(Lorem|dolor)'</span> example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo (Lorem|dolor)</span><br></pre></td></tr></table></figure>
-
-<h3 id="f-fmt"><a href="#f-fmt" class="headerlink" title="f. fmt"></a>f. <code>fmt</code></h3><p>Simple optimal text formatter</p>
-<p><em>example: example.txt (1 line)</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span><br></pre></td></tr></table></figure>
-
-<p><em>output the lines of example.txt to 20 character width</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat example.txt | fmt -w 20</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet,</span><br><span class="line">consetetur</span><br><span class="line">sadipscing elitr,</span><br><span class="line">sed diam nonumy</span><br><span class="line">eirmod tempor</span><br><span class="line">invidunt ut labore</span><br><span class="line">et dolore magna</span><br><span class="line">aliquyam erat, sed</span><br><span class="line">diam voluptua. At</span><br><span class="line">vero eos et</span><br><span class="line">accusam et justo</span><br><span class="line">duo dolores et ea</span><br><span class="line">rebum. Stet clita</span><br><span class="line">kasd gubergren,</span><br><span class="line">no sea takimata</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br><span class="line">amet.</span><br></pre></td></tr></table></figure>
-
-<h3 id="g-grep"><a href="#g-grep" class="headerlink" title="g. grep"></a>g. <code>grep</code></h3><p>Looks for text inside files. You can use grep to search for lines of text that match one or many regular expressions, and outputs only the matching lines.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep pattern filename</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ grep admin /etc/passwd</span><br><span class="line">_kadmin_admin:*:218:-2:Kerberos Admin Service:/var/empty:/usr/bin/<span class="literal">false</span></span><br><span class="line">_kadmin_changepw:*:219:-2:Kerberos Change Password Service:/var/empty:/usr/bin/<span class="literal">false</span></span><br><span class="line">_krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>You can also force grep to ignore word case by using <code>-i</code> option. <code>-r</code> can be used to search all files under the specified directory, for example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -r admin /etc/</span><br></pre></td></tr></table></figure>
-
-<p>And <code>-w</code> to search for words only. For more detail on <code>grep</code>, check following <a href="https://www.cyberciti.biz/faq/grep-in-bash" target="_blank" rel="noopener">link</a>.</p>
-<h3 id="h-nl"><a href="#h-nl" class="headerlink" title="h. nl"></a>h. <code>nl</code></h3><p>Number lines of files</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet,</span><br><span class="line">consetetur</span><br><span class="line">sadipscing elitr,</span><br><span class="line">sed diam nonumy</span><br><span class="line">eirmod tempor</span><br><span class="line">invidunt ut labore</span><br><span class="line">et dolore magna</span><br><span class="line">aliquyam erat, sed</span><br><span class="line">diam voluptua. At</span><br><span class="line">vero eos et</span><br><span class="line">accusam et justo</span><br><span class="line">duo dolores et ea</span><br><span class="line">rebum. Stet clita</span><br><span class="line">kasd gubergren,</span><br><span class="line">no sea takimata</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br><span class="line">amet.</span><br></pre></td></tr></table></figure>
-
-<p><em>show example.txt with line numbers</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nl -s<span class="string">". "</span> example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 1. Lorem ipsum</span><br><span class="line"> 2. dolor sit amet,</span><br><span class="line"> 3. consetetur</span><br><span class="line"> 4. sadipscing elitr,</span><br><span class="line"> 5. sed diam nonumy</span><br><span class="line"> 6. eirmod tempor</span><br><span class="line"> 7. invidunt ut labore</span><br><span class="line"> 8. et dolore magna</span><br><span class="line"> 9. aliquyam erat, sed</span><br><span class="line">10. diam voluptua. At</span><br><span class="line">11. vero eos et</span><br><span class="line">12. accusam et justo</span><br><span class="line">13. duo dolores et ea</span><br><span class="line">14. rebum. Stet clita</span><br><span class="line">15. kasd gubergren,</span><br><span class="line">16. no sea takimata</span><br><span class="line">17. sanctus est Lorem</span><br><span class="line">18. ipsum dolor sit</span><br><span class="line">19. amet.</span><br></pre></td></tr></table></figure>
-
-<h3 id="i-sed"><a href="#i-sed" class="headerlink" title="i. sed"></a>i. <code>sed</code></h3><p>Stream editor for filtering and transforming text</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello This is a Test 1 2 3 4</span><br></pre></td></tr></table></figure>
-
-<p><em>replace all spaces with hyphens</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/ /-/g'</span> example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello-This-is<span class="_">-a</span>-Test-1-2-3-4</span><br></pre></td></tr></table></figure>
-
-<p><em>replace all digits with “d”</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/[0-9]/d/g'</span> example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello This is a Test d d d d</span><br></pre></td></tr></table></figure>
-
-<h3 id="j-sort"><a href="#j-sort" class="headerlink" title="j. sort"></a>j. <code>sort</code></h3><p>Sort lines of text files</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">g</span><br><span class="line">a</span><br><span class="line">e</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
-
-<p><em>sort example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort example.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line">e</span><br><span class="line">f</span><br><span class="line">g</span><br></pre></td></tr></table></figure>
-
-<p><em>randomize a sorted example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort example.txt | sort -R</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">f</span><br><span class="line">a</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line">g</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
-
-<h3 id="k-tr"><a href="#k-tr" class="headerlink" title="k. tr"></a>k. <code>tr</code></h3><p>Translate or delete characters</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World Foo Bar Baz!</span><br></pre></td></tr></table></figure>
-
-<p><em>take all lower case letters and make them upper case</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat example.txt | tr <span class="string">'a-z'</span> <span class="string">'A-Z'</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HELLO WORLD FOO BAR BAZ!</span><br></pre></td></tr></table></figure>
-
-<p><em>take all spaces and make them into newlines</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat example.txt | tr <span class="string">' '</span> <span class="string">'\n'</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">Foo</span><br><span class="line">Bar</span><br><span class="line">Baz!</span><br></pre></td></tr></table></figure>
-
-<h3 id="l-uniq"><a href="#l-uniq" class="headerlink" title="l. uniq"></a>l. <code>uniq</code></h3><p>Report or omit repeated lines</p>
-<p><em>example.txt</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
-
-<p><em>show only unique lines of example.txt (first you need to sort it, otherwise it won’t see the overlap)</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort example.txt | uniq</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
-
-<p><em>show the unique items for each line, and tell me how many instances it found</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort example.txt | uniq -c</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 a</span><br><span class="line">2 b</span><br><span class="line">2 c</span><br><span class="line">1 d</span><br></pre></td></tr></table></figure>
-
-<h3 id="m-wc"><a href="#m-wc" class="headerlink" title="m. wc"></a>m. <code>wc</code></h3><p>Tells you how many lines, words and characters there are in a file.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc filename</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wc demo.txt</span><br><span class="line">7459   15915  398400 demo.txt</span><br></pre></td></tr></table></figure>
-
-<p>Where <code>7459</code> is lines, <code>15915</code> is words and <code>398400</code> is characters.</p>
-<h2 id="1-3-Directory-Operations"><a href="#1-3-Directory-Operations" class="headerlink" title="1.3. Directory Operations"></a>1.3. Directory Operations</h2><table>
-   <tr>
-      <td><a href="#a-cd">cd</a></td>
-      <td><a href="#b-mkdir">mkdir</a></td>
-      <td><a href="#c-pwd">pwd</a></td>
-   </tr>
-</table>
-
-<h3 id="a-cd"><a href="#a-cd" class="headerlink" title="a. cd"></a>a. <code>cd</code></h3><p>Moves you from one directory to other. Running this  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span></span><br></pre></td></tr></table></figure>
-
-<p>moves you to home directory. This command accepts an optional <code>dirname</code>, which moves you to that directory.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> dirname</span><br></pre></td></tr></table></figure>
-
-<h3 id="b-mkdir"><a href="#b-mkdir" class="headerlink" title="b. mkdir"></a>b. <code>mkdir</code></h3><p>Makes a new directory.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir dirname</span><br></pre></td></tr></table></figure>
-
-<p>You can use this to create multiple directories at once within your current directory.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir 1stDirectory 2ndDirectory 3rdDirectory</span><br></pre></td></tr></table></figure>
-
-<p>You can also use this to create parent directories at the same time. For instance, if you wanted a directory named ‘project1’ in another subdirectory at ‘/samples/bash/projects/‘, you could run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /samples/bash/projects/project1</span><br></pre></td></tr></table></figure>
-
-<p>If any of these directories did no already exist, they would be created as well.</p>
-<h3 id="c-pwd"><a href="#c-pwd" class="headerlink" title="c. pwd"></a>c. <code>pwd</code></h3><p>Tells you which directory you currently are in.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-4-SSH-System-Info-amp-Network-Operations"><a href="#1-4-SSH-System-Info-amp-Network-Operations" class="headerlink" title="1.4. SSH, System Info &amp; Network Operations"></a>1.4. SSH, System Info &amp; Network Operations</h2><table>
-   <tr>
-      <td><a href="#a-bg">bg</a></td>
-      <td><a href="#b-cal">cal</a></td>
-      <td><a href="#c-date">date</a></td>
-      <td><a href="#d-df">df</a></td>
-      <td><a href="#e-dig">dig</a></td>
-      <td><a href="#f-du">du</a></td>
-      <td><a href="#g-fg">fg</a></td>
-      <td><a href="#h-finger">finger</a></td>   
-      <td><a href="#i-jobs">jobs</a></td>
-      <td><a href="#j-last">last</a></td>
-   </tr>
-   <tr>
-      <td><a href="#k-man">man</a></td>
-      <td><a href="#l-passwd">passwd</a></td>
-      <td><a href="#m-ping">ping</a></td>
-      <td><a href="#n-ps">ps</a></td>
-      <td><a href="#o-quota">quota</a></td>
-      <td><a href="#p-scp">scp</a></td>
-      <td><a href="#q-ssh">ssh</a></td>
-      <td><a href="#r-top">top</a></td>
-      <td><a href="#s-uname">uname</a></td>
-      <td><a href="#t-uptime">uptime</a></td>
-   </tr>
-   <tr>
-      <td><a href="#u-w">w</a></td>
-      <td><a href="#v-wget">wget</a></td>
-      <td><a href="#w-whoami">whoami</a></td>
-      <td><a href="#x-whois">whois</a></td>
-   </tr>
-</table>
-
-<h3 id="a-bg"><a href="#a-bg" class="headerlink" title="a. bg"></a>a. <code>bg</code></h3><p>Lists stopped or background jobs; resume a stopped job in the background.</p>
-<h3 id="b-cal"><a href="#b-cal" class="headerlink" title="b. cal"></a>b. <code>cal</code></h3><p>Shows the month’s calendar.</p>
-<h3 id="c-date"><a href="#c-date" class="headerlink" title="c. date"></a>c. <code>date</code></h3><p>Shows the current date and time.</p>
-<h3 id="d-df"><a href="#d-df" class="headerlink" title="d. df"></a>d. <code>df</code></h3><p>Shows disk usage.</p>
-<h3 id="e-dig"><a href="#e-dig" class="headerlink" title="e. dig"></a>e. <code>dig</code></h3><p>Gets DNS information for domain.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig domain</span><br></pre></td></tr></table></figure>
-
-<h3 id="f-du"><a href="#f-du" class="headerlink" title="f. du"></a>f. <code>du</code></h3><p>Shows the disk usage of files or directories. For more information on this command check this <a href="http://www.linfo.org/du.html" target="_blank" rel="noopener">link</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du [option] [filename|directory]</span><br></pre></td></tr></table></figure>
-
-<p>Options:</p>
-<ul>
-<li><code>-h</code> (human readable) Displays output it in kilobytes (K), megabytes (M) and gigabytes (G).</li>
-<li><code>-s</code> (supress or summarize) Outputs total disk space of a directory and supresses reports for subdirectories. </li>
-</ul>
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">du -sh pictures</span><br><span class="line">1.4M pictures</span><br></pre></td></tr></table></figure>
-
-<h3 id="g-fg"><a href="#g-fg" class="headerlink" title="g. fg"></a>g. <code>fg</code></h3><p>Brings the most recent job in the foreground.</p>
-<h3 id="h-finger"><a href="#h-finger" class="headerlink" title="h. finger"></a>h. <code>finger</code></h3><p>Displays information about user.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">finger username</span><br></pre></td></tr></table></figure>
-
-<h3 id="i-jobs"><a href="#i-jobs" class="headerlink" title="i. jobs"></a>i. <code>jobs</code></h3><p>Lists the jobs running in the background, giving the job number.</p>
-<h3 id="j-last"><a href="#j-last" class="headerlink" title="j. last"></a>j. <code>last</code></h3><p>Lists your last logins of specified user.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last yourUsername</span><br></pre></td></tr></table></figure>
-
-<h3 id="k-man"><a href="#k-man" class="headerlink" title="k. man"></a>k. <code>man</code></h3><p>Shows the manual for specified command.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="l-passwd"><a href="#l-passwd" class="headerlink" title="l. passwd"></a>l. <code>passwd</code></h3><p>Allows the current logged user to change their password.</p>
-<h3 id="m-ping"><a href="#m-ping" class="headerlink" title="m. ping"></a>m. <code>ping</code></h3><p>Pings host and outputs results.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping host</span><br></pre></td></tr></table></figure>
-
-<h3 id="n-ps"><a href="#n-ps" class="headerlink" title="n. ps"></a>n. <code>ps</code></h3><p>Lists your processes.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -u yourusername</span><br></pre></td></tr></table></figure>
-
-<p>Use the flags ef. e for every process and f for full listing. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
-
-<h3 id="o-quota"><a href="#o-quota" class="headerlink" title="o. quota"></a>o. <code>quota</code></h3><p>Shows what your disk quota is.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quota -v</span><br></pre></td></tr></table></figure>
-
-<h3 id="p-scp"><a href="#p-scp" class="headerlink" title="p. scp"></a>p. <code>scp</code></h3><p>Transfer files between a local host and a remote host or between two remote hosts.</p>
-<p><em>copy from local host to remote host</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source_file user@host:directory/target_file</span><br></pre></td></tr></table></figure>
-
-<p><em>copy from remote host to local host</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp user@host:directory/source_file target_file</span><br><span class="line">scp -r user@host:directory/source_folder target_folder</span><br></pre></td></tr></table></figure>
-
-<p>This command also accepts an option <code>-P</code> that can be used to connect to specific port.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port user@host:directory/source_file target_file</span><br></pre></td></tr></table></figure>
-
-<h3 id="q-ssh"><a href="#q-ssh" class="headerlink" title="q. ssh"></a>q. <code>ssh</code></h3><p>ssh (SSH client) is a program for logging into and executing commands on a remote machine.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@host</span><br></pre></td></tr></table></figure>
-
-<p>This command also accepts an option <code>-p</code> that can be used to connect to specific port.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p port user@host</span><br></pre></td></tr></table></figure>
-
-<h3 id="r-top"><a href="#r-top" class="headerlink" title="r. top"></a>r. <code>top</code></h3><p>Displays your currently active processes.</p>
-<h3 id="s-uname"><a href="#s-uname" class="headerlink" title="s. uname"></a>s. <code>uname</code></h3><p>Shows kernel information.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
-
-<h3 id="t-uptime"><a href="#t-uptime" class="headerlink" title="t. uptime"></a>t. <code>uptime</code></h3><p>Shows current uptime.</p>
-<h3 id="u-w"><a href="#u-w" class="headerlink" title="u. w"></a>u. <code>w</code></h3><p>Displays who is online.</p>
-<h3 id="v-wget"><a href="#v-wget" class="headerlink" title="v. wget"></a>v. <code>wget</code></h3><p>Downloads file.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget file</span><br></pre></td></tr></table></figure>
-
-<h3 id="w-whoami"><a href="#w-whoami" class="headerlink" title="w. whoami"></a>w. <code>whoami</code></h3><p>Return current logged in username.</p>
-<h3 id="x-whois"><a href="#x-whois" class="headerlink" title="x. whois"></a>x. <code>whois</code></h3><p>Gets whois information for domain.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whois domain</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-5-Process-Monitoring-Operations"><a href="#1-5-Process-Monitoring-Operations" class="headerlink" title="1.5. Process Monitoring Operations"></a>1.5. Process Monitoring Operations</h2><table>
-   <tr>
-      <td><a href="#a-kill">kill</a></td>
-      <td><a href="#b-killall">killall</a></td>
-      <td><a href="#c-&">&amp;</a></td>
-      <td><a href="#d-nohup">nohup</a></td>
-   </tr>
-</table>
-
-<h3 id="a-kill"><a href="#a-kill" class="headerlink" title="a. kill"></a>a. <code>kill</code></h3><p>Kills (ends) the processes with the ID you gave.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> PID</span><br></pre></td></tr></table></figure>
-
-<h3 id="b-killall"><a href="#b-killall" class="headerlink" title="b. killall"></a>b. <code>killall</code></h3><p>Kill all processes with the name.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall processname</span><br></pre></td></tr></table></figure>
-
-<h3 id="c-amp"><a href="#c-amp" class="headerlink" title="c. &amp;"></a>c. &amp;</h3><p>The <code>&amp;</code> symbol instructs the command to run as a background process in a subshell.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> &amp;</span><br></pre></td></tr></table></figure>
-
-<h3 id="d-nohup"><a href="#d-nohup" class="headerlink" title="d. nohup"></a>d. <code>nohup</code></h3><p>nohup stands for “No Hang Up”. This allows to run command/process or shell script that can continue running in the background after you log out from a shell.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
-
-<p>Combine it with <code>&amp;</code> to create background processes </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="built_in">command</span> &amp;</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-Basic-Shell-Programming"><a href="#2-Basic-Shell-Programming" class="headerlink" title="2. Basic Shell Programming"></a>2. Basic Shell Programming</h1><p>The first line that you will write in bash script files is called <code>shebang</code>. This line in any script determines the script’s ability to be executed like a standalone executable without typing sh, bash, python, php etc beforehand in the terminal.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-1-Variables"><a href="#2-1-Variables" class="headerlink" title="2.1. Variables"></a>2.1. Variables</h2><p>Creating variables in bash is similar to other languages. There are no data types. A variable in bash can contain a number, a character, a string of characters, etc. You have no need to declare a variable, just assigning a value to its reference will create it.</p>
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str=<span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
-
-<p>The above line creates a variable <code>str</code> and assigns “hello world” to it. The value of variable is retrieved by putting the <code>$</code> in the beginning of variable name.</p>
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$str</span>   <span class="comment"># hello world</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-Array"><a href="#2-2-Array" class="headerlink" title="2.2. Array"></a>2.2. Array</h2><p>Like other languages bash has also arrays. An array is a variable containing multiple values. There’s no maximum limit on the size of array. Arrays in bash are zero based. The first element is indexed with element 0. There are several ways for creating arrays in bash which are given below.</p>
-<p>Examples:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array[0]=val</span><br><span class="line">array[1]=val</span><br><span class="line">array[2]=val</span><br><span class="line">array=([2]=val [0]=val [1]=val)</span><br><span class="line">array=(val val val)</span><br></pre></td></tr></table></figure>
-
-<p>To display a value at specific index use following syntax:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;array[i]&#125;</span>     <span class="comment"># where i is the index</span></span><br></pre></td></tr></table></figure>
-
-<p>If no index is supplied, array element 0 is assumed. To find out how many values there are in the array use the following syntax:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;#array[@]&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>Bash has also support for the ternary conditions. Check some examples below.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;varname:-word&#125;</span>    <span class="comment"># if varname exists and isn't null, return its value; otherwise return word</span></span><br><span class="line"><span class="variable">$&#123;varname:=word&#125;</span>    <span class="comment"># if varname exists and isn't null, return its value; otherwise set it word and then return its value</span></span><br><span class="line"><span class="variable">$&#123;varname:+word&#125;</span>    <span class="comment"># if varname exists and isn't null, return word; otherwise return null</span></span><br><span class="line"><span class="variable">$&#123;varname:offset:length&#125;</span>    <span class="comment"># performs substring expansion. It returns the substring of $varname starting at offset and up to length characters</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-String-Substitution"><a href="#2-3-String-Substitution" class="headerlink" title="2.3 String Substitution"></a>2.3 String Substitution</h2><p>Check some of the syntax on how to manipulate strings</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;variable#pattern&#125;</span>         <span class="comment"># if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest</span></span><br><span class="line"><span class="variable">$&#123;variable##pattern&#125;</span>        <span class="comment"># if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest</span></span><br><span class="line"><span class="variable">$&#123;variable%pattern&#125;</span>         <span class="comment"># if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest</span></span><br><span class="line"><span class="variable">$&#123;variable%%pattern&#125;</span>        <span class="comment"># if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest</span></span><br><span class="line"><span class="variable">$&#123;variable/pattern/string&#125;</span>  <span class="comment"># the longest match to pattern in variable is replaced by string. Only the first match is replaced</span></span><br><span class="line"><span class="variable">$&#123;variable//pattern/string&#125;</span> <span class="comment"># the longest match to pattern in variable is replaced by string. All matches are replaced</span></span><br><span class="line"><span class="variable">$&#123;#varname&#125;</span>     <span class="comment"># returns the length of the value of the variable as a character string</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-4-Functions"><a href="#2-4-Functions" class="headerlink" title="2.4. Functions"></a>2.4. Functions</h2><p>As in almost any programming language, you can use functions to group pieces of code in a more logical way or practice the divine art of recursion. Declaring a function is just a matter of writing function my_func { my_code }. Calling a function is just like calling another program, you just write its name.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">name</span></span>() &#123;</span><br><span class="line">    shell commands</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> hello &#123;</span><br><span class="line">   <span class="built_in">echo</span> world!</span><br><span class="line">&#125;</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> say &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$1</span></span><br><span class="line">&#125;</span><br><span class="line">say <span class="string">"hello world!"</span></span><br></pre></td></tr></table></figure>
-
-<p>When you run the above example the <code>hello</code> function will output “world!”. The above two functions <code>hello</code> and <code>say</code> are identical. The main difference is function <code>say</code>. This function, prints the first argument it receives. Arguments, within functions, are treated in the same manner as arguments given to the script.</p>
-<h2 id="2-5-Conditionals"><a href="#2-5-Conditionals" class="headerlink" title="2.5. Conditionals"></a>2.5. Conditionals</h2><p>The conditional statement in bash is similar to other programming languages. Conditions have many form like the most basic form is <code>if</code> expression <code>then</code> statement where statement is only executed if expression is true.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ expression ]; <span class="keyword">then</span></span><br><span class="line">    will execute only <span class="keyword">if</span> expression is <span class="literal">true</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    will execute <span class="keyword">if</span> expression is <span class="literal">false</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<p>Sometime if conditions becoming confusing so you can write the same condition using the <code>case statements</code>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> expression <span class="keyword">in</span></span><br><span class="line">    pattern1 )</span><br><span class="line">        statements ;;</span><br><span class="line">    pattern2 )</span><br><span class="line">        statements ;;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
-
-<p>Expression Examples:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">statement1 &amp;&amp; statement2  <span class="comment"># both statements are true</span></span><br><span class="line">statement1 || statement2  <span class="comment"># at least one of the statements is true</span></span><br><span class="line"></span><br><span class="line">str1=str2       <span class="comment"># str1 matches str2</span></span><br><span class="line">str1!=str2      <span class="comment"># str1 does not match str2</span></span><br><span class="line">str1&lt;str2       <span class="comment"># str1 is less than str2</span></span><br><span class="line">str1&gt;str2       <span class="comment"># str1 is greater than str2</span></span><br><span class="line">-n str1         <span class="comment"># str1 is not null (has length greater than 0)</span></span><br><span class="line">-z str1         <span class="comment"># str1 is null (has length 0)</span></span><br><span class="line"></span><br><span class="line">-a file         <span class="comment"># file exists</span></span><br><span class="line">-d file         <span class="comment"># file exists and is a directory</span></span><br><span class="line">-e file         <span class="comment"># file exists; same -a</span></span><br><span class="line">-f file         <span class="comment"># file exists and is a regular file (i.e., not a directory or other special type of file)</span></span><br><span class="line">-r file         <span class="comment"># you have read permission</span></span><br><span class="line">-s file         <span class="comment"># file exists and is not empty</span></span><br><span class="line">-w file         <span class="comment"># you have write permission</span></span><br><span class="line">-x file         <span class="comment"># you have execute permission on file, or directory search permission if it is a directory</span></span><br><span class="line">-N file         <span class="comment"># file was modified since it was last read</span></span><br><span class="line">-O file         <span class="comment"># you own file</span></span><br><span class="line">-G file         <span class="comment"># file's group ID matches yours (or one of yours, if you are in multiple groups)</span></span><br><span class="line"></span><br><span class="line">file1 -nt file2     <span class="comment"># file1 is newer than file2</span></span><br><span class="line">file1 -ot file2     <span class="comment"># file1 is older than file2</span></span><br><span class="line"></span><br><span class="line">-lt     <span class="comment"># less than</span></span><br><span class="line">-le     <span class="comment"># less than or equal</span></span><br><span class="line">-eq     <span class="comment"># equal</span></span><br><span class="line">-ge     <span class="comment"># greater than or equal</span></span><br><span class="line">-gt     <span class="comment"># greater than</span></span><br><span class="line">-ne     <span class="comment"># not equal</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-6-Loops"><a href="#2-6-Loops" class="headerlink" title="2.6. Loops"></a>2.6. Loops</h2><p>There are three types of loops in bash. <code>for</code>, <code>while</code> and <code>until</code>.</p>
-<p>Different <code>for</code> Syntax:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x := 1 to 10 <span class="keyword">do</span></span><br><span class="line">begin</span><br><span class="line">  statements</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name [<span class="keyword">in</span> list]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  statements that can use <span class="variable">$name</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (( initialisation ; ending condition ; update ))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  statements...</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p><code>while</code> Syntax:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> condition; <span class="keyword">do</span></span><br><span class="line">  statements</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p><code>until</code> Syntax:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">until condition; <span class="keyword">do</span></span><br><span class="line">  statements</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="3-Tricks"><a href="#3-Tricks" class="headerlink" title="3. Tricks"></a>3. Tricks</h1><h2 id="Set-an-alias"><a href="#Set-an-alias" class="headerlink" title="Set an alias"></a>Set an alias</h2><p>Open <code>bash_profile</code> by running following command <code>vim ~/.bash_profile</code></p>
-<blockquote>
-<p>alias dockerlogin=’ssh <a href="mailto:www-data@adnan.local">www-data@adnan.local</a> -p2222’  # add your alias in .bash_profile</p>
-</blockquote>
-<h2 id="To-quickly-go-to-a-specific-directory"><a href="#To-quickly-go-to-a-specific-directory" class="headerlink" title="To quickly go to a specific directory"></a>To quickly go to a specific directory</h2><p>vim ~/.bashrc</p>
-<blockquote>
-<p>export hotellogs=”/workspace/hotel-api/storage/logs”</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$hotellogs</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Re-execute-the-previous-command"><a href="#Re-execute-the-previous-command" class="headerlink" title="Re-execute the previous command"></a>Re-execute the previous command</h2><p>This goes back to the days before you could rely on keyboards to have an “up” arrow key, but can still be useful.<br>To run the last command in your history</p>
-<blockquote>
-<p>!!<br>A common error is to forget to use <code>sudo</code> to prefix a command requiring privileged execution. Instead of typing the whole command again, you can:<br>sudo !!<br>This would change a <code>mkdir somedir</code> into <code>sudo mkdir somedir</code></p>
-</blockquote>
-<h2 id="Exit-traps"><a href="#Exit-traps" class="headerlink" title="Exit traps"></a>Exit traps</h2><p>Make your bash scripts more robust by reliably performing cleanup.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> finish &#123;</span><br><span class="line">  <span class="comment"># your cleanup here. e.g. kill any forked processes</span></span><br><span class="line">  <span class="built_in">jobs</span> -p | xargs <span class="built_in">kill</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> finish EXIT</span><br></pre></td></tr></table></figure>
-
-<h2 id="Saving-your-environment-variables"><a href="#Saving-your-environment-variables" class="headerlink" title="Saving your environment variables"></a>Saving your environment variables</h2><p>When you do <code>export FOO = BAR</code>, your variable is only exported in this current shell and all its children, to persist in the future you can simply append in your <code>~/.bash_profile</code> file the command to export your variable</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="built_in">export</span> FOO=BAR &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
-
-<h2 id="Accessing-your-scripts"><a href="#Accessing-your-scripts" class="headerlink" title="Accessing your scripts"></a>Accessing your scripts</h2><p>You can easily access your scripts by creating a bin folder in your home with <code>mkdir ~/bin</code>, now all the scripts you put in this folder you can access in any directory.</p>
-<p>If you can not access, try append the code below in your <code>~/.bash_profile</code> file and after do <code>source ~/.bash_profile</code>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set PATH so it includes user's private bin if it exists</span></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$HOME</span>/bin"</span> ] ; <span class="keyword">then</span></span><br><span class="line">    PATH=<span class="string">"<span class="variable">$HOME</span>/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="4-Debugging"><a href="#4-Debugging" class="headerlink" title="4. Debugging"></a>4. Debugging</h1><p>You can easily debug the bash script by passing different options to <code>bash</code> command. For example <code>-n</code> will not run commands and check for syntax errors only. <code>-v</code> echo commands before running them. <code>-x</code> echo commands after command-line processing.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash -n scriptname</span><br><span class="line">bash -v scriptname</span><br><span class="line">bash -x scriptname</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -3823,7 +3315,7 @@ drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">157</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
