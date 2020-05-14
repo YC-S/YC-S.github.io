@@ -46,27 +46,32 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yuanchen&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="新建创建一个新的 git 版本库。这个版本库的配置、存储等信息会被保存到.git 文件夹中 12345678910111213# 初始化当前项目$ git init# 新建一个目录，将其初始化为Git代码库$ git init [project-name]# 在指定目录创建一个空的 Git 仓库。运行这个命令会创建一个名为 directory，只包含 .git 子目录的空目录。$ git init">
+<meta property="og:type" content="article">
+<meta property="og:title" content="100条git命令">
+<meta property="og:url" content="http://yoursite.com/2020/05/14/100%E6%9D%A1git%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="新建创建一个新的 git 版本库。这个版本库的配置、存储等信息会被保存到.git 文件夹中 12345678910111213# 初始化当前项目$ git init# 新建一个目录，将其初始化为Git代码库$ git init [project-name]# 在指定目录创建一个空的 Git 仓库。运行这个命令会创建一个名为 directory，只包含 .git 子目录的空目录。$ git init">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-14T23:44:29.000Z">
+<meta property="article:modified_time" content="2020-05-14T23:46:50.213Z">
 <meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/05/14/100%E6%9D%A1git%E5%91%BD%E4%BB%A4/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Yuanchen's Blog</title>
+  <title>100条git命令 | Yuanchen's Blog</title>
   
 
 
@@ -161,10 +166,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/100%E6%9D%A1git%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,8 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/14/100%E6%9D%A1git%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">100条git命令</a>
+          100条git命令
         </h1>
 
         <div class="post-meta">
@@ -204,7 +208,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h1><p>创建一个新的 git 版本库。这个版本库的配置、存储等信息会被保存到.git 文件夹中</p>
+        <h1 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h1><p>创建一个新的 git 版本库。这个版本库的配置、存储等信息会被保存到.git 文件夹中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 初始化当前项目</span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"># 在指定目录创建一个空的 Git 仓库。运行这个命令会创建一个名为 directory，只包含 .git 子目录的空目录。</span><br><span class="line"></span><br><span class="line">$ git init --bare &lt;directory&gt;</span><br><span class="line"></span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line"># 这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支</span><br><span class="line">$ git clone [url]</span><br></pre></td></tr></table></figure>
 
 
@@ -271,849 +275,36 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 使 staging 区域恢复到上次提交时的状态，不改变现在的工作目录</span><br><span class="line">$ git reset</span><br><span class="line"></span><br><span class="line"># 使 staging 区域恢复到上次提交时的状态，覆盖现在的工作目录</span><br><span class="line">$ git reset --hard</span><br><span class="line"></span><br><span class="line"># 将当前分支恢复到某次提交，不改变现在的工作目录</span><br><span class="line"># 在工作目录中所有的改变仍然存在</span><br><span class="line">$ git reset dha78as</span><br><span class="line"></span><br><span class="line"># 将当前分支恢复到某次提交，覆盖现在的工作目录</span><br><span class="line"># 并且删除所有未提交的改变和指定提交之后的所有提交</span><br><span class="line">$ git reset --hard dha78as</span><br></pre></td></tr></table></figure>
 
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 生成一个可供发布的压缩包</span><br><span class="line">$ git archive</span><br><span class="line"></span><br><span class="line"># 打补丁</span><br><span class="line">$ git apply ..&#x2F;sync.patch</span><br><span class="line"></span><br><span class="line"># 测试补丁能否成功</span><br><span class="line">$ git apply --check ..&#x2F;sync.patch</span><br><span class="line"></span><br><span class="line"># 查看Git的版本</span><br><span class="line">$ git --version</span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/%E4%BA%BA%E6%89%8D%E6%B5%8B%E9%87%8F%E6%A0%87%E5%87%86/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/13/%E4%BA%BA%E6%89%8D%E6%B5%8B%E9%87%8F%E6%A0%87%E5%87%86/" class="post-title-link" itemprop="url">人才测量标准</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-13 19:34:38 / Modified: 19:34:57" itemprop="dateCreated datePublished" datetime="2020-05-13T19:34:38-04:00">2020-05-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>初级：在给出指导和具体实施细节后，能独立按时按量（数量和质量）完成工作。</li>
-<li>中级：不用指导和具体实施细节，能独立的按时按量（数量和质量）完成工作。</li>
-<li>高级：解难题（能解决业务或技术难题），传帮带（能指导培养初中级人员），标准化（能沉淀出可复制或可复用的方法论或工作方式，提高生产效率）</li>
-<li>总监：拿结果（拿到工作结果）、建团队（建立小而精战斗力强的团队）、提效率（提高执行效率）</li>
-<li>业务负责人或者VP：找方向（找到业务发展方向）、创效益（为公司创造实实在在的效益）、建文化（建设公司或部门的文化和价值观）</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7ObamaGate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/12/%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7ObamaGate/" class="post-title-link" itemprop="url">如何评价ObamaGate</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-12 11:16:44 / Modified: 11:17:41" itemprop="dateCreated datePublished" datetime="2020-05-12T11:16:44-04:00">2020-05-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>越来越像了</p>
-<p>东林与宦党的朝堂党争</p>
-<p>十户九空的大明劫</p>
-<p>穷兵黩武的远征高句丽</p>
-<p>关宁铁骑的佣兵自重</p>
-<p>……..</p>
-<p>太快了，太快了</p>
-<p>并非我要去入那山海关，是那山海关拍我脸上了</p>
-<p>什么是大选年啊(战术后仰)</p>
-<p>你不入关，关就入你</p>
-
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/13/%E4%BA%BA%E6%89%8D%E6%B5%8B%E9%87%8F%E6%A0%87%E5%87%86/" rel="prev" title="人才测量标准">
+      <i class="fa fa-chevron-left"></i> 人才测量标准
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/11/%E6%80%8E%E6%A0%B7%E7%9C%8B%E5%BE%85papi%E9%85%B1%E5%9B%A0%E4%B8%BA%E5%AD%A9%E5%AD%90%E9%9A%8F%E7%88%B6%E5%A7%93%E8%A2%AB%E6%9F%90%E4%BA%9B%E7%BD%91%E5%8F%8B%E8%BE%B1%E9%AA%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/11/%E6%80%8E%E6%A0%B7%E7%9C%8B%E5%BE%85papi%E9%85%B1%E5%9B%A0%E4%B8%BA%E5%AD%A9%E5%AD%90%E9%9A%8F%E7%88%B6%E5%A7%93%E8%A2%AB%E6%9F%90%E4%BA%9B%E7%BD%91%E5%8F%8B%E8%BE%B1%E9%AA%82/" class="post-title-link" itemprop="url">怎样看待papi酱因为孩子随父姓被某些网友辱骂</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-11 20:39:13 / Modified: 20:41:11" itemprop="dateCreated datePublished" datetime="2020-05-11T20:39:13-04:00">2020-05-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>随父性确实太过分了，但是我们女拳也不是不讲道理，随妈性那不就反过来成了我们不讲道理了吗？</p>
-<p>所以我建议父母的性都带上，比如父亲姓张，母亲性李，那就叫张李XX</p>
-<p><img src="../images/v2-d59274d64f712eb76004853f0295faf3_720w.jpg" alt="img"></p>
-<p>有人可能会问了，那凭什么是“张李XX”不是“李张XX”呢？</p>
-<p>我觉得有道理，所以我们要打破思维的束缚，不能仅停留在线性思维，所以我发明了姓名的这种“上下姓”写法</p>
-<p><img src="../images/v2-9ba1e4186333cca0e9dda4ac925a870d_720w.jpg" alt="img"></p>
-<p>又有人可能会问了，那凭什么是“张”在上面不是“李”在上面呢？</p>
-<p>我觉得有道理，所以我们要再次打破思维的舒服。这些质疑都来自于两个姓写在了不同的位置，如果我们采用“叠字写法”岂不解决了这个矛盾？</p>
-<p><img src="../images/v2-3ae5b9fc9988dedd7e9bf22f721cd770_720w.jpg" alt="img"></p>
-<p>没错，把“张”和“李”写在一起不就结了！你中有我我中有你。这种设计最妙的地方在于，等两个人离婚的时候，孩子判给了哪一方，就留下哪个姓。简单明了~</p>
-<p>又有人说了，就算离婚了没有抚养权，还可以探望孩子啊，毕竟还是亲生的啊。</p>
-<p>所有我又提出了更加人性化的书写方式。假如判给了女方，那“李”就保存下来，把“张”变成“李”的角标：</p>
-<p><img src="../images/v2-c6cd70020fe14d4e4bcab34fb8432d22_720w.jpg" alt="img"></p>
-<p>这还不算完，考虑问题要严谨，假如这个母亲后面又再婚了，继父姓王，那就再叠上去。</p>
-<p><img src="../images/v2-2ab7eeeb38ac4d164883ff34520e07e7_720w.jpg" alt="img"></p>
-<p>不仅把“王”和“李”放在了一起，还突出表现了“张”的孤零零境地，岂不是完美？</p>
-<p>这还还不算完，考虑问题要严谨假如这个孩子是个女孩，后面找了个老公结婚生子，老公姓：</p>
-<p><img src="../images/v2-ae20f0dc52a08679a93c28e10596891a_720w.jpg" alt="img"></p>
-<p>这里非常细心地注意到了，在这种姓氏体制下，遇见的老公也是这样命名的。那么孩子应该怎么命名呢？</p>
-<p><img src="../images/v2-8ef5ae37f9b05754eac58d170c088478_720w.jpg" alt="img"></p>
-<p>是不是非常的公平细心呢？</p>
-<p>这样，我们就发展出了一门非常详细的命名学，用不了多少代，就会重新救活给孩子起名这个行业，不仅解决了矛盾，又创造了就业。</p>
-<p>最后，有同学提出了终极问题，那用不了多长时间，岂不都变成黑块块了？</p>
-<p><img src="../images/v2-2d74e1c1c9dfc12a28e4c315c69fc199_720w.jpg" alt="img"></p>
-<p>这就实现了我们的最终目的，反正也看不清，姓啥都不重要了。不仅如此，我们还实现了社会主义制度下的天下大同，岂不是完美？</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/12factor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/10/12factor/" class="post-title-link" itemprop="url">12factor</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-10 17:25:46 / Modified: 17:27:36" itemprop="dateCreated datePublished" datetime="2020-05-10T17:25:46-04:00">2020-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>如今，软件通常会作为一种服务来交付，它们被称为网络应用程序，或软件即服务（SaaS）。12-Factor 为构建如下的 SaaS 应用提供了方法论：</p>
-<ul>
-<li>使用<strong>标准化</strong>流程自动配置，从而使新的开发者花费最少的学习成本加入这个项目。</li>
-<li>和操作系统之间尽可能的<strong>划清界限</strong>，在各个系统中提供<strong>最大的可移植性</strong>。</li>
-<li>适合<strong>部署</strong>在现代的<strong>云计算平台</strong>，从而在服务器和系统管理方面节省资源。</li>
-<li>将开发环境和生产环境的<strong>差异降至最低</strong>，并使用<strong>持续交付</strong>实施敏捷开发。</li>
-<li>可以在工具、架构和开发流程不发生明显变化的前提下实现<strong>扩展</strong>。</li>
-</ul>
-<p>这套理论适用于任意语言和后端服务（数据库、消息队列、缓存等）开发的应用程序。</p>
-<h2 id="I-基准代码"><a href="#I-基准代码" class="headerlink" title="I. 基准代码"></a><a href="https://12factor.net/zh_cn/codebase" target="_blank" rel="noopener">I. 基准代码</a></h2><h3 id="一份基准代码，多份部署"><a href="#一份基准代码，多份部署" class="headerlink" title="一份基准代码，多份部署"></a>一份基准代码，多份部署</h3><h2 id="II-依赖"><a href="#II-依赖" class="headerlink" title="II. 依赖"></a><a href="https://12factor.net/zh_cn/dependencies" target="_blank" rel="noopener">II. 依赖</a></h2><h3 id="显式声明依赖关系"><a href="#显式声明依赖关系" class="headerlink" title="显式声明依赖关系"></a>显式声明依赖关系</h3><h2 id="III-配置"><a href="#III-配置" class="headerlink" title="III. 配置"></a><a href="https://12factor.net/zh_cn/config" target="_blank" rel="noopener">III. 配置</a></h2><h3 id="在环境中存储配置"><a href="#在环境中存储配置" class="headerlink" title="在环境中存储配置"></a>在环境中存储配置</h3><h2 id="IV-后端服务"><a href="#IV-后端服务" class="headerlink" title="IV. 后端服务"></a><a href="https://12factor.net/zh_cn/backing-services" target="_blank" rel="noopener">IV. 后端服务</a></h2><h3 id="把后端服务当作附加资源"><a href="#把后端服务当作附加资源" class="headerlink" title="把后端服务当作附加资源"></a>把后端服务当作附加资源</h3><h2 id="V-构建，发布，运行"><a href="#V-构建，发布，运行" class="headerlink" title="V. 构建，发布，运行"></a><a href="https://12factor.net/zh_cn/build-release-run" target="_blank" rel="noopener">V. 构建，发布，运行</a></h2><h3 id="严格分离构建和运行"><a href="#严格分离构建和运行" class="headerlink" title="严格分离构建和运行"></a>严格分离构建和运行</h3><h2 id="VI-进程"><a href="#VI-进程" class="headerlink" title="VI. 进程"></a><a href="https://12factor.net/zh_cn/processes" target="_blank" rel="noopener">VI. 进程</a></h2><h3 id="以一个或多个无状态进程运行应用"><a href="#以一个或多个无状态进程运行应用" class="headerlink" title="以一个或多个无状态进程运行应用"></a>以一个或多个无状态进程运行应用</h3><h2 id="VII-端口绑定"><a href="#VII-端口绑定" class="headerlink" title="VII. 端口绑定"></a><a href="https://12factor.net/zh_cn/port-binding" target="_blank" rel="noopener">VII. 端口绑定</a></h2><h3 id="通过端口绑定提供服务"><a href="#通过端口绑定提供服务" class="headerlink" title="通过端口绑定提供服务"></a>通过端口绑定提供服务</h3><h2 id="VIII-并发"><a href="#VIII-并发" class="headerlink" title="VIII. 并发"></a><a href="https://12factor.net/zh_cn/concurrency" target="_blank" rel="noopener">VIII. 并发</a></h2><h3 id="通过进程模型进行扩展"><a href="#通过进程模型进行扩展" class="headerlink" title="通过进程模型进行扩展"></a>通过进程模型进行扩展</h3><h2 id="IX-易处理"><a href="#IX-易处理" class="headerlink" title="IX. 易处理"></a><a href="https://12factor.net/zh_cn/disposability" target="_blank" rel="noopener">IX. 易处理</a></h2><h3 id="快速启动和优雅终止可最大化健壮性"><a href="#快速启动和优雅终止可最大化健壮性" class="headerlink" title="快速启动和优雅终止可最大化健壮性"></a>快速启动和优雅终止可最大化健壮性</h3><h2 id="X-开发环境与线上环境等价"><a href="#X-开发环境与线上环境等价" class="headerlink" title="X. 开发环境与线上环境等价"></a><a href="https://12factor.net/zh_cn/dev-prod-parity" target="_blank" rel="noopener">X. 开发环境与线上环境等价</a></h2><h3 id="尽可能的保持开发，预发布，线上环境相同"><a href="#尽可能的保持开发，预发布，线上环境相同" class="headerlink" title="尽可能的保持开发，预发布，线上环境相同"></a>尽可能的保持开发，预发布，线上环境相同</h3><h2 id="XI-日志"><a href="#XI-日志" class="headerlink" title="XI. 日志"></a><a href="https://12factor.net/zh_cn/logs" target="_blank" rel="noopener">XI. 日志</a></h2><h3 id="把日志当作事件流"><a href="#把日志当作事件流" class="headerlink" title="把日志当作事件流"></a>把日志当作事件流</h3><h2 id="XII-管理进程"><a href="#XII-管理进程" class="headerlink" title="XII. 管理进程"></a><a href="https://12factor.net/zh_cn/admin-processes" target="_blank" rel="noopener">XII. 管理进程</a></h2><h3 id="后台管理任务当作一次性进程运行"><a href="#后台管理任务当作一次性进程运行" class="headerlink" title="后台管理任务当作一次性进程运行"></a>后台管理任务当作一次性进程运行</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%AF%94%E5%B0%94%E7%9B%96%E8%8C%A8%E7%A7%B0%E7%BE%8E%E5%9B%BD%E4%BD%8E%E6%94%B6%E5%85%A5%E8%80%85%E5%BE%97%E4%B8%8D%E5%88%B0%E6%96%B0%E5%86%A0%E7%97%85%E6%AF%92%E6%A3%80%E6%B5%8B%EF%BC%8C%E6%9C%89%E9%92%B1%E4%BA%BA%E5%8F%AF%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%A4%9A%E6%AC%A1%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/09/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%AF%94%E5%B0%94%E7%9B%96%E8%8C%A8%E7%A7%B0%E7%BE%8E%E5%9B%BD%E4%BD%8E%E6%94%B6%E5%85%A5%E8%80%85%E5%BE%97%E4%B8%8D%E5%88%B0%E6%96%B0%E5%86%A0%E7%97%85%E6%AF%92%E6%A3%80%E6%B5%8B%EF%BC%8C%E6%9C%89%E9%92%B1%E4%BA%BA%E5%8F%AF%E4%BB%A5%E6%A3%80%E6%B5%8B%E5%A4%9A%E6%AC%A1%EF%BC%9F/" class="post-title-link" itemprop="url">如何看待比尔盖茨称美国低收入者得不到新冠病毒检测，有钱人可以检测多次？</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-09 16:47:30 / Modified: 16:48:20" itemprop="dateCreated datePublished" datetime="2020-05-09T16:47:30-04:00">2020-05-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我一直觉得比尔盖茨有着科技乌托邦的信仰。对于任何不看数据不讲逻辑的治理行为，他大概都是很看不上的。</p>
-<p>比尔盖茨06年就全身心投入了比尔梅琳达基金会。如果要窥视他对社会治理的态度，基金会的规划大概能反映一二。</p>
-<p>来，让我们康康钱花哪了（美元）：</p>
-<p>传染病控制：55亿</p>
-<p>疟疾控制：14亿</p>
-<p>性病控制（包括艾滋）：13亿</p>
-<p>结核病控制：10亿</p>
-<p>生殖健康：9亿农业研究：8亿</p>
-<p>计划生育（！）：7亿</p>
-<p>卫生政策与管理：6亿</p>
-<p>农业发展：5亿</p>
-<p>农业政策与管理：5亿</p>
-<p>推广发展理念：4亿</p>
-<p>基础卫生服务：4亿</p>
-<p>基础营养：4亿</p>
-<p>基础卫生：3亿</p>
-<p>相关财务政策及管理：2亿</p>
-<p>以上是基金会09年到15年可以披露的，花在发展中国家身上的钱。</p>
-<p>注意这不是基金会的支出大头，基金会同时也资助了大量组织，单在全球疫苗联盟身上就投了30亿。</p>
-<p>之所以单拉出基金会在发展中国家的投入，是因为这些投入最能直接反映基金会所关注的领域。</p>
-<p>农业与卫生。</p>
-<p>发展中国家能够实现有效治理的两大基石。没有这两块，即使用国家暴力强制维持稳定，也持续不了太久。</p>
-<p>有了这两块基石，才能谈工业化。而且就算不能实现工业化，也还能做条咸鱼。没有这两块，恐怕就直接沦为失败国家了。</p>
-<p>基金会对这两块不是孤立处理，还兼顾了这背后的数据与金融。一方面投资了相当多中小微企业银行网，专门为这些基础农业提供资金支持；另一方面以Our World in Data为核心，积累成一个可供决策的全球数据库。</p>
-<p>不说基金会其他那些密如蛛网的布局，单这两块，已经形成了虚拟与实体的数据穿透，而且是在农业和卫生两大板块上。</p>
-<p>老哥，你已经是多个小国之君了。</p>
-<p>说实话，我真不觉得比尔盖茨有什么野心。相反，我认为他是在贯彻工程师的理想：</p>
-<p>反正我有钱、有技术、有数据，我能不能以此来实现社会治理，绕开那些烦人的政治？</p>
-<p>闲着也是闲着，来场盛大的社会实验。搞砸了，亏的也是我的钱（还有巴菲特）；搞成了，人类真的能有第三道路，而且我也能突破技术和财富的边界，人生价值再上一层。</p>
-<p>没想到啊老哥，你也是加速主义者，还是技术加速主义，最正统的那支。</p>
-<p>玩笑话。不过比尔盖茨轻政治重技术的立场世人皆知。所以有理由相信，他在努力形成一个经济与社区治理上能够自洽的范式。</p>
-<p>就像工程师常说的MVP：最小可行产品。</p>
-<p>一旦最小可行产品成立，并且快速复制，那是能最终改变整个上层建筑的。最小的范式是生产大队还是自耕农，这会形成两个完全不同的国家。</p>
-<p>这大概就是“不碰政治而最终改变政治”。</p>
-<p>基金会能改变多大的未来，这个交给历史来判断。不过比尔盖茨的思想，稍微能摸点边。</p>
-<p>基于这些边角料，再看看美帝的防疫措施：</p>
-<p>有做大规模检测以掌握疫情规模么？没有；有做传染跟踪以掌握疫情走向么？没有。</p>
-<p>重复检测富人有啥用？富人能永远生活在绝对隔离区里吗？穷人传来传去，最后还是会传到富人身上。</p>
-<p>在这个时候讲市场定价那就是屑。</p>
-<p>比尔盖茨能看到不少小国的全国数据，比该国政府所掌握的还精准。结果当祖国爆发疫情时，这些基本的科学理念都被抛诸脑后。</p>
-<p>只有Fauci博士日渐僵硬的脸。</p>
-<p>你要是一位混到这层地位、有着这等视野、掌握这种资源的工程师，你会是什么心情。</p>
-<p>不过比尔盖茨还是很懂政治的，他总是微妙地与政治保持距离，就是因为他懂。</p>
-<p>再说直白点，就到政府有效治理这个层面了。这话说出口，他当晚就是美帝的国家叛徒。</p>
-<p>所以他只能天天苦口婆心地讲数据讲科学。</p>
-<p>就这样，比尔盖茨已经是美帝红脖子心中的国家公敌了：病毒是你造的，疫苗是你卖的，你接下来是不是要用疫情把大好美帝送入军管？改造成你们硅谷左翼梦想的集权国家？</p>
-<p>别笑，在病毒是“中国制造”还是“比尔盖茨制造”这个问题上，MAGA们已经分裂了。</p>
-<p>我想，等十年二十年后盖茨出自传时，这段历史读起来一定非常精彩。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%90%8E%E6%B5%AA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/08/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%90%8E%E6%B5%AA/" class="post-title-link" itemprop="url">如何看后浪</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-08 12:08:59 / Modified: 12:12:11" itemprop="dateCreated datePublished" datetime="2020-05-08T12:08:59-04:00">2020-05-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>打鸡血也得有诚意不是？</p>
-<p>不分地，哪来的山东农民推小车？不发红袖章，哪来的红旗下的蛋？没有家庭承包制和开放个体户，哪来的改开？</p>
-<p>一分收益换一分认可，从宏大叙事的国家就如此，柴米油盐的个人更是如此。</p>
-<p>现在是没什么收益，还要六个钱包。年轻人拼了老命能证明自己不是吃闲饭的，已经很不容易了，要他们浪起来，他们也是要脸的。</p>
-<p>要么寄望年轻人去改造国家，要么寄望年轻人去改造世界。内外，总要给条路，给一分收益，给个机会证明自己，改变自己。</p>
-<p>现在这玩意看来看去，就是寄望年轻人去996。改变是没啥机会了，继续消费，继续加班，这就是新时代的后浪。</p>
-<p><strong>那这后浪，谁爱当谁当。</strong></p>
-<p>哪里是知乎翻车，处处翻车。要不是B站评论区大清洗了一把，B站本阵已经翻了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/Spring%E6%98%AF%E5%90%A6%E4%BB%A3%E8%A1%A8%E7%9D%80%E7%9B%AE%E5%89%8DJava%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B6%E5%B3%B0%EF%BC%8C%E6%9C%AA%E6%9D%A5%E7%9A%84Java%E5%B0%86%E5%A6%82%E4%BD%95%E5%8F%91%E5%B1%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/Spring%E6%98%AF%E5%90%A6%E4%BB%A3%E8%A1%A8%E7%9D%80%E7%9B%AE%E5%89%8DJava%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B6%E5%B3%B0%EF%BC%8C%E6%9C%AA%E6%9D%A5%E7%9A%84Java%E5%B0%86%E5%A6%82%E4%BD%95%E5%8F%91%E5%B1%95/" class="post-title-link" itemprop="url">Spring是否代表着目前Java技术的顶峰，未来的Java将如何发展</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-07 22:01:13 / Modified: 22:03:51" itemprop="dateCreated datePublished" datetime="2020-05-07T22:01:13-04:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>先说一个笑话：</p>
-<p>电梯里有三个人，一个人拼命做俯卧撑，一个人在跑圈，还有一个人拿头撞墙，电梯升到了 10 楼，然后人家问他们怎么上来的，一个人说我做俯卧撑上来的，还有一个人说我跑圈上来的，最后一个人我撞墙撞上来的……</p>
-<p>当然不是 java 的巅峰</p>
-<p><strong>是这些年，国内这种搞技术的闭关自守，不思进取给你带来的错觉</strong></p>
-<p>因为你没有在国内看到这些技术的进步，所以你觉得，哇，这应该就是巅峰了</p>
-<p>你应该看看老外在说什么，再对比国内这些信息</p>
-<p>你就会觉得，国内这些人就像是满清，墙外的世界已经各种科技革命了，墙内还在做着天朝上国的迷梦，还在骑马射箭，人家已经船坚炮利了</p>
-<p>所以英语很重要，你要学会英语，<strong>这样搞技术的二道贩子就骗不了你了</strong>，就没有中间商赚差价了，不要怕学不会英语，英语也是工具，use it or lose it，用多了自然会，不用担心语法错误，老外看得懂，看不懂痛苦的也是老外，管他那么多</p>
-<p>这其实是我国政府的牛逼之处，政府牛逼，所以我国长期处于一种增量市场中，也就是技术其实不重要，不需要改良，重复做以前做过的事，因为市场自然在增长，所以不愁没有客户，所以牛逼的是我国的政府，跟墙内这帮搬砖的没关系，这群搬砖的放墙外早就被开掉了，因为在墙内被政府保护得很好，所以不思进取，就以为自己引领了世界潮流了，其实只是沾了政府的便宜，现在行情不好了，资本家自己都养不活，也就不想养这些搬砖的了，于是一堆人就开始焦虑</p>
-<p>我国政府和市场就是那台上升的电梯，而这些搬砖的就是电梯里那些拿头撞墙的家伙</p>
-<p>然后你看看 java 这些年做了什么，我一个一个说，提醒你注意，这些技术都是近 10 年出现的</p>
-<p>graal，世界各国的大学，研究了 7，8 年之后，正式发布，特性是：polgylot，native image，请问你会用吗？你听说过吗？</p>
-<p>就算你只是一个后端，那么 native image 可以解决 faas 和 cloud native 的问题，你了解过吗？</p>
-<p>好，graal 不算是 java，只能算是 java 的扩展，我就说 java 自身，你看这些年的项目</p>
-<p>zgc，shenandoah，panama，amber，metropolis，valhalla，loom，skara……</p>
-<p>这些项目你用了吗？你知道这些项目在解决什么问题吗？</p>
-<p>我一个个说吧</p>
-<p>zgc 解决了 java gc 停顿太长的问题，一定在 10ms 以内完成，实测在 1-2ms 之间完成 gc，代价是吞吐下降不超过 15%</p>
-<p>shenandoah 类似 zgc，但是它没有承诺一定在 10ms 以内完成，但是同样没有代价，所以是一个比较合适的 g1 的替代品</p>
-<p>panama，强化 java 跟 c，c++ 等 native 代码的互操作性，就是方便 java 调用 c，c++ 写的代码，对 jni 做出了优化，不仅是代码写起来更加简单，而且性能更好</p>
-<p>amber，强化 java 的语法，增强 java 代码的可读性，确切滴说是简化 java 的写法，比如可以在 switch 中使用 -&gt; 和 yield，就很像 kotlin 的 when</p>
-<p>metropolis，替换 jdk 里面缺省的 c1，c2 编译器，用 graal 的编译器</p>
-<p>valhalla，这是 java 的 value type，值类型</p>
-<p>loom，这是 java 的虚拟线程</p>
-<p>skara，将 openjdk 迁移到 github 上去</p>
-<p>这些都是大的项目，具体到每一个 java 的技术细节，jcp 会发布 jep</p>
-<p><a href="https://openjdk.java.net/jeps/0" target="_blank" rel="noopener">https://openjdk.java.net/jeps/0</a></p>
-<p>你看这里有多少个 jep，你能看懂每一个 jep 并想出如何使用这些新增加的特性吗？</p>
-<p>比如开了 zgc 之后，有些实时系统就可以开始尝试了，比如短程货运的自动驾驶，就那种送快递的带轮子的自动运输车</p>
-<p>而且 java 现在也有了 arm 上的 build，你可以在树莓派上 build java，java 也可以写手机 app 了，对此你试过吗？你知道吗？</p>
-<p>你看 maven central 上，java 写的 jar 依赖都上千万了，还在以每年几百万的速度递增，而你只会用其中很小的一部分，which is spring related，你觉得你对 java 真的了解吗？maven central 上那么多类库，你会用吗？我随便选一个类库，你能在短时间内上手用起来吗？比如这个 guava</p>
-<p>这个生态里面什么都有，比如 hadoop，这个你总知道吧？会用吗？cassandra？kafka？上千万的类库我一个个列举过去不可能，自己看吧</p>
-<p>请问你对此了解多少？</p>
-<p>不，你不了解，<strong>你只会用 spring，你不是 java 程序员</strong>，你是 spring 程序员，你不会 java，你只会 spring，所以 spring 如果不给你的工具，你就不会用了，连最简单的升级都不敢升，连 unit test 都不会写，不信你面试 spring 开发的时候，让写一个 unit test 试试看，信不信很多人写不出来？</p>
-<p>你要说这些需求都不存在吗？肿么可能，不会做所以自我欺骗说，需求不存在</p>
-<p>需求当然存在，技术也客观存在，只是你不会用而已</p>
-<p>你看完我说的 java，graal 和 maven central 上的依赖，你还认为 spring 是巅峰吗？</p>
-<p>就这么说吧，spring 在这里面，犹如 php 之于整个挨踢生态</p>
-<p>没说错吧？</p>
-<p>php 就是一个 web framework，傻瓜化使用，用 spring 的不就正在做跟 php 同样的事？</p>
-<p>所以很多时候我都在想，这帮人天天嘲笑 php，哪里来的勇气哦，做出来的玩意不也是另外一种 php 嘛？从需求上看，spring 做的，跟 php 做的，有多大区别？不都是搞了个网站吗？</p>
-<p>然后一天到晚在那边强调大病发，先不说 php 也有异步的实现</p>
-<p>就说需求面，有多少公司的网站有大病发的需求？</p>
-<p>小病发才是大多数企业网站和内部信息管理系统的常态吧？</p>
-<p>那你整那些大病发给谁用？</p>
-<p>就算做到了大病发，你也有钱了，因为你有足够的用户了，那优化 php 就是了，facebook 不就这么干的？要是不懂就抄 fb 的开源</p>
-<p>当然问题不是只有你一个，其它领域的程序员也有同样的问题</p>
-<p>比如 ios 的开发很多都只会 objc，不会 swift，安卓也类似</p>
-<p><strong>但是世界不会因为你的保守而停止进步</strong></p>
-<p>这些先进技术一定会在现在或者将来冲击现有的陈旧的技术体系，你要小心，将来你有可能会因为你的保守而付出代价，而这个代价其实也很简单，就是裁员失业，其实现在已经开始了</p>
-<p>因为你不会，中国这么大，有的是人会，而且新技术上手难度也不高，没啥难的，压根不需要什么 985 或者本科才能学会，随便一个智商正常的人都能学会，你要想，老外那种连 100 以内加减乘除都算不清楚的，都能噼里啪啦写出代码来，难道你比这种人还笨？显然不是，原因是你不会做，而不是你学不会，学不会的原因估计是没有人教你，但是教会他人，只是一层窗户纸，很容易就捅破了，找个会的人给你解释一下就行了，都是些概念，没啥难的，比初中数学简单多了</p>
-<p>最直接的方式就是直接阅读老外的英语材料，这样效率最高，也不需要麻烦他人给你解释</p>
-<p>现在愿意花上万工资去养一个 web 开发（无论前端还是后端）的老板，我都很佩服，贵司素真滴有钱，因为上万块钱，拿去外包，都能找到很好用的，想怎么整都行，你可以指定技术栈，php，spring 还有 node 这种烂大街的技术外包到处都是</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%82%A3%E4%B9%88%E5%A4%9A%E5%85%AC%E7%9F%A5%E9%83%BD%E6%98%AF%E9%AB%98%E6%A0%A1%E7%9F%A5%E8%AF%86%E5%88%86%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/06/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%82%A3%E4%B9%88%E5%A4%9A%E5%85%AC%E7%9F%A5%E9%83%BD%E6%98%AF%E9%AB%98%E6%A0%A1%E7%9F%A5%E8%AF%86%E5%88%86%E5%AD%90/" class="post-title-link" itemprop="url">为什么那么多公知都是高校知识分子</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-06 20:06:23 / Modified: 20:07:18" itemprop="dateCreated datePublished" datetime="2020-05-06T20:06:23-04:00">2020-05-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，因为大部分高校文科教师长期不事生产，除了上课就是喝茶吹牛，其实上课也是吹牛。一个人脱离社会久了，他不觉得自己有问题，他觉得社会有问题。</p>
-<p>其次，某些五六十岁的高校文科老师，本身学历、学识也是有问题的，他们恰好遇到了一个特殊的年代，所以他们的学术道路太轻松，以至于今天的大学里，出现中专生教本科生，大专生教研究生这样的现象。学术圈子就是这样，只要进了圈，基本上就不会出来，后来者就很难进去。他们可以维持自己在学术界的权力、地位到死。</p>
-<p>第三，文科类知识分子，日子太闲，不用做实验，写论文也不用太动脑子，指派学生查资料就够了。以至于他们精力充沛，精力太充沛的人，容易成为“懂王”，于是本行工作不好好搞，历史也插一嘴，政治也插一嘴，经济也插一嘴……一辈子活成了个出租车司机，因为这些人文社科门槛都不高，本来也有点“玄学”，给了他们不懂装懂、信口雌黄的空间。他们胆子大起来，连物理化学生物医药都敢讲……因为有地位嘛，有地位的人放屁都香。</p>
-<p>第四，这群人自视甚高，总觉得自己是人中之龙，都教授了，都“懂王”了，怎么不是人中之龙？那么他们就会觉得世道不公平，如果放在封建社会，他们都是宰辅之材啊，起码也是个人人尊重，平民见了要磕头的“士大夫”、“相公老爷”；放了在民国，那也是军阀政客们大洋豪宅供着的“大师”、“高参”啊，当红的戏子、歌星都得低头做小，不知道可以谈多少场美妙单纯的“师生恋”……然而在今天，好像不是太重视他们？好像他们可有可无？国家似乎更加重视那些理工科出身的“匠人”？荒谬！斯文扫地！</p>
-<p>第五，他们一直有个误解，认为他们是人民的“启蒙者”，实际上，从1840年到现在，学术界的文科知识分子，从未做过“启蒙”大众的工作，他们虽然偶尔讲一些“进步”的话，但从来不是对人民讲的，而是对军阀、政客、地主士绅、黑社会杜月笙们讲的……甚至是对西方帝国主义讲的……总的来说，他们是“媚上”的、“慕强”的，虽然有时候批评当局，但只是怪当局不够重视他，不够重用他，类似于小妾对老爷的抱怨。所以，在人民心里，他们也算不得“启蒙者”和“老师”，真正的“教员”，真正让人民觉醒，知道自己为什么而活、为什么而战的，另有其人。</p>
-<p>第六，他们大多出身不错，生活优越，在每一个时代，基本上都是幸运儿，但他们对本国的人民毫无同情心和同理心，也不认同国家的道路。明明得了最大的便宜，他们却总觉得自己吃了亏，受了苦，心心念念幻想着从未存在过的“黄金时代”。</p>
-<p>第七，他们自以为高贵，自以为和这个国家的民众们不同，所以不愿意同甘苦共命运，总想着“衣冠南渡”，总期待着“王师解民倒悬”。他们在某个历史时期 ，见证了西方的强大，于是有了“皈依者虔诚”，把西方的一切话术，都脑补成了事实，在舆论战中，他们立场和西方一致，甚至比西方还积极。</p>
-<p>PS：最后讲个故事，我大学时选修了一门“西方文学鉴赏”的课，老师自称是九三学社成员，书香门第，家族血统高贵。</p>
-<p>然而讲起课来，就是拿美国电影举例，如《海上钢琴师》，一口一个“你国永远拍不出这样包容、温情的电影”，“你国人民自私、功利、没有信仰”，“你国对人、对文明、对宗教都缺乏尊重”。</p>
-<p>有一个女生站起来提问：“老师，你对我国这么多狭隘的偏见，这也缺乏尊重和包容吧……”</p>
-<p>这位教授勃然大怒，手指门外：“滚出去，被洗脑了的SB”。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/05/%E9%94%A1%E5%AE%89%E9%95%BF%E8%80%81%E4%BC%9A%E7%BA%AA%E8%A6%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/%E9%94%A1%E5%AE%89%E9%95%BF%E8%80%81%E4%BC%9A%E7%BA%AA%E8%A6%81/" class="post-title-link" itemprop="url">锡安长老会纪要</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-05 20:53:09 / Modified: 20:54:38" itemprop="dateCreated datePublished" datetime="2020-05-05T20:53:09-04:00">2020-05-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <table>
-<thead>
-<tr>
-<th>决议</th>
-<th>决议标题</th>
-<th>主题</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>基本教义：“正义在于实力”</td>
-<td>自由与民主；权威与权力；金钱 = 货币</td>
-</tr>
-<tr>
-<td>2</td>
-<td>利用经济战和组织瓦解建立全球政府</td>
-<td>国际政治经济阴谋：以传媒作为手段</td>
-</tr>
-<tr>
-<td>3</td>
-<td>征服世界的方法</td>
-<td>犹太人，傲慢与腐朽；选拔与选举；公职行业</td>
-</tr>
-<tr>
-<td>4</td>
-<td>利用唯物主义/物质追求消灭宗教</td>
-<td>冷酷无情的经营手段；以外邦人（非犹太人）为奴隶</td>
-</tr>
-<tr>
-<td>5</td>
-<td>专制暴政和进步事业</td>
-<td>犹太道德观；犹太民族与世界的关系</td>
-</tr>
-<tr>
-<td>6</td>
-<td>圈地和鼓励投机</td>
-<td>土地的所有权</td>
-</tr>
-<tr>
-<td>7</td>
-<td>对世界大战的预言</td>
-<td>利用内乱引发战争；利用司法系统回复和平</td>
-</tr>
-<tr>
-<td>8</td>
-<td>过渡政府</td>
-<td>犯罪因素</td>
-</tr>
-<tr>
-<td>9</td>
-<td>无孔不入的洗脑宣传体系</td>
-<td>法律；教育；<strong>[共济会]</strong></td>
-</tr>
-<tr>
-<td>10</td>
-<td>废除宪法，建立极权</td>
-<td>政治；多数人的统治；自由主义；家庭</td>
-</tr>
-<tr>
-<td>11</td>
-<td>极权主义宪法和全球统一政府</td>
-<td>外邦人；犹太人参政；<strong>[共济会]</strong></td>
-</tr>
-<tr>
-<td>12</td>
-<td>出版业控制王国</td>
-<td>自由；新闻与出版业审查</td>
-</tr>
-<tr>
-<td>13</td>
-<td>将公众思想从“必须品”降格为“非必须品”</td>
-<td>外邦人；经营手段；选拔与选举；出版和审查；自由主义</td>
-</tr>
-<tr>
-<td>14</td>
-<td>消灭其余宗教，准备迎接犹太教上帝</td>
-<td>犹太教；上帝；外邦人；自由；色情业</td>
-</tr>
-<tr>
-<td>15</td>
-<td>利用<strong>[共济会]</strong>，无情镇压敌人</td>
-<td>外邦人；<strong>[共济会]</strong>；以色列圣者；政权与威权；以色列之王</td>
-</tr>
-<tr>
-<td>16</td>
-<td>取消教育</td>
-<td>教育</td>
-</tr>
-<tr>
-<td>17</td>
-<td>律师与教士的结局</td>
-<td>律师；教士；基督教及其非犹太作者</td>
-</tr>
-<tr>
-<td>18</td>
-<td>组织乱局</td>
-<td>邪恶；言论</td>
-</tr>
-<tr>
-<td>19</td>
-<td>统治者和人民的相互理解</td>
-<td>小道消息；殉道</td>
-</tr>
-<tr>
-<td>20</td>
-<td>金融计划及其架构</td>
-<td>税收；借贷；债券；高利贷；一般贷款</td>
-</tr>
-<tr>
-<td>21</td>
-<td>国内借贷和政府信用</td>
-<td>证券市场和证券交易</td>
-</tr>
-<tr>
-<td>22</td>
-<td>犹太统治的仁慈</td>
-<td>金钱 = 货币；选拔和选举</td>
-</tr>
-<tr>
-<td>23</td>
-<td>向人民灌输顺从思想</td>
-<td>顺从权威；奴隶制；选拔与选举</td>
-</tr>
-<tr>
-<td>24</td>
-<td>犹太统治者</td>
-<td>王位；虚构的文件</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
   </article>
   
   
   
 
   </div>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1164,6 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新建"><span class="nav-number">1.</span> <span class="nav-text">新建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#帮助"><span class="nav-number">3.</span> <span class="nav-text">帮助</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态"><span class="nav-number">4.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信息"><span class="nav-number">5.</span> <span class="nav-text">信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加"><span class="nav-number">6.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除"><span class="nav-number">7.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分支"><span class="nav-number">8.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检出"><span class="nav-number">9.</span> <span class="nav-text">检出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程同步"><span class="nav-number">10.</span> <span class="nav-text">远程同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#撤销"><span class="nav-number">11.</span> <span class="nav-text">撤销</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#commit"><span class="nav-number">12.</span> <span class="nav-text">commit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#diff"><span class="nav-number">13.</span> <span class="nav-text">diff</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grep"><span class="nav-number">14.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#log"><span class="nav-number">15.</span> <span class="nav-text">log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#merge"><span class="nav-number">16.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mv"><span class="nav-number">17.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tag"><span class="nav-number">18.</span> <span class="nav-text">tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pull"><span class="nav-number">19.</span> <span class="nav-text">pull</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ci"><span class="nav-number">20.</span> <span class="nav-text">ci</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rebase-谨慎使用"><span class="nav-number">21.</span> <span class="nav-text">rebase (谨慎使用)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reset-谨慎使用"><span class="nav-number">22.</span> <span class="nav-text">reset (谨慎使用)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">23.</span> <span class="nav-text">其他</span></a></li></ol></div>
       </div>
       <!--/noindex-->
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1436668936&auto=0&height=66"></iframe>
