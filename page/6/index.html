@@ -165,6 +165,451 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/Bash%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/05/Bash%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Bash入门</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-05 14:10:02 / Modified: 14:15:34" itemprop="dateCreated datePublished" datetime="2020-04-05T14:10:02-04:00">2020-04-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Shell是Linux下经典的文本互动方式，而Bash是现在最常用的一种Shell。我在这里总结了Bash的要点知识。</p>
+<h2 id="1-Shell综述"><a href="#1-Shell综述" class="headerlink" title="1. Shell综述"></a>1. Shell综述</h2><p>Linux图形化桌面算不上精美。幸好，Linux提供了更好的与树莓派互动的方式：Shell。打开终端（Terminal），桌面上就会出现一个黑色背景的窗口，里面就运行着一个Shell。如果你敲击键盘，会发现字符会显示在$提示符的后面，形成一串文本形式的命令。所谓的Shell，就是运行在终端中的文本互动程序。Shell分析你的文本输入，然后把文本转换成相应的计算机动作。</p>
+<p>在后面的内容中，我将用$来表示Linux系统Shell的命令提示符。比如说输入date命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$date</span></span><br></pre></td></tr></table></figure>
+
+<p>date用于日期时间的相关功能。敲击回车键Enter后，Shell会显示出系统当前的时间。</p>
+<p>Shell看起来简陋，但实际上比图形化桌面强大得多。它是Unix体系下的文本交互界面。你只需要用键盘来输入文本，就可以和操作系统交互。但这还是不够具体。说到底，Shell其实是一个运行着的程序。这个程序接收到你按下回车键之间的输入，就会对输入的文本进行分析。比如下面这个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$free</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>包括空格在内总共7个字符。Shell程序会通过空格，区分出命令的不同部分。第一个部分是命令名。剩下的部分是选项和参数。在这个例子中，Shell会进一步分析第二个部分，发现这一部分的开头是”-“字符，从而知道它是一个选项。</p>
+<p>有了命令名，Shell下一步就要执行该命令名对应的动作。这听起来就像是在戏剧舞台上，演员按照脚本演戏。Shell命令可以分为如下三类：</p>
+<ul>
+<li>Shell内建函数（built-in function）</li>
+<li>可执行文件（executable file）</li>
+<li>别名（alias）</li>
+</ul>
+<p>Shell的内建函数是Shell自带的功能，而可执行文件是保存在Shell之外的脚本，提供了额外的功能。Shell必须在系统中找到对应命令名的可执行文件，才能正确执行。我们可以用绝对路径来告诉Shell可执行文件所在的位置。如果用户只是给出了命令名，而没有给出准确的位置，那么Shell必须自行搜索一些特殊的位置，也就是所谓的默认路径。Shell会执行第一个名字和命令名相同的可执行文件。这就相当于，Shell帮我们自动补齐了可执行文件的位置信息。我们可以通过which命令，来确定命令名对应的是哪个可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$which</span> date</span><br></pre></td></tr></table></figure>
+
+
+
+<p>别名是给某个命令一个简称，以后在Shell中就可以通过这个简称来调用对应的命令。在Shell中，我们可以用alias来定义别名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$alias</span> freak=<span class="string">"free -h"</span></span><br></pre></td></tr></table></figure>
+
+<p>Shell会记住我们的别名定义。以后我在这个Shell中输入命令freak时，都将等价于输入free -h。</p>
+<p>在Shell中，我们可以通过type命令来了解命令的类型。如果一个命令是可执行文件，那么type将打印出文件的路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$type</span> date</span><br><span class="line"><span class="variable">$type</span> <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<p>总的来说，Shell就是根据空格和其他特殊符号，来让电脑理解并执行用户要求的动作。到了后面，我们还将看到Shell中其他的特殊符号。</p>
+<h2 id="2-Shell的选择"><a href="#2-Shell的选择" class="headerlink" title="2. Shell的选择"></a>2. Shell的选择</h2><p>Shell是文本解释器程序的统称，所以包括了不止一种Shell。常见的Shell有sh、bash、ksh、rsh、csh等。在树莓派中，就安装了sh和bash两个Shell解释器。sh的全名是Bourne Shell。名字中的玻恩就是这个Shell的作者。而bash的全名是Bourne Again Shell。最开始在Unix系统中流行的是sh，而bash作为sh的改进版本，提供了更加丰富的功能。一般来说，都推荐使用bash作为默认的Shell。树莓派，以及其他Linux系统中广泛安装sh，都是出于兼容历史程序的目的。</p>
+<p>我们可以通过下面的命令来查看当前的Shell类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$echo $SHELL</span><br></pre></td></tr></table></figure>
+
+<p>echo用于在终端打印出文本。而$是一个新的Shell特殊符号。它提示Shell，后面跟随的不是一般的文本，而是用于存储数据的变量。Shell会根据变量名找到真正的文本，替换到变量所在的位置。SHELL变量存储了当前使用的Shell的信息你可以在bash中用sh命令启动sh，并可以用exit命令从中退出。</p>
+<h2 id="3-命令的选项和参数"><a href="#3-命令的选项和参数" class="headerlink" title="3. 命令的选项和参数"></a>3. 命令的选项和参数</h2><p>我们已经看到，一行命令里还可以包含着选项和参数。总的来说，选项用于控制命令的行为，而参数说明了命令的作用对象。比如说：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uname</span> -m</span><br></pre></td></tr></table></figure>
+
+<p>在上面的命令中，选项-m影响了命令uname的行为，导致uname输出了树莓派的CPU型号。如果不是该选项的影响，uname输出的将是”Linux”。我们不妨把每个命令看做多功能的瑞士军刀，而选项让命令在不同的功能间切换。由一个”-“引领一个英文字母，这成为短选项。多个短选项的字母可以合在一起，跟在同一个”-“后面。比如，下面的两个命令就等价：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uname</span> -m -r</span><br><span class="line"><span class="variable">$uname</span> -mr</span><br></pre></td></tr></table></figure>
+
+
+
+<p>此外还有一种长选项，是用”–”引领一整个英文单词，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$date</span> --version</span><br></pre></td></tr></table></figure>
+
+<p>上面的命令将输出date程序的版本信息。</p>
+<p>如果说选项控制了瑞士军刀的行为，那么参数就提供了瑞士军刀发挥用场的原材料。就拿echo这个命令来说，它能把字符打印到终端。它选择打印的对象，正是它的参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> hello</span><br></pre></td></tr></table></figure>
+
+
+
+<p>有的时候，选项也会携带变量，以便来说明选项行为的原材料。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date --<span class="built_in">set</span>=<span class="string">"1999-01-01 08:00:00"</span></span><br></pre></td></tr></table></figure>
+
+<p>选项”–set”用于设置时间，用等号连接的，就是它的参数。date会把日期设置成这一变量所代表的日期。如果用短选项，那么就要用空格取代等号了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date -s <span class="string">"1999-01-01 08:00:00"</span></span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，Shell对空格敏感。当一整个参数信息中包含了空格时，我们需要用引号把参数包裹起来，以便Shell能识别出这是一个整体。</p>
+<p>所谓的选项和参数提供给命令的附加信息。因此，命令最终会拿这些字符串做什么，是由命令自己决定的。因此，有时会发现一些特异的选项或参数用法。这个时候，你就要从文档中寻找答案。</p>
+<h2 id="4-变量"><a href="#4-变量" class="headerlink" title="4. 变量"></a>4. 变量</h2><p>我们可以在Bash中输入一行的命令。Bash会把输入的命令转化为特定的动作。从这一节起，我们将看到Bash的可编程性。Bash提供了某些类似于C语言那样的编程语法，从而允许你用编程的方式，来组合使用Linux系统。我们首先看Bash用变量存储数据的能力。正如我们在C语言中看到的，变量是内存中的一块儿空间，可以用于存储数据。我们可以通过变量名来引用变量中保持的数据。借助变量，程序员可以复用出现过的数据。Bash中也有变量，但Bash的变量只能存储文本。</p>
+<p><strong>1）变量赋值</strong></p>
+<p>Bash和C类似，同样用“=”来表示赋值。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=World</span><br></pre></td></tr></table></figure>
+
+<p>就是把文本World存入名为var的变量，即赋值。根据Bash的语法，赋值符号“=”的前后不留空格。赋值号右边的文本内容会存入赋值号左边的变量。</p>
+<p>如果文本中包含空格，那么你可以用单引号或双引号来包裹文本。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">'abc bcd'</span></span><br></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">"abc bcd"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在Bash中，我们可以把一个命令输出的文本直接赋予给一个变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$now</span>=`date`</span><br></pre></td></tr></table></figure>
+
+<p>借助``符号，date命令的输出存入了变量now。</p>
+<p>我们还可以把一个变量中的数据赋值给另一个变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$another</span>=<span class="variable">$var</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2）引用变量</strong></p>
+<p>我们可以用$var的方式来引用变量。在Bash中，所谓的引用变量就是把变量翻译成变量中存储的文本。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=World</span><br><span class="line"><span class="variable">$echo</span> <span class="variable">$var</span></span><br></pre></td></tr></table></figure>
+
+<p>就会打印出World，即变量中保存的文本。</p>
+<p>在Bash中，你还可以在一段文本中嵌入变量。Bash也会把变量替换成变量中保存的文本。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> Hello<span class="variable">$var</span></span><br></pre></td></tr></table></figure>
+
+<p>文本将打印出HelloWorld。</p>
+<p>为了避免变量名和尾随的普通文本混淆，我们也可以换用${}的方式来标识变量。比如说：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="variable">$varIsGood</span></span><br></pre></td></tr></table></figure>
+
+<p>由于Bash中并没有varIsGood这个变量，所以Bash将打印空白行。但如果将命令改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="variable">$&#123;var&#125;</span>IsGood</span><br></pre></td></tr></table></figure>
+
+<p>Bash通过${}识别出变量var，并把它替换成数据。最终echo命令打印出WorldIsGood。</p>
+<p>在Bash中，为了把一段包含空格的文本当做单一参数，就需要用到单引号或双引号。你可以在双引号中使用变量。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">"Hello <span class="variable">$var</span>"</span></span><br></pre></td></tr></table></figure>
+
+<p>将打印Hello World。与此相对，Bash会忽视单引号中的变量引用，所以单引号中的变量名只会被当做普通文本，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">'Hello $var'</span></span><br></pre></td></tr></table></figure>
+
+<p>将打印Hello $var。</p>
+<h2 id="5-数学运算"><a href="#5-数学运算" class="headerlink" title="5. 数学运算"></a>5. 数学运算</h2><p>在Bash中，数字和运算符都被当做普通文本。所以你无法像C语言一样便捷地进行数学运算。比如执行下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=1+2</span><br><span class="line"><span class="variable">$echo</span> <span class="variable">$result</span></span><br></pre></td></tr></table></figure>
+
+<p>Bash并不会进行任何运算。它只会打印文本“1+2”。</p>
+<p>在Bash中，你还可以通过$(())语法来进行数值运算。在双括号中你可以放入整数的加减乘除表达式。Bash会对其中的内容进行数值运算。比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> $((2 + (5*2)))</span><br></pre></td></tr></table></figure>
+
+<p>将打印运算结果12。此外，在$(())中，你也可以使用变量。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=1</span><br><span class="line"><span class="variable">$echo</span> $((<span class="variable">$var</span> + (5*2)))</span><br></pre></td></tr></table></figure>
+
+<p>将打印运算结果11。</p>
+<p>你可以用Bash实现多种整数运算：</p>
+<ul>
+<li>加法：$(( 1 + 6 ))。结果为7。</li>
+<li>减法：$(( 5 – 3 ))。结果为2。</li>
+<li>乘法：$(( 2*2 ))。结果为4。</li>
+<li>除法：$(( 9/3 ))。结果为3。</li>
+<li>求余：$(( 5%3 ))。结果为2。</li>
+<li>乘方：$(( 2**3 ))。结果为8。</li>
+</ul>
+<p>现在，你就可以把数学运算结果存入变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=$(( 1 + 2 ))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-返回代码"><a href="#6-返回代码" class="headerlink" title="6. 返回代码"></a>6. 返回代码</h2><p>在Linux中，每个可执行程序会有一个整数的返回代码。按照Linux惯例，当程序正常运行完毕并返回时，将返回整数0。因此，C程序中返回0的语句，都出现在C程序中main函数的最后一句。例如下面的foo.c程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">int</span> b;</span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line"></span><br><span class="line">  a = <span class="number">6</span>;</span><br><span class="line">  b = <span class="number">2</span>;</span><br><span class="line">  c = <span class="number">6</span>/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段程序可以正常运行。因此，它将在最后一句执行return语句，程序的返回代码是0。在Shell中，我们运行了程序后，可以通过$?变量来获知返回码。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$gcc</span> foo.c</span><br><span class="line">$./a.out</span><br><span class="line"><span class="variable">$echo</span> $?</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果一个程序运行异常，那么这个程序将返回非0的返回代码。比如删除一个不存在的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> none_exist.file</span><br><span class="line"><span class="variable">$echo</span> $?</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在Linux中，可以在一个行命令中执行多个程序。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$touch</span> demo.file; ls;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在执行多个程序时，我们可以让后一个程序的运行参考前一个程序的返回代码。比如说，只有前一个程序返回成功代码0，才让后一个程序运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file &amp;&amp; <span class="built_in">echo</span> <span class="string">"rm succeed"</span></span><br></pre></td></tr></table></figure>
+
+<p>如果rm命令顺利运行，那么第二个echo命令将执行。</p>
+<p>还有一种情况，是等到前一个程序失败了，才运行后一个程序，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file || <span class="built_in">echo</span> <span class="string">"rm fail"</span></span><br></pre></td></tr></table></figure>
+
+<p>如果rm命令失败，第二个echo命令才会执行。</p>
+<h2 id="7-Bash脚本"><a href="#7-Bash脚本" class="headerlink" title="7. Bash脚本"></a>7. Bash脚本</h2><p>你还可以把多行的Bash命令写入一个文件，成为所谓的Bash脚本。当Bash脚本执行时，Shell将逐行执行脚本中的命令。编写Bash脚本，是我们开始实现Bash代码复用的第一步。</p>
+<p><strong>1）脚本的例子</strong></p>
+<p>用文本编辑器编写一个Bash脚本hello_world.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> Hello</span><br><span class="line"><span class="built_in">echo</span> World</span><br></pre></td></tr></table></figure>
+
+<p>脚本的第一行说明了该脚本使用的Shell，即/bin/bash路径的Bash程序。脚本正文是两行echo命令。运行脚本的方式和运行可执行程序的方式类似，都是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./hello_world.bash</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，如果用户不具有执行Bash脚本文件的权限，那么他将无法执行Bash脚本。此时，用户必须更换文件权限，或者以其他身份登录，才能执行脚本。当脚本运行时，两行命令将按照由上至下的顺序依次执行。Shell将打印两行文本：</p>
+<blockquote>
+<p>Hello<br>World</p>
+</blockquote>
+<p>Bash脚本是一种复用代码的方式。我们可以用Bash脚本实现特定的功能。由于该功能记录在脚本中，因此我可以反复地运行同一个文件来实现相同的功能，而不是每次想用的时候都要重新敲一遍命令。我们看一个简单的Bash脚本hw_info.bash，它将计算机的信息存入到名为log的文件中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Information of yc's computer:"</span> &gt; <span class="built_in">log</span></span><br><span class="line">lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">free –h &gt;&gt; <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2）脚本参数</strong></p>
+<p>和可执行程序类似，Bash脚本运行时，也可以携带参数。这些参数可以在Bash脚本中以变量的形式使用。比如test_arg.bash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$1</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$2</span></span><br></pre></td></tr></table></figure>
+
+<p>在Bash中，你可以用$0、$1、$2……的方式，来获得Bash脚本运行时的参数。我们用下面的方式运行Bash脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./test_arg.bash hello world</span><br></pre></td></tr></table></figure>
+
+<p>$0是命令的第一部分，也就是./test_arg.bash。$1代表了参数hello，而$2代表了参数world。因此，上面程序将打印：</p>
+<blockquote>
+<p>./test_arg.bash<br>hello<br>world</p>
+</blockquote>
+<p>如果变更参数，同一段脚本将有不同的行为。这大大提高了Bash脚本的灵活性。上面的hw_info.bash脚本中，我们把输出文件名写死成log。我们也可以修改脚本，用参数作为输出文件的文件名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Information of yc's computer:"</span> &gt; <span class="variable">$1</span></span><br><span class="line">lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">free –h &gt;&gt; <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>借助参数，我们就可以自由地设置输出文件的名字：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./hw_info.bash output.file</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3）脚本的返回代码</strong></p>
+<p>和可执行程序类似，脚本也可以有返回代码。还是按照惯例，脚本正常退出时返回代码0。在脚本的末尾，我们可以用exit命令来设置脚本的返回代码。我们修改hello_world.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> Hello</span><br><span class="line"><span class="built_in">echo</span> World</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>其实在脚本的末尾加一句exit 0并不必要。一个脚本如果正常运行完最后一句，会自动的返回代码0。在脚本运行后，我们可以通过$?变量查询脚本的返回代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$./hello_world.bash</span><br><span class="line"><span class="variable">$echo</span> $?</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果在脚本中部出现exit命令，脚本会直接在这一行停止，并返回该exit命令给出的返回代码。比如下面的demo_exit.bash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> hello</span><br><span class="line"><span class="built_in">exit</span> 1 <span class="built_in">echo</span> world</span><br></pre></td></tr></table></figure>
+
+<p>你可以运行该脚本，检查其输出结果，并查看其返回代码。</p>
+<h2 id="8-函数"><a href="#8-函数" class="headerlink" title="8. 函数"></a>8. 函数</h2><p>在Bash中，脚本和函数有很多相似的地方。脚本实现了一整个脚本文件的程序复用，而函数复用了脚本内部的部分程序。一个函数可以像脚本一个包含多个指令，用于说明该函数如果被调用会执行哪些活动。在定义函数时，我们需要花括号来标识函数包括的部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  free –h &gt;&gt; <span class="built_in">log</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my_info</span><br></pre></td></tr></table></figure>
+
+<p>脚本一开始定义了函数my_info，my_info是函数名。关键字function和花括号都提示了该部分是函数定义。因此，function关键字并不是必须的。上面的脚本等效于：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  free –h &gt;&gt; <span class="built_in">log</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my_info</span><br></pre></td></tr></table></figure>
+
+<p>花括号中的三行命令，就说明了函数执行时需要执行的命令。需要强调的是，函数定义只是食谱，并没有转化成具体的动作。脚本的最后一行是在调用函数。只有通过函数调用，函数内包含的命令才能真正执行。调用函数时，只需要一个函数名就可以了。</p>
+<p>像脚本一样，函数调用时还可以携带参数。在函数内部，我们同样可以用$1、$2这种形式的变量来使用参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  free –h &gt;&gt; <span class="variable">$1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my_info output.file</span><br><span class="line">my_info another_output.file</span><br></pre></td></tr></table></figure>
+
+<p>在上面的脚本中，进行了两次函数调用。函数调用时，分别携带了参数output.file和another_output.file。</p>
+<h2 id="9-跨脚本调用"><a href="#9-跨脚本调用" class="headerlink" title="9. 跨脚本调用"></a>9. 跨脚本调用</h2><p>在Bash中使用source命令，可以实现函数的跨脚本调用。命令source的作用是在同一个进程中执行另一个文件中的Bash脚本。比如说，有两个脚本，my_info.bash和app.bash。脚本my_info.sh中的内容是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  free –h &gt;&gt; <span class="variable">$1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>脚本app.bash中的内容是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> my_info.bash</span><br><span class="line">my_info output.file</span><br></pre></td></tr></table></figure>
+
+<p>运行app.bash时，执行到source命令那一行时，就会执行my_info.bash脚本。在app.bash的后续部分，就可以使用my_info.bash中的my_info函数。</p>
+<h2 id="10-逻辑判断"><a href="#10-逻辑判断" class="headerlink" title="10. 逻辑判断"></a>10. 逻辑判断</h2><p>我们已经介绍了函数和脚本两种组合命令的方式。这两种方式都可以把多行命令合并起来，组成一个功能单元。函数和脚本都实现了一定程度的代码复用。从这一节起，我们将看到选择和循环两种语法结构，这两种语法结构可以改变脚本的运行顺序，从而编写出更加灵活的程序。Bash除了可以进行数值运算，还可以进行逻辑判断。逻辑判断是决定某个说法的真假。我们在生活中很自然地进行各种各样的逻辑判断。比如“3大于2”这个说法，我们会说它是真的。逻辑判断就是对一个说法判断真假。在Bash中，我们可以用test命令来进行逻辑判断：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$test</span> 3 -gt 2; <span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>命令test后面跟有一个判断表达式，其中的-gt表示大于，即greater than。由于“3大于2”这一表达式为真，所以命令的返回代码将是0。如果表达式为1，那么命令的返回代码是1：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$test</span> 3 -lt 2; <span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>表达式中的-lt表示小于，即less than。</p>
+<p>数值大小和相等关系的判断，是最常见的逻辑判断。除了上面的大于和小于判断，我们还可以进行以下的数值判断：</p>
+<ul>
+<li>等于： $test 3 -eq 3; echo $?</li>
+<li>不等于： $test 3 -ne 1; echo $?</li>
+<li>大于等于： $test 5 -ge 2; echo $?</li>
+<li>小于等于： $test 3 -le 1; echo $?</li>
+</ul>
+<p>Bash中最常见的数据形式是文本，因此也提供了很多关于文本的判断：</p>
+<ul>
+<li>文本相同: $test abc = abx; echo $?</li>
+<li>文本不同： $test abc != abx; echo $?</li>
+<li>按照词典顺序，一个文本在另一个文本之前： $test apple &gt; tea; echo $?</li>
+<li>按照词典顺序，一个文本在另一个文本之后： $test apple &lt; tea; echo $?</li>
+</ul>
+<p>Bash还可以对文件的状态进行逻辑判断：</p>
+<ul>
+<li>检查一个文件是否存在： $test –e a.out; echo $?</li>
+<li>检查一个文件是否存在，而且是普通文件： $test –f file.txt; echo $?</li>
+<li>检查一个文件是否存在，而且是目录文件： $test –d myfiles; echo $?</li>
+<li>检查一个文件是否存在，而且是软连接： $test –L a.out; echo $?</li>
+<li>检查一个文件是否可读： $test –r file.txt; echo $?</li>
+<li>检查一个文件是否可写： $test –w file.txt; echo $?</li>
+<li>检查一个文件是否可执行： $test –x file.txt; echo $?</li>
+</ul>
+<p>在做逻辑判断时，可以把多个逻辑判断条件用“与、或、非”的关系组合起来，形成复合的逻辑判断。</p>
+<ul>
+<li>非，与expression的真假相反：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! expression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>与，必须expression1和expression2都为真时，结果才为真：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –a expression2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>或，只要expression1和expression2的一个为真时，结果就为真：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –o expression2</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="11-选择结构"><a href="#11-选择结构" class="headerlink" title="11. 选择结构"></a>11. 选择结构</h2><p>逻辑判断可以获得计算机和进程的状态。进一步，Bash可以根据逻辑判断，让程序有条件地运行，这也就是所谓的选择结构。选择结构是一种语法结构，可以让程序根据条件决定执行哪一部分的指令。最早的程序都是按照指令顺序依次执行。选择结构打破了这一顺序，给程序带来更高的灵活性。最简单的，我们可以根据条件来决定是否执行某一部分程序，比如下面的demo_if.bash脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">"root"</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are root"</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are my God."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>这个脚本中使用了最简单的if结构。关键字if后面跟着[]，里面是一个逻辑表达式。这个逻辑表达式就是if结构的条件。如果条件成立，那么if将执行then到fi之间包含的语句，我们称之为隶属于then的代码块。如果条件不成立，那么then的代码块不执行。这个例子的条件是判断用户是否为root。因此，如果是非root用户执行该脚本，那么Shell不会打印任何内容。</p>
+<p>我们还可以通过if…then…else…结构，让Bash脚本从两个代码块中选择一个执行。该选择结构同样有一个条件。如果条件成立，那么将执行then附属的代码块，否则执行else附属的代码块。下面的demo_if_else.bash脚本是一个小例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">filename=<span class="variable">$1</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$filename</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$filename</span> exists"</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$filename</span> NOT exists"</span> </span><br><span class="line"><span class="keyword">fi</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"The End"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>if后面的“-e $filename”作为判断条件。如果条件成立，即文件存在，那么执行then部分的代码块。如果文件不存在，那么脚本将执行else语句中的echo命令。末尾的fi结束整个语法结构。脚本继续以顺序的方式执行剩余内容。运行脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./demo_if_else.bash a.out</span><br></pre></td></tr></table></figure>
+
+<p>脚本会根据a.out是否存在，打印出不同的内容。</p>
+<p>我们看到，在使用if…then…else…结构时，我们可以实现两部分代码块的选择执行。而在then代码块和else代码块内部，我们可以继续嵌套选择结构，从而实现更多个代码块的选择执行。比如脚本demo_nest.bash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"You are <span class="variable">$var</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">"root"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"You are my God."</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">"yc"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">"You are a happy user."</span></span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">"You are the Others."</span></span><br><span class="line">   <span class="keyword">fi</span> </span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在Bash下，我们还可以用case语法来实现多程序块的选择执行。比如下面的脚本demo_case.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"You are <span class="variable">$var</span>"</span> </span><br><span class="line"><span class="keyword">case</span> <span class="variable">$var</span> <span class="keyword">in</span></span><br><span class="line">root)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are God."</span></span><br><span class="line">;;</span><br><span class="line">yc)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are a happy user."</span></span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are the Others."</span></span><br><span class="line">;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+<p>这个脚本和上面的demo_nest.bash功能完全相同。可以看到case结构与if结构的区别。关键字case后面不再是逻辑表达式，而是一个作为条件的文本。后面的代码块分为三个部分，都以文本标签)的形式开始，以;;结束。在case结构运行时，会逐个检查文本标签。当条件文本和文本标签可以对应上时，Bash就会执行隶属于该文本标签的代码块。如果是用户yc执行该Bash脚本，那么条件文本和yc标签对应上，脚本就会打印：</p>
+<blockquote>
+<p>You are a happy user.</p>
+</blockquote>
+<p>文本标签除了是一串具体的文本，还可以包含文本通配符。结构case中常用的通配符包括：</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+<th>文本标签例子</th>
+<th>符合条件的文本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>任意文本</td>
+<td>*</td>
+<td>Xyz, 12a3, …</td>
+</tr>
+<tr>
+<td>？</td>
+<td>任意一个字符</td>
+<td>a?c</td>
+<td>abc, axc, …</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>范围内一个</td>
+<td>[1-5] [b-d]</td>
+<td>2b, 3d, …</td>
+</tr>
+</tbody></table>
+<p>上面的程序中最后一个文本标签是通配符*，即表示任意条件文本都可以触发此段代码块的运行。当然，前提是前面的几个文本标签都没有“截胡”。</p>
+<h2 id="12-循环结构"><a href="#12-循环结构" class="headerlink" title="12. 循环结构"></a>12. 循环结构</h2><p>循环结构是编程语言中另一种常见的语法结构。循环结构的功能是重复执行某一段代码，直到计算机的状态符合某一条件。在while语法中，Bash会循环执行隶属于while的代码块，直到逻辑表达式不成立。比如下面的demo_while.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">now=`date +<span class="string">'%Y%m%d%H%M'</span>`</span><br><span class="line">deadline=`date --date=<span class="string">'1 hour'</span> +<span class="string">'%Y%m%d%H%M'</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$now</span> -lt <span class="variable">$deadline</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   date</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"not yet"</span></span><br><span class="line">   sleep 10</span><br><span class="line">   now=`date +<span class="string">'%Y%m%d%H%M'</span>`</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"now, deadline reached"</span></span><br></pre></td></tr></table></figure>
+
+<p>关键字do和done之间的代码是隶属于该循环结构的代码块。在while后面跟着条件，该条件决定了代码块是否重复执行下去。这个条件是用当前的时间与目标时间对比。如果当前时间小于目标时间，那么代码块就会重复执行下去。否则，Bash将跳出循环，继续执行后面的语句。</p>
+<p>如果while的条件始终是真，那么循环会一直进行下去。下面的程序就是以无限循环的形式，不断播报时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  date</span><br><span class="line">  sleep 1 </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>语法while的终止条件是一个逻辑判断。如果在循环过程中改变逻辑判断的内容，那么我们很难在程序执行之前预判循环进行的次数。正如我们之前在demo_while.bash中看到的，我们在循环进行过程中改变着作为条件的逻辑表达式，不断地更新参与逻辑判断的当前时间。与while语法对应的是for循环。这种语法会在程序进行前确定好循环进行的次数，比如demo_for.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> `ls <span class="built_in">log</span>*`</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  rm <span class="variable">$var</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，命令ls log*将返回所有以log开头的文件名。这些文件名之间由空格分隔。循环进行时，Bash会依次取出一个文件名，赋值给变量var，并执行do和done之间隶属于for结构的程序块。由于ls命令返回的内容在是确定的，因此for循环进行的次数也会在一开始确定下来。</p>
+<p>在for语法中，我们也可以使用自己构建一个由空格分隔的文本。由空格区分出来的每个子文本会在循环中赋值给变量。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> yc anna yutian</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$user</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>此外，for循环还可以和seq命令配合使用。命令seq用于生成一个等差的整数序列。命令后面可以跟3个参数，第一个参数表示整数序列的开始数字，第二个参数表示每次增加多少，最后一个参数表示序列的终点。因此，下面命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$seq</span> 1 2 10</span><br></pre></td></tr></table></figure>
+
+<p>将返回：</p>
+<blockquote>
+<p>1 3 5 7 9</p>
+</blockquote>
+<p>可以看到，seq返回的也是由空格分隔开的文本。因此，seq的返回结果也可用于for循环。</p>
+<p>结合for循环和seq命令，我们可以解一些有趣的数学问题。比如高斯求和，是要计算从1到100的所有整数的和。我们可以用Bash解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0 </span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> `seq 1 1 100`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个问题还可以用do while循环来求解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0</span><br><span class="line">number=1 </span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$number</span> -gt 100 ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">break</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line">  number=$((<span class="variable">$number</span> + 1))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+
+<p>这里break语句的作用是在满足条件时跳出循环。</p>
+<p>如果想计算1到100所有不被3整数的和，则可以使用continue语句，跳过所有被3整数的数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0 </span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> `seq 1 1 100`</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">if</span> (( <span class="variable">$number</span> % 3 == 0 )) </span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">continue</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="13-Bash与C语言"><a href="#13-Bash与C语言" class="headerlink" title="13. Bash与C语言"></a>13. Bash与C语言</h2><p>到了这里，我们已经介绍完Bash语言的基本语法。Bash语言和C语言都是Linux下的常用语言。它们都能通过特定的语法来编写程序，而程序运行后都能实现某些功能。尽管在语法细节上存在差异，但两种语言都有以下语法：</p>
+<ul>
+<li>变量：在内存中储存数据</li>
+<li>循环结构：重复执行代码块</li>
+<li>选择结构：根据条件执行代码块</li>
+<li>函数：复用代码块</li>
+</ul>
+<p>编程语言的作者在设计语言时，往往会借鉴已有编程语言的优点。这是编程语言之间相似性的一大原因。程序员往往要掌握不止一套编程语言。相似的语法特征，会让程序员在学习新语言时感到亲切，从而促进语言的推广。</p>
+<p>Bash和C的相似性，也来自于它们共同遵守的编程范式——面向过程编程。支持面向过程编程的语言，一般都会提供类似于函数的代码封装方式。函数把多行指令包装成一个功能。只要知道了函数名，程序可以通过调用函数来使用函数功能，最终实现代码复用。除了面向过程编程，还有面向对象和函数式的编程范式。每种编程范式都提供了特定的代码封装方式，并达到代码复用的目的。值得注意的是，近年来出现的新语言往往会支持不止一种编程范式。</p>
+<p>除了相似性，我们还应该注意到Bash和C程序的区别。Bash的变量只能是文本类型，C的变量却可以有整数、浮点数、字符等类型。Bash的很多功能，如加减乘除运算，都是调用其他程序实现的。而C直接就可以进行加减乘除运算。可以说，C语言是一门真正的编程语言。C程序最终会编译成二进制的可执行文件。CPU可以直接理解这些文件中的指令。</p>
+<p>另一方面，Bash是一个Shell。它本质上是一个命令解释器程序，而不是编程语言。用户可以通过命令行的方式，来调用该程序的某些功能。所谓的Bash编程，只是命令解释器程序提供的一种互动方法。Bash脚本只能和Bash进程互动。它不能像C语言一样，直接调用CPU的功能。因此，Bash能实现的功能会受限，运行速度上也比不上可执行文件。</p>
+<p>但另一反面，Bash脚本也有它的好处。 C语言能接触到很底层的东西，但使用起来也很复杂。有时候，即使你已经知道如何用C实现一个功能，写代码依然是一个很繁琐的过程。Bash正相反。由于Bash可以便捷地调用已有的程序，因此很多工作可以用数行的脚本解决。此外，Bash脚本不需要编辑，就可以由Bash进程理解并执行。因此，开发Bash脚本比写C程序要快很多。Linux的系统运维工作，如定期备份、文件系统管理等，就经常使用到Bash脚本。总之，Bash编程知识是晋级为资深Linux用户的必要条件。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%E6%9E%B6%E6%9E%84%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -955,169 +1400,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/%E5%A1%9E%E5%B0%94%E7%BB%B4%E4%BA%9A%E4%B8%8D%E7%BE%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/29/%E5%A1%9E%E5%B0%94%E7%BB%B4%E4%BA%9A%E4%B8%8D%E7%BE%8E/" class="post-title-link" itemprop="url">塞尔维亚不美</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-29 23:01:57 / Modified: 23:05:15" itemprop="dateCreated datePublished" datetime="2020-03-29T23:01:57-04:00">2020-03-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>塞尔维亚是一个纯粹的欧洲国家，是一个不可能对我们真正友好的国家。</p>
-<p><img src="../images/v2-eba05ff1707476b5288c2cd567cbd4ff_1440w.jpg" alt="img"></p>
-<p>吃瓜群众的头脑发热老毛病又犯了，一个白人国家，含泪求助中国、亲吻五星红旗，一些人可能连这个国家在哪都搞不清楚，就亢奋了。“塞尔维亚好兄弟”“我要给兄弟打钱””武契奇欧巴“。</p>
-<p>先好好了解一下别人，再来判断是不是兄弟、能不能做兄弟。先说我的观点：<strong>我一点也不看好中塞友谊。</strong></p>
-<h2 id="一、东欧是反华反共大本营"><a href="#一、东欧是反华反共大本营" class="headerlink" title="一、东欧是反华反共大本营"></a><strong>一、东欧是反华反共大本营</strong></h2><p>东欧的现代史，是社会主义溃败史和资本主义扩张史。这种意识形态的巨变，带来舆论和民意的大翻转，他们不仅总体上亲西方，<strong>而且普遍对社会主义有偏见</strong>。这种心态，跟我们嘲讽民国有相似之处。</p>
-<p>塞尔维亚所处的南斯拉夫虽然不属于社会主义阵营，但实行社会主义制度。</p>
-<p><img src="../images/v2-acb1e838b7be9f04bbf40a5a689c120e_1440w.jpg" alt="img"></p>
-<p>苏联解体后的北约东扩。2002年，罗马尼亚和保加利亚加入；2009年，阿尔巴尼亚加入。<strong>塞尔维亚实际上已经处于北约包围圈。</strong></p>
-<p><img src="../images/v2-622876ba2c35cae4ec607200afe74812_1440w.jpg" alt="img"></p>
-<p>苏联解体后的欧盟东扩。2014年，阿尔巴尼亚成为欧盟候选国。<strong>塞尔维亚已经处于欧盟包围圈</strong>。事实上，塞尔维亚自己，还有邻居黑山，一直在积极加入欧盟。</p>
-<p><img src="../images/v2-8a98bd35081bbf51670d3dcde1344867_1440w.jpg" alt="img"></p>
-<p>因此，<strong>东欧的意识形态已经西化了</strong>，大批年轻人涌向西欧打工。甚至连未加入北约和欧盟的乌克兰也未能幸免，西乌克兰对欧盟情有独钟，俄罗斯都无法扭转。小国塞尔维亚自然无法独善其身。</p>
-<p><strong>中国作为最大的社会主义国家，在东欧普遍不受欢迎，这种排华情绪十分明显，充满了种族歧视</strong>。在华为事件中，西欧不听美国的话，波兰直接抓了华为两个员工，而且在推特上宣布的时候直接@FBI和CIA，毫不遮掩。捷克政府与中国签订协议，居然直接删除“一中“条款，首都布拉格公然悬挂”藏独“旗帜。</p>
-<p>罗马尼亚和保加利亚时常爆出歧视华人的新闻，就连曾经与华交好的阿尔巴尼亚，也曾公开宣称我们是”社会帝国主义国家“。</p>
-<p><img src="../images/v2-be752d583a19be64c417749351d93736_1440w.jpg" alt="img"></p>
-<p><strong>华人在这些国家绝不是受欢迎的群体，他们对中国更是知之甚少。</strong></p>
-<p>在新闻上也可以看出，我们的领导人很少访问东欧国家，我们的官媒也很少报道东欧。这从塞国是中国在东欧唯一的战略合作伙伴就可以看出来。</p>
-<p>塞尔维亚虽然没有加入北约和欧盟，<strong>但全面倒向欧洲已经不可逆转了</strong>。塞尔维亚一直在申请加入欧盟，当地的年轻人已经心向西欧，跟它的东欧邻国一样。早已经不是20年前的南联盟或者塞国了。</p>
-<p>塞尔维亚的对华态度在东欧国家是好的，但也仅是不好不坏的正常。<strong>如果有人说它欢迎中国人，对中国人多么多么热情，那就是十足的假话！</strong>不过是贩卖20年前的战争情怀罢了。</p>
-<p><img src="../images/v2-c2d1252dd0a890a4da97b45d56640844_1440w.jpg" alt="img"></p>
-<p><img src="../images/v2-c9fcf978b86403d168250dcf2db728ef_1440w.jpg" alt="img">截图来自于“大西洋鳗鱼”，我最欣赏的公号</p>
-<h2 id="二、实打实的欧洲国家，与中国无共通基础"><a href="#二、实打实的欧洲国家，与中国无共通基础" class="headerlink" title="二、实打实的欧洲国家，与中国无共通基础"></a><strong>二、实打实的欧洲国家，与中国无共通基础</strong></h2><p>南斯拉夫社会主义联邦共和国是社会主义国家，并且与我们一样奉行”不结盟“政策。南联邦解体后，南联盟与西方爆发科索沃战争，引发”大使馆轰炸“惨剧。所以，很多人以为中塞友谊具有强大的历史基础。</p>
-<p>但不要忘了，2006年黑山独立；2008年科索沃独立；北部的伏伊伏丁那也搞过独立公投。今天的塞尔维亚共和国可谓面目全非。</p>
-<p><img src="../images/v2-c821fb37bb472ba8b8bcdc71127039c4_1440w.jpg" alt="img"></p>
-<p>塞尔维亚首先变成了一个穷国，它的人口、面积和GDP与我国的<strong>宁夏</strong>相当。1990年人均实际GDP为6340美元，是中国的6.98倍；2019年只有7400美元，是中国的72%，这还是建立在塞人口不增反减的基础上的。也就是说，<strong>经过了30年，GDP几乎是停滞的。</strong></p>
-<p>它也没什么拿得出手的企业，劳动力都喜欢去欧盟打工，本国则是高失业率（14%），全国至今无地铁。</p>
-<p><img src="../images/v2-8358480bbf81e1771d6aad8829139245_1440w.jpg" alt="img"></p>
-<p>如今的塞尔维亚，在政治领域实行三权分立的议会民主制；在经济领域，与欧洲的关系更加紧密，它的外资主要来自奥地利、希腊、德国和挪威这些<strong>欧盟国家</strong>，对外贸易主要辐射市场是欧盟，其次是非欧盟和俄罗斯，2019年塞进出口总额463亿美元，中塞28亿美元，<strong>占比仅6%</strong>。奔驰、宝马这样的欧系车是塞尔维亚街上随处可见。</p>
-<p>中国商务部网站对此评述为：”塞出口的三分之二是欧盟国家，<strong>其经济与欧盟高度融合。</strong>”所以，<strong>有些媒体自认为塞经济靠中国，纯属yy</strong>，人家压根没往这方面想，中国无非是锦上添花。</p>
-<p>而且，对于塞尔维亚而言，中国是一个进口市场，而不是出口市场，2019年塞进口中国总额25.1亿美元，出口仅为3.3亿，<strong>它与中国的贸易长期处于逆差状态，占塞贸易赤字的1/3</strong>。一个发展中国家，更加重视的是顺差国，而不是逆差国。</p>
-<p><img src="../images/v2-54ed681de8625aae50c5409a21250005_1440w.jpg" alt="img"></p>
-<p>在经济和政治方面，塞尔维亚无疑与欧洲更加靠近。尤其看到以前的”小弟“斯洛文尼亚和克罗地亚，全面倒向西方后成为准发达国家，这也刺激着塞尔维亚人的神经。</p>
-<p>自2008年以来，<strong>加入欧盟成为塞尔维亚的首要目标</strong>，一旦加入欧盟就意味着可以分享先进的技术、庞大的市场和大量的补贴。2012年3月，正式成为欧盟候选国。</p>
-<p>2017年当选总统的武契奇发表施政演讲：“<strong>塞尔维亚外交政策的首要目标是继续欧洲统一和到2020年成为欧盟的正式成员</strong>。“环球时报在2018年有过一篇报道，55%的塞国民众支持加入欧盟，反对者占21%。支持加入欧盟的人相信入盟能提振塞经济，为塞发展提供更好的空间。</p>
-<p>塞尔维亚的尴尬在于，欧盟目前仍然将解决科索沃问题作为塞加入欧盟的先决条件。承认科索沃独立，塞尔维亚政府绝不敢这么做，入欧还没有明确的时间表。</p>
-<p>但英国脱欧给了塞尔维亚一线曙光。欧盟委员会在2018年2月的欧盟峰会上提到，如果顺利，<strong>塞尔维亚与黑山将于2025年正式加入欧盟</strong>。</p>
-<p><img src="../images/v2-17147135da734925017182aa33bd6788_1440w.jpg" alt="img">2019年，马克龙支持塞尔维亚入欧</p>
-<p>在塞尔维亚随处可见的货币兑换点，随时都可以把本国货币兑换成欧元，美元和英镑，<strong>但目前无法兑换人民币</strong>。由于90年代的剧烈通货膨胀历历在目，塞尔维亚人普遍会把一部分货币换成西方货币，<strong>但不会换成人民币</strong>。</p>
-<p>与欧洲的这种关系，也体现在语言上。塞尔维亚语是国语，但是<strong>英语普及很高</strong>。与印度和新加坡有点类似。</p>
-<p><img src="../images/v2-d1cd471692c9f9aaab07f2e5df92c1f5_1440w.jpg" alt="img"></p>
-<p>塞尔维亚人是斯拉夫人（尼古拉-特斯拉和足球教练米卢是塞尔维亚人），塞尔维亚语是斯拉夫语，东正教是塞国的主要宗教。所以，在历史和文化上，<strong>塞尔维亚一直是俄罗斯最忠诚的伙伴</strong>。首都贝尔克莱德最有名的酒店，就叫莫斯科大酒店，是地标建筑。</p>
-<p><img src="../images/v2-e404512a1646a5e5f08a38c19261872f_1440w.jpg" alt="img"></p>
-<p>每当西方国家”讨伐“俄罗斯时，塞领导人都会重申“塞不会为加入欧盟而制裁俄罗斯”“塞将永远保持与俄的友好关系”。莫斯科与贝尔格莱德之间每天有近10班的直飞航班，两国交流的频繁程度可见一斑。在一些旅游景点，普京头像之类的纪念品卖得都很好。油管上塞尔维亚人经常贴那种“和俄罗斯朋友庆祝圣诞节”之类的亲俄视频。</p>
-<p>如果说友谊万岁，对塞尔维亚而言，<strong>俄罗斯才是第一选择</strong>。</p>
-<p><img src="../images/v2-2ddfebbf3c016fb8cc75142d6e649dc5_1440w.jpg" alt="img">标语：塞尔维亚人和俄罗斯一起就是三亿人的强大民族</p>
-<p>经济靠拢欧盟，文化接近俄罗斯，塞尔维亚成为唯一的与欧盟和俄罗斯同时签署自由贸易协定的欧洲国家，总统武契奇精通英语和俄语。<strong>欧盟和俄罗斯自然就是塞尔维亚外交的两大支柱</strong>，中国最多排第三，还不一定比美国和非欧盟区重要。</p>
-<h2 id="三、我们就是个备胎"><a href="#三、我们就是个备胎" class="headerlink" title="三、我们就是个备胎"></a><strong>三、我们就是个备胎</strong></h2><p>这样一个纯粹的欧洲国家，在经济政治文化都与中国没有共通之处的国家，为何突然主动示好中国呢？</p>
-<p>答案是，<strong>仅仅是为了抗疫而已</strong>。</p>
-<p>塞尔维亚与欧盟的经济联系十分紧密，也依赖欧洲市场，政治体制也相似，但受限于历史遗留问题，政府层面各种不对付。再加上塞尔维亚比较穷，因此塞尔维亚被西方媒体各种无视。</p>
-<p>这次疫情之灾，塞尔维亚全然指望不上欧盟搭救，波兰能获得74亿欧元的欧盟抗疫基金，意大利也获得了23亿，连伊朗也获得了2000万，但塞尔维亚毛都得不到。按照规定，<strong>欧盟禁止向非欧盟国家出售医疗物资和药品</strong>，意大利和德国还截留了非欧盟成员瑞士订购的消毒水和口罩。</p>
-<p>这就使得，素来对欧盟友好的总统武契奇几乎是声泪俱下地指责欧盟见死不救。当然，欧盟本身已经自顾不暇了。</p>
-<p>塞尔维亚也可以向俄罗斯求救。但武契奇深知，找普京要武器多的是，但医疗物资和防疫经验，普京也是两手空空。而且，沙特增产使得石油暴跌，普京对俄罗斯的外汇和金融风险一筹莫展，<strong>对塞尔维亚的求助无心无力</strong>。</p>
-<p>举目眺望，万里之外的中国成为救命稻草。于是就有了突如其来的示gui好tian，这是一场政治作秀，但正中中国人下怀。</p>
-<p><img src="../images/v2-81ab020d34bb18d69f172301820fdc31_1440w.jpg" alt="img"></p>
-<p>曾经欺负我们的白人，居然哭着求我们帮忙。中国瞬间举国沸腾，上至官府，下至百姓，将中塞友谊、塞国风情吹了个遍，物资、人员和医院，一马奉上。活脱脱就像一个垂涎女神已久的备胎，我一直默默看着你，就等你一句话，被感情伤害的你终于开口了，说我是这世上唯一对她真正好的男人，我喜出望外地奉上名衣名包，<strong>假装不知女神心里始终惦记着另外两个男人。</strong></p>
-<p>我越主动越付出，女神就越开心，对我越客气，还亲吻我送的鲜花，与我的家人朋友打成一片。我也将此事广而告之，你们不是瞧不起我吗？现在将你们通通打脸。我憋了一肚子的气，终于可以好好释放一把了。</p>
-<p>在心态上，女神早已不是以前的女神，你还是那个你。</p>
-<h2 id="四、武契奇是个什么样的总统？"><a href="#四、武契奇是个什么样的总统？" class="headerlink" title="四、武契奇是个什么样的总统？"></a><strong>四、武契奇是个什么样的总统？</strong></h2><p>在塞国，<strong>这是一个政绩不行，贪污腐败，包庇家人犯法，名声极差的演戏总统</strong>。</p>
-<p>2017年5月，武契奇高票当选塞总统，看似获得民心的压倒性优势，但其实并不是。</p>
-<p>选举结果刚出，<strong>人们质疑选举过程有暗箱操作</strong>，贝尔克莱德（人口160万）就爆发大规模抗议，10万左右塞尔维亚人挤满了市中心，其他城市也随即响应。抗议持续了一个多月。</p>
-<p><img src="../images/v2-84724cf6be959bba2b402a74c9ec4e25_b.jpg" alt="img"></p>
-<p>第二天，电视新闻上播报了这一则新闻”昨日一些对大选不满意的市民来到了贝尔格莱德市中心，现场约两千到五千人。现在请看下一则……”</p>
-<p>2017年9月2日，一辆西班牙牌照的宾利车在贝尔格莱德撞上了总统座驾，所幸武契奇并未受伤。</p>
-<p>反对派政治家遭受袭击，人们认为是武契奇指使的。2018年12月29日，数万名塞尔维亚人在贝尔格莱德集会抗议。示威者高呼“<strong>武契奇小偷、总统是骗子</strong>”等口号，要求总统武契奇下台。</p>
-<p><img src="../images/v2-e106cc63c99b4de355a5eb32caec2ecd_1440w.jpg" alt="img"></p>
-<p>由于不断出现贪腐丑闻， 2019年3月，贝尔格莱德爆发抗议活动，<strong>要求总统武契奇下台</strong>，数十名抗议者闯入塞尔维亚国家电视台大楼，被武警特种部队驱逐。23日，贝尔格莱德再度爆发抗议总统的示威游行。</p>
-<p><img src="../images/v2-45e39fe7d7c93a87c6cb663d20263aa3_1440w.jpg" alt="img"></p>
-<p>武契奇是一个机会主义者。最初加入塞尔维亚激进党，这是一个右翼民族主义政党，主张恢复南联邦那样的大塞尔维亚，明确反欧；2008年跳槽到进步党，变脸成欢迎欧盟，2014年当选总理以来一直积极推动入欧。</p>
-<p>一个领导人有污点，但是他如果能心系国家，能为人民做事，他就是有贡献的。在抗疫这件事情上，对于塞尔维亚人而言，武契奇反应速度快，形势判断准确，做得很好。</p>
-<p>但武契奇也绝对不是一个媒体上渲染的“善良”人，他一切的表现，<strong>终究是为了自己的支持率和政治前程</strong>。阿尔巴尼亚前领导人霍查，前后的剧烈反差，这样的教训值得警惕。</p>
-<h2 id="五、支持援塞，反对意气用事"><a href="#五、支持援塞，反对意气用事" class="headerlink" title="五、支持援塞，反对意气用事"></a><strong>五、支持援塞，反对意气用事</strong></h2><p>作为一个欧洲白人国家，塞尔维亚的”亲中“姿态尤为靓眼，再加上南联盟事件，我绝对支持援塞。</p>
-<p><img src="../images/v2-cca59bc7fdc6cda30a40480c291c4d2d_1440w.jpg" alt="img"></p>
-<p>但是，这是一个根深蒂固的欧洲国家，不可能心甘情愿地跟随我们。此一时彼一时，一没有长远的利益连接点，二塞国对欧盟已是”身不能至心向往之“。那么，<strong>我们的援助，应该建立在利益回报的等价交换基础上</strong>。在这个过程中，<strong>反对美化塞国，反对感情用事过量援助。</strong></p>
-<p>60年代举国之力援助阿尔巴尼亚打水漂，还反过来咬我们一口。这种错误不能犯第二次。</p>
-<p>我更希望中国的援助，<strong>外交部和媒体的眼光能集中在东亚</strong>。亨廷顿在《文明的冲突》提过”<strong>建立在相同文明基础之上的经济联系和外交往来，才能走得更远</strong>“，我对此深表赞同。价值观不同的两个人，顶多为了钱合作一下，但走不到一块。</p>
-<p>我是东亚主义者。疫情期间，日本的援助那么显眼，远超塞尔维亚，前几天日本爱知县也向我们求援口罩，人民日报对此有专门报道。<strong>但媒体反应和民间反应十分稀疏，与塞尔维亚无法相比。</strong></p>
-<p><strong>这不是一个正常、理性的现象</strong>。中国只有整合了东亚，才算真正崛起，自家的东亚都搞不定，谈什么走向世界？中日（韩）在疫情期间的守望相助，与西方的冷漠和拖后腿，这种鲜明的对比，中国人还不明白吗？</p>
-<p>既然那么多人对西方嗤之以鼻，高喊警惕欧美，那么又为什么对一个公开亲欧的欧洲国家如此称赞有加呢？你们反对的是脑海中抽象的西方，反而不认识一个具体的西方了。</p>
-<p>曾经的女神早已心有所属，现在落难了有求于你，看在昔日感情的份上，你给点钱就得了，非得拉着别人的手说”我们要好上一生一世“，看在钞票的份上，别人嘴上乐呵呵的，心里就一句话”傻X！“</p>
-<p>与塞尔维亚再怎么亲热，<strong>只是一种务虚</strong>，花钱赚个吆喝，难有实在和长远的回报。东亚、只有东亚，才是中国长歌袖舞的地方，才是性价比最高的地方。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><p>小国没有选择的权利，塞国迟早归队欧美，塞尔维亚不美、武契奇不帅，自嗨媒体和吃瓜群众不要再自娱自乐、自欺欺人了，备胎有啥可骄傲的？<strong>人家根本就不是你的人，一个媚眼就让你神魂颠倒、尾巴翘到天上去，怎么就这么容易被忽悠呢？很傻很天真，好吗！？</strong></p>
-<p>我比较好奇的是，如果是一个非洲黑人国家向我们这般求援，或者是一个中亚黄白混血国家，又或者是一个东南亚黄种国家，媒体会这样瞬间高潮吗？</p>
-<p>—END—</p>
-<p>-—————————————————————————————</p>
-<p>3.29更新。</p>
-<p>一大早发现点赞量破万，现在已经接近两万，平均一秒钟一个赞。惊掉我的下巴！</p>
-<p>从这个速度看，我对同胞们的理智越来越有自信了。并不是无良自媒体折射出的群体性乌合之众，只是大家能看到不同声音的机会和渠道太少了。</p>
-<p>看完这篇回答后，再去去看下我的另一篇推文《<a href="http://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzU4MTgyNTMwNw%3D%3D%26mid%3D2247485790%26idx%3D1%26sn%3Dd27fc46bd23cd7d59e370457dce41d24%26chksm%3Dfd40ef2aca37663c32d69d55a9562eb878c34853cda67b9250180d465fc959b71d20c0274321%26token%3D1371928286%26lang%3Dzh_CN%23rd">巨额援助打水漂，这个欧洲小国从“老铁”变为“白眼狼”</a>》。大家就更能明白我的良苦用心了。</p>
-<p>针对评论，我想说几点：</p>
-<p>1、文章通篇没有宣扬反塞，更没有反对支援塞。我反对的是媒体集体性地美化塞，我担心的是国家意气用事的过量援助，我厌恶的是只讲义不讲利的“打水漂”援助。</p>
-<p>2、在东欧这些国家中，塞尔维亚对中国的态度是好的，文章中也提到这一点。但这种好，一方面只是一种不好不坏的好，而不是像东南亚那种热情和欢迎的好；另一方面这种好是政府自上而下的宣传和推动，而不是民间的自发行为。评论区有一位网友提到塞的年轻人、博士，对中国无感，一提起中国就想到“社会主义”，你要相信，这个东欧的舆论都对社会主义无好感。</p>
-<p>在东欧，还有一个国家与塞尔维亚类似，那就是白俄罗斯。有很多中文标语，中国在那里的投资也很多，但你感受不到这个国家的民众对中国人的热度和欢迎。</p>
-<p>3、很多人说，国家之间本来就只有利益，哪有感情可言。既然塞尔维亚有心与我们交好，我们又何必拒人于千里之外？毕竟，朋友越多越好嘛。</p>
-<p>我当然支持与塞尔维亚交好，但你得拎清楚值不值得付出那么大的感情和物质投入。我们的媒体反应和政府援助是过度的，这才是我反对的。</p>
-<p>塞尔维亚的邻国阿尔巴尼亚，60年代我们可以倾囊相助、付出全部感情的，最终换来的是反咬一口。你现在再去问问阿尔巴尼亚的政府和民众对中国的态度，我相信只会令你失望透顶。</p>
-<p>哦对了，还有一点，塞尔维亚很破，旅游资源很贫乏，不值得一去！</p>
-<p>4、不要拿塞尔维亚与巴基斯坦相比。一方面塞尔维亚只有700万人口，只是巴基斯坦2亿人口的一点零头；另一方面，巴基斯坦与我们有长远和坚实的利益基础（印度和石油），这是塞尔维亚没有的，这才是两国的核心区别。巴基斯坦民间对华人，不只是好，而是热情和欢迎。巴铁真不是白叫的。</p>
-<p>5、我支持大东亚联盟。美国、中日韩、欧盟，三足鼎立，GDP各占全球1/4。东亚的牛逼之处在于，外储全球前十的国家和地区，东亚独占五席，中日排前二。</p>
-<p>外交部公布的首批援华21国中，韩日排前二，对了，没有塞尔维亚。</p>
-<p>中日韩三国的文化同源，经济依赖性十分紧密，大家可以去查查中日韩三国之间的外资和贸易，我相信你看了会有想法的。美国的插手，集中在军事领域和外交领域，而国家之间的长远未来，取决于经济和文化。<strong>论与我们的民间交流，全球没有哪个国家比得上日本。</strong></p>
-<p>法德之间的历史仇恨，绝对超过中日。二战之后，法德就非常不满欧洲从属于美国的地位，所以他们联合起来主导欧盟，成为单独的一极。</p>
-<p>整合东亚、将东南亚当成后花园，才是我大中华的崛起之路。你要相信，只有文化和民族相近的国家，才能真正走到一起。</p>
-<p>6、中国已经不是20年前的中国。在外交和战略上也不应该还是20年前的老思路，那种天朝上国的朝贡式外交，是封建余孽，要彻底摒弃。</p>
-<p>注重实际，用文明对抗文明，以平等的姿态去构造我们的联盟。这种平等，不是嘴上喊的口号，而是心态和思想上的切实转变。这种联盟，不是上合组织和东盟这种松散的闹眼子项目，而是一个堪比欧盟那样的大家庭，而这个大家庭的主导，就是中日，也只能是中日。</p>
-<p>期待中日韩自贸区早日落实，期待像今年在成都的中日韩三国领导人会晤能多上新闻联播，期待美国早日滚出东亚，期待中日韩的新闻在中日韩三国不再是新闻，而是常态。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1188,7 +1470,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">165</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
