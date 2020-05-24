@@ -165,6 +165,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/13/SQL_Joins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/13/SQL_Joins/" class="post-title-link" itemprop="url">SQL_Joins</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-13 13:47:38 / Modified: 14:54:33" itemprop="dateCreated datePublished" datetime="2020-03-13T13:47:38-04:00">2020-03-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="../images/INNER_JOIN.png" alt="Visual_SQL_Joins/INNER_JOIN.png"></p>
+<h2 id="Inner-Join"><a href="#Inner-Join" class="headerlink" title="Inner Join"></a>Inner Join</h2><p> This query will return all of the records in the left table (table A) that have a matching record in the right table (table B). This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt; </span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br></pre></td></tr></table></figure>
+
+<h2 id="Left-Join"><a href="#Left-Join" class="headerlink" title="Left Join"></a>Left Join</h2><p>This query will return all of the records in the left table (table A) regardless if any of those records have a match in the right table (table B). It will also return any matching records from the right table. This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br></pre></td></tr></table></figure>
+
+<h2 id="Right-Join"><a href="#Right-Join" class="headerlink" title="Right Join"></a>Right Join</h2><p>This query will return all of the records in the right table (table B) regardless if any of those records have a match in the left table (table A). It will also return any matching records from the left table. This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br></pre></td></tr></table></figure>
+
+<h2 id="Outer-Join"><a href="#Outer-Join" class="headerlink" title="Outer Join"></a>Outer Join</h2><p>This Join can also be referred to as a <code>FULL OUTER JOIN</code> or a <code>FULL JOIN</code>. This query will return all of the records from both tables, joining records from the left table (table A) that match records from the right table (table B). This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br></pre></td></tr></table></figure>
+
+<h2 id="Left-Join-Excluding-Inner-Join"><a href="#Left-Join-Excluding-Inner-Join" class="headerlink" title="Left Join Excluding Inner Join"></a>Left Join Excluding Inner Join</h2><p>This query will return all of the records in the left table (table A) that do not match any records in the right table (table B). This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt; </span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> B.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Right-Join-Excluding-Inner-Join"><a href="#Right-Join-Excluding-Inner-Join" class="headerlink" title="Right Join Excluding Inner Join"></a>Right Join Excluding Inner Join</h2><p>This query will return all of the records in the right table (table B) that do not match any records in the left table (table A). This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Outer-Join-Excluding-Inner-Join"><a href="#Outer-Join-Excluding-Inner-Join" class="headerlink" title="Outer Join Excluding Inner Join"></a>Outer Join Excluding Inner Join</h2><p>This query will return all of the records in the left table (table A) and all of the records in the right table (table B) that do not match. This Join is written as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;select_list&gt;</span><br><span class="line"><span class="keyword">FROM</span> Table_A A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Table_B B</span><br><span class="line"><span class="keyword">ON</span> A.Key = B.Key</span><br><span class="line"><span class="keyword">WHERE</span> A.Key <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">OR</span> B.Key <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/ICC%E6%98%AF%E5%95%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1300,95 +1382,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9F%9F%E9%BB%91%E6%80%BB%E6%8A%93%E7%9D%80%E6%B2%B3%E5%8D%97%E5%92%8C%E4%B8%9C%E5%8C%97%E4%B8%8D%E6%94%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/03/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9F%9F%E9%BB%91%E6%80%BB%E6%8A%93%E7%9D%80%E6%B2%B3%E5%8D%97%E5%92%8C%E4%B8%9C%E5%8C%97%E4%B8%8D%E6%94%BE/" class="post-title-link" itemprop="url">为什么中国地域黑总抓着河南和东北不放</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-03 23:14:43" itemprop="dateCreated datePublished" datetime="2020-03-03T23:14:43-05:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-04 00:16:08" itemprop="dateModified" datetime="2020-03-04T00:16:08-05:00">2020-03-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>东北比较好理解，引爆点就是当年的下岗。</p>
-<p>当年九五年后家里在南方涉及点娱乐买卖的朋友应该有印象，声色场所里，门口站着的多是东北的爷们，里面躺着的多是东北的姑娘。一直到现在，这都是很多小店的常态。</p>
-<p>很多东北朋友非常耻于提起这些现象，但我觉得忘记就是背叛。这是一场国家级的背叛，数千万根据国家意志已经结构化的产业工人，被国家以各种冠冕堂皇的词汇剥夺了被许诺的隐形资产权力，然后弃之如敝履，扔到他们非常不适应的市场上自生自灭。</p>
-<p>多少跳楼，多少围堵政府大楼，多少举家煤气自杀，多少捡菜叶子过活。说实话，没有酿成更严重的事件，已经是某种意义上东北人对国家的谅解。最后逼得相当数量共和国昔日的产业工人去涉黄涉黑，责任在谁头上，大家自己清楚。</p>
-<p>东北人那段时间在黑黄一路上从业者比例急升，自然会引起普通人的歧视。只是悲哀的是，普通人不去问谁是这一现象的制造者，却去指责这件事的受害者，弱者抽刀，确实是向更弱者。</p>
-<p>但更悲哀的是，从大量的反馈上来看，东北人似乎没有因为这次被国家的背叛而丧失对国家的信任。官僚主义、对体制的推崇、对市场经济的不信任，东北地区都是全国范围内的屈指可数。跟其他某些较推崇体制的省份不同，考虑到东北工人群体一直都遭到比较严重的利益损害，我有些难以理解。</p>
-<p>或许历史的反作用力，需要时间。</p>
-<hr>
-<p>而河南的问题，则可以说是歧视农民工的一个典型代表。</p>
-<p>河南很不幸地满足了三个比较罕有的特征：</p>
-<p>人口大省；<br>劳务输出大省；<br>覆盖全国多种日常行业。</p>
-<p>这就意味着，各地的普通人，日常都有着大量机会遇到从事低端产业的河南农民工。</p>
-<p>例如，安徽也是高比例的劳务输出大省，但是北方地区对安徽人的歧视明显比东部少，因为安徽的劳务人口东部就可以消化；</p>
-<p>四川也是劳务输出大省，人口也足够多，但是早期四川是以建筑行业为主，集中居住集中管理，与当地居民互动较少。所以即使四川人建了中国一半以上的楼，很多本地普通人对四川人这个概念依然感知淡薄；</p>
-<p>最后像湖北输出农民工，凭借九省通衢的地理位置和重商的传统，虽然遍布全国也渗透至多种日常行业，但是体量摊到全国来说不算大，所以也没有成为被歧视的重灾区。</p>
-<p>河南三点都满足，唉。</p>
-<p>农民工的教育水平、收入水平、福利水平摆在那里，形象和素质是可以预判的，犯罪率是算的出来的。加上农民工必然和当地的劳务人员抢夺就业机会，最后产生的不满是肯定的。</p>
-<p>也就是说，这不涉及到道德判断也不涉及到地域区别，这就是一道数学题。你把这些条件给任何一个省份，他们最后遭到的舆论结果都是一样的。</p>
-<p>而在这个过程中，我们在城乡二元制这个系统上，随着开左灯往右转，诞生了一批有能力建构话语体系的城市小资阶级。他们在面临每日大资本和体制的剥削下，需要明确一个能够在他们之下的阶层，他们也是要向下获取资源的，资本上，权力上，舆论上。</p>
-<p>河南，就决定是你了！</p>
-<hr>
-<p>我祖上山东。后来清末黄河改道，举家迁到河南洛阳，住了几十年。到我爷爷那辈跟着红军打过了长江，在南昌复员。我父母那辈广东改革开放缺老师，俩语文老师就这么带着我去了佛山。最后浦东新区开发，老爸在浦东买了房。</p>
-<p>曾有个北京认识的“长辈”语重心长地对我说：别说你是河南人，名声不好；也别说你是广东人，北方人对广东人有很多偏见；说江西人嘛没什么印象（不愧是阿卡林省！）；上海人也不行，男的会被笑。就说你是山东人吧！</p>
-<p>我现在走南闯北已经十年了，愈发理解到何为“人是环境的动物”：农业时代，有险可守的平原是帝王之资；工业时代，靠海的矿山工厂可以获利全球；海权时代，深水良港是必争之地；陆权时代，十字路口是膏腴之地。</p>
-<p>人？人只是那些无数因素集合的一个界面。知乎喜欢强调个人的奋斗，但是当我们看到成千上万在挣扎时，为什么不思考一下背后历史的进程？</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1459,7 +1452,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">168</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="面试官问我：“看你简历之前，先问你一个问题，全民学Python编程可行么？” 我冷笑。 我知道他想要我回答“可以”，实际上可以个屁，如果不是因为吃青菜面的时候没钱加鸡蛋，我可能立刻拍桌子告诉他：全民学office可行吗？全民健身可行吗？全民学英语可行吗？什么全民全民全民，说出来不就是想跨界割韭菜，前端时间还全民学空气币！学抖音！一群镰刀渣！ 但我想吃煎蛋了。楼下餐馆的小姐姐虽然不够好看，也不够温柔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么铺天盖地python广告">
+<meta property="og:url" content="http://yoursite.com/2020/05/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%93%BA%E5%A4%A9%E7%9B%96%E5%9C%B0python%E5%B9%BF%E5%91%8A/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="面试官问我：“看你简历之前，先问你一个问题，全民学Python编程可行么？” 我冷笑。 我知道他想要我回答“可以”，实际上可以个屁，如果不是因为吃青菜面的时候没钱加鸡蛋，我可能立刻拍桌子告诉他：全民学office可行吗？全民健身可行吗？全民学英语可行吗？什么全民全民全民，说出来不就是想跨界割韭菜，前端时间还全民学空气币！学抖音！一群镰刀渣！ 但我想吃煎蛋了。楼下餐馆的小姐姐虽然不够好看，也不够温柔">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-24T04:06:06.000Z">
+<meta property="article:modified_time" content="2020-05-24T04:07:43.866Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="Chinese">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%93%BA%E5%A4%A9%E7%9B%96%E5%9C%B0python%E5%B9%BF%E5%91%8A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>为什么铺天盖地python广告 | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%93%BA%E5%A4%A9%E7%9B%96%E5%9C%B0python%E5%B9%BF%E5%91%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          为什么铺天盖地python广告
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-24 00:06:06 / Modified: 00:07:43" itemprop="dateCreated datePublished" datetime="2020-05-24T00:06:06-04:00">2020-05-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>面试官问我：“看你简历之前，先问你一个问题，全民学Python编程可行么？”</p>
+<p>我冷笑。</p>
+<p>我知道他想要我回答“可以”，实际上可以个屁，如果不是因为吃青菜面的时候没钱加鸡蛋，我可能立刻拍桌子告诉他：全民学office可行吗？全民健身可行吗？全民学英语可行吗？什么全民全民全民，说出来不就是想跨界割韭菜，前端时间还全民学空气币！学抖音！一群镰刀渣！</p>
+<p>但我想吃煎蛋了。楼下餐馆的小姐姐虽然不够好看，也不够温柔，煎蛋的油可能太油，我还是想吃煎蛋。</p>
+<p>但是如果我没有这份工作，我可能连青菜面都吃不上了。</p>
+<p>所以我立刻转成了高冷笑，然后转成了高深莫测笑，呡了口白开水，我淡定的说：“当然可以”。</p>
+<p>“Python太适合大家来学习了！小朋友可以学，什么scratch，拖拽图形，不专业，低级！满足不了有钱人的父母的需要，拉不开差距！要钱投资在孩子身上是为了干嘛，当然就是要拉开差距，家庭月收入10万和家庭月收入5000的人，在一个教室里同样的老师学同样难度的scratch？怎么拉开差距？必须要学高大上的Python！你要说Python怎么高大上了？现在最火的人工智能知道么，全是Python写的！会Python，你就已经打开了人工智能之路，年薪200万！值不值？你要跟他讲，先学语文再拿诺贝尔文学奖，没人信。你要说先学会打字，再哪诺贝尔文学奖，他就信了！什么数学，算法都让一边去，得Python者得天下！你看，小孩子的群体有了吧？高考都考Python呢！”</p>
+<p>“大学生呢？大学生计算机系的要不要学？要不要学？要不要学？学c？学JAVA？学PHP？学js？学oc？low！学c的饿死了，学JAVA的竞争激烈，学PHP的没人要，学js的没技术含量！而且，Python简单，强大，人人学得会！你看，隔壁7岁小朋友都在学Python！而且入门月薪就过万，你说招聘岗位上没有Python的职位？你看这不有十几家公司找Python的么？说明你先人一步，难道等烂大街的时候再学？你看那家叫什么修真院的公司没？说学JAVA找到工作要900小时的编程时间，900小时，你有那么多时间没？Python不一样，每周两个小时听听课，2个月就能找工作了！你看，爬虫10分钟教程，简单吧？5分钟搭个web网站，简单吧？效率就是价值，这就是Python值钱的原因！”</p>
+<p>“你说你不是科班生？你是土木机械电子的？那更要学Python了！计科专业都去做JAVA和c了，你当然学Python了，不然你也学不会别的啊。osi七层模型你不懂吧？数据结构你不懂吧？编译原理你不懂吧？不懂就对了，人家学四年，你现在学四个月，人生苦短，我学Python，你看，3分钟，就能解析一个文本了，快不快？连IDE都不用，直接Vim上！酷炫！”</p>
+<p>“你说你不想做研发，你是一个产品运营？那必须学Python啊，运营是不是要数据分析？你看这个，拿Excel表格分析数据的十年运营，薪水1万5，你看这个，用Python分析数据的半年运营，薪水2万8！还是因为老板天天请他吃烧烤留下来的，你看螃蟹都想从9.9爬到19.9的篮子里，人难道不想有上进薪么？”</p>
+<p>“你说你压根不是互联网行业的？哎呦喂你幸好问到我了。现在万物联网，连潘石屹都在学Python，一个盖房子的搬砖之余都不忘融入互联网的潮流，这就是大势！你可以不当程序员，但是你不可以不懂编程！你娶不了苍老师，难道就不像苍老师学习了么。python是什么，是赋能工具，链接旧世界和互联网新世界的桥梁！而且，领导知道你会Python，肯定加薪，为嘛？爱学习！妹子知道你会Python，肯定崇拜你，为什么？会编程的人都好厉害！你是个妹子，更得会Python，为什么？会跳舞会唱歌的妹子多了去，有几个妹子会编程？酷！”</p>
+<p>“你说你都退休了？年纪大了？那不更得学Python了？老两口在家寂寞吧？手机都用不利索，跟子孙拿来的共同语言？学Python多好，学会了谁还想带孙子玩呀！你看能抓全世界的图！教你爬虫，大爷你看，这是美国的，这是日本的，这是澳大利亚的，都会自动更新！学不学？难道去跳广场舞重新投入江湖争斗啊？算了吧，人心险恶，你学Python。”</p>
+<p>“您看，什么人不需要学Python？”</p>
+<p>面试官脸上露出了满意的笑容，说：“你被录用了，很适合做一个电话销售，底薪1500，其他靠提成。现在，告诉我你之前是做什么的？”</p>
+<p>我很激动，紧紧握着面试官的手，说：“我学了2个月的Python，找了3年的工作。”</p>
+<p>面试官也很激动地握着你的手:我招了这么久的Python程序员，终于招到一个靠谱的电话销售</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Chinese/" rel="tag"># Chinese</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/23/%E5%9C%A8%E5%B0%8F%E7%A0%B4%E7%AB%99%E5%AD%A6%E4%B9%A0/" rel="prev" title="在小破站学习">
+      <i class="fa fa-chevron-left"></i> 在小破站学习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1436668936&auto=0&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
