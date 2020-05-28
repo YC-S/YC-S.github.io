@@ -165,6 +165,65 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/AugularJS%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/22/AugularJS%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" class="post-title-link" itemprop="url">AugularJS思维导图</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-22 19:19:04 / Modified: 19:19:25" itemprop="dateCreated datePublished" datetime="2020-04-22T19:19:04-04:00">2020-04-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="../images/AngularJS-7597561.png" alt="AngularJS"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/Angular%E5%8F%91%E5%B1%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1703,113 +1762,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/%E5%AD%A6%E4%B9%A0Spring%E4%B9%8B%E5%89%8D%E8%A6%81%E5%85%88%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/12/%E5%AD%A6%E4%B9%A0Spring%E4%B9%8B%E5%89%8D%E8%A6%81%E5%85%88%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88/" class="post-title-link" itemprop="url">学习Spring之前要先学习什么</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-12 03:05:10 / Modified: 03:09:49" itemprop="dateCreated datePublished" datetime="2020-04-12T03:05:10-04:00">2020-04-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>开门见山，先放结论。</p>
-<p>要开始学习Spring（以IOC和Spring MVC为核心），只需要做好以下准备即可：</p>
-<ol>
-<li>《Java核心技术》前6章。</li>
-<li>Java反射原理（选学）。</li>
-<li>Servlet。</li>
-</ol>
-<p>而想理解上面的结论，则首先必须理解Spring是干什么的。</p>
-<p>打开Spring的官方网站，点击projects页面，你会看到一个偌大的结构图。其中列出许多项目，包括：Spring Boot、Spring Cloud 、Spring Data…。对初学来说，乍一看着实吓一跳，完全不知道从何下手。</p>
-<p>但透过表现看本质。无论是Spring Data，还是Spring Cloud，都是建立在Spring Framework上的一个个具体领域的应用.</p>
-<p>在Spring Framwork中，包含了Spring体系的核心机制及应用，包括IOC、AOP，SpringMVC、Data Access等。而且，即使在Spring Framework内部，各个功能之间也不是水平的，而是存在依赖关系的。</p>
-<p>其中最底层，最核心的概念有两个：IOC和AOP。两者之间，尤以IOC为重。</p>
-<p>在实践中，Spring全家桶中使用最广泛就是IOC和Spring MVC。从上图中，我们也可以看到，Spring MVC是依赖于IOC的。因此要学习Spring MVC，就必须先学习IOC。</p>
-<p>而在公司的内部培训，我都会有意把IOC 和SpringMVC完全独立起来进行，因为并不是所有的工程师（例如测试工程师）都对SpringMVC有需求。</p>
-<p>到这里，思路就清晰了。如果要学习Spring，必须掌握的就是IOC。因此，所谓的Spring前置知识，某种意义上，就是Spring IOC的前置知识。</p>
-<p>然后，我们再来简单讲解下IOC的概念。</p>
-<p>对初学者来说，初听到IOC，会觉得特别高大上。但如果真掰开讲明白，你就会发现其实特别简单。</p>
-<p>为了便于理解，我用一个例子的说明。</p>
-<p>这里有一个应用，包含两个Jar包，一个是myApp.jar，一个是lib.jar。其中myApp.jar包含了程序的主逻辑，由程序员A编写。lib.jar中定义了一个接口，和该接口的实现类，由程序员员B编写。</p>
-<p>如下图：</p>
-<p><img src="../images/image-20200412030845603.png" alt="image-20200412030845603"></p>
-<p>在lib.jar中，有一个接口Person，两个实现类Student、Teacher。在myApp.jar，通过代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">null</span>；</span><br></pre></td></tr></table></figure>
-
-<p>从而导致myApp.jar依赖于lib.jar。但因为语句Person p只是做了定义，而没有实际赋值。这时候我们就称myApp.jar仅依赖于lib.jar（通过接口Person），但并没有实现“注入”。</p>
-<p>然后，我们把程序进一步修改下，如图：</p>
-<p><img src="../images/image-20200412030909037.png" alt="image-20200412030909037"></p>
-<p>其中修改了语句：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Student();</span><br></pre></td></tr></table></figure>
-
-<p>这样，MyApp.jar就把Student的实例“注入”到了对象p中，也就是说，通过new关键字创建对象，这就是最常见的依赖注入方法。</p>
-<p>但这种写法有一个很大的缺点，那就是因为myApp.jar不仅依赖于Person接口，还依赖于具体的实现类Student，这是一种明显的<strong>强耦合</strong>。而如果哪天myApp.jar不想使用Student了，而想使用Teacher，那么程序员就不得不回过头来修改myApp.jar的代码。</p>
-<p>而在实际应用中，myApp.jar中往往包含了程序主流程。而主流程一旦完成，就应该保持相对稳定。如果有改变，也应该通过扩展的方式。这也就是架构设计中著名的“<strong>开关原则</strong>”，即主业务对修改关闭，对扩展开放。而使用Spring就可以达到这样的目的。</p>
-<p>下面我们就引入Spring IOC机制，把代码修改下。如图：</p>
-<p><img src="../images/image-20200412030928800.png" alt="image-20200412030928800"></p>
-<p>这样，在myApp.jar包中，就把对Person对象的具体注入从代码中移除，代之在spring.xml文件中定义。任何时候，只要修改Spring.xml的配置，就能改变myApp.jar中具体Person对象的注入。从而保证了“开关原则”。</p>
-<p>而上面的整个过程，就是通过Spring框架中的IOC机制来实现的。</p>
-<p>从中，你也能体察到Spring框架为什么对企业级程序这么重要性。因为企业级程序必然是复杂的，而要解决复杂度的前提就是解耦。可以说，没有解耦，所有企业级应用都会崩溃在千丝万缕的业务逻辑中。</p>
-<p>看到这里，你可能已经发现，对Spring的核心概念IOC来说，并没有涉及任何高深的Java语法，最多也就是接口和抽象类。因此学习Spring IOC，参考《Java核心技术》，只要学到前6章就可以了。</p>
-<p>因为Spring IOC的核心机制是建立在Java“反射”基础上的。因此，如果你有兴趣继续探究Spring IOC的核心原理，就有必要提前学习下Java与反射相关的概念。</p>
-<p>再说下Spring中另一个最常用的功能Spring MVC。</p>
-<p>Spring MVC的运行时建立在两个技术基础上：IOC和Servlet。如果不懂IOC，就搞不明不白Spring MVC是如何配置的。如果不懂Servlet，则就搞不理解Spring是如何注入及拦截Servlet消息的。而之后一旦Spring MVC在运行中出了问题，则必然会茫然不知所措。</p>
-<p>虽然Spring MVC中的V（view），最常见的输出目标是JSP页面。但因为现代的企业应用越来越倾向于前后端分离，后端系统只负责输出REST接口。因此在Spring MVC框架中，View这一层就没有存在的必要，学习JSP也就没有价值了。</p>
-<p>最后，再总结一下学习Spring（以IOC和Spring MVC为核心）必备的前置知识：</p>
-<ol>
-<li>《Java核心技术》前6章。</li>
-<li>Java反射原理（选学）。</li>
-<li>Servlet。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1880,7 +1832,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">172</span>
+          <span class="site-state-item-count">173</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
