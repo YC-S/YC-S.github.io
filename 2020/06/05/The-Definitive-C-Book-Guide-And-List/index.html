@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Reference (All Levels) The C Programming Language (2nd Edition) - Brian W. Kernighan and Dennis M. Ritchie (1988). Still a good, short but complete introduction to C (C90, not C99 or later versions),">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The_Definitive_C_Book_Guide_And_List">
+<meta property="og:url" content="http://yoursite.com/2020/06/05/The-Definitive-C-Book-Guide-And-List/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="Reference (All Levels) The C Programming Language (2nd Edition) - Brian W. Kernighan and Dennis M. Ritchie (1988). Still a good, short but complete introduction to C (C90, not C99 or later versions),">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-06T03:37:06.000Z">
+<meta property="article:modified_time" content="2020-06-06T03:37:55.458Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/05/The-Definitive-C-Book-Guide-And-List/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>The_Definitive_C_Book_Guide_And_List | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/05/The-Definitive-C-Book-Guide-And-List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          The_Definitive_C_Book_Guide_And_List
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-05 23:37:06 / Modified: 23:37:55" itemprop="dateCreated datePublished" datetime="2020-06-05T23:37:06-04:00">2020-06-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Reference-All-Levels"><a href="#Reference-All-Levels" class="headerlink" title="Reference (All Levels)"></a>Reference (All Levels)</h1><ul>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0131103628" target="_blank" rel="noopener">The C Programming Language (2nd Edition)</a> - Brian W. Kernighan and Dennis M. Ritchie (1988). Still a good, short but complete introduction to C (C90, not C99 or later versions), written by the inventor of C. However, the language has changed and good C style has developed in the last 25 years, and there are parts of the book that show its age.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/013089592X" target="_blank" rel="noopener">C: A Reference Manual (5th Edition)</a> - Samuel P. Harbison and Guy R. Steele (2002). An excellent reference book on C, up to and including C99. It is not a tutorial, and probably unfit for beginners. It’s great if you need to write a compiler for C, as the authors had to do when they started.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0596004362" target="_blank" rel="noopener">C Pocket Reference (O’Reilly)</a> - Peter Prinz and Ulla Kirch-Prinz (2002).</li>
+<li><a href="http://c-faq.com/" target="_blank" rel="noopener">The comp.lang.c FAQ</a> - Steve Summit. Web site with answers to many questions about C.</li>
+<li>Various versions of the C language standards can be found <a href="http://www.iso-9899.info/wiki/The_Standard" target="_blank" rel="noopener">here</a>. There is an online version of the <a href="http://port70.net/~nsz/c/c11/n1570.html" target="_blank" rel="noopener">draft C11 standard</a>.</li>
+<li><a href="http://www.knosof.co.uk/cbook/cbook.html" target="_blank" rel="noopener">The new C standard - an annotated reference</a> (Free PDF) - Derek M. Jones (2009). The “new standard” referred to is the old C99 standard rather than C11.</li>
+<li><a href="http://www.open-std.org/JTC1/SC22/WG14/www/C99RationaleV5.10.pdf" target="_blank" rel="noopener">Rationale for C99 Standard</a>.</li>
+</ul>
+<hr>
+<h1 id="Beginner"><a href="#Beginner" class="headerlink" title="Beginner"></a>Beginner</h1><ul>
+<li><a href="http://knking.com/books/c2/index.html" target="_blank" rel="noopener">C Programming: A Modern Approach (2nd Edition)</a> - K. N. King (2008). A good book for learning C.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0321776410" target="_blank" rel="noopener">Programming in C (4th Edition)</a> - Stephen Kochan (2014). A good general introduction and tutorial.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0672326965" target="_blank" rel="noopener">C Primer Plus (5th Edition)</a> - Stephen Prata (2004)</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0201183994" target="_blank" rel="noopener">A Book on C</a> - Al Kelley/Ira Pohl (1998).</li>
+<li><a href="http://publications.gbdirect.co.uk/c_book/" target="_blank" rel="noopener">The C Book</a> (Free Online) - Mike Banahan, Declan Brady, and Mark Doran (1991).</li>
+<li><a href="https://www.amazon.com//dp/0133976890" target="_blank" rel="noopener">C: How to Program (8th Edition)</a> - Paul Deitel and Harvey M. Deitel (2015). Lots of good tips and best practices for beginners. The index is very good and serves as a decent reference (just not fully comprehensive, and very shallow).</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/1449399916" target="_blank" rel="noopener">Head First C</a> - David Griffiths and Dawn Griffiths (2012).</li>
+<li><a href="https://www.apress.com/book/9781430248811" target="_blank" rel="noopener">Beginning C (5th Edition)</a> - Ivor Horton (2013). Very good explanation of pointers, using lots of small but complete programs.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0672324482" target="_blank" rel="noopener">Sams Teach Yourself C in 21 Days</a> - Bradley L. Jones and Peter Aitken (2002). Very good introductory stuff.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0023611413" target="_blank" rel="noopener">Applications Programming in ANSI C</a> - Richard Johnsonbaugh and Martin Kalin (1996).</li>
+</ul>
+<h1 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h1><ul>
+<li><p><a href="https://modernc.gforge.inria.fr/" target="_blank" rel="noopener">Modern C</a> — Jens Gustedt (2017 1st Edn; 2020 2nd Edn). Covers C in 5 levels (encounter, acquaintance, cognition, experience, ambition) from beginning C to advanced C. It covers C11 and C17, including threads and atomic access, which few other books do. Not all compilers recognize these features in all environments.</p>
+</li>
+<li><p><a href="http://www.cs.princeton.edu/software/cii/" target="_blank" rel="noopener">C Interfaces and Implementations</a> - David R. Hanson (1997). Provides information on how to define a boundary between an interface and implementation in C in a generic and reusable fashion. It also demonstrates this principle by applying it to the implementation of common mechanisms and data structures in C, such as lists, sets, exceptions, string manipulation, memory allocators, and more. Basically, Hanson took all the code he’d written as part of building <a href="http://www.cs.arizona.edu/icon" target="_blank" rel="noopener">Icon</a> and <a href="http://www.cs.princeton.edu/software/lcc/" target="_blank" rel="noopener">lcc</a> and pulled out the best bits in a form that other people could reuse for their own projects. It’s a model of good C programming using modern design techniques (including Liskov’s data abstraction), showing how to organize a big C project as a bunch of useful libraries.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201604612" target="_blank" rel="noopener">The C Puzzle Book</a> - Alan R. Feuer (1998)</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0131315099" target="_blank" rel="noopener">The Standard C Library</a> - P.J. Plauger (1992). It contains the complete source code to an implementation of the C89 standard library, along with extensive discussion about the design and why the code is designed as shown.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/1449327141" target="_blank" rel="noopener">21st Century C: C Tips from the New School</a> - Ben Klemens (2012). In addition to the C language, the book explains gdb, valgrind, autotools, and git. The comments on style are found in the last part (Chapter 6 and beyond).</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201314525" target="_blank" rel="noopener">Algorithms in C</a> - Robert Sedgewick (1997). Gives you a real grasp of implementing algorithms in C. Very lucid and clear; will probably make you want to throw away all of your other algorithms books and keep this one.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0673999866" target="_blank" rel="noopener">Pointers on C</a> - Kenneth Reek (1997).</p>
+</li>
+<li><p><a href="http://www.apress.com/9781430259114" target="_blank" rel="noopener">Pointers in C</a> - Naveen Toppo and Hrishikesh Dewan (2013).</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0321535421" target="_blank" rel="noopener">Problem Solving and Program Design in C (6th Edition)</a> - Jeri R. Hanly and Elliot B. Koffman (2009).</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/B00101Y58Q" target="_blank" rel="noopener">Data Structures - An Advanced Approach Using C</a> - Jeffrey Esakov and Tom Weiss (1989).</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0672318962" target="_blank" rel="noopener">C Unleashed</a> - Richard Heathfield, Lawrence Kirby, et al. (2000). Not ideal, but it is worth intermediate programmers practicing problems written in this book. This is a good cookbook-like approach suggested by comp.lang.c contributors.</p>
+</li>
+<li><p><a href="http://www.planetpdf.com/codecuts/pdfs/ooc.pdf" target="_blank" rel="noopener">Object-oriented Programming with ANSI-C</a> (Free PDF) - Axel-Tobias Schreiner (1993). The code gets a bit convoluted. If you want C++, use C++. It only uses C90, of course.</p>
+</li>
+</ul>
+<h1 id="Expert"><a href="#Expert" class="headerlink" title="Expert"></a>Expert</h1><ul>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0131774298" target="_blank" rel="noopener">Expert C Programming: Deep C Secrets</a> - Peter van der Linden (1994). Lots of interesting information and war stories from the Sun compiler team, but a little dated in places.</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0534951406" target="_blank" rel="noopener">Advanced C Programming by Example</a> - John W. Perry (1998).</li>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/0321637739" target="_blank" rel="noopener">Advanced Programming in the UNIX Environment</a> - Richard W. Stevens and Stephen A. Rago (2013). Comprehensive description of how to use the Unix APIs from C code, but not so much about the mechanics of C coding.</li>
+</ul>
+<hr>
+<h1 id="Uncategorized"><a href="#Uncategorized" class="headerlink" title="Uncategorized"></a>Uncategorized</h1><ul>
+<li><p><a href="http://cslibrary.stanford.edu/101/EssentialC.pdf" target="_blank" rel="noopener">Essential C</a> (Free PDF) - Nick Parlante (2003). Note that this describes the C90 language at several points (<em>e.g.</em>, in discussing <code>//</code> comments and placement of variable declarations at arbitrary points in the code), so it should be treated with some caution.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201845199" target="_blank" rel="noopener">C Programming FAQs: Frequently Asked Questions</a> - Steve Summit (1995). This is the book of the web site listed earlier. It doesn’t cover C99 or the later standards.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0596006977" target="_blank" rel="noopener">C in a Nutshell</a> - Peter Prinz and Tony Crawford (2005). Excellent book if you need a reference for C99.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201419505" target="_blank" rel="noopener">Functional C</a> - Pieter Hartel and Henk Muller (1997). Teaches modern practices that are invaluable for low-level programming, with concurrency and modularity in mind.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/020161586X" target="_blank" rel="noopener">The Practice of Programming</a> - Brian W. Kernighan and Rob Pike (1999). A very good book to accompany K&amp;R. It uses C++ and Java too.</p>
+</li>
+<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201179288" target="_blank" rel="noopener">C Traps and Pitfalls</a> by A. Koenig (1989). Very good, but the C style pre-dates standard C, which makes it less recommendable these days.</p>
+<p>Some have argued for the removal of ‘Traps and Pitfalls’ from this list because it has trapped some people into making mistakes; others continue to argue for its inclusion. Perhaps it should be regarded as an ‘expert’ book because it requires a moderately extensive knowledge of C to understand what’s changed since it was published.</p>
+</li>
+<li><p><a href="http://www.buildyourownlisp.com/" target="_blank" rel="noopener">Build Your Own Lisp</a> — Daniel Holden (2014). An enjoyable way to learn C.</p>
+</li>
+<li><p><a href="http://www.misra-c.com/Activities/MISRAC/tabid/160/Default.aspx" target="_blank" rel="noopener">MISRA-C</a> - industry standard published and maintained by the Motor Industry Software Reliability Association. Covers C89 and C99.</p>
+<p>Although this isn’t a book as such, many programmers recommend reading and implementing as much of it as possible. MISRA-C was originally intended as guidelines for safety-critical applications in particular, but it applies to any area of application where stable, bug-free C code is desired (who doesn’t want fewer bugs?). MISRA-C is becoming the de facto standard in the whole embedded industry and is getting increasingly popular even in other programming branches. There are (at least) three publications of the standard (1998, 2004, and the current version from 2012). There is also a MISRA Compliance Guidelines document from 2016, and MISRA C:2012 Amendment 1 — Additional Security Guidelines for MISRA C:2012 (published in April 2016).<br>Note that some of the strictures in the MISRA rules are not appropriate to every context. For example, directive 4.12 states “Dynamic memory allocation shall not be used”. This is appropriate in the embedded systems for which the MISRA rules are designed; it is not appropriate everywhere. (Compilers, for instance, generally use dynamic memory allocation for things like symbol tables, and to do without dynamic memory allocation would be difficult, if not preposterous.)</p>
+</li>
+<li><p>Archived lists of ACCU-reviewed books on <a href="https://web.archive.org/web/20071105015557/http://www.accu.informika.ru/bookreviews/public/reviews/0sb/beginner_s_c.htm" target="_blank" rel="noopener">Beginner’s C</a> (116 titles) from 2007 and <a href="https://web.archive.org/web/20081020081215/http://www.accu.informika.ru/bookreviews/public/reviews/0sb/advanced_c.htm" target="_blank" rel="noopener">Advanced C</a> (76 titles) from 2008. Most of these don’t look to be on the main site anymore, and you can’t browse that by subject anyway.</p>
+</li>
+</ul>
+<hr>
+<h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><p>Be wary of books written by <a href="http://catb.org/~esr/jargon/html/B/bullschildt.html" target="_blank" rel="noopener">Herbert Schildt</a>. In particular, you should stay away from <a href="https://rads.stackoverflow.com/amzn/click/com/0072121246" target="_blank" rel="noopener">C: The Complete Reference</a> (4th Edition, 2000), known in some circles as C: The Complete Nonsense.</p>
+<p>Also do not use the book <a href="https://smile.amazon.com/dp/9387284492/" target="_blank" rel="noopener">Let Us C</a> (16th Edition, 2017) by Yashwant Kanetkar. Many people view it as an outdated book that teaches Turbo C and has lots of obsolete, misleading and incorrect material. For example, page 137 discusses the expected output from <code>printf(&quot;%d %d %d\n&quot;, a, ++a, a++)</code> and does not categorize it as <a href="https://stackoverflow.com/questions/949433/why-are-these-constructs-using-pre-and-post-increment-undefined-behavior" target="_blank" rel="noopener">undefined behaviour</a> as it should.</p>
+<p><a href="https://learncodethehardway.org/c/" target="_blank" rel="noopener">Learn C The Hard Way</a> (2015) by Zed Shaw. A book with mixed reviews. <a href="http://hentenaar.com/dont-learn-c-the-wrong-way" target="_blank" rel="noopener">A critique of this book</a> by Tim Hentenaar:</p>
+<blockquote>
+<p>To summarize my views, which are laid out below, the author presents the material in a greatly oversimplified and misleading way, the whole corpus is a bundled mess, and some of the opinions and analyses he offers are just plain wrong. I’ve tried to view this book through the eyes of a novice, but unfortunately I am biased by years of experience writing code in C. It’s obvious to me that either the author has a flawed understanding of C, or he’s deliberately oversimplifying to the point where he’s actually misleading the reader (intentionally or otherwise.)</p>
+</blockquote>
+<p>“Learn C The Hard Way” is not a book that I could recommend to someone who is both learning to program and learning C. If you’re already a competent programmer in some other related language, then it represents an interesting and unusual exposition on C, though I have reservations about parts of the book. <em>Jonathan Leffler</em></p>
+<hr>
+<h1 id="Outdated"><a href="#Outdated" class="headerlink" title="Outdated"></a>Outdated</h1><ul>
+<li><a href="https://rads.stackoverflow.com/amzn/click/com/1565923065" target="_blank" rel="noopener">Practical C Programming (3rd Edition)</a> - Steve Oualline (1997)(Beginner)</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/05/In-Praise-of-Idleness/" rel="prev" title="In_Praise_of_Idleness">
+      <i class="fa fa-chevron-left"></i> In_Praise_of_Idleness
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference-All-Levels"><span class="nav-number">1.</span> <span class="nav-text">Reference (All Levels)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Beginner"><span class="nav-number">2.</span> <span class="nav-text">Beginner</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intermediate"><span class="nav-number">3.</span> <span class="nav-text">Intermediate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Expert"><span class="nav-number">4.</span> <span class="nav-text">Expert</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Uncategorized"><span class="nav-number">5.</span> <span class="nav-text">Uncategorized</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Warnings"><span class="nav-number">6.</span> <span class="nav-text">Warnings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Outdated"><span class="nav-number">7.</span> <span class="nav-text">Outdated</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1436668936&auto=0&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
