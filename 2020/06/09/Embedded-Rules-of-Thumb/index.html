@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="General It’s easier to keep a system working than to fix it after you break it. (James Grenning) Move errors from run-time to compile time whenever possible Programs without documentation have no valu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Embedded_Rules_of_Thumb">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/Embedded-Rules-of-Thumb/index.html">
+<meta property="og:site_name" content="Yuanchen&#39;s Blog">
+<meta property="og:description" content="General It’s easier to keep a system working than to fix it after you break it. (James Grenning) Move errors from run-time to compile time whenever possible Programs without documentation have no valu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-09T19:23:33.000Z">
+<meta property="article:modified_time" content="2020-06-09T19:24:28.612Z">
+<meta property="article:author" content="Yuanchen">
+<meta property="article:tag" content="Rules">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/09/Embedded-Rules-of-Thumb/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Embedded_Rules_of_Thumb | Yuanchen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yuanchen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/Embedded-Rules-of-Thumb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Embedded_Rules_of_Thumb
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-09 15:23:33 / Modified: 15:24:28" itemprop="dateCreated datePublished" datetime="2020-06-09T15:23:33-04:00">2020-06-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><ul>
+<li>It’s easier to keep a system working than to fix it after you break it. (James Grenning)</li>
+<li>Move errors from run-time to compile time whenever possible</li>
+<li>Programs without documentation have no value</li>
+<li>Comments should never restate what the code <em>obviously</em> does.</li>
+<li>Comments should aid maintenance by describing intention.</li>
+<li>Everything in a header file should be used in at least two source files</li>
+<li>Developer productivity is dramatically increased by eliminating distractions and interrupts<ul>
+<li>“Developers who live in cubicles probably aren’t very productive. Check how they manage interruptions.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>“Complexity grows exponentially; Robert Glass figures for every 25% increase in the problem’s difficulty the code doubles in size. A many-million line program can assume a number of states whose size no human can grasp.” (Jack Ganssle)</li>
+<li>In nature, the optimum is almost always in the middle somewhere. Distrust assertions that the optimum is at an extreme point. (Akin’s Laws)</li>
+<li>Past experience is excellent for providing a reality check. Too much reality can doom an otherwise worthwhile design, though (Akin’s Laws)</li>
+<li>As a rule of thumb, every hour you spend on defect prevention will reduce your repair time from three to ten hours. (<a href="https://stevemcconnell.com/articles/software-quality-at-top-speed/" target="_blank" rel="noopener">Steve McConnell</a>)</li>
+</ul>
+<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><ul>
+<li><p>Complex systems evolve out of simple systems that worked (John Gall)</p>
+<ul>
+<li>“A complex system that works is invariably found to have evolved from a simple system that worked. The inverse proposition also appears to be true: A complex system designed from scratch never works and cannot be made to work. You have to start over, beginning with a working simple system.” (John Gall)</li>
+</ul>
+</li>
+<li><p>If you can’t describe the behavior in plain English, you can’t successfully describe it with code</p>
+</li>
+<li><p>Decompose complex problems into smaller sub-problems</p>
+<ul>
+<li>If a problem can be decomposed into two or more independently solvable problems, then solve them independently first!</li>
+<li>After you have implemented and tested the solutions, combine the parts into a larger operation</li>
+</ul>
+</li>
+<li><p>A function should perform only one conceptual task</p>
+</li>
+<li><p>Don’t solve problems that don’t exist</p>
+</li>
+<li><p>Solve the specific problem, not the general case</p>
+</li>
+<li><p>To design a spacecraft right takes an infinite amount of effort. This is why it’s a good idea to design them to operate when some things are wrong. (Akin’s Laws)</p>
+</li>
+<li><p>Design is an iterative process. The necessary number of iterations is one more than the number you have currently done. This is true at any point in time. (Akin’s Laws)</p>
+</li>
+<li><p>There is never a single right solution. There are always multiple wrong ones, though. (Akin’s Laws)</p>
+</li>
+<li><p>(Edison’s Law) “Better” is the enemy of “good”. (Akin’s Laws)</p>
+</li>
+<li><p>(Shea’s Law) The ability to improve a design occurs primarily at the interfaces. This is also the prime location for screwing it up. (Akin’s Laws)</p>
+</li>
+<li><p>Studies have found that reworking defective requirements, design, and code typically consumes 40 to 50 percent of the total cost of software development. (</p>
+<p>Steve McConnell</p>
+<p>, citing Capers Jones)</p>
+<ul>
+<li>In the worst case, reworking a software requirements problem once the software is in operation typically costs 50 to 200 times what it would take to rework the problem in the requirements stage. (<a href="https://stevemcconnell.com/articles/software-quality-at-top-speed/" target="_blank" rel="noopener">Steve McConnell</a>, citing Boehm and Papaccio)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Cost"><a href="#Cost" class="headerlink" title="Cost"></a>Cost</h2><ul>
+<li><p>Software is expensive</p>
+<ul>
+<li>“Study after study shows that commercial code, in all of the realities of its undocumented chaos, costs $15 to $30 per line. A lousy 1000 lines of code – and it’s hard to do much in a thousand lines – has a very real cost of perhaps $30,000. The old saw ‘it’s only a software change’ is equivalent to ‘it’s only a brick of gold bullion’.” (Jack Ganssle)</li>
+<li>“The answer is $15 to $40 per line of code. At the $40 end you can get relatively robust, well designed code suitable for industry applications. The $15 end tends to be code with skimpy design packages and skimpy testing. (In other words, some people spend only $15/line, but their code is of doubtful quality.)” (Phil Koopman)</li>
+<li>“UPDATE, October 2015. It’s probably more like $25-$50 per line of code now. Costs for projects outsourced to Asia have done up dramatically as wages and competition for scarce coders have increased.” (Phil Koopman)</li>
+</ul>
+</li>
+<li><p>If you want to reduce software development costs, look at every requirements document and brutally strip out features. (Jack Ganssle)</p>
+<ul>
+<li>Lots of features equals slow progress and expensive development (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>Non-recurring engineering (</p>
+<p>NRE</p>
+<p>) costs must be amortized over every product sold</p>
+<ul>
+<li><p>Save NRE dollars by reducing features</p>
+</li>
+<li><p>Save NRE dollars by offloading software functionality into hardware components (increases</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>BOM
+
+
+
+cost)
+
+- Only useful if that hardware already exists!
+- Software/hardware partitioning should be assessed early in the design process</code></pre><ul>
+<li>Save NRE dollars by delivering the product faster (Jack Ganssle)</li>
+</ul>
+<ul>
+<li>It is easier</li>
+</ul>
+<p>  and cheaper</p>
+<p>  to completely rewrite the 5% of problematic functions than to fix the existing implementation</p>
+<ul>
+<li>These functions cost four times as much as other functions (Barry Boehm)</li>
+<li>“Perhaps we really blew it when first writing the code, but if we can identify these crummy routines, toss them out, and start over, we’ll save big bucks.” (Jack Ganssle)</li>
+</ul>
+<h2 id="Scheduling"><a href="#Scheduling" class="headerlink" title="Scheduling"></a>Scheduling</h2><ul>
+<li><p>There’s never enough time to do it right, but somehow, there’s always enough time to do it over. (Akin’s Laws)</p>
+</li>
+<li><p>Estimating dates instead of hours guarantees a late project (Jack Ganssle)</p>
+<ul>
+<li>“Scheduling disasters are inevitable when developers don’t separate calendar time from engineering hours.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>“If the schedule hallucinates a people-utilization factor of much over 50% the project will be behind proportionately.” (Jack Ganssle)</p>
+<ul>
+<li>“Some data suggests the average developer is only about 55% engaged on new product work. Other routine activities, from handling paperwork to talking about Survivor XVI, burn almost half the work week.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>We often fail to anticipate the difficult areas of development</p>
+<ul>
+<li>“Isn’t it amazing how badly we estimate schedules for most projects? 80% of embedded systems are delivered late. Most pundits figure the average project consumes twice the development effort originally budgeted.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>5% of functions consume 80% of</p>
+</li>
+</ul>
+<p>  debugging</p>
+<p>  time (Jack Ganssle)</p>
+<ul>
+<li>“I’ve observed that most projects wallow in the debug cycle, which often accounts for half of the entire schedule. Clearly, if we can do something about those few functions that represent most of our troubles, the project will get out the door that much sooner.” (Jack Ganssle)</li>
+</ul>
+<ul>
+<li><p>Timelines grow much faster than firmware size – double the lines of code, and the delivery date increases by more than 2x (Barry Boehm)</p>
+</li>
+<li><p>“The first 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10 percent of the code accounts for the other 90 percent of the development time.” (Tom Cargill)</p>
+</li>
+<li><p>When porting old code to a new project, if more than about 25% gets modified there’s not much of a schedule boost (Richard Selby)</p>
+</li>
+<li><p>Systems loaded to 90% of the processor capability require 2x development time over systems loaded at 70% or less. 95% loading triples development time. (Jack Ganssle)</p>
+<ul>
+<li>“When only a few bytes are left, even trivial features can take weeks as developers must rewrite massive sections of code to free up memory or CPU cycles.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>The schedule you develop will seem like a complete work of fiction up until the time your customer fires you for not meeting it. (Akin’s Laws)</p>
+</li>
+<li><p>Sometimes, the fastest way to get to the end is to throw everything out and start over. (Akin’s Laws)</p>
+</li>
+<li><p>(Patton’s Law of Program Planning) A good plan violently executed now is better than a perfect plan next week. (Akin’s Laws)</p>
+</li>
+</ul>
+<h2 id="Hardware"><a href="#Hardware" class="headerlink" title="Hardware"></a>Hardware</h2><ul>
+<li>Adding hardware increases power requirements</li>
+<li>Use of hardware accelerators to offload CPU-based algorithms can reduce power requirements</li>
+<li>Every sensor is a temperature sensor. Some sensors measure other things as well. (Elecia White)</li>
+<li>Break out nasty real-time hardware functions into independent CPUs (Jack Ganssle)<ul>
+<li>Handling 1000 interrupts per second from a device? Partition it to its own controller and offload all of the ISR overhead off of the main processor</li>
+</ul>
+</li>
+<li>Add hardware whenever it can simplify the software (Jack Ganssle)<ul>
+<li>This will dramatically reduce NRE and software development costs, at a tradeoff for an increase in BOM costs.</li>
+<li>Systems loaded to 90% of the processor capability require 2x development time over systems loaded at 70% or less. 95% loading triples development time. Add additional hardware to reduce loading. (Jack Ganssle)</li>
+</ul>
+</li>
+<li>(Atkin’s Law of Demonstrations) When the hardware is working perfectly, the really important visitors don’t show up. (Akin’s Laws)</li>
+</ul>
+<h2 id="Software-Reuse"><a href="#Software-Reuse" class="headerlink" title="Software Reuse"></a>Software Reuse</h2><ul>
+<li>Prefer to use existing, reviewed code that has already been re-used by others<ul>
+<li>e.g. use the <a href="https://embeddedartistry.com/fieldmanual-terms/standard-template-library/" target="_blank" rel="noopener">STL</a> instead of writing your own containers</li>
+</ul>
+</li>
+<li>Prefer simple, standard communication protocols over custom communication protocols</li>
+<li>Follow the “Rule of Three”: you are allowed to copy and paste the code once, but that when the same code is replicated three times, it should be extracted into a new procedure (Martin Fowler)</li>
+<li>Before a package is truly reusable, it must have been reused at least three times (Jack Ganssle)<ul>
+<li>“We’re not smart enough to truly understand the range of applications where a chunk of software may be used. Every domain requires its own unique features and tweaks; till we’ve actually used the code several times, over a wide enough range of apps, we won’t have generalized it enough to have it truly reusable.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>Reuse works best when done in large sections of code – think about reusing entire drivers or libraries, not functions (Jack Ganssle)</li>
+</ul>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><ul>
+<li>Premature optimization is a waste of time<ul>
+<li>“More computing sins are committed in the name of efficiency (without necessarily achieving it) than for any other single reason — including blind stupidity.” (W.A. Wulf)</li>
+<li>“The First Rule of Program Optimization: Don’t do it. The Second Rule of Program Optimization (for experts only!): Don’t do it yet.” (Michael A. Jackson)</li>
+</ul>
+</li>
+<li>Only optimize code after you have profiled it to identify the problem area<ul>
+<li>“Bottlenecks occur in surprising places, so don’t try to second guess and put in a speed hack until you have proven that’s where the bottleneck is.” (Rob Pike)</li>
+<li>“We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look carefully at the critical code; but only after that code has been identified” (Donald Knuth)</li>
+</ul>
+</li>
+<li>The Pareto principle can be applied to resource optimization: 80% of resources are used by 20% of operations<ul>
+<li>Alternatively, there is the 90/10 law in software engineering: 90% of the execution time of a program is spent executing 10% of the code</li>
+</ul>
+</li>
+<li>Algorithmic optimizations have a greater impact than micro optimizations<ul>
+<li>“Real efficiency gains come from changing the order of complexity of the algorithm, such as changing from O(N2) to O(NlogN) complexity”</li>
+</ul>
+</li>
+<li>Never sacrifice clarity for perceived efficiency, especially when the efficiency improvement has not been proven with data</li>
+</ul>
+<h2 id="Red-Flags-and-Problem-Areas"><a href="#Red-Flags-and-Problem-Areas" class="headerlink" title="Red Flags and Problem Areas"></a>Red Flags and Problem Areas</h2><ul>
+<li>When developers are afraid to change a function, it’s time to rewrite that code from scratch (Jack Ganssle)</li>
+<li>Duplicate code is an indication of poor design or poor programming habits. It must be eliminated.<ul>
+<li>“Duplication is a bad practice because it makes code harder to maintain. When the rule encoded in a replicated piece of code changes, whoever maintains the code will have to change it in all places correctly. This process is error-prone and often leads to problems. If the code exists in only one place, then it can be easily changed there.” (Jack Ganssle)</li>
+<li>“This rule is can even be applied to small number of lines of code, or even single lines of code. For example, if you want to call a function, and then call it again when it fails, it’s OK to have two call sites; however, if you want to try it five times before giving up, there should only be one call site inside a loop rather than 5 independent calls.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>Avoid shared resources wherever possible (Jack Ganssle)</li>
+<li>Eliminate globals!</li>
+<li>Disabling interrupts tends to be A Bad Thing (Jack Ganssle)<ul>
+<li>Even in the best of cases it’ll increase system latency and probably decrease performance</li>
+<li>Increased latency leads to missed interrupts and mismanaged devices</li>
+</ul>
+</li>
+<li>Be wary of solo Enable Interrupt (EI) commands (Jack Ganssle)<ul>
+<li>“An EI located outside an interrupt service routine (ISR) often suggests peril – with the exception of the initial EI in the startup code.” (Jack Ganssle)</li>
+<li>“When the enable is not part of a DI/EI pair (and these two instructions must be very close to each other to keep latency down and maintainability up) then the code is likely a convoluted, cryptic well; plumbing these depths will age the most eager of developers.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>Be wary when code is peppered with DI/EI Pairs (Jack Ganssle)<ul>
+<li>Excessive use of Disable Interrupt instructions suggests poor design</li>
+<li>“But these DI/EI pairs slip into code in great numbers when there’s a systemic design problem that yields lots of critical regions susceptible to reentrancy problems. You know how it is: chasing a bug the intrepid developer uncovers a variable trashed by context switching. Pop in quick DI/EI pair. Then there’s another. And another. It’s like a heroin user taking his last hit. It never ends.” (Jack Ganssle)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h2><ul>
+<li>Leave interrupts on, for all but the briefest times and in the most compelling of needs. (Jack Ganssle)</li>
+<li>If you disable interrupts in a block of code, re-enable them in the same block (Jack Ganssle)</li>
+<li>Keep ISRs small<ul>
+<li>Be wary of ISRs longer than half a page of code (Jack Ganssle)</li>
+<li>In most cases, there should be little-to-no processing inside of the handler (Phillip Johnston)</li>
+<li>Set a flag, add a value to a queue, and then rely on user-space code to handle more complex tasks</li>
+</ul>
+</li>
+<li>Minimize ISR latency to ensure the system does not miss interrupts (Jack Ganssle)</li>
+<li>Check the design of any ISR that reenables interrupts immediately before returning (Jack Ganssle)<ul>
+<li>Minimize critical sections within the ISR.</li>
+<li>“It’s perfectly fine to allow another device to interrupt an ISR! or even to allow the same interrupt to do so, given enough stack space. That suggests we should create service routines that do all of the non-reentrant stuff (like servicing hardware) early, issue the EI, and continue with the reentrant activities. Then pop registers and return.” (Jack Ganssle)</li>
+</ul>
+</li>
+</ul>
+<p>Avoid the following operations within interrupt handlers: (Phillip Johnston)</p>
+<ul>
+<li>Don’t declare any non-static variables inside the handler</li>
+<li>Avoid blocking function calls</li>
+<li>Avoid non-reentrant function calls</li>
+<li>Avoid any processing that takes non-trivial time</li>
+<li>Avoid operations with locks as you can deadlock your program in an ISR</li>
+<li>Avoid operations that involve dynamic memory allocations, as the allocation may require a lock and will take a non-determinate amount of time</li>
+<li>Avoid stack allocations<ul>
+<li>Depending on your architecture and operational model, your interrupt handler may utilize the stack of the interrupted thread or a common “interrupt stack”.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Function-Point-Rules-of-Thumb"><a href="#Function-Point-Rules-of-Thumb" class="headerlink" title="Function Point Rules of Thumb"></a>Function Point Rules of Thumb</h2><p>A function point is the measure of functionality of a part of a software, which <a href="https://www.ifpug.org/content/documents/Jones-OriginsOfFunctionPointMetrics.pdf" target="_blank" rel="noopener">you can read about here</a>. One <a href="https://embeddedartistry.com/fieldmanual-terms/c/" target="_blank" rel="noopener">C</a> function point is about 130 lines of code, on average.</p>
+<p>Here are Capers’s rules of thumb, where “FP” means function points. These were extracted from Jack Ganssle’s newsletter.</p>
+<ul>
+<li><p>Approximate number of bugs injected in a project: FP</p>
+<p>1.25</p>
+<ul>
+<li>Manual code inspections will find about 65% of the bugs. The number is much higher for very disciplined teams.</li>
+</ul>
+</li>
+<li><p>Number of people on the project is about: FP/150</p>
+</li>
+<li><p>Approximate page count for paper documents associated with a project: FP1.15</p>
+</li>
+<li><p>Each test strategy will find about 30% of the bugs that exist.</p>
+</li>
+<li><p>The schedule in months is about: FP0.4</p>
+</li>
+<li><p>Full time number of people required to maintain a project after release: FP/750</p>
+</li>
+<li><p>Requirements grow about 2%/month from the design through coding phases.</p>
+</li>
+<li><p>Rough number of test cases that will be created: FP1.2</p>
+</li>
+</ul>
+<h2 id="Humorous"><a href="#Humorous" class="headerlink" title="Humorous"></a>Humorous</h2><ul>
+<li>If anyone says you are to work with an acoustic modem, ask them if it will be located in another building. Refuse unless the answer is yes. (Elecia White)</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Rules/" rel="tag"># Rules</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/08/Programming-principles-from-id-software/" rel="prev" title="Programming_principles_from_id_software">
+      <i class="fa fa-chevron-left"></i> Programming_principles_from_id_software
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#General"><span class="nav-number">1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design"><span class="nav-number">2.</span> <span class="nav-text">Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cost"><span class="nav-number">3.</span> <span class="nav-text">Cost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheduling"><span class="nav-number">4.</span> <span class="nav-text">Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hardware"><span class="nav-number">5.</span> <span class="nav-text">Hardware</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software-Reuse"><span class="nav-number">6.</span> <span class="nav-text">Software Reuse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimization"><span class="nav-number">7.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Red-Flags-and-Problem-Areas"><span class="nav-number">8.</span> <span class="nav-text">Red Flags and Problem Areas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interrupts"><span class="nav-number">9.</span> <span class="nav-text">Interrupts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Point-Rules-of-Thumb"><span class="nav-number">10.</span> <span class="nav-text">Function Point Rules of Thumb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Humorous"><span class="nav-number">11.</span> <span class="nav-text">Humorous</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1436668936&auto=0&height=66"></iframe>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuanchen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">68</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuanchen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
