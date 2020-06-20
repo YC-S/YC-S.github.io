@@ -165,6 +165,224 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/20/top-spring-framework-interview-questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/20/top-spring-framework-interview-questions/" class="post-title-link" itemprop="url">top_35_spring_framework_interview_questions</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-20 17:09:49 / Modified: 17:17:19" itemprop="dateCreated datePublished" datetime="2020-06-20T17:09:49-04:00">2020-06-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a><strong>1. Introduction</strong></h2><p>In this article, we’re going to look at some of the most common Spring-related questions that might pop up during a job interview.</p>
+<h2 id="2-Spring-Core"><a href="#2-Spring-Core" class="headerlink" title="2. Spring Core"></a>2. Spring Core</h2><h3 id="Q1-What-Is-Spring-Framework"><a href="#Q1-What-Is-Spring-Framework" class="headerlink" title="Q1. What Is Spring Framework?"></a><strong>Q1. What Is Spring Framework?</strong></h3><p>Spring is the most broadly used framework for the development of Java Enterprise Edition applications. The core features of Spring can be used in developing any Java application.</p>
+<p>We can use its extensions for building various web applications on top of the Jakarta EE platform, or we may just use its dependency injection provisions in simple standalone applications.</p>
+<h3 id="Q2-What-Are-the-Benefits-of-Using-Spring"><a href="#Q2-What-Are-the-Benefits-of-Using-Spring" class="headerlink" title="Q2. What Are the Benefits of Using Spring?"></a><strong>Q2. What Are the Benefits of Using Spring?</strong></h3><p>Spring targets to make Jakarta EE development easier. Here are the advantages of using it:</p>
+<ul>
+<li><strong>Lightweight:</strong> there is a slight overhead of using the framework in development</li>
+<li><strong>Inversion of Control (IoC):</strong> Spring container takes care of wiring dependencies of various objects, instead of creating or looking for dependent objects</li>
+<li><strong>Aspect Oriented Programming (AOP):</strong> Spring supports AOP to separate business logic from system services</li>
+<li><strong>IoC container:</strong> it manages Spring Bean life cycle and project specific configurations</li>
+<li><strong>MVC framework:</strong> that is used to create web applications or RESTful web services, capable of returning XML/JSON responses</li>
+<li><strong>Transaction management:</strong> reduces the amount of boiler-plate code in JDBC operations, file uploading, etc., either by using Java annotations or by Spring Bean XML configuration file</li>
+<li><strong>Exception Handling:</strong> Spring provides a convenient API for translating technology-specific exceptions into unchecked exceptions</li>
+</ul>
+<h3 id="Q3-What-Spring-Sub-Projects-Do-You-Know-Describe-Them-Briefly"><a href="#Q3-What-Spring-Sub-Projects-Do-You-Know-Describe-Them-Briefly" class="headerlink" title="Q3. What Spring Sub-Projects Do You Know? Describe Them Briefly."></a><strong>Q3. What Spring Sub-Projects Do You Know? Describe Them Briefly.</strong></h3><ul>
+<li><strong>Core</strong> – a key module that provides fundamental parts of the framework, like IoC or DI</li>
+<li><strong>JDBC</strong> – this module enables a JDBC-abstraction layer that removes the need to do JDBC coding for specific vendor databases</li>
+<li><strong>ORM integration</strong> – provides integration layers for popular object-relational mapping APIs, such as JPA, JDO, and Hibernate</li>
+<li><strong>Web</strong> – a web-oriented integration module, providing multipart file upload, Servlet listeners, and web-oriented application context functionalities</li>
+<li><strong>MVC framework</strong> – a web module implementing the Model View Controller design pattern</li>
+<li><strong>AOP module</strong> – aspect-oriented programming implementation allowing the definition of clean method-interceptors and pointcuts</li>
+</ul>
+<h3 id="Q4-What-Is-Dependency-Injection"><a href="#Q4-What-Is-Dependency-Injection" class="headerlink" title="Q4. What Is Dependency Injection?"></a><strong>Q4. What Is Dependency Injection?</strong></h3><p>Dependency Injection, an aspect of Inversion of Control (IoC), is a general concept stating that you do not create your objects manually but instead describe how they should be created. An IoC container will instantiate required classes if needed.</p>
+<p>For more details, please refer <a href="https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="Q5-How-Can-We-Inject-Beans-in-Spring"><a href="#Q5-How-Can-We-Inject-Beans-in-Spring" class="headerlink" title="Q5. How Can We Inject Beans in Spring?"></a><strong>Q5. How Can We Inject Beans in Spring?</strong></h3><p>A few different options exist:</p>
+<ul>
+<li>Setter Injection</li>
+<li>Constructor Injection</li>
+<li>Field Injection</li>
+</ul>
+<p>The configuration can be done using XML files or annotations.</p>
+<p>For more details, check <a href="https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring" target="_blank" rel="noopener">this article</a>.</p>
+<h3 id="Q6-Which-Is-the-Best-Way-of-Injecting-Beans-and-Why"><a href="#Q6-Which-Is-the-Best-Way-of-Injecting-Beans-and-Why" class="headerlink" title="Q6. Which Is the Best Way of Injecting Beans and Why?"></a><strong>Q6. Which Is the Best Way of Injecting Beans and Why?</strong></h3><p>The recommended approach is to use constructor arguments for mandatory dependencies and setters for optional ones. Constructor injection allows injecting values to immutable fields and makes testing easier.</p>
+<h3 id="Q7-What-Is-the-Difference-Between-Beanfactory-and-Applicationcontext"><a href="#Q7-What-Is-the-Difference-Between-Beanfactory-and-Applicationcontext" class="headerlink" title="Q7. What Is the Difference Between Beanfactory and Applicationcontext?"></a><strong>Q7. What Is the Difference Between Beanfactory and Applicationcontext?</strong></h3><p><em>BeanFactory</em> is an interface representing a container that provides and manages bean instances. The default implementation instantiates beans lazily when <em>getBean()</em> is called.</p>
+<p><em>ApplicationContext</em> is an interface representing a container holding all information, metadata, and beans in the application. It also extends the <em>BeanFactory</em> interface but the default implementation instantiates beans eagerly when the application starts. This behavior can be overridden for individual beans.</p>
+<h3 id="Q8-What-Is-a-Spring-Bean"><a href="#Q8-What-Is-a-Spring-Bean" class="headerlink" title="Q8. What Is a Spring Bean?"></a><strong>Q8. What Is a Spring Bean?</strong></h3><p>The Spring Beans are Java Objects that are initialized by the Spring IoC container.</p>
+<h3 id="Q9-What-Is-the-Default-Bean-Scope-in-Spring-Framework"><a href="#Q9-What-Is-the-Default-Bean-Scope-in-Spring-Framework" class="headerlink" title="Q9. What Is the Default Bean Scope in Spring Framework?"></a><strong>Q9. What Is the Default Bean Scope in Spring Framework?</strong></h3><p>By default, a Spring Bean is initialized as a <em>singleton</em>.</p>
+<h3 id="Q10-How-to-Define-the-Scope-of-a-Bean"><a href="#Q10-How-to-Define-the-Scope-of-a-Bean" class="headerlink" title="Q10. How to Define the Scope of a Bean?"></a><strong>Q10. How to Define the Scope of a Bean?</strong></h3><p>To set Spring Bean’s scope, we can use <em>@Scope</em> annotation or “scope” attribute in XML configuration files. There are five supported scopes:</p>
+<ul>
+<li><strong>singleton</strong></li>
+<li><strong>prototype</strong></li>
+<li><strong>request</strong></li>
+<li><strong>session</strong></li>
+<li><strong>global-session</strong></li>
+</ul>
+<p>For differences, please refer <a href="https://docs.spring.io/spring/docs/3.0.0.M4/reference/html/ch03s05.html" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="Q11-Are-Singleton-Beans-Thread-Safe"><a href="#Q11-Are-Singleton-Beans-Thread-Safe" class="headerlink" title="Q11. Are Singleton Beans Thread-Safe?"></a><strong>Q11. Are Singleton Beans Thread-Safe?</strong></h3><p>No, singleton beans are not thread-safe, as thread safety is about execution, whereas the singleton is a design pattern focusing on creation. Thread safety depends only on the bean implementation itself.</p>
+<h3 id="Q12-What-Does-the-Spring-Bean-Lifecycle-Look-Like"><a href="#Q12-What-Does-the-Spring-Bean-Lifecycle-Look-Like" class="headerlink" title="Q12. What Does the Spring Bean Lifecycle Look Like?"></a><strong>Q12. What Does the Spring Bean Lifecycle Look Like?</strong></h3><p>First, a Spring bean needs to be instantiated, based on Java or XML bean definition. It may also be required to perform some initialization to get it into a usable state. After that, when the bean is no longer required, it will be removed from the IoC container.</p>
+<h3 id="Q13-What-Is-the-Spring-Java-Based-Configuration"><a href="#Q13-What-Is-the-Spring-Java-Based-Configuration" class="headerlink" title="Q13. What Is the Spring Java-Based Configuration?"></a><strong>Q13. What Is the Spring Java-Based Configuration?</strong></h3><p>It’s one of the ways of configuring Spring-based applications in a type-safe manner. It’s an alternative to the XML-based configuration.</p>
+<h3 id="Q14-Can-We-Have-Multiple-Spring-Configuration-Files-in-One-Project"><a href="#Q14-Can-We-Have-Multiple-Spring-Configuration-Files-in-One-Project" class="headerlink" title="Q14. Can We Have Multiple Spring Configuration Files in One Project?"></a><strong>Q14. Can We Have Multiple Spring Configuration Files in One Project?</strong></h3><p>Yes, in large projects, having multiple Spring configurations is recommended to increase maintainability and modularity.</p>
+<p>You can load multiple Java-based configuration files:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import</span>(&#123;MainConfig<span class="class">.<span class="keyword">class</span>, <span class="title">SchedulerConfig</span>.<span class="title">class</span>&#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+<p>Or load one XML file that will contain all other configs:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring-all.xml"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>And inside this XML file you’ll have:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">import</span> resource=<span class="string">"main.xml"</span>/&gt;</span><br><span class="line">&lt;<span class="keyword">import</span> resource=<span class="string">"scheduler.xml"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q15-What-Is-Spring-Security"><a href="#Q15-What-Is-Spring-Security" class="headerlink" title="Q15. What Is Spring Security?"></a><strong>Q15. What Is Spring Security?</strong></h3><p>Spring Security is a separate module of the Spring framework that focuses on providing authentication and authorization methods in Java applications. It also takes care of most of the common security vulnerabilities such as CSRF attacks.</p>
+<p>To use Spring Security in web applications, you can get started with a simple annotation: <em>@EnableWebSecurity</em>.</p>
+<h3 id="Q16-What-Is-Spring-Boot"><a href="#Q16-What-Is-Spring-Boot" class="headerlink" title="Q16. What Is Spring Boot?"></a><strong>Q16. What Is Spring Boot?</strong></h3><p>Spring Boot is a project that provides a pre-configured set of frameworks to reduce boilerplate configuration so that you can have a Spring application up and running with the smallest amount of code.</p>
+<h3 id="Q17-Name-Some-of-the-Design-Patterns-Used-in-the-Spring-Framework"><a href="#Q17-Name-Some-of-the-Design-Patterns-Used-in-the-Spring-Framework" class="headerlink" title="Q17. Name Some of the Design Patterns Used in the Spring Framework?"></a><strong>Q17. Name Some of the Design Patterns Used in the Spring Framework?</strong></h3><ul>
+<li><strong>Singleton Pattern:</strong> Singleton-scoped beans</li>
+<li><strong>Factory Pattern:</strong> Bean Factory classes</li>
+<li><strong>Prototype Pattern:</strong> Prototype-scoped beans</li>
+<li><strong>Adapter Pattern:</strong> Spring Web and Spring MVC</li>
+<li><strong>Proxy Pattern:</strong> Spring Aspect Oriented Programming support</li>
+<li><strong>Template Method Pattern:</strong> <em>JdbcTemplate</em>, <em>HibernateTemplate,</em> etc.</li>
+<li><strong>Front Controller:</strong> Spring MVC <em>DispatcherServlet</em></li>
+<li><strong>Data Access Object:</strong> Spring DAO support</li>
+<li><strong>Model View Controller:</strong> Spring MVC</li>
+</ul>
+<h3 id="Q18-How-Does-the-Scope-Prototype-Work"><a href="#Q18-How-Does-the-Scope-Prototype-Work" class="headerlink" title="Q18. How Does the Scope Prototype Work?"></a><strong>Q18. How Does the Scope Prototype Work?</strong></h3><p>Scope <em>prototype</em> means that every time you call for an instance of the Bean, Spring will create a new instance and return it. This differs from the default <em>singleton</em> scope, where a single object instance is instantiated once per Spring IoC container.</p>
+<h2 id="3-Spring-Web-MVC"><a href="#3-Spring-Web-MVC" class="headerlink" title="3. Spring Web MVC"></a><strong>3. Spring Web MVC</strong></h2><h3 id="Q19-How-to-Get-ServletContext-and-ServletConfig-Objects-in-a-Spring-Bean"><a href="#Q19-How-to-Get-ServletContext-and-ServletConfig-Objects-in-a-Spring-Bean" class="headerlink" title="Q19. How to Get *ServletContext* and *ServletConfig* Objects in a Spring Bean?"></a><strong>Q19. How to Get *ServletContext* and *ServletConfig* Objects in a Spring Bean?</strong></h3><p>You can do either by:</p>
+<ol>
+<li>Implementing Spring-aware interfaces.</li>
+<li>Using <em>@Autowired</em> annotation on those beans:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">ServletContext servletContext;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">ServletConfig servletConfig;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q20-What-Is-a-Controller-in-Spring-Mvc"><a href="#Q20-What-Is-a-Controller-in-Spring-Mvc" class="headerlink" title="Q20. What Is a Controller in Spring Mvc?"></a><strong>Q20. What Is a Controller in Spring Mvc?</strong></h3><p>Simply put, all the requests processed by the <em>DispatcherServlet</em> are directed to classes annotated with <em>@Controller</em>. Each controller class maps one or more requests to methods that process and execute the requests with provided inputs.</p>
+<h3 id="Q21-How-Does-the-Requestmapping-Annotation-Work"><a href="#Q21-How-Does-the-Requestmapping-Annotation-Work" class="headerlink" title="Q21. How Does the @Requestmapping Annotation Work?"></a><strong>Q21. How Does the @Requestmapping Annotation Work?</strong></h3><p>The <em>@RequestMapping</em> annotation is used to map web requests to Spring Controller methods. In addition to simple use cases, we can use it for mapping of HTTP headers, binding parts of the URI with <em>@PathVariable,</em> and working with URI parameters and the <em>@RequestParam</em> annotation.</p>
+<h2 id="4-Spring-Data-Access"><a href="#4-Spring-Data-Access" class="headerlink" title="4. Spring Data Access"></a><strong>4. Spring Data Access</strong></h2><h3 id="Q22-What-Is-Spring-Jdbctemplate-Class-and-How-to-Use-It"><a href="#Q22-What-Is-Spring-Jdbctemplate-Class-and-How-to-Use-It" class="headerlink" title="Q22. What Is Spring Jdbctemplate Class and How to Use It?"></a><strong>Q22. What Is Spring Jdbctemplate Class and How to Use It?</strong></h3><p>The Spring JDBC template is the primary API through which we can access database operations logic that we’re interested in:</p>
+<ul>
+<li>creation and closing of connections</li>
+<li>executing statements and stored procedure calls</li>
+<li>iterating over the <em>ResultSet</em> and returning results</li>
+</ul>
+<p>To use it, we’ll need to define the simple configuration of <em>DataSource</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"org.baeldung.jdbc"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringJdbcConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">mysqlDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DriverManagerDataSource dataSource = <span class="keyword">new</span> DriverManagerDataSource();</span><br><span class="line">        dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">        dataSource.setUrl(<span class="string">"jdbc:mysql://localhost:3306/springjdbc"</span>);</span><br><span class="line">        dataSource.setUsername(<span class="string">"guest_user"</span>);</span><br><span class="line">        dataSource.setPassword(<span class="string">"guest_password"</span>);</span><br><span class="line">  </span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q23-How-Would-You-Enable-Transactions-in-Spring-and-What-Are-Their-Benefits"><a href="#Q23-How-Would-You-Enable-Transactions-in-Spring-and-What-Are-Their-Benefits" class="headerlink" title="Q23. How Would You Enable Transactions in Spring and What Are Their Benefits?"></a><strong>Q23. How Would You Enable Transactions in Spring and What Are Their Benefits?</strong></h3><p>There are two distinct ways to configure <em>Transactions</em> – with annotations or by using Aspect Oriented Programming (AOP) – each with their advantages.</p>
+<p>The benefits of using Spring Transactions, according to the <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/transaction.html" target="_blank" rel="noopener">official docs</a>, are:</p>
+<ul>
+<li>Provide a consistent programming model across different transaction APIs such as JTA, JDBC, Hibernate, JPA, and JDO</li>
+<li>Support declarative transaction management</li>
+<li>Provide a simpler API for programmatic transaction management than some complex transaction APIs such as JTA</li>
+<li>Integrate very well with Spring’s various data access abstractions</li>
+</ul>
+<h3 id="Q24-What-Is-Spring-Dao"><a href="#Q24-What-Is-Spring-Dao" class="headerlink" title="Q24. What Is Spring Dao?"></a><strong>Q24. What Is Spring Dao?</strong></h3><p>Spring Data Access Object is Spring’s support provided to work with data access technologies like JDBC, Hibernate, and JPA in a consistent and easy way.</p>
+<h2 id="5-Spring-Aspect-Oriented-Programming-AOP"><a href="#5-Spring-Aspect-Oriented-Programming-AOP" class="headerlink" title="5. Spring Aspect-Oriented Programming (AOP)"></a><strong>5. Spring Aspect-Oriented Programming (AOP)</strong></h2><h3 id="Q25-What-Is-Aspect-Oriented-Programming"><a href="#Q25-What-Is-Aspect-Oriented-Programming" class="headerlink" title="Q25. What Is Aspect-Oriented Programming?"></a><strong>Q25. What Is Aspect-Oriented Programming?</strong></h3><p><em>Aspects</em> enable the modularization of cross-cutting concerns such as transaction management that span multiple types and objects by adding extra behavior to already existing code without modifying affected classes.</p>
+<h3 id="Q26-What-Are-Aspect-Advice-Pointcut-and-Joinpoint-in-Aop"><a href="#Q26-What-Are-Aspect-Advice-Pointcut-and-Joinpoint-in-Aop" class="headerlink" title="Q26. What Are Aspect, Advice, Pointcut, and Joinpoint in Aop?"></a><strong>Q26. What Are Aspect, Advice, Pointcut, and Joinpoint in Aop?</strong></h3><ul>
+<li><strong><em>Aspect</em></strong>: a class that implements cross-cutting concerns, such as transaction management</li>
+<li><strong><em>Advice\</em></strong>: the methods that get executed when a specific <em>JoinPoint</em> with matching <em>Pointcut</em> is reached in the application</li>
+<li><strong><em>Pointcut</em></strong>: a set of regular expressions that are matched with <em>JoinPoint</em> to determine whether <em>Advice</em> needs to be executed or not</li>
+<li><strong><em>JoinPoint</em></strong>: a point during the execution of a program, such as the execution of a method or the handling of an exception</li>
+</ul>
+<h3 id="Q27-What-Is-Weaving"><a href="#Q27-What-Is-Weaving" class="headerlink" title="Q27. What Is Weaving?"></a><strong>Q27. What Is Weaving?</strong></h3><p>According to the <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop.html" target="_blank" rel="noopener">official docs</a>, <em>weaving</em> is a process that links aspects with other application types or objects to create an advised object. This can be done at compile time, load time, or at runtime. Spring AOP, like other pure Java AOP frameworks, performs <em>weaving</em> at runtime.</p>
+<h2 id="6-Spring-5"><a href="#6-Spring-5" class="headerlink" title="6. Spring 5"></a><strong>6. Spring 5</strong></h2><h3 id="Q28-What-Is-Reactive-Programming"><a href="#Q28-What-Is-Reactive-Programming" class="headerlink" title="Q28. What Is Reactive Programming?"></a><strong>Q28. What Is Reactive Programming?</strong></h3><p>Reactive programming is about non-blocking, event-driven applications that scale with a small number of threads, with back pressure being a key ingredient that aims to ensure producers don’t overwhelm consumers.</p>
+<p>The primary benefits of reactive programming are:</p>
+<ul>
+<li>increased utilization of computing resources on multicore and multi-CPU hardware</li>
+<li>and increased performance by reducing serialization</li>
+</ul>
+<p>Reactive programming is generally event-driven, in contrast to reactive systems, which are message-driven. Thus, using reactive programming does not mean we’re building a reactive system, which is an architectural style.</p>
+<p>However, reactive programming may be used as a means to implement reactive systems if we follow the <a href="https://www.reactivemanifesto.org/" target="_blank" rel="noopener">Reactive Manifesto</a>, which is quite vital to understand.</p>
+<p>Based on this, reactive systems have four important characteristics:</p>
+<ul>
+<li><strong>Responsive</strong>: the system should respond in a timely manner</li>
+<li><strong>Resilient</strong>: in case the system faces any failure, it should stay responsive</li>
+<li><strong>Elastic</strong>: reactive systems can react to changes and stay responsive under varying workload</li>
+<li><strong>Message-driven</strong>: reactive systems need to establish a boundary between components by relying on asynchronous message passing</li>
+</ul>
+<h3 id="Q29-What-Is-Spring-Webflux"><a href="#Q29-What-Is-Spring-Webflux" class="headerlink" title="Q29. What Is Spring Webflux?"></a><strong>Q29. What Is Spring Webflux?</strong></h3><p><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux" target="_blank" rel="noopener">Spring WebFlux</a> is Spring’s reactive-stack web framework, and it’s an alternative to Spring MVC.</p>
+<h3 id="Q30-What-Are-the-Mono-and-Flux-Types"><a href="#Q30-What-Are-the-Mono-and-Flux-Types" class="headerlink" title="Q30. What Are the Mono and Flux Types?"></a><strong>Q30. What Are the Mono and Flux Types?</strong></h3><p>The WebFlux framework in Spring Framework 5 uses <a href="https://projectreactor.io/" target="_blank" rel="noopener">Reactor</a> as its async foundation.</p>
+<p>This project provides two core types: <em>Mono</em> to represent a single async value, and <em>Flux</em> to represent a stream of async values. They both implement the <em>Publisher</em> interface defined in the <a href="http://www.reactive-streams.org/" target="_blank" rel="noopener">Reactive Streams</a> specification.</p>
+<p><em>Mono</em> implements <em>Publisher</em> and returns 0 or 1 elements:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Mono</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Publisher</span>&lt;<span class="title">T</span>&gt; </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Also<em>, Flux</em> implements <em>Publisher</em> and returns <em>N</em> elements:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Flux</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Publisher</span>&lt;<span class="title">T</span>&gt; </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>By definition, the two types represent streams, hence they’re both lazy, which means nothing is executed until we consume the stream using the <em>subscribe()</em> method. Both types are immutable, therefore calling any method will return a new instance of <a href="https://www.baeldung.com/reactor-core#streams" target="_blank" rel="noopener"><em>Flux</em> or <em>Mono</em></a>.</p>
+<h3 id="Q31-What-Is-the-Use-of-Webclient-and-Webtestclient"><a href="#Q31-What-Is-the-Use-of-Webclient-and-Webtestclient" class="headerlink" title="Q31. What Is the Use of Webclient and Webtestclient?"></a><strong>Q31. What Is the Use of Webclient and Webtestclient?</strong></h3><p><em><a href="https://www.baeldung.com/spring-5-webclient" target="_blank" rel="noopener">WebClient</a></em> is a component in the new Web Reactive framework that can act as a reactive client for performing non-blocking HTTP requests. Being a reactive client, it can handle reactive streams with back pressure, and it can take full advantage of Java 8 lambdas. It can also handle both sync and async scenarios.</p>
+<p>On the other hand, the <em>WebTestClient</em> is a similar class that we can use in tests. Basically, it’s a thin shell around the <em>WebClient.</em> It can connect to any server over an HTTP connection. It can also bind directly to WebFlux applications using mock request and response objects, without the need for an HTTP server.</p>
+<h3 id="Q32-What-Are-the-Disadvantages-of-Using-Reactive-Streams"><a href="#Q32-What-Are-the-Disadvantages-of-Using-Reactive-Streams" class="headerlink" title="Q32. What Are the Disadvantages of Using Reactive Streams?"></a><strong>Q32. What Are the Disadvantages of Using Reactive Streams?</strong></h3><p>The major disadvantages of using reactive streams are:</p>
+<ul>
+<li>Troubleshooting a Reactive application is a bit difficult; </li>
+<li>There is limited support for reactive data stores, as traditional relational data stores have yet to embrace the reactive paradigm</li>
+<li>There’s an extra learning curve when implementing</li>
+</ul>
+<h3 id="Q33-Is-Spring-5-Compatible-With-Older-Versions-of-Java"><a href="#Q33-Is-Spring-5-Compatible-With-Older-Versions-of-Java" class="headerlink" title="Q33. Is Spring 5 Compatible With Older Versions of Java?"></a><strong>Q33. Is Spring 5 Compatible With Older Versions of Java?</strong></h3><p>In order to take advantage of Java 8 features, the Spring codebase has been revamped. This means older versions of Java cannot be used. Hence, the framework requires a minimum of Java 8.</p>
+<h3 id="Q34-How-Does-Spring-5-Integrate-With-Jdk-9-Modularity"><a href="#Q34-How-Does-Spring-5-Integrate-With-Jdk-9-Modularity" class="headerlink" title="Q34. How Does Spring 5 Integrate With Jdk 9 Modularity?"></a><strong>Q34. How Does Spring 5 Integrate With Jdk 9 Modularity?</strong></h3><p>In Spring 5, everything has been modularized, thus we won’t be forced to import jars that may not have the functionalities we’re looking for.</p>
+<p>Let’s see an example to understand the new module functionality in Java 9 and how to organize a Spring 5 project based on this concept.</p>
+<p>To start, let’s create a new class that contains a single method to return a <em>String</em> “HelloWorld”. We’ll place this within a new Java project – <em>HelloWorldModule</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hello;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"HelloWorld"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then let’s create a new module:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> com.hello &#123;</span><br><span class="line">  export com.hello;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, let’s create a new Java Project, <em>HelloWorldClient</em>, to consume the above module by defining a module:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> com.hello.client &#123;</span><br><span class="line">  <span class="keyword">requires</span> com.hello;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The above module will be available for testing now:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldClient</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    HelloWorld helloWorld = <span class="keyword">new</span> HelloWorld();</span><br><span class="line">    log.info(helloWorld.sayHello());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q35-Can-We-Use-Both-Web-Mvc-and-Webflux-in-the-Same-Application"><a href="#Q35-Can-We-Use-Both-Web-Mvc-and-Webflux-in-the-Same-Application" class="headerlink" title="Q35. Can We Use Both Web Mvc and Webflux in the Same Application?"></a><strong>Q35. Can We Use Both Web Mvc and Webflux in the Same Application?</strong></h3><p>As of now, Spring Boot will only allow either Spring MVC or Spring WebFlux, as Spring Boot tries to auto-configure the context depending on the dependencies that exist in its classpath.</p>
+<p>Also, Spring MVC cannot run on Netty. Moreover, MVC is a blocking paradigm and WebFlux is a non-blocking style, therefore we shouldn’t be mixing both together, as they serve different purposes.</p>
+<h2 id="7-Conclusion"><a href="#7-Conclusion" class="headerlink" title="7. Conclusion"></a><strong>7. Conclusion</strong></h2><p>In this extensive article, we’ve explored some of the most important questions for a technical interview all about Spring.</p>
+<p>We hope that this article will help you in your upcoming Spring interview. Good luck!</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/behavoir-questions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1450,71 +1668,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/%E5%87%AF%E6%96%87%E5%87%AF%E5%88%A9-Will-Spiritual-Robots-Replace-Humanity-by-2100/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/10/%E5%87%AF%E6%96%87%E5%87%AF%E5%88%A9-Will-Spiritual-Robots-Replace-Humanity-by-2100/" class="post-title-link" itemprop="url">凯文凯利_Will_Spiritual_Robots_Replace_Humanity_by_2100</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-10 23:42:57 / Modified: 23:43:35" itemprop="dateCreated datePublished" datetime="2020-06-10T23:42:57-04:00">2020-06-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2000年4月，道格拉斯·霍夫斯塔特（Douglas Hofstadter）在斯坦福大学组织会议，讨论这个问题：“2100年智能机器人将取代人类吗？”与会者有比尔·乔伊（Bill Joy）、雷·库兹维尔（Ray Kurzweil）、汉斯·莫拉维克（Hans Moravec）、约翰·霍兰德（John Holland）和我。这是个严肃的问题。<br>　　我决定通过分析问题中的<strong>每个词</strong>来回答这个问题。</p>
-<h2 id="2100"><a href="#2100" class="headerlink" title="　　2100"></a>　　<strong>2100</strong></h2><p>　　我发现，尤其是在回顾有关科技的长期历史时，以人类的世代为标准大有好处。我粗略估算每25年为一代。文明开始于一万年前——最古老的城市耶利哥诞生于公元前8000年，它创造的文明如今在耶利哥和世界其它地区延续了约400代。那是400个由母亲到女儿的生育周期。文明人类的400代并不很长。如果没有别的事情可做，我们几乎可以背熟400个周期所有的名字。400代之后，我们已经成为不同于初期的人类。大约在8代之前，我们才有自动装置和机器人的概念，在两代之前才制造出第一部电子计算机。整个万维网的诞生还不到2000天！按同样的人类寿命计算，距离2100年只有四代。如果我们在2100年转变为机器人，那么文明的人类将仅延续400代。那将是生命历史上一个物种最短的寿命。</p>
-<h2 id="人类"><a href="#人类" class="headerlink" title="　　人类"></a>　　<strong>人类</strong></h2><p>　　在即将到来的世纪，核心问题（即主要问题）不是“人工智能是什么？”，而是“人类是什么？”人类有什么用？我预测，在即将到来的世纪，各种有关“人类是什么”的问题将成为《今日美国》之类报纸经常用到的标题。电影、小说、会议和网站都将设法解决这个核心问题，“我们是谁？人类是什么？”在长期繁荣的经济发展支持下，一切皆有可能，一切皆不确定，我们将遇到更多有关自己身份的问题，而不是这些问题的答案。我们是谁？男性或女性，父亲、美国人或人类是什么意思？下个世纪有可能被形容为大规模、全球范围的百年身份危机。到2100年，人们会为回溯到今天的我们人类感到惊奇，因为我们竟然知道人类是什么。</p>
-<h2 id="取代"><a href="#取代" class="headerlink" title="　　取代"></a>　　<strong>取代</strong></h2><p>　　取代在自然界很罕见。我们现在之所以拥有二百万个物种，正是因为大多数新物种并不会取代老物种，它们宁愿与现有的生物体交织起来，挤进小生境之间，以其它物种的成就为基础。创立一个新的小生境远比取代已被占居的小生境容易得多。大多数物种的灭绝不是因为有篡位者，而是因为其它因素，如气候变化、彗星或其自身造成的麻烦。取代或淘汰人类似乎不可能。假如我们不知道人类是什么，我们的角色就可能会改变，我们更有可能重新定义自己，而不是消失。</p>
-<h2 id="机器人"><a href="#机器人" class="headerlink" title="　　机器人"></a>　　<strong>机器人</strong></h2><p>　　一般而言，我喜欢汉斯·莫拉维克（Hans Moravec）的确切阐述：这些机器人是我们的孩子。如何养育孩子？我们培养他们必然是为了放手。如果我们的孩子永远不离开我们的控制，我们不只会失望，而且会变得残忍。为了创新，为了富有想象力、创造力和自由，孩子需要脱离其制造者的控制。我们心目中的孩子——机器人也一样。一个家长，有一个得不到关心的孩子，他会一点都不担心吗？我们花了很长时间才认识到，科技的力量与其固有的失控及其固有的令人惊喜且具有生产力的能力成比例。事实上，除非我们不能再为科技操心，它的创新就没有尽头。强大的科技需要责任心。由于机器人具有繁殖能力，我们需要更强大的责任心。我们应该有目的地培养我们的机器人孩子成为好公民。也就是说，要逐渐为他们灌输价值观，以便在我们放开手时，他们能够作出负责任的决定。</p>
-<h2 id="智能"><a href="#智能" class="headerlink" title="　　智能"></a>　　<strong>智能</strong></h2><p>　　我们能够想象的最智慧的事情是什么？与一个外星人进行可验证的接触将动摇国教的基础。无论外星人给出的答案是什么，都将重新提出有关上帝的问题。我认为《接触》是唯一一部使神学者成为明星的影片。我们不必等待外星智能探索项目与外星人接触。我们将通过制造外星人，也就是说通过制造机器人来完成这个任务。这样一来，外星人就有了另一个名字：人工智能。担心人工智能成为人造人类的人大错而特错。人工智能将更接近于人工外星人。你的计算机在算法上已经比这个房间里任何人都更聪明了。为什么我们并没有因此而感到威胁？因为它是“另类”，是一种不同的智能，是比我们高级，而我们并不会特别妒忌的智能。我们创造的智能，包括最聪明的人工智能，大多数将成为“另类”。实际上，在各种有意识智能的可能空间，可能存在着两百万种其它智能物种，而不只是我们所知的一种（人类）——它们每一种都像计算机和海豚一样，是独特的、不同的。我们没有理由去克隆一个人类智能，因为制造传统版本的人类非常容易。在即将到来的世纪，我们要做的努力就是利用迄今为止所有的智能（人造的和自然的）创造所有可能的新智能。我认为迎接我想到的这些智能将是我们目前所能想象的最智慧的事情。</p>
-<h2 id="会取代"><a href="#会取代" class="headerlink" title="　　会取代"></a>　　<strong>会取代</strong></h2><p>　　我认为，科技有自己的日程表。我问自己的问题是，科技想要什么？概括地讲，如果说科技是个孩子，甚至是个青少年，能了解“青少年想要什么”确实是有益的。我们称为“科技”的这个系统，它的先天欲望、固有偏爱、内在驱动力是什么？一旦知道科技想要什么，我们就不必对所有这些需求让步，不必超过你所放任的青春期孩子的任何欲望。不过，你也不可能完全拒绝这些需求。科技“会”希望这些事情发生吗？我认为，它们希望其发生。我们所了解的科技是，它想更小（摩尔定律），它想更快（库茨维尔定理），我猜，科技想做人类所做的任何事情（凯利定律）。我们人类发现了其它生物的巨大价值，并逐渐发现其它智能的巨大价值。我认为，机器人没有理由发现不了人类也同样有价值。机器人能够，或者想要做一切人类所做的事吗？不，通常我们会让它们做我们不愿做的事。那么之后，我们人类做什么呢？机器人将第一次赋予我们力量说：我们想做的任何事。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1585,7 +1738,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-count">197</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
