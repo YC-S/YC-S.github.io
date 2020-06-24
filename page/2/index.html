@@ -165,6 +165,169 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/spring-start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/13/spring-start/" class="post-title-link" itemprop="url">spring_start</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-13 22:19:17 / Modified: 22:21:38" itemprop="dateCreated datePublished" datetime="2020-06-13T22:19:17-04:00">2020-06-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>We are about to hit our first steps towards the most popular application development framework for enterprise Java applications.</p>
+<h1 id="Hello-Spring-👋"><a href="#Hello-Spring-👋" class="headerlink" title="Hello Spring! 👋"></a>Hello Spring! 👋</h1><p>When Spring came out, it was a simpler, a light-weight alternative to J2EE, to make J2EE development easier.</p>
+<p><em>Ok. But, hold on. What enterprise Java refers to?</em></p>
+<p>Enterprise Java refers to Java enterprise software. It’s a computer software used to satisfy the needs of an organization rather than individual users. Examples can include: accounting software, billing Management, business process management, CMS, CRM, ERP, etc.</p>
+<p>📣 <em>So, what are the benefits of using Spring?</em></p>
+<ul>
+<li>It uses Java <strong>POJOs</strong> (Plain Old Java Object), which make it much simpler to build enterprise-class applications as compared to the heavyweight EJBs ( from the earlier versions of J2EE).</li>
+</ul>
+<blockquote>
+<p><em>💡</em>A POJO is a Java object not bound by any restriction other than those forced by the Java language specification. So, POJO should not have to extend pre-specified classes in or implement pre-specified interfaces in the framework.</p>
+</blockquote>
+<ul>
+<li>Promotes loose coupling by making use of <strong>dependency of injection</strong>. So, instead of hard-coding the dependencies of an object, you simply specify the dependencies via configuration file (or annotations, or java code).</li>
+<li>Uses <strong>AOP (Aspect Oriented Programming).</strong> It allows the separation of cross-cutting concerns (i.e. logging, auditing, declarative transactions, security, caching, etc) from the business logic.</li>
+<li>Minimize the <strong>boilerplate Java code</strong>. It has a collection of helper packages and classes to make it easier and avoid boilerplate code, and you have to worry only about the classes you need and ignore the rest.</li>
+<li>It makes use of some of the <strong>existing technologies</strong> like several ORM frameworks, logging frameworks, JEE, Quartz and JDK timers, and other.</li>
+<li>The core features of the Spring framework can be used in developing any Java application, but there are extensions for building <strong>web applications</strong> on top of the Java EE platform.</li>
+</ul>
+<hr>
+<p>Now, we are going to explore some concepts that lie as the ❤️ of Spring.</p>
+<h2 id="Dependency-Injection-DI"><a href="#Dependency-Injection-DI" class="headerlink" title="Dependency Injection (DI)"></a>Dependency Injection (DI)</h2><p>The <a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener"><strong>Inversion of Control (IoC)</strong></a> is a design principle in which the flow of control of a system is inverted. It’s a general concept, where the dependency injection is one concrete example of it.</p>
+<blockquote>
+<p><em>💡</em> The Spring IoC Container creates, manages, and injects object’s dependencies.</p>
+</blockquote>
+<p>The dependency injection separates an object from its dependencies, so we can decide which dependencies to be injected during the run time.</p>
+<blockquote>
+<p><em>💡</em> This decision is done in Spring in the beans configuration file (or using annotations or java code) instead of modifying the code, as we’ll see later.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Service service;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// A service object will be injected by Spring IoC container</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">App</span> <span class="params">(Service service)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.service = service;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And the benefit is, we are able to replace and extend the functionality of the dependencies (services) without changing the dependent (App) class at all.</p>
+<h2 id="Aspect-Oriented-Programming-AOP"><a href="#Aspect-Oriented-Programming-AOP" class="headerlink" title="Aspect Oriented Programming (AOP)"></a>Aspect Oriented Programming (AOP)</h2><p>It allows the separation of <em>cross-cutting concerns</em> from the business logic.</p>
+<blockquote>
+<p><em>💡</em>The cross-cutting concerns are features that span across different parts of the application and affects the entire application. Examples → logging, declarative transactions, security, caching, etc.</p>
+</blockquote>
+<p>📣 <em>But, why we would use it?</em></p>
+<p>What happens if we need to change, for example, a specific security consideration across all the application. Such a change would require a major effort, especially, if this security consideration is used across many methods.</p>
+<p>So, AOP attempts to solve this problem by allowing us to express cross-cutting concerns in stand-alone modules called “aspects”.</p>
+<p>For example, a security module “aspect” can include “advice” that performs a security check (actual piece of code that will be executed), and a “join point” which defines when (i.e. when the code is executed) in the corresponding program the aspect code should be executed.</p>
+<p>This can be done either using XML syntax, or syntax based on “<a href="https://en.wikipedia.org/wiki/AspectJ" target="_blank" rel="noopener">AspectJ</a>”, which uses Java code.</p>
+<blockquote>
+<p><em>🔦</em> <strong>DI vs AOP →</strong> DI helps you decouple your application objects from it’s dependencies, while AOP helps you decouple cross-cutting concerns from the objects.</p>
+</blockquote>
+<h1 id="Spring-Architecture-🏠"><a href="#Spring-Architecture-🏠" class="headerlink" title="Spring Architecture 🏠"></a>Spring Architecture 🏠</h1><p>Spring is organized in a modular fashion which allows you to worry only about the modules you need and ignore the rest.</p>
+<blockquote>
+<p><em>💡**</em>Modular programming** is a software design technique that separates the functionality of a program into independent modules, such that each contains one specific functionality.</p>
+<p><em>🔦</em> <strong>Modularity vs AOP →</strong> The key unit of modularity in OOP is the class, whereas in AOP the unit of modularity is the aspect.</p>
+</blockquote>
+<p>It provides about 20 modules. All modules are built on the top of its core container. These modules provide everything that a developer may need for use in the enterprise application development.</p>
+<h2 id="Core-Container"><a href="#Core-Container" class="headerlink" title="Core Container"></a>Core Container</h2><p>It’s used for creating beans and manage beans dependencies.</p>
+<ul>
+<li>The <strong>Core</strong> and <strong>Bean</strong> modules provide the fundamental parts of the framework, including the IoC and Dependency Injection features.</li>
+<li>The <strong>Bean</strong> module provides <em>BeanFactory</em>, which is a sophisticated implementation of the factory pattern. It decouples the configuration and specification of dependencies from the actual program logic.</li>
+<li>The <strong>Context</strong> module builds on the Core and Beans modules. It is a means to access any objects defined and configured.</li>
+</ul>
+<blockquote>
+<p><em>💡</em>The context module extends the BeanFactory and adds support for application lifecycle events, and validation. It enables many enterprise services such as JNDI access, EJB integration, remoting and scheduling, and also facilitates easy integration with the other frameworks.</p>
+</blockquote>
+<ul>
+<li>The <strong>SpEL</strong> module provides a powerful expression language for querying and manipulating objects during the runtime.</li>
+</ul>
+<h2 id="Data-Access-Integration-Modules"><a href="#Data-Access-Integration-Modules" class="headerlink" title="Data Access/Integration Modules"></a>Data Access/Integration Modules</h2><p>It’s used to communicate with the database.</p>
+<ul>
+<li><strong>JDBC</strong>: Provides a JDBC-abstraction layer that removes the need for JDBC related coding.</li>
+<li><strong>ORM</strong>: Provides an integration layers for popular object-relational mapping APIs, including JPA, JDO, Hibernate, and iBatis.</li>
+<li><strong>OXM</strong>: Provides an abstraction layer that supports Object/XML mapping implementations.</li>
+<li><strong>The Java Messaging Service (JMS)</strong>: Contains features for producing and consuming messages (emails).</li>
+<li><strong>Transaction</strong>: It supports transaction management for classes.</li>
+</ul>
+<h2 id="Web-Modules"><a href="#Web-Modules" class="headerlink" title="Web Modules"></a>Web Modules</h2><p>It’s the home of Sring MVC framework. We can integrate other technologies like JSF.</p>
+<ul>
+<li><strong>Web</strong>: Provides basic web-oriented integration features such as multipart file upload functionality and the initialization of the IoC container using Servlet listeners and a web-oriented application context.</li>
+<li><strong>Web-MVC</strong>: Contains Spring’s <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/mvc.html#mvc-introduction" target="_blank" rel="noopener">Model-View-Controller (MVC)</a> and REST Web Services implementation for web applications.</li>
+<li><strong>Web-Sockets</strong>: Provides support for WebSocket-based, two-way communication between the client and the server in web applications.</li>
+<li><strong>Web-Portlet</strong>: Provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-MVC module.</li>
+</ul>
+<h2 id="AOP-and-Instrumentation"><a href="#AOP-and-Instrumentation" class="headerlink" title="AOP and Instrumentation"></a>AOP and Instrumentation</h2><ul>
+<li><strong>AOP</strong>: Provides an aspect-oriented programming implementation allowing you to separate the cross-cutting concerns from the business logic (as explained before).</li>
+<li><strong>Aspects</strong>: It’s a separate module provides integration with AspectJ.</li>
+<li><strong>Instrumentation</strong>: Provides support to class instrumentation support and classloader implementations.</li>
+</ul>
+<h2 id="Messaging"><a href="#Messaging" class="headerlink" title="Messaging"></a>Messaging</h2><p>It serves as a foundation for messaging-based applications.</p>
+<p>It brings the features of asynchronous messaging system and provides support for STOMP to be used over WebScokets for users to exchange messages.</p>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p>It supports the <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/unit-testing.html" target="_blank" rel="noopener">unit testing</a> and <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/integration-testing.html" target="_blank" rel="noopener">integration testing</a> of Spring components with JUnit or TestNG. It also provides <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/unit-testing.html#mock-objects" target="_blank" rel="noopener">mock objects</a> that you can use to test your code in isolation.</p>
+<hr>
+<h1 id="Setting-Up-The-Environment-💪"><a href="#Setting-Up-The-Environment-💪" class="headerlink" title="Setting Up The Environment 💪"></a>Setting Up The Environment 💪</h1><p>Before digging deeper, and write out first code in Spring, we need to prepare our development environment.</p>
+<h2 id="1-Java-Development-Kit-JDK"><a href="#1-Java-Development-Kit-JDK" class="headerlink" title="[1] Java Development Kit (JDK)"></a>[1] Java Development Kit (JDK)</h2><p>Make sure that Java Development Kit (JDK) is already installed.</p>
+<h2 id="2-Install-Java-Application-Server"><a href="#2-Install-Java-Application-Server" class="headerlink" title="[2] Install Java Application Server."></a><strong>[2] Install Java Application Server.</strong></h2><p>There are many options. One of the most widely used is <a href="https://tomcat.apache.org/" target="_blank" rel="noopener">Tomcat Server</a>.</p>
+<p>So, go to the “Download” section, choose the version, and download the appropriate link from “Binary Distributions”.</p>
+<p>After download, run the installer, and verify the installation by typing <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> in the browser URL (by default it listens to 8080 port).</p>
+<h2 id="3-Install-Java-Integrated-Development-Environment-IDE"><a href="#3-Install-Java-Integrated-Development-Environment-IDE" class="headerlink" title="[3] Install Java Integrated Development Environment (IDE)."></a><strong>[3] Install Java Integrated Development Environment (IDE).</strong></h2><p>Again, there are many options to use. <a href="https://www.eclipse.org/downloads/?" target="_blank" rel="noopener">Eclipse</a> is the most popular.</p>
+<p>So, search for “Eclipse IDE for Java EE Developers”, and download it. After it downloads, unzip the file, and run the eclipse application.</p>
+<h2 id="4-Connecting-Tomcat-to-Intellij"><a href="#4-Connecting-Tomcat-to-Intellij" class="headerlink" title="[4] Connecting Tomcat to Intellij"></a><strong>[4] Connecting Tomcat to Intellij</strong></h2><p>We can use Intellij to run Tomcat and easily deploy our application to Tomcat. Click on the “Servers” tab in Eclipse, create a new server, and choose Tomcat.</p>
+<blockquote>
+<p><em>💡</em>Eclipse gives you the option to download and install Tomcat if not already installed when creating a new server.</p>
+</blockquote>
+<h2 id="5-Downloading-Spring-JAR-Files-Using-Maven"><a href="#5-Downloading-Spring-JAR-Files-Using-Maven" class="headerlink" title="[5] Downloading Spring JAR Files / Using Maven"></a><strong>[5] Downloading Spring JAR Files / Using Maven</strong></h2><p>Go to Spring’s <a href="https://repo.spring.io/release/org/springframework/spring/" target="_blank" rel="noopener">download page</a>, and choose the latest version. Create a new “Java Project”, and a new folder also called “lib” inside the project. Now, copy all the jar files of Spring framework inside the “lib” folder.</p>
+<p>Spring needs “<a href="https://commons.apache.org/proper/commons-logging/download_logging.cgi" target="_blank" rel="noopener">Apache Commons Logging</a>” to <a href="https://stackoverflow.com/a/14055668" target="_blank" rel="noopener">log its own data</a>. So, download the jar file, and add it to “lib” folder of your java project.</p>
+<p>Finally, you need to add these jar files to the build path to be referenced by our Java application. Go to “properties” of your project, choose “Java Build Path”, then “Libraries”, and add all jar files in “lib” folder.</p>
+<p>📣 <em>But, what about Maven? …</em></p>
+<h2 id="Maven-Recommended"><a href="#Maven-Recommended" class="headerlink" title="Maven (Recommended)"></a>Maven (Recommended)</h2><p>It’s a tool used to describe how software is built, and its dependencies. It then downloads all the jar files from the internet automatically. So, instead of manually downloading the jar files, we can use Maven instead.</p>
+<p>To download, install Maven for Eclipse, here is <a href="https://stackoverflow.com/a/13640110" target="_blank" rel="noopener">a step-by-step guide</a>.</p>
+<p>After that, we can add all the dependencies in the “pom.xml” file, which can be found inside the Eclipse project as soon as you convert it to Maven project.</p>
+<p>Each dependency has properties, like the <em>groupId</em>, <em>artifactId</em>, and <em>version</em>. You can find all dependencies and their properties values in <a href="https://mvnrepository.com/" target="_blank" rel="noopener">Maven Repository</a>.</p>
+<p>Finally, to install these dependencies after adding them to “pom.xml” file, right-click on your project, choose “Maven”, then “Update Project”. That’s it.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/%E8%AF%BA%E7%93%A6-%E6%96%AF%E7%9A%AE%E7%93%A6%E5%85%8B-%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E5%85%A8%E7%90%83%E6%99%BA%E8%83%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1361,75 +1524,6 @@ cost)
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/04/%E6%80%8E%E4%B9%88%E7%9C%8B%E5%BE%85%E5%8B%A4%E8%83%BD%E8%A1%A5%E6%8B%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/04/%E6%80%8E%E4%B9%88%E7%9C%8B%E5%BE%85%E5%8B%A4%E8%83%BD%E8%A1%A5%E6%8B%99/" class="post-title-link" itemprop="url">怎么看待勤能补拙</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-04 23:27:18 / Modified: 23:28:26" itemprop="dateCreated datePublished" datetime="2020-06-04T23:27:18-04:00">2020-06-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我通过观察发现这么一规律，人要想做好一件事，往往需要分两步，第一步是让自己处于可以把事做好的状态，第二步才是把事情做好。</p>
-<p>你就好比说，我在博物馆给人讲解，如果一周之内我每天都讲，连续讲两周，我就嘴皮子特别利索，第一句话刚说出口，第三句话在脑中都已经准备好了，说话跟自动步枪似的，一个词汇在脑中往往有若干个同义词备选方案，我一边说前边的，一边在所有措辞方案中选出那个最恰当的说出来，表达的既流畅又精准。</p>
-<p>但如果我两个星期不做这种高强度的讲解，我就能清晰地感觉到我的表达能力迟钝了，说话开始颠三倒四，有的词汇在嘴边绕圈，可就是抓不着，嘴在脑子前边，手又在嘴前边，有时候比划半天手势愣是说不出一句完整话，满头是汗。</p>
-<p>再好比说，我知道一些职业作家，每天都会写个几百上千字的内容，其实写出来的东西也不错，但不给任何人看，写完之后关闭文件不保存，就上床睡觉了，他们要的就是保持那种写作的感觉，脑内和写作相关的神经回路得多走走电信号，要不容易迟钝。</p>
-<p>其实仔细观察，体育、艺术、科研、社交等领域都是这样，那些真正惊艳的成就和突破，往往是在一种良好状态的惯性之上实现的，平时一直保持在80%左右，灵光一闪后撞穿天花板，抵达了110%，于是人就到了一个新的层次，所谓进步即是如此。</p>
-<p>所以我觉得无论干什么，都先别想着做出成绩来，应该先想着如何让自己处于那种容易做出成绩的状态里并且稳住，指不定哪天灵光一闪或者突然顿悟，噌一下，人就上去了，成绩就有了。</p>
-<p>灵光一闪这种事可遇不可求，等待是唯一的办法，但那一瞬间真正来临时，也只有持久的勤勉才能真正接得住它，本质来说，勤勉其实是一种正确的等待姿势。</p>
-<p>“每天下班都看见他去图书馆自学，一副和自己过不去的样子，也不知道他这是图个啥。”</p>
-<p>“他在等。”</p>
-<p>“等什么？”</p>
-<p>“等那个你接不住的东西。”</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1500,7 +1594,7 @@ cost)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
