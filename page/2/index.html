@@ -165,6 +165,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/16/%E5%96%84%E7%94%A8%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/16/%E5%96%84%E7%94%A8%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">善用工具</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-16 15:40:02 / Modified: 15:42:02" itemprop="dateCreated datePublished" datetime="2020-06-16T15:40:02-04:00">2020-06-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>俗话说“工欲善其事，必先利其器”，今天我们来说说和开发工具有关的话题。由于开发过程中会用到的工具多种多样，根据“<a href="https://www.wikiwand.com/en/Pareto_principle" target="_blank" rel="noopener">二八原理</a>”，我只挑选和开发最密切相关的少数几种工具来聊一聊。</p>
+<h2 id="★编辑器"><a href="#★编辑器" class="headerlink" title="★编辑器"></a>★编辑器</h2><p>编辑器显然是用的最频繁的工具了（尤其是对于经常写代码的人），但是很大一部分人不善于使用编辑器。因此我先来说一下对编辑器使用的一些体会。顺便提一下，如果你连盲打都没过关，请先去学打字，再回来看这个帖子。</p>
+<h3 id="◇字体"><a href="#◇字体" class="headerlink" title="◇字体"></a>◇字体</h3><p>　　对于写代码而言，字体的选择是非常重要的（看起来舒服的字体起码能保护眼睛）。首先必须选择一种【等宽】的字体（比如 FixedSys、Courier New）；其次该字体必须能够【清楚地区分】如下几种容易混淆的字符，避免阅读代码的时候看错：</p>
+<blockquote>
+<p>数字0　和　字母O<br>数字1　和　大写字母I　和　小写字母l　和　或运算符|<br>数字2　和　字母z<br>数字9　和　小写字母q<br>乘号*　和　字母X<br>分号;　和　冒号:</p>
+</blockquote>
+<h3 id="◇颜色"><a href="#◇颜色" class="headerlink" title="◇颜色"></a>◇颜色</h3><p>　　你使用的编辑器必须支持【自定义】的词法高亮（词法着色）。<br>　　对词法高亮进行设置时，至少要把：“代码注释、关键字、字符串、数字”这几种语法要素用不同的颜色区分开。当然，如果还能根据“类名、函数名、变量名等”进行着色，那就更好了。</p>
+<h3 id="◇快捷键"><a href="#◇快捷键" class="headerlink" title="◇快捷键"></a>◇快捷键</h3><p>　　熟练地使用快捷键能大大提高编辑的效率。因为你的手不需要离开键盘去操纵鼠标。而且当编辑的文本比较大时，有些编辑命令即使用鼠标操作也挺费劲（比如全选、移动到文件尾），不如快捷键方便。<br>　　所以，你使用的编辑器必须支持快捷键（这个大多数都能做到），而且还必须支持编辑命令和快捷键的<strong>绑定</strong>（也就是自己设置某个编辑命令对应的快捷键），便于根据个人喜好设置快捷键。</p>
+<h3 id="◇其它功能"><a href="#◇其它功能" class="headerlink" title="◇其它功能"></a>◇其它功能</h3><p>还有一些比较琐碎的功能，比如：代码自动缩进、自动补全、动态提示等等。最后，如果你需要经常在不同的操作系统上进行工作，那你的编辑器还必须得支持跨平台才行。<br>虽然说了这么多条条框框，但是符合全部要求的软件并不难找，比如<a href="http://www.gnu.org/software/emacs/" target="_blank" rel="noopener">Emacs</a>、<a href="http://www.vim.org/" target="_blank" rel="noopener">VIM</a>、<a href="http://www.eclipse.org/" target="_blank" rel="noopener">Eclipse</a>等软件都可以满足上述的编辑功能，具体选哪个就看各自的偏爱了。</p>
+<h2 id="★源代码管理工具（版本管理软件）"><a href="#★源代码管理工具（版本管理软件）" class="headerlink" title="★源代码管理工具（版本管理软件）"></a>★源代码管理工具（版本管理软件）</h2><p>　　为了打字方便，以下简称“RCS”（Revision Control System）。<br>　　通过 RCS 的使用状况，可以看出一个开发团队在软件工程方面的成熟度，因此我们接下来要说说 RCS 的问题。如果你所在的开发团队从来不使用 RCS 进行代码的版本控制，那俺建议你赶紧考虑跳槽。<br>　　据俺多年的观察，发觉 RCS 主要有如下几种误用的情况：</p>
+<h3 id="◇不正确的提交频度"><a href="#◇不正确的提交频度" class="headerlink" title="◇不正确的提交频度"></a>◇不正确的提交频度</h3><p>　　有很多新手不习惯使用 RCS，很少进行代码的提交。有些人甚至到项目快结束时还没有提交过一行代码。结果导致整个 RCS 形同虚设。<br>　　还有一些人则走向另一个极端，频繁提交代码。有些人每改完一个文件就提交一次，还有些人甚至把修改一半，尚【不能】编译通过的代码也提交到 RCS。<br>　　俺个人认为，正确的提交频度应该分两种情况：在编写功能代码时，每完成一个功能点，并且自己经过了自测之后，提交一次；在调试的时候，每修复一个 bug，提交一次。这样能够保证提交到 RCS 的代码都是【能编译通过】的，并且业务逻辑上也是相对完整的（对于每日构建后的测试很重要）。</p>
+<h3 id="◇提交时不写注释"><a href="#◇提交时不写注释" class="headerlink" title="◇提交时不写注释"></a>◇提交时不写注释</h3><p>　　很多人提交代码时不写注释，将来再想到版本历史里面找代码就犹如大海捞针般困难。<br>　　比如在俺经手的代码中，有些源代码文件历时3年，提交次数上百次，如果提交时不写注释，日后根本没法找。</p>
+<h3 id="◇不做代码基线（Baseline）、不做代码分支（Branch）"><a href="#◇不做代码基线（Baseline）、不做代码分支（Branch）" class="headerlink" title="◇不做代码基线（Baseline）、不做代码分支（Branch）"></a>◇不做代码基线（Baseline）、不做代码分支（Branch）</h3><p>　　在正规的开发团队，每当有一个版本发布（Release）并交付给用户使用时，都需要在 RCS 中制作一个基线，以便于进行相应的 bug 跟踪和补丁制作。因此，诸如【做基线】之类的事情，属于整个团队的集体行为，需要由 Team Leader 牵头来搞。<br>　　假如一个开发团队从来不做代码基线或者代码分支，仅仅是把 RCS 当成一个源文件的备份工具来用，那至少说明这个团队的 Team Leader 在软件工程管理方面非常失败。</p>
+<h2 id="★用于调试-测试的运行辅助工具"><a href="#★用于调试-测试的运行辅助工具" class="headerlink" title="★用于调试/测试的运行辅助工具"></a>★用于调试/测试的运行辅助工具</h2><p>　　运行辅助工具对于开发效率的影响也很大。一般来说，你自己的开发机器上要有尽可能仿真（和用户的环境相似）的运行环境，并且运行辅助工具能够有效地发现运行时的一些不正常的信息。这样有利于让 bug 在交付给用户之前【尽早暴露】出来。<br>　　如果你是 Web 开发人员，那么你自己肯定要安装好常用的浏览器（至少包括 IE、Firefox、Chrome）。对于 IE，还得设置成“显示脚本错误通知”。<br>　　如果你主要开发 Windows 应用程序，你手头肯定要备好诸如：<a href="https://en.wikipedia.org/wiki/Dependency_walker" target="_blank" rel="noopener">Depends</a>（Visual C++自带）、<a href="https://en.wikipedia.org/wiki/Process_Explorer" target="_blank" rel="noopener">Process Explorer</a>等工具，便于查看进程、线程、动态库、堆内存等运行时信息。<br>　　如果你是搞手机应用的，那么你至少得有目标系统的模拟器软件（如果能配一个真机当然更好）。<br>　　如果你主要进行跨平台方面的开发，那么诸如“<a href="https://en.wikipedia.org/wiki/VMware" target="_blank" rel="noopener">VMware</a> / <a href="https://en.wikipedia.org/wiki/VirtualBox" target="_blank" rel="noopener">VirtualBox</a>”之类的虚拟化软件是必不可少滴</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/Rust-vs-Go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1366,134 +1438,6 @@ cost)
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/Paul-Graham-What-You-wish-you-should-know/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/06/Paul-Graham-What-You-wish-you-should-know/" class="post-title-link" itemprop="url">Paul_Graham_What_You_wish_you_should_know</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-06 21:43:53 / Modified: 21:44:26" itemprop="dateCreated datePublished" datetime="2020-06-06T21:43:53-04:00">2020-06-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>When I said I was speaking at a high school, my friends were curious. What will you say to high school students? So I asked them, what do you wish someone had told you in high school? Their answers were remarkably similar. So I’m going to tell you what we all wish someone had told us.</p>
-<p>I’ll start by telling you something you don’t have to know in high school: what you want to do with your life. People are always asking you this, so you think you’re supposed to have an answer. But adults ask this mainly as a conversation starter. They want to know what sort of person you are, and this question is just to get you talking. They ask it the way you might poke a hermit crab in a tide pool, to see what it does.</p>
-<p>If I were back in high school and someone asked about my plans, I’d say that my first priority was to learn what the options were. You don’t need to be in a rush to choose your life’s work. What you need to do is discover what you like. You have to work on stuff you like if you want to be good at what you do.</p>
-<p>It might seem that nothing would be easier than deciding what you like, but it turns out to be hard, partly because it’s hard to get an accurate picture of most jobs. Being a doctor is not the way it’s portrayed on TV. Fortunately you can also watch real doctors, by volunteering in hospitals. [1]</p>
-<p>But there are other jobs you can’t learn about, because no one is doing them yet. Most of the work I’ve done in the last ten years didn’t exist when I was in high school. The world changes fast, and the rate at which it changes is itself speeding up. In such a world it’s not a good idea to have fixed plans.</p>
-<p>And yet every May, speakers all over the country fire up the Standard Graduation Speech, the theme of which is: don’t give up on your dreams. I know what they mean, but this is a bad way to put it, because it implies you’re supposed to be bound by some plan you made early on. The computer world has a name for this: premature optimization. And it is synonymous with disaster. These speakers would do better to say simply, don’t give up.</p>
-<p>What they really mean is, don’t get demoralized. Don’t think that you can’t do what other people can. And I agree you shouldn’t underestimate your potential. People who’ve done great things tend to seem as if they were a race apart. And most biographies only exaggerate this illusion, partly due to the worshipful attitude biographers inevitably sink into, and partly because, knowing how the story ends, they can’t help streamlining the plot till it seems like the subject’s life was a matter of destiny, the mere unfolding of some innate genius. In fact I suspect if you had the sixteen year old Shakespeare or Einstein in school with you, they’d seem impressive, but not totally unlike your other friends.</p>
-<p>Which is an uncomfortable thought. If they were just like us, then they had to work very hard to do what they did. And that’s one reason we like to believe in genius. It gives us an excuse for being lazy. If these guys were able to do what they did only because of some magic Shakespeareness or Einsteinness, then it’s not our fault if we can’t do something as good.</p>
-<p>I’m not saying there’s no such thing as genius. But if you’re trying to choose between two theories and one gives you an excuse for being lazy, the other one is probably right.</p>
-<p>So far we’ve cut the Standard Graduation Speech down from “don’t give up on your dreams” to “what someone else can do, you can do.” But it needs to be cut still further. There is <em>some</em> variation in natural ability. Most people overestimate its role, but it does exist. If I were talking to a guy four feet tall whose ambition was to play in the NBA, I’d feel pretty stupid saying, you can do anything if you really try. [2]</p>
-<p>We need to cut the Standard Graduation Speech down to, “what someone else with your abilities can do, you can do; and don’t underestimate your abilities.” But as so often happens, the closer you get to the truth, the messier your sentence gets. We’ve taken a nice, neat (but wrong) slogan, and churned it up like a mud puddle. It doesn’t make a very good speech anymore. But worse still, it doesn’t tell you what to do anymore. Someone with your abilities? What are your abilities?</p>
-<p><strong>Upwind</strong></p>
-<p>I think the solution is to work in the other direction. Instead of working back from a goal, work forward from promising situations. This is what most successful people actually do anyway.</p>
-<p>In the graduation-speech approach, you decide where you want to be in twenty years, and then ask: what should I do now to get there? I propose instead that you don’t commit to anything in the future, but just look at the options available now, and choose those that will give you the most promising range of options afterward.</p>
-<p>It’s not so important what you work on, so long as you’re not wasting your time. Work on things that interest you and increase your options, and worry later about which you’ll take.</p>
-<p>Suppose you’re a college freshman deciding whether to major in math or economics. Well, math will give you more options: you can go into almost any field from math. If you major in math it will be easy to get into grad school in economics, but if you major in economics it will be hard to get into grad school in math.</p>
-<p>Flying a glider is a good metaphor here. Because a glider doesn’t have an engine, you can’t fly into the wind without losing a lot of altitude. If you let yourself get far downwind of good places to land, your options narrow uncomfortably. As a rule you want to stay upwind. So I propose that as a replacement for “don’t give up on your dreams.” Stay upwind.</p>
-<p>How do you do that, though? Even if math is upwind of economics, how are you supposed to know that as a high school student?</p>
-<p>Well, you don’t, and that’s what you need to find out. Look for smart people and hard problems. Smart people tend to clump together, and if you can find such a clump, it’s probably worthwhile to join it. But it’s not straightforward to find these, because there is a lot of faking going on.</p>
-<p>To a newly arrived undergraduate, all university departments look much the same. The professors all seem forbiddingly intellectual and publish papers unintelligible to outsiders. But while in some fields the papers are unintelligible because they’re full of hard ideas, in others they’re deliberately written in an obscure way to seem as if they’re saying something important. This may seem a scandalous proposition, but it has been experimentally verified, in the famous <em>Social Text</em> affair. Suspecting that the papers published by literary theorists were often just intellectual-sounding nonsense, a physicist deliberately wrote a paper full of intellectual-sounding nonsense, and submitted it to a literary theory journal, which published it.</p>
-<p>The best protection is always to be working on hard problems. Writing novels is hard. Reading novels isn’t. Hard means worry: if you’re not worrying that something you’re making will come out badly, or that you won’t be able to understand something you’re studying, then it isn’t hard enough. There has to be suspense.</p>
-<p>Well, this seems a grim view of the world, you may think. What I’m telling you is that you should worry? Yes, but it’s not as bad as it sounds. It’s exhilarating to overcome worries. You don’t see faces much happier than people winning gold medals. And you know why they’re so happy? Relief.</p>
-<p>I’m not saying this is the only way to be happy. Just that some kinds of worry are not as bad as they sound.</p>
-<p><strong>Ambition</strong></p>
-<p>In practice, “stay upwind” reduces to “work on hard problems.” And you can start today. I wish I’d grasped that in high school.</p>
-<p>Most people like to be good at what they do. In the so-called real world this need is a powerful force. But high school students rarely benefit from it, because they’re given a fake thing to do. When I was in high school, I let myself believe that my job was to be a high school student. And so I let my need to be good at what I did be satisfied by merely doing well in school.</p>
-<p>If you’d asked me in high school what the difference was between high school kids and adults, I’d have said it was that adults had to earn a living. Wrong. It’s that adults take responsibility for themselves. Making a living is only a small part of it. Far more important is to take intellectual responsibility for oneself.</p>
-<p>If I had to go through high school again, I’d treat it like a day job. I don’t mean that I’d slack in school. Working at something as a day job doesn’t mean doing it badly. It means not being defined by it. I mean I wouldn’t think of myself as a high school student, just as a musician with a day job as a waiter doesn’t think of himself as a waiter. [3] And when I wasn’t working at my day job I’d start trying to do real work.</p>
-<p>When I ask people what they regret most about high school, they nearly all say the same thing: that they wasted so much time. If you’re wondering what you’re doing now that you’ll regret most later, that’s probably it. [4]</p>
-<p>Some people say this is inevitable — that high school students aren’t capable of getting anything done yet. But I don’t think this is true. And the proof is that you’re bored. You probably weren’t bored when you were eight. When you’re eight it’s called “playing” instead of “hanging out,” but it’s the same thing. And when I was eight, I was rarely bored. Give me a back yard and a few other kids and I could play all day.</p>
-<p>The reason this got stale in middle school and high school, I now realize, is that I was ready for something else. Childhood was getting old.</p>
-<p>I’m not saying you shouldn’t hang out with your friends — that you should all become humorless little robots who do nothing but work. Hanging out with friends is like chocolate cake. You enjoy it more if you eat it occasionally than if you eat nothing but chocolate cake for every meal. No matter how much you like chocolate cake, you’ll be pretty queasy after the third meal of it. And that’s what the malaise one feels in high school is: mental queasiness. [5]</p>
-<p>You may be thinking, we have to do more than get good grades. We have to have <em>extracurricular activities.</em> But you know perfectly well how bogus most of these are. Collecting donations for a charity is an admirable thing to do, but it’s not <em>hard.</em> It’s not getting something done. What I mean by getting something done is learning how to write well, or how to program computers, or what life was really like in preindustrial societies, or how to draw the human face from life. This sort of thing rarely translates into a line item on a college application.</p>
-<p><strong>Corruption</strong></p>
-<p>It’s dangerous to design your life around getting into college, because the people you have to impress to get into college are not a very discerning audience. At most colleges, it’s not the professors who decide whether you get in, but admissions officers, and they are nowhere near as smart. They’re the NCOs of the intellectual world. They can’t tell how smart you are. The mere existence of prep schools is proof of that.</p>
-<p>Few parents would pay so much for their kids to go to a school that didn’t improve their admissions prospects. Prep schools openly say this is one of their aims. But what that means, if you stop to think about it, is that they can hack the admissions process: that they can take the very same kid and make him seem a more appealing candidate than he would if he went to the local public school. [6]</p>
-<p>Right now most of you feel your job in life is to be a promising college applicant. But that means you’re designing your life to satisfy a process so mindless that there’s a whole industry devoted to subverting it. No wonder you become cynical. The malaise you feel is the same that a producer of reality TV shows or a tobacco industry executive feels. And you don’t even get paid a lot.</p>
-<p>So what do you do? What you should not do is rebel. That’s what I did, and it was a mistake. I didn’t realize exactly what was happening to us, but I smelled a major rat. And so I just gave up. Obviously the world sucked, so why bother?</p>
-<p>When I discovered that one of our teachers was herself using Cliff’s Notes, it seemed par for the course. Surely it meant nothing to get a good grade in such a class.</p>
-<p>In retrospect this was stupid. It was like someone getting fouled in a soccer game and saying, hey, you fouled me, that’s against the rules, and walking off the field in indignation. Fouls happen. The thing to do when you get fouled is not to lose your cool. Just keep playing.</p>
-<p>By putting you in this situation, society has fouled you. Yes, as you suspect, a lot of the stuff you learn in your classes is crap. And yes, as you suspect, the college admissions process is largely a charade. But like many fouls, this one was unintentional. [7] So just keep playing.</p>
-<p>Rebellion is almost as stupid as obedience. In either case you let yourself be defined by what they tell you to do. The best plan, I think, is to step onto an orthogonal vector. Don’t just do what they tell you, and don’t just refuse to. Instead treat school as a day job. As day jobs go, it’s pretty sweet. You’re done at 3 o’clock, and you can even work on your own stuff while you’re there.</p>
-<p><strong>Curiosity</strong></p>
-<p>And what’s your real job supposed to be? Unless you’re Mozart, your first task is to figure that out. What are the great things to work on? Where are the imaginative people? And most importantly, what are you interested in? The word “aptitude” is misleading, because it implies something innate. The most powerful sort of aptitude is a consuming interest in some question, and such interests are often acquired tastes.</p>
-<p>A distorted version of this idea has filtered into popular culture under the name “passion.” I recently saw an ad for waiters saying they wanted people with a “passion for service.” The real thing is not something one could have for waiting on tables. And passion is a bad word for it. A better name would be curiosity.</p>
-<p>Kids are curious, but the curiosity I mean has a different shape from kid curiosity. Kid curiosity is broad and shallow; they ask why at random about everything. In most adults this curiosity dries up entirely. It has to: you can’t get anything done if you’re always asking why about everything. But in ambitious adults, instead of drying up, curiosity becomes narrow and deep. The mud flat morphs into a well.</p>
-<p>Curiosity turns work into play. For Einstein, relativity wasn’t a book full of hard stuff he had to learn for an exam. It was a mystery he was trying to solve. So it probably felt like less work to him to invent it than it would seem to someone now to learn it in a class.</p>
-<p>One of the most dangerous illusions you get from school is the idea that doing great things requires a lot of discipline. Most subjects are taught in such a boring way that it’s only by discipline that you can flog yourself through them. So I was surprised when, early in college, I read a quote by Wittgenstein saying that he had no self-discipline and had never been able to deny himself anything, not even a cup of coffee.</p>
-<p>Now I know a number of people who do great work, and it’s the same with all of them. They have little discipline. They’re all terrible procrastinators and find it almost impossible to make themselves do anything they’re not interested in. One still hasn’t sent out his half of the thank-you notes from his wedding, four years ago. Another has 26,000 emails in her inbox.</p>
-<p>I’m not saying you can get away with zero self-discipline. You probably need about the amount you need to go running. I’m often reluctant to go running, but once I do, I enjoy it. And if I don’t run for several days, I feel ill. It’s the same with people who do great things. They know they’ll feel bad if they don’t work, and they have enough discipline to get themselves to their desks to start working. But once they get started, interest takes over, and discipline is no longer necessary.</p>
-<p>Do you think Shakespeare was gritting his teeth and diligently trying to write Great Literature? Of course not. He was having fun. That’s why he’s so good.</p>
-<p>If you want to do good work, what you need is a great curiosity about a promising question. The critical moment for Einstein was when he looked at Maxwell’s equations and said, what the hell is going on here?</p>
-<p>It can take years to zero in on a productive question, because it can take years to figure out what a subject is really about. To take an extreme example, consider math. Most people think they hate math, but the boring stuff you do in school under the name “mathematics” is not at all like what mathematicians do.</p>
-<p>The great mathematician G. H. Hardy said he didn’t like math in high school either. He only took it up because he was better at it than the other students. Only later did he realize math was interesting — only later did he start to ask questions instead of merely answering them correctly.</p>
-<p>When a friend of mine used to grumble because he had to write a paper for school, his mother would tell him: find a way to make it interesting. That’s what you need to do: find a question that makes the world interesting. People who do great things look at the same world everyone else does, but notice some odd detail that’s compellingly mysterious.</p>
-<p>And not only in intellectual matters. Henry Ford’s great question was, why do cars have to be a luxury item? What would happen if you treated them as a commodity? Franz Beckenbauer’s was, in effect, why does everyone have to stay in his position? Why can’t defenders score goals too?</p>
-<p><strong>Now</strong></p>
-<p>If it takes years to articulate great questions, what do you do now, at sixteen? Work toward finding one. Great questions don’t appear suddenly. They gradually congeal in your head. And what makes them congeal is experience. So the way to find great questions is not to search for them — not to wander about thinking, what great discovery shall I make? You can’t answer that; if you could, you’d have made it.</p>
-<p>The way to get a big idea to appear in your head is not to hunt for big ideas, but to put in a lot of time on work that interests you, and in the process keep your mind open enough that a big idea can take roost. Einstein, Ford, and Beckenbauer all used this recipe. They all knew their work like a piano player knows the keys. So when something seemed amiss to them, they had the confidence to notice it.</p>
-<p>Put in time how and on what? Just pick a project that seems interesting: to master some chunk of material, or to make something, or to answer some question. Choose a project that will take less than a month, and make it something you have the means to finish. Do something hard enough to stretch you, but only just, especially at first. If you’re deciding between two projects, choose whichever seems most fun. If one blows up in your face, start another. Repeat till, like an internal combustion engine, the process becomes self-sustaining, and each project generates the next one. (This could take years.)</p>
-<p>It may be just as well not to do a project “for school,” if that will restrict you or make it seem like work. Involve your friends if you want, but not too many, and only if they’re not flakes. Friends offer moral support (few startups are started by one person), but secrecy also has its advantages. There’s something pleasing about a secret project. And you can take more risks, because no one will know if you fail.</p>
-<p>Don’t worry if a project doesn’t seem to be on the path to some goal you’re supposed to have. Paths can bend a lot more than you think. So let the path grow out the project. The most important thing is to be excited about it, because it’s by doing that you learn.</p>
-<p>Don’t disregard unseemly motivations. One of the most powerful is the desire to be better than other people at something. Hardy said that’s what got him started, and I think the only unusual thing about him is that he admitted it. Another powerful motivator is the desire to do, or know, things you’re not supposed to. Closely related is the desire to do something audacious. Sixteen year olds aren’t supposed to write novels. So if you try, anything you achieve is on the plus side of the ledger; if you fail utterly, you’re doing no worse than expectations. [8]</p>
-<p>Beware of bad models. Especially when they excuse laziness. When I was in high school I used to write “existentialist” short stories like ones I’d seen by famous writers. My stories didn’t have a lot of plot, but they were very deep. And they were less work to write than entertaining ones would have been. I should have known that was a danger sign. And in fact I found my stories pretty boring; what excited me was the idea of writing serious, intellectual stuff like the famous writers.</p>
-<p>Now I have enough experience to realize that those famous writers actually sucked. Plenty of famous people do; in the short term, the quality of one’s work is only a small component of fame. I should have been less worried about doing something that seemed cool, and just done something I liked. That’s the actual road to coolness anyway.</p>
-<p>A key ingredient in many projects, almost a project on its own, is to find good books. Most books are bad. Nearly all textbooks are bad. [9] So don’t assume a subject is to be learned from whatever book on it happens to be closest. You have to search actively for the tiny number of good books.</p>
-<p>The important thing is to get out there and do stuff. Instead of waiting to be taught, go out and learn.</p>
-<p>Your life doesn’t have to be shaped by admissions officers. It could be shaped by your own curiosity. It is for all ambitious adults. And you don’t have to wait to start. In fact, you don’t have to wait to be an adult. There’s no switch inside you that magically flips when you turn a certain age or graduate from some institution. You start being an adult when you decide to take responsibility for your life. You can do that at any age. [10]</p>
-<p>This may sound like bullshit. I’m just a minor, you may think, I have no money, I have to live at home, I have to do what adults tell me all day long. Well, most adults labor under restrictions just as cumbersome, and they manage to get things done. If you think it’s restrictive being a kid, imagine having kids.</p>
-<p>The only real difference between adults and high school kids is that adults realize they need to get things done, and high school kids don’t. That realization hits most people around 23. But I’m letting you in on the secret early. So get to work. Maybe you can be the first generation whose greatest regret from high school isn’t how much time you wasted.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1564,12 +1508,12 @@ cost)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">202</span>
+          <span class="site-state-item-count">203</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
