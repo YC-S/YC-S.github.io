@@ -165,6 +165,186 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/30/spring-cloud35%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/30/spring-cloud35%E9%97%AE/" class="post-title-link" itemprop="url">spring_cloud35问</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-30 15:12:09 / Modified: 15:16:40" itemprop="dateCreated datePublished" datetime="2020-05-30T15:12:09-04:00">2020-05-30</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1、什么是-Spring-Cloud-？"><a href="#1、什么是-Spring-Cloud-？" class="headerlink" title="1、什么是 Spring Cloud ？"></a>1、什么是 Spring Cloud ？</h2><p>Spring cloud 流应用程序启动器是 于 Spring Boot 的 Spring 集成应用程序，提供与外部系统的集成。Spring cloud Task，一个生命周期短暂的微服务框架，用于快速构建执行有限数据处理的应用程序。</p>
+<h2 id="2、使用-Spring-Cloud-有什么优势？"><a href="#2、使用-Spring-Cloud-有什么优势？" class="headerlink" title="2、使用 Spring Cloud 有什么优势？"></a>2、使用 Spring Cloud 有什么优势？</h2><p>使用 Spring Boot 开发分布式微服务时，我们面临以下问题</p>
+<p>（1）与分布式系统相关的复杂性-这种开销包括网络问题，延迟开销，带宽问题，安全问题。</p>
+<p>（2）服务发现-服务发现工具管理群集中的流程和服务如何查找和互相交谈。它涉及一个服务目录，在该目录中注册服务，然后能够查找并连接到该目录中的服务。</p>
+<p>（3）冗余-分布式系统中的冗余问题。</p>
+<p>（4）负载平衡 –负载平衡改善跨多个计算资源的工作负荷，诸如计算机，计算机集群，网络链路，中央处理单元，或磁盘驱动器的分布。</p>
+<p>（5）性能-问题 于各种运营开销导致的性能问题。</p>
+<p>（6）部署复杂性 evops 技能的要求。</p>
+<h2 id="3、服务注册和发现是什么意思？Spring-Cloud-如何实现？"><a href="#3、服务注册和发现是什么意思？Spring-Cloud-如何实现？" class="headerlink" title="3、服务注册和发现是什么意思？Spring Cloud 如何实现？"></a>3、服务注册和发现是什么意思？Spring Cloud 如何实现？</h2><p>当我们开始一个项目时，我们通常在属性文件中进行所有的配置。随着越来越多的服务开发和部署，添加和修改这些属性变得更加复杂。有些服务可能会下降，而某些位置可能会发生变化。手动更改属性可能会产生问题。 Eureka 服务注册和发现可以在这种情况下提供帮助。由于所有服务都在 Eureka 服务器上注册并通过调用 Eureka 服务器完成查找，因此无需处理服务地点的任何更改和处理。</p>
+<h2 id="4、负载平衡的意义什么？"><a href="#4、负载平衡的意义什么？" class="headerlink" title="4、负载平衡的意义什么？"></a>4、负载平衡的意义什么？</h2><p>在计算中，负载平衡可以改善跨计算机，计算机集群，网络链接，中央处理单元或磁盘驱动器等多种计算资源的工作负载分布。负载平衡旨在优化资源使用，最大化吞吐量，最小化响应时间并避免任何单一资源的过载。使用多个组件进行负载平衡而不是单个组件可能会通过冗余来提高可靠性和可用性。负载平衡通常涉及专用软件或硬件，例如多层交换机或域名系统服务器进程。</p>
+<h2 id="5、什么是-Hystrix？它如何实现容错？"><a href="#5、什么是-Hystrix？它如何实现容错？" class="headerlink" title="5、什么是 Hystrix？它如何实现容错？"></a>5、什么是 Hystrix？它如何实现容错？</h2><p>库，旨在隔离远程系统，服务和第三方库的访问点，当出现故障是不可避免的故障时，停止级联故障并在复杂的分布式系统中实现弹性。通常对于使用微服 构开发的系统，涉及到许多微服务。这些微服务彼此协作。</p>
+<h2 id="6、什么是-Hystrix-断路器？我们需要它吗？"><a href="#6、什么是-Hystrix-断路器？我们需要它吗？" class="headerlink" title="6、什么是 Hystrix 断路器？我们需要它吗？"></a>6、什么是 Hystrix 断路器？我们需要它吗？</h2><p>由于某些原因，employee-consumer 公开服务会引发异常。在这种情况下使用Hystrix 我们定义了一个回退方法。如果在公开服务中发生异常，则回退方法返回一些默认值。</p>
+<p>如果 ﬁrstPage method() 中的异常继续发生，则 Hystrix 电 ，并且员工使用者将一起跳过ﬁrtsPage 方法，并直接调用回退方法。 断路器的目的是给第一 方法或第一页方法可能调用的其他方法留出时间，并导致异常恢复。可能发生的情况是，在负载较小的情况下，导致异常的问题有更好的恢复机会 。</p>
+<h2 id="7、什么是-Netﬂix-Feign？它的优点是什么？"><a href="#7、什么是-Netﬂix-Feign？它的优点是什么？" class="headerlink" title="7、什么是 Netﬂix Feign？它的优点是什么？"></a>7、什么是 Netﬂix Feign？它的优点是什么？</h2><p>Feign 是受到 Retroﬁt，JAXRS-2.0 和 WebSocket 启发的 java 客户端联编程序。Feign 的第一个目标是将约束分母的复杂性统一到 http apis，而不考虑其稳定性。在 employee-consumer 的例子中，我们使用了 emplo e-producer 使用 REST模板公开的 REST 服务。</p>
+<p>但是我们必须编写大量代码才能执行以下步骤</p>
+<p>1、使用功能区进行负载平衡。</p>
+<p>2、获取服务实例，然后获取基本 URL。</p>
+<p>3、利用 REST 模板来使用服务。 前面的代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerControllerClient</span> </span>&#123; <span class="meta">@Autowired</span> <span class="keyword">private</span> LoadBalancerClient loadBalancer; <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getEmployee</span><span class="params">()</span> <span class="keyword">throws</span> RestClientException, IOException </span>&#123; ServiceInstance serviceInstance=loadBalancer.choose(<span class="string">"employee- producer"</span>); System.out.println(serviceInstance.getUri());</span><br></pre></td></tr></table></figure>
+
+<p>之前的代码，有像 NullPointer 这样的例外的机会，并不是最优 。我们将看到如何使用 Netﬂix Fe n使呼叫变得更加轻松和清洁。如果 Netﬂix Ribbon 依赖关系 径中，那么 Feign 默认也会负载平衡。</p>
+<h2 id="8、什么是-Spring-Cloud-Bus？我们需要它吗？"><a href="#8、什么是-Spring-Cloud-Bus？我们需要它吗？" class="headerlink" title="8、什么是 Spring Cloud Bus？我们需要它吗？"></a>8、什么是 Spring Cloud Bus？我们需要它吗？</h2><p>Spring Cloud Bus 提供了跨多个实例刷新配置的功能。</p>
+<h2 id="9、什么是微服务"><a href="#9、什么是微服务" class="headerlink" title="9、什么是微服务"></a>9、什么是微服务</h2><p>微服务架构是一种架构模式或者说是一种架构风格，它提倡将单一应用程序划分为一组小的服务，每个服务运行在其独立的自己的进程中，服务之间相互协调、互相配合，为用户提供最终价值。服务之间采用轻量级的通信机制互相沟通（通常是基于HTTP的RESTful API）,每个服务都围绕着具体的业务进行构建，并且能够被独立的构建在生产环境、类生产环境等。另外，应避免统一的、集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具对其进行构建，可以有一个非常轻量级的集中式管理来协调这些服务，可以使用不同的语言来编写服务，也可以使用不同的数据存储。</p>
+<h2 id="10、什么是服务熔断？什么是服务降级"><a href="#10、什么是服务熔断？什么是服务降级" class="headerlink" title="10、什么是服务熔断？什么是服务降级"></a>10、什么是服务熔断？什么是服务降级</h2><p>熔断机制是应对雪崩效应的一种微服务链路保护机制。当某个微服务不可用或者响应时间太长时，会进行服务降级，进而熔断该节点微服务的调用，快速返回“错误”的响应信息。当检测到该节点微服务调用响应正常后恢复调用链路。在SpringCloud框架里熔断机制通过Hystrix实现，Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省是5秒内调用20次，如果失败，就会启动熔断机制。</p>
+<p>服务降级，一般是从整体负荷考虑。就是当某个服务熔断之后，服务器将不再被调用，此时客户端可以自己准备一个本地的fallback回调，返回一个缺省值。这样做，虽然水平下降，但好歹可用，比直接挂掉强。</p>
+<h2 id="11、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？"><a href="#11、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？" class="headerlink" title="11、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？"></a>11、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？</h2><p>Zookeeper保证了CP（C：一致性，P：分区容错性），Eureka保证了AP（A：高可用）</p>
+<p>（1）当向注册中心查询服务列表时，我们可以容忍注册中心返回的是几分钟以前的信息，但不能容忍直接down掉不可用。也就是说，服务注册功能对高可用性要求比较高，但zk会出现这样一种情况，当master节点因为网络故障与其他节点失去联系时，剩余节点会重新选leader。问题在于，选取leader时间过长，30 ~120s，且选取期间zk集群都不可用，这样就会导致选取期间注册服务瘫痪。在云部署的环境下，因网络问题使得zk集群失去master节点是较大概率会发生的事，虽然服务能够恢复，但是漫长的选取时间导致的注册长期不可用是不能容忍的。</p>
+<p>（2）Eureka保证 用性，Eureka各个节点是平等的，几个节点挂掉不会影响正常节点的工作，剩余的节点仍然可以提供注册和查询服务。而Eureka的客户端向某个Eureka注册或发现时发生连接失败，则会自动切换到其他节点，只要有一台Eureka还在，就能保证注册服务可用，只是查到的信息可能不是最新的。除此之外，Eureka还有自我保护机制，如果在15分钟内超过85%的节点没有正常的心跳，那么Eureka就认为客户端与注册中心发生了网络故障，此时会出现以下几种情况：</p>
+<p>①、Eureka不在从注册列表中移除因为长时间没有收到心跳而应该过期的服务。</p>
+<p>②、Eureka仍然能够接受新服务的注册和查询请求，但是不会被同步到其他节点上（即保证当前节点仍然可用）</p>
+<p>③、当网络稳定时，当前实例新的注册信息会被同步到其他节点。因此，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像Zookeeper那样使整个微服务瘫痪</p>
+<h2 id="12、SpringBoot和SpringCloud的区别？"><a href="#12、SpringBoot和SpringCloud的区别？" class="headerlink" title="12、SpringBoot和SpringCloud的区别？"></a>12、SpringBoot和SpringCloud的区别？</h2><p>SpringBoot专注于快速方便的开发单个个体微服务。</p>
+<p>SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一个个单体微服务整合并管理起来，为各个微服务之间提供，配置管理、服务发现、断路器、路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等集成服务SpringBoot可以离开SpringCloud独立使用开发项目， 但是SpringCloud离不开SpringBoot ，属于依赖的关系.SpringBoot专注于快速、方便的开发单个微服务个体，SpringCloud关注全局的 治理框架</p>
+<h2 id="13、什么是Hystrix断路器？我们需要它吗"><a href="#13、什么是Hystrix断路器？我们需要它吗" class="headerlink" title="13、什么是Hystrix断路器？我们需要它吗"></a>13、什么是Hystrix断路器？我们需要它吗</h2><p>使用Hystrix我们定义了回退方法。如果在公开服务中发生异常，则回退方法返回一些默认值 。</p>
+<h2 id="14、说说-RPC-的实现原理"><a href="#14、说说-RPC-的实现原理" class="headerlink" title="14、说说 RPC 的实现原理"></a>14、说说 RPC 的实现原理</h2><p>首先需要有处理网络连接通讯的模块，负责连接建立、管理和消息的传输。其次需要有编解码的模块，因为网络通讯都是传输的字节码，需要将我们使用的对象序列化和反序列化。剩下的就是客户端和服务器端的部分，服务器端暴露要开放的服务接口，客户调用服务接口的一个代理实现，这个代理实现负责收集数据、编码并传输给服务器然后等待结果返回。</p>
+<h2 id="15、微服务的优点缺点-说下开发项目中遇到的坑"><a href="#15、微服务的优点缺点-说下开发项目中遇到的坑" class="headerlink" title="15、微服务的优点缺点?说下开发项目中遇到的坑?"></a>15、微服务的优点缺点?说下开发项目中遇到的坑?</h2><p>优点:优点:</p>
+<p>（1）每个服务直接足够内聚，代码容易理解</p>
+<p>（2）开发效率高，一个服务只做一件事，适合小团队开发</p>
+<p>（3）松耦合，有功能意义的服务。</p>
+<p>（4）可以用不同语言开发，面向接口编程。</p>
+<p>（5）易于第三方集成</p>
+<p>（6）微服务只是业务逻辑的代码，不会和HTML,CSS或其他界</p>
+<p>（7）可以灵活搭配，连接公共库/连接独立库</p>
+<p>缺点:</p>
+<p>（1）分布式系统的责任性</p>
+<p>（2）多服务运维难度加大。</p>
+<p>（3）系统部署依赖，服务间通信成本，数据一致 ，系统集成测试，性能监控。</p>
+<h2 id="16、spring-cloud-和d-bbo区别"><a href="#16、spring-cloud-和d-bbo区别" class="headerlink" title="16、spring cloud 和d bbo区别?"></a>16、spring cloud 和d bbo区别?</h2><p>（1）服务调用方式 dubbo是RPC spri cloud Rest Api</p>
+<p>（2）注册中心,dubbo 是zookeep r springcloud是eureka，也可以是zookeeper</p>
+<p>（3）服务网关,dubbo本身没有实现，只能通过其他第三方技术整合，springcloud有Zuul路由网关，作为路由服务器，进行消费者的请求分发,springcloud支持断路器，与git完美集成配置文件支持版本控制，事物总线实现配置文 的更新与服务自动装配等等一系列的微服务架构要素。</p>
+<h2 id="17、REST-和RPC对比"><a href="#17、REST-和RPC对比" class="headerlink" title="17、REST 和RPC对比"></a>17、REST 和RPC对比</h2><p>（1）RPC主要的缺陷是服务提供方和调用方式之间的依赖太强，需要对每一个微服务进行接口的定义，并通过持续继承发布，严格版本控制才不会出现冲突。</p>
+<p>（2）REST是轻量级的接口，服务的提供和调用不存在代码之间的耦合，只需要一个约定进行规范。</p>
+<h2 id="18、你所知道的微服务技术栈？"><a href="#18、你所知道的微服务技术栈？" class="headerlink" title="18、你所知道的微服务技术栈？"></a>18、你所知道的微服务技术栈？</h2><p>维度(springcloud)</p>
+<p>服务开发：springboot spring springmvc</p>
+<p>服务配置与管理:Netﬁx公司的Archaiusm ,阿里的Diamond</p>
+<p>服务注册与发现:Eureka,Zookeeper</p>
+<p>服务调用:Rest RPC gRpc</p>
+<p>服务熔断器:Hystrix</p>
+<p>服务负载均衡:Ribbon Nginx</p>
+<p>服务接口调用:Fegin</p>
+<p>消息队列:Kafka Rabbitmq activemq</p>
+<p>服务配置中心管理:SpringCloudConﬁg</p>
+<p>服务路由（API网关）Zuul</p>
+<p>事件消息总线:SpringCloud Bus</p>
+<h2 id="19、微服务之间是如何独立通讯的"><a href="#19、微服务之间是如何独立通讯的" class="headerlink" title="19、微服务之间是如何独立通讯的?"></a>19、微服务之间是如何独立通讯的?</h2><p>（1）远程调用，比如feign调用，直接通过远程过程调用来访问别的service。</p>
+<p>（2）消息中间件</p>
+<h2 id="20、springcloud如何实现服务的注册"><a href="#20、springcloud如何实现服务的注册" class="headerlink" title="20、springcloud如何实现服务的注册?"></a>20、springcloud如何实现服务的注册?</h2><p>（1）服务发布时，指定对应的服务名,将服务注册到 注册中心(eureka zookeeper)</p>
+<p>（2）注册中心加@EnableEurekaServer,服务用@EnableDiscoveryClient，然后用ribbon或feign进行服务直接的调用发现。</p>
+<h2 id="21、Eureka和Zookeeper区别"><a href="#21、Eureka和Zookeeper区别" class="headerlink" title="21、Eureka和Zookeeper区别"></a>21、Eureka和Zookeeper区别</h2><p>（1）Eureka取CAP的AP，注重可用性，Zookeeper取CAP的CP注重一致性。</p>
+<p>（2）Zookeeper在选举期间注册服务瘫痪，虽然服务最终会恢复，但选举期间不可用。</p>
+<p>（3）eureka的自我保护机制，会导致一个结果就是不会再从注册列表移除因长时间没收到心跳而过期的服务。依然能接受新服务的注册和查询请求，但不会被同步到其他节点。不会服务瘫痪。</p>
+<p>（4）Zookeeper有Leader和Follower角色，Eureka各个节点平等。</p>
+<p>（5）Zookeeper采用过半数存活原则， reka采用自我保护机制解决分区 。</p>
+<p>（6）eureka本质是一个工程，Zookeeper只是一个进程。</p>
+<h2 id="22、eureka自我保护机制是什么"><a href="#22、eureka自我保护机制是什么" class="headerlink" title="22、eureka自我保护机制是什么?"></a>22、eureka自我保护机制是什么?</h2><p>当Eureka Server 点在短时间内丢失了过多实例的连接时（比如网络故障或频繁启动关闭客户端）节点会进入自我保护模式，保护注册信息，不再删除注册数据，故障恢复时，自动退出自我保护模式。</p>
+<h2 id="23、什么是Ribbon？"><a href="#23、什么是Ribbon？" class="headerlink" title="23、什么是Ribbon？"></a>23、什么是Ribbon？</h2><p>ribbon是一个负载均衡客户端，可以很好的控制htt和tcp的一些行为。feign默认集成了ribbon。</p>
+<h2 id="24、什么是feigin？它的优点是什么？"><a href="#24、什么是feigin？它的优点是什么？" class="headerlink" title="24、什么是feigin？它的优点是什么？"></a>24、什么是feigin？它的优点是什么？</h2><p>（1）feign采用的是基于接口的注解</p>
+<p>（2）feign整合了ribbon，具有负载均衡的能力</p>
+<p>（3）整合了Hystrix，具有熔断的能力</p>
+<p>使用:</p>
+<p>（1）添加pom依赖。</p>
+<p>（2）启动类添加@EnableFeignClients</p>
+<p>（3）定义一个接口@FeignClient(name=“xxx”)指定调用哪个服务</p>
+<h2 id="25、Ribbon和Feign的区别？"><a href="#25、Ribbon和Feign的区别？" class="headerlink" title="25、Ribbon和Feign的区别？"></a>25、Ribbon和Feign的区别？</h2><p>（1）Ribbon都是调用其他服务的，但方式不同。</p>
+<p>（2）启动类注解不同，Ribbon是@RibbonClient feign的是@EnableFeignClients</p>
+<p>（3）服务指定的位置不同，Ribbon是在@RibbonClient注解上声明，Feign则是在定义抽象方法的接口中使用@FeignClient声明。</p>
+<p>（4）调用方式不同，Ribbon需要自己构建http请求，模拟http请求然后使用RestTemplate发送给其他服务，步骤相当繁琐。Feign需要将调用的方法定义成抽象方法即可。</p>
+<h2 id="26、什么是Spring-Cloud-Bus"><a href="#26、什么是Spring-Cloud-Bus" class="headerlink" title="26、什么是Spring Cloud Bus?"></a>26、什么是Spring Cloud Bus?</h2><p>spring cloud bus 将分布式的节点用轻量的消息代理连接起来，它可以用于广播配置文件的更改或者服务直接的通讯，也可用于监控。spring cloud bus 将分布式的节点用轻量的消息代理连接起来，它可以用于广播配置文件的更改或者服务直接的通讯，也可用于监控。</p>
+<p>如果修改了配置文件，发送一次请求，所有的客户端便会重新读取配置文件。</p>
+<p>使用:</p>
+<p>（1）添加依赖</p>
+<p>（2）配置rabbimq</p>
+<h2 id="27、springcloud断路器作用"><a href="#27、springcloud断路器作用" class="headerlink" title="27、springcloud断路器作用?"></a>27、springcloud断路器作用?</h2><p>当一个服务调用另一个服务由于网络原因或自 原因出现问题，调用者就会等 调用者的响应 当更多的服务请求到这些资源导致更多的请求等待，发生连锁效应（雪崩效应）</p>
+<p>断路器有完全打开状态:一段时间内 到一定的次数无法调用 并且多次监 没有恢复的迹象 断路器完全打开 那么下次请求就不会请求到该服务</p>
+<p>半开:短时间内 有恢复迹象 断路器会将部分请求发给该服务，正常调用时 断路器关闭</p>
+<p>关闭：当服务一直处于正常状 能正常调用</p>
+<h2 id="28、Spring-Cloud-Gateway"><a href="#28、Spring-Cloud-Gateway" class="headerlink" title="28、Spring Cloud Gateway?"></a>28、Spring Cloud Gateway?</h2><p>Spring Cloud Gateway是Spring Cloud官方推出的第二代网关框架，取代Zuul网关。网关作为流量的，在微服务系统中有着非常作用，网关常见的功能有路由转发、权限校验、限流控制等作用。</p>
+<p>使用了一个RouteLocatorBuilder的bean去创建路由，除了创建路由RouteLocatorBuilder可以让你添加各种predicates和ﬁlters，predicates断言的意思，顾名思义就是根据具体的请求的规则，由具体的route去处理，ﬁlters是各种过滤器，用来对请求做各种判断和修改。</p>
+<h2 id="29、作为-务注册中心，Eureka比Zookeeper好在哪里"><a href="#29、作为-务注册中心，Eureka比Zookeeper好在哪里" class="headerlink" title="29、作为 务注册中心，Eureka比Zookeeper好在哪里?"></a>29、作为 务注册中心，Eureka比Zookeeper好在哪里?</h2><p>（1）Eureka保证的是可用性和分区容错性，Zookeeper 保证的是一致性和分区容错性 。</p>
+<p>（2）Eureka还有一种自我保护机制，如果在15分钟内超过85%的节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障。而不会像zookeeper那样使整个注册服务瘫痪。</p>
+<h2 id="30、什么是-Ribbon负载均衡？"><a href="#30、什么是-Ribbon负载均衡？" class="headerlink" title="30、什么是 Ribbon负载均衡？"></a>30、什么是 Ribbon负载均衡？</h2><p>（1）Spring Cloud Ribbon是基于Netﬂix Ribbon实现的一套客户端 负载均衡的工具。</p>
+<p>（2）Ribbon客户端组件提供一系列完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出Load Balancer（简称LB）后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。我们也很容易使用Ribbon实现自定义的负载均衡算法。</p>
+<h2 id="31、Ribbon负载均衡能干什么？"><a href="#31、Ribbon负载均衡能干什么？" class="headerlink" title="31、Ribbon负载均衡能干什么？"></a>31、Ribbon负载均衡能干什么？</h2><p>（1）将用户的请求平摊的分配到多个服务上</p>
+<p>（2）集中式LB即在服务的消费方和提供方之间使用独立的LB设施(可以是硬件，如F5, 也可以是软件，如nginx), 由该设施负责把访问请求通过某种策略转发至服务的提供方；</p>
+<p>（3）进程内LB将LB逻辑集成到消费方，消费方从服务注册中心获知有哪些地址可用，然后自己再从这些地址中选择出一个合适的服务器。</p>
+<p>注意： Ribbon就属于进程内LB，它只是一个类库，集成于消费方进程，消费方 它来获取到服务提供方的地址。</p>
+<h2 id="32、什么是-zuul路由网关"><a href="#32、什么是-zuul路由网关" class="headerlink" title="32、什么是 zuul路由网关"></a>32、什么是 zuul路由网关</h2><p>（1）Zuul 包含了对请求的路由和过滤两个最主要的功能:其中 责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础而过滤器功能则负 请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础、</p>
+<p>（2）Zuul和Eureka进行整合，将Zuul自身注册为Eureka服务治理下的应用，同时从Eureka中获得其他微服务的消息，也即以后的访问微服务都是通过Zuul跳转后获得。</p>
+<p>注意： Zuul服务最终还是会注册进Eureka 提供=代理+路由+过滤 三大功能</p>
+<h2 id="33、分布式配置中心能干嘛？"><a href="#33、分布式配置中心能干嘛？" class="headerlink" title="33、分布式配置中心能干嘛？"></a>33、分布式配置中心能干嘛？</h2><p>（1）集中管理配置文件不同环境不同配置，动态化的配置更新，分环境部署比如</p>
+<p>dev/test/prod/beta/release</p>
+<p>（2）运行期间动态调整 置，不再需要在每个服务部署的机器上编写配置文件，服务会向配置中心统一拉取配置自己的信息</p>
+<p>（3）当配置发生变动时，服务不需要重启即可感知到配置的变化并应用新的配置将配置信息以REST接口的形式暴露</p>
+<h2 id="34、Hystrix相关注解"><a href="#34、Hystrix相关注解" class="headerlink" title="34、Hystrix相关注解"></a>34、Hystrix相关注解</h2><p>@EnableHystrix：开启熔断</p>
+<p>@HystrixCommand(fallbackMethod=”XXX”)：声明一个失败回滚处理函数XXX，当被注解的方法执行超时（默认是 0毫秒），就会执行fallback函数，返回错误提示。</p>
+<h2 id="35、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？"><a href="#35、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？" class="headerlink" title="35、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？"></a>35、Eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？</h2><p>Zookeeper保证了CP（C：一致性，P：分区容错性），Eureka保证了AP（A：高可用）</p>
+<p>（1）当向注册中心查询服务列表时，我们可以容忍注册中心返回的是几分钟以前的信息，但不能容忍直接down掉不可用。 就是说，服务注册功能对高可用性要求比较高，但zk会出现这样一种情况，当master节点因为网络故障与其他节点失去联系时，剩余节点会重新选leader。问题在于，选取leader时间过长，30 ~ 120s，且选取期间zk集群都不可用，这样就会导致选取期间注册服务瘫痪。在云部署的环境下，因网络问题使得zk集群失去master节点是较大概率会发生的事，虽然服务能够恢复，但是漫长的选取时间导致的注册长期不可用是不能容忍的。</p>
+<p>（2）Eureka保证了可用性，Eureka各个节点是平等的，几个节点挂掉不会影响正常节点的工作，剩余的节点仍然可以提供注册和查询服务。而Eureka的客户端向某个Eureka注册或发现时发生连接失败，则会自动切换到其他节点，只要有一台Eureka还在，就能保证注册服务可用，只是查到的信息可能不是最新的。除此之外，Eureka还有自我保护机制，如果在15分钟内超过85%的节点没有正常的心跳，那么Eureka就认为 户端与注册中心发生了网络故障，此时会出现以下几种情况：</p>
+<p>①、Eureka不 从注册列表中移除因为长时间没有收到心跳而应该过期的服务。</p>
+<p>②、Eureka仍然能够接受新服务的注册和查询请求，但是不会被同步到其他节点上（即保证当前节点仍然可用）</p>
+<p>③、当网络稳定时，当前实例新的注册信息会被同步到其他节点。</p>
+<p><strong>因此，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像Zookeeper那样使整个微服务瘫痪。</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/29/%E7%90%86%E8%A7%A3%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -850,76 +1030,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/20/%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">解释型语言和编译型语言的区别</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-20 11:46:49 / Modified: 11:52:42" itemprop="dateCreated datePublished" datetime="2020-05-20T11:46:49-04:00">2020-05-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，我们编程都是用的高级语言(写汇编和机器语言的大牛们除外)，计算机不能直接理解高级语言，只能理解和运行机器语言，所以必须要把高级语言翻译成机器语言，计算机才能运行高级语言所编写的程序。</p>
-<p>说到翻译，其实翻译的方式有两种，一个是编译，一个是解释。两种方式只是翻译的时间不同。</p>
-<p>用编译型语言写的程序执行之前，需要一个专门的编译过程，通过编译系统（不仅仅只是通过编译器，编译器只是编译系统的一部分）把高级语言翻译成机器语言（具体翻译过程可以参看下图），把源高级程序编译成为机器语言文件，比如windows下的exe文件。以后就可以直接运行而不需要编译了，因为编译只做了一次，运行时不需要编译，所以编译型语言的程序执行效率高，但也不能一概而论，部分解释型语言的解释器通过在运行时动态优化代码，甚至能够使解释型语言的性能超过编译型语言。</p>
-<p> 解释则不同，解释型语言编写的程序不需要编译。解释型语言在运行的时候才翻译，比如VB语言，在执行的时候，专门有一个解释器能够将VB语言翻译成机器语言，每个语句都是执行的时候才翻译。这样解释型语言每执行一次就要翻译一次，效率比较低。</p>
-<p> 编译型与解释型，两者各有利弊。前者由于程序执行速度快，同等条件下对系统要求较低，因此像开发操作系统、大型应用程序、数据库系统等时都采用它，像C/C++、Pascal/Object Pascal（Delphi）等都是编译语言，而一些网页脚本、服务器脚本及辅助开发接口这样的对速度要求不高、对不同系统平台间的兼容性有一定要求的程序则通常使用解释性语言，如JavaScript、VBScript、Perl、Python、Ruby、MATLAB 等等。</p>
-<p>但随着硬件的升级和设计思想的变革，编译型和解释型语言越来越笼统，主要体现在一些新兴的高级语言上，而解释型语言的自身特点也使得编译器厂商愿意花费更多成本来优化解释器，解释型语言性能超过编译型语言也是必然的。</p>
-<p>说到这里，我们有必要说一下java与C#。解释型语言和编译型语言的区别</p>
-<p>JAVA语言是一种编译型-解释型语言，同时具备编译特性和解释特性（其实，确切的说java就是解释型语言，其所谓的编译过程只是将.java文件编译成平台无关的字节码.class文件，并不是向C一样编译成可执行的机器语言。作为编译型语言，JAVA程序要被统一编译成字节码文件——文件后缀是class。此种文件在java中又称为类文件。java类文件不能再计算机上直接执行，它需要被java虚拟机编译成本地的机器码后才能执行，而java虚拟机的编译过程则是解释性的。java字节码文件首先被加载到计算机内存中，然后读出一条指令，翻译一条指令，执行一条指令，该过程被称为java语言的解释执行，是由java虚拟机完成的。而在现实中，java开发工具JDK提供了两个很重要的命令来完成上面的编译和解释（翻译）过程。两个命令分别是java.exe和javac.exe，前者加载java类文件，并逐步对字节码文件进行编译，而另一个命令则对应了java语言的解释(javac.exe)过程。在次序上，java语言是要先进行编译的过程，接着解释执行。</p>
-<p>C#语言是编译型语言，但其“编译”过程比较特殊，具体说明如下：</p>
-<p>C#程序在第一次运行的时候，会依赖其.NET Frameworker平台，编译成IL中间码），然后由JIT compiler翻译成本地的机器码执行。从第二次在运行相同的程序，则不需要再执行以上编译和翻译过程，而是直接运行第一次翻译成的机器码。所以对于C#来说，通常第一次运行时间会很长，但从第二次开始，程序的执行时间会快很多。</p>
-<p>那么，C#为什么要进行两次“编译”呢？其实，微软想通过动态编译（由JIT compiler工具实现）来实现其程序运行的最优化。如果代码在运行前进行动态编译运行，那么JIT compiler可以很智能的根据你本地机器的硬件条件来进行优化，比如使用更好的register,机器指令等等，而不是像原来那样，build一份程序针对所有硬件的机器跑，没有充分利用各个机器的条件。</p>
-<p>另外，还有我们经常用到的脚本语言，比如JavaScript、Shell等语言都是脚本语言，本质上来说，脚本语言就是解释型语言。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -990,12 +1100,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">204</span>
+          <span class="site-state-item-count">205</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
