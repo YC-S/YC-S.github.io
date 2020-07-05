@@ -165,6 +165,276 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/Python-Interview-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/24/Python-Interview-Questions/" class="post-title-link" itemprop="url">Python_Interview_Questions</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-24 18:53:19 / Modified: 18:59:27" itemprop="dateCreated datePublished" datetime="2020-06-24T18:53:19-04:00">2020-06-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="What-is-Python"><a href="#What-is-Python" class="headerlink" title="What is Python?"></a>What is Python?</h3><p>Python is a high-level, interpreted, interactive and object-oriented scripting language. Python is designed to be highly readable. It uses English keywords frequently where as other languages use punctuation, and it has fewer syntactical constructions than other languages.</p>
+<h3 id="Name-some-of-the-features-of-Python"><a href="#Name-some-of-the-features-of-Python" class="headerlink" title="Name some of the features of Python."></a>Name some of the features of Python.</h3><p>Following are some of the salient features of python −</p>
+<ul>
+<li>It supports functional and structured programming methods as well as OOP.</li>
+<li>It can be used as a scripting language or can be compiled to byte-code for building large applications.</li>
+<li>It provides very high-level dynamic data types and supports dynamic type checking.</li>
+<li>It supports automatic garbage collection.</li>
+<li>It can be easily integrated with C, C++, COM, ActiveX, CORBA, and Java.</li>
+</ul>
+<h3 id="What-is-the-purpose-of-PYTHONPATH-environment-variable"><a href="#What-is-the-purpose-of-PYTHONPATH-environment-variable" class="headerlink" title="What is the purpose of PYTHONPATH environment variable?"></a>What is the purpose of PYTHONPATH environment variable?</h3><p>PYTHONPATH - It has a role similar to PATH. This variable tells the Python interpreter where to locate the module files imported into a program. It should include the Python source library directory and the directories containing Python source code. PYTHONPATH is sometimes preset by the Python installer.</p>
+<h3 id="What-is-the-purpose-of-PYTHONSTARTUP-environment-variable"><a href="#What-is-the-purpose-of-PYTHONSTARTUP-environment-variable" class="headerlink" title="What is the purpose of PYTHONSTARTUP environment variable?"></a>What is the purpose of PYTHONSTARTUP environment variable?</h3><p>PYTHONSTARTUP - It contains the path of an initialization file containing Python source code. It is executed every time you start the interpreter. It is named as .pythonrc.py in Unix and it contains commands that load utilities or modify PYTHONPATH.</p>
+<h3 id="What-is-the-purpose-of-PYTHONCASEOK-environment-variable"><a href="#What-is-the-purpose-of-PYTHONCASEOK-environment-variable" class="headerlink" title="What is the purpose of PYTHONCASEOK environment variable?"></a>What is the purpose of PYTHONCASEOK environment variable?</h3><p>PYTHONCASEOK − It is used in Windows to instruct Python to find the first case-insensitive match in an import statement. Set this variable to any value to activate it.</p>
+<h3 id="What-is-the-purpose-of-PYTHONHOME-environment-variable"><a href="#What-is-the-purpose-of-PYTHONHOME-environment-variable" class="headerlink" title="What is the purpose of PYTHONHOME environment variable?"></a>What is the purpose of PYTHONHOME environment variable?</h3><p>PYTHONHOME − It is an alternative module search path. It is usually embedded in the PYTHONSTARTUP or PYTHONPATH directories to make switching module libraries easy.</p>
+<h3 id="Is-python-a-case-sensitive-language"><a href="#Is-python-a-case-sensitive-language" class="headerlink" title="Is python a case sensitive language?"></a>Is python a case sensitive language?</h3><p>Yes! Python is a case sensitive programming language.</p>
+<h3 id="What-are-the-supported-data-types-in-Python"><a href="#What-are-the-supported-data-types-in-Python" class="headerlink" title="What are the supported data types in Python?"></a>What are the supported data types in Python?</h3><p>Python has five standard data types −</p>
+<ul>
+<li>Numbers</li>
+<li>String</li>
+<li>List</li>
+<li>Tuple</li>
+<li>Dictionary</li>
+</ul>
+<h3 id="What-is-the-output-of-print-str-if-str-‘Hello-World-’"><a href="#What-is-the-output-of-print-str-if-str-‘Hello-World-’" class="headerlink" title="What is the output of print str if str = ‘Hello World!’?"></a>What is the output of print str if str = ‘Hello World!’?</h3><p>It will print complete string. Output would be Hello World!.</p>
+<h3 id="What-is-the-output-of-print-str-0-if-str-‘Hello-World-’"><a href="#What-is-the-output-of-print-str-0-if-str-‘Hello-World-’" class="headerlink" title="What is the output of print str[0] if str = ‘Hello World!’?"></a>What is the output of print str[0] if str = ‘Hello World!’?</h3><p>It will print first character of the string. Output would be H.</p>
+<h3 id="What-is-the-output-of-print-str-2-5-if-str-‘Hello-World-’"><a href="#What-is-the-output-of-print-str-2-5-if-str-‘Hello-World-’" class="headerlink" title="What is the output of print str[2:5] if str = ‘Hello World!’?"></a>What is the output of print str[2:5] if str = ‘Hello World!’?</h3><p>It will print characters starting from 3rd to 5th. Output would be llo.</p>
+<h3 id="What-is-the-output-of-print-str-2-if-str-‘Hello-World-’"><a href="#What-is-the-output-of-print-str-2-if-str-‘Hello-World-’" class="headerlink" title="What is the output of print str[2:] if str = ‘Hello World!’?"></a>What is the output of print str[2:] if str = ‘Hello World!’?</h3><p>It will print characters starting from 3rd character. Output would be llo World!.</p>
+<h3 id="What-is-the-output-of-print-str-2-if-str-‘Hello-World-’-1"><a href="#What-is-the-output-of-print-str-2-if-str-‘Hello-World-’-1" class="headerlink" title="What is the output of print str * 2 if str = ‘Hello World!’?"></a>What is the output of print str * 2 if str = ‘Hello World!’?</h3><p>It will print string two times. Output would be Hello World!Hello World!.</p>
+<h3 id="What-is-the-output-of-print-str-“TEST”-if-str-‘Hello-World-’"><a href="#What-is-the-output-of-print-str-“TEST”-if-str-‘Hello-World-’" class="headerlink" title="What is the output of print str + “TEST” if str = ‘Hello World!’?"></a>What is the output of print str + “TEST” if str = ‘Hello World!’?</h3><p>It will print concatenated string. Output would be Hello World!TEST.</p>
+<h3 id="What-is-the-output-of-print-list-if-list-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-list-if-list-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print list if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?"></a>What is the output of print list if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?</h3><p>It will print complete list. Output would be [‘abcd’, 786, 2.23, ‘john’, 70.200000000000003].</p>
+<h3 id="What-is-the-output-of-print-list-0-if-list-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-list-0-if-list-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print list[0] if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?"></a>What is the output of print list[0] if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?</h3><p>It will print first element of the list. Output would be abcd.</p>
+<h3 id="What-is-the-output-of-print-list-1-3-if-list-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-list-1-3-if-list-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print list[1:3] if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?"></a>What is the output of print list[1:3] if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?</h3><p>It will print elements starting from 2nd till 3rd. Output would be [786, 2.23].</p>
+<h3 id="What-is-the-output-of-print-list-2-if-list-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-list-2-if-list-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print list[2:] if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?"></a>What is the output of print list[2:] if list = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ]?</h3><p>It will print elements starting from 3rd element. Output would be [2.23, ‘john’, 70.200000000000003].</p>
+<h3 id="What-is-the-output-of-print-tinylist-2-if-tinylist-123-‘john’"><a href="#What-is-the-output-of-print-tinylist-2-if-tinylist-123-‘john’" class="headerlink" title="What is the output of print tinylist * 2 if tinylist = [123, ‘john’]?"></a>What is the output of print tinylist * 2 if tinylist = [123, ‘john’]?</h3><p>It will print list two times. Output would be [123, ‘john’, 123, ‘john’].</p>
+<h3 id="What-is-the-output-of-print-list1-list2-if-list1-‘abcd’-786-2-23-‘john’-70-2-and-ist2-123-‘john’"><a href="#What-is-the-output-of-print-list1-list2-if-list1-‘abcd’-786-2-23-‘john’-70-2-and-ist2-123-‘john’" class="headerlink" title="What is the output of print list1 + list2, if list1 = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ] and ist2 = [123, ‘john’]?"></a>What is the output of print list1 + list2, if list1 = [ ‘abcd’, 786 , 2.23, ‘john’, 70.2 ] and ist2 = [123, ‘john’]?</h3><p>It will print concatenated lists. Output would be [‘abcd’, 786, 2.23, ‘john’, 70.2, 123, ‘john’]</p>
+<h3 id="What-are-tuples-in-Python"><a href="#What-are-tuples-in-Python" class="headerlink" title="What are tuples in Python?"></a>What are tuples in Python?</h3><p>A tuple is another sequence data type that is similar to the list. A tuple consists of a number of values separated by commas. Unlike lists, however, tuples are enclosed within parentheses.</p>
+<h3 id="What-is-the-difference-between-tuples-and-lists-in-Python"><a href="#What-is-the-difference-between-tuples-and-lists-in-Python" class="headerlink" title="What is the difference between tuples and lists in Python?"></a>What is the difference between tuples and lists in Python?</h3><p>The main differences between lists and tuples are − Lists are enclosed in brackets ( [ ] ) and their elements and size can be changed, while tuples are enclosed in parentheses ( ( ) ) and cannot be updated. Tuples can be thought of as read-only lists.</p>
+<h3 id="What-is-the-output-of-print-tuple-if-tuple-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-tuple-if-tuple-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print tuple if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?"></a>What is the output of print tuple if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?</h3><p>It will print complete tuple. Output would be (‘abcd’, 786, 2.23, ‘john’, 70.200000000000003).</p>
+<h3 id="What-is-the-output-of-print-tuple-0-if-tuple-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-tuple-0-if-tuple-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print tuple[0] if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?"></a>What is the output of print tuple[0] if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?</h3><p>It will print first element of the tuple. Output would be abcd.</p>
+<h3 id="What-is-the-output-of-print-tuple-1-3-if-tuple-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-tuple-1-3-if-tuple-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print tuple[1:3] if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?"></a>What is the output of print tuple[1:3] if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?</h3><p>It will print elements starting from 2nd till 3rd. Output would be (786, 2.23).</p>
+<h3 id="What-is-the-output-of-print-tuple-2-if-tuple-‘abcd’-786-2-23-‘john’-70-2"><a href="#What-is-the-output-of-print-tuple-2-if-tuple-‘abcd’-786-2-23-‘john’-70-2" class="headerlink" title="What is the output of print tuple[2:] if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?"></a>What is the output of print tuple[2:] if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 )?</h3><p>It will print elements starting from 3rd element. Output would be (2.23, ‘john’, 70.200000000000003).</p>
+<h3 id="What-is-the-output-of-print-tinytuple-2-if-tinytuple-123-‘john’"><a href="#What-is-the-output-of-print-tinytuple-2-if-tinytuple-123-‘john’" class="headerlink" title="What is the output of print tinytuple * 2 if tinytuple = (123, ‘john’)?"></a>What is the output of print tinytuple * 2 if tinytuple = (123, ‘john’)?</h3><p>It will print tuple two times. Output would be (123, ‘john’, 123, ‘john’).</p>
+<h3 id="What-is-the-output-of-print-tuple-tinytuple-if-tuple-‘abcd’-786-2-23-‘john’-70-2-and-tinytuple-123-‘john’"><a href="#What-is-the-output-of-print-tuple-tinytuple-if-tuple-‘abcd’-786-2-23-‘john’-70-2-and-tinytuple-123-‘john’" class="headerlink" title="What is the output of print tuple + tinytuple if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 ) and tinytuple = (123, ‘john’)?"></a>What is the output of print tuple + tinytuple if tuple = ( ‘abcd’, 786 , 2.23, ‘john’, 70.2 ) and tinytuple = (123, ‘john’)?</h3><p>It will print concatenated tuples. Output would be (‘abcd’, 786, 2.23, ‘john’, 70.200000000000003, 123, ‘john’).</p>
+<h3 id="What-are-Python’s-dictionaries"><a href="#What-are-Python’s-dictionaries" class="headerlink" title="What are Python’s dictionaries?"></a>What are Python’s dictionaries?</h3><p>Python’s dictionaries are kind of hash table type. They work like associative arrays or hashes found in Perl and consist of key-value pairs. A dictionary key can be almost any Python type, but are usually numbers or strings. Values, on the other hand, can be any arbitrary Python object.</p>
+<h3 id="How-will-you-create-a-dictionary-in-python"><a href="#How-will-you-create-a-dictionary-in-python" class="headerlink" title="How will you create a dictionary in python?"></a>How will you create a dictionary in python?</h3><p>Dictionaries are enclosed by curly braces ({ }) and values can be assigned and accessed using square braces ([]).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line">dict[<span class="string">'one'</span>] = <span class="string">"This is one"</span></span><br><span class="line">dict[<span class="number">2</span>]     = <span class="string">"This is two"</span></span><br><span class="line">tinydict = &#123;<span class="string">'name'</span>: <span class="string">'john'</span>,<span class="string">'code'</span>:<span class="number">6734</span>, <span class="string">'dept'</span>: <span class="string">'sales'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="How-will-you-get-all-the-keys-from-the-dictionary"><a href="#How-will-you-get-all-the-keys-from-the-dictionary" class="headerlink" title="How will you get all the keys from the dictionary?"></a>How will you get all the keys from the dictionary?</h3><p>Using dictionary.keys() function, we can get all the keys from the dictionary object.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> dict.keys()   <span class="comment"># Prints all the keys</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="How-will-you-get-all-the-values-from-the-dictionary"><a href="#How-will-you-get-all-the-values-from-the-dictionary" class="headerlink" title="How will you get all the values from the dictionary?"></a>How will you get all the values from the dictionary?</h3><p>Using dictionary.values() function, we can get all the values from the dictionary object.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> dict.values()   <span class="comment"># Prints all the values</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="How-will-you-convert-a-string-to-an-int-in-python"><a href="#How-will-you-convert-a-string-to-an-int-in-python" class="headerlink" title="How will you convert a string to an int in python?"></a>How will you convert a string to an int in python?</h3><p>int(x [,base]) - Converts x to an integer. base specifies the base if x is a string.</p>
+<h3 id="How-will-you-convert-a-string-to-a-long-in-python"><a href="#How-will-you-convert-a-string-to-a-long-in-python" class="headerlink" title="How will you convert a string to a long in python?"></a>How will you convert a string to a long in python?</h3><p>long(x [,base] ) - Converts x to a long integer. base specifies the base if x is a string.</p>
+<h3 id="How-will-you-convert-a-string-to-a-float-in-python"><a href="#How-will-you-convert-a-string-to-a-float-in-python" class="headerlink" title="How will you convert a string to a float in python?"></a>How will you convert a string to a float in python?</h3><p>float(x) − Converts x to a floating-point number.</p>
+<h3 id="How-will-you-convert-a-object-to-a-string-in-python"><a href="#How-will-you-convert-a-object-to-a-string-in-python" class="headerlink" title="How will you convert a object to a string in python?"></a>How will you convert a object to a string in python?</h3><p>str(x) − Converts object x to a string representation.</p>
+<h3 id="How-will-you-convert-a-object-to-a-regular-expression-in-python"><a href="#How-will-you-convert-a-object-to-a-regular-expression-in-python" class="headerlink" title="How will you convert a object to a regular expression in python?"></a>How will you convert a object to a regular expression in python?</h3><p>repr(x) − Converts object x to an expression string.</p>
+<h3 id="How-will-you-convert-a-String-to-an-object-in-python"><a href="#How-will-you-convert-a-String-to-an-object-in-python" class="headerlink" title="How will you convert a String to an object in python?"></a>How will you convert a String to an object in python?</h3><p>eval(str) − Evaluates a string and returns an object.</p>
+<h3 id="How-will-you-convert-a-string-to-a-tuple-in-python"><a href="#How-will-you-convert-a-string-to-a-tuple-in-python" class="headerlink" title="How will you convert a string to a tuple in python?"></a>How will you convert a string to a tuple in python?</h3><p>tuple(s) − Converts s to a tuple.</p>
+<h3 id="How-will-you-convert-a-string-to-a-list-in-python"><a href="#How-will-you-convert-a-string-to-a-list-in-python" class="headerlink" title="How will you convert a string to a list in python?"></a>How will you convert a string to a list in python?</h3><p>list(s) − Converts s to a list.</p>
+<h3 id="How-will-you-convert-a-string-to-a-set-in-python"><a href="#How-will-you-convert-a-string-to-a-set-in-python" class="headerlink" title="How will you convert a string to a set in python?"></a>How will you convert a string to a set in python?</h3><p>set(s) − Converts s to a set.</p>
+<h3 id="How-will-you-create-a-dictionary-using-tuples-in-python"><a href="#How-will-you-create-a-dictionary-using-tuples-in-python" class="headerlink" title="How will you create a dictionary using tuples in python?"></a>How will you create a dictionary using tuples in python?</h3><p>dict(d) − Creates a dictionary. d must be a sequence of (key,value) tuples.</p>
+<h3 id="How-will-you-convert-a-string-to-a-frozen-set-in-python"><a href="#How-will-you-convert-a-string-to-a-frozen-set-in-python" class="headerlink" title="How will you convert a string to a frozen set in python?"></a>How will you convert a string to a frozen set in python?</h3><p>frozenset(s) − Converts s to a frozen set.</p>
+<h3 id="How-will-you-convert-an-integer-to-a-character-in-python"><a href="#How-will-you-convert-an-integer-to-a-character-in-python" class="headerlink" title="How will you convert an integer to a character in python?"></a>How will you convert an integer to a character in python?</h3><p>chr(x) − Converts an integer to a character.</p>
+<h3 id="How-will-you-convert-an-integer-to-an-unicode-character-in-python"><a href="#How-will-you-convert-an-integer-to-an-unicode-character-in-python" class="headerlink" title="How will you convert an integer to an unicode character in python?"></a>How will you convert an integer to an unicode character in python?</h3><p>unichr(x) − Converts an integer to a Unicode character.</p>
+<h3 id="How-will-you-convert-a-single-character-to-its-integer-value-in-python"><a href="#How-will-you-convert-a-single-character-to-its-integer-value-in-python" class="headerlink" title="How will you convert a single character to its integer value in python?"></a>How will you convert a single character to its integer value in python?</h3><p>ord(x) − Converts a single character to its integer value.</p>
+<h3 id="How-will-you-convert-an-integer-to-hexadecimal-string-in-python"><a href="#How-will-you-convert-an-integer-to-hexadecimal-string-in-python" class="headerlink" title="How will you convert an integer to hexadecimal string in python?"></a>How will you convert an integer to hexadecimal string in python?</h3><p>hex(x) − Converts an integer to a hexadecimal string.</p>
+<h3 id="How-will-you-convert-an-integer-to-octal-string-in-python"><a href="#How-will-you-convert-an-integer-to-octal-string-in-python" class="headerlink" title="How will you convert an integer to octal string in python?"></a>How will you convert an integer to octal string in python?</h3><p>oct(x) − Converts an integer to an octal string.</p>
+<h3 id="What-is-the-purpose-of-operator"><a href="#What-is-the-purpose-of-operator" class="headerlink" title="What is the purpose of ** operator?"></a>What is the purpose of ** operator?</h3><p>** Exponent − Performs exponential (power) calculation on operators. a**b = 10 to the power 20 if a = 10 and b = 20.</p>
+<h3 id="What-is-the-purpose-of-operator-1"><a href="#What-is-the-purpose-of-operator-1" class="headerlink" title="What is the purpose of // operator?"></a>What is the purpose of // operator?</h3><p>// Floor Division − The division of operands where the result is the quotient in which the digits after the decimal point are removed.</p>
+<h3 id="What-is-the-purpose-of-is-operator"><a href="#What-is-the-purpose-of-is-operator" class="headerlink" title="What is the purpose of is operator?"></a>What is the purpose of is operator?</h3><p>is − Evaluates to true if the variables on either side of the operator point to the same object and false otherwise. x is y, here is results in 1 if id(x) equals id(y).</p>
+<h3 id="What-is-the-purpose-of-not-in-operator"><a href="#What-is-the-purpose-of-not-in-operator" class="headerlink" title="What is the purpose of not in operator?"></a>What is the purpose of not in operator?</h3><p>not in − Evaluates to true if it does not finds a variable in the specified sequence and false otherwise. x not in y, here not in results in a 1 if x is not a member of sequence y.</p>
+<h3 id="What-is-the-purpose-break-statement-in-python"><a href="#What-is-the-purpose-break-statement-in-python" class="headerlink" title="What is the purpose break statement in python?"></a>What is the purpose break statement in python?</h3><p>break statement − Terminates the loop statement and transfers execution to the statement immediately following the loop.</p>
+<h3 id="What-is-the-purpose-continue-statement-in-python"><a href="#What-is-the-purpose-continue-statement-in-python" class="headerlink" title="What is the purpose continue statement in python?"></a>What is the purpose continue statement in python?</h3><p>continue statement − Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.</p>
+<h3 id="What-is-the-purpose-pass-statement-in-python"><a href="#What-is-the-purpose-pass-statement-in-python" class="headerlink" title="What is the purpose pass statement in python?"></a>What is the purpose pass statement in python?</h3><p>pass statement − The pass statement in Python is used when a statement is required syntactically but you do not want any command or code to execute.</p>
+<h3 id="How-can-you-pick-a-random-item-from-a-list-or-tuple"><a href="#How-can-you-pick-a-random-item-from-a-list-or-tuple" class="headerlink" title="How can you pick a random item from a list or tuple?"></a>How can you pick a random item from a list or tuple?</h3><p>choice(seq) − Returns a random item from a list, tuple, or string.</p>
+<h3 id="How-can-you-pick-a-random-item-from-a-range"><a href="#How-can-you-pick-a-random-item-from-a-range" class="headerlink" title="How can you pick a random item from a range?"></a>How can you pick a random item from a range?</h3><p>randrange ([start,] stop [,step]) − returns a randomly selected element from range(start, stop, step).</p>
+<h3 id="How-can-you-get-a-random-number-in-python"><a href="#How-can-you-get-a-random-number-in-python" class="headerlink" title="How can you get a random number in python?"></a>How can you get a random number in python?</h3><p>random() − returns a random float r, such that 0 is less than or equal to r and r is less than 1.</p>
+<h3 id="How-will-you-set-the-starting-value-in-generating-random-numbers"><a href="#How-will-you-set-the-starting-value-in-generating-random-numbers" class="headerlink" title="How will you set the starting value in generating random numbers?"></a>How will you set the starting value in generating random numbers?</h3><p>seed([x]) − Sets the integer starting value used in generating random numbers. Call this function before calling any other random module function. Returns None.</p>
+<h3 id="How-will-you-randomizes-the-items-of-a-list-in-place"><a href="#How-will-you-randomizes-the-items-of-a-list-in-place" class="headerlink" title="How will you randomizes the items of a list in place?"></a>How will you randomizes the items of a list in place?</h3><p>shuffle(lst) − Randomizes the items of a list in place. Returns None.</p>
+<h3 id="How-will-you-capitalizes-first-letter-of-string"><a href="#How-will-you-capitalizes-first-letter-of-string" class="headerlink" title="How will you capitalizes first letter of string?"></a>How will you capitalizes first letter of string?</h3><p>capitalize() − Capitalizes first letter of string.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-alphanumeric"><a href="#How-will-you-check-in-a-string-that-all-characters-are-alphanumeric" class="headerlink" title="How will you check in a string that all characters are alphanumeric?"></a>How will you check in a string that all characters are alphanumeric?</h3><p>isalnum() − Returns true if string has at least 1 character and all characters are alphanumeric and false otherwise.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-digits"><a href="#How-will-you-check-in-a-string-that-all-characters-are-digits" class="headerlink" title="How will you check in a string that all characters are digits?"></a>How will you check in a string that all characters are digits?</h3><p>isdigit() − Returns true if string contains only digits and false otherwise.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-in-lowercase"><a href="#How-will-you-check-in-a-string-that-all-characters-are-in-lowercase" class="headerlink" title="How will you check in a string that all characters are in lowercase?"></a>How will you check in a string that all characters are in lowercase?</h3><p>islower() − Returns true if string has at least 1 cased character and all cased characters are in lowercase and false otherwise.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-numerics"><a href="#How-will-you-check-in-a-string-that-all-characters-are-numerics" class="headerlink" title="How will you check in a string that all characters are numerics?"></a>How will you check in a string that all characters are numerics?</h3><p>isnumeric() − Returns true if a unicode string contains only numeric characters and false otherwise.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-whitespaces"><a href="#How-will-you-check-in-a-string-that-all-characters-are-whitespaces" class="headerlink" title="How will you check in a string that all characters are whitespaces?"></a>How will you check in a string that all characters are whitespaces?</h3><p>isspace() − Returns true if string contains only whitespace characters and false otherwise.</p>
+<h3 id="How-will-you-check-in-a-string-that-it-is-properly-titlecased"><a href="#How-will-you-check-in-a-string-that-it-is-properly-titlecased" class="headerlink" title="How will you check in a string that it is properly titlecased?"></a>How will you check in a string that it is properly titlecased?</h3><p>istitle() − Returns true if string is properly “titlecased” and false otherwise.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-in-uppercase"><a href="#How-will-you-check-in-a-string-that-all-characters-are-in-uppercase" class="headerlink" title="How will you check in a string that all characters are in uppercase?"></a>How will you check in a string that all characters are in uppercase?</h3><p>isupper() − Returns true if string has at least one cased character and all cased characters are in uppercase and false otherwise.</p>
+<h3 id="How-will-you-merge-elements-in-a-sequence"><a href="#How-will-you-merge-elements-in-a-sequence" class="headerlink" title="How will you merge elements in a sequence?"></a>How will you merge elements in a sequence?</h3><p>join(seq) − Merges (concatenates) the string representations of elements in sequence seq into a string, with separator string.</p>
+<h3 id="How-will-you-get-the-length-of-the-string"><a href="#How-will-you-get-the-length-of-the-string" class="headerlink" title="How will you get the length of the string?"></a>How will you get the length of the string?</h3><p>len(string) − Returns the length of the string.</p>
+<h3 id="How-will-you-get-a-space-padded-string-with-the-original-string-left-justified-to-a-total-of-width-columns"><a href="#How-will-you-get-a-space-padded-string-with-the-original-string-left-justified-to-a-total-of-width-columns" class="headerlink" title="How will you get a space-padded string with the original string left-justified to a total of width columns?"></a>How will you get a space-padded string with the original string left-justified to a total of width columns?</h3><p>ljust(width[, fillchar]) − Returns a space-padded string with the original string left-justified to a total of width columns.</p>
+<h3 id="How-will-you-convert-a-string-to-all-lowercase"><a href="#How-will-you-convert-a-string-to-all-lowercase" class="headerlink" title="How will you convert a string to all lowercase?"></a>How will you convert a string to all lowercase?</h3><p>lower() − Converts all uppercase letters in string to lowercase.</p>
+<h3 id="How-will-you-remove-all-leading-whitespace-in-string"><a href="#How-will-you-remove-all-leading-whitespace-in-string" class="headerlink" title="How will you remove all leading whitespace in string?"></a>How will you remove all leading whitespace in string?</h3><p>lstrip() − Removes all leading whitespace in string.</p>
+<h3 id="How-will-you-get-the-max-alphabetical-character-from-the-string"><a href="#How-will-you-get-the-max-alphabetical-character-from-the-string" class="headerlink" title="How will you get the max alphabetical character from the string?"></a>How will you get the max alphabetical character from the string?</h3><p>max(str) − Returns the max alphabetical character from the string str.</p>
+<h3 id="How-will-you-get-the-min-alphabetical-character-from-the-string"><a href="#How-will-you-get-the-min-alphabetical-character-from-the-string" class="headerlink" title="How will you get the min alphabetical character from the string?"></a>How will you get the min alphabetical character from the string?</h3><p>min(str) − Returns the min alphabetical character from the string str.</p>
+<h3 id="How-will-you-replaces-all-occurrences-of-old-substring-in-string-with-new-string"><a href="#How-will-you-replaces-all-occurrences-of-old-substring-in-string-with-new-string" class="headerlink" title="How will you replaces all occurrences of old substring in string with new string?"></a>How will you replaces all occurrences of old substring in string with new string?</h3><p>replace(old, new [, max]) − Replaces all occurrences of old in string with new or at most max occurrences if max given.</p>
+<h3 id="How-will-you-remove-all-leading-and-trailing-whitespace-in-string"><a href="#How-will-you-remove-all-leading-and-trailing-whitespace-in-string" class="headerlink" title="How will you remove all leading and trailing whitespace in string?"></a>How will you remove all leading and trailing whitespace in string?</h3><p>strip([chars]) − Performs both lstrip() and rstrip() on string.</p>
+<h3 id="How-will-you-change-case-for-all-letters-in-string"><a href="#How-will-you-change-case-for-all-letters-in-string" class="headerlink" title="How will you change case for all letters in string?"></a>How will you change case for all letters in string?</h3><p>swapcase() − Inverts case for all letters in string.</p>
+<h3 id="How-will-you-get-titlecased-version-of-string"><a href="#How-will-you-get-titlecased-version-of-string" class="headerlink" title="How will you get titlecased version of string?"></a>How will you get titlecased version of string?</h3><p>title() − Returns “titlecased” version of string, that is, all words begin with uppercase and the rest are lowercase.</p>
+<h3 id="How-will-you-convert-a-string-to-all-uppercase"><a href="#How-will-you-convert-a-string-to-all-uppercase" class="headerlink" title="How will you convert a string to all uppercase?"></a>How will you convert a string to all uppercase?</h3><p>upper() − Converts all lowercase letters in string to uppercase.</p>
+<h3 id="How-will-you-check-in-a-string-that-all-characters-are-decimal"><a href="#How-will-you-check-in-a-string-that-all-characters-are-decimal" class="headerlink" title="How will you check in a string that all characters are decimal?"></a>How will you check in a string that all characters are decimal?</h3><p>isdecimal() − Returns true if a unicode string contains only decimal characters and false otherwise.</p>
+<h3 id="What-is-the-difference-between-del-and-remove-methods-of-list"><a href="#What-is-the-difference-between-del-and-remove-methods-of-list" class="headerlink" title="What is the difference between del() and remove() methods of list?"></a>What is the difference between del() and remove() methods of list?</h3><p>To remove a list element, you can use either the del statement if you know exactly which element(s) you are deleting or the remove() method if you do not know.</p>
+<h3 id="What-is-the-output-of-len-1-2-3"><a href="#What-is-the-output-of-len-1-2-3" class="headerlink" title="What is the output of len([1, 2, 3])?"></a>What is the output of len([1, 2, 3])?</h3><p>3.</p>
+<h3 id="What-is-the-output-of-1-2-3-4-5-6"><a href="#What-is-the-output-of-1-2-3-4-5-6" class="headerlink" title="What is the output of [1, 2, 3] + [4, 5, 6]?"></a>What is the output of [1, 2, 3] + [4, 5, 6]?</h3><p>[1, 2, 3, 4, 5, 6]</p>
+<h3 id="What-is-the-output-of-‘Hi-’-4"><a href="#What-is-the-output-of-‘Hi-’-4" class="headerlink" title="What is the output of [‘Hi!’] * 4?"></a>What is the output of [‘Hi!’] * 4?</h3><p>[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</p>
+<h3 id="What-is-the-output-of-3-in-1-2-3"><a href="#What-is-the-output-of-3-in-1-2-3" class="headerlink" title="What is the output of 3 in [1, 2, 3]?"></a>What is the output of 3 in [1, 2, 3]?</h3><p>True</p>
+<h3 id="What-is-the-output-of-for-x-in-1-2-3-print-x"><a href="#What-is-the-output-of-for-x-in-1-2-3-print-x" class="headerlink" title="What is the output of for x in [1, 2, 3]: print x?"></a>What is the output of for x in [1, 2, 3]: print x?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="What-is-the-output-of-L-2-if-L-1-2-3"><a href="#What-is-the-output-of-L-2-if-L-1-2-3" class="headerlink" title="What is the output of L[2] if L = [1,2,3]?"></a>What is the output of L[2] if L = [1,2,3]?</h3><p>3, Offsets start at zero.</p>
+<h3 id="What-is-the-output-of-L-2-if-L-1-2-3-1"><a href="#What-is-the-output-of-L-2-if-L-1-2-3-1" class="headerlink" title="What is the output of L[-2] if L = [1,2,3]?"></a>What is the output of L[-2] if L = [1,2,3]?</h3><p>1, Negative: count from the right.</p>
+<h3 id="What-is-the-output-of-L-1-if-L-1-2-3"><a href="#What-is-the-output-of-L-1-if-L-1-2-3" class="headerlink" title="What is the output of L[1:] if L = [1,2,3]?"></a>What is the output of L[1:] if L = [1,2,3]?</h3><p>2, 3, Slicing fetches sections.</p>
+<h3 id="How-will-you-compare-two-lists"><a href="#How-will-you-compare-two-lists" class="headerlink" title="How will you compare two lists?"></a>How will you compare two lists?</h3><p>cmp(list1, list2) − Compares elements of both lists.</p>
+<h3 id="How-will-you-get-the-length-of-a-list"><a href="#How-will-you-get-the-length-of-a-list" class="headerlink" title="How will you get the length of a list?"></a>How will you get the length of a list?</h3><p>len(list) − Gives the total length of the list.</p>
+<h3 id="How-will-you-get-the-max-valued-item-of-a-list"><a href="#How-will-you-get-the-max-valued-item-of-a-list" class="headerlink" title="How will you get the max valued item of a list?"></a>How will you get the max valued item of a list?</h3><p>max(list) − Returns item from the list with max value.</p>
+<h3 id="How-will-you-get-the-min-valued-item-of-a-list"><a href="#How-will-you-get-the-min-valued-item-of-a-list" class="headerlink" title="How will you get the min valued item of a list?"></a>How will you get the min valued item of a list?</h3><p>min(list) − Returns item from the list with min value.</p>
+<h3 id="How-will-you-get-the-index-of-an-object-in-a-list"><a href="#How-will-you-get-the-index-of-an-object-in-a-list" class="headerlink" title="How will you get the index of an object in a list?"></a>How will you get the index of an object in a list?</h3><p>list.index(obj) − Returns the lowest index in list that obj appears.</p>
+<h3 id="How-will-you-insert-an-object-at-given-index-in-a-list"><a href="#How-will-you-insert-an-object-at-given-index-in-a-list" class="headerlink" title="How will you insert an object at given index in a list?"></a>How will you insert an object at given index in a list?</h3><p>list.insert(index, obj) − Inserts object obj into list at offset index.</p>
+<h3 id="How-will-you-remove-last-object-from-a-list"><a href="#How-will-you-remove-last-object-from-a-list" class="headerlink" title="How will you remove last object from a list?"></a>How will you remove last object from a list?</h3><p>list.pop(obj=list[-1]) − Removes and returns last object or obj from list.</p>
+<h3 id="How-will-you-remove-an-object-from-a-list"><a href="#How-will-you-remove-an-object-from-a-list" class="headerlink" title="How will you remove an object from a list?"></a>How will you remove an object from a list?</h3><p>list.remove(obj) − Removes object obj from list.</p>
+<h3 id="How-will-you-reverse-a-list"><a href="#How-will-you-reverse-a-list" class="headerlink" title="How will you reverse a list?"></a>How will you reverse a list?</h3><p>list.reverse() − Reverses objects of list in place.</p>
+<h3 id="How-will-you-sort-a-list"><a href="#How-will-you-sort-a-list" class="headerlink" title="How will you sort a list?"></a>How will you sort a list?</h3><p>list.sort([func]) − Sorts objects of list, use compare func if given.</p>
+<h3 id="What-is-lambda-function-in-python"><a href="#What-is-lambda-function-in-python" class="headerlink" title="What is lambda function in python?"></a>What is lambda function in python?</h3><p>‘lambda’ is a keyword in python which creates an anonymous function. Lambda does not contain block of statements. It does not contain return statements.</p>
+<h3 id="What-we-call-a-function-which-is-incomplete-version-of-a-function"><a href="#What-we-call-a-function-which-is-incomplete-version-of-a-function" class="headerlink" title="What we call a function which is incomplete version of a function?"></a>What we call a function which is incomplete version of a function?</h3><p>Stub.</p>
+<h3 id="When-a-function-is-defined-then-the-system-stores-parameters-and-local-variables-in-an-area-of-memory-What-this-memory-is-known-as"><a href="#When-a-function-is-defined-then-the-system-stores-parameters-and-local-variables-in-an-area-of-memory-What-this-memory-is-known-as" class="headerlink" title="When a function is defined then the system stores parameters and local variables in an area of memory. What this memory is known as?"></a>When a function is defined then the system stores parameters and local variables in an area of memory. What this memory is known as?</h3><p>Stack.</p>
+<h3 id="A-canvas-can-have-a-foreground-color-Yes-No"><a href="#A-canvas-can-have-a-foreground-color-Yes-No" class="headerlink" title="A canvas can have a foreground color? (Yes/No)"></a>A canvas can have a foreground color? (Yes/No)</h3><p>Yes.</p>
+<h3 id="Is-Python-platform-independent"><a href="#Is-Python-platform-independent" class="headerlink" title="Is Python platform independent?"></a>Is Python platform independent?</h3><p>No</p>
+<p>There are some modules and functions in python that can only run on certain platforms.</p>
+<h3 id="Do-you-think-Python-has-a-complier"><a href="#Do-you-think-Python-has-a-complier" class="headerlink" title="Do you think Python has a complier?"></a>Do you think Python has a complier?</h3><p>Yes</p>
+<p>Yes it has a complier which works automatically so we don’t notice the compiler of python.</p>
+<h3 id="What-are-the-applications-of-Python"><a href="#What-are-the-applications-of-Python" class="headerlink" title="What are the applications of Python?"></a>What are the applications of Python?</h3><ol>
+<li><p>Django (Web framework of Python).</p>
+</li>
+<li><p>Micro Frame work such as Flask and Bottle.</p>
+</li>
+<li><p>Plone and Django CMS for advanced content Management.</p>
+</li>
+</ol>
+<h3 id="What-is-the-basic-difference-between-Python-version-2-and-Python-version-3"><a href="#What-is-the-basic-difference-between-Python-version-2-and-Python-version-3" class="headerlink" title="What is the basic difference between Python version 2 and Python version 3?"></a>What is the basic difference between Python version 2 and Python version 3?</h3><p>Table below explains the difference between Python version 2 and Python version 3.</p>
+<table>
+<thead>
+<tr>
+<th align="center">S.No</th>
+<th align="center">Section</th>
+<th align="center">Python Version2</th>
+<th align="center">Python Version3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1.</td>
+<td align="center">Print Function</td>
+<td align="center">Print command can be used without parentheses.</td>
+<td align="center">Python 3 needs parentheses to print any string. It will raise error without parentheses.</td>
+</tr>
+<tr>
+<td align="center">2.</td>
+<td align="center">Unicode</td>
+<td align="center">ASCII str() types and separate Unicode() but there is no byte type code in Python 2.</td>
+<td align="center">Unicode (utf-8) and it has two byte classes −ByteBytearray S.</td>
+</tr>
+<tr>
+<td align="center">3.</td>
+<td align="center">Exceptions</td>
+<td align="center">Python 2 accepts both new and old notations of syntax.</td>
+<td align="center">Python 3 raises a SyntaxError in turn when we don’t enclose the exception argument in parentheses.</td>
+</tr>
+<tr>
+<td align="center">4.</td>
+<td align="center">Comparing Unorderable</td>
+<td align="center">It does not raise any error.</td>
+<td align="center">It raises ‘TypeError’ as warning if we try to compare unorderable types.</td>
+</tr>
+</tbody></table>
+<h3 id="Which-programming-Language-is-an-implementation-of-Python-programming-language-designed-to-run-on-Java-Platform"><a href="#Which-programming-Language-is-an-implementation-of-Python-programming-language-designed-to-run-on-Java-Platform" class="headerlink" title="Which programming Language is an implementation of Python programming language designed to run on Java Platform?"></a>Which programming Language is an implementation of Python programming language designed to run on Java Platform?</h3><p>Jython</p>
+<p>(Jython is successor of Jpython.)</p>
+<h3 id="Is-there-any-double-data-type-in-Python"><a href="#Is-there-any-double-data-type-in-Python" class="headerlink" title="Is there any double data type in Python?"></a>Is there any double data type in Python?</h3><p>No</p>
+<h3 id="Is-String-in-Python-are-immutable-Yes-No"><a href="#Is-String-in-Python-are-immutable-Yes-No" class="headerlink" title="Is String in Python are immutable? (Yes/No)"></a>Is String in Python are immutable? (Yes/No)</h3><p>Yes.</p>
+<h3 id="Can-True-False-be-possible-in-Python"><a href="#Can-True-False-be-possible-in-Python" class="headerlink" title="Can True = False be possible in Python?"></a>Can True = False be possible in Python?</h3><p>No.</p>
+<h3 id="Which-module-of-python-is-used-to-apply-the-methods-related-to-OS"><a href="#Which-module-of-python-is-used-to-apply-the-methods-related-to-OS" class="headerlink" title="Which module of python is used to apply the methods related to OS.?"></a>Which module of python is used to apply the methods related to OS.?</h3><p>OS.</p>
+<h3 id="When-does-a-new-block-begin-in-python"><a href="#When-does-a-new-block-begin-in-python" class="headerlink" title="When does a new block begin in python?"></a>When does a new block begin in python?</h3><p>A block begins when the line is intended by 4 spaces.</p>
+<p>Write a function in python which detects whether the given two strings are anagrams or not.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(a,b)</span>:</span></span><br><span class="line">   <span class="keyword">if</span>(len(a)!=len(b)):</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">if</span>(sorted(list(a)) == sorted(list(b))):</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Name-the-python-Library-used-for-Machine-learning"><a href="#Name-the-python-Library-used-for-Machine-learning" class="headerlink" title="Name the python Library used for Machine learning."></a>Name the python Library used for Machine learning.</h3><p>Scikit-learn python Library used for Machine learning</p>
+<h3 id="What-does-pass-operation-do"><a href="#What-does-pass-operation-do" class="headerlink" title="What does pass operation do?"></a>What does pass operation do?</h3><p>Pass indicates that nothing is to be done i.e. it signifies a no operation.</p>
+<h3 id="Name-the-tools-which-python-uses-to-find-bugs-if-any"><a href="#Name-the-tools-which-python-uses-to-find-bugs-if-any" class="headerlink" title="Name the tools which python uses to find bugs (if any)."></a>Name the tools which python uses to find bugs (if any).</h3><p>Pylint and pychecker.</p>
+<h3 id="Write-a-function-to-give-the-sum-of-all-the-numbers-in-list"><a href="#Write-a-function-to-give-the-sum-of-all-the-numbers-in-list" class="headerlink" title="Write a function to give the sum of all the numbers in list?"></a>Write a function to give the sum of all the numbers in list?</h3><p>Sample list − (100, 200, 300, 400, 0, 500)</p>
+<p>Expected output − 1500</p>
+<p>Program for sum of all the numbers in list is −</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(numbers)</span>:</span></span><br><span class="line">   total = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> num <span class="keyword">in</span> numbers:</span><br><span class="line">      total+=num</span><br><span class="line">   print(<span class="string">''</span>Sum of the numbers: <span class="string">''</span>, total)</span><br><span class="line">sum((<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">0</span>, <span class="number">500</span>))</span><br></pre></td></tr></table></figure>
+
+<p>We define a function ‘sum’ with numbers as parameter. The in for loop we store the sum of all the values of list.</p>
+<h3 id="Write-a-program-in-Python-to-reverse-a-string-without-using-inbuilt-function-reverse-string"><a href="#Write-a-program-in-Python-to-reverse-a-string-without-using-inbuilt-function-reverse-string" class="headerlink" title="Write a program in Python to reverse a string without using inbuilt function reverse string?"></a>Write a program in Python to reverse a string without using inbuilt function reverse string?</h3><p>Program to reverse a string in given below −</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_reverse</span><span class="params">(str1)</span>:</span></span><br><span class="line"></span><br><span class="line">rev_str = <span class="string">' '</span></span><br><span class="line">index = len(str1) <span class="comment">#defining index as length of string.</span></span><br><span class="line"><span class="keyword">while</span>(index&gt;<span class="number">0</span>):</span><br><span class="line">   rev_str = rev_str + str1[index<span class="number">-1</span>]</span><br><span class="line">   index = index<span class="number">-1</span></span><br><span class="line">   <span class="keyword">return</span>(rev_str)</span><br><span class="line"></span><br><span class="line">print(string_reverse(<span class="string">'1tniop'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>First we declare a variable to store the reverse string. Then using while loop and indexing of string (index is calculated by string length) we reverse the string. While loop starts when index is greater than zero. Index is reduced to value 1 each time. When index reaches zero we obtain the reverse of string.</p>
+<h3 id="Write-a-program-to-test-whether-the-number-is-in-the-defined-range-or-not"><a href="#Write-a-program-to-test-whether-the-number-is-in-the-defined-range-or-not" class="headerlink" title="Write a program to test whether the number is in the defined range or not?"></a>Write a program to test whether the number is in the defined range or not?</h3><p>Program is −</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_range</span><span class="params">(num)</span>:</span></span><br><span class="line">   <span class="keyword">if</span> num <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">101</span>):</span><br><span class="line">      print(<span class="string">''</span>%s <span class="keyword">is</span> <span class="keyword">in</span> range<span class="string">''</span>%str(num))</span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      print(<span class="string">''</span>%s <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> range<span class="string">''</span>%str(num))</span><br></pre></td></tr></table></figure>
+
+<p>Output −</p>
+<p>test_range(101)</p>
+<p>101 is not in the range</p>
+<p>To test any number in a particular range we make use of the method ‘if..in’ and else condition.</p>
+<h3 id="Write-a-program-to-calculate-number-of-upper-case-letters-and-number-of-lower-case-letters"><a href="#Write-a-program-to-calculate-number-of-upper-case-letters-and-number-of-lower-case-letters" class="headerlink" title="Write a program to calculate number of upper case letters and number of lower case letters?"></a>Write a program to calculate number of upper case letters and number of lower case letters?</h3><p>Test on String: ‘’Tutorials POINT’’</p>
+<p>Program is −</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_test</span><span class="params">(s)</span>:</span></span><br><span class="line"></span><br><span class="line">a = &#123; <span class="string">''</span>Lower_Case<span class="string">''</span>:<span class="number">0</span> , <span class="string">''</span>Upper_Case<span class="string">''</span>:<span class="number">0</span>&#125; <span class="comment">#intiail count of lower and upper</span></span><br><span class="line"><span class="keyword">for</span> ch <span class="keyword">in</span> s: <span class="comment">#for loop</span></span><br><span class="line">   <span class="keyword">if</span>(ch.islower()): <span class="comment">#if-elif-else condition</span></span><br><span class="line">      a[<span class="string">''</span>Lower_Case<span class="string">''</span>] = a[<span class="string">''</span>Lower_Case<span class="string">''</span>] + <span class="number">1</span></span><br><span class="line">   <span class="keyword">elif</span>(ch.isupper()):</span><br><span class="line">      a[<span class="string">''</span>Upper_Case<span class="string">''</span>] = a [<span class="string">''</span>Upper_Case<span class="string">''</span>] + <span class="number">1</span></span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">''</span>String <span class="keyword">in</span> testing <span class="keyword">is</span>: <span class="string">''</span>,s) <span class="comment">#printing the statements.</span></span><br><span class="line">print(<span class="string">''</span>Number of Lower Case characters <span class="keyword">in</span> String: <span class="string">''</span>,a[<span class="string">''</span>Lower_Case<span class="string">''</span>])</span><br><span class="line">print(<span class="string">''</span>Number of Upper Case characters <span class="keyword">in</span> String: <span class="string">''</span>,a[<span class="string">''</span>Upper_Case<span class="string">''</span>])</span><br></pre></td></tr></table></figure>
+
+<p>Output −</p>
+<p>string_test(‘’Tutorials POINT’’)</p>
+<p>String in testing is: Tutorials POINT</p>
+<p>Number of Lower Case characters in String: 8</p>
+<p>Number of Upper Case characters in String: 6</p>
+<p>We make use of the methods .islower() and .isupper(). We initialise the count for lower and upper. Using if and else condition we calculate total number of lower and upper case characters.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/23/Java-HashMap-Inner-Implementation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1691,114 +1961,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/14/Spring-Annotations-Cheat-Sheet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/14/Spring-Annotations-Cheat-Sheet/" class="post-title-link" itemprop="url">Spring_Annotations_Cheat_Sheet</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-14 19:31:52 / Modified: 19:33:11" itemprop="dateCreated datePublished" datetime="2020-06-14T19:31:52-04:00">2020-06-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Important-Spring-Annotations"><a href="#Important-Spring-Annotations" class="headerlink" title="Important Spring Annotations"></a>Important Spring Annotations</h2><p>Spring uses dependency injection to configure and to bring your application together. It means that you just declare the components of your system and how they interact. Then Spring wires it all together at runtime. Here are the most important annotations you should know of.</p>
-<ul>
-<li><strong>@Configuration</strong> - annotation is used to mark a class as a source of the bean definitions. Beans are the components of the system that you want to wire together. A method marked with the @Bean annotation is a bean producer. Spring will handle the life cycle of the beans for you, and it will use these methods to create the beans.</li>
-<li><strong>@ComponentScan -</strong> use to make sure that Spring knows about your configuration classes and can initialize the beans correctly. It makes Spring scan the packages configured with it for the @Configuration classes.</li>
-<li><strong>@Import -</strong> If you need even more precise control of the configuration classes, you can always use @import to load additional configuration. This one works even when you specify the beans in an XML file like it’s 1999.</li>
-<li><strong>@Component</strong> - Another way to declare a bean is to mark a class with a @Component annotation. Doing this turns the class into a Spring bean at the auto-scan time.</li>
-<li><strong>@Service -</strong> Mark a specialization of a @Component. It tells Spring that it’s safe to manage them with more freedom than regular components. Remember, services have no encapsulated state.</li>
-<li><strong>@Autowired -</strong> To wire the application parts together, use the @Autowired on the fields, constructors, or methods in a component. Spring’s dependency injection mechanism wires appropriate beans into the class members marked with @Autowired.</li>
-</ul>
-<h3 id="More-Complex-Spring-Annotations"><a href="#More-Complex-Spring-Annotations" class="headerlink" title="More Complex Spring Annotations"></a>More Complex Spring Annotations</h3><p>Now it’s time to go a bit deeper. The bean initialization is eager by default. Spring will try to initialize all the beans and wire them all together. You can mark a @Bean or @Component with <strong>@Lazy</strong> to have them be initialized on demand. It can save some startup time!</p>
-<p>If you have multiple beans that can be wired into the field marked with @Autowired, use <strong>@Qualifier</strong> to filter which beans should be used there.</p>
-<p>Another useful annotation is <strong>@Value</strong>. This one indicates a default value expression for the field or parameter to initialize the property with. Typically something like the following expression, referencing a configuration property will be used there: <code>&quot;#{systemProperties.myProp}&quot;</code>.</p>
-<p>And to make the system more robust, you can enable the verification to make Spring fail when a bean to autowire is not found. Use <strong>@Required</strong> to fail the wiring if the dependency cannot be injected.</p>
-<blockquote>
-<ul>
-<li><strong>@Lazy -</strong> Initialize bean on demand</li>
-<li><strong>@Value -</strong> indicate default value expression for field or parameter</li>
-<li><strong>@Required -</strong> Fail wiring if dependency can’t be injected</li>
-</ul>
-</blockquote>
-<p>Armed with these annotations you can make the application come together with a very little effort. Naturally, there are more Spring annotations that you might want to use, but these here are the core of the framework that enables the flexibility Spring is known for!</p>
-<h2 id="Important-Spring-Boot-Annotations"><a href="#Important-Spring-Boot-Annotations" class="headerlink" title="Important Spring Boot Annotations"></a>Important Spring Boot Annotations</h2><p>Let’s look at some of the most frequently used annotations in the context of web apps. Most of our readers are either backend engineers or are doing full stack developer jobs. So it makes sense to popularize the Spring Framework annotations that make web development easier.</p>
-<h3 id="SpringBootApplicaiton"><a href="#SpringBootApplicaiton" class="headerlink" title="@SpringBootApplicaiton"></a>@SpringBootApplicaiton</h3><p>First one of the most basic, super helpful annotations, our all time favorite <strong>@SpringBootApplication</strong>. There’s nothing magical about it. It’s syntactic sugar for combining other annotations that we’ll look at in just a moment. @SpringBootApplication is <strong>@Configuration</strong>, <strong>@EnableAutoConfiguration</strong> and <strong>@ComponentScan</strong> annotations combined, configured with their default attributes.</p>
-<h3 id="Configuration-and-ComponentScan"><a href="#Configuration-and-ComponentScan" class="headerlink" title="@Configuration and @ComponentScan"></a>@Configuration and @ComponentScan</h3><p>The @Configuration and @ComponentScan annotations that we described above make Spring create and configure the beans and components of your application. It’s a great way to decouple the actual business logic code from wiring the app together.</p>
-<h3 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h3><p>Now the <strong>@EnableAutoConfiguration</strong> annotation is even better. It makes Spring guess the configuration based on the JAR files available on the classpath. It can figure out what libraries you use and preconfigure their components without you lifting a finger. It is how all the spring-boot-starter libraries work. Meaning it’s a major lifesaver both when you’re just starting to work with a library as well as when you know and trust the default config to be reasonable.</p>
-<h2 id="Important-Spring-Boot-Web-Annotations"><a href="#Important-Spring-Boot-Web-Annotations" class="headerlink" title="Important Spring Boot Web Annotations"></a>Important Spring Boot Web Annotations</h2><p>The following annotations make Spring configure your app to be a web application, capable of serving the HTTP response.</p>
-<h3 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h3><p><strong>@Controller</strong> marks the class as a web controller, capable of handling the HTTP requests. Spring will look at the methods of the class marked with the @Controller annotation and establish the routing table to know which methods serve which endpoints.</p>
-<h3 id="ResponseBody"><a href="#ResponseBody" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h3><p>The <strong>@ResponseBody</strong> is a utility annotation that makes Spring bind a method’s return value to the HTTP response body. When building a JSON endpoint, this is an amazing way to magically convert your objects into JSON for easier consumption.</p>
-<h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><p>Then there’s the <strong>@RestController</strong> annotation – a convenience syntax for @Controller and @ResponseBody together. This means that all the action methods in the marked class will return the JSON response.</p>
-<h3 id="RequestMapping-method-RequestMethod-GET-value-“-path”"><a href="#RequestMapping-method-RequestMethod-GET-value-“-path”" class="headerlink" title="@RequestMapping(method = RequestMethod.GET, value = “/path”)"></a>@RequestMapping(method = RequestMethod.GET, value = “/path”)</h3><p>The <strong>@RequestMapping(method = RequestMethod.GET, value = “/path”)</strong> annotation specifies a method in the controller that should be responsible for serving the HTTP request to the given path. Spring will work the implementation details of how it’s done. You simply specify the path value on the annotation and Spring will route the requests into the correct action methods.</p>
-<h3 id="RequestParam-value-”name”-defaultValue-”World”"><a href="#RequestParam-value-”name”-defaultValue-”World”" class="headerlink" title="@RequestParam(value=”name”, defaultValue=”World”)"></a>@RequestParam(value=”name”, defaultValue=”World”)</h3><p>Naturally, the methods handling the requests might take parameters. To help you with binding the HTTP parameters into the action method arguments, you can use the <strong>@RequestParam(value=”name”, defaultValue=”World”)</strong> annotation. Spring will parse the request parameters and put the appropriate ones into your method arguments.</p>
-<h3 id="PathVariable-“placeholderName”"><a href="#PathVariable-“placeholderName”" class="headerlink" title="@PathVariable(“placeholderName”)"></a>@PathVariable(“placeholderName”)</h3><p>Another common way to provide information to the backend is to encode it in the URL. Then you can use the <strong>@PathVariable(“placeholderName”)</strong> annotation to bring the values from the URL to the method arguments.</p>
-<h2 id="Most-Useful-Spring-Cloud-Annotations"><a href="#Most-Useful-Spring-Cloud-Annotations" class="headerlink" title="Most Useful Spring Cloud Annotations"></a>Most Useful Spring Cloud Annotations</h2><p>Now you have a fully functioning web app that is both neat on the code level as well as separated into beans and service classes. The app is declaratively configuring background jobs and gets constructed and configured at runtime without extra uproar.</p>
-<p>If you’re in the mood to build a larger system of such web apps, you’ll need to work more on the organizational problems. These include issues like how to configure these multiple apps, how to make them communicate with each other, and how to make sure that network failures will not crash the whole system.</p>
-<p>The <a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="noopener">Spring Cloud project</a> tries to precisely answer these questions and help you take your apps to the cloud.</p>
-<h3 id="EnableConfigServer"><a href="#EnableConfigServer" class="headerlink" title="@EnableConfigServer"></a>@EnableConfigServer</h3><p><strong>@EnableConfigServer</strong> turns your application into a server other apps can get their configuration from. You need a configuration server to have a central repository of all the appropriate configurations. The good thing is that creating one is just an annotation away.</p>
-<p>Now when you have the central configuration server available, you can use the <em>spring.application.cloud.config.uri</em> property in the client Spring apps to point them to the configuration server. When these apps start, they will reach out to the configuration server and obtain the necessary properties. You don’t have to package your configuration together with the app code. This separation of concerns works wonders to simplify your deployments.</p>
-<hr>
-<h2 id="Spring-Discovery-Service-Annotations"><a href="#Spring-Discovery-Service-Annotations" class="headerlink" title="Spring Discovery Service Annotations"></a>Spring Discovery Service Annotations</h2><p>The next bit we want to cover is even cooler. Imagine a situation when you have many small services that are context bounded, excel at one thing and put together, form a complex system that brings your real business value. How do you wire the services together? You cannot go with hardcoding the URLs in code or even the configuration – it just won’t scale. What you need is a discovery service.</p>
-<p>You probably know where I’m going. You can get yourself a fully functioning <a href="https://github.com/Netflix/eureka" target="_blank" rel="noopener">Eureka service discovery server</a> just by using a single annotation.</p>
-<h3 id="EnableEurekaServer"><a href="#EnableEurekaServer" class="headerlink" title="@EnableEurekaServer"></a>@EnableEurekaServer</h3><p>Just by adding the <strong>@EnableEurekaServer</strong> annotation to your brand new Spring Boot app, you make it an Eureka discovery service. Now other apps can locate services through it. To take advantage of this wonderful topology, you need to instruct the apps that they should become clients for this Eureka server.</p>
-<h3 id="EnableDiscoveryClient"><a href="#EnableDiscoveryClient" class="headerlink" title="@EnableDiscoveryClient"></a>@EnableDiscoveryClient</h3><p>Luckily for you, there is a <strong>@EnableDiscoveryClient</strong> annotation. This makes your app register in the service discovery server and then consult with it to discover the other services you need. When all the apps use the discovery client, you don’t need to hardcode any IP addresses or URLs. You can always say: please Eureka, give me a location of the service by a given name.</p>
-<h3 id="EnableCircuitBreaker"><a href="#EnableCircuitBreaker" class="headerlink" title="@EnableCircuitBreaker"></a>@EnableCircuitBreaker</h3><p>Now with all this fancy distributed system going around, you cannot expect things never to break down. Network can and will fail on you. You need a way to mitigate the damage, and still serve something meaningful back to your clients. So, how can developers ensure resiliency in applications? <a href="https://www.jrebel.com/blog/microservices-resilience-patterns" target="_blank" rel="noopener">Resilience patterns</a>.</p>
-<p>In this instance, you need a resilience pattern called the circuit breaker pattern. When things go south, you’ll have a way to specify the fallback methods for retrieving data from another service or to respond with reasonable defaults. To make your app aware of the circuit breaker patterns, add the <strong>@EnableCircuitBreaker</strong> annotation. This will configure Hystrix circuit breaker protocols for your application.</p>
-<p>And then mark the important methods with the <strong>@HystrixCommand(fallbackMethod = “fallbackMethodName”)</strong> annotations. This says that in the case of an emergency when the method throws exceptions or times out, your app should make use of the fallback method. When things are going well, and everything works, this approach will help keep your code neat and maintainable.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1864,7 +2031,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">210</span>
+          <span class="site-state-item-count">211</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
