@@ -165,6 +165,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/Rust-vs-Go/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/15/Rust-vs-Go/" class="post-title-link" itemprop="url">Rust_vs_Go</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-15 20:10:53 / Modified: 20:13:15" itemprop="dateCreated datePublished" datetime="2020-06-15T20:10:53-04:00">2020-06-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>In less than a decade, two new programming languages have emerged as major options for enterprise development: <a href="https://www.infoworld.com/article/3201037/whats-new-in-googles-go-language.html" target="_blank" rel="noopener">Go</a>, which was created at Google, and <a href="https://www.infoworld.com/article/3218074/what-is-rust-safe-fast-and-easy-software-development.html" target="_blank" rel="noopener">Rust</a>, which was created at Mozilla.</p>
+<p>Both languages offer indispensable features for modern software development: a sophisticated and integrated toolchain, memory safety, an open source development model, and strong communities of users.</p>
+<p>Apart from those similarities, Rust and Go are dramatically different. They were built to scratch different itches, fulfill different demands, and write different kinds of programs.</p>
+<p>Thus, comparing Rust and Go isn’t about which language is “objectively better,” but about which language is best for a given programming task. With that in mind, let’s look at the main ways Rust and Go differ, and the kinds of work each is best suited for.</p>
+<h2 id="Rust-vs-Go-Performance"><a href="#Rust-vs-Go-Performance" class="headerlink" title="Rust vs. Go: Performance"></a>Rust vs. Go: Performance</h2><p>On the list of Rust’s major advantages, performance ranks right at the top with safety and ease, and may be <em>the</em> number-one item. Rust programs are designed to run at or near the speed of C and C++, thanks to Rust’s zero-cost runtime abstractions for memory handling and processing.</p>
+<p>It’s always possible to write a slow Rust program, but at least you can be sure that Rust is not preemptively sacrificing performance for safety or convenience. What Rust <em>does</em> cost is an effort on the part of the developer to learn and master the language’s abstractions for memory management. (More on memory management below.)</p>
+<p>Go, by contrast, does trade some runtime speed for developer convenience. Memory management is handled by the Go runtime (again, more below), so there is an inevitable amount of runtime-associated overhead. But for many scenarios, this trade-off is negligible. Go is by default many times faster than other languages of convenience (e.g., Python).</p>
+<p>In short, Rust <em>is</em> faster overall, but for most workaday use cases the difference in speed between Rust and Go will be marginal. In cases where performance is an absolute requirement, Rust can excel in ways that Go cannot.</p>
+<h2 id="Rust-vs-Go-Memory-management"><a href="#Rust-vs-Go-Memory-management" class="headerlink" title="Rust vs. Go: Memory management"></a>Rust vs. Go: Memory management</h2><p>Memory management in Rust and Go are strongly related to the performance behaviors in both languages.</p>
+<p>Rust uses compile-time ownership strategies for memory management by way of zero-cost abstractions. This means the vast majority of memory management issues can be caught before a Rust program ever goes live. If a Rust program isn’t memory safe, then it doesn’t compile. Given how much of our world is built atop software that is routinely found to be unsafe due to bad memory management, the Rust approach is way overdue.</p>
+<p>As noted above, this safety comes at the cost of Rust’s more challenging learning curve: Programmers must know how to use Rust’s memory management idioms properly, and that requires time and practice. Developers coming from the worlds of C, C++, C#, or Java must rethink how they write code when they sit down with Rust.</p>
+<p>Like Rust, Go is memory safe, but that’s because memory management is handled automatically at runtime. Programmers can write thousands of lines of Go code and never once have to think about allocating or releasing memory. Programmers do have some control over the garbage collector at runtime. You can <a href="https://blog.cloudflare.com/go-dont-collect-my-garbage/" target="_blank" rel="noopener">change garbage collection thresholds</a> or trigger collections manually to prevent garbage collection cycles from interfering with operations.</p>
+<p>Programmers can also perform <em>some</em> manual memory management in Go, but the language deliberately stacks the deck against doing so. For instance, you can use pointers to access variables, but you can’t perform pointer arithmetic to access arbitrary areas of memory unless you use the <code>unsafe</code> package, an unwise choice for software that runs in production.</p>
+<p>If the programming task at hand requires you to allocate and release memory manually—e.g., for low-level hardware or maximum-performance scenarios—Rust is designed to accommodate those needs. Nevertheless, don’t assume that Go’s automatic memory management disqualifies it from creating robust software for your task.</p>
+<h2 id="Rust-vs-Go-Development-speed"><a href="#Rust-vs-Go-Development-speed" class="headerlink" title="Rust vs. Go: Development speed"></a>Rust vs. Go: Development speed</h2><p>Sometimes development speed is more important than program speed. Python has made a career out of being not-the-fastest language to run, but among the fastest languages to <em>write</em> software in. Go has the same appeal; its directness and simplicity make for a speedy development process. Compile times are short, and the Go runtime is faster than Python (and other interpreted, developer-friendly languages) by orders of magnitude.</p>
+<p>In short, Go offers both simplicity and speed. So what’s missing? Some features found in other languages (e.g., generics) have been omitted to make the language easier to learn, easier to master, and easier to maintain. The downside is that some programming tasks aren’t possible without a fair amount of boilerplate.</p>
+<p>Rust has more language features than Go, and it takes longer to learn and master. Rust’s compile times also tend to be longer than equivalent Go programs, especially for applications with large dependency trees. This remains true even after a concerted effort by the Rust project to shorten compile times. </p>
+<p>If a fast development cycle and the need to bring people on board a project quickly are top priorities, Go is the better choice. If you’re less concerned about development speed, and more concerned with memory safety and execution speed, pick Rust.</p>
+<h2 id="Rust-vs-Go-Concurrency-and-parallelism"><a href="#Rust-vs-Go-Concurrency-and-parallelism" class="headerlink" title="Rust vs. Go: Concurrency and parallelism"></a>Rust vs. Go: Concurrency and parallelism</h2><p>Modern hardware is multi-core, and modern applications are networked and distributed. Languages that don’t plan for these realities are behind the curve. Programmers need to be able to run tasks independently, whether on a single thread or multiple threads, and to share state between tasks without risking data corruption. Rust and Go both provide ways to do this.</p>
+<p>Concurrency was baked into the Go language’s syntax from the beginning, by way of goroutines (lightweight threads) and channels (communication mechanisms for goroutines). These primitives make it easy to write applications (such as network services) that must handle many tasks concurrently without risking common issues like race conditions. Go doesn’t make race conditions <em>impossible</em>, but provides native test mechanisms to warn the programmer if race conditions could occur at runtime.</p>
+<p>Rust only recently gained native concurrency syntax, in the form of <a href="https://rust-lang.github.io/async-book/03_async_await/01_chapter.html" target="_blank" rel="noopener">the <code>async/``.await</code> keywords</a>. Before <code>async</code>/<code>.await</code>, concurrency came by way of a crate or package for Rust called <code>futures</code>. Although Rust’s concurrency lacks the years of consolidated developer experience behind Go’s concurrency, it inherits the advantage of Rust’s memory safety—that is, Rust code that could expose race conditions simply won’t compile. Concurrent or asynchronous operations will be harder to write in Rust, due to Rust’s syntax rules, but it will be durable in the long run.</p>
+<h2 id="Rust-vs-Go-Interoperability-with-legacy-code"><a href="#Rust-vs-Go-Interoperability-with-legacy-code" class="headerlink" title="Rust vs. Go: Interoperability with legacy code"></a>Rust vs. Go: Interoperability with legacy code</h2><p>New languages like Rust and Go aim for memory safety and programmer convenience in ways that earlier languages didn’t fathom. But the new always has to co-exist to some degree with the old. To that end, Rust and Go both interoperate with legacy C code, although with different restrictions in each case.</p>
+<p>Rust can talk directly to C libraries by way of the <code>extern</code> keyword and the <code>libc</code> “crate” (Rust’s name for a package), but all calls to such libraries have to be tagged as unsafe. In other words, Rust can’t guarantee their memory or thread safety; you need to <a href="https://doc.rust-lang.org/nomicon/ffi.html#creating-a-safe-interface" target="_blank" rel="noopener">manually ensure that interfaces to C code are safe</a>. Calling into C++ code, on the other hand, isn’t supported at all (at least, not yet) unless said code has a C-compatible interface. Many examples of how to wrap code with Rust’s FFI (Foreign Function Interface)—for C and other languages—can be found at the <a href="http://jakegoulding.com/rust-ffi-omnibus/" target="_blank" rel="noopener">Rust FFI Omnibus</a> website.</p>
+<p>Go provides the <code>cgo</code> package for working with C. The <code>cgo</code> package allows you to call into C libraries, use C header files in your Go code, and convert common data types between C and Go (e.g., strings). However, because Go is memory-managed and garbage-collected, you have to <a href="https://golang.org/cmd/cgo/#hdr-Passing_pointers" target="_blank" rel="noopener">ensure that any pointers you pass to C</a> are handled correctly. </p>
+<p>In short, Rust is slightly friendlier regarding C interop than Go, so anything with major dependencies on existing C may tip the scale toward Rust. In both Rust and Go, though, interoperability with C comes at some cost to the developer: more conceptual overhead, slower compile times, more complex tooling, harder debugging.</p>
+<p>Note that Rust and Go can always interface with other code at higher levels—e.g., exchanging data via network sockets or named pipes rather than function calls—but these alternatives come at the cost of speed.</p>
+<h2 id="Rust-vs-Go-Summing-up"><a href="#Rust-vs-Go-Summing-up" class="headerlink" title="Rust vs. Go: Summing up"></a>Rust vs. Go: Summing up</h2><p>Choosing between Rust and Go for a software development project is mainly about picking the language that has the qualities you need most for that project. For Rust and Go, you can sum up those qualities as follows. </p>
+<p>Rust advantages:</p>
+<ul>
+<li>Correctness at runtime (common mistakes simply don’t compile)</li>
+<li>Top-tier execution speed</li>
+<li>Memory safety without garbage collection</li>
+<li>Hardware-level code</li>
+</ul>
+<p>Go advantages:</p>
+<ul>
+<li>Quick development cycles</li>
+<li>High-tier execution speed</li>
+<li>Memory safety by way of garbage collection</li>
+<li>Developer convenience</li>
+<li>Straightforward code</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/14/Spring-Annotations-Cheat-Sheet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1394,152 +1494,6 @@ cost)
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/05/The-Definitive-C-Book-Guide-And-List/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/05/The-Definitive-C-Book-Guide-And-List/" class="post-title-link" itemprop="url">The_Definitive_C_Book_Guide_And_List</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-05 23:37:06 / Modified: 23:37:55" itemprop="dateCreated datePublished" datetime="2020-06-05T23:37:06-04:00">2020-06-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Reference-All-Levels"><a href="#Reference-All-Levels" class="headerlink" title="Reference (All Levels)"></a>Reference (All Levels)</h1><ul>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0131103628" target="_blank" rel="noopener">The C Programming Language (2nd Edition)</a> - Brian W. Kernighan and Dennis M. Ritchie (1988). Still a good, short but complete introduction to C (C90, not C99 or later versions), written by the inventor of C. However, the language has changed and good C style has developed in the last 25 years, and there are parts of the book that show its age.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/013089592X" target="_blank" rel="noopener">C: A Reference Manual (5th Edition)</a> - Samuel P. Harbison and Guy R. Steele (2002). An excellent reference book on C, up to and including C99. It is not a tutorial, and probably unfit for beginners. It’s great if you need to write a compiler for C, as the authors had to do when they started.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0596004362" target="_blank" rel="noopener">C Pocket Reference (O’Reilly)</a> - Peter Prinz and Ulla Kirch-Prinz (2002).</li>
-<li><a href="http://c-faq.com/" target="_blank" rel="noopener">The comp.lang.c FAQ</a> - Steve Summit. Web site with answers to many questions about C.</li>
-<li>Various versions of the C language standards can be found <a href="http://www.iso-9899.info/wiki/The_Standard" target="_blank" rel="noopener">here</a>. There is an online version of the <a href="http://port70.net/~nsz/c/c11/n1570.html" target="_blank" rel="noopener">draft C11 standard</a>.</li>
-<li><a href="http://www.knosof.co.uk/cbook/cbook.html" target="_blank" rel="noopener">The new C standard - an annotated reference</a> (Free PDF) - Derek M. Jones (2009). The “new standard” referred to is the old C99 standard rather than C11.</li>
-<li><a href="http://www.open-std.org/JTC1/SC22/WG14/www/C99RationaleV5.10.pdf" target="_blank" rel="noopener">Rationale for C99 Standard</a>.</li>
-</ul>
-<hr>
-<h1 id="Beginner"><a href="#Beginner" class="headerlink" title="Beginner"></a>Beginner</h1><ul>
-<li><a href="http://knking.com/books/c2/index.html" target="_blank" rel="noopener">C Programming: A Modern Approach (2nd Edition)</a> - K. N. King (2008). A good book for learning C.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0321776410" target="_blank" rel="noopener">Programming in C (4th Edition)</a> - Stephen Kochan (2014). A good general introduction and tutorial.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0672326965" target="_blank" rel="noopener">C Primer Plus (5th Edition)</a> - Stephen Prata (2004)</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0201183994" target="_blank" rel="noopener">A Book on C</a> - Al Kelley/Ira Pohl (1998).</li>
-<li><a href="http://publications.gbdirect.co.uk/c_book/" target="_blank" rel="noopener">The C Book</a> (Free Online) - Mike Banahan, Declan Brady, and Mark Doran (1991).</li>
-<li><a href="https://www.amazon.com//dp/0133976890" target="_blank" rel="noopener">C: How to Program (8th Edition)</a> - Paul Deitel and Harvey M. Deitel (2015). Lots of good tips and best practices for beginners. The index is very good and serves as a decent reference (just not fully comprehensive, and very shallow).</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/1449399916" target="_blank" rel="noopener">Head First C</a> - David Griffiths and Dawn Griffiths (2012).</li>
-<li><a href="https://www.apress.com/book/9781430248811" target="_blank" rel="noopener">Beginning C (5th Edition)</a> - Ivor Horton (2013). Very good explanation of pointers, using lots of small but complete programs.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0672324482" target="_blank" rel="noopener">Sams Teach Yourself C in 21 Days</a> - Bradley L. Jones and Peter Aitken (2002). Very good introductory stuff.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0023611413" target="_blank" rel="noopener">Applications Programming in ANSI C</a> - Richard Johnsonbaugh and Martin Kalin (1996).</li>
-</ul>
-<h1 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h1><ul>
-<li><p><a href="https://modernc.gforge.inria.fr/" target="_blank" rel="noopener">Modern C</a> — Jens Gustedt (2017 1st Edn; 2020 2nd Edn). Covers C in 5 levels (encounter, acquaintance, cognition, experience, ambition) from beginning C to advanced C. It covers C11 and C17, including threads and atomic access, which few other books do. Not all compilers recognize these features in all environments.</p>
-</li>
-<li><p><a href="http://www.cs.princeton.edu/software/cii/" target="_blank" rel="noopener">C Interfaces and Implementations</a> - David R. Hanson (1997). Provides information on how to define a boundary between an interface and implementation in C in a generic and reusable fashion. It also demonstrates this principle by applying it to the implementation of common mechanisms and data structures in C, such as lists, sets, exceptions, string manipulation, memory allocators, and more. Basically, Hanson took all the code he’d written as part of building <a href="http://www.cs.arizona.edu/icon" target="_blank" rel="noopener">Icon</a> and <a href="http://www.cs.princeton.edu/software/lcc/" target="_blank" rel="noopener">lcc</a> and pulled out the best bits in a form that other people could reuse for their own projects. It’s a model of good C programming using modern design techniques (including Liskov’s data abstraction), showing how to organize a big C project as a bunch of useful libraries.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201604612" target="_blank" rel="noopener">The C Puzzle Book</a> - Alan R. Feuer (1998)</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0131315099" target="_blank" rel="noopener">The Standard C Library</a> - P.J. Plauger (1992). It contains the complete source code to an implementation of the C89 standard library, along with extensive discussion about the design and why the code is designed as shown.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/1449327141" target="_blank" rel="noopener">21st Century C: C Tips from the New School</a> - Ben Klemens (2012). In addition to the C language, the book explains gdb, valgrind, autotools, and git. The comments on style are found in the last part (Chapter 6 and beyond).</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201314525" target="_blank" rel="noopener">Algorithms in C</a> - Robert Sedgewick (1997). Gives you a real grasp of implementing algorithms in C. Very lucid and clear; will probably make you want to throw away all of your other algorithms books and keep this one.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0673999866" target="_blank" rel="noopener">Pointers on C</a> - Kenneth Reek (1997).</p>
-</li>
-<li><p><a href="http://www.apress.com/9781430259114" target="_blank" rel="noopener">Pointers in C</a> - Naveen Toppo and Hrishikesh Dewan (2013).</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0321535421" target="_blank" rel="noopener">Problem Solving and Program Design in C (6th Edition)</a> - Jeri R. Hanly and Elliot B. Koffman (2009).</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/B00101Y58Q" target="_blank" rel="noopener">Data Structures - An Advanced Approach Using C</a> - Jeffrey Esakov and Tom Weiss (1989).</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0672318962" target="_blank" rel="noopener">C Unleashed</a> - Richard Heathfield, Lawrence Kirby, et al. (2000). Not ideal, but it is worth intermediate programmers practicing problems written in this book. This is a good cookbook-like approach suggested by comp.lang.c contributors.</p>
-</li>
-<li><p><a href="http://www.planetpdf.com/codecuts/pdfs/ooc.pdf" target="_blank" rel="noopener">Object-oriented Programming with ANSI-C</a> (Free PDF) - Axel-Tobias Schreiner (1993). The code gets a bit convoluted. If you want C++, use C++. It only uses C90, of course.</p>
-</li>
-</ul>
-<h1 id="Expert"><a href="#Expert" class="headerlink" title="Expert"></a>Expert</h1><ul>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0131774298" target="_blank" rel="noopener">Expert C Programming: Deep C Secrets</a> - Peter van der Linden (1994). Lots of interesting information and war stories from the Sun compiler team, but a little dated in places.</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0534951406" target="_blank" rel="noopener">Advanced C Programming by Example</a> - John W. Perry (1998).</li>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/0321637739" target="_blank" rel="noopener">Advanced Programming in the UNIX Environment</a> - Richard W. Stevens and Stephen A. Rago (2013). Comprehensive description of how to use the Unix APIs from C code, but not so much about the mechanics of C coding.</li>
-</ul>
-<hr>
-<h1 id="Uncategorized"><a href="#Uncategorized" class="headerlink" title="Uncategorized"></a>Uncategorized</h1><ul>
-<li><p><a href="http://cslibrary.stanford.edu/101/EssentialC.pdf" target="_blank" rel="noopener">Essential C</a> (Free PDF) - Nick Parlante (2003). Note that this describes the C90 language at several points (<em>e.g.</em>, in discussing <code>//</code> comments and placement of variable declarations at arbitrary points in the code), so it should be treated with some caution.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201845199" target="_blank" rel="noopener">C Programming FAQs: Frequently Asked Questions</a> - Steve Summit (1995). This is the book of the web site listed earlier. It doesn’t cover C99 or the later standards.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0596006977" target="_blank" rel="noopener">C in a Nutshell</a> - Peter Prinz and Tony Crawford (2005). Excellent book if you need a reference for C99.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201419505" target="_blank" rel="noopener">Functional C</a> - Pieter Hartel and Henk Muller (1997). Teaches modern practices that are invaluable for low-level programming, with concurrency and modularity in mind.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/020161586X" target="_blank" rel="noopener">The Practice of Programming</a> - Brian W. Kernighan and Rob Pike (1999). A very good book to accompany K&amp;R. It uses C++ and Java too.</p>
-</li>
-<li><p><a href="https://rads.stackoverflow.com/amzn/click/com/0201179288" target="_blank" rel="noopener">C Traps and Pitfalls</a> by A. Koenig (1989). Very good, but the C style pre-dates standard C, which makes it less recommendable these days.</p>
-<p>Some have argued for the removal of ‘Traps and Pitfalls’ from this list because it has trapped some people into making mistakes; others continue to argue for its inclusion. Perhaps it should be regarded as an ‘expert’ book because it requires a moderately extensive knowledge of C to understand what’s changed since it was published.</p>
-</li>
-<li><p><a href="http://www.buildyourownlisp.com/" target="_blank" rel="noopener">Build Your Own Lisp</a> — Daniel Holden (2014). An enjoyable way to learn C.</p>
-</li>
-<li><p><a href="http://www.misra-c.com/Activities/MISRAC/tabid/160/Default.aspx" target="_blank" rel="noopener">MISRA-C</a> - industry standard published and maintained by the Motor Industry Software Reliability Association. Covers C89 and C99.</p>
-<p>Although this isn’t a book as such, many programmers recommend reading and implementing as much of it as possible. MISRA-C was originally intended as guidelines for safety-critical applications in particular, but it applies to any area of application where stable, bug-free C code is desired (who doesn’t want fewer bugs?). MISRA-C is becoming the de facto standard in the whole embedded industry and is getting increasingly popular even in other programming branches. There are (at least) three publications of the standard (1998, 2004, and the current version from 2012). There is also a MISRA Compliance Guidelines document from 2016, and MISRA C:2012 Amendment 1 — Additional Security Guidelines for MISRA C:2012 (published in April 2016).<br>Note that some of the strictures in the MISRA rules are not appropriate to every context. For example, directive 4.12 states “Dynamic memory allocation shall not be used”. This is appropriate in the embedded systems for which the MISRA rules are designed; it is not appropriate everywhere. (Compilers, for instance, generally use dynamic memory allocation for things like symbol tables, and to do without dynamic memory allocation would be difficult, if not preposterous.)</p>
-</li>
-<li><p>Archived lists of ACCU-reviewed books on <a href="https://web.archive.org/web/20071105015557/http://www.accu.informika.ru/bookreviews/public/reviews/0sb/beginner_s_c.htm" target="_blank" rel="noopener">Beginner’s C</a> (116 titles) from 2007 and <a href="https://web.archive.org/web/20081020081215/http://www.accu.informika.ru/bookreviews/public/reviews/0sb/advanced_c.htm" target="_blank" rel="noopener">Advanced C</a> (76 titles) from 2008. Most of these don’t look to be on the main site anymore, and you can’t browse that by subject anyway.</p>
-</li>
-</ul>
-<hr>
-<h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><p>Be wary of books written by <a href="http://catb.org/~esr/jargon/html/B/bullschildt.html" target="_blank" rel="noopener">Herbert Schildt</a>. In particular, you should stay away from <a href="https://rads.stackoverflow.com/amzn/click/com/0072121246" target="_blank" rel="noopener">C: The Complete Reference</a> (4th Edition, 2000), known in some circles as C: The Complete Nonsense.</p>
-<p>Also do not use the book <a href="https://smile.amazon.com/dp/9387284492/" target="_blank" rel="noopener">Let Us C</a> (16th Edition, 2017) by Yashwant Kanetkar. Many people view it as an outdated book that teaches Turbo C and has lots of obsolete, misleading and incorrect material. For example, page 137 discusses the expected output from <code>printf(&quot;%d %d %d\n&quot;, a, ++a, a++)</code> and does not categorize it as <a href="https://stackoverflow.com/questions/949433/why-are-these-constructs-using-pre-and-post-increment-undefined-behavior" target="_blank" rel="noopener">undefined behaviour</a> as it should.</p>
-<p><a href="https://learncodethehardway.org/c/" target="_blank" rel="noopener">Learn C The Hard Way</a> (2015) by Zed Shaw. A book with mixed reviews. <a href="http://hentenaar.com/dont-learn-c-the-wrong-way" target="_blank" rel="noopener">A critique of this book</a> by Tim Hentenaar:</p>
-<blockquote>
-<p>To summarize my views, which are laid out below, the author presents the material in a greatly oversimplified and misleading way, the whole corpus is a bundled mess, and some of the opinions and analyses he offers are just plain wrong. I’ve tried to view this book through the eyes of a novice, but unfortunately I am biased by years of experience writing code in C. It’s obvious to me that either the author has a flawed understanding of C, or he’s deliberately oversimplifying to the point where he’s actually misleading the reader (intentionally or otherwise.)</p>
-</blockquote>
-<p>“Learn C The Hard Way” is not a book that I could recommend to someone who is both learning to program and learning C. If you’re already a competent programmer in some other related language, then it represents an interesting and unusual exposition on C, though I have reservations about parts of the book. <em>Jonathan Leffler</em></p>
-<hr>
-<h1 id="Outdated"><a href="#Outdated" class="headerlink" title="Outdated"></a>Outdated</h1><ul>
-<li><a href="https://rads.stackoverflow.com/amzn/click/com/1565923065" target="_blank" rel="noopener">Practical C Programming (3rd Edition)</a> - Steve Oualline (1997)(Beginner)</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1610,7 +1564,7 @@ cost)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">211</span>
+          <span class="site-state-item-count">212</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
