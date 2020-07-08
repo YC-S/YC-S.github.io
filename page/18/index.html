@@ -165,6 +165,255 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/05/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/05/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">数据库</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-05 16:26:32 / Modified: 17:29:50" itemprop="dateCreated datePublished" datetime="2020-02-05T16:26:32-05:00">2020-02-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对于数据库方向，重点就是两种数据库，一种是以 SQL 为代表的关系型数据库，另一种是以非 SQL 为代表的 NoSQL 数据库。关系型数据库主要有三个：Oracle、MySQL 和 Postgres。</p>
+<p>在这里，只讨论越来越主流的 MySQL 数据库。首先，我们要了解数据库的一些实现原理和内存的一些细节，然后我们要知道数据的高可用和数据复制这些比较重要的话题，了解一下关系型数据库的一些实践和难点。然后，我们会进入到 NoSQL 数据库的学习。</p>
+<p>NoSQL 数据库千奇百怪，其主要是解决了关系型数据库中的各种问题。第一个大问题就是数据的 Schema 非常多，用关系型数据库来表示不同的 Data Schema 是非常笨拙的，所以要有不同的数据库（如时序型、键值对型、搜索型、文档型、图结构型等）。另一个大问题是，关系型数据库的 ACID 是一件很讨厌的事，这极大地影响了数据库的性能和扩展性，所以 NoSQL 在这上面做了相应的妥协以解决大规模伸缩的问题。</p>
+<p>对于一个程序员，你可能觉得数据库的事都是 DBA 的事，然而，这些事才真正是程序员的事。因为程序是需要和数据打交道的，所以程序员或架构师不仅需要设计数据模型，还要保证整体系统的稳定性和可用性，数据是整个系统中关键中的关键。所以，作为一个架构师或程序员，你必须了解最重要的数据存储——数据库。</p>
+<h1 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h1><p>今天，关系型数据库最主要的两个代表是闭源的 Oracle 和开源的 MySQL。当然，还有很多了，比如微软的 SQL Server，IBM 的 DB2 等，还有开源的 PostgreSQL。关系型数据库的世界中有好多好多产品。当然，还是 Oracle 和 MySQL 是比较主流的。所以，这里主要介绍更为开放和主流的 MySQL。</p>
+<p>如果你要玩 Oracle，这里只推荐一本书《<a href="https://book.douban.com/subject/5402711/" target="_blank" rel="noopener">Oracle Database  编程艺术</a>》，无论是开发人员还是 DBA，它都是必读的书。这本书的作者是 Oracle 公司的技术副总裁托马斯·凯特（Thomas Kyte），他也是世界顶级的 Oracle 专家。</p>
+<p>这本书中深入分析了 Oracle 数据库体系结构，包括文件、内存结构以及构成 Oracle 数据库和实例的底层进程，利用具体示例讨论了一些重要的数据库主题，如锁定、并发控制、事务等。同时分析了数据库中的物理结构，如表、索引和数据类型，并介绍采用哪些技术能最优地使用这些物理结构。</p>
+<ul>
+<li><p>学习 MySQL，首先一定是要看<a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">MySQL 官方手册</a>。</p>
+</li>
+<li><p>然后，官方还有几个 PPT 也要学习一下。</p>
+<ul>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/tune-mysql-queries-performance/" target="_blank" rel="noopener">How to Analyze and Tune MySQL Queries for Better Performance</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/mysql-performance-tuning101/" target="_blank" rel="noopener">MySQL Performance Tuning 101</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/mysql-performance-sys-schema/" target="_blank" rel="noopener">MySQL Performance Schema &amp; Sys Schema</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/mysql-performance-tuning-best-practices/" target="_blank" rel="noopener">MySQL Performance: Demystified Tuning &amp; Best Practices</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/mysql-security-best-practices/" target="_blank" rel="noopener">MySQL Security Best Practices</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/mysql-cluster-deployment-best-practices/" target="_blank" rel="noopener">MySQL Cluster Deployment Best Practices</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/presentations/mysql-high-availability-innodb-cluster/" target="_blank" rel="noopener">MySQL High Availability with InnoDB Cluster</a></li>
+</ul>
+</li>
+<li><p>然后推荐《<a href="https://book.douban.com/subject/23008813/" target="_blank" rel="noopener">高性能 MySQL</a>》，这本书是 MySQL 领域的经典之作，拥有广泛的影响力。不但适合数据库管理员（DBA）阅读，也适合开发人员参考学习。不管是数据库新手还是专家，都能从本书中有所收获。</p>
+</li>
+<li><p>如果你对 MySQL 的内部原理有兴趣的话，可以看一下这本书《<a href="https://book.douban.com/subject/24708143/" target="_blank" rel="noopener">MySQL 技术内幕：InnoDB 存储引擎</a>》。当然，还有官网的<a href="https://dev.mysql.com/doc/internals/en/" target="_blank" rel="noopener">MySQL Internals Manual</a> 。</p>
+</li>
+<li><p>数据库的索引设计和优化也是非常关键的，这里还有一本书《<a href="https://book.douban.com/subject/26419771/" target="_blank" rel="noopener">数据库的索引设计与优化</a>》也是很不错的。虽然不是讲 MySQL 的，但是原理都是相通的。这也是上面推荐过的《高性能 MySQL》在其索引部分推荐的一本好书。</p>
+<p>你千万不要觉得只有做数据库你才需要学习这种索引技术。不是的！在系统架构上，在分布式架构中，索引技术也是非常重要的。这本书对于索引性能进行了非常清楚的估算，不像其它书中只是模糊的描述，你一定会收获很多。</p>
+</li>
+</ul>
+<p>下面还有一些不错的和 MySQL 相关的文章。</p>
+<ul>
+<li><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL 索引背后的数据结构及算法原理</a></li>
+<li><a href="https://medium.com/@kousiknath/data-structures-database-storage-internals-1f5ed3619d43" target="_blank" rel="noopener">Some study on database storage internals</a></li>
+<li><a href="https://medium.com/@Pinterest_Engineering/sharding-pinterest-how-we-scaled-our-mysql-fleet-3f341e96ca6f" target="_blank" rel="noopener">Sharding Pinterest: How we scaled our MySQL fleet</a></li>
+<li><a href="https://www.mysql.com/cn/why-mysql/white-papers/mysql-guide-to-high-availability-solutions/" target="_blank" rel="noopener">Guide to MySQL High Availability</a></li>
+<li><a href="https://dzone.com/articles/choosing-mysql-high-availability-solutions" target="_blank" rel="noopener">Choosing MySQL High Availability Solutions</a></li>
+<li><a href="https://mariadb.com/sites/default/files/content/Whitepaper_High_availability_with_MariaDB-TX.pdf" target="_blank" rel="noopener">High availability with MariaDB TX: The definitive guide</a></li>
+</ul>
+<p>最后，还有一个 MySQL 的资源列表 <a href="https://shlomi-noach.github.io/awesome-mysql/" target="_blank" rel="noopener">Awesome MySQL</a>，这个列表中有很多的工具和开发资源，可以帮助你做很多事。</p>
+<p>MySQL 有两个比较有名的分支，一个是 Percona，另一个是 MariaDB，其官网上的 Resources 页面中有很多不错的资源和文档，可以经常看看。 <a href="https://www.percona.com/resources" target="_blank" rel="noopener">Percona Resources</a>、<a href="https://mariadb.com/resources" target="_blank" rel="noopener">MariaDB Resources</a> ，以及它们的开发博客中也有很多不错的文章，分别为 <a href="https://www.percona.com/blog/" target="_blank" rel="noopener">Percona Blog</a> 和 <a href="https://mariadb.com/resources/blog" target="_blank" rel="noopener">MariaDB Blog</a>。</p>
+<p>然后是关于 MySQL 的一些相关经验型的文章。</p>
+<ul>
+<li><a href="https://www.percona.com/live/mysql-conference-2015/sessions/bookingcom-evolution-mysql-system-design" target="_blank" rel="noopener">Booking.com: Evolution of MySQL System Design</a> ，Booking.com 的 MySQL 数据库使用的演化，其中有很多不错的经验分享，也是很多公司会遇到的的问题。</li>
+<li><a href="https://medium.com/airbnb-engineering/tracking-the-money-scaling-financial-reporting-at-airbnb-6d742b80f040" target="_blank" rel="noopener">Tracking the Money - Scaling Financial Reporting at Airbnb</a> ，Airbnb 的数据库扩展的经验分享。</li>
+<li><a href="https://eng.uber.com/mysql-migration/" target="_blank" rel="noopener">Why Uber Engineering Switched from Postgres to MySQL</a> ，无意比较两个数据库谁好谁不好，推荐这篇 Uber 的长文，主要是想让你从中学习到一些经验和技术细节，这是一篇很不错的文章。</li>
+</ul>
+<p>关于 MySQL 的集群复制，下面有这些文章供你学习一下，都是很不错的实践性比较强的文章。</p>
+<ul>
+<li><a href="https://engineering.imvu.com/2013/01/09/monitoring-delayed-replication-with-a-focus-on-mysql/" target="_blank" rel="noopener">Monitoring Delayed Replication, With A Focus On MySQL</a></li>
+<li><a href="https://githubengineering.com/mitigating-replication-lag-and-reducing-read-load-with-freno/" target="_blank" rel="noopener">Mitigating replication lag and reducing read load with freno</a></li>
+<li>另外，Booking.com 给了一系列的文章可以看看：<ul>
+<li><a href="https://medium.com/booking-com-infrastructure/better-parallel-replication-for-mysql-14e2d7857813" target="_blank" rel="noopener">Better Parallel Replication for MySQL</a></li>
+<li><a href="https://medium.com/booking-com-infrastructure/evaluating-mysql-parallel-replication-part-2-slave-group-commit-459026a141d2" target="_blank" rel="noopener">Evaluating MySQL Parallel Replication Part 2: Slave Group Commit</a></li>
+<li><a href="https://medium.com/booking-com-infrastructure/evaluating-mysql-parallel-replication-part-3-benchmarks-in-production-db5811058d74" target="_blank" rel="noopener">Evaluating MySQL Parallel Replication Part 3: Benchmarks in Production</a></li>
+<li><a href="https://medium.com/booking-com-infrastructure/evaluating-mysql-parallel-replication-part-4-more-benchmarks-in-production-49ee255043ab" target="_blank" rel="noopener">Evaluating MySQL Parallel Replication Part 4: More Benchmarks in Production
+</a></li>
+<li><a href="https://medium.com/booking-com-infrastructure/evaluating-mysql-parallel-replication-part-4-annex-under-the-hood-eb456cf8b2fb" target="_blank" rel="noopener">Evaluating MySQL Parallel Replication Part 4, Annex: Under the Hood</a></li>
+</ul>
+</li>
+</ul>
+<p>对于 MySQL 的数据分区来说，还有下面几篇文章你可以看看。</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/5541421/mysql-sharding-approaches" target="_blank" rel="noopener">StackOverflow: MySQL sharding approaches?</a></li>
+<li><a href="https://www.percona.com/blog/2009/08/06/why-you-dont-want-to-shard/" target="_blank" rel="noopener">Why you don’t want to shard</a></li>
+<li>[How to Scale Big Data Applications](<a href="https://www.percona.com/sites/default/files/presentations/How" target="_blank" rel="noopener">https://www.percona.com/sites/default/files/presentations/How</a> to Scale Big Data Applications.pdf)</li>
+<li><a href="https://www.percona.com/blog/2016/08/30/mysql-sharding-with-proxysql/" target="_blank" rel="noopener">MySQL Sharding with ProxySQL</a></li>
+</ul>
+<p>然后，再看看各个公司做 MySQL Sharding 的一些经验分享。</p>
+<ul>
+<li><a href="https://devs.mailchimp.com/blog/using-shards-to-accommodate-millions-of-users/" target="_blank" rel="noopener">MailChimp: Using Shards to Accommodate Millions of Users
+</a></li>
+<li><a href="https://eng.uber.com/schemaless-rewrite/" target="_blank" rel="noopener">Uber: Code Migration in Production: Rewriting the Sharding Layer of Uber’s Schemaless Datastore</a></li>
+<li><a href="https://instagram-engineering.com/sharding-ids-at-instagram-1cf5a71e5a5c" target="_blank" rel="noopener">Sharding &amp; IDs at Instagram</a></li>
+<li><a href="https://medium.com/airbnb-engineering/how-we-partitioned-airbnb-s-main-database-in-two-weeks-55f7e006ff21" target="_blank" rel="noopener">Airbnb: How We Partitioned Airbnb’s Main Database in Two Weeks</a></li>
+</ul>
+<h1 id="NoSQL-数据库"><a href="#NoSQL-数据库" class="headerlink" title="NoSQL 数据库"></a>NoSQL 数据库</h1><p>关于 NoSQL 数据库，其最初目的就是解决大数据的问题。然而，也有人把其直接用来替换掉关系型数据库。所以在学习这个技术之前，我们需要对这个技术的一些概念和初衷有一定的了解。下面是一些推荐资料。</p>
+<ul>
+<li>Martin Fowler 在 YouTube 上分享的 NoSQL 介绍 <a href="https://youtu.be/qI_g07C_Q5I" target="_blank" rel="noopener">Introduction To NoSQL</a>， 以及他参与编写的 <a href="https://book.douban.com/subject/25662138/" target="_blank" rel="noopener">NoSQL Distilled - NoSQL 精粹</a>，这本书才 100 多页，是本难得的关于 NoSQL 的书，很不错，非常易读。</li>
+<li><a href="https://medium.com/baqend-blog/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.nhzop4d23" target="_blank" rel="noopener">NoSQL Databases: a Survey and Decision Guidance</a>，这篇文章可以带你自上而下地从 CAP 原理到开始了解 NoSQL 的种种技术，是一篇非常不错的文章。</li>
+<li><a href="https://resources.sei.cmu.edu/asset_files/WhitePaper/2014_019_001_90915.pdf" target="_blank" rel="noopener">Distribution, Data, Deployment: Software Architecture Convergence in Big Data Systems</a>，这是卡内基·梅隆大学的一篇讲分布式大数据系统的论文。其中主要讨论了在大数据时代下的软件工程中的一些关键点，也说到了 NoSQL 数据库。</li>
+<li><a href="http://ianvarley.com/UT/MR/Varley_MastersReport_Full_2009-08-07.pdf" target="_blank" rel="noopener">No Relation: The Mixed Blessings of Non-Relational Databases</a>，这篇论文虽然有点年代久远。但这篇论文是 HBase 的基础，你花上一点时间来读读，就可以了解到，对各种非关系型数据存储优缺点的一个很好的比较。</li>
+<li><a href="https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/" target="_blank" rel="noopener">NoSQL Data Modeling Techniques</a> ，NoSQL 建模技术。这篇文章曾经翻译在了 CoolShell 上，标题为 <a href="https://coolshell.cn/articles/7270.htm" target="_blank" rel="noopener">NoSQL 数据建模技术</a>。<ul>
+<li><a href="https://docs.mongodb.com/manual/core/data-modeling-introduction/" target="_blank" rel="noopener">MongoDB - Data Modeling Introduction</a> ，虽然这是 MongoDB 的数据建模介绍，但是其很多观点可以用于其它的 NoSQL 数据库。</li>
+<li><a href="https://firebase.google.com/docs/database/android/structure-data" target="_blank" rel="noopener">Firebase - Structure Your Database</a> ，Google 的 Firebase 数据库使用 JSON 建模的一些最佳实践。</li>
+</ul>
+</li>
+<li>因为 CAP 原理，所以当你需要选择一个 NoSQL 数据库的时候，你应该看看这篇文档 <a href="http://blog.nahurst.com/visual-guide-to-nosql-systems" target="_blank" rel="noopener">Visual Guide to NoSQL Systems</a>。</li>
+</ul>
+<p>选 SQL 还是 NoSQL，这里有两篇文章，值得你看看。</p>
+<ul>
+<li><a href="https://www.upwork.com/hiring/data/sql-vs-nosql-databases-whats-the-difference/" target="_blank" rel="noopener">SQL vs. NoSQL Databases: What’s the Difference?</a></li>
+<li><a href="https://engineering.salesforce.com/sql-or-nosql-9eaf1d92545b" target="_blank" rel="noopener">Salesforce: SQL or NoSQL</a></li>
+</ul>
+<h1 id="各种-NoSQL-数据库"><a href="#各种-NoSQL-数据库" class="headerlink" title="各种 NoSQL 数据库"></a>各种 NoSQL 数据库</h1><p>学习使用 NoSQL 数据库其实并不是一件很难的事，只要你把官方的文档仔细地读一下，是很容易上手的，而且大多数 NoSQL 数据库都是开源的，所以，也可以通过代码自己解决问题。下面我主要给出一些典型的 NoSQL 数据库的一些经验型的文章，供你参考。</p>
+<p><strong>列数据库 Column Database</strong></p>
+<ul>
+<li>Cassandra 相关<ul>
+<li>沃尔玛实验室有两篇文章值得一读。<ul>
+<li><a href="https://medium.com/walmartlabs/avoid-pitfalls-in-scaling-your-cassandra-cluster-lessons-and-remedies-a71ca01f8c04" target="_blank" rel="noopener">Avoid Pitfalls in Scaling Cassandra Cluster at Walmart</a></li>
+<li><a href="https://medium.com/walmartlabs/building-object-store-storing-images-in-cassandra-walmart-scale-a6b9c02af593" target="_blank" rel="noopener">Storing Images in Cassandra at Walmart</a></li>
+</ul>
+</li>
+<li><a href="https://engineeringblog.yelp.com/2016/08/how-we-scaled-our-ad-analytics-with-cassandra.html" target="_blank" rel="noopener">Yelp: How We Scaled Our Ad Analytics with Apache Cassandra</a> ，Yelp 的这篇博客也有一些相关的经验和教训。</li>
+<li><a href="https://blog.discordapp.com/how-discord-stores-billions-of-messages-7fa6ec7ee4c7" target="_blank" rel="noopener">Discord: How Discord Stores Billions of Messages</a> ，Discord 公司分享的一个如何存储十亿级消息的技术文章。</li>
+<li><a href="https://www.slideshare.net/DataStax/cassandra-at-instagram-2016" target="_blank" rel="noopener">Cassandra at Instagram</a> ，Instagram 的一个 PPT，其中介绍了 Instagram 中是怎么使用 Cassandra 的。</li>
+<li><a href="https://medium.com/netflix-techblog/benchmarking-cassandra-scalability-on-aws-over-a-million-writes-per-second-39f45f066c9e" target="_blank" rel="noopener">Netflix: Benchmarking Cassandra Scalability on AWS - Over a million writes per second</a> ，Netflix 公司在 AWS 上给 Cassandra 做的一个 Benchmark。</li>
+</ul>
+</li>
+<li>HBase 相关<ul>
+<li><a href="https://medium.com/imgur-engineering/imgur-notifications-from-mysql-to-hbase-9dba6fc44183" target="_blank" rel="noopener">Imgur Notification: From MySQL to HBASE</a></li>
+<li><a href="https://medium.com/@Pinterest_Engineering/improving-hbase-backup-efficiency-at-pinterest-86159da4b954" target="_blank" rel="noopener">Pinterest: Improving HBase Backup Efficiency</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSPT3X_2.1.2/com.ibm.swg.im.infosphere.biginsights.analyze.doc/doc/bigsql_TuneHbase.html" target="_blank" rel="noopener">IBM : Tuning HBase performance</a></li>
+<li><a href="http://www.larsgeorge.com/2010/05/hbase-file-locality-in-hdfs.html" target="_blank" rel="noopener">HBase File Locality in HDFS</a></li>
+<li><a href="http://borthakur.com/ftp/RealtimeHadoopSigmod2011.pdf" target="_blank" rel="noopener">Apache Hadoop Goes Realtime at Facebook</a></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.294.8459&rep=rep1&type=pdf" target="_blank" rel="noopener">Storage Infrastructure Behind Facebook Messages: Using HBase at Scale</a></li>
+<li><a href="https://github.com/rayokota/awesome-hbase" target="_blank" rel="noopener">GitHub: Awesome HBase</a></li>
+</ul>
+</li>
+</ul>
+<p>针对于 HBase 有两本书你可以考虑一下。</p>
+<ul>
+<li>首先，先推荐两本书，一本是偏实践的《<a href="https://book.douban.com/subject/25706541/" target="_blank" rel="noopener">HBase 实战</a>》，另一本是偏大而全的手册型的《<a href="https://book.douban.com/subject/10748460/" target="_blank" rel="noopener">HBase 权威指南</a>》。</li>
+<li>当然，你也可以看看官方的 <a href="http://hbase.apache.org/0.94/book/book.html" target="_blank" rel="noopener">The Apache HBase™ Reference Guide</a></li>
+<li>另外两个列数据库：<ul>
+<li><a href="https://clickhouse.yandex/" target="_blank" rel="noopener">ClickHouse - Open Source Distributed Column Database at Yandex</a></li>
+<li><a href="https://engineering.giphy.com/scaling-redshift-without-scaling-costs/" target="_blank" rel="noopener">Scaling Redshift without Scaling Costs at GIPHY</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>文档数据库 Document Database - MongoDB, SimpleDB, CouchDB</strong></p>
+<ul>
+<li><a href="https://msdn.microsoft.com/en-us/magazine/hh547103.aspx" target="_blank" rel="noopener">Data Points - What the Heck Are Document Databases?</a></li>
+<li><a href="https://www.mongodb.com/blog/post/ebay-building-mission-critical-multi-data-center-applications-with-mongodb" target="_blank" rel="noopener">eBay: Building Mission-Critical Multi-Data Center Applications with MongoDB</a></li>
+<li><a href="https://medium.baqend.com/parse-is-gone-a-few-secrets-about-their-infrastructure-91b3ab2fcf71" target="_blank" rel="noopener">The AWS and MongoDB Infrastructure of Parse: Lessons Learned</a></li>
+<li><a href="https://medium.com/build-addepar/migrating-mountains-of-mongo-data-63e530539952" target="_blank" rel="noopener">Migrating Mountains of Mongo Data</a></li>
+<li><a href="https://engineering.linkedin.com/blog/2017/12/couchbase-ecosystem-at-linkedin" target="_blank" rel="noopener">Couchbase Ecosystem at LinkedIn</a></li>
+<li><a href="https://medium.com/zendesk-engineering/resurrecting-amazon-simpledb-9404034ec506" target="_blank" rel="noopener">SimpleDB at Zendesk</a></li>
+<li><a href="https://github.com/ramnes/awesome-mongodb" target="_blank" rel="noopener">Github: Awesome MongoDB</a></li>
+</ul>
+<p><strong>数据结构数据库 Data structure Database - Redis</strong></p>
+<ul>
+<li><a href="http://tech.trivago.com/2017/01/25/learn-redis-the-hard-way-in-production/" target="_blank" rel="noopener">Learn Redis the hard way (in production) at Trivago</a></li>
+<li><a href="http://highscalability.com/blog/2014/9/8/how-twitter-uses-redis-to-scale-105tb-ram-39mm-qps-10000-ins.html" target="_blank" rel="noopener">Twitter: How Twitter Uses Redis To Scale - 105TB RAM, 39MM QPS, 10,000+ Instances</a></li>
+<li><a href="https://slack.engineering/scaling-slacks-job-queue-687222e9d100" target="_blank" rel="noopener">Slack: Scaling Slack’s Job Queue - Robustly Handling Billions of Tasks in Milliseconds Using Kafka and Redis</a></li>
+<li><a href="https://githubengineering.com/moving-persistent-data-out-of-redis/" target="_blank" rel="noopener">GitHub: Moving persistent data out of Redis at GitHub</a></li>
+<li><a href="https://engineering.instagram.com/storing-hundreds-of-millions-of-simple-key-value-pairs-in-redis-1091ae80f74c" target="_blank" rel="noopener">Instagram: Storing Hundreds of Millions of Simple Key-Value Pairs in Redis</a></li>
+<li><a href="https://www.infoq.com/presentations/twitch-pokemon" target="_blank" rel="noopener">Redis in Chat Architecture of Twitch (from 27:22)</a></li>
+<li><a href="https://deliveroo.engineering/2016/10/07/optimising-session-key-storage.html" target="_blank" rel="noopener">Deliveroo: Optimizing Session Key Storage in Redis</a></li>
+<li><a href="https://deliveroo.engineering/2017/01/19/optimising-membership-queries.html" target="_blank" rel="noopener">Deliveroo: Optimizing Redis Storage</a></li>
+<li><a href="https://github.com/JamzyWang/awesome-redis" target="_blank" rel="noopener">GitHub: Awesome Redis</a></li>
+</ul>
+<p><strong>时序数据库 Time-Series Database</strong></p>
+<ul>
+<li><a href="https://blog.timescale.com/what-the-heck-is-time-series-data-and-why-do-i-need-a-time-series-database-dcf3b1b18563" target="_blank" rel="noopener">What is Time-Series Data &amp; Why We Need a Time-Series Database</a></li>
+<li><a href="https://blog.timescale.com/time-series-data-why-and-how-to-use-a-relational-database-instead-of-nosql-d0cd6975e87c" target="_blank" rel="noopener">Time Series Data: Why and How to Use a Relational Database instead of NoSQL</a></li>
+<li><a href="https://code.facebook.com/posts/952820474848503/beringei-a-high-performance-time-series-storage-engine/" target="_blank" rel="noopener">Beringei: High-performance Time Series Storage Engine @Facebook</a></li>
+<li><a href="https://medium.com/netflix-techblog/introducing-atlas-netflixs-primary-telemetry-platform-bd31f4d8ed9a" target="_blank" rel="noopener">Introducing Atlas: Netflix’s Primary Telemetry Platform @Netflix</a></li>
+<li><a href="https://blog.timescale.com/when-boring-is-awesome-building-a-scalable-time-series-database-on-postgresql-2900ea453ee2" target="_blank" rel="noopener">Building a Scalable Time Series Database on PostgreSQL</a></li>
+<li><a href="https://medium.com/netflix-techblog/scaling-time-series-data-storage-part-i-ec2b6d44ba39" target="_blank" rel="noopener">Scaling Time Series Data Storage - Part I @Netflix</a></li>
+<li><a href="https://medium.com/@leventov/design-of-a-cost-efficient-time-series-store-for-big-data-88c5dc41af8e" target="_blank" rel="noopener">Design of a Cost Efficient Time Series Store for Big Data</a></li>
+<li><a href="https://github.com/xephonhq/awesome-time-series-database" target="_blank" rel="noopener">GitHub: Awesome Time-Series Database</a></li>
+</ul>
+<p><strong>图数据库 - Graph Platform</strong></p>
+<ul>
+<li>首先是 IBM Devloperworks 上的两个简介性的 PPT。<ul>
+<li><a href="https://www.ibm.com/developerworks/library/cl-graph-database-1/cl-graph-database-1-pdf.pdf" target="_blank" rel="noopener">Intro to graph databases, Part 1, Graph databases and the CRUD operations</a></li>
+<li><a href="https://www.ibm.com/developerworks/library/cl-graph-database-2/cl-graph-database-2-pdf.pdf" target="_blank" rel="noopener">Intro to graph databases, Part 2, Building a recommendation engine with a graph database</a></li>
+</ul>
+</li>
+<li>然后是一本免费的电子书《<a href="http://graphdatabases.com" target="_blank" rel="noopener">Graph Database</a>》。</li>
+<li>接下来是一些图数据库的介绍文章。<ul>
+<li><a href="https://www.infoq.com/presentations/graph-database-scalability" target="_blank" rel="noopener">Handling Billions of Edges in a Graph Database</a></li>
+<li><a href="https://neo4j.com/customers/" target="_blank" rel="noopener">Neo4j case studies with Walmart, eBay, AirBnB, NASA, etc</a></li>
+<li><a href="https://blog.twitter.com/engineering/en_us/a/2010/introducing-flockdb.html" target="_blank" rel="noopener">FlockDB: Distributed Graph Database for Storing Adjacency Lists at Twitter</a></li>
+<li><a href="https://architecht.io/google-ibm-back-new-open-source-graph-database-project-janusgraph-1d74fb78db6b" target="_blank" rel="noopener">JanusGraph: Scalable Graph Database backed by Google, IBM and Hortonworks</a></li>
+<li><a href="https://aws.amazon.com/neptune/" target="_blank" rel="noopener">Amazon Neptune</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>搜索数据库 - ElasticSearch</strong></p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/master/index.html" target="_blank" rel="noopener">Elasticsearch: The Definitive Guide</a> 这是官网方的 ElasticSearch 的学习资料，基本上来说，看这个就够了。</li>
+<li>接下来是 4 篇和性能调优相关的工程实践。<ul>
+<li><a href="https://www.ebayinc.com/stories/blogs/tech/elasticsearch-performance-tuning-practice-at-ebay/" target="_blank" rel="noopener">Elasticsearch Performance Tuning Practice at eBay</a></li>
+<li><a href="https://kickstarter.engineering/elasticsearch-at-kickstarter-db3c487887fc" target="_blank" rel="noopener">Elasticsearch at Kickstarter</a></li>
+<li><a href="https://www.loggly.com/blog/nine-tips-configuring-elasticsearch-for-high-performance/" target="_blank" rel="noopener">9 tips on ElasticSearch configuration for high performance</a></li>
+<li><a href="https://medium.com/@abhidrona/elasticsearch-deployment-best-practices-d6c1323b25d7" target="_blank" rel="noopener">Elasticsearch In Production - Deployment Best Practices</a></li>
+</ul>
+</li>
+<li>最后是 GitHub 上的资源列表 <a href="https://github.com/dzharii/awesome-elasticsearch" target="_blank" rel="noopener">GitHub: Awesome ElasticSearch</a> 。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/04/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1419,140 +1668,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/27/The-Key-To-Accelerating-Your-Coding-Skills/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/27/The-Key-To-Accelerating-Your-Coding-Skills/" class="post-title-link" itemprop="url">The Key To Accelerating Your Coding Skills</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-01-27 22:46:12 / Modified: 23:50:10" itemprop="dateCreated datePublished" datetime="2020-01-27T22:46:12-05:00">2020-01-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>When you learn to code, there is a moment when everything begins to change. At Firehose, we like to call this the <em>inflection point of coding.</em> After this phase, the way you operate as a developer will be dramatically different. Building up to the inflection point is the process of becoming self-sufficient in programming, to the point where you no longer need any hand-holding. It can be a frustrating experience, but once it’s behind you, it is incredibly empowering.</p>
-<p>At Firehose, our goal isn’t just to teach you Ruby, how to build web applications, or how to write tests. Although we do teach these skills and more, <strong>our primary goal is to accelerate students past the inflection point so they gain the ability to solve any problem they encounter</strong>. We believe that being able to problem solve on your own is an invaluable skill, and this method of teaching will take you much further than simply learning how to build a set of apps.</p>
-<h3 id="The-Tutorial-Phase-3-8-weeks-of-serious-coding"><a href="#The-Tutorial-Phase-3-8-weeks-of-serious-coding" class="headerlink" title="The Tutorial Phase (3-8 weeks of serious coding)"></a>The Tutorial Phase (3-8 weeks of serious coding)</h3><p>When you start out learning to code, there’s a lot of information that you don’t know yet. This information is called <em>domain-specific knowledge.</em> Examples include: knowing how to write a loop in ruby or how to extract something from a database using Ruby on Rails. Domain-specific knowledge encompasses the protocols unique to a certain programming environment.</p>
-<p>The first step to becoming a self-sufficient developer is learning how to do specific tasks. Once you master certain tasks, the broad strokes of how the pieces fit together will start to become apparent. Over time, you’ll begin to recognize patterns and eventually, the things that initially seemed confusing and foreign will become second nature.</p>
-<h3 id="For-students-starting-out-the-most-important-skill-to-acquire-is-attention-to-detail"><a href="#For-students-starting-out-the-most-important-skill-to-acquire-is-attention-to-detail" class="headerlink" title="For students starting out, the most important skill to acquire is attention to detail."></a>For students starting out, the most important skill to acquire is attention to detail.</h3><p>Paying close attention to detail is important when going through materials like documentation or tutorials. Even the most minor typos and misspellings will result in error messages or bugs. Seeing error messages is a frustrating experience at first, but it’s a crucial step in the learning process. Dealing with error messages and problems in this phase teaches you one of the most important skills of programming within a safe environment: being detail-oriented.</p>
-<p><strong>Debugging error messages is incredibly important</strong>. The fact of the matter is, error messages are just a part of programming: they are seen by inexperienced and very experienced developers alike. The only difference is, the more experience you have dealing with error messages, the less time you’ll need to spend trying to fix them. Here’s why:</p>
-<ul>
-<li>Over time, you will <strong>learn how to read error messages</strong> and extract the relevant details of the problem quickly. The first time you see an error message, it will take you a while to decode what it actually means. But after you’ve seen hundreds of error messages (and you will see hundreds!), you will be able to pinpoint the problem’s location and the relevant details you need in order to fix it.</li>
-<li>You should <strong>learn from each error message that you resolve</strong>. Don’t just fix the error and be done with it; understand what is wrong with the code you’re fixing. By learning from each of your errors, the next time you make the same mistake, you’ll be able to fix it much faster.</li>
-<li>Initially, you will probably ask for help on each error message you see. Over time, you’ll learn to ask for help less frequently by double-checking your code and <a href="http://blog.thefirehoseproject.com/posts/10-minutes-learn-programming/" target="_blank" rel="noopener">conducting smart Google searches.</a></li>
-</ul>
-<p>In the tutorial phase, you will follow instruction. At first, you’ll find it challenging to follow instructions and error messages will happen frequently. Over time, you’ll develop the skill to debug errors and pay better attention to small details, and you’ll be able to make progress much quicker. As you’re wrapping up the tutorial phase, you’ll notice you’re able to write code at a much more rapid pace.</p>
-<p>At this point, some people feel confident– like they’re ready to ditch the training wheels and start building things without structured guidance– and will happily dive into the deep end. Other students will reach for more tutorials, trying to obtain more domain-specific knowledge in search of a “full understanding.” Unfortunately, tutorials will only take you so far, and true confidence isn’t found in tutorials or guides. True confidence comes from struggling through a problem you have no idea how to solve, and discovering a solution on your own.</p>
-<p><strong><em>The dirty little secret of programming is…\</em></strong></p>
-<p>You will never know everything you need to know to solve all your problems. Going into the journey, you probably envisioned yourself eventually learning everything you need to learn, and then being squared away. <em>This moment will never happen.</em></p>
-<p>Programming is a life-long learning experience. Experienced software engineers seek to find solutions to problems they haven’t solved yet because it gives them the opportunity to learn more. If you find yourself waiting for the moment when you finally feel like you know everything there is to know about coding, know this: the day you’re waiting for will never come. And that is a wonderful thing.</p>
-<p><strong>You will be ready to jump into the next phase of your journey when:</strong></p>
-<ul>
-<li>You’ve seen enough error messages that <strong>they no longer startle you</strong>. Instead, you know how to decipher what they mean and where to look for the problems in your code.</li>
-<li><strong>You’re a pro at Googling for solutions</strong>. When you’re working to add a feature or see a confusing error message, you know what to search for to find the information you need.</li>
-<li>You’re able to <strong>reference code you’ve written in other parts of your application and follow patterns</strong> within them, rather than always seeking out step-by-step instructions.</li>
-</ul>
-<h3 id="The-Inflection-Point-2-4-weeks-with-the-right-mentality"><a href="#The-Inflection-Point-2-4-weeks-with-the-right-mentality" class="headerlink" title="The Inflection Point (2-4 weeks with the right mentality)"></a>The Inflection Point (2-4 weeks with the right mentality)</h3><p>The inflection point stage is one of the most frustrating stages of learning to code, but in many ways, it’s the only stage that matters. It’s the point when you phase out of using tutorials and begin solving problems for which no one has lined up a solution for you.</p>
-<p>At some points, you will feel like you aren’t ready to tackle this phase and like you want to return to building something with an outline of exactly what to do. Don’t fall prey to this mentality. The reason you’ll feel frustrated is:</p>
-<h3 id="During-the-inflection-phase-you-will-be-coding-10-20-times-SLOWER-than-in-the-previous-phase"><a href="#During-the-inflection-phase-you-will-be-coding-10-20-times-SLOWER-than-in-the-previous-phase" class="headerlink" title="During the inflection phase, you will be coding 10-20 times SLOWER than in the previous phase."></a><em>During the inflection phase, you will be coding 10-20 times SLOWER than in the previous phase.</em></h3><p>You may start questioning yourself and wondering if you are actually capable of becoming a programmer. Feelings of insecurity and doubt are common in this stage.</p>
-<p>Despite the fact that you’ll feel like you’re learning and accomplishing things at a much slower rate, in reality, you are achieving the things that matter the most. While your domain-specific knowledge is screeching to a putter, everything you’re learning will be about procedural knowledge.</p>
-<p>Procedural knowledge is the ability to teach yourself what you don’t know along the way. When you need to implement a new feature, what type of Google search should you do? At this point in time, you’ll feel like you’re “in the dark” when it comes to many of the things you want to accomplish. Learning how to find the light on your own is critical because you can never know everything there is to know, so you need to be able to teach yourself how to solve the problem at hand.</p>
-<p><strong>Most people do not realize that in order to learn to code, you need to learn both domain-specific and procedural knowledge.</strong></p>
-<h3 id="For-the-rest-of-your-life-go-outside-your-limits-every-single-day"><a href="#For-the-rest-of-your-life-go-outside-your-limits-every-single-day" class="headerlink" title="For the rest of your life, go outside your limits every single day"></a>For the rest of your life, go outside your limits every single day</h3><p>Some software engineers stay inside their comfort zone once they find their footing. These types of programmers are known as maintenance programmers– not something you should strive to be. Instead, you should strive to go outside your limits every single day. The most common reason programmers quit their jobs is because “it’s not challenging anymore since I’ve solved all the interesting problems.”</p>
-<p>Rather than trying to pull coding projects into your comfort zone, you should be seeking out problems that are outside your current skill set. This is the only way to build on and expand your skills.</p>
-<p>In the words of a Firehose student upon passing his inflection point:</p>
-<blockquote>
-<h4 id="I-still-feel-like-I’m-in-the-deep-end-I’m-just-getting-more-comfortable-knowing-that’s-where-I’ve-got-to-be"><a href="#I-still-feel-like-I’m-in-the-deep-end-I’m-just-getting-more-comfortable-knowing-that’s-where-I’ve-got-to-be" class="headerlink" title="I still feel like I’m in the deep end! I’m just getting more comfortable knowing that’s where I’ve got to be!"></a>I still feel like I’m in the deep end! I’m just getting more comfortable knowing that’s where I’ve got to be!</h4></blockquote>
-<h3 id="In-web-development-there-are-actually-two-inflection-points-that-will-come-together"><a href="#In-web-development-there-are-actually-two-inflection-points-that-will-come-together" class="headerlink" title="In web development, there are actually two inflection points that will come together."></a>In web development, there are actually two inflection points that will come together.</h3><p><strong>The web development inflection point</strong> is the point when you become capable of building any database-driven application that you want. This means being able to build a web application with many pages that stores and retrieves information from a simple database. Web developers call this: “mastering CRUD.” At this phase, you should also be able to integrate with any 3rd party library (a ruby gem for example) simply by following the documentation provided on GitHub or a blog post.</p>
-<p><strong>The algorithm and data structures inflection point</strong> is a less superficial inflection point, but it is actually more important. Someone who has conquered this point will have mastered the programming language they’re working in, in addition to mastering the fundamentals of programming and having a depth of knowledge for solving complex coding challenges.</p>
-<p>People who have conquered the algorithm and data structures inflection point will be able to:</p>
-<ul>
-<li>Write sorting algorithms</li>
-<li>Implement and reverse linked lists</li>
-<li>Understand and write programs leveraging stacks, queues, and trees</li>
-<li>Write computer programs using recursive or iterative solutions</li>
-</ul>
-<p>In short, once you pass this inflection point, you will have mastered data manipulation and will understand the performance implications of your code decisions. Traditional computer science degrees focus exclusively on getting students past the algorithm and data structures inflection point. Many universities teach this with programming languages that are generally not used in the industry, like Scheme, Racket, or LISP.</p>
-<p><strong>In most technical interviews, the interviewer will assume you’ve passed the web development inflection point, given that’s easier to do, and focus their questions on evaluating your skill in algorithms and data structures.</strong> These questions will generally focus on the topics we mentioned above: sorting algorithms, reversing linked lists, and using stacks, queues, and trees.</p>
-<h3 id="Once-a-developer-has-passed-both-the-web-development-inflection-point-and-the-algorithm-and-data-structures-inflection-point-they-hold-the-keys-to-the-kingdom"><a href="#Once-a-developer-has-passed-both-the-web-development-inflection-point-and-the-algorithm-and-data-structures-inflection-point-they-hold-the-keys-to-the-kingdom" class="headerlink" title="Once a developer has passed both the web development inflection point and the algorithm and data structures inflection point, they hold the keys to the kingdom."></a>Once a developer has passed both the web development inflection point and the algorithm and data structures inflection point, they hold the keys to the kingdom.</h3><p>These developers will be able to solve challenges that intersect the two: complex algorithms that need to be built in the context of advanced web applications. This is at the heart of what professional web developers do every single day.</p>
-<h3 id="Consequences-of-the-Inflection-Point"><a href="#Consequences-of-the-Inflection-Point" class="headerlink" title="Consequences of the Inflection Point"></a>Consequences of the Inflection Point</h3><p>The biggest consequence of the inflection point will sound a bit counterintuitive when you first hear it. Take a deep breath in:</p>
-<blockquote>
-<h4 id="When-learning-to-code-domain-specific-knowledge-doesn’t-matter-in-the-grand-scheme-of-things"><a href="#When-learning-to-code-domain-specific-knowledge-doesn’t-matter-in-the-grand-scheme-of-things" class="headerlink" title="When learning to code, domain-specific knowledge doesn’t matter in the grand scheme of things."></a>When learning to code, domain-specific knowledge doesn’t matter in the grand scheme of things.</h4></blockquote>
-<p>Yup. I’m not joking– it really doesn’t matter that much at all. Once you pass the inflection point, these concepts will fluidly translate with just a week or two of tutorials, maybe even days!</p>
-<p><strong>What ultimately really matters is:</strong></p>
-<ul>
-<li>You have a <strong>solid grasp on a web development framework</strong></li>
-<li>You have a <strong>solid grasp on writing algorithmically complex code</strong> in any programming language</li>
-</ul>
-<h3 id="Hiring-managers-want-developers-with-solid-web-development-and-algorithm-skills"><a href="#Hiring-managers-want-developers-with-solid-web-development-and-algorithm-skills" class="headerlink" title="Hiring managers want developers with solid web development and algorithm skills."></a>Hiring managers want developers with solid web development and algorithm skills.</h3><p>While I was working at PayPal, my team hired a Senior Rails Developer who had no experience in Rails– he had been coding a lot in Python, LISP, and Perl. Within a couple of days, he was already making a big impact. And within weeks: a huge impact. He quickly rose to become the technical team lead and was one of the best hiring decisions I’ve ever been involved in.</p>
-<p><strong><em>Don’t sweat the stack\</em></strong>. Many people will say things like, “AngularJS is hot these days,” “JavaScript is on the rise,” or “the latest fad is…” My response to that is: “so?” When you’re learning how to program, your singular goal should be to find the inflection point and annihilate it. Once you do, learning that new, sexy fad won’t be a difficult task at all.</p>
-<p><strong><em>Become self-reliant\</em></strong>. Having the ability to learn new coding skills without structured guidance means you no longer need to wait for anyone to help you out. This means that for the majority of what you need to learn, you can simply search the internet and read the various material on what you need to know.</p>
-<p>This doesn’t mean you immediately “know” everything, but just that everything is now “figure-out-able,” so in essence, you are unstoppable.</p>
-<h3 id="The-Skills-You-Will-Develop-During-the-Inflection-Point"><a href="#The-Skills-You-Will-Develop-During-the-Inflection-Point" class="headerlink" title="The Skills You Will Develop During the Inflection Point"></a>The Skills You Will Develop During the Inflection Point</h3><p>As a software developer, the best reference material is similar code that you have already written. When you fully understand the code you’ve written, you don’t need to commit all the details to memory. This means that <strong>the first question you should ask yourself when building a new feature is: “Have I built something similar before?”</strong> If the answer is yes, revisit the code and walk through the code line-by-line in your head. Re-explain to yourself what it’s doing and ask yourself, “could I use the same approach now?”</p>
-<p><strong><em>Videos suck at explaining domain-specific details\</em></strong> because they take so darned long to watch. Say you want to integrate with the Google Maps API. Once you’ve experienced doing so once, it can take less than a minute to open the code up in GitHub, copy the code, and paste it into a new project. Videos, on the other hand, can often take 10-30 minutes to re-watch.</p>
-<h3 id="Strategies-for-Passing-the-Inflection-Point-as-Efficiently-as-Possible"><a href="#Strategies-for-Passing-the-Inflection-Point-as-Efficiently-as-Possible" class="headerlink" title="Strategies for Passing the Inflection Point as Efficiently as Possible"></a>Strategies for Passing the Inflection Point as Efficiently as Possible</h3><p>Because passing the inflection point is the most important part of learning to code, you should set yourself up to make the process as smooth as possible. This means you should start preparing while you’re in the tutorial phase and maintain the right mindset during this period of time.</p>
-<p><strong>During the tutorial phase, take breaks from going over structured material and give yourself challenge problems along the way</strong>.</p>
-<ul>
-<li>For every handful of lessons, <strong>try to do something that is outside the scope of the tutorial</strong> you’re following. If the tutorials you’re going through provide “challenges” or “self-directed” pieces, do all of them. Solving unguided challenges will give you the important experience of doing things without structured guidance.</li>
-<li><strong>Try to use tutorials as little as possible</strong>. At Firehose, we often walk students through how to integrate certain gems or do things using the provided documentation. Rather than simply following the instructions explained in tutorials that are geared towards people who are just starting out, many students will follow the documentation and use the tutorials as a back-up. <strong>Note that documentation will treat you like a developer who has passed the inflection point</strong>. Getting comfortable reading and following documentation on GitHub will give you a leg up when you’re on your own.</li>
-<li>Focus on the essentials and use repetition. Learn how to do common things like spinning-up an application from scratch, pushing a new app to GitHub and Heroku, and building a database migration early on.</li>
-</ul>
-<p>*<em>Pushing through the inflection point can be challenging. Here are some pointers to get you through it:<br>*</em></p>
-<ul>
-<li>Understand that <strong>this is a difficult process and go easy on yourself</strong>. Also, set realistic expectations. You can’t compare your “superman”-level speed of going through tutorials to your “snail”-speed of learning things on your own. Keep in mind that you’re learning plenty, but at this phase, you’re learning a brand new skill of figuring new things out on your own.</li>
-<li>If you’re struggling with self-confidence, know that what you’re feeling is completely normal. Keep working. If you continue to struggle, try talking to someone who has recently passed the inflection point. They will be able to relate to the position you’re in and will assure you that what you’re experiencing is only temporary. <strong>Work consistently, but don’t overwork yourself</strong>. At this phase of the game, know that you can only be productive for around 6 hours a day at the most. Working in an exhausted state will only prolong the time you spend building up to the inflection point.</li>
-</ul>
-<p>The best way to gain confidence at this stage is to power through any doubts you have. Your emotions may start to feel like a roller coaster. At times, you’ll feel like you’re on fire, but after 15 hours of struggling on the same problem, it’s very common to feel the polar opposite.</p>
-<p>It can be frustrating to have no idea if something will take you 5 minutes or 5 hours, but every time you power through and successfully implement a new feature, the rush of confidence will be everything you need. After solving a handful of hard problems without any help, you’ll be addicted to the feeling of building things outside your comfort zone.</p>
-<h3 id="How-to-know-when-you’ve-passed-the-inflection-point"><a href="#How-to-know-when-you’ve-passed-the-inflection-point" class="headerlink" title="How to know when you’ve passed the inflection point"></a>How to know when you’ve passed the inflection point</h3><p>The final stage of the inflection point process is acceptance. Acceptance that software development is a process of continuous learning. Acceptance that the feeling that you’ve successfully learned everything just means you should start thinking about solving more complicated problems.</p>
-<p><strong>Have you experienced the inflection point yet? Share this post and start a conversation with your friends– you would be surprised how many people have reached and surpassed this moment.</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1623,7 +1738,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">212</span>
+          <span class="site-state-item-count">213</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
