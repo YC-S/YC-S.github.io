@@ -165,6 +165,336 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/Embedded-Rules-of-Thumb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/09/Embedded-Rules-of-Thumb/" class="post-title-link" itemprop="url">Embedded_Rules_of_Thumb</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-09 15:23:33 / Modified: 15:24:28" itemprop="dateCreated datePublished" datetime="2020-06-09T15:23:33-04:00">2020-06-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><ul>
+<li>It’s easier to keep a system working than to fix it after you break it. (James Grenning)</li>
+<li>Move errors from run-time to compile time whenever possible</li>
+<li>Programs without documentation have no value</li>
+<li>Comments should never restate what the code <em>obviously</em> does.</li>
+<li>Comments should aid maintenance by describing intention.</li>
+<li>Everything in a header file should be used in at least two source files</li>
+<li>Developer productivity is dramatically increased by eliminating distractions and interrupts<ul>
+<li>“Developers who live in cubicles probably aren’t very productive. Check how they manage interruptions.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>“Complexity grows exponentially; Robert Glass figures for every 25% increase in the problem’s difficulty the code doubles in size. A many-million line program can assume a number of states whose size no human can grasp.” (Jack Ganssle)</li>
+<li>In nature, the optimum is almost always in the middle somewhere. Distrust assertions that the optimum is at an extreme point. (Akin’s Laws)</li>
+<li>Past experience is excellent for providing a reality check. Too much reality can doom an otherwise worthwhile design, though (Akin’s Laws)</li>
+<li>As a rule of thumb, every hour you spend on defect prevention will reduce your repair time from three to ten hours. (<a href="https://stevemcconnell.com/articles/software-quality-at-top-speed/" target="_blank" rel="noopener">Steve McConnell</a>)</li>
+</ul>
+<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><ul>
+<li><p>Complex systems evolve out of simple systems that worked (John Gall)</p>
+<ul>
+<li>“A complex system that works is invariably found to have evolved from a simple system that worked. The inverse proposition also appears to be true: A complex system designed from scratch never works and cannot be made to work. You have to start over, beginning with a working simple system.” (John Gall)</li>
+</ul>
+</li>
+<li><p>If you can’t describe the behavior in plain English, you can’t successfully describe it with code</p>
+</li>
+<li><p>Decompose complex problems into smaller sub-problems</p>
+<ul>
+<li>If a problem can be decomposed into two or more independently solvable problems, then solve them independently first!</li>
+<li>After you have implemented and tested the solutions, combine the parts into a larger operation</li>
+</ul>
+</li>
+<li><p>A function should perform only one conceptual task</p>
+</li>
+<li><p>Don’t solve problems that don’t exist</p>
+</li>
+<li><p>Solve the specific problem, not the general case</p>
+</li>
+<li><p>To design a spacecraft right takes an infinite amount of effort. This is why it’s a good idea to design them to operate when some things are wrong. (Akin’s Laws)</p>
+</li>
+<li><p>Design is an iterative process. The necessary number of iterations is one more than the number you have currently done. This is true at any point in time. (Akin’s Laws)</p>
+</li>
+<li><p>There is never a single right solution. There are always multiple wrong ones, though. (Akin’s Laws)</p>
+</li>
+<li><p>(Edison’s Law) “Better” is the enemy of “good”. (Akin’s Laws)</p>
+</li>
+<li><p>(Shea’s Law) The ability to improve a design occurs primarily at the interfaces. This is also the prime location for screwing it up. (Akin’s Laws)</p>
+</li>
+<li><p>Studies have found that reworking defective requirements, design, and code typically consumes 40 to 50 percent of the total cost of software development. (</p>
+<p>Steve McConnell</p>
+<p>, citing Capers Jones)</p>
+<ul>
+<li>In the worst case, reworking a software requirements problem once the software is in operation typically costs 50 to 200 times what it would take to rework the problem in the requirements stage. (<a href="https://stevemcconnell.com/articles/software-quality-at-top-speed/" target="_blank" rel="noopener">Steve McConnell</a>, citing Boehm and Papaccio)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Cost"><a href="#Cost" class="headerlink" title="Cost"></a>Cost</h2><ul>
+<li><p>Software is expensive</p>
+<ul>
+<li>“Study after study shows that commercial code, in all of the realities of its undocumented chaos, costs $15 to $30 per line. A lousy 1000 lines of code – and it’s hard to do much in a thousand lines – has a very real cost of perhaps $30,000. The old saw ‘it’s only a software change’ is equivalent to ‘it’s only a brick of gold bullion’.” (Jack Ganssle)</li>
+<li>“The answer is $15 to $40 per line of code. At the $40 end you can get relatively robust, well designed code suitable for industry applications. The $15 end tends to be code with skimpy design packages and skimpy testing. (In other words, some people spend only $15/line, but their code is of doubtful quality.)” (Phil Koopman)</li>
+<li>“UPDATE, October 2015. It’s probably more like $25-$50 per line of code now. Costs for projects outsourced to Asia have done up dramatically as wages and competition for scarce coders have increased.” (Phil Koopman)</li>
+</ul>
+</li>
+<li><p>If you want to reduce software development costs, look at every requirements document and brutally strip out features. (Jack Ganssle)</p>
+<ul>
+<li>Lots of features equals slow progress and expensive development (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>Non-recurring engineering (</p>
+<p>NRE</p>
+<p>) costs must be amortized over every product sold</p>
+<ul>
+<li><p>Save NRE dollars by reducing features</p>
+</li>
+<li><p>Save NRE dollars by offloading software functionality into hardware components (increases</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>BOM
+
+
+
+cost)
+
+- Only useful if that hardware already exists!
+- Software/hardware partitioning should be assessed early in the design process</code></pre><ul>
+<li>Save NRE dollars by delivering the product faster (Jack Ganssle)</li>
+</ul>
+<ul>
+<li>It is easier</li>
+</ul>
+<p>  and cheaper</p>
+<p>  to completely rewrite the 5% of problematic functions than to fix the existing implementation</p>
+<ul>
+<li>These functions cost four times as much as other functions (Barry Boehm)</li>
+<li>“Perhaps we really blew it when first writing the code, but if we can identify these crummy routines, toss them out, and start over, we’ll save big bucks.” (Jack Ganssle)</li>
+</ul>
+<h2 id="Scheduling"><a href="#Scheduling" class="headerlink" title="Scheduling"></a>Scheduling</h2><ul>
+<li><p>There’s never enough time to do it right, but somehow, there’s always enough time to do it over. (Akin’s Laws)</p>
+</li>
+<li><p>Estimating dates instead of hours guarantees a late project (Jack Ganssle)</p>
+<ul>
+<li>“Scheduling disasters are inevitable when developers don’t separate calendar time from engineering hours.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>“If the schedule hallucinates a people-utilization factor of much over 50% the project will be behind proportionately.” (Jack Ganssle)</p>
+<ul>
+<li>“Some data suggests the average developer is only about 55% engaged on new product work. Other routine activities, from handling paperwork to talking about Survivor XVI, burn almost half the work week.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>We often fail to anticipate the difficult areas of development</p>
+<ul>
+<li>“Isn’t it amazing how badly we estimate schedules for most projects? 80% of embedded systems are delivered late. Most pundits figure the average project consumes twice the development effort originally budgeted.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>5% of functions consume 80% of</p>
+</li>
+</ul>
+<p>  debugging</p>
+<p>  time (Jack Ganssle)</p>
+<ul>
+<li>“I’ve observed that most projects wallow in the debug cycle, which often accounts for half of the entire schedule. Clearly, if we can do something about those few functions that represent most of our troubles, the project will get out the door that much sooner.” (Jack Ganssle)</li>
+</ul>
+<ul>
+<li><p>Timelines grow much faster than firmware size – double the lines of code, and the delivery date increases by more than 2x (Barry Boehm)</p>
+</li>
+<li><p>“The first 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10 percent of the code accounts for the other 90 percent of the development time.” (Tom Cargill)</p>
+</li>
+<li><p>When porting old code to a new project, if more than about 25% gets modified there’s not much of a schedule boost (Richard Selby)</p>
+</li>
+<li><p>Systems loaded to 90% of the processor capability require 2x development time over systems loaded at 70% or less. 95% loading triples development time. (Jack Ganssle)</p>
+<ul>
+<li>“When only a few bytes are left, even trivial features can take weeks as developers must rewrite massive sections of code to free up memory or CPU cycles.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li><p>The schedule you develop will seem like a complete work of fiction up until the time your customer fires you for not meeting it. (Akin’s Laws)</p>
+</li>
+<li><p>Sometimes, the fastest way to get to the end is to throw everything out and start over. (Akin’s Laws)</p>
+</li>
+<li><p>(Patton’s Law of Program Planning) A good plan violently executed now is better than a perfect plan next week. (Akin’s Laws)</p>
+</li>
+</ul>
+<h2 id="Hardware"><a href="#Hardware" class="headerlink" title="Hardware"></a>Hardware</h2><ul>
+<li>Adding hardware increases power requirements</li>
+<li>Use of hardware accelerators to offload CPU-based algorithms can reduce power requirements</li>
+<li>Every sensor is a temperature sensor. Some sensors measure other things as well. (Elecia White)</li>
+<li>Break out nasty real-time hardware functions into independent CPUs (Jack Ganssle)<ul>
+<li>Handling 1000 interrupts per second from a device? Partition it to its own controller and offload all of the ISR overhead off of the main processor</li>
+</ul>
+</li>
+<li>Add hardware whenever it can simplify the software (Jack Ganssle)<ul>
+<li>This will dramatically reduce NRE and software development costs, at a tradeoff for an increase in BOM costs.</li>
+<li>Systems loaded to 90% of the processor capability require 2x development time over systems loaded at 70% or less. 95% loading triples development time. Add additional hardware to reduce loading. (Jack Ganssle)</li>
+</ul>
+</li>
+<li>(Atkin’s Law of Demonstrations) When the hardware is working perfectly, the really important visitors don’t show up. (Akin’s Laws)</li>
+</ul>
+<h2 id="Software-Reuse"><a href="#Software-Reuse" class="headerlink" title="Software Reuse"></a>Software Reuse</h2><ul>
+<li>Prefer to use existing, reviewed code that has already been re-used by others<ul>
+<li>e.g. use the <a href="https://embeddedartistry.com/fieldmanual-terms/standard-template-library/" target="_blank" rel="noopener">STL</a> instead of writing your own containers</li>
+</ul>
+</li>
+<li>Prefer simple, standard communication protocols over custom communication protocols</li>
+<li>Follow the “Rule of Three”: you are allowed to copy and paste the code once, but that when the same code is replicated three times, it should be extracted into a new procedure (Martin Fowler)</li>
+<li>Before a package is truly reusable, it must have been reused at least three times (Jack Ganssle)<ul>
+<li>“We’re not smart enough to truly understand the range of applications where a chunk of software may be used. Every domain requires its own unique features and tweaks; till we’ve actually used the code several times, over a wide enough range of apps, we won’t have generalized it enough to have it truly reusable.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>Reuse works best when done in large sections of code – think about reusing entire drivers or libraries, not functions (Jack Ganssle)</li>
+</ul>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><ul>
+<li>Premature optimization is a waste of time<ul>
+<li>“More computing sins are committed in the name of efficiency (without necessarily achieving it) than for any other single reason — including blind stupidity.” (W.A. Wulf)</li>
+<li>“The First Rule of Program Optimization: Don’t do it. The Second Rule of Program Optimization (for experts only!): Don’t do it yet.” (Michael A. Jackson)</li>
+</ul>
+</li>
+<li>Only optimize code after you have profiled it to identify the problem area<ul>
+<li>“Bottlenecks occur in surprising places, so don’t try to second guess and put in a speed hack until you have proven that’s where the bottleneck is.” (Rob Pike)</li>
+<li>“We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look carefully at the critical code; but only after that code has been identified” (Donald Knuth)</li>
+</ul>
+</li>
+<li>The Pareto principle can be applied to resource optimization: 80% of resources are used by 20% of operations<ul>
+<li>Alternatively, there is the 90/10 law in software engineering: 90% of the execution time of a program is spent executing 10% of the code</li>
+</ul>
+</li>
+<li>Algorithmic optimizations have a greater impact than micro optimizations<ul>
+<li>“Real efficiency gains come from changing the order of complexity of the algorithm, such as changing from O(N2) to O(NlogN) complexity”</li>
+</ul>
+</li>
+<li>Never sacrifice clarity for perceived efficiency, especially when the efficiency improvement has not been proven with data</li>
+</ul>
+<h2 id="Red-Flags-and-Problem-Areas"><a href="#Red-Flags-and-Problem-Areas" class="headerlink" title="Red Flags and Problem Areas"></a>Red Flags and Problem Areas</h2><ul>
+<li>When developers are afraid to change a function, it’s time to rewrite that code from scratch (Jack Ganssle)</li>
+<li>Duplicate code is an indication of poor design or poor programming habits. It must be eliminated.<ul>
+<li>“Duplication is a bad practice because it makes code harder to maintain. When the rule encoded in a replicated piece of code changes, whoever maintains the code will have to change it in all places correctly. This process is error-prone and often leads to problems. If the code exists in only one place, then it can be easily changed there.” (Jack Ganssle)</li>
+<li>“This rule is can even be applied to small number of lines of code, or even single lines of code. For example, if you want to call a function, and then call it again when it fails, it’s OK to have two call sites; however, if you want to try it five times before giving up, there should only be one call site inside a loop rather than 5 independent calls.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>Avoid shared resources wherever possible (Jack Ganssle)</li>
+<li>Eliminate globals!</li>
+<li>Disabling interrupts tends to be A Bad Thing (Jack Ganssle)<ul>
+<li>Even in the best of cases it’ll increase system latency and probably decrease performance</li>
+<li>Increased latency leads to missed interrupts and mismanaged devices</li>
+</ul>
+</li>
+<li>Be wary of solo Enable Interrupt (EI) commands (Jack Ganssle)<ul>
+<li>“An EI located outside an interrupt service routine (ISR) often suggests peril – with the exception of the initial EI in the startup code.” (Jack Ganssle)</li>
+<li>“When the enable is not part of a DI/EI pair (and these two instructions must be very close to each other to keep latency down and maintainability up) then the code is likely a convoluted, cryptic well; plumbing these depths will age the most eager of developers.” (Jack Ganssle)</li>
+</ul>
+</li>
+<li>Be wary when code is peppered with DI/EI Pairs (Jack Ganssle)<ul>
+<li>Excessive use of Disable Interrupt instructions suggests poor design</li>
+<li>“But these DI/EI pairs slip into code in great numbers when there’s a systemic design problem that yields lots of critical regions susceptible to reentrancy problems. You know how it is: chasing a bug the intrepid developer uncovers a variable trashed by context switching. Pop in quick DI/EI pair. Then there’s another. And another. It’s like a heroin user taking his last hit. It never ends.” (Jack Ganssle)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h2><ul>
+<li>Leave interrupts on, for all but the briefest times and in the most compelling of needs. (Jack Ganssle)</li>
+<li>If you disable interrupts in a block of code, re-enable them in the same block (Jack Ganssle)</li>
+<li>Keep ISRs small<ul>
+<li>Be wary of ISRs longer than half a page of code (Jack Ganssle)</li>
+<li>In most cases, there should be little-to-no processing inside of the handler (Phillip Johnston)</li>
+<li>Set a flag, add a value to a queue, and then rely on user-space code to handle more complex tasks</li>
+</ul>
+</li>
+<li>Minimize ISR latency to ensure the system does not miss interrupts (Jack Ganssle)</li>
+<li>Check the design of any ISR that reenables interrupts immediately before returning (Jack Ganssle)<ul>
+<li>Minimize critical sections within the ISR.</li>
+<li>“It’s perfectly fine to allow another device to interrupt an ISR! or even to allow the same interrupt to do so, given enough stack space. That suggests we should create service routines that do all of the non-reentrant stuff (like servicing hardware) early, issue the EI, and continue with the reentrant activities. Then pop registers and return.” (Jack Ganssle)</li>
+</ul>
+</li>
+</ul>
+<p>Avoid the following operations within interrupt handlers: (Phillip Johnston)</p>
+<ul>
+<li>Don’t declare any non-static variables inside the handler</li>
+<li>Avoid blocking function calls</li>
+<li>Avoid non-reentrant function calls</li>
+<li>Avoid any processing that takes non-trivial time</li>
+<li>Avoid operations with locks as you can deadlock your program in an ISR</li>
+<li>Avoid operations that involve dynamic memory allocations, as the allocation may require a lock and will take a non-determinate amount of time</li>
+<li>Avoid stack allocations<ul>
+<li>Depending on your architecture and operational model, your interrupt handler may utilize the stack of the interrupted thread or a common “interrupt stack”.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Function-Point-Rules-of-Thumb"><a href="#Function-Point-Rules-of-Thumb" class="headerlink" title="Function Point Rules of Thumb"></a>Function Point Rules of Thumb</h2><p>A function point is the measure of functionality of a part of a software, which <a href="https://www.ifpug.org/content/documents/Jones-OriginsOfFunctionPointMetrics.pdf" target="_blank" rel="noopener">you can read about here</a>. One <a href="https://embeddedartistry.com/fieldmanual-terms/c/" target="_blank" rel="noopener">C</a> function point is about 130 lines of code, on average.</p>
+<p>Here are Capers’s rules of thumb, where “FP” means function points. These were extracted from Jack Ganssle’s newsletter.</p>
+<ul>
+<li><p>Approximate number of bugs injected in a project: FP</p>
+<p>1.25</p>
+<ul>
+<li>Manual code inspections will find about 65% of the bugs. The number is much higher for very disciplined teams.</li>
+</ul>
+</li>
+<li><p>Number of people on the project is about: FP/150</p>
+</li>
+<li><p>Approximate page count for paper documents associated with a project: FP1.15</p>
+</li>
+<li><p>Each test strategy will find about 30% of the bugs that exist.</p>
+</li>
+<li><p>The schedule in months is about: FP0.4</p>
+</li>
+<li><p>Full time number of people required to maintain a project after release: FP/750</p>
+</li>
+<li><p>Requirements grow about 2%/month from the design through coding phases.</p>
+</li>
+<li><p>Rough number of test cases that will be created: FP1.2</p>
+</li>
+</ul>
+<h2 id="Humorous"><a href="#Humorous" class="headerlink" title="Humorous"></a>Humorous</h2><ul>
+<li>If anyone says you are to work with an acoustic modem, ask them if it will be located in another building. Refuse unless the answer is yes. (Elecia White)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/08/Programming-principles-from-id-software/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -986,104 +1316,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/Paul-Graham-%E6%A2%A6%E5%AF%90%E4%BB%A5%E6%B1%82%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/31/Paul-Graham-%E6%A2%A6%E5%AF%90%E4%BB%A5%E6%B1%82%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">Paul_Graham_梦寐以求的编程语言</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-31 22:08:50 / Modified: 22:10:22" itemprop="dateCreated datePublished" datetime="2020-05-31T22:08:50-04:00">2020-05-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​        我的朋友曾对一位著名的操作系统专家说他想要设计一种真正优秀的编程语言。那位专家回答，这是浪费时间，优秀的语言不一定会被市场接受，很可能无人使用，因为语言的流行不取决于它本身。至少，那位专家设计的语言就遭遇到了这种情况。</p>
-<p>　　那么，语言的流行到底取决于什么因素呢？流行的语言是否真的值得流行呢？还有必要尝试设计一种更好的语言吗？如果有必要的话，怎样才能做到这一点呢？</p>
-<p>　　为了找到这些问题的答案，我想我们可以观察黑客，了解他们使用什么语言。编程语言本来就是为了满足黑客的需要而产生的，当且仅当黑客喜欢一种语言时，这种语言才能成为合格的编程语言，而不是被当做“指称语义”（denotational semantics）或者编译器设计。</p>
-<h3 id="流行的秘诀"><a href="#流行的秘诀" class="headerlink" title="　　流行的秘诀"></a>　　<strong>流行的秘诀</strong></h3><p>　　没错，大多数人选择某一种编程语言，不是因为这种语言有什么独特的特点，而是因为听说其他人使用这种语言。但是我认为，外界因素对于编程语言的流行其实并没有想象中那么大的影响力。我倒是觉得，问题出在对于什么是优秀编程语言，黑客的看法与大多数的语言设计者不一样。</p>
-<p>　　黑客的看法其实比语言设计者的更重要。编程语言不是数学定理，而是一种工具，为了便于使用，它们才被设计出来。所以，设计编程语言的时候必须考虑到人类的长处和短处，就像设计鞋子的时候必须符合人类的脚型。如果鞋子穿上去不舒服，无论它的外形多么优美，多么像一件艺术品，你也只能把它当做一双坏鞋。</p>
-<p>　　大多数程序员也许无法分辨语言的好坏。但是，这不代表优秀的编程语言会被埋没，专家级黑客一眼就能认出它们，并且会拿来使用。虽然他们人数很少，但就是这样一小群人写出了人类所有的优秀软件。他们有着巨大的影响力，他们使用什么语言，其他程序员往往就会跟着使用。老实说，很多时候这种影响力更像是一种命令，对于其他程序员来说，专家级黑客就像自己的老板或导师，他们说哪种语言好用，自己就会乖乖地跟进。</p>
-<p>　　专家级黑客的看法不是决定一种语言流行程度的唯一因素，某些古老的软件（Fortran 和 Cobol 的情况）和铺天盖地的广告宣传（Ada 和 Java 的情况）也会起到作用。但是，我认为从长期来看，专家级黑客的看法是最重要的因素。只要有了达到“临界数量”（critical mass）的最初用户和足够长的时间，一种语言就可能会达到应有的流行程度。而流行本身又会使得这种优秀的语言更加优秀，进一步拉大它与平庸语言之间的好坏差异，因为使用者的反馈总是会导致语言的改进。你可以想一下，所有流行的编程语言从诞生至今的变化有多大。Perl 和 Fortran 是极端的例子，但是甚至就连Lisp都发生了很大的变化。</p>
-<p>　　所以，即使不考虑语言本身的优秀是否能带动流行，我想单单流行本身就肯定会使得这种语言变得更好，只有流行才会让它保持优秀。编程语言的最高境界一直在发展之中。虽然语言的核心功能就像大海的深处，很少有变化，但是函数库和开发环境之类的东西就像大海的表面，一直在汹涌澎湃。</p>
-<p>　　当然，黑客必须先知道这种语言，才可能去用它。他们怎么才能知道呢？就是从其他黑客那里。所以不管怎样，一开始必须有一群黑客使用这种语言，然后其他人才会知道它。我不知道“一群”的最小数量是多少，多少个黑客才算达到“临界数量”呢？如果让我猜，我会说20人。如果一种语言有20个独立用户，就意味着有20个人是自主决定使用这种语言的，我觉得这就说明这种语言真的有优点。</p>
-<p>　　达到这一步并非易事。如果说用户数从0到20比从20到1000更困难，我也不会感到惊讶。发展最早的20个用户的最好方法可能就是使用特洛伊木马：你让人们使用一种他们需要的应用程序，这个程序碰巧就是用某种新语言开发的。</p>
-<h3 id="外部因素"><a href="#外部因素" class="headerlink" title="　　外部因素"></a>　　<strong>外部因素</strong></h3><p>　　我们得先承认，确实有一个外部因素会影响到语言的流行。一种语言必须是某一个流行的计算机系统的脚本语言（scripting language），才会变得流行。Fortran 和 Cobol 是早期 IBM 大型机的脚本语言。C 是 Unix 的脚本语言，后来的 Perl 和 Python 也是如此。Tcl 是 Tk 的脚本语言，Visual Basic 是 Windows 的脚本语言,（某种形式的）Lisp 是 Emacs 的脚本语言，PHP 是网络服务器的脚本语言，Java 和 JavaScript 是浏览器的脚本语言。</p>
-<p>　　编程语言不是存在于真空之中。“编程”其实是及物动词，黑客一般都是为某个系统编程，在现实中，编程语言总是与它们依附的系统联系在一起的。所以，如果你想设计一种流行的编程语言，就不能只是单纯地设计语言本身，还必须为它找到一个依附的系统，而这个系统也必须流行。除非你只想用自己设计的语言取代那个系统现有的脚本语言。</p>
-<p>　　这种情况导致的一个结果就是，无法以一种语言本身的优缺点评判这种语言。另一个结果则是，只有当一种语言是某个系统的脚本语言时，它才能真正成为编程语言。如果你对此很吃惊，觉得不公平，那么我会跟你说不必大惊小怪。这就好比大家都认为，如果一种编程语言只有语法规则，没有一个好的实现（implementation），那么它就不能算完整的编程语言。这些都是很正常很合理的事情，编程语言本来就该如此。</p>
-<p>　　当然，编程语言本来就需要一个好的实现，而且这个实现必须是免费的。商业公司愿意出钱购买软件，但是黑客作为个人不会愿意这样做，而你想让一种语言成功，恰恰就是需要吸引黑客。</p>
-<p>　　编程语言还需要有一本介绍它的书。这本书应该不厚，文笔流畅，而且包含大量优秀的范例。布赖恩·柯尼汉和丹尼斯·里奇合写的《C 程序设计语言》（C Programming Language）就是这方面的典范。眼下，我大概还能再加一句，这一类书籍之中必须有一本由 O’Reilly 公司出版发行。这正在变成是否能吸引黑客的前提条件了。</p>
-<p>　　编程语言还应该有在线文档。事实上，在线文档可以当做一本书来写，但是目前它还无法取代实体书。实体书并没有过时，它们读起来很方便，而且出版社对书籍内容的审核是一种很有用的质量保证机制（虽然做得很不完美）。书店则是程序员发现和学习新语言的最重要的场所之一。</p>
-<h3 id="简洁"><a href="#简洁" class="headerlink" title="　　简洁"></a>　　<strong>简洁</strong></h3><p>　　假定你的语言已经能够满足上面三项条件——一种免费的实现，一本相关书籍，以及语言所依附的计算机系统——那么还需要做什么才能使得黑客喜欢上你的语言？</p>
-<p>　　黑客欣赏的一个特点就是简洁。黑客都是懒人，他们同数学家和现代主义建筑师一样，痛恨任何冗余的东西或事情。有一个笑话说，黑客动手写程序之前，至少会在心里盘算一下哪种语言的打字工作量最小，然后就选择使用该语言。这个笑话其实与真实情况相差无几。就算这真的是个笑话，语言的设计者也必须把它当真，按照它的要求设计语言。</p>
-<p>　　简洁性最重要的方面就是要使得语言更抽象。为了达到这一点，首先你设计的必须是高级语言，然后把它设计得越抽象越好。语言设计者应该总是看着代码，问自己能不能使用更少的语法单位把它表达出来。如果你有办法让许多不同的程序都能更简短地表达出来，那么这很可能意味着你发现了一种很有用的新抽象方法。</p>
-<p>　　不要觉得为用户着想就是让他们使用像英语一样又长又啰唆的语法。这是不正确的做法，Cobol 就是因为这个毛病而声名狼藉。</p>
-<p>　　如果你让黑客像下面这样求和：<br><code>add x to y giving z</code></p>
-<p>　　而不是写成：<br><code>z = x + y</code></p>
-<p>　　那么你就是在侮辱黑客的智商，或者自己作孽了。</p>
-<p>　　简洁性是静态类型语言的力所不及之处。不考虑其他因素时，没人愿意在程序的头部写上一大堆的声明语句。只要计算机可以自己推断出来的事情，都应该让计算机自己去推断。举例来说，“hello world”本应该是一个很简单的程序，但是在 Java 语言中却要写上一大堆东西，这本身就差不多可以说明 Java 语言设计得有问题了。</p>
-<p>　　单个的语法单位也应该很简短。Perl 和 Common Lisp 在这方面是两个不同的极端。Perl 的语法单位很短，导致它的代码可以拥挤得让人无法理解，而 Common Lisp 内置运算符的名称则长得可笑。Common Lisp 的设计者们可能觉得文本编辑器会帮助用户自动填写运算符的长名称。但是这样做的代价不仅是增加了打字的工作量，还包括提高了阅读代码的难度，以及占用了更多的显示器空间。</p>
-<h3 id="可编程性（Hackability）"><a href="#可编程性（Hackability）" class="headerlink" title="　　可编程性（Hackability）"></a>　　<strong>可编程性（Hackability）</strong></h3><p>　　对黑客来说，选择编程语言的时候，还有一个因素比简洁更重要，那就是这种语言必须能够帮助自己做到想做的事。在编程语言的历史上，防止程序员做出“错误”举动的措施多得惊人。这是语言设计者很自以为是的危险举动，他们怎么知道程序员该做什么不该做什么？我认为，语言设计者应该假定他们的目标用户是一个天才，会做出各种他们无法预知的举动，而不是假定目标用户是一个笨手笨脚的傻瓜，需要别人的保护才不会伤到自己。如果用户真的是傻瓜，不管你怎么保护他，他还是会搬起石头砸自己的脚。你也许能够阻止他引用另一个模块中的变量，但是你没法防止他日日夜夜不知疲倦地写出结构混乱的程序去解决完全错误的问题。</p>
-<p>　　优秀程序员经常想做一些既危险又令人恼火的事情。所谓“令人恼火”，我指的是他们会突破设计者提供给用户的外部语义层，试着控制某些高级抽象的语言内部接口。比如，黑客喜欢破解，而破解就意味着深入内部，揣测原始设计者的意图。</p>
-<p>　　你应该敞开胸怀，欢迎这种揣测。对于制造工具的人来说，总是会有用户以违背你本意的方式使用你的工具。如果你制造的是编程语言这样高度组合的系统，那就更是如此了。许多黑客会用你做梦也想不到的方式改动你的语法模型。我的建议就是，让他们这样干吧，而且应该为他们创造便利，尽可能多地把语言的内部暴露在他们面前。</p>
-<p>　　其实，黑客并不会彻底颠覆你的工具，在一个大型程序中，他可能只是对语言改造一两个地方。但是，改动多少地方并不重要，重要的是他能够对语言进行改动。这可能不仅有助于解决一些特殊的问题，还会让黑客觉得很好玩。黑客改造语言的乐趣就好比外科医生摆弄病人内脏的乐趣，或者青少年喜欢用手挤破青春痘的那种感觉。至少对男生来说，某些类型的破坏非常刺激。针对青年男性读者的 Maxim 杂志每年出版一本特辑，里面一半是美女照片，另一半是各种严重事故的现场照片。这本杂志非常清楚它的读者想看什么。</p>
-<p>　　一种真正优秀的编程语言应该既整洁又混乱。“整洁”的意思是设计得很清楚， 内核由数量不多的运算符构成，这些运算符易于理解，每一个都有很完整的独立用途。“混乱”的意思是它允许黑客以自己的方式使用。C 语言就是这样的例子，早期的 Lisp 语言也是如此。真正的黑客语言总是稍微带一点放纵不羁、不服管教的个性。</p>
-<p>　　优秀的编程语言所具备的功能，应该会使得言必称“软件工程”的人感到非常不满、频频摇头。与黑客语言形成鲜明对照的就是像 Pascal 那样的语言，它是井然有序的模范，非常适合教学，但是除此之外就没有很大用处了。</p>
-<p>　　<strong>一次性程序</strong></p>
-<p>　　为了吸引黑客，一种编程语言必须善于完成黑客想要完成的各种任务。这意味着它必须很适合开发一次性程序。这一点可能出乎很多人的意料。</p>
-<p>　　所谓一次性程序，就是指为了完成某些很简单的临时性任务而在很短时间内写出来的程序。比如，自动完成某些系统管理任务的程序，或者（为了某项模拟任务）自动生成测试数据的程序，以及在不同格式之间转化数据的程序等。令人吃惊的是，一次性程序往往不是真的只用一次，就像二战期间很多美国大学造的一大批临时建筑后来都成了永久建筑。许多一次性程序后来也都变成了正式的程序，具备了正式的功能和外部用户。</p>
-<p>　　我有一种预感，最优秀的那些大型程序就是这样发展起来的，而不是像胡佛水坝那样从一开始就作为大型工程来设计。一下子从无到有做出一个大项目是一件很恐怖的事。当人们接手一个巨型项目时，很容易被它搞得一蹶不振。最后，要么是项目陷入僵局，要么是做出来一个规模小、性能差的东西。你想造一片闹市，却只做出一家商场；你想建一个罗马，却只造出一个巴西利亚；你想发明 C 语言，却只开发出 Ada。</p>
-<p>　　开发大型程序的另一个方法就是从一次性程序开始，然后不断地改进。这种方法比较不会让人望而生畏，程序在不断的开发之中逐渐进步。一般来说，使用这种方法开发程序，一开始用什么编程语言，就会一直用到最后，因为除非有外部政治因素的干预，程序员很少会中途更换编程语言。所以，我们就有了一个看似矛盾的结论：如果你想设计一种适合开发大型项目的编程语言，就必须使得这种语言也适合开发一次性程序，因为大型项目就是从一次性程序演变而来的。</p>
-<p>　　Perl 就是一个鲜明的例子。它不仅仅设计成适合开发一次性程序，而且它本身就很像一次性程序。最初的 Perl 只是好几个生成表格的工具收集在一起而已。后来程序员用它写一次性程序，当那些程序逐渐发展壮大后，Perl 才随之发展成了一种正式的编程语言。到了 Perl 5，这种语言才适合开发重要的程序，但是在此之前它已经广为流行了。</p>
-<p>　　什么样的语言适合写一次性程序？首先，它必须很容易装备。一次性程序是你只想在一小时内写出来的程序，所以它不应该耗费很多时间安装和配置，最好已经安装在你的电脑上了。它必须是想用就用的。C 语言可以想用就用，因为它是操作系统的一部分；Perl 可以想用就用，因为它本来就是一种系统管理工具，操作系统已经默认安装它了。</p>
-<p>　　很容易装备不仅仅指很容易安装或者已经安装，还指很容易与使用者互动。一种有命令行界面、可以实时反馈的语言就具有互动性，那些必须先编译后使用的语言就不具备互动性。受欢迎的编程语言应该是前者，具有良好的互动性，可以快速得到运行结果。</p>
-<p>　　一次性程序的另一个特点就是简洁。对黑客来说，这一点永远有吸引力。如果考虑到你最多只打算在这个程序上耗费一个小时，这一点就更重要了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1154,12 +1386,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">215</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
