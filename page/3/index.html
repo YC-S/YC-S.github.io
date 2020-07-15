@@ -165,6 +165,316 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/67-Spring-Interview-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/22/67-Spring-Interview-Questions/" class="post-title-link" itemprop="url">67_Spring_Interview_Questions</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-22 18:18:29 / Modified: 18:22:32" itemprop="dateCreated datePublished" datetime="2020-06-22T18:18:29-04:00">2020-06-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Spring-Interview-Questions-And-Answers"><a href="#Spring-Interview-Questions-And-Answers" class="headerlink" title="Spring Interview Questions And Answers"></a>Spring Interview Questions And Answers</h3><p><strong>Q1) What is Spring?</strong></p>
+<p>Spring is an open-source development framework for Enterprise Java. The core features of the Spring Framework can be used in developing any Java application, but there are extensions for building web applications on top of the Java EE platform. Spring framework targets to make Java EE development easier to use and promote good programming practice by enabling a POJO-based programming model.</p>
+<p><strong>Q2) What are benefits of Spring Framework?</strong></p>
+<ol>
+<li><strong>Lightweight</strong>: Spring is lightweight when it comes to size and transparency. The basic version of the spring framework is around 2MB.</li>
+<li><strong>Inversion of control (IOC):</strong> Loose coupling is achieved in Spring, with the Inversion of Control technique. The objects give their dependencies instead of creating or looking for dependent objects.</li>
+<li><strong>Aspect oriented (AOP):</strong> Spring supports Aspect oriented programming and separates application business logic from system services.</li>
+<li><strong>Container:</strong> Spring contains and manages the life cycle and configuration of application objects.</li>
+<li><strong>MVC Framework:</strong> Spring’s web framework is a well-designed web MVC framework, which provides a great alternative to web frameworks.</li>
+<li><strong>Transaction Management:</strong> Spring provides a consistent transaction management interface that can scale down to a local transaction and scale up to global transactions (JTA).</li>
+<li><strong>Exception Handling:</strong> Spring provides a convenient API to translate technology-specific exceptions (thrown by JDBC, Hibernate, or JDO) into consistent, unchecked exceptions.</li>
+</ol>
+<p><strong>Q3) Which are the Spring framework modules?</strong></p>
+<p>The basic modules of the Spring framework are :</p>
+<ol>
+<li>Core module</li>
+<li>Bean module</li>
+<li>Context module</li>
+<li>Expression Language module</li>
+<li>JDBC module</li>
+<li>ORM module</li>
+<li>OXM module</li>
+<li>Java Messaging Service(JMS) module</li>
+<li>Transaction module</li>
+<li>Web module</li>
+<li>Web-Servlet module</li>
+<li>Web-Struts module</li>
+<li>Web-Portlet module</li>
+</ol>
+<p><strong>Q4) Explain the Core Container (Application context) module</strong></p>
+<p>This is the basic Spring module, which provides the fundamental functionality of the Spring framework. BeanFactory is the heart of any spring-based application. Spring framework was built on the top of this module, which makes the Spring container.</p>
+<p><strong>Q5) What is BeanFactory – BeanFactory implementation example</strong></p>
+<p>A BeanFactory is an implementation of the factory pattern that applies Inversion of Control to separate the application’s configuration and dependencies from the actual application code.<br>The most commonly used BeanFactory implementation is the XmlBeanFactory class.</p>
+<p><strong>Q6) XMLBeanFactory</strong></p>
+<p>The most useful one is org.springframework.beans.factory.xml.XmlBeanFactory, which loads its beans based on the definitions contained in an XML file. This container reads the configuration metadata from an XML file and uses it to create a fully configured system or application.</p>
+<p><strong>Q7) Explain the AOP module</strong></p>
+<p>The AOP module is used for developing aspects for our Spring-enabled application. Much of the support has been provided by the AOP Alliance in order to ensure the interoperability between Spring and other AOP frameworks. This module also introduces metadata programming to Spring.</p>
+<p><strong>Q8) Explain the JDBC abstraction and DAO module</strong></p>
+<p>With the JDBC abstraction and DAO module we can be sure that we keep up the database code clean and simple, and prevent problems that result from a failure to close database resources. It provides a layer of meaningful exceptions on top of the error messages given by several database servers. It also makes use of Spring’s AOP module to provide transaction management services for objects in a Spring application.</p>
+<p><strong>Q9) Explain the object/relational mapping integration module</strong></p>
+<p>Spring also supports for using of an object/relational mapping (ORM) tool over straight JDBC by providing the ORM module. Spring provides support to tie into several popular ORM frameworks, including Hibernate, JDO, and iBATIS SQL Maps. Spring’s transaction management supports each of these ORM frameworks as well as JDBC.</p>
+<p><strong>Q10) Explain the web module</strong></p>
+<p>The Spring web module is built on the application context module, providing a context that is appropriate for web-based applications. This module also contains support for several web-oriented tasks such as transparently handling multipart requests for file uploads and programmatic binding of request parameters to your business objects. It also contains integration support with Jakarta Struts.</p>
+<p><strong>Q11) Explain the Spring MVC module</strong></p>
+<p>MVC framework is provided by Spring for building web applications. Spring can easily be integrated with other MVC frameworks, but Spring’s MVC framework is a better choice, since it uses IoC to provide for a clean separation of controller logic from business objects. With Spring MVC you can declaratively bind request parameters to your business objects.</p>
+<p><strong>Q12) Spring configuration file</strong></p>
+<p>Spring configuration file is an XML file. This file contains the classes information and describes how these classes are configured and introduced to each other.</p>
+<p><strong>Q13) What is Spring IoC container?</strong></p>
+<p>The Spring IoC is responsible for creating the objects,managing them (with dependency injection (DI)), wiring them together, configuring them, as also managing their complete lifecycle.</p>
+<p><strong>Q14) What are the benefits of IOC?</strong></p>
+<p>IOC or dependency injection minimizes the amount of code in an application. It makes easy to test applications, since no singletons or JNDI lookup mechanisms are required in unit tests. Loose coupling is promoted with minimal effort and least intrusive mechanism. IOC containers support eager instantiation and lazy loading of services.</p>
+<p><strong>Q15) What are the common implementations of the ApplicationContext?</strong></p>
+<p>The <strong>FileSystemXmlApplicationContext</strong> container loads the definitions of the beans from an XML file. The full path of the XML bean configuration file must be provided to the constructor.</p>
+<p>The <strong>ClassPathXmlApplicationContext</strong> container also loads the definitions of the beans from an XML file. Here, you need to set CLASSPATH properly because this container will look bean configuration XML file in CLASSPATH.</p>
+<p>The <strong>WebXmlApplicationContext:</strong> container loads the XML file with definitions of all beans from within a web application.</p>
+<p><strong>Q16) What is the difference between Bean Factory and ApplicationContext?</strong></p>
+<p>Application contexts provide a means for resolving text messages, a generic way to load file resources (such as images), they can publish events to beans that are registered as listeners. In addition, operations on the container or beans in the container, which have to be handled in a programmatic fashion with a bean factory, can be handled declaratively in an application context. The application context implements MessageSource, an interface used to obtain localized messages, with the actual implementation being pluggable.</p>
+<p><strong>Q17) What does a Spring application look like?</strong></p>
+<ol>
+<li>An interface that defines the functions.</li>
+<li>The implementation that contains properties, its setter and getter methods, functions etc.,</li>
+<li>Spring AOP</li>
+<li>The Spring configuration XML file.</li>
+<li>Client program that uses the function</li>
+</ol>
+<p><strong>Q18) What is Dependency Injection in Spring?</strong></p>
+<p>Dependency Injection, an aspect of Inversion of Control (IoC), is a general concept, and it can be expressed in many different ways.This concept says that you do not create your objects but describe how they should be created. You don’t directly connect your components and services together in code but describe which services are needed by which components in a configuration file. A container (the IOC container) is then responsible for hooking it all up.</p>
+<p><strong>Q19) What are the different types of IoC (dependency injection)?</strong></p>
+<ol>
+<li><strong>Constructor-based dependency injection:</strong> Constructor-based DI is accomplished when the container invokes a class constructor with a number of arguments, each representing a dependency on other class.</li>
+<li><strong>Setter-based dependency injection:</strong> Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or no-argument static factory method to instantiate your bean.</li>
+</ol>
+<p><strong>Q20) Which DI would you suggest Constructor-based or setter-based DI?</strong></p>
+<p>You can use both Constructor-based and Setter-based Dependency Injection. The best solution is using constructor arguments for mandatory dependencies and setters for optional dependencies.</p>
+<p><strong>Q21) What are Spring beans?</strong></p>
+<p>Spring beans scope interview questions - The Spring Beans are Java Objects that form the backbone of a Spring application. They are instantiated, assembled, and managed by the Spring IoC container. These beans are created with the configuration metadata that is supplied to the container, for example, in the form of XML definitions.</p>
+<p>Beans defined in spring framework are singleton beans. There is an attribute in bean tag named “singleton” if specified true then bean becomes singleton and if set to false then the bean becomes a prototype bean. By default it is set to true. So, all the beans in spring framework are by default singleton beans.</p>
+<p><strong>Q22) What does a Spring Bean definition contain?</strong></p>
+<p>A Spring Bean definition contains all configuration metadata which is needed for the container to know how to create a bean, its lifecycle details and its dependencies.</p>
+<p><strong>Q23) How do you provide configuration metadata to the Spring Container?</strong></p>
+<p>There are three important methods to provide configuration metadata to the Spring Container:</p>
+<ol>
+<li>XML based configuration file.</li>
+<li>Annotation-based configuration</li>
+<li>Java-based configuration</li>
+</ol>
+<p><strong>Q24) How do you define the scope of a bean?</strong></p>
+<p>When defining a in Spring, we can also declare a scope for the bean. It can be defined through the scope attribute in the bean definition. For example, when Spring has to produce a new bean instance each time one is needed, the bean’sscope attribute to be prototype. On the other hand, when the same instance of a bean must be returned by Spring every time it is needed, the the bean scope attribute must be set to singleton.</p>
+<p><strong>Q25) Explain the bean scopes supported by Spring</strong></p>
+<p>There are five scoped provided by the Spring Framework supports following five scopes:</p>
+<ol>
+<li>In <strong>singlet on</strong> scope, Spring scopes the bean definition to a single instance per Spring IoC container.</li>
+<li>In <strong>prototype</strong> scope, a single bean definition has any number of object instances.</li>
+<li>In <strong>request</strong> scope, a bean is defined to an HTTP request. This scope is valid only in a web-aware Spring ApplicationContext.</li>
+<li>In <strong>session</strong> scope, a bean definition is scoped to an HTTP session. This scope is also valid only in a web-aware Spring ApplicationContext.</li>
+<li>In <strong>global-session</strong> scope, a bean definition is scoped to a global HTTP session. This is also a case used in a web-aware Spring ApplicationContext.</li>
+</ol>
+<p>The default scope of a Spring Bean is Singleton.</p>
+<p><strong>Q26) Are Singleton beans thread safe in Spring Framework?</strong></p>
+<p>No, singleton beans are not thread-safe in Spring framework.</p>
+<p><strong>Q27) Explain Bean lifecycle in Spring framework</strong></p>
+<ol>
+<li>The spring container finds the bean’s definition from the XML file and instantiates the bean.</li>
+<li>Spring populates all of the properties as specified in the bean definition (DI).</li>
+<li>If the bean implementsBeanNameAware interface, spring passes the bean’s id to setBeanName()</li>
+<li>If Bean implementsBeanFactoryAware interface, spring passes the beanfactory to setBeanFactory()</li>
+<li>If there are any beanBeanPostProcessors associated with the bean, Spring calls postProcesserBeforeInitialization()</li>
+<li>If the bean implementsIntializingBean, its afterPropertySet() method is called. If the bean has init method declaration, the specified initialization method is called.</li>
+<li>If there are any BeanPostProcessors associated with the bean, their postProcessAfterInitialization() methods will be called.</li>
+<li>If the bean implementsDisposableBean, it will call the destroy()</li>
+</ol>
+<p><strong>Q28) Which are the important beans lifecycle methods? Can you override them?</strong></p>
+<p>There are two important bean lifecycle methods. The first one is setup which is called when the bean is loaded in to the container. The second method is the teardown method which is called when the bean is unloaded from the container.</p>
+<p>The bean tag has two important attributes (init-method and destroy-method) with which you can define your own custom initialization and destroy methods. There are also the correspondive annotations(@PostConstruct and @PreDestroy).</p>
+<p><strong>Q29) What are inner beans in Spring?</strong></p>
+<p>When a bean is only used as a property of another bean it can be declared as an inner bean. Spring’s XML-based configuration metadata provides the use of element inside the or elements of a bean definition, in order to define the so-called inner bean. Inner beans are always anonymous and they are always scoped as prototypes.</p>
+<p><strong>Q30) How can you inject a Java Collection in Spring?</strong></p>
+<p>Spring offers the following types of collection configuration elements:</p>
+<ol>
+<li>The type is used for injecting a list of values, in the case that duplicates are allowed.</li>
+<li>The type is used for wiring a set of values but without any duplicates.</li>
+<li>The type is used to inject a collection of name-value pairs where name and value can be of any type.</li>
+<li>The type can be used to inject a collection of name-value pairs where the name and value are both Strings.</li>
+</ol>
+<p><strong>Q31) What is bean wiring?</strong></p>
+<p>Wiring, or else bean wiring is the case when beans are combined together within the Spring container. When wiring beans, the Spring container needs to know what beans are needed and how the container should use dependency injection to tie them together.</p>
+<p><strong>Q32) What is bean auto wiring?</strong></p>
+<p>The Spring container is able to autowire relationships between collaborating beans. This means that it is possible to automatically let Spring resolve collaborators (other beans) for a bean by inspecting the contents of the BeanFactorywithout using and elements.</p>
+<p><strong>Q33) Explain different modes of auto wiring?</strong></p>
+<p>The autowiring functionality has five modes which can be used to instruct Spring container to use autowiring for dependency injection:</p>
+<ol>
+<li><strong>no:</strong> This is default setting. Explicit bean reference should be used for wiring.</li>
+<li><strong>byName:</strong> When autowiring byName, the Spring container looks at the properties of the beans on which autowireattribute is set to byName in the XML configuration file. It then tries to match and wire its properties with the beans defined by the same names in the configuration file.</li>
+<li><strong>byType:</strong> When autowiring by datatype, the Spring container looks at the properties of the beans on which autowireattribute is set to byType in the XML configuration file. It then tries to match and wire a property if its type matches with exactly one of the beans name in configuration file. If more than one such beans exist, a fatal exception is thrown.</li>
+<li><strong>constructor:</strong>This mode is similar to byType, but type applies to constructor arguments. If there is not exactly one bean of the constructor argument type in the container, a fatal error is raised.</li>
+<li><strong>autodetect:</strong> Spring first tries to wire using autowire by constructor, if it does not work, Spring tries to autowire bybyType.</li>
+</ol>
+<p><strong>Q34) Are there limitations with autowiring?</strong></p>
+<p>Limitations of autowiring are:</p>
+<ol>
+<li><strong>Overriding:</strong> You can still specify dependencies using and settings which will always override autowiring.</li>
+<li><strong>Primitive data types:</strong> You cannot autowire simple properties such as primitives, Strings, and Classes.</li>
+<li><strong>Confusing nature:</strong> Autowiring is less exact than explicit wiring, so if possible prefer using explicit wiring.</li>
+</ol>
+<p><strong>Q35) Can you inject null and empty string values in Spring?</strong></p>
+<p>Yes, you can.</p>
+<p><strong>Q36) What is Spring Java-Based Configuration? Give some annotation example.</strong></p>
+<p>Java based configuration option enables you to write most of your Spring configuration without XML but with the help of few Java-based annotations.</p>
+<p>An example is a @Configuration annotation, that indicates that the class can be used by the Spring IoC container as a source of bean definitions. Another example is the@Bean annotated method that will return an object that should be registered as a bean in the Spring application context.</p>
+<p><strong>Q36) What is Annotation-based container configuration?</strong></p>
+<p>An alternative to XML setups is provided by an annotation-based configuration which relies on the bytecode metadata for wiring up components instead of angle-bracket declarations. Instead of using XML to describe a bean wiring, the developer moves the configuration into the component class itself by using annotations on the relevant class, method, or field declaration.</p>
+<p><strong>Q37) How do you turn on annotation wiring?</strong></p>
+<p>Annotation wiring is not turned on in the Spring container by default. In order to use annotation based wiring, we must enable it in our Spring configuration file by configuring element.</p>
+<p><strong>Q38) @Required annotation</strong></p>
+<p>This annotation simply indicates that the affected bean property must be populated at configuration time, through an explicit property value in a bean definition or through autowiring. The container throws BeanInitializationException if the affected bean property has not been populated.</p>
+<p><strong>Q39) @Autowired annotation</strong></p>
+<p>The @Autowired annotation provides more fine-grained control over where and how autowiring should be accomplished. It can be used to autowire bean on the setter method just like @Required annotation, on the constructor, on a property or pn methods with arbitrary names and/or multiple arguments.</p>
+<p><strong>Q40) @Qualifier annotation</strong></p>
+<p>When there are more than one beans of the same type and only one is needed to be wired with a property, the@Qualifier annotation is used along with @Autowired annotation to remove the confusion by specifying which exact bean will be wired.</p>
+<p><strong>Q41) How can JDBC be used more efficiently in the Spring framework?</strong></p>
+<p>When using the Spring JDBC framework the burden of resource management and error handling is reduced. So developers only need to write the statements and queries to get the data to and from the database. JDBC can be used more efficiently with the help of a template class provided by Spring framework, which is the JdbcTemplate</p>
+<p><strong>Q42) JdbcTemplate</strong></p>
+<p>JdbcTemplate class provides many convenience methods for doing things such as converting database data into primitives or objects, executing prepared and callable statements, and providing custom database error handling.</p>
+<p><strong>Q43) Spring DAO support</strong></p>
+<p>The Data Access Object (DAO) support in Spring is aimed at making it easy to work with data access technologies like JDBC, Hibernate or JDO in a consistent way. This allows us to switch between the persistence technologies fairly easily and to code without worrying about catching exceptions that are specific to each technology.</p>
+<p><strong>Q44) What are the ways to access Hibernate by using Spring?</strong></p>
+<p>There are two ways to access Hibernate with Spring:</p>
+<ol>
+<li>Inversion of Control with a Hibernate Template and Callback.</li>
+<li>ExtendingHibernateDAOSupport and Applying an AOP Interceptor node.</li>
+</ol>
+<p><strong>Q45) ORM’s Spring support</strong></p>
+<p>Spring supports the following ORM’s:</p>
+<ol>
+<li>Hibernate</li>
+<li>iBatis</li>
+<li>JPA (Java Persistence API)</li>
+<li>TopLink</li>
+<li>JDO (Java Data Objects)</li>
+<li>OJB</li>
+</ol>
+<p><strong>Q46) How can we integrate Spring and Hibernate using HibernateDaoSupport?</strong></p>
+<p>Use Spring’s SessionFactory called LocalSessionFactory. The integration process is of 3 steps:</p>
+<ol>
+<li>Configure the Hibernate SessionFactory</li>
+<li>Extend a DAO Implementation fromHibernateDaoSupport</li>
+<li>Wire in Transaction Support with AOP</li>
+</ol>
+<p><strong>Q47) Types of the transaction management Spring support</strong></p>
+<p>Spring supports two types of transaction management:</p>
+<ol>
+<li><strong>Programmatic transaction management:</strong> This means that you have managed the transaction with the help of programming. That gives you extreme flexibility, but it is difficult to maintain.</li>
+<li><strong>Declarative transaction management:</strong> This means you separate transaction management from the business code. You only use annotations or XML based configuration to manage the transactions.</li>
+</ol>
+<p><strong>Q48) What are the benefits of the Spring Framework’s transaction management?</strong></p>
+<ol>
+<li>It provides a consistent programming model across different transaction APIs such as JTA, JDBC, Hibernate, JPA, and JDO.</li>
+<li>It provides a simpler API for programmatic transaction management than a number of complex transaction APIs such as JTA.</li>
+<li>It supports declarative transaction management.</li>
+<li>It integrates very well with Spring’s various data access abstractions.</li>
+</ol>
+<p><strong>Q49) Which Transaction management type is more preferable?</strong></p>
+<p>Most users of the Spring Framework choose declarative transaction management because it is the option with the least impact on application code, and hence is most consistent with the ideals of a non-invasive lightweight container. Declarative transaction management is preferable over programmatic transaction management though it is less flexible than programmatic transaction management, which allows you to control transactions through your code.</p>
+<p><strong>Q50) Explain AOP</strong></p>
+<p>Aspect-oriented programming, or AOP, is a programming technique that allows programmers to modularize crosscutting concerns or behavior that cuts across the typical divisions of responsibility, such as logging and transaction management.</p>
+<p><strong>Q51) Aspect</strong></p>
+<p>The core construct of AOP is the aspect, which encapsulates behaviors affecting multiple classes into reusable modules. It ia a module which has a set of APIs providing cross-cutting requirements. For example, a logging module would be called AOP aspect for logging. An application can have any number of aspects depending on the requirement. In Spring AOP, aspects are implemented using regular classes annotated with the @Aspect annotation (@AspectJ style).</p>
+<p><strong>Q52) What is the difference between concern and cross-cutting concern in Spring AOP</strong></p>
+<p>The Concern is behavior we want to have in a module of an application. A Concern may be defined as a functionality we want to implement.</p>
+<p>The cross-cutting concern is a concern which is applicable throughout the application and it affects the entire application. For example, logging, security and data transfer are the concerns which are needed in almost every module of an application, hence they are cross-cutting concerns.</p>
+<p><strong>Q53) Joinpoint</strong></p>
+<p>The join point represents a point in an application where we can plug-in an AOP aspect. It is the actual place in the application where an action will be taken using Spring AOP framework.</p>
+<p><strong>Q54) Advice</strong></p>
+<p>The advice is the actual action that will be taken either before or after the method execution. This is an actual piece of code that is invoked during the program execution by the Spring AOP framework.<br>Spring aspects can work with five kinds of advice:</p>
+<ol>
+<li><strong>before:</strong> Run advice before the method execution.</li>
+<li><strong>after:</strong> Run advice after the method execution regardless of its outcome.</li>
+<li><strong>after-returning:</strong> Run advice after the method execution only if method completes successfully.</li>
+<li><strong>after-throwing:</strong> Run advice after the method execution only if a method exits by throwing an exception.</li>
+<li><strong>around:</strong> Run advice before and after the advised method is invoked.</li>
+</ol>
+<p><strong>Q55) Pointcut</strong></p>
+<p>The pointcut is a set of one or more joinpoints where an advice should be executed. You can specify pointcuts using expressions or patterns.</p>
+<p><strong>Q56) What is Introduction?</strong></p>
+<p>An Introduction allows us to add new methods or attributes to existing classes.</p>
+<p><strong>Q57) What is Target object?</strong></p>
+<p>A target object is an object being advised by one or more aspects. It will always be a proxy object. It is also referred to as the advised object.</p>
+<p><strong>Q58) What is a Proxy?</strong></p>
+<p>A proxy is an object that is created by applying advice to a target object. When you think of client objects the target object and the proxy object are the same.</p>
+<p><strong>Q59) What are the different types of AutoProxying?</strong></p>
+<ol>
+<li>BeanNameAutoProxyCreator</li>
+<li>DefaultAdvisorAutoProxyCreator</li>
+<li>Metadata autoproxying</li>
+</ol>
+<p><strong>Q60) What is Weaving? What are the different points where weaving can be applied?</strong></p>
+<p>Weaving is the process of linking aspects with other application types or objects to create an advised object.</p>
+<p>Weaving can be done at compile time, at load time, or at runtime.</p>
+<p><strong>Q61) Explain XML Schema-based aspect implementation?</strong></p>
+<p>In this implementation case, aspects are implemented using regular classes along with XML based configuration.</p>
+<p><strong>Q62) Explain annotation-based (@AspectJ based) aspect implementation</strong></p>
+<p>This implementation case (@AspectJ based implementation) refers to a style of declaring aspects as regular Java classes annotated with Java 5 annotations.</p>
+<p><strong>Q63) What is Spring MVC framework?</strong></p>
+<p>Spring comes with a full-featured MVC framework for building web applications. Although Spring can easily be integrated with other MVC frameworks, such as Struts, Spring’s MVC framework uses IoC to provide a clean separation of controller logic from business objects. It also allows to declaratively bind request parameters to business objects.</p>
+<p><strong>Q64) DispatcherServlet</strong></p>
+<p>The Spring Web MVC framework is designed around a DispatcherServlet that handles all the HTTP requests and responses.</p>
+<p><strong>Q65) WebApplicationContext</strong></p>
+<p>The WebApplicationContext is an extension of the plain ApplicationContext that has some extra features necessary for web applications. It differs from a normal ApplicationContext in that it is capable of resolving themes, and that it knows which servlet it is associated with.</p>
+<p><strong>Q66) What is Controller in Spring MVC framework?</strong></p>
+<p>Controllers provide access to the application behavior that you typically define through a service interface. Controllers interpret user input and transform it into a model that is represented to the user by the view. Spring implements a controller in a very abstract way, which enables you to create a wide variety of controllers.</p>
+<p><strong>Q67) @Controller annotation</strong></p>
+<p>The @Controller annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend any controller base class or reference the Servlet API.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/Why-Programming-is-important/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1453,96 +1763,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/%E8%AF%BA%E7%93%A6-%E6%96%AF%E7%9A%AE%E7%93%A6%E5%85%8B-%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E5%85%A8%E7%90%83%E6%99%BA%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/12/%E8%AF%BA%E7%93%A6-%E6%96%AF%E7%9A%AE%E7%93%A6%E5%85%8B-%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E5%85%A8%E7%90%83%E6%99%BA%E8%83%BD/" class="post-title-link" itemprop="url">诺瓦_斯皮瓦克_如何构建全球智能</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-06-12 20:12:06 / Modified: 20:12:37" itemprop="dateCreated datePublished" datetime="2020-06-12T20:12:06-04:00">2020-06-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天，人类仍就是组成这个统一体处理单元的主体。每个人类的神经系统都包含了数以十亿计的处理单元，而地球上又有数十亿的人类。这可是相当多的处理单元了。</p>
-<p>　　然而，雷·库兹维尔（Ray Kurzweil）认为处理单元的平衡已经迅速的转向了更受欢迎的机器，也许在随后的半个世纪里，机器处理单元的数目就会超过或至少在计算速度上超过所有人脑处理单元总和，可能还会超过数倍。</p>
-<p>　　在赞同库兹维尔（Ray Kurzweil）认为机器智能很快将超越人类智能观点的同时，我对库兹维尔（Ray Kurzweil）列出的时间表表示怀疑，特别是在得知最近有研究表明神经细胞内的微管系统中存在量子级别计算的迹象之后。如果人脑在微管级别的系统中存在计算行为的话，那么人脑中的处理单元数目可能将比现在预计的多出许多个数量级了。不过这个研究结果还有待确认。反对这项研究结果的人称人脑在经典物理层面上能够被模拟，而在这一层面上，量子级别的计算也不需要激发即可进行。我在此明确声明，我不是说人脑就是一台量子计算机，我说的只是有证据表明人脑中进行着量子级别或者接近量子级别的计算过程。量子效应对于人脑进行的工作是否有任何可衡量的影响并不是在本文讨论范围内，我们讨论的仅仅是微管系统是不是人脑中进行处理的最基本单位。如果是，那么人脑中就有比以前预想得多的处理单元。</p>
-<p>　　另一点值得注意的就是人脑大部分计算过程不是发生在神经元细胞中，而是发生在突触的间隙之间。计算过程也更多的是通过化学反应而非电位变化。突触比神经元细胞多得多，突触之间进行的计算过程也比神经元传导进行得更快，其过程实现也更充分。化学层面的计算过程所引起的变化也确实比在神经元细胞中进行小上几个数量级。人脑进行计算过程的层次也比我们之前所想得要深。</p>
-<p>　　话说回来，人脑进行计算的方式仍未知。我们对此有多种不相伯仲的假想，但是至今还没有最终的答案，不管前面提到的迹象表明了什么，我都认为人脑中的计算过程比我们现在想的更精细。</p>
-<p>　　不管怎样，我和库兹维尔（Ray Kurzweil）都同意至少在这个星球上，人工制造的电脑数目将超过天然的人脑，这只是个时间问题。在我看来，实现这个过程要花的时间可能比库兹维尔（Ray Kurzweil）认为的要长一点：最晚可能会在100~200年以后实现吧。</p>
-<p>　　在这个课题上，我想的另一些东西可能会在我的作品中引发争议。我不认为我们所说的“思感”（consciousness）可以被人工制造出来。人表现出来思感，但是我们现在都不清楚“思感”意味着什么。无可否认，我们都有过“思感”的经验，这种经验是神秘的，至少到目前为止没人能够让软件程序或者硬件装置看起来具备思感。事实上，我们甚至不知道如何验证“思感”的存在。比如那个备受追捧的图灵测验测试不了思感，它测试的只是类似于人的智慧。还没有哪个测试可以检验思感。对我们来说，开发出一种这样的测试可能是一项重要而又有趣的工作。</p>
-<p>　　从我自身的观点来看，思感可能和空间、时间、能量一样对于宇宙本质认识的理解有着根本性帮助。我们不知道空间、时间和能量到底是什么，也不能实际地测量它们。我们所有测量空间、时间以及能量的方法都是间接的——通过测量其他事物来显示空间、时间和能量存在。空间、时间和能量的存在通过它们在我们可以测量的东西上产生影响来体现。同样的方法用于思感也同样有效。问题就是，怎么测量思感对事物所产生的影响？其中一个方法可能就是双缝实验了，这个试验会显示出观察的行为导致量子波函数崩溃的结果。还有其他什么我们能采用的影响结果来作为思感存在的证据吗？</p>
-<p>　　我最近在想思感和我们所处宇宙的本质到底有多大的联系。如果思感是宇宙本质之一，那么我们就无法人为地制造它。就像我们从来都不能制造空间、时间和能量一样，因为它们都是宇宙的本质。</p>
-<p>　　如果这是事实的话，那么我们就不可能制造思感。我们所能做的最多也就是引导已经是宇宙本质的思感。事实上，这可能就是人类神经系统所做的工作：它引导思感，这个过程大部分通过电子回路引导电流来实现。软件程序不大可能获得思感是因为他们离宇宙的本质太远。人工智能（AI）程序中认知的高水平显示和其对宇宙物理本质的量子级别演算过程（这个过程可能会具备思感）之间没有或仅有一点点联系。这不同于人的神经系统，在人的神经系统里，基本计算因素和所有认知行为都与宇宙本质直接联系在一起。这至少为思感（软件）、人脑（某种虚拟机器）和量子场（实际的硬件）之间产生双向反馈提供了必要的条件。</p>
-<p>　　这也是我最近一直在问我自己的一个问题，思感与物理本质到底有什么联系？更进一步，思感对于我们认识的智能到底有多大的影响？如果思感对于智能很重要，那么人工智能也就不大可能只通过软件来实现，这可能得需要思感，而思感反过来又需要一个不同的计算系统来支持，这个系统与宇宙的量子物理基联系更紧密（通过双向反馈）。</p>
-<p>　　这一切对我来说意味着人类可能在统一体——统一的机器体系这个新兴的全球超个体——中组成一个无可取代的重要部分。特别是现在，人类仍然是最智能的部分。但是未来当机械智能超过人类智能数亿、数十亿倍时，人类仍然可以是这个系统中唯一或者至少最有思感的部分。因为人类对于思感独一无二的能力（事实上，动物和昆虫同样有思感），我认为我们在这个新兴的超个体中扮演了一个重要的角色。我们就是它的感觉系统。因为最终我们才是观察、感觉以及了解它所想所做事情的人。</p>
-<p>　　因为人类才是统一体所做所想的目击者和知情者，统一体的作用极可能是服务并充实人类，而不是取代人类。这将是一个人类和机器共同协作的系统，目的是为了人类的福祉而非机器的。这种未来愿想非常不同于有些人预想的“终结者式”未来，那些人认为未来机器会聪明到灭绝人类。不会发生那样的事。假如机器能变聪明的话，这也需要很长一段时间内，因为它们不会产生思感。我认为我们应该更应该担心人类毁灭人类自己而非机器。</p>
-<p>　　现在转到凯文·凯利（Kevin Kelly）所说的第四层次——“一个具备思感的智能超个体”。我们必须把人类纳入该系统之内，单靠机器不会也不可能让我们达到那个层次。我不相信思感可以被制造，也不相信思感会突然出现在一个合适的复杂电脑系统中。我认为思感是宇宙的本质之一，而电脑程序却在这个本质数层之外。现在我们应该设计一种新的电脑架构，一个能更紧密联系量子场的架构。也许在这样一个系统中，像电流一样，思感才能够被包容。这只是一种可能性。这种系统极有可能更亲近自然，但是这只是个猜想。这是一个有趣的研究方向。</p>
-<p>　　不管怎样，如果我们想要将人类纳入这个全球超个体——这个统一体、统一的机器体系之中，那么我们就已经处于Kevin Kelly所说的第四层次上了。如果我们不愿意这么做，那么我不认为你能马上进入第四层次，也许永远也不会了。</p>
-<p>　　同样值得注意的是思感跟智能一样分许多层。有仅仅能感觉事物发生的基本的原始思感，也有更强大的思感，比如思感到自己存在的思感、拥有更高决策权的高度精确协调的思感、也有思感到物理本质存在的思感。思感具有和任何其他宇宙本质类似的空间性和虚无性。这些特点其实也是我们所生活在其中的量子本质所具有的。有趣的是这些特性也是现实的特性。佛教大家同样也称这些特性是现实和思维的最终本质。他们并不认为现实和思维是两种不同的事物。思感可能会也可能不会思感到思感和现实本身的这些特性。思感可以很简单、或者很低级、或者根本未觉醒。思感对宇宙本质的感知层次也是一种衡量其层次的方法。我们也称思感的这种能力为“解析度”。思感解析度越高，其对表象的真实本质、宇宙本质的感知也就越精确。当其解析度达到最高点时，思感可以直接认识其观察事物的类似空间、时间的量子本质。思感处于最高解析度时，观察者和被观察事物之间的二元性将消失：思感认知到一切事物都是思感在量子形式下存在的不同表现形式。</p>
-<p>　　思感的另一个值得考虑的特点就是我们所说的“统一性”。在最低层次的统一性层面上，根本就没有统一性的概念，有的只是一些极其孤立或单一的个体。而在最高层面上，所有的事物都包含在了一个思感场中。这是一种完全的统一。这种最高阶级我们以“全知”称之。佛教关于精神启示的概念就是一种同时达到最高解析度和最高层次统一度的思感。</p>
-<p>　　在我看来，全球超个体已经觉醒，但是它还没有达到高解析度或者高统一性。这是因为大部分人，以及大部分人类群体和组织本身仅仅只能达到最低层次上的思感觉醒。自从人类以及人类群体组成了全球超个体的思感，我们个人和集体的思感进化就和整个超个体的思感进化也就直接联系到了一起。这也是为什么个人以及群体提高自身思感重要的原因。思感在“这儿”作为宇宙本质的一个方面存在，但是和物质、能量一样，思感可以被引导、累积以及塑造。现在我们以及我们所在群体所展示出来的思感大多未开化或者有待发展。</p>
-<p>　　在我们这个年轻现实、令人着迷的二元文明中，我们在思感上只取得了极小的进步。取而代之的是我们将大部分精力投入了宇宙的其他本质如空间、时间和能量方面的研究。我认为当一个文明对宇宙本质的思感的研究投入和对其他本质的研究相当时，如果不是更多的话，这个文明也就完全成熟了。这也是我们正在开始做的，多亏量子理论打破了我们经典物理学的桎梏并迫使我们承认思感也许在我们的现实世界中起了一些作用</p>
-<p>　　有许多方法可以加速个人和整体的思感进化，这样做可以整体提高我们的文明水平。我最近一直再就这方面的具体情况进行阐述和写作。</p>
-<p>　　在个人层次上，提升我们自身思感的一个方法就是通过冥想和精神升华。这是最重要也是最有效的方法。可能有许多技术提升方法，如增强现实和增强感知。它们可以在如何认知以及了解我们所认知事物的深度上帮助我们提升。在不久的将来我们也许可以有机会利用电脑或者生物方法来大幅提高我们感觉器官的广度和解析度。我们甚至可以进化出我们现在无法想象的新感觉。另外，以互联网为例，我们可以在一瞬间知道比以往任何时候都要多的事。但是最终，我们个人的思域将进入内省阶段以便真正获得更高的解析度和统一性。但是这些并不是可以真正提高我们思感的好方法。比如，如果我们可以使用机器去获得更多的信息，但是如果我们的思感仍处于一个相对低水平，那么我们究仍然不能整合或者利用这些信息。</p>
-<p>　　众所周知，人脑屏蔽了大部分我们获取的信息。当使用迷幻药品时，大脑的过滤栅会张得更开，这样人们就能感觉到一些以前一直被屏蔽掉的事物。扩大思感广度，增加思感解析度和统一度的结果和吸毒时的感觉类似。除了前者效果更持久，并且可以通过日复一日的强化来控制和增效。我认识的许多西藏喇嘛似乎已经做到了这一点，他们的思域相当宽广，而且其对宇宙的见解也相当准确。他们似乎真的能看到事物的每个细节，甚至是那些最微小的事物，同时他们很少或者根本没有个体观念。个体观念的丧失反过来似乎为他们移除了一些特定的障碍，从而让他们能够感知一些原本超过他们思域感知以外的事情。例如，他们可以感知其他人的想法，预见一些发生在其他地方或时间段的事情。这都可能实现，因为他们思感的解析度和统一性提升了。</p>
-<p>　　在整体层面上，同样也有方法能提升群体、组织以及社会的思感，特别是当我们能建立像“自我构建”作用于人一样作用于群体的系统时。</p>
-<p>　　自我是虚像，这是个好消息。如果它不是虚像，那么我们永远也不会看透它，也不会获得精神启示。更重要的是，如果它不是虚像，我们就会幻想通过机器或者机器大集合来制造它。佛家、神经学家和认知学家似乎都同意“自我”是虚像这个事实。自我是虚像，它仅仅是一种精神构造。正确地运用它会非常有用。但是没有自我的观念，人类会难以交流，甚至会浑浑噩噩。同样，没有自我归属观念，组织机构和社会同样也无法有效地运行。</p>
-<p>　　自我构建与自我模板、自身环境一道构成一体。这个模板包括发生在“内部”和“外部”的事，以及自我和“我”的观念。通过制造这种人为的界限和模式化发生在界限两边的事情，自我构建能够测量和规划行为的尺度，并能使一个系统改善和适应“自己”以及外部环境。具备自我构建能力的个体表现得远比那些不具备这种能能力的个体智能，想想人和狗的智能吧。在这两个物种之间在智能上的差距其实就是自我构建能力之间的差距。人类比狗更自觉、更自省也更成熟。它们都有思感，但是人类自我构建能力更高。这个道理对于简单的人工智能程序和诸如工作组、企业以及网络社区的集体智能同样适用。自我构建功能越成熟，其系统就越聪明。</p>
-<p>　　合理而有效地运用自我架构的关键在于发展出一个健康的自我，而不是完全湮灭自我的存在。湮灭自我会造成一种虚无主义，从而导致个体无法在这个世界上生存。这可不是佛家或者神经学家提倡的了。那么怎样才算一个健康的自我呢？对于个人来说，一个健康的自我就是能表里如一地对过去、现在和预计好的未来有一个清晰的反映；高度自觉、理性但不自负，而应带着适应的尊敬的眼光看待外部世界和其他事物；思想开放、善于学习和为适应新环境而改变。这同样适用于一个健康的集体。但是，当今大部分人并没有一个健康的自我，他们有的是极度阴暗、不健康的自我。这反过来在更高层次上影响了我们建立的群体、组织和社会的自我构建。</p>
-<p>　　现在我们能做的最重要的一件事就是——创造能为诸如群体、组织和社会等集体提供虚拟自我的系统。这些虚拟自我为这些集体提供镜子，从而让这些系统中的成员可以看见整体，以及他们在其中的适应情况。一旦看到这些，他们就能开始调整自己的行为以适应整体的发展方向。这个简单的反射功能能够促使其在自我管理上上一个新的台阶，并使原来混乱不堪的单个个体“群落”动作协调起来。</p>
-<p>　　事实上，我认为集体的发展有三个阶段：</p>
-<p>　　第一阶段：群落（Crowds）<br>　　在这种组织形式中，其组成个体并没有思感到整体的存在，对身份和目标也没有统一的概念。然而它也有思感的做某些事，例如，鱼群或者鸟群。它们没有首领，但是这些个体通过适应它们周围同类所做的事情，从而从整体上看起来像某种意义上的单体。群落形态就和一团以斑状外形存在的阿米巴实体一样。这和气体的物理模型没多大差别。</p>
-<p>　　第二阶段：群体（Groups）<br>　　群落的下一发展阶段就是群体了。群体的一些结构经常包含一个命令和控制系统。这中组织形态更严密。群体能够表现出更多的目的性和智能行为。家庭、城市、工作组、运动队、军队、大学、公司和国家等都是群体。大部分群体具备和低级动物相当的智能。他们可能具有身份和自我的概念，基于此，它们计划和行动显得更一致。</p>
-<p>　　第三阶段：元个体（Meta-Individuals）<br>　　集体智能的最高阶段是元个体。这开始于曾经是群落中孤立的个体在根据自身特点进化为一个新个体时，一个成熟的元层面上的自我构建系统从整体考虑将其重新组合。这种进化成为元系统转化——不见通过变换组合后形成一个更高级的新整体。这个新整体重组了部件，但是改变了部件的功能。一个集体要进化成为真正的个体，它需要具备整体头脑和意志。最重要的是，它还必须形成高层次的集体思感。高层次集体思感的形成需要一个成熟的集体自我构建功能来作为催化剂。幸运的是，这是我们能够创建的，因为如之前所述，自我是虚像，是一种构造，因此自我能够被建造出来，即使对于包含数百万或者数十亿成员的大集体来说也是如此。</p>
-<p>　　全球超个体已经被一群先见者称为“全球大脑”超过一个世纪。今天我们也许可以开始称它为“统一的机器体系”，或者统一体，或者其他名字。但是不管怎样，我认为我们能做的作重要的工作就是提供一个更高级更准确意义上的集体自我来让它变得更聪明了。为此我们也许应该让一些小得多集体如群落、团队、企业和在线社区发展起来更好的自我。我们能够指引并促进它们进入更高的集体思感和自我管理层面吗？我非常相信这是有可能的，我也肯定科技进步将支持这一目标的实现。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1613,7 +1833,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">219</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
