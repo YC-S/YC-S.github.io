@@ -165,6 +165,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/guiding-principles-for-20-years-of-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/08/guiding-principles-for-20-years-of-programming/" class="post-title-link" itemprop="url">guiding_principles_for_20_years_of_programming</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-08 19:47:48 / Modified: 20:51:38" itemprop="dateCreated datePublished" datetime="2020-03-08T19:47:48-04:00">2020-03-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>Don’t fight the tools: libraries, language, platform, etc. Use as much native constructs as possible. Don’t <a href="https://medium.com/free-code-camp" target="_blank" rel="noopener">bend</a> the technology, but don’t bend the problem either. Pick the <strong>right tool</strong> for the job or you’ll have to find the right job for the tool you got.</li>
+<li>You don’t write the code for the machines, you write it for your colleagues and your <strong>future self</strong> (unless it’s a throw away project or you’re writing assembly). Write it for the junior ones as a reference.</li>
+<li>Any significant and rewarding piece of software is the result of collaboration. Communicate effectively and collaborate openly. Trust others and earn their trust. Respect people more than code. Lead by example. Convert your followers to leaders.</li>
+<li>Divide and conquer. Write isolated modules with separate concerns which are loosely coupled. Test each part separately and together. Keep the tests close to reality but test the edge cases too.</li>
+<li>Deprecate yourself. Don’t be the go-to person for the code. Optimize it for people to find their way fixing bugs and adding features to the code. Free yourself to move on to the next project/company. Don’t own the code or you’ll never grow beyond that.</li>
+<li>Security comes in layers: each layer needs to be assessed individually but also in relation to the whole. Risk is a business decision and has direct relation to vulnerability and probability. Each product/organization has a different risk appetite (the risk they are willing to take for a bigger win). Often these 3 concerns fight with each other: UX, Security, Performance.</li>
+<li>Realize that every code has a life cycle and will die. Sometimes it dies in its infancy before seeing the light of production. Be OK with letting go. Know the difference between 3 categories of features:<br><strong>Core:</strong> like an engine in a car. The product is meaningless without it.<br><strong>Necessary:</strong> like a car’s spare will. It’s rarely used but when needed, its function decides the success of the system.<br><strong>Added value:</strong> like a car’s cup-holder. It’s nice to have but the product is perfectly usable without it.</li>
+<li>Don’t attach your identity to your code. Don’t attach anyone’s identity to their code. Realize that people are separate from the artifacts they produce. Don’t take code criticism personally but be very careful when criticizing others’ code.</li>
+<li>Tech debt is like fast food. Occasionally it’s acceptable but if you get used to it, it’ll kill the product faster than you think (and in a painful way).</li>
+<li>When making decisions about the solution all things equal, go for this priority:<br><strong>Security</strong> &gt; <strong>Usability (Accessibility &amp; UX)</strong> &gt; <strong>Maintainability</strong> &gt; <strong>Simplicity (Developer experience/DX)</strong> &gt; <strong>Brevity (code length)</strong> &gt; *<em>Performance<br>*</em>But don’t follow that blindly because it is dependent on the nature of the product. Like any career, the more experience you earn, the more you can find the right balance for each given situation. For example, when designing a game engine, performance has the highest priority, but when creating a banking app, security is the most important factor.</li>
+<li>Bugs’ genitals are called <strong>copy &amp; paste</strong>. That’s how they reproduce. Always read what you copy, always audit what you import. Bugs take shelter in <strong>complexity</strong>. “Magic” is fine in my dependency but not in my code.</li>
+<li>Don’t only write code for the happy scenario. Write <a href="https://medium.com/hackernoon/what-makes-a-good-error-710d02682a68" target="_blank" rel="noopener">good errors</a> that answer why it happened, how it was detected and what can be done to resolve it. Validate all system input (including user input): fail early but recover from errors whenever possible. Assume the user hold a gun: put enough effort into your errors to <strong>convince</strong> them to shoot something other than your head!</li>
+<li>Don’t use <strong>dependencies</strong> unless the cost of importing, maintaining, dealing with their edge cases/bugs and refactoring when they don’t satisfy the needs is significantly less than the code that you own.</li>
+<li>Stay clear from <a href="https://blog.daftcode.pl/hype-driven-development-3469fc2e9b22" target="_blank" rel="noopener"><strong>hype-driven development</strong></a>. But learn all you can. Always have <strong>pet projects</strong>.</li>
+<li>Get out of your comfort zone. Learn every day. <strong>Teach</strong> what you learn. If you’re the master, you’re not learning. Expose yourself to other languages, technologies, culture and stay curious.</li>
+<li>Good code doesn’t need documentation, great code is <strong>well documented</strong> so that anyone who hasn’t been part of the evolution, trial &amp; error process and requirements that led to the current status can be productive with it. An undocumented feature is a non-existing feature. A non-existing feature shouldn’t have code.</li>
+<li>Avoid overriding, inheritance and implicit smartness as much as possible. Write pure functions. They are easier to test and reason about. Any function that’s not pure should be a class. Any code construct that has a different function, should have a different name.</li>
+<li>Never start coding (making a solution) unless you fully understand the <strong>problem</strong>. It’s very normal to spend more time listening and reading than typing code. Understand the domain before starting to code. A problem is like a maze. You need to progressively go through the code-test-improve cycle and explore the problem space till you reach the end.</li>
+<li>Don’t solve a problem that doesn’t exist. Don’t do <strong>speculative programming</strong>. Only make the code extensible if it is a validated assumption that it’ll be extended. Chances are by the time it gets extended, the problem definition looks different from when you wrote the code.</li>
+<li>Software is more fun when it’s made together. Build a sustainable <strong>community</strong>. Listen. Inspire. Learn. Share.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/20-Things-to-know-before-you-start-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1238,108 +1318,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/%E4%B8%AD%E5%9B%BD%E6%80%8E%E6%A0%B7%E6%B6%88%E7%81%AD996/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/01/%E4%B8%AD%E5%9B%BD%E6%80%8E%E6%A0%B7%E6%B6%88%E7%81%AD996/" class="post-title-link" itemprop="url">中国怎样消灭996</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-01 21:32:48 / Modified: 22:38:22" itemprop="dateCreated datePublished" datetime="2020-03-01T21:32:48-05:00">2020-03-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>但是，古尔丹，代价是什么呢？</p>
-<p>获得一份收益，付出一份代价。我读萨米尔阿明时有时会感慨：原来钢炼的片头说的真是真理。</p>
-<p>你不想上班，就要失去上班工资的收益；你要这份收益，你就要付出上班的代价。</p>
-<p>你说隔壁老王不上班也很滋润呀，对，他失去的工资收益用别的收益补偿了呗，可能是房租，可能是私活，可能是讨厌的家族遗产…</p>
-<p>这些看不到的收益，补偿了隔壁老王不上班的代价。</p>
-<p>所以当你痛苦996789这些烂事时，特别是你开始思考为什么这种现象如此广泛时，你最好去看看那些没有这种现象的国家，他们为什么没有？</p>
-<p>他们为什么不需要996的收益？</p>
-<p>他们在用什么补偿失去这些收益的代价？知乎作为工业党人的重要据点，已经有大量资料论证了那些不需要996还能过上好日子的国家，是凭什么：</p>
-<p>美帝有美元、美金、美军、好莱坞的多重全球霸权，是现行的国际秩序制定者、科技第一国、金融主导国。这些全球霸权就是全球收益，在这些收益里切下一小块，就能给吸毒者发毒品，给三千万人发粮票；</p>
-<p>英国依旧在国际外交中有重要影响力，依然是英联邦的名义领袖、国际金融的重要避风港、航空工业的核心技术掌握者，而且还是美帝的紧密伙伴；</p>
-<p>法国则凭借自己较完整的工业体系，和对非洲铁血般地控制，经济、文化乃至军事，还是布鲁塞尔重要的大哥；</p>
-<p>德国通过堪称俾斯麦复生的纵横捭阖，用欧元渗透了整个欧洲，并且还是欧盟体系内唯一能打的工业国，多项核心工业的主导者；</p>
-<p>就连日本，社畜一词发源地的日本，都有着庞大的海外经济殖民地，海外日企资产高于国内。我们现在的对外援助套路就来自于日本。所以日本的社畜更多是对普通人的管制，企业之间的竞争比我朝要和缓多了。</p>
-<p>说真的，日本工作留学的中国人那么多了，普通日本人真有我们这么“畜”？</p>
-<p>所以，古尔丹，代价是什么呢？</p>
-<p>代价就是，能不能够把代价转移到别人身上。</p>
-<p>如果美帝不能把量化宽松的代价转移出去，那美债就是屎，美股就是屎，美企就会死。但是四重结界摆在这，它转移把代价转移给你，你只能接着，于是代价的代价在你身上，不在领粮票的三千万美国人身上。</p>
-<p>美帝能找别人买单，墨西哥在为它买单，我朝也在为美国人买单，美帝的单，全世界都要买，拉丁美洲已经买出了血泪史。</p>
-<p>任何繁荣都是建立在奴隶身上的，问题是你能不能找到奴隶，找不到，你就只能自己做奴隶。</p>
-<p>希腊的工业不就是德国人的奴隶吗？</p>
-<p>中非西非的政变和旧法郎经济区，不就是法国人的奴隶吗？</p>
-<p>就连韩国人，都在美帝的奴隶外做了半个日本人的奴隶。反日情绪再高涨，也改变不了韩国财阀里到处都是日本人的钱的事实；</p>
-<p>你看一眼菲律宾巨头的账本，日本政府的援助贷款，美帝的世行授信，欧洲人披着新加坡皮的投资，然后换来了整个国家的矿、林、农、渔。</p>
-<p>当然还有人，廉价的人，从工人到雇农，到走私黑枪和毒品的小弟，到女人，妓女，还有童妓，全球最大量的童妓。</p>
-<p>整个国家，不就是奴隶么？</p>
-<p>我朝这个体量，如果人人都要过上不错的日子，那在现行秩序里找不到位置。我们需要的代价太大，不是三百万人口那些小而美，干点代理的活拿点分成就能搞定的。</p>
-<p>虽然很多人讲法治，法治也确实有改善的空间，但是这个空间不会太大。我个人坚信，法制也好法治也罢，都是结果，有了足够的蛋糕才能讲分配。</p>
-<p>解决一两家公司可以，解决多数人的996，只能靠算账。</p>
-<p>而这笔帐，你现在算不过来。第四次工业革命要不要赶上？前三次你都错过了，再错过这次又不知道几百年能翻身。要赶？钱，干活的人；</p>
-<p>产能要不要输出？不输出产能过剩经济萧条失业爆发还被人割韭菜。输出？继续印钱撒钱，通胀不可避，民生就是四处灭火；</p>
-<p>国防要不要建设？核心利益，海外利益，更不要说你现在已经被大哥盯着搞。要？钱，人；</p>
-<p>你站在国家角度看账本，看三秒就能理解冒牌天神里弗里曼的表情。</p>
-<p>为什么要反腐？就这么点钱，都少拿点，要干正事。</p>
-<p>还有减税呐。</p>
-<p>想翻身，甚至只是想这么走下去，代价太多。</p>
-<p>我不想为什么意识形态呐喊，我只是认为，现代化有一套无法躲避的逻辑，这个过程需要巨大的代价才能得以实现，这个代价是不分意识形态的，斯大林体制，刚果被砍手的黑人，墨西哥的毒品，拉丁美洲的军阀，东南亚的家族体制，都是代价。</p>
-<p>因此我对我朝在最近20年内能否消灭996，抱以相当悲观的态度。</p>
-<p>个人看奋斗，简历好一点，专业有远见一点，公司找的谨慎一点，技能和人脉丰富一点，知乎人均大神，躲还是好躲的。</p>
-<p>但你说到历史的进程嘛。</p>
-<p>我想，大概只有三种可能，能够“消灭”996：</p>
-<p>一，我朝放弃现代化和独立道路，选择依附。这样中产阶级会极大萎缩，下层数量会激增，但中产阶级能够消灭996，毕竟代理人生活得还是很好的；</p>
-<p>二，我朝show hand，滚滚红尘一波流，皇国兴废在此一战，还居然灭了美帝。就此重新划分世界后，产能、货币、文化输出，享受全球收益，就能为多数人消灭996；</p>
-<p>三，我朝死磕第四次工业革命，勉力维系基本盘不崩，完成产业升级，并且实现多工业细项垄断，进而在现行国际秩序外建立“新秩序”，那也能实现多数人没有996。</p>
-<p>所以，古尔丹，代价是什么呢？</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1410,7 +1388,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">223</span>
+          <span class="site-state-item-count">224</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
