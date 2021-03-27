@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -212,17 +212,17 @@
 <p>This winter I had another attempt, and made up my mind to grasp the techique. I solved/read 45 DP problems of different patterns in 4 days (yes, you might think that is quite slow). At the begining, I struggled as much as all my previous attempts, but slowly I found I am getting better and I started to be able to think in the DP-way. Today I solved several problems independently, with memoization and tabulation and even space optimizations, I think I am finally understand this category of problem. The process is hard and frustrating, I know! Thus, I want to share my experience so that you might get some help.</p>
 <h2 id="Resources-My-way-of-learning"><a href="#Resources-My-way-of-learning" class="headerlink" title="Resources / My way of learning"></a>Resources / My way of learning</h2><p>The resources I recommend for learning DP. I use them in the order as listed.</p>
 <ol>
-<li><a href="https://www.geeksforgeeks.org/dynamic-programming/" target="_blank" rel="noopener">Dynamic Programming</a><br>If you are not familiar with DP yet, there’s no point in diving into Leetcode problems directly. The explanation of <a href="https://www.geeksforgeeks.org/dynamic-programming/#concepts" target="_blank" rel="noopener">Basic Concepts</a> is very clear. You could also try the first several basic problems to have a taste of DP.</li>
+<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/dynamic-programming/">Dynamic Programming</a><br>If you are not familiar with DP yet, there’s no point in diving into Leetcode problems directly. The explanation of <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/dynamic-programming/#concepts">Basic Concepts</a> is very clear. You could also try the first several basic problems to have a taste of DP.</li>
 <li>Some typical/famous DP problems (OPTIONAL)<br>I would recommend you to try to read (you might not be able to solve it, which is totally fine!) several DP problems to have a tiny peek into DP. You do not really need try to identify the pattern or memorize the solution. Just to get some <em>feeling</em> about DP. You may not need it, but this is helpful for me. I recommend Longest Common Subsequence, 0/1 Knapsack, Climbing Stairs.</li>
-<li><a href="https://leetcode.com/problems/house-robber/discuss/156523/From-good-to-great.-How-to-approach-most-of-DP-problems." target="_blank" rel="noopener">From good to great. How to approach most of DP problems.</a><br>A very good illustration of the motivation behind DP. DP is essentially an optimizaton for pure recursion. If we are solving overlapping subproblems, we can save result to subproblems, we avoid repeated computations. This also shows the implementaion: how to convert recursion code to memoization, and to tabulation. For me, it is very helpful.</li>
-<li><a href="https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns" target="_blank" rel="noopener">Dynamic Programming Patterns</a> (MUST READ)<br>Best post on DP ever! The summarized pattern, problem statement and approach are very helpful. I would say my previous efforts of learning DP brings me at point 3 (which is not easy as to understand the motivation and the implementation of DP are hard already!). For the last 4 days, I spent most of my time working on problems, grouped by patterns, mentioned in the post. All my previous nightmares on DP gone! You cannot afford to miss this post!<br>Other notes I made when reading the post:<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber/discuss/156523/From-good-to-great.-How-to-approach-most-of-DP-problems.">From good to great. How to approach most of DP problems.</a><br>A very good illustration of the motivation behind DP. DP is essentially an optimizaton for pure recursion. If we are solving overlapping subproblems, we can save result to subproblems, we avoid repeated computations. This also shows the implementaion: how to convert recursion code to memoization, and to tabulation. For me, it is very helpful.</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns">Dynamic Programming Patterns</a> (MUST READ)<br>Best post on DP ever! The summarized pattern, problem statement and approach are very helpful. I would say my previous efforts of learning DP brings me at point 3 (which is not easy as to understand the motivation and the implementation of DP are hard already!). For the last 4 days, I spent most of my time working on problems, grouped by patterns, mentioned in the post. All my previous nightmares on DP gone! You cannot afford to miss this post!<br>Other notes I made when reading the post:<ul>
 <li>The statement, approach and code snippet for each pattern in the original post is helpful and comprehensive.</li>
 <li>Pattern 1 and 2 are kind of similar.</li>
 <li>One hint of pattern 3 problems is that they usually involve a list/array of numbers, either explicitly or implicity, like in 1130, 96 and 1039.</li>
 <li>DP on strings is usually, if not always, done by comparing two chars at a time.</li>
 </ul>
 </li>
-<li><a href="https://www.youtube.com/channel/UCmJz2DV1a3yfgrR7GqRtUUA" target="_blank" rel="noopener">Back to Back SWE</a><br>Video explanation on many algorithm problems, including DPs. Detailed, slow and clear. There are several sentences from this guy, which I always remind myself when solving DP problems: “<em>DP is not about building dp table. It is about identifying subproblem, and caching answers to subproblems in order to solve the original problem</em>“.</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCmJz2DV1a3yfgrR7GqRtUUA">Back to Back SWE</a><br>Video explanation on many algorithm problems, including DPs. Detailed, slow and clear. There are several sentences from this guy, which I always remind myself when solving DP problems: “<em>DP is not about building dp table. It is about identifying subproblem, and caching answers to subproblems in order to solve the original problem</em>“.</li>
 </ol>
 <h3 id="DP-implementation-tips"><a href="#DP-implementation-tips" class="headerlink" title="DP implementation tips"></a>DP implementation tips</h3><p>With the following tips in mind, the implementation for memoization and tabulation is trivial!</p>
 <ul>
@@ -366,7 +366,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yuanchen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0

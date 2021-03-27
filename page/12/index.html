@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -435,7 +435,7 @@
 <p>经久不衰的公司的一个显著特点是他们的领导人对这样的时刻的反应方式。你的员工们都知道COVID-19，都在想你会有什么反应，对他们意味着什么。错误的乐观情绪很容易将你带入歧途，使你无法制定应急计划或采取大胆的行动。要避免这个陷阱，要以现实的态度对待，当情况发生变化时果断地采取行动。在这个紧张的时刻，展现出您的团队所需要的领导力。</p>
 <p>以下是我们的合作伙伴Alfred Lin的一些观点，他作为一名运营主管，经历了另一个黑天鹅时刻。</p>
 <blockquote>
-<p>2008年金融危机爆发前，我是Zappos公司的首席运营官/首席财务官，当时我被传唤到红杉的办公室，参加著名的<a href="https://www.sequoiacap.com/article/rip-good-times" target="_blank" rel="noopener">R.I.P. Good Times演讲</a>。我们当时不知道，就像我们现在不知道，我们将面临多长时间或多尖锐或浅薄的经济衰退。我可以确认的是，这次演讲让我们的团队和业务变得更加强大。Zappos从金融危机中走出来，在我们的竞争对手被打得遍体鳞伤之后，我们已经做好了抓住机遇的准备。”</p>
+<p>2008年金融危机爆发前，我是Zappos公司的首席运营官/首席财务官，当时我被传唤到红杉的办公室，参加著名的<a target="_blank" rel="noopener" href="https://www.sequoiacap.com/article/rip-good-times">R.I.P. Good Times演讲</a>。我们当时不知道，就像我们现在不知道，我们将面临多长时间或多尖锐或浅薄的经济衰退。我可以确认的是，这次演讲让我们的团队和业务变得更加强大。Zappos从金融危机中走出来，在我们的竞争对手被打得遍体鳞伤之后，我们已经做好了抓住机遇的准备。”</p>
 </blockquote>
 
       
@@ -627,7 +627,7 @@
 
 
 <p>别名是给某个命令一个简称，以后在Shell中就可以通过这个简称来调用对应的命令。在Shell中，我们可以用alias来定义别名：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$alias</span> freak=<span class="string">"free -h"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$alias</span> freak=<span class="string">&quot;free -h&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>Shell会记住我们的别名定义。以后我在这个Shell中输入命令freak时，都将等价于输入free -h。</p>
 <p>在Shell中，我们可以通过type命令来了解命令的类型。如果一个命令是可执行文件，那么type将打印出文件的路径。</p>
@@ -636,7 +636,7 @@
 <p>总的来说，Shell就是根据空格和其他特殊符号，来让电脑理解并执行用户要求的动作。到了后面，我们还将看到Shell中其他的特殊符号。</p>
 <h2 id="2-Shell的选择"><a href="#2-Shell的选择" class="headerlink" title="2. Shell的选择"></a>2. Shell的选择</h2><p>Shell是文本解释器程序的统称，所以包括了不止一种Shell。常见的Shell有sh、bash、ksh、rsh、csh等。在树莓派中，就安装了sh和bash两个Shell解释器。sh的全名是Bourne Shell。名字中的玻恩就是这个Shell的作者。而bash的全名是Bourne Again Shell。最开始在Unix系统中流行的是sh，而bash作为sh的改进版本，提供了更加丰富的功能。一般来说，都推荐使用bash作为默认的Shell。树莓派，以及其他Linux系统中广泛安装sh，都是出于兼容历史程序的目的。</p>
 <p>我们可以通过下面的命令来查看当前的Shell类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$echo $SHELL</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$echo $SHELL</span><br></pre></td></tr></table></figure>
 
 <p>echo用于在终端打印出文本。而$是一个新的Shell特殊符号。它提示Shell，后面跟随的不是一般的文本，而是用于存储数据的变量。Shell会根据变量名找到真正的文本，替换到变量所在的位置。SHELL变量存储了当前使用的Shell的信息你可以在bash中用sh命令启动sh，并可以用exit命令从中退出。</p>
 <h2 id="3-命令的选项和参数"><a href="#3-命令的选项和参数" class="headerlink" title="3. 命令的选项和参数"></a>3. 命令的选项和参数</h2><p>我们已经看到，一行命令里还可以包含着选项和参数。总的来说，选项用于控制命令的行为，而参数说明了命令的作用对象。比如说：</p>
@@ -657,10 +657,10 @@
 
 
 <p>有的时候，选项也会携带变量，以便来说明选项行为的原材料。比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date --<span class="built_in">set</span>=<span class="string">"1999-01-01 08:00:00"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date --<span class="built_in">set</span>=<span class="string">&quot;1999-01-01 08:00:00&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>选项”–set”用于设置时间，用等号连接的，就是它的参数。date会把日期设置成这一变量所代表的日期。如果用短选项，那么就要用空格取代等号了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date -s <span class="string">"1999-01-01 08:00:00"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date -s <span class="string">&quot;1999-01-01 08:00:00&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>值得注意的是，Shell对空格敏感。当一整个参数信息中包含了空格时，我们需要用引号把参数包裹起来，以便Shell能识别出这是一个整体。</p>
 <p>所谓的选项和参数提供给命令的附加信息。因此，命令最终会拿这些字符串做什么，是由命令自己决定的。因此，有时会发现一些特异的选项或参数用法。这个时候，你就要从文档中寻找答案。</p>
@@ -671,10 +671,10 @@
 
 <p>就是把文本World存入名为var的变量，即赋值。根据Bash的语法，赋值符号“=”的前后不留空格。赋值号右边的文本内容会存入赋值号左边的变量。</p>
 <p>如果文本中包含空格，那么你可以用单引号或双引号来包裹文本。比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">'abc bcd'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">&#x27;abc bcd&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>或者：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">"abc bcd"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">&quot;abc bcd&quot;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -704,10 +704,10 @@
 
 <p>Bash通过${}识别出变量var，并把它替换成数据。最终echo命令打印出WorldIsGood。</p>
 <p>在Bash中，为了把一段包含空格的文本当做单一参数，就需要用到单引号或双引号。你可以在双引号中使用变量。比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">"Hello <span class="variable">$var</span>"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">&quot;Hello <span class="variable">$var</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>将打印Hello World。与此相对，Bash会忽视单引号中的变量引用，所以单引号中的变量名只会被当做普通文本，比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">'Hello $var'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">&#x27;Hello $var&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>将打印Hello $var。</p>
 <h2 id="5-数学运算"><a href="#5-数学运算" class="headerlink" title="5. 数学运算"></a>5. 数学运算</h2><p>在Bash中，数字和运算符都被当做普通文本。所以你无法像C语言一样便捷地进行数学运算。比如执行下面的命令：</p>
@@ -715,10 +715,10 @@
 
 <p>Bash并不会进行任何运算。它只会打印文本“1+2”。</p>
 <p>在Bash中，你还可以通过$(())语法来进行数值运算。在双括号中你可以放入整数的加减乘除表达式。Bash会对其中的内容进行数值运算。比如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> $((2 + (5*2)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> $((<span class="number">2</span> + (<span class="number">5</span>*<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
 
 <p>将打印运算结果12。此外，在$(())中，你也可以使用变量。比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=1</span><br><span class="line"><span class="variable">$echo</span> $((<span class="variable">$var</span> + (5*2)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=1</span><br><span class="line"><span class="variable">$echo</span> $((<span class="variable">$var</span> + (<span class="number">5</span>*<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
 
 <p>将打印运算结果11。</p>
 <p>你可以用Bash实现多种整数运算：</p>
@@ -731,7 +731,7 @@
 <li>乘方：$(( 2**3 ))。结果为8。</li>
 </ul>
 <p>现在，你就可以把数学运算结果存入变量：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=$(( 1 + 2 ))</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=$(( <span class="number">1</span> + <span class="number">2</span> ))</span><br></pre></td></tr></table></figure>
 
 
 
@@ -754,11 +754,11 @@
 
 
 <p>在执行多个程序时，我们可以让后一个程序的运行参考前一个程序的返回代码。比如说，只有前一个程序返回成功代码0，才让后一个程序运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file &amp;&amp; <span class="built_in">echo</span> <span class="string">"rm succeed"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;rm succeed&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>如果rm命令顺利运行，那么第二个echo命令将执行。</p>
 <p>还有一种情况，是等到前一个程序失败了，才运行后一个程序，比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file || <span class="built_in">echo</span> <span class="string">"rm fail"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file || <span class="built_in">echo</span> <span class="string">&quot;rm fail&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>如果rm命令失败，第二个echo命令才会执行。</p>
 <h2 id="7-Bash脚本"><a href="#7-Bash脚本" class="headerlink" title="7. Bash脚本"></a>7. Bash脚本</h2><p>你还可以把多行的Bash命令写入一个文件，成为所谓的Bash脚本。当Bash脚本执行时，Shell将逐行执行脚本中的命令。编写Bash脚本，是我们开始实现Bash代码复用的第一步。</p>
@@ -774,7 +774,7 @@
 <p>Hello<br>World</p>
 </blockquote>
 <p>Bash脚本是一种复用代码的方式。我们可以用Bash脚本实现特定的功能。由于该功能记录在脚本中，因此我可以反复地运行同一个文件来实现相同的功能，而不是每次想用的时候都要重新敲一遍命令。我们看一个简单的Bash脚本hw_info.bash，它将计算机的信息存入到名为log的文件中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Information of yc's computer:"</span> &gt; <span class="built_in">log</span></span><br><span class="line">lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">free –h &gt;&gt; <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Information of yc&#x27;s computer:&quot;</span> &gt; <span class="built_in">log</span></span><br><span class="line">lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">free –h &gt;&gt; <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -790,7 +790,7 @@
 <p>./test_arg.bash<br>hello<br>world</p>
 </blockquote>
 <p>如果变更参数，同一段脚本将有不同的行为。这大大提高了Bash脚本的灵活性。上面的hw_info.bash脚本中，我们把输出文件名写死成log。我们也可以修改脚本，用参数作为输出文件的文件名：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Information of yc's computer:"</span> &gt; <span class="variable">$1</span></span><br><span class="line">lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">free –h &gt;&gt; <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Information of yc&#x27;s computer:&quot;</span> &gt; <span class="variable">$1</span></span><br><span class="line">lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">free –h &gt;&gt; <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -867,28 +867,28 @@
 <ul>
 <li>非，与expression的真假相反：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! expression</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! expression</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>与，必须expression1和expression2都为真时，结果才为真：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –a expression2</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –a expression2</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>或，只要expression1和expression2的一个为真时，结果就为真：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –o expression2</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –o expression2</span><br></pre></td></tr></table></figure>
 
 
 
 
 
 <h2 id="11-选择结构"><a href="#11-选择结构" class="headerlink" title="11. 选择结构"></a>11. 选择结构</h2><p>逻辑判断可以获得计算机和进程的状态。进一步，Bash可以根据逻辑判断，让程序有条件地运行，这也就是所谓的选择结构。选择结构是一种语法结构，可以让程序根据条件决定执行哪一部分的指令。最早的程序都是按照指令顺序依次执行。选择结构打破了这一顺序，给程序带来更高的灵活性。最简单的，我们可以根据条件来决定是否执行某一部分程序，比如下面的demo_if.bash脚本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">"root"</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are root"</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are my God."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">&quot;root&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are root&quot;</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are my God.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
 <p>这个脚本中使用了最简单的if结构。关键字if后面跟着[]，里面是一个逻辑表达式。这个逻辑表达式就是if结构的条件。如果条件成立，那么if将执行then到fi之间包含的语句，我们称之为隶属于then的代码块。如果条件不成立，那么then的代码块不执行。这个例子的条件是判断用户是否为root。因此，如果是非root用户执行该脚本，那么Shell不会打印任何内容。</p>
 <p>我们还可以通过if…then…else…结构，让Bash脚本从两个代码块中选择一个执行。该选择结构同样有一个条件。如果条件成立，那么将执行then附属的代码块，否则执行else附属的代码块。下面的demo_if_else.bash脚本是一个小例子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">filename=<span class="variable">$1</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$filename</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$filename</span> exists"</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$filename</span> NOT exists"</span> </span><br><span class="line"><span class="keyword">fi</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"The End"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">filename=<span class="variable">$1</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$filename</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$filename</span> exists&quot;</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$filename</span> NOT exists&quot;</span> </span><br><span class="line"><span class="keyword">fi</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;The End&quot;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -897,12 +897,12 @@
 
 <p>脚本会根据a.out是否存在，打印出不同的内容。</p>
 <p>我们看到，在使用if…then…else…结构时，我们可以实现两部分代码块的选择执行。而在then代码块和else代码块内部，我们可以继续嵌套选择结构，从而实现更多个代码块的选择执行。比如脚本demo_nest.bash:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"You are <span class="variable">$var</span>"</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">"root"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"You are my God."</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">"yc"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">"You are a happy user."</span></span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">"You are the Others."</span></span><br><span class="line">   <span class="keyword">fi</span> </span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;You are <span class="variable">$var</span>&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">&quot;root&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&quot;You are my God.&quot;</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">&quot;yc&quot;</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">&quot;You are a happy user.&quot;</span></span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">&quot;You are the Others.&quot;</span></span><br><span class="line">   <span class="keyword">fi</span> </span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
 
 
 <p>在Bash下，我们还可以用case语法来实现多程序块的选择执行。比如下面的脚本demo_case.bash：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"You are <span class="variable">$var</span>"</span> </span><br><span class="line"><span class="keyword">case</span> <span class="variable">$var</span> <span class="keyword">in</span></span><br><span class="line">root)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are God."</span></span><br><span class="line">;;</span><br><span class="line">yc)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are a happy user."</span></span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"You are the Others."</span></span><br><span class="line">;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;You are <span class="variable">$var</span>&quot;</span> </span><br><span class="line"><span class="keyword">case</span> <span class="variable">$var</span> <span class="keyword">in</span></span><br><span class="line">root)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are God.&quot;</span></span><br><span class="line">;;</span><br><span class="line">yc)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are a happy user.&quot;</span></span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are the Others.&quot;</span></span><br><span class="line">;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
 
 <p>这个脚本和上面的demo_nest.bash功能完全相同。可以看到case结构与if结构的区别。关键字case后面不再是逻辑表达式，而是一个作为条件的文本。后面的代码块分为三个部分，都以文本标签)的形式开始，以;;结束。在case结构运行时，会逐个检查文本标签。当条件文本和文本标签可以对应上时，Bash就会执行隶属于该文本标签的代码块。如果是用户yc执行该Bash脚本，那么条件文本和yc标签对应上，脚本就会打印：</p>
 <blockquote>
@@ -939,7 +939,7 @@
 </tbody></table>
 <p>上面的程序中最后一个文本标签是通配符*，即表示任意条件文本都可以触发此段代码块的运行。当然，前提是前面的几个文本标签都没有“截胡”。</p>
 <h2 id="12-循环结构"><a href="#12-循环结构" class="headerlink" title="12. 循环结构"></a>12. 循环结构</h2><p>循环结构是编程语言中另一种常见的语法结构。循环结构的功能是重复执行某一段代码，直到计算机的状态符合某一条件。在while语法中，Bash会循环执行隶属于while的代码块，直到逻辑表达式不成立。比如下面的demo_while.bash：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">now=`date +<span class="string">'%Y%m%d%H%M'</span>`</span><br><span class="line">deadline=`date --date=<span class="string">'1 hour'</span> +<span class="string">'%Y%m%d%H%M'</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$now</span> -lt <span class="variable">$deadline</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   date</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"not yet"</span></span><br><span class="line">   sleep 10</span><br><span class="line">   now=`date +<span class="string">'%Y%m%d%H%M'</span>`</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"now, deadline reached"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">now=`date +<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>`</span><br><span class="line">deadline=`date --date=<span class="string">&#x27;1 hour&#x27;</span> +<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$now</span> -lt <span class="variable">$deadline</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   date</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&quot;not yet&quot;</span></span><br><span class="line">   sleep 10</span><br><span class="line">   now=`date +<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>`</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;now, deadline reached&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>关键字do和done之间的代码是隶属于该循环结构的代码块。在while后面跟着条件，该条件决定了代码块是否重复执行下去。这个条件是用当前的时间与目标时间对比。如果当前时间小于目标时间，那么代码块就会重复执行下去。否则，Bash将跳出循环，继续执行后面的语句。</p>
 <p>如果while的条件始终是真，那么循环会一直进行下去。下面的程序就是以无限循环的形式，不断播报时间：</p>
@@ -972,7 +972,7 @@
 
 
 <p>这个问题还可以用do while循环来求解：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0</span><br><span class="line">number=1 </span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$number</span> -gt 100 ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">break</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line">  number=$((<span class="variable">$number</span> + 1))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0</span><br><span class="line">number=1 </span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$number</span> -gt 100 ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">break</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line">  number=$((<span class="variable">$number</span> + <span class="number">1</span>))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
 
 <p>这里break语句的作用是在满足条件时跳出循环。</p>
 <p>如果想计算1到100所有不被3整数的和，则可以使用continue语句，跳过所有被3整数的数：</p>
@@ -1093,9 +1093,9 @@
 <p>不过，现在很多微服务的框架（比如 Spring Cloud、Dubbo）已经很好的解决了上面的问题。</p>
 <p>资料来源：</p>
 <ul>
-<li><a href="http://www.iteye.com/news/32932" target="_blank" rel="noopener">微服务架构初探</a>（<strong>很赞，推荐</strong>）</li>
-<li><a href="https://www.ibm.com/developerworks/community/blogs/3302cc3b-074e-44da-90b1-5055f1dc0d9c/entry/解析微服务架构_一_什么是微服务?lang=en" target="_blank" rel="noopener">解析微服务架构(一)：什么是微服务</a></li>
-<li><a href="http://www.infoq.com/cn/articles/micro-service-architecture-from-zero" target="_blank" rel="noopener">从0开始的微服务架构：（一）重识微服务架构</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.iteye.com/news/32932">微服务架构初探</a>（<strong>很赞，推荐</strong>）</li>
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/community/blogs/3302cc3b-074e-44da-90b1-5055f1dc0d9c/entry/解析微服务架构_一_什么是微服务?lang=en">解析微服务架构(一)：什么是微服务</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/micro-service-architecture-from-zero">从0开始的微服务架构：（一）重识微服务架构</a></li>
 </ul>
 <h2 id="服务网格（Service-Mesh）"><a href="#服务网格（Service-Mesh）" class="headerlink" title="服务网格（Service Mesh）"></a>服务网格（Service Mesh）</h2><p>2017 年底，非侵入式的 Service Mesh 技术从萌芽到走向了成熟。</p>
 <p>Service Mesh 又译作“服务网格”，作为<strong>服务间通信的基础设施层</strong>。</p>
@@ -1123,20 +1123,20 @@
 <p>目前流行的 Service Mesh 开源软件有 Linkerd、Envoy 和 Istio，而最近 Buoyant（开源 Linkerd 的公司）又发布了基于 Kubernetes 的 Service Mesh 开源项目 Conduit。</p>
 <p>Service Mesh 开源项目简介：</p>
 <ul>
-<li><strong>Linkerd</strong>（<a href="https://github.com/linkerd/linkerd）：第一代" target="_blank" rel="noopener">https://github.com/linkerd/linkerd）：第一代</a> Service Mesh，2016 年 1 月 15 日首发布，业界第一个 Service Mesh 项目，由 Buoyant 创业小公司开发（前 Twitter 工程师），2017 年 7 月 11 日，宣布和 Istio 集成，成为 Istio 的数据面板。</li>
-<li><strong>Envoy</strong>（<a href="https://github.com/envoyproxy/envoy）：第一代" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy）：第一代</a> Service Mesh，2016 年 9 月 13 日首发布，由 Matt Klein 个人开发（Lyft 工程师），之后默默发展，版本较稳定。</li>
-<li><strong>Istio</strong>（<a href="https://github.com/istio/istio）：第二代" target="_blank" rel="noopener">https://github.com/istio/istio）：第二代</a> Service Mesh，2017 年 5 月 24 日首发布，由 Google、IBM 和 Lyft 联合开发，只支持 Kubernetes 平台，2017 年 11 月 30 日发布 0.3 版本，开始支持非 Kubernetes 平台，之后稳定的开发和发布。</li>
-<li><strong>Conduit</strong>（<a href="https://github.com/runconduit/conduit）：第二代" target="_blank" rel="noopener">https://github.com/runconduit/conduit）：第二代</a> Service Mesh，2017 年 12 月 5 日首发布，由 Buoyant 公司开发（借鉴 Istio 整体架构，部分进行了优化），对抗 Istio 压力山大，也期待 Buoyant 公司的毅力。</li>
-<li><strong>nginMesh</strong>（<a href="https://github.com/nginmesh/nginmesh）：2017" target="_blank" rel="noopener">https://github.com/nginmesh/nginmesh）：2017</a> 年 9 月首发布，由 Nginx 开发，定位是作为 Istio 的服务代理，也就是替代 Envoy，思路跟 Linkerd 之前和 Istio 集成很相似，极度低调，GitHub 上的 star 也只有不到 100。</li>
-<li><strong>Kong</strong>（<a href="https://github.com/Kong/kong）：比" target="_blank" rel="noopener">https://github.com/Kong/kong）：比</a> nginMesh 更加低调，默默发展中</li>
+<li><strong>Linkerd</strong>（<a target="_blank" rel="noopener" href="https://github.com/linkerd/linkerd）：第一代">https://github.com/linkerd/linkerd）：第一代</a> Service Mesh，2016 年 1 月 15 日首发布，业界第一个 Service Mesh 项目，由 Buoyant 创业小公司开发（前 Twitter 工程师），2017 年 7 月 11 日，宣布和 Istio 集成，成为 Istio 的数据面板。</li>
+<li><strong>Envoy</strong>（<a target="_blank" rel="noopener" href="https://github.com/envoyproxy/envoy）：第一代">https://github.com/envoyproxy/envoy）：第一代</a> Service Mesh，2016 年 9 月 13 日首发布，由 Matt Klein 个人开发（Lyft 工程师），之后默默发展，版本较稳定。</li>
+<li><strong>Istio</strong>（<a target="_blank" rel="noopener" href="https://github.com/istio/istio）：第二代">https://github.com/istio/istio）：第二代</a> Service Mesh，2017 年 5 月 24 日首发布，由 Google、IBM 和 Lyft 联合开发，只支持 Kubernetes 平台，2017 年 11 月 30 日发布 0.3 版本，开始支持非 Kubernetes 平台，之后稳定的开发和发布。</li>
+<li><strong>Conduit</strong>（<a target="_blank" rel="noopener" href="https://github.com/runconduit/conduit）：第二代">https://github.com/runconduit/conduit）：第二代</a> Service Mesh，2017 年 12 月 5 日首发布，由 Buoyant 公司开发（借鉴 Istio 整体架构，部分进行了优化），对抗 Istio 压力山大，也期待 Buoyant 公司的毅力。</li>
+<li><strong>nginMesh</strong>（<a target="_blank" rel="noopener" href="https://github.com/nginmesh/nginmesh）：2017">https://github.com/nginmesh/nginmesh）：2017</a> 年 9 月首发布，由 Nginx 开发，定位是作为 Istio 的服务代理，也就是替代 Envoy，思路跟 Linkerd 之前和 Istio 集成很相似，极度低调，GitHub 上的 star 也只有不到 100。</li>
+<li><strong>Kong</strong>（<a target="_blank" rel="noopener" href="https://github.com/Kong/kong）：比">https://github.com/Kong/kong）：比</a> nginMesh 更加低调，默默发展中</li>
 </ul>
 <p>关于微服务和服务网格的区别，我的一些理解：<strong>微服务更像是一个服务之间的生态，专注于服务治理等方面，而服务网格更专注于服务之间的通信，以及和 DevOps 更好的结合</strong>。</p>
 <p>资料来源：</p>
 <ul>
-<li><a href="http://www.infoq.com/cn/articles/pattern-service-mesh" target="_blank" rel="noopener">模式之服务网格</a></li>
-<li><a href="http://www.iteye.com/news/32932" target="_blank" rel="noopener">微服务架构初探</a></li>
-<li><a href="https://jimmysong.io/posts/what-is-a-service-mesh/" target="_blank" rel="noopener">什么是 Service Mesh（服务网格）</a>（<strong>很赞，推荐</strong>）</li>
-<li><a href="https://mp.weixin.qq.com/s/ur3PmLZ6VjP5L5FatIYYmg" target="_blank" rel="noopener">解读2017之Service Mesh：群雄逐鹿烽烟起</a>（<strong>很赞，推荐</strong>）</li>
+<li><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/pattern-service-mesh">模式之服务网格</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.iteye.com/news/32932">微服务架构初探</a></li>
+<li><a target="_blank" rel="noopener" href="https://jimmysong.io/posts/what-is-a-service-mesh/">什么是 Service Mesh（服务网格）</a>（<strong>很赞，推荐</strong>）</li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ur3PmLZ6VjP5L5FatIYYmg">解读2017之Service Mesh：群雄逐鹿烽烟起</a>（<strong>很赞，推荐</strong>）</li>
 </ul>
 
       
@@ -1326,7 +1326,7 @@
 
       
           <p>我有一个想法，不一定对。</p>
-<p>第一篇文章（<a href="http://zhuanlan.zhihu.com/vczh-nichijou/19796491" target="_blank" rel="noopener">第一篇文章就贡献给投票了 - vczh的日常 - 知乎专栏</a>）果然给了我灵感耶，标题的图片就是从评论里截出来的。为了以后回答那些层出不穷的月经问题，我决定写下这么一篇文章，讲一下我对牛逼的程序员的理解。为什么我要讲这个呢，当然首先我还是觉得自己是很牛逼的，不然我就不会讲这个了（误</p>
+<p>第一篇文章（<a target="_blank" rel="noopener" href="http://zhuanlan.zhihu.com/vczh-nichijou/19796491">第一篇文章就贡献给投票了 - vczh的日常 - 知乎专栏</a>）果然给了我灵感耶，标题的图片就是从评论里截出来的。为了以后回答那些层出不穷的月经问题，我决定写下这么一篇文章，讲一下我对牛逼的程序员的理解。为什么我要讲这个呢，当然首先我还是觉得自己是很牛逼的，不然我就不会讲这个了（误</p>
 <p>一个牛逼的程序员和一个不牛逼的程序员的区别到底是什么呢？懂的算法多就牛逼吗？懂的API多就牛逼吗？或者懂的工具多机会牛逼吗？其实牛逼不能用这些简单的指标来定义。我们觉得一个人牛逼，通常指的是那个人懂的东西非常多。不过懂的东西多而写出来的程序很蠢的话，或者半天搞不定一个问题，我们就会开始怀疑我们的判断了。那到底什么是牛逼呢？</p>
 <p>其实这就跟聪明区别于傻逼一样——直觉准！</p>
 <p>直觉一半来自于举一反三，举一反三一半来自于那个一，而当你对很多问题都有那个一的时候显然是因为你这些问题都碰过，碰过问题跟只学会知识还不一样，你还要解决他们。那如何才能碰过并解决大量的问题呢？唯一的方法就是熬过那一大段时间，通常是十几二十年。你光是聪明，可以学会很多东西，但是由于实践的时间不够，仍然不足已成为一个牛逼的程序员。<strong>所以牛逼本身不是一个可以速成的东西，它是知识和经验的积累，然后是运用你的知识和经验的熟练程度。</strong></p>
@@ -1462,7 +1462,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yuanchen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0

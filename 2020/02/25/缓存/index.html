@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -226,7 +226,7 @@
 </ul>
 <p><img src="../images/0a39fbce98c0d43e15b56b0ed09099d4.png" alt="img"></p>
 <p><img src="../images/e0ecbc94d474f7bd0c8eb53dfd8bde94.png" alt="img"></p>
-<p>这是标准的设计模式，包括 Facebook 的论文《<a href="https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf" target="_blank" rel="noopener">Scaling Memcache at Facebook</a>》中也使用了这个策略。为什么不是写完数据库后更新缓存？可以看一下 Quora 上的这个问答《<a href="https://www.quora.com/Why-does-Facebook-use-delete-to-remove-the-key-value-pair-in-Memcached-instead-of-updating-the-Memcached-during-write-request-to-the-backend" target="_blank" rel="noopener">Why does Facebook use delete to remove the key-value pair in Memcached instead of updating the Memcached during write request to the backend?</a>》，主要是怕两个并发的写操作导致脏数据。</p>
+<p>这是标准的设计模式，包括 Facebook 的论文《<a target="_blank" rel="noopener" href="https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf">Scaling Memcache at Facebook</a>》中也使用了这个策略。为什么不是写完数据库后更新缓存？可以看一下 Quora 上的这个问答《<a target="_blank" rel="noopener" href="https://www.quora.com/Why-does-Facebook-use-delete-to-remove-the-key-value-pair-in-Memcached-instead-of-updating-the-Memcached-during-write-request-to-the-backend">Why does Facebook use delete to remove the key-value pair in Memcached instead of updating the Memcached during write request to the backend?</a>》，主要是怕两个并发的写操作导致脏数据。</p>
 <p>那么，是不是这个 Cache Aside 就不会有并发问题了？不是的。比如，一个是读操作，但是没有命中缓存，就会到数据库中取数据。而此时来了一个写操作，写完数据库后，让缓存失效，然后之前的那个读操作再把老的数据放进去，所以会造成脏数据。</p>
 <p>这个案例理论上会出现，但实际上出现的概率可能非常低，因为这个条件需要发生在读缓存时缓存失效，而且有一个并发的写操作。实际上数据库的写操作会比读操作慢得多，而且还要锁表，而读操作必需在写操作前进入数据库操作，又要晚于写操作更新缓存，所有这些条件都具备的概率并不大。</p>
 <p><strong>所以，这也就是 Quora 上的那个答案里说的，要么通过 2PC 或是 Paxos 协议保证一致性，要么就是拼命地降低并发时脏数据的概率。而 Facebook 使用了这个降低概率的玩法，因为 2PC 太慢，而 Paxos 太复杂。当然，最好还是为缓存设置好过期时间。</strong></p>
@@ -336,7 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cache-Aside-更新模式"><span class="nav-number">1.</span> <span class="nav-text">Cache Aside 更新模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Read-Write-Through-更新模式"><span class="nav-number">2.</span> <span class="nav-text">Read&#x2F;Write Through 更新模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Read-Through"><span class="nav-number">2.1.</span> <span class="nav-text">Read Through</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Write-Through"><span class="nav-number">2.2.</span> <span class="nav-text">Write Through</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Write-Behind-Caching-更新模式"><span class="nav-number">3.</span> <span class="nav-text">Write Behind Caching 更新模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存设计的重点"><span class="nav-number">4.</span> <span class="nav-text">缓存设计的重点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cache-Aside-%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">Cache Aside 更新模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Read-Write-Through-%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">Read&#x2F;Write Through 更新模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Read-Through"><span class="nav-number">2.1.</span> <span class="nav-text">Read Through</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Write-Through"><span class="nav-number">2.2.</span> <span class="nav-text">Write Through</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Write-Behind-Caching-%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">Write Behind Caching 更新模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1%E7%9A%84%E9%87%8D%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">缓存设计的重点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
@@ -386,7 +386,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yuanchen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0

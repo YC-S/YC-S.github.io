@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -239,7 +239,7 @@
 <p>事件是描述已发生操作的简单对象以及描述事件代表的操作所需的相关数据。 事件不会直接更新数据存储，只会对事件进行记录，以便在合适的时间进行处理。 这可简化实施和管理。</p>
 <p>事件溯源不需要直接更新数据存储中的对象，因而有助于防止并发更新造成冲突。</p>
 <p>最重要的是，异步处理 + 事件溯源的方式，可以很好地让我们的整个系统进行任务的统筹安排、批量处理，可以让整体处理过程达到性能和资源的最大化利用。</p>
-<p>关于 Event Sourcing 一般会和 CQRS 一起提。另外，你可以去 GitHub 上看看<a href="https://github.com/cer/event-sourcing-examples" target="_blank" rel="noopener">这个项目的示例</a>以得到更多的信息。</p>
+<p>关于 Event Sourcing 一般会和 CQRS 一起提。另外，你可以去 GitHub 上看看<a target="_blank" rel="noopener" href="https://github.com/cer/event-sourcing-examples">这个项目的示例</a>以得到更多的信息。</p>
 <h1 id="异步处理的分布式事务"><a href="#异步处理的分布式事务" class="headerlink" title="异步处理的分布式事务"></a>异步处理的分布式事务</h1><p>在前面的《分布式系统的本质》一文中，我们说过，对于分布式事务，在强一致性下，在业务层上只能做两阶段提交，而在数据层面上需要使用 Raft/Paxos 的算法。但是，我想说，在现实生活中，需要用到强一致性的场景实在不多，真是不是所有的场景都必须要强一致性的事务的。</p>
 <p>我们仔细想想现实生活当中的很多例子。比如，我们去餐馆吃饭，先付钱，然后拿个小票去领吃的。这种情况下，把交钱和取货这两个动作分开，可以让我们的餐馆有更高的并发和接客能力。如果要做成两阶段提交，顾客锁定好钱，餐馆锁定好食材，最后一手交钱一手交饭，那么这是一件非常恐怖的事。</p>
 <p>是的，你可以看到，我们的现实世界中有很多这样先付钱，拿小票去领货的场景，也有先消费，然后拿一个账单去付钱的场景。总之，完全不需要两阶段提交这种方式。我们完全可以使用异步的方式来达到一致性，当然，是最终一致性。</p>
@@ -341,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异步处理的设计"><span class="nav-number">1.</span> <span class="nav-text">异步处理的设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件溯源"><span class="nav-number">2.</span> <span class="nav-text">事件溯源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步处理的分布式事务"><span class="nav-number">3.</span> <span class="nav-text">异步处理的分布式事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步处理的设计要点"><span class="nav-number">4.</span> <span class="nav-text">异步处理的设计要点</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">异步处理的设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%BA%AF%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">事件溯源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">异步处理的分布式事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">异步处理的设计要点</span></a></li></ol></div>
       </div>
       <!--/noindex-->
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
@@ -391,7 +391,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yuanchen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0

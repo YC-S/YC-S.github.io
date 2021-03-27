@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -301,8 +301,8 @@
 </ol>
 <h1 id="GitHub-GitLab-协同工作流"><a href="#GitHub-GitLab-协同工作流" class="headerlink" title="GitHub/GitLab 协同工作流"></a>GitHub/GitLab 协同工作流</h1><h2 id="GitFlow-的问题"><a href="#GitFlow-的问题" class="headerlink" title="GitFlow 的问题"></a>GitFlow 的问题</h2><p>对于 GitFlow 来说，虽然可以解决问题，但是也有很多问题。在 GitFlow 流行了一段时间后，圈内出现了一些不同的声音。参看下面两篇吐槽文章。</p>
 <ul>
-<li><a href="http://endoflineblog.com/gitflow-considered-harmful" target="_blank" rel="noopener">GitFlow considered harmful</a></li>
-<li><a href="http://luci.criosweb.ro/a-real-life-git-workflow-why-git-flow-does-not-work-for-us/" target="_blank" rel="noopener">Why git flow does not work for us</a></li>
+<li><a target="_blank" rel="noopener" href="http://endoflineblog.com/gitflow-considered-harmful">GitFlow considered harmful</a></li>
+<li><a target="_blank" rel="noopener" href="http://luci.criosweb.ro/a-real-life-git-workflow-why-git-flow-does-not-work-for-us/">Why git flow does not work for us</a></li>
 </ul>
 <p>其中有个问题就是因为分支太多，所以会出现 git log 混乱的局面。具体来说，主要是 git-flow 使用<code>git merge --no-ff</code>来合并分支，在 git-flow 这样多个分支的环境下会让你的分支管理的 log 变得很难看。如下所示，左边是使用–no-ff 参数在多个分支下的问题。</p>
 <p><img src="../images/13a78e9d493ba2737c3d6b8431be47b8.png" alt="img"></p>
@@ -310,7 +310,7 @@
 <p>对此的建议是：只有 feature 合并到 developer 分支时，使用–no-ff 参数，其他的合并都不使用–no-ff 参数来做合并。</p>
 <p>另外，还有一个问题就是，在开发得足够快的时候，你会觉得同时维护 Master 和 Developer 两个分支是一件很无聊的事，因为这两个分支在大多数情况下都是一样的。包括 Release 分支，你会觉得创建的这些分支太无聊。</p>
 <p>而你的整个开发过程也会因为这么复杂的管理变得非常复杂。尤其当你想回滚某些人的提交时，你就会发现这事似乎有点儿不好干了。而且在工作过程中，你会来来回回地切换工作的分支，有时候一不小心没有切换，就提交到了不正确的分支上，你还要回滚和重新提交，等等。</p>
-<p>GitLab 一开始是 GitFlow 的坚定支持者，后来因为这些吐槽，以及 Hacker News 和 Reddit 上大量的讨论，GitLab 也开始不玩了。他们写了<a href="https://about.gitlab.com/2014/09/29/gitlab-flow/" target="_blank" rel="noopener">一篇 blog</a>来创造了一个新的 Workflow——GitLab Flow，这个 GitLab Flow 是基于 GitHub Flow 来做的（参看：<a href="http://scottchacon.com/2011/08/31/github-flow.html" target="_blank" rel="noopener"> GitHub Flow</a> ）。</p>
+<p>GitLab 一开始是 GitFlow 的坚定支持者，后来因为这些吐槽，以及 Hacker News 和 Reddit 上大量的讨论，GitLab 也开始不玩了。他们写了<a target="_blank" rel="noopener" href="https://about.gitlab.com/2014/09/29/gitlab-flow/">一篇 blog</a>来创造了一个新的 Workflow——GitLab Flow，这个 GitLab Flow 是基于 GitHub Flow 来做的（参看：<a target="_blank" rel="noopener" href="http://scottchacon.com/2011/08/31/github-flow.html"> GitHub Flow</a> ）。</p>
 <h2 id="GitHub-Flow"><a href="#GitHub-Flow" class="headerlink" title="GitHub Flow"></a>GitHub Flow</h2><p>所谓 GitHub Flow，其实也叫 Forking flow，也就是 GitHub 上的那个开发方式。</p>
 <ol>
 <li>每个开发人员都把“官方库”的代码 fork 到自己的代码仓库中。</li>
@@ -445,7 +445,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中心式协同工作流"><span class="nav-number">1.</span> <span class="nav-text">中心式协同工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#功能分支协同工作流"><span class="nav-number">2.</span> <span class="nav-text">功能分支协同工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitFlow-协同工作流"><span class="nav-number">3.</span> <span class="nav-text">GitFlow 协同工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-GitLab-协同工作流"><span class="nav-number">4.</span> <span class="nav-text">GitHub&#x2F;GitLab 协同工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitFlow-的问题"><span class="nav-number">4.1.</span> <span class="nav-text">GitFlow 的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Flow"><span class="nav-number">4.2.</span> <span class="nav-text">GitHub Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab-Flow"><span class="nav-number">4.3.</span> <span class="nav-text">GitLab Flow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协同工作流的本质"><span class="nav-number">5.</span> <span class="nav-text">协同工作流的本质</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E5%BC%8F%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">中心式协同工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">功能分支协同工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitFlow-%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.</span> <span class="nav-text">GitFlow 协同工作流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-GitLab-%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">GitHub&#x2F;GitLab 协同工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitFlow-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">GitFlow 的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Flow"><span class="nav-number">4.2.</span> <span class="nav-text">GitHub Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab-Flow"><span class="nav-number">4.3.</span> <span class="nav-text">GitLab Flow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">5.</span> <span class="nav-text">协同工作流的本质</span></a></li></ol></div>
       </div>
       <!--/noindex-->
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
@@ -495,7 +495,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yuanchen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -218,7 +218,7 @@
 <li><strong>避免死锁</strong>：客户端最终一定可以获得锁，即使锁住某个资源的客户端在释放锁之前崩溃或者网络不可达。</li>
 <li><strong>容错性</strong>：只要锁服务集群中的大部分节点存活，Client 就可以进行加锁解锁操作。</li>
 </ul>
-<h1 id="Redis-的分布式锁服务"><a href="#Redis-的分布式锁服务" class="headerlink" title="Redis 的分布式锁服务"></a>Redis 的分布式锁服务</h1><p>这里提一下，避免死锁的问题。下面以 Redis 的锁服务为例（参考 <a href="https://redis.io/topics/distlock" target="_blank" rel="noopener">Redis 的官方文档</a> ）。</p>
+<h1 id="Redis-的分布式锁服务"><a href="#Redis-的分布式锁服务" class="headerlink" title="Redis 的分布式锁服务"></a>Redis 的分布式锁服务</h1><p>这里提一下，避免死锁的问题。下面以 Redis 的锁服务为例（参考 <a target="_blank" rel="noopener" href="https://redis.io/topics/distlock">Redis 的官方文档</a> ）。</p>
 <p>通过以下命令对资源加锁。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET resource_name my_random_value NX PX 30000</span><br></pre></td></tr></table></figure>
 
@@ -262,7 +262,7 @@
 </ul>
 <p>这听起来挺严重的吧。示例一下。</p>
 <p><img src="../images/937d9975899662d90a96f4cd70580d89.png" alt="img"></p>
-<p>千万不要以为这是脑补出来的案例。其实，这个是真实案例。HBase 就曾经遇到过这样的问题，你可以在他们的 PPT（<a href="https://www.slideshare.net/enissoz/hbase-and-hdfs-understanding-filesystem-usage" target="_blank" rel="noopener">HBase and HDFS: Understanding FileSystem Usage in HBase</a>）中看到相关的描述。</p>
+<p>千万不要以为这是脑补出来的案例。其实，这个是真实案例。HBase 就曾经遇到过这样的问题，你可以在他们的 PPT（<a target="_blank" rel="noopener" href="https://www.slideshare.net/enissoz/hbase-and-hdfs-understanding-filesystem-usage">HBase and HDFS: Understanding FileSystem Usage in HBase</a>）中看到相关的描述。</p>
 <p>要解决这个问题，你需要引入 fence（栅栏）技术。一般来说，这就是乐观锁机制，需要一个版本号排它。我们的流程就变成了下图中的这个样子。</p>
 <p><img src="../images/ce3454e9a8bbfe4628899391c003a5c3.png" alt="img"></p>
 <p>我们从图中可以看到：</p>
@@ -284,7 +284,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT stock FROM tb_product where product_id&#x3D;#&#123;product_id&#125;;</span><br><span class="line">UPDATE tb_product SET stock&#x3D;stock-#&#123;num&#125; WHERE product_id&#x3D;#&#123;product_id&#125; AND stock&#x3D;#&#123;stock&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>先把库存数量（stock）查出来，然后在更新的时候，检查一下是否是上次读出来的库存。如果不是，说明有别人更新过了，我的 UPDATE 操作就会失败，得重新再来。</p>
-<p>细心的你一定发现了，这不就是计算机汇编指令中的原子操作 CAS（Compare And Swap）嘛，大量无锁的数据结构都需要用到这个。（关于 CAS 的话题，你可以看一下我在 CoolShell 上写的<a href="https://coolshell.cn/articles/8239.html" target="_blank" rel="noopener">无锁队列的实现</a> ）。</p>
+<p>细心的你一定发现了，这不就是计算机汇编指令中的原子操作 CAS（Compare And Swap）嘛，大量无锁的数据结构都需要用到这个。（关于 CAS 的话题，你可以看一下我在 CoolShell 上写的<a target="_blank" rel="noopener" href="https://coolshell.cn/articles/8239.html">无锁队列的实现</a> ）。</p>
 <p><strong>我们一步一步地从分布式锁服务到乐观锁，再到 CAS，你看到了什么？你是否得思考一个有趣的问题——我们还需要分布式锁服务吗？</strong></p>
 <h1 id="分布式锁设计的重点"><a href="#分布式锁设计的重点" class="headerlink" title="分布式锁设计的重点"></a>分布式锁设计的重点</h1><p>最后，我们来谈谈分布式锁设计的重点。</p>
 <p>一般情况下，我们可以使用数据库、Redis 或 ZooKeeper 来做分布式锁服务，这几种方式都可以用于实现分布式锁。</p>
@@ -301,11 +301,11 @@
 <p>如果确定要分布式锁服务，你需要考虑下面几个设计。</p>
 <ul>
 <li>需要给一个锁被释放的方式，以避免请求者不把锁还回来，导致死锁的问题。Redis 使用超时时间，ZooKeeper 可以依靠自身的 sessionTimeout 来删除节点。</li>
-<li>分布式锁服务应该是高可用的，而且是需要持久化的。对此，你可以看一下 <a href="https://redis.io/topics/distlock" target="_blank" rel="noopener">Redis 的文档 RedLock</a> 看看它是怎么做到高可用的。</li>
+<li>分布式锁服务应该是高可用的，而且是需要持久化的。对此，你可以看一下 <a target="_blank" rel="noopener" href="https://redis.io/topics/distlock">Redis 的文档 RedLock</a> 看看它是怎么做到高可用的。</li>
 <li>要提供非阻塞方式的锁服务。</li>
 <li>还要考虑锁的可重入性。</li>
 </ul>
-<p>我认为，Redis 也是不错的，ZooKeeper 在使用起来需要有一些变通的方式，好在 Apache 有 <a href="https://curator.apache.org/" target="_blank" rel="noopener">Curator</a> 帮我们封装了各种分布式锁的玩法。</p>
+<p>我认为，Redis 也是不错的，ZooKeeper 在使用起来需要有一些变通的方式，好在 Apache 有 <a target="_blank" rel="noopener" href="https://curator.apache.org/">Curator</a> 帮我们封装了各种分布式锁的玩法。</p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>首先，介绍了为什么需要分布式锁。就像单机系统上的多线程程序需要用操作系统锁或数据库锁来互斥对共享资源的访问一样，分布式程序也需要通过分布式锁来互斥对共享资源的访问。</p>
 <p>分布式锁服务一般可以通过 Redis 和 ZooKeeper 等实现。接着，以 Redis 为例，介绍了怎样用它来加锁和解锁，由此引出了锁超时后的潜在风险。类似于数据库的乐观并发控制，这种风险可以通过版本号的方式来解决。</p>
 <p>进一步，数据库如果本身利用 CAS 等手段支持这种版本控制方式，其实也就没必要用一个独立的分布式锁服务了。最后，我们发现，分布式锁服务还能用来做同步，这是数据库锁做不了的事情。</p>
@@ -393,7 +393,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-的分布式锁服务"><span class="nav-number">1.</span> <span class="nav-text">Redis 的分布式锁服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁服务的一个问题"><span class="nav-number">2.</span> <span class="nav-text">分布式锁服务的一个问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从乐观锁到-CAS"><span class="nav-number">3.</span> <span class="nav-text">从乐观锁到 CAS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁设计的重点"><span class="nav-number">4.</span> <span class="nav-text">分布式锁设计的重点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">Redis 的分布式锁服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">分布式锁服务的一个问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E4%B9%90%E8%A7%82%E9%94%81%E5%88%B0-CAS"><span class="nav-number">3.</span> <span class="nav-text">从乐观锁到 CAS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E9%87%8D%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">分布式锁设计的重点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
@@ -443,7 +443,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yuanchen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
