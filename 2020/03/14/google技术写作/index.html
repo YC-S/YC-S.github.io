@@ -1,232 +1,99 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    google技术写作 |  Aaron&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
 
-<link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
 
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
-  <meta name="description" content="Google 技术写作 第一部分语法   词性 定义 例    Noun 名词 人，地方，概念或事物 Sam runs races. 山姆赛跑。   Pronoun 代词 替代另一个名词的名词 Sam runs races. He likes to compete. 山姆赛跑。他喜欢竞争。   Adjective 形容词 修饰名词的单词或短语 Sam wears blue shoes 山姆穿蓝色的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="google技术写作">
-<meta property="og:url" content="http://yoursite.com/2020/03/14/google%E6%8A%80%E6%9C%AF%E5%86%99%E4%BD%9C/index.html">
-<meta property="og:site_name" content="Aaron&#39;s Blog">
-<meta property="og:description" content="Google 技术写作 第一部分语法   词性 定义 例    Noun 名词 人，地方，概念或事物 Sam runs races. 山姆赛跑。   Pronoun 代词 替代另一个名词的名词 Sam runs races. He likes to compete. 山姆赛跑。他喜欢竞争。   Adjective 形容词 修饰名词的单词或短语 Sam wears blue shoes 山姆穿蓝色的">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/image-20200314110029371.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/image-20200314110046383.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/jE6R_7ISrWtAcm5rnEX7JgrrX-YzwtIqsSWqcFRr9P6raZxlIdkYNlRDwKoU0-i-LIafqfR_Se1pq__H-81I3C4gEMNcOgNoZ1m6S9bGlhMEen2lhOMORpJUae2tdt8LaoXJgxfo-20200314140000135.jpeg">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/n2VrvJB3FR75g6ZAy8tYZQLwRdU4IXSo5kVAiYEupjAz3750NR8Fpgk9s6aKGB2bmiS2mls4mRQIYsf-B51dO3dfuM1RANyADpjALmHeH94GC0lh-XzDjmXrTbsrPqfyWEl1h76J-20200314135944582.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/D6dcerQce7rgaGRG_YafpEK8gH1CAWTiY91CunUMVHiB_D3YWT4cHM7QqQD-Oi0XKTEbmVYW3AtavR_jh6bgUqTe_08phRnvnR2Zy_dxTEj-vmbjKeC-WxEhvGWIztIrx-6-tFd_-20200314140016480.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/O8QRqho8LjEXTIF5hbiK31kBDFwQpeTMvyAwFcVxUoRrVjY3n6KQl4wNY25H6As1M9YvuaP0_jGHlD1Z8ELWIDGRTw1ZtJ03_bYuad-yRyPq5ifK91kCjP_AXqPyLox9zj1tD3xi-20200314140024181.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/yaRvvgA5PXE6Ew63bb-wgKN2_65DgQL-scySq9rdBLEa8489yPhaY6hagxfP6VnIanEEX-1zSkwZhO3hq82t7qeZPHJAK43TmCqoSCBHVAqoNpg1i-qhKQRLzMDFnBJyrjv-MBNw-20200314140036522.jpeg">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/48v7yt9pVjD6rlZzFOjMML79V7Bx5xLvZG94Q35d375Nyp_Gjc4nVUWxnmITLDPpKM5cmrpN1_Tj-ui6Gl7E8BMZt3Ei-At6VRjl3P9OYDAkuzySTagGqNcXuPNrMAlsayQCFmMQ-20200314140049461.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/Yeyo20lvR4xle9wsHUuSRWJR_Xdh3Ig_bWvBkvFub6-2jHAs-Jg9e6CNQIf73mIVNHB8GQBP7s_t1JyB8D1qJOjq1NqjgGucfukUGfuR6tGmNq-0B80Gtm9iqpAs1dXCofsUDZo9-20200314140059131.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/zeC0klriuJFNa_-cSgpsD8qZuYDOIBjT7SCwd3AZdhsyPoCJFdHLT7MeWr3k1rfRieIrTr_2JaVkmOz3eJdgI0vo6gpO-D9AHliITi8L8L0CQ91sBM8M3UnntuONbPxaIlwkklPp-20200314140107828.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/HajIj_VeHCkeZ97hmSxff8WcRnTFKXax3YkBFCMsZXrztnv3rjoXkS-a8BIynrjnEgsDBSMSdsa996evyJdAY7kLlMcDP9nlDpewVcXgE5dRPiwey2ZR-xmsMeCIjS86AOPnWhV8-20200314140117466.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/175ofZpKAWCFWKeFBTzgETTftuYjG8lIjLa0JG60njiuDciLbZFyzX7peMb_sWG-hqk1rA8NJN7jh6mwhU0w7gdqGP7g0M3DhH4PSkYMFIhhZ6rfd0RaFYVnHWni15-cC_PTxMnv-20200314140124914.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/283dqnnnKtWlKVb68D3je8av_MxYUVZY1BDTTRXrrSU4gKoWUPAfoyGcx_BButTMCUu_CTSnuTzF1XFil_oi5zLzvTeK-D_WpLY8GgLB9neNR3xgUvr_yTRr3twRp5Q78SnN4LCK-20200314140141013.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/euP3eyeWX-VG131ipdWv9a77kx4mqw5L_1KCDpmHY20evqxkr1ZT1jWbeA-gThj5Ojvh3E3QDW2tR7t7RtR7jM-VCtSDoYSOyYeTJrRQOm_O5SxOEFu8a9tzBmyN-7einM3mEZd_-20200314140152285.jpeg">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/5jC-OPwHxr6Mj-fuKPtgUX0XfCoVMUlmjm7siCMKz6AXsXDLP_QjJtDPunYBXKPpP3-zmhjyTXxJ9HPTN8ApVgomXgg4kkKLx2shmxKnSLRr443FHY9grmrM-_8Lrk6J0htz9Ovn-20200314140207008.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/xnR8SI5KCSPzQ6Dg0m5UTwHS_V5Vm5dAXjTV_--_8pokF63WyiUM-8ZXVnL3uuiDEZqfZpMK1hh15EvW5gxgo5w8vf3fv6cucArmYHaauvhEQx7pW4D7iU_Yx3AXO93IrsD9Wuru-20200314140221061.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/8bngRBIGBzJEejHZ_ekuvFCKyTEG0rfQx7ZLF21yPSKzzCiB3KxmnUh5xocI00rR5zfU1AxBQfk8wLu1RNTulzbJ8w7kVlQCcyN5snEHZlvHY3sT9u1PEkldFGK2j-3yj3WKS8fs-20200314140231439.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/14/images/oRi1oFcErhRddvpYrB-UMIJxoa1RaPboq8KmdxiPUa3ud5b0z_WFgtHFx320fqQe5eHcoKpY0Aj94DV9Qw3xZjFbwvJwdZXzrTeD2UpJpGP1occ81ITmXfURNp6-bX_xPMVwzd_h-20200314140248427.png">
-<meta property="article:published_time" content="2020-03-14T14:57:18.000Z">
-<meta property="article:modified_time" content="2020-03-14T14:57:18.000Z">
-<meta property="article:author" content="Aaron">
-<meta property="article:tag" content="google">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/14/images/image-20200314110029371.png">
-
-<link rel="canonical" href="http://yoursite.com/2020/03/14/google%E6%8A%80%E6%9C%AF%E5%86%99%E4%BD%9C/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
-
-  <title>google技术写作 | Aaron's Blog</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
   
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+  
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+</html>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-google技术写作"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  google技术写作
+</h1>
+ 
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Aaron's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/google%E6%8A%80%E6%9C%AF%E5%86%99%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Aaron">
-      <meta itemprop="description" content="">
+     
+    <div class="article-meta">
+      <a href="/2020/03/14/google%E6%8A%80%E6%9C%AF%E5%86%99%E4%BD%9C/" class="article-date">
+  <time datetime="2020-03-14T14:57:18.000Z" itemprop="datePublished">2020-03-14</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">24.8k</span>
+        </span>
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aaron's Blog">
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">88 min</span>
+        </span>
     </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          google技术写作
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-14 10:57:18" itemprop="dateCreated datePublished" datetime="2020-03-14T10:57:18-04:00">2020-03-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+</div>
+ 
+    </div>
       
-        <p>Google 技术写作</p>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Google 技术写作</p>
 <h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><table>
 <thead>
 <tr>
@@ -1541,201 +1408,465 @@
 </ul>
 <h2 id="开源文档的机会"><a href="#开源文档的机会" class="headerlink" title="开源文档的机会"></a>开源文档的机会</h2><p>Google的<a target="_blank" rel="noopener" href="https://developers.google.com/season-of-docs/">“Season of Docs”</a> 计划旨在促进开源项目与技术作家之间的协作。对于从事开源项目的人们来说，这是一个提高他们的技术写作技能的好机会。</p>
 <p>文档季节每年运行一次。要随时了解2020年计划，您可以加入邮件列表或Slack工作区，如有关<a target="_blank" rel="noopener" href="https://developers.google.com/season-of-docs/docs/discussion">讨论频道</a>的页面中所述。</p>
-
+ 
+      <!-- reward -->
+      
     </div>
-
-    
-    
     
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/google/" rel="tag"># google</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/03/13/SQL_Joins/" rel="prev" title="SQL_Joins">
-      <i class="fa fa-chevron-left"></i> SQL_Joins
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/14/React%E6%80%BB%E7%BB%93/" rel="next" title="React总结">
-      React总结 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
+    <!-- copyright -->
     
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
           
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">第一部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E8%AF%8D"><span class="nav-number">1.1.1.</span> <span class="nav-text">名词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E8%AF%8D"><span class="nav-number">1.1.2.</span> <span class="nav-text">代词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E8%AF%8D"><span class="nav-number">1.1.3.</span> <span class="nav-text">动词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%AE%B9%E8%AF%8D%E5%92%8C%E5%89%AF%E8%AF%8D"><span class="nav-number">1.1.4.</span> <span class="nav-text">形容词和副词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E8%AF%8D%E5%92%8C%E8%BF%87%E6%B8%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">连词和过渡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%AF%8D"><span class="nav-number">1.2.</span> <span class="nav-text">单词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%96%B0%E6%9C%AF%E8%AF%AD%E6%88%96%E4%B8%8D%E7%86%9F%E6%82%89%E7%9A%84%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义新术语或不熟悉的术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A7%8B%E7%BB%88%E4%BD%BF%E7%94%A8%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.2.2.</span> <span class="nav-text">始终使用术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%A6%96%E5%AD%97%E6%AF%8D%E7%BC%A9%E5%86%99%E8%AF%8D"><span class="nav-number">1.2.3.</span> <span class="nav-text">正确使用首字母缩写词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E9%99%A4%E4%BB%A3%E8%AF%8D%E6%AD%A7%E4%B9%89"><span class="nav-number">1.2.4.</span> <span class="nav-text">消除代词歧义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#it-%E5%92%8C-they"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">it 和 they</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-%E5%92%8C-that"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">this 和 that</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E8%AF%AD%E6%80%81%E4%B8%8E%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81"><span class="nav-number">1.2.5.</span> <span class="nav-text">主动语态与被动语态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E7%AE%80%E5%8D%95%E7%9A%84%E5%8F%A5%E5%AD%90%E5%8C%BA%E5%88%86%E4%B8%BB%E5%8A%A8%E8%AF%AD%E6%80%81%E5%92%8C%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">用简单的句子区分主动语态和被动语态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E8%AF%AD%E6%80%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.2.5.1.1.</span> <span class="nav-text">主动语态示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.2.5.1.2.</span> <span class="nav-text">被动语态示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%86%E5%88%AB%E8%A2%AB%E5%8A%A8%E5%8A%A8%E8%AF%8D"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">识别被动动词</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A5%88%E4%BD%BF%E5%8A%A8%E8%AF%8D%E9%80%9A%E5%B8%B8%E6%98%AF%E4%B8%BB%E5%8A%A8%E7%9A%84"><span class="nav-number">1.2.5.2.1.</span> <span class="nav-text">祈使动词通常是主动的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%9B%B4%E5%A4%8D%E6%9D%82%E7%9A%84%E5%8F%A5%E5%AD%90%E5%8C%BA%E5%88%86%E4%B8%BB%E5%8A%A8%E8%AF%AD%E6%80%81%E5%92%8C%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">用更复杂的句子区分主动语态和被动语态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E9%80%89%E4%B8%BB%E5%8A%A8%E8%AF%AD%E6%80%81%E8%80%8C%E4%B8%8D%E6%98%AF%E8%A2%AB%E5%8A%A8%E8%AF%AD%E6%80%81"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">首选主动语态而不是被动语态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E6%99%B0%E7%9A%84%E5%8F%A5%E5%AD%90"><span class="nav-number">1.2.6.</span> <span class="nav-text">清晰的句子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%BC%BA%E5%8A%A8%E8%AF%8D"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">选择强动词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E4%BD%BF%E7%94%A8-there-is-there-are"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">减少使用 there is&#x2F;there are</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%82%A8%E6%9C%89%E6%97%B6%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%B0%86%E7%9C%9F%E5%AE%9E%E7%9A%84%E4%B8%BB%E8%AF%AD%E5%92%8C%E7%9C%9F%E5%AE%9E%E7%9A%84%E5%8A%A8%E8%AF%8D%E4%BB%8E%E5%8F%A5%E5%AD%90%E7%9A%84%E6%9C%AB%E5%B0%BE%E7%A7%BB%E5%88%B0%E5%BC%80%E5%A4%B4%E6%9D%A5%E4%BF%AE%E5%A4%8D-There-is%E6%88%96-There-are-%E5%8F%A5%E5%AD%90%E3%80%82"><span class="nav-number">1.2.6.2.1.</span> <span class="nav-text">您有时可以通过将真实的主语和真实的动词从句子的末尾移到开头来修复 There is或 There are 句子。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96%E7%89%B9%E5%AE%9A%E7%9A%84%E5%BD%A2%E5%AE%B9%E8%AF%8D%E5%92%8C%E5%89%AF%E8%AF%8D%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.2.6.3.</span> <span class="nav-text">最小化特定的形容词和副词（可选）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E7%9F%AD%E7%9A%84%E5%8F%A5%E5%AD%90"><span class="nav-number">1.2.7.</span> <span class="nav-text">简短的句子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%8F%A5%E5%AD%90%E5%8F%AA%E8%81%9A%E7%84%A6%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%83%B3%E6%B3%95"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">一个句子只聚焦在一个想法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E9%95%BF%E5%8F%A5%E5%AD%90%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%88%97%E8%A1%A8"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">将长句子转换为列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E9%99%A4%E6%88%96%E5%87%8F%E5%B0%91%E5%A4%9A%E4%BD%99%E7%9A%84%E5%8D%95%E8%AF%8D"><span class="nav-number">1.2.7.3.</span> <span class="nav-text">消除或减少多余的单词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E4%BB%8E%E5%8F%A5%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.2.7.4.</span> <span class="nav-text">减少从句（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E5%88%86-that-%E5%92%8C-which"><span class="nav-number">1.2.7.5.</span> <span class="nav-text">区分 that 和 which</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E5%92%8C%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.2.8.</span> <span class="nav-text">列表和表格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%88%97%E8%A1%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">选择正确的列表类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8C%81%E6%B8%85%E5%8D%95%E9%A1%B9%E7%9B%AE%E5%B9%B3%E8%A1%8C"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">保持清单项目平行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E9%A1%B9%E4%BD%BF%E7%94%A8%E5%8A%A8%E8%AF%8D%E5%BC%80%E5%A4%B4"><span class="nav-number">1.2.8.3.</span> <span class="nav-text">列表项使用动词开头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.2.8.4.</span> <span class="nav-text">正确使用标点符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%89%E7%94%A8%E7%9A%84%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.2.8.5.</span> <span class="nav-text">创建有用的表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E6%AF%8F%E4%B8%AA%E5%88%97%E8%A1%A8%E5%92%8C%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.2.8.6.</span> <span class="nav-text">介绍每个列表和表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E5%88%97%E8%A1%A8%E7%A1%AE%E5%AE%9A%E4%BA%86%E5%85%B3%E9%94%AE%E6%80%A7%E8%83%BD%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">1.2.8.6.1.</span> <span class="nav-text">以下列表确定了关键性能的参数:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%87%E5%8F%96%E4%BB%A5%E4%B8%8B%E6%AD%A5%E9%AA%A4%E5%AE%89%E8%A3%85-Frambus-%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">1.2.8.6.2.</span> <span class="nav-text">采取以下步骤安装 Frambus 软件包:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">1.2.9.</span> <span class="nav-text">段落</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E7%B2%BE%E5%BD%A9%E7%9A%84%E5%BC%80%E5%A4%B4%E5%8F%A5"><span class="nav-number">1.2.9.1.</span> <span class="nav-text">写一个精彩的开头句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%AE%B5%E8%90%BD%E8%81%9A%E7%84%A6%E4%B8%80%E4%B8%AA%E4%B8%BB%E9%A2%98"><span class="nav-number">1.2.9.2.</span> <span class="nav-text">一个段落聚焦一个主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD%E4%B8%8D%E8%A6%81%E5%A4%AA%E9%95%BF%E6%88%96%E5%A4%AA%E7%9F%AD"><span class="nav-number">1.2.9.3.</span> <span class="nav-text">段落不要太长或太短</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E7%AD%94what%EF%BC%8Cwhy-%E4%BB%A5%E5%8F%8A-how"><span class="nav-number">1.2.9.4.</span> <span class="nav-text">回答what，why 以及 how</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%97%E4%BC%97"><span class="nav-number">1.2.10.</span> <span class="nav-text">受众</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%82%A8%E7%9A%84%E5%8F%97%E4%BC%97"><span class="nav-number">1.2.10.1.</span> <span class="nav-text">定义您的受众</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E5%8F%97%E4%BC%97%E5%88%86%E6%9E%90"><span class="nav-number">1.2.10.1.1.</span> <span class="nav-text">样本受众分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E5%8F%97%E4%BC%97%E5%8F%AF%E4%BB%A5%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.10.2.</span> <span class="nav-text">确定受众可以学到什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E6%96%87%E6%A1%A3%E9%80%82%E5%90%88%E5%8F%97%E4%BC%97"><span class="nav-number">1.2.10.3.</span> <span class="nav-text">使文档适合受众</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%8D%E6%B1%87%E5%92%8C%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.10.3.1.</span> <span class="nav-text">词汇和概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%9A%84%E9%AD%94%E5%92%92"><span class="nav-number">1.2.10.3.2.</span> <span class="nav-text">知识的魔咒</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%9D"><span class="nav-number">1.2.10.3.3.</span> <span class="nav-text">简单的话</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E5%8C%96%E4%B8%AD%E7%AB%8B%E5%92%8C%E6%88%90%E8%AF%AD"><span class="nav-number">1.2.10.3.4.</span> <span class="nav-text">文化中立和成语</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">1.2.11.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E%E6%96%87%E4%BB%B6%E8%8C%83%E5%9B%B4"><span class="nav-number">1.2.11.1.</span> <span class="nav-text">说明文件范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%88%E8%BF%B0%E4%BD%A0%E7%9A%84%E5%8F%97%E4%BC%97"><span class="nav-number">1.2.11.2.</span> <span class="nav-text">陈述你的受众</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E5%85%88%E5%BB%BA%E7%AB%8B%E5%85%B3%E9%94%AE%E8%A7%82%E7%82%B9"><span class="nav-number">1.2.11.3.</span> <span class="nav-text">预先建立关键观点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E5%8F%97%E4%BC%97%E5%86%99%E4%BD%9C"><span class="nav-number">1.2.11.4.</span> <span class="nav-text">为受众写作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%97%E4%BC%97"><span class="nav-number">1.2.11.4.1.</span> <span class="nav-text">定义受众</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%84%E7%BB%87"><span class="nav-number">1.2.11.4.2.</span> <span class="nav-text">组织</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E4%B8%BB%E9%A2%98%E5%88%86%E4%B8%BA%E5%87%A0%E4%B8%AA%E9%83%A8%E5%88%86"><span class="nav-number">1.2.11.5.</span> <span class="nav-text">将主题分为几个部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%82%B9%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.2.12.</span> <span class="nav-text">标点（可选）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%97%E5%8F%B7"><span class="nav-number">1.2.12.1.</span> <span class="nav-text">逗号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%8F%B7"><span class="nav-number">1.2.12.2.</span> <span class="nav-text">分号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A0%B4%E6%8A%98%E5%8F%B7"><span class="nav-number">1.2.12.3.</span> <span class="nav-text">破折号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7"><span class="nav-number">1.2.12.4.</span> <span class="nav-text">括号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.2.13.</span> <span class="nav-text">Markdown （可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">第二部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E7%BC%96%E8%BE%91"><span class="nav-number">2.1.</span> <span class="nav-text">自我编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%8C%87%E5%8D%97"><span class="nav-number">2.1.1.</span> <span class="nav-text">采用样式指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%83%8F%E5%8F%97%E4%BC%97%E4%B8%80%E6%A0%B7%E6%80%9D%E8%80%83"><span class="nav-number">2.1.2.</span> <span class="nav-text">像受众一样思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%A3%B0%E6%9C%97%E8%AF%BB"><span class="nav-number">2.1.3.</span> <span class="nav-text">大声朗读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8D%E5%90%8E%E5%86%8D%E5%9B%9E%E6%9D%A5"><span class="nav-number">2.1.4.</span> <span class="nav-text">稍后再回来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E5%9C%BA%E6%99%AF"><span class="nav-number">2.1.5.</span> <span class="nav-text">改变场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E5%90%8C%E4%BC%B4%E7%BC%96%E8%BE%91"><span class="nav-number">2.1.6.</span> <span class="nav-text">寻找同伴编辑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E7%BB%87%E5%A4%A7%E5%9E%8B%E6%96%87%E6%A1%A3"><span class="nav-number">2.2.</span> <span class="nav-text">组织大型文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%86%99%E5%A4%A7%E6%96%87%E6%A1%A3"><span class="nav-number">2.2.1.</span> <span class="nav-text">什么时候写大文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E7%90%86%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">整理文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%A4%A7%E7%BA%B2"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">文档大纲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2%E7%BB%83%E4%B9%A0"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">大纲练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E6%96%87%E6%A1%A3"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">介绍文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E7%BB%83%E4%B9%A0"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">介绍练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AF%BC%E8%88%AA"><span class="nav-number">2.2.3.</span> <span class="nav-text">添加导航</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E9%80%89%E5%9F%BA%E4%BA%8E%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%A0%87%E9%A2%98"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">首选基于任务的标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%AF%8F%E4%B8%AA%E6%A0%87%E9%A2%98%E4%B8%8B%E6%8F%90%E4%BE%9B%E6%96%87%E5%AD%97"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">在每个标题下提供文字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E7%BB%83%E4%B9%A0"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">标题练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E5%BA%8F%E9%80%92%E8%BF%91"><span class="nav-number">2.2.4.</span> <span class="nav-text">循序递近</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%9B%BE"><span class="nav-number">2.3.</span> <span class="nav-text">插图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E5%86%99%E6%A0%87%E9%A2%98"><span class="nav-number">2.3.1.</span> <span class="nav-text">首先写标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E5%8D%95%E4%B8%AA%E5%9B%BE%E7%89%87%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF%E9%87%8F"><span class="nav-number">2.3.2.</span> <span class="nav-text">限制单个图片中的信息量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%B8%E5%BC%95%E8%AF%BB%E8%80%85%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="nav-number">2.3.3.</span> <span class="nav-text">吸引读者的注意力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%9B%BE%E9%87%8D%E6%9E%84"><span class="nav-number">2.3.4.</span> <span class="nav-text">插图重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%9B%BE%E5%B7%A5%E5%85%B7"><span class="nav-number">2.3.5.</span> <span class="nav-text">插图工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">示例代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE"><span class="nav-number">2.4.1.</span> <span class="nav-text">正确</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.2.</span> <span class="nav-text">运行示例代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E6%B4%81"><span class="nav-number">2.4.3.</span> <span class="nav-text">简洁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%93%E7%90%86%E8%A7%A3"><span class="nav-number">2.4.4.</span> <span class="nav-text">易理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.4.5.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">2.4.6.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.4.7.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%87%8D%E7%94%A8"><span class="nav-number">2.4.8.</span> <span class="nav-text">可重用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%8F%8D%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.4.9.</span> <span class="nav-text">正反示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%88%97%E7%A4%BA%E5%88%97"><span class="nav-number">2.4.10.</span> <span class="nav-text">并列示列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">2.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E5%86%99%E4%BD%9C%E8%B5%84%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">技术写作资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97"><span class="nav-number">3.1.</span> <span class="nav-text">编辑风格指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E6%96%87%E6%A1%A3%E7%9A%84%E6%9C%BA%E4%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">开源文档的机会</span></a></li></ol></li></ol></div>
       </div>
-      <!--/noindex-->
-      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Aaron</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">232</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">90</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
 </div>
 
-
-
-      </div>
-
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/14/google%E6%8A%80%E6%9C%AF%E5%86%99%E4%BD%9C/" alt="微信分享二维码">
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Aaron</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
-  </div>
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </div>
 
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/google/" rel="tag">google</a></li></ul>
 
-
-
-
-
-
-
-      </div>
     </footer>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/03/14/React%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            React总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/13/SQL_Joins/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">SQL_Joins</div>
+      </a>
+    
+  </nav>
 
   
+   
+     
+</article>
 
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
   
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Aaron&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/travel/">travel</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">about me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
 
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
 </body>
+
 </html>

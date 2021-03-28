@@ -1,213 +1,99 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Bash Commands |  Aaron&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
 
-<link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
 
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
-  <meta name="description" content="1. Basic Operationsa. exportDisplays all environment variables. If you want to get details of a specific variable, use echo $VARIABLE_NAME.   1export  Example: 1234$ exportLANG&#x3D;en_US.UTF-8LC_CTYPE&#x3D;en_">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Bash Commands">
-<meta property="og:url" content="http://yoursite.com/2020/01/02/bash-commands/index.html">
-<meta property="og:site_name" content="Aaron&#39;s Blog">
-<meta property="og:description" content="1. Basic Operationsa. exportDisplays all environment variables. If you want to get details of a specific variable, use echo $VARIABLE_NAME.   1export  Example: 1234$ exportLANG&#x3D;en_US.UTF-8LC_CTYPE&#x3D;en_">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-02T16:59:59.000Z">
-<meta property="article:modified_time" content="2020-01-02T16:59:59.000Z">
-<meta property="article:author" content="Aaron">
-<meta property="article:tag" content="Bash">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/2020/01/02/bash-commands/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
-
-  <title>Bash Commands | Aaron's Blog</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
   
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+  
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+</html>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-bash-commands"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Bash Commands
+</h1>
+ 
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Aaron's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/bash-commands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Aaron">
-      <meta itemprop="description" content="">
+     
+    <div class="article-meta">
+      <a href="/2020/01/02/bash-commands/" class="article-date">
+  <time datetime="2020-01-02T16:59:59.000Z" itemprop="datePublished">2020-01-02</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.7k</span>
+        </span>
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aaron's Blog">
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">23 min</span>
+        </span>
     </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Bash Commands
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-01-02 11:59:59" itemprop="dateCreated datePublished" datetime="2020-01-02T11:59:59-05:00">2020-01-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+</div>
+ 
+    </div>
       
-        <h1 id="1-Basic-Operations"><a href="#1-Basic-Operations" class="headerlink" title="1. Basic Operations"></a>1. Basic Operations</h1><h3 id="a-export"><a href="#a-export" class="headerlink" title="a. export"></a>a. <code>export</code></h3><p>Displays all environment variables. If you want to get details of a specific variable, use <code>echo $VARIABLE_NAME</code>.  </p>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="1-Basic-Operations"><a href="#1-Basic-Operations" class="headerlink" title="1. Basic Operations"></a>1. Basic Operations</h1><h3 id="a-export"><a href="#a-export" class="headerlink" title="a. export"></a>a. <code>export</code></h3><p>Displays all environment variables. If you want to get details of a specific variable, use <code>echo $VARIABLE_NAME</code>.  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span></span><br></pre></td></tr></table></figure>
 
 <p>Example:</p>
@@ -752,201 +638,465 @@ drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
 <h1 id="4-Debugging"><a href="#4-Debugging" class="headerlink" title="4. Debugging"></a>4. Debugging</h1><p>You can easily debug the bash script by passing different options to <code>bash</code> command. For example <code>-n</code> will not run commands and check for syntax errors only. <code>-v</code> echo commands before running them. <code>-x</code> echo commands after command-line processing.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash -n scriptname</span><br><span class="line">bash -v scriptname</span><br><span class="line">bash -x scriptname</span><br></pre></td></tr></table></figure>
 
-
+ 
+      <!-- reward -->
+      
     </div>
-
-    
-    
     
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Bash/" rel="tag"># Bash</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/01/01/Amazon_Leadership_Principles/" rel="prev" title="Amazon Leadership Principles">
-      <i class="fa fa-chevron-left"></i> Amazon Leadership Principles
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/03/Network/" rel="next" title="Computer Network Basics">
-      Computer Network Basics <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
+    <!-- copyright -->
     
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
           
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Basic-Operations"><span class="nav-number">1.</span> <span class="nav-text">1. Basic Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-export"><span class="nav-number">1.0.1.</span> <span class="nav-text">a. export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-whatis"><span class="nav-number">1.0.2.</span> <span class="nav-text">b. whatis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-whereis"><span class="nav-number">1.0.3.</span> <span class="nav-text">c. whereis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-which"><span class="nav-number">1.0.4.</span> <span class="nav-text">d. which</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-clear"><span class="nav-number">1.0.5.</span> <span class="nav-text">e. clear</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-File-Operations"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. File Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-cat"><span class="nav-number">1.1.1.</span> <span class="nav-text">a. cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-chmod"><span class="nav-number">1.1.2.</span> <span class="nav-text">b. chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-chown"><span class="nav-number">1.1.3.</span> <span class="nav-text">c. chown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-cp"><span class="nav-number">1.1.4.</span> <span class="nav-text">d. cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-diff"><span class="nav-number">1.1.5.</span> <span class="nav-text">e. diff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-file"><span class="nav-number">1.1.6.</span> <span class="nav-text">f. file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-find"><span class="nav-number">1.1.7.</span> <span class="nav-text">g. find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h-gunzip"><span class="nav-number">1.1.8.</span> <span class="nav-text">h. gunzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i-gzcat"><span class="nav-number">1.1.9.</span> <span class="nav-text">i. gzcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#j-gzip"><span class="nav-number">1.1.10.</span> <span class="nav-text">j. gzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-head"><span class="nav-number">1.1.11.</span> <span class="nav-text">k. head</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-lpq"><span class="nav-number">1.1.12.</span> <span class="nav-text">l. lpq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#m-lpr"><span class="nav-number">1.1.13.</span> <span class="nav-text">m. lpr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-lprm"><span class="nav-number">1.1.14.</span> <span class="nav-text">n. lprm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#o-ls"><span class="nav-number">1.1.15.</span> <span class="nav-text">o. ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p-more"><span class="nav-number">1.1.16.</span> <span class="nav-text">p. more</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-mv"><span class="nav-number">1.1.17.</span> <span class="nav-text">q. mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-rm"><span class="nav-number">1.1.18.</span> <span class="nav-text">r. rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-tail"><span class="nav-number">1.1.19.</span> <span class="nav-text">s. tail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-touch"><span class="nav-number">1.1.20.</span> <span class="nav-text">t. touch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Text-Operations"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. Text Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-awk"><span class="nav-number">1.2.1.</span> <span class="nav-text">a. awk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-cut"><span class="nav-number">1.2.2.</span> <span class="nav-text">b. cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-echo"><span class="nav-number">1.2.3.</span> <span class="nav-text">c. echo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-egrep"><span class="nav-number">1.2.4.</span> <span class="nav-text">d. egrep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-fgrep"><span class="nav-number">1.2.5.</span> <span class="nav-text">e. fgrep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-fmt"><span class="nav-number">1.2.6.</span> <span class="nav-text">f. fmt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-grep"><span class="nav-number">1.2.7.</span> <span class="nav-text">g. grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h-nl"><span class="nav-number">1.2.8.</span> <span class="nav-text">h. nl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i-sed"><span class="nav-number">1.2.9.</span> <span class="nav-text">i. sed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#j-sort"><span class="nav-number">1.2.10.</span> <span class="nav-text">j. sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-tr"><span class="nav-number">1.2.11.</span> <span class="nav-text">k. tr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-uniq"><span class="nav-number">1.2.12.</span> <span class="nav-text">l. uniq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#m-wc"><span class="nav-number">1.2.13.</span> <span class="nav-text">m. wc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Directory-Operations"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. Directory Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-cd"><span class="nav-number">1.3.1.</span> <span class="nav-text">a. cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-mkdir"><span class="nav-number">1.3.2.</span> <span class="nav-text">b. mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-pwd"><span class="nav-number">1.3.3.</span> <span class="nav-text">c. pwd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-SSH-System-Info-amp-Network-Operations"><span class="nav-number">1.4.</span> <span class="nav-text">1.4. SSH, System Info &amp; Network Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-bg"><span class="nav-number">1.4.1.</span> <span class="nav-text">a. bg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-cal"><span class="nav-number">1.4.2.</span> <span class="nav-text">b. cal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-date"><span class="nav-number">1.4.3.</span> <span class="nav-text">c. date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-df"><span class="nav-number">1.4.4.</span> <span class="nav-text">d. df</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-dig"><span class="nav-number">1.4.5.</span> <span class="nav-text">e. dig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-du"><span class="nav-number">1.4.6.</span> <span class="nav-text">f. du</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-fg"><span class="nav-number">1.4.7.</span> <span class="nav-text">g. fg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h-finger"><span class="nav-number">1.4.8.</span> <span class="nav-text">h. finger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i-jobs"><span class="nav-number">1.4.9.</span> <span class="nav-text">i. jobs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#j-last"><span class="nav-number">1.4.10.</span> <span class="nav-text">j. last</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-man"><span class="nav-number">1.4.11.</span> <span class="nav-text">k. man</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-passwd"><span class="nav-number">1.4.12.</span> <span class="nav-text">l. passwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#m-ping"><span class="nav-number">1.4.13.</span> <span class="nav-text">m. ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-ps"><span class="nav-number">1.4.14.</span> <span class="nav-text">n. ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#o-quota"><span class="nav-number">1.4.15.</span> <span class="nav-text">o. quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p-scp"><span class="nav-number">1.4.16.</span> <span class="nav-text">p. scp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-ssh"><span class="nav-number">1.4.17.</span> <span class="nav-text">q. ssh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-top"><span class="nav-number">1.4.18.</span> <span class="nav-text">r. top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-uname"><span class="nav-number">1.4.19.</span> <span class="nav-text">s. uname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-uptime"><span class="nav-number">1.4.20.</span> <span class="nav-text">t. uptime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u-w"><span class="nav-number">1.4.21.</span> <span class="nav-text">u. w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-wget"><span class="nav-number">1.4.22.</span> <span class="nav-text">v. wget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#w-whoami"><span class="nav-number">1.4.23.</span> <span class="nav-text">w. whoami</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x-whois"><span class="nav-number">1.4.24.</span> <span class="nav-text">x. whois</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Process-Monitoring-Operations"><span class="nav-number">1.5.</span> <span class="nav-text">1.5. Process Monitoring Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-kill"><span class="nav-number">1.5.1.</span> <span class="nav-text">a. kill</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-killall"><span class="nav-number">1.5.2.</span> <span class="nav-text">b. killall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-amp"><span class="nav-number">1.5.3.</span> <span class="nav-text">c. &amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-nohup"><span class="nav-number">1.5.4.</span> <span class="nav-text">d. nohup</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Basic-Shell-Programming"><span class="nav-number">2.</span> <span class="nav-text">2. Basic Shell Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Variables"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Array"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-String-Substitution"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 String Substitution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Functions"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-Conditionals"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. Conditionals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-Loops"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. Loops</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Tricks"><span class="nav-number">3.</span> <span class="nav-text">3. Tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-an-alias"><span class="nav-number">3.1.</span> <span class="nav-text">Set an alias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-quickly-go-to-a-specific-directory"><span class="nav-number">3.2.</span> <span class="nav-text">To quickly go to a specific directory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Re-execute-the-previous-command"><span class="nav-number">3.3.</span> <span class="nav-text">Re-execute the previous command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exit-traps"><span class="nav-number">3.4.</span> <span class="nav-text">Exit traps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Saving-your-environment-variables"><span class="nav-number">3.5.</span> <span class="nav-text">Saving your environment variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accessing-your-scripts"><span class="nav-number">3.6.</span> <span class="nav-text">Accessing your scripts</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Debugging"><span class="nav-number">4.</span> <span class="nav-text">4. Debugging</span></a></li></ol></div>
       </div>
-      <!--/noindex-->
-      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Aaron</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">232</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">90</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
 </div>
 
-
-
-      </div>
-
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/01/02/bash-commands/" alt="微信分享二维码">
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Aaron</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
-  </div>
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </div>
 
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/" rel="tag">Bash</a></li></ul>
 
-
-
-
-
-
-
-      </div>
     </footer>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/01/03/Network/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            Computer Network Basics
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/01/01/Amazon_Leadership_Principles/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">Amazon Leadership Principles</div>
+      </a>
+    
+  </nav>
 
   
+   
+     
+</article>
 
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
   
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Aaron&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/travel/">travel</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">about me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
 
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
 </body>
+
 </html>

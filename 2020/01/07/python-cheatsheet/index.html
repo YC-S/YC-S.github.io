@@ -1,213 +1,99 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    python_cheatsheet |  Aaron&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
 
-<link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
 
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
-  <meta name="description" content="Contents&amp;nbsp;&amp;nbsp;&amp;nbsp; 1. Collections: &amp;nbsp; List, Dictionary, Set, Tuple, Range, Enumerate, Iterator, Generator.&amp;nbsp;&amp;nbsp;&amp;nbsp; 2. Types: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python_cheatsheet">
-<meta property="og:url" content="http://yoursite.com/2020/01/07/python-cheatsheet/index.html">
-<meta property="og:site_name" content="Aaron&#39;s Blog">
-<meta property="og:description" content="Contents&amp;nbsp;&amp;nbsp;&amp;nbsp; 1. Collections: &amp;nbsp; List, Dictionary, Set, Tuple, Range, Enumerate, Iterator, Generator.&amp;nbsp;&amp;nbsp;&amp;nbsp; 2. Types: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-08T02:30:22.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:30:22.000Z">
-<meta property="article:author" content="Aaron">
-<meta property="article:tag" content="python">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/2020/01/07/python-cheatsheet/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
-
-  <title>python_cheatsheet | Aaron's Blog</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
   
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+  
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+</html>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-python-cheatsheet"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  python_cheatsheet
+</h1>
+ 
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Aaron's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/python-cheatsheet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Aaron">
-      <meta itemprop="description" content="">
+     
+    <div class="article-meta">
+      <a href="/2020/01/07/python-cheatsheet/" class="article-date">
+  <time datetime="2020-01-08T02:30:22.000Z" itemprop="datePublished">2020-01-07</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">13.9k</span>
+        </span>
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aaron's Blog">
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">86 min</span>
+        </span>
     </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          python_cheatsheet
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-01-07 21:30:22" itemprop="dateCreated datePublished" datetime="2020-01-07T21:30:22-05:00">2020-01-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+</div>
+ 
+    </div>
       
-        <h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><p><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>1. Collections:</strong> <strong>&nbsp;</strong> <strong><a href="#list"><code>List</code></a></strong><strong>,</strong> <strong><a href="#dictionary"><code>Dictionary</code></a></strong><strong>,</strong> <strong><a href="#set"><code>Set</code></a></strong><strong>,</strong> <strong><a href="#tuple"><code>Tuple</code></a></strong><strong>,</strong> <strong><a href="#range"><code>Range</code></a></strong><strong>,</strong> <strong><a href="#enumerate"><code>Enumerate</code></a></strong><strong>,</strong> <strong><a href="#iterator"><code>Iterator</code></a></strong><strong>,</strong> <strong><a href="#generator"><code>Generator</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>2. Types:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#type"><code>Type</code></a></strong><strong>,</strong> <strong><a href="#string"><code>String</code></a></strong><strong>,</strong> <strong><a href="#regex"><code>Regular_Exp</code></a></strong><strong>,</strong> <strong><a href="#format"><code>Format</code></a></strong><strong>,</strong> <strong><a href="#numbers"><code>Numbers</code></a></strong><strong>,</strong> <strong><a href="#combinatorics"><code>Combinatorics</code></a></strong><strong>,</strong> <strong><a href="#datetime"><code>Datetime</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>3. Syntax:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#arguments"><code>Args</code></a></strong><strong>,</strong> <strong><a href="#inline"><code>Inline</code></a></strong><strong>,</strong> <strong><a href="#closure"><code>Closure</code></a></strong><strong>,</strong> <strong><a href="#decorator"><code>Decorator</code></a></strong><strong>,</strong> <strong><a href="#class"><code>Class</code></a></strong><strong>,</strong> <strong><a href="#duck-types"><code>Duck_Types</code></a></strong><strong>,</strong> <strong><a href="#enum"><code>Enum</code></a></strong><strong>,</strong> <strong><a href="#exceptions"><code>Exceptions</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>4. System:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#print"><code>Print</code></a></strong><strong>,</strong> <strong><a href="#input"><code>Input</code></a></strong><strong>,</strong> <strong><a href="#command-line-arguments"><code>Command_Line_Arguments</code></a></strong><strong>,</strong> <strong><a href="#open"><code>Open</code></a></strong><strong>,</strong> <strong><a href="#path"><code>Path</code></a></strong><strong>,</strong> <strong><a href="#oscommands"><code>Command_Execution</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>5. Data:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#json"><code>JSON</code></a></strong><strong>,</strong> <strong><a href="#pickle"><code>Pickle</code></a></strong><strong>,</strong> <strong><a href="#csv"><code>CSV</code></a></strong><strong>,</strong> <strong><a href="#sqlite"><code>SQLite</code></a></strong><strong>,</strong> <strong><a href="#bytes"><code>Bytes</code></a></strong><strong>,</strong> <strong><a href="#struct"><code>Struct</code></a></strong><strong>,</strong> <strong><a href="#array"><code>Array</code></a></strong><strong>,</strong> <strong><a href="#memory-view"><code>MemoryView</code></a></strong><strong>,</strong> <strong><a href="#deque"><code>Deque</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>6. Advanced:</strong> <strong>&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#threading"><code>Threading</code></a></strong><strong>,</strong> <strong><a href="#operator"><code>Operator</code></a></strong><strong>,</strong> <strong><a href="#introspection"><code>Introspection</code></a></strong><strong>,</strong> <strong><a href="#metaprograming"><code>Metaprograming</code></a></strong><strong>,</strong> <strong><a href="#eval"><code>Eval</code></a></strong><strong>,</strong> <strong><a href="#coroutine"><code>Coroutine</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>7. Libraries:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#progress-bar"><code>Progress_Bar</code></a></strong><strong>,</strong> <strong><a href="#plot"><code>Plot</code></a></strong><strong>,</strong> <strong><a href="#table"><code>Table</code></a></strong><strong>,</strong> <strong><a href="#curses"><code>Curses</code></a></strong><strong>,</strong> <strong><a href="#logging"><code>Logging</code></a></strong><strong>,</strong> <strong><a href="#scraping"><code>Scraping</code></a></strong><strong>,</strong> <strong><a href="#web"><code>Web</code></a></strong><strong>,</strong> <strong><a href="#profiling"><code>Profile</code></a></strong><strong>,</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <strong><a href="#numpy"><code>NumPy</code></a></strong><strong>,</strong> <strong><a href="#image"><code>Image</code></a></strong><strong>,</strong> <strong><a href="#animation"><code>Animation</code></a></strong><strong>,</strong> <strong><a href="#audio"><code>Audio</code></a></strong><strong>.</strong></p>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><p><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>1. Collections:</strong> <strong>&nbsp;</strong> <strong><a href="#list"><code>List</code></a></strong><strong>,</strong> <strong><a href="#dictionary"><code>Dictionary</code></a></strong><strong>,</strong> <strong><a href="#set"><code>Set</code></a></strong><strong>,</strong> <strong><a href="#tuple"><code>Tuple</code></a></strong><strong>,</strong> <strong><a href="#range"><code>Range</code></a></strong><strong>,</strong> <strong><a href="#enumerate"><code>Enumerate</code></a></strong><strong>,</strong> <strong><a href="#iterator"><code>Iterator</code></a></strong><strong>,</strong> <strong><a href="#generator"><code>Generator</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>2. Types:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#type"><code>Type</code></a></strong><strong>,</strong> <strong><a href="#string"><code>String</code></a></strong><strong>,</strong> <strong><a href="#regex"><code>Regular_Exp</code></a></strong><strong>,</strong> <strong><a href="#format"><code>Format</code></a></strong><strong>,</strong> <strong><a href="#numbers"><code>Numbers</code></a></strong><strong>,</strong> <strong><a href="#combinatorics"><code>Combinatorics</code></a></strong><strong>,</strong> <strong><a href="#datetime"><code>Datetime</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>3. Syntax:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#arguments"><code>Args</code></a></strong><strong>,</strong> <strong><a href="#inline"><code>Inline</code></a></strong><strong>,</strong> <strong><a href="#closure"><code>Closure</code></a></strong><strong>,</strong> <strong><a href="#decorator"><code>Decorator</code></a></strong><strong>,</strong> <strong><a href="#class"><code>Class</code></a></strong><strong>,</strong> <strong><a href="#duck-types"><code>Duck_Types</code></a></strong><strong>,</strong> <strong><a href="#enum"><code>Enum</code></a></strong><strong>,</strong> <strong><a href="#exceptions"><code>Exceptions</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>4. System:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#print"><code>Print</code></a></strong><strong>,</strong> <strong><a href="#input"><code>Input</code></a></strong><strong>,</strong> <strong><a href="#command-line-arguments"><code>Command_Line_Arguments</code></a></strong><strong>,</strong> <strong><a href="#open"><code>Open</code></a></strong><strong>,</strong> <strong><a href="#path"><code>Path</code></a></strong><strong>,</strong> <strong><a href="#oscommands"><code>Command_Execution</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>5. Data:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#json"><code>JSON</code></a></strong><strong>,</strong> <strong><a href="#pickle"><code>Pickle</code></a></strong><strong>,</strong> <strong><a href="#csv"><code>CSV</code></a></strong><strong>,</strong> <strong><a href="#sqlite"><code>SQLite</code></a></strong><strong>,</strong> <strong><a href="#bytes"><code>Bytes</code></a></strong><strong>,</strong> <strong><a href="#struct"><code>Struct</code></a></strong><strong>,</strong> <strong><a href="#array"><code>Array</code></a></strong><strong>,</strong> <strong><a href="#memory-view"><code>MemoryView</code></a></strong><strong>,</strong> <strong><a href="#deque"><code>Deque</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>6. Advanced:</strong> <strong>&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#threading"><code>Threading</code></a></strong><strong>,</strong> <strong><a href="#operator"><code>Operator</code></a></strong><strong>,</strong> <strong><a href="#introspection"><code>Introspection</code></a></strong><strong>,</strong> <strong><a href="#metaprograming"><code>Metaprograming</code></a></strong><strong>,</strong> <strong><a href="#eval"><code>Eval</code></a></strong><strong>,</strong> <strong><a href="#coroutine"><code>Coroutine</code></a></strong><strong>.</strong><br><strong>&nbsp;&nbsp;&nbsp;</strong> <strong>7. Libraries:</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  <strong><a href="#progress-bar"><code>Progress_Bar</code></a></strong><strong>,</strong> <strong><a href="#plot"><code>Plot</code></a></strong><strong>,</strong> <strong><a href="#table"><code>Table</code></a></strong><strong>,</strong> <strong><a href="#curses"><code>Curses</code></a></strong><strong>,</strong> <strong><a href="#logging"><code>Logging</code></a></strong><strong>,</strong> <strong><a href="#scraping"><code>Scraping</code></a></strong><strong>,</strong> <strong><a href="#web"><code>Web</code></a></strong><strong>,</strong> <strong><a href="#profiling"><code>Profile</code></a></strong><strong>,</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <strong><a href="#numpy"><code>NumPy</code></a></strong><strong>,</strong> <strong><a href="#image"><code>Image</code></a></strong><strong>,</strong> <strong><a href="#animation"><code>Animation</code></a></strong><strong>,</strong> <strong><a href="#audio"><code>Audio</code></a></strong><strong>.</strong></p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:     <span class="comment"># Runs main() if file wasn&#x27;t imported.</span></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
 
@@ -1207,201 +1093,465 @@
 <h2 id="Synthesizer"><a href="#Synthesizer" class="headerlink" title="Synthesizer"></a>Synthesizer</h2><h4 id="Plays-Popcorn-by-Gershon-Kingsley"><a href="#Plays-Popcorn-by-Gershon-Kingsley" class="headerlink" title="Plays Popcorn by Gershon Kingsley:"></a>Plays Popcorn by Gershon Kingsley:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $ pip3 install simpleaudio</span></span><br><span class="line"><span class="keyword">import</span> simpleaudio, math, struct</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain, repeat</span><br><span class="line">F  = <span class="number">44100</span></span><br><span class="line">P1 = <span class="string">&#x27;71♪,69,,71♪,66,,62♪,66,,59♪,,,&#x27;</span></span><br><span class="line">P2 = <span class="string">&#x27;71♪,73,,74♪,73,,74,,71,,73♪,71,,73,,69,,71♪,69,,71,,67,,71♪,,,&#x27;</span></span><br><span class="line">get_pause   = <span class="keyword">lambda</span> seconds: repeat(<span class="number">0</span>, <span class="built_in">int</span>(seconds * F))</span><br><span class="line">sin_f       = <span class="keyword">lambda</span> i, hz: math.sin(i * <span class="number">2</span> * math.pi * hz / F)</span><br><span class="line">get_wave    = <span class="keyword">lambda</span> hz, seconds: (sin_f(i, hz) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(seconds * F)))</span><br><span class="line">get_hz      = <span class="keyword">lambda</span> key: <span class="number">8.176</span> * <span class="number">2</span> ** (<span class="built_in">int</span>(key) / <span class="number">12</span>)</span><br><span class="line">parse_note  = <span class="keyword">lambda</span> note: (get_hz(note[:<span class="number">2</span>]), <span class="number">0.25</span> <span class="keyword">if</span> <span class="string">&#x27;♪&#x27;</span> <span class="keyword">in</span> note <span class="keyword">else</span> <span class="number">0.125</span>)</span><br><span class="line">get_samples = <span class="keyword">lambda</span> note: get_wave(*parse_note(note)) <span class="keyword">if</span> note <span class="keyword">else</span> get_pause(<span class="number">0.125</span>)</span><br><span class="line">samples_f   = chain.from_iterable(get_samples(n) <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">f&#x27;<span class="subst">&#123;P1&#125;</span><span class="subst">&#123;P1&#125;</span><span class="subst">&#123;P2&#125;</span>&#x27;</span>.split(<span class="string">&#x27;,&#x27;</span>))</span><br><span class="line">samples_b   = <span class="string">b&#x27;&#x27;</span>.join(struct.pack(<span class="string">&#x27;&lt;h&#x27;</span>, <span class="built_in">int</span>(f * <span class="number">30000</span>)) <span class="keyword">for</span> f <span class="keyword">in</span> samples_f)</span><br><span class="line">simpleaudio.play_buffer(samples_b, <span class="number">1</span>, <span class="number">2</span>, F)</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="Basic-Script-Template"><a href="#Basic-Script-Template" class="headerlink" title="Basic Script Template"></a>Basic Script Template</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Usage: .py</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> make_dataclass</span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment">##  UTIL</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">return</span> file.readlines()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Basic-Script-Template"><a href="#Basic-Script-Template" class="headerlink" title="Basic Script Template"></a>Basic Script Template</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Usage: .py</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> make_dataclass</span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment">##  UTIL</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">return</span> file.readlines()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
     </div>
-
-    
-    
     
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/01/06/%E6%8F%90%E9%97%AE%E7%9A%84%E8%89%BA%E6%9C%AF/" rel="prev" title="提问的艺术">
-      <i class="fa fa-chevron-left"></i> 提问的艺术
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/08/Java%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE/" rel="next" title="Java学习建议">
-      Java学习建议 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
+    <!-- copyright -->
     
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
           
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Contents"><span class="nav-number">1.</span> <span class="nav-text">Contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main"><span class="nav-number">2.</span> <span class="nav-text">Main</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dictionary"><span class="nav-number">4.</span> <span class="nav-text">Dictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Counter"><span class="nav-number">4.1.</span> <span class="nav-text">Counter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">5.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Frozen-Set"><span class="nav-number">5.1.</span> <span class="nav-text">Frozen Set</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuple"><span class="nav-number">6.</span> <span class="nav-text">Tuple</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Named-Tuple"><span class="nav-number">6.1.</span> <span class="nav-text">Named Tuple</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Range"><span class="nav-number">7.</span> <span class="nav-text">Range</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enumerate"><span class="nav-number">8.</span> <span class="nav-text">Enumerate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">9.</span> <span class="nav-text">Iterator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Itertools"><span class="nav-number">9.1.</span> <span class="nav-text">Itertools</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator"><span class="nav-number">10.</span> <span class="nav-text">Generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type"><span class="nav-number">11.</span> <span class="nav-text">Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Some-types-do-not-have-built-in-names-so-they-must-be-imported"><span class="nav-number">11.0.1.</span> <span class="nav-text">Some types do not have built-in names, so they must be imported:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ABC"><span class="nav-number">11.1.</span> <span class="nav-text">ABC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">12.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Property-Methods"><span class="nav-number">12.1.</span> <span class="nav-text">Property Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regex"><span class="nav-number">13.</span> <span class="nav-text">Regex</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Match-Object"><span class="nav-number">13.1.</span> <span class="nav-text">Match Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Special-Sequences"><span class="nav-number">13.2.</span> <span class="nav-text">Special Sequences</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Format"><span class="nav-number">14.</span> <span class="nav-text">Format</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Attributes"><span class="nav-number">14.1.</span> <span class="nav-text">Attributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Options"><span class="nav-number">14.2.</span> <span class="nav-text">General Options</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Strings"><span class="nav-number">14.3.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Numbers"><span class="nav-number">14.4.</span> <span class="nav-text">Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Floats"><span class="nav-number">14.5.</span> <span class="nav-text">Floats</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Comparison-of-float-presentation-types"><span class="nav-number">14.5.1.</span> <span class="nav-text">Comparison of float presentation types:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ints"><span class="nav-number">14.6.</span> <span class="nav-text">Ints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numbers-1"><span class="nav-number">15.</span> <span class="nav-text">Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Types"><span class="nav-number">15.1.</span> <span class="nav-text">Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Functions"><span class="nav-number">15.2.</span> <span class="nav-text">Basic Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-number">15.3.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistics"><span class="nav-number">15.4.</span> <span class="nav-text">Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random"><span class="nav-number">15.5.</span> <span class="nav-text">Random</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bin-Hex"><span class="nav-number">15.6.</span> <span class="nav-text">Bin, Hex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitwise-Operators"><span class="nav-number">15.7.</span> <span class="nav-text">Bitwise Operators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Combinatorics"><span class="nav-number">16.</span> <span class="nav-text">Combinatorics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datetime"><span class="nav-number">17.</span> <span class="nav-text">Datetime</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructors"><span class="nav-number">17.1.</span> <span class="nav-text">Constructors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Now"><span class="nav-number">17.2.</span> <span class="nav-text">Now</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Timezone"><span class="nav-number">17.3.</span> <span class="nav-text">Timezone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encode"><span class="nav-number">17.4.</span> <span class="nav-text">Encode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Decode"><span class="nav-number">17.5.</span> <span class="nav-text">Decode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Format-1"><span class="nav-number">17.6.</span> <span class="nav-text">Format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arithmetics"><span class="nav-number">17.7.</span> <span class="nav-text">Arithmetics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arguments"><span class="nav-number">18.</span> <span class="nav-text">Arguments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inside-Function-Call"><span class="nav-number">18.1.</span> <span class="nav-text">Inside Function Call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inside-Function-Definition"><span class="nav-number">18.2.</span> <span class="nav-text">Inside Function Definition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Splat-Operator"><span class="nav-number">19.</span> <span class="nav-text">Splat Operator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inside-Function-Call-1"><span class="nav-number">19.1.</span> <span class="nav-text">Inside Function Call</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Is-the-same-as"><span class="nav-number">19.1.1.</span> <span class="nav-text">Is the same as:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inside-Function-Definition-1"><span class="nav-number">19.2.</span> <span class="nav-text">Inside Function Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Legal-argument-combinations"><span class="nav-number">19.2.1.</span> <span class="nav-text">Legal argument combinations:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Uses"><span class="nav-number">19.3.</span> <span class="nav-text">Other Uses</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inline"><span class="nav-number">20.</span> <span class="nav-text">Inline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda"><span class="nav-number">20.1.</span> <span class="nav-text">Lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comprehension"><span class="nav-number">20.2.</span> <span class="nav-text">Comprehension</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Is-the-same-as-1"><span class="nav-number">20.2.1.</span> <span class="nav-text">Is the same as:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-Filter-Reduce"><span class="nav-number">20.3.</span> <span class="nav-text">Map, Filter, Reduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Any-All"><span class="nav-number">20.4.</span> <span class="nav-text">Any, All</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#If-Else"><span class="nav-number">20.5.</span> <span class="nav-text">If - Else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Namedtuple-Enum-Dataclass"><span class="nav-number">20.6.</span> <span class="nav-text">Namedtuple, Enum, Dataclass</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Closure"><span class="nav-number">21.</span> <span class="nav-text">Closure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Partial"><span class="nav-number">21.1.</span> <span class="nav-text">Partial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nonlocal"><span class="nav-number">21.2.</span> <span class="nav-text">Nonlocal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decorator"><span class="nav-number">22.</span> <span class="nav-text">Decorator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Debugger-Example"><span class="nav-number">22.1.</span> <span class="nav-text">Debugger Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LRU-Cache"><span class="nav-number">22.2.</span> <span class="nav-text">LRU Cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parametrized-Decorator"><span class="nav-number">22.3.</span> <span class="nav-text">Parametrized Decorator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">23.</span> <span class="nav-text">Class</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Str-use-cases"><span class="nav-number">23.0.1.</span> <span class="nav-text">Str() use cases:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Repr-use-cases"><span class="nav-number">23.0.2.</span> <span class="nav-text">Repr() use cases:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor-Overloading"><span class="nav-number">23.1.</span> <span class="nav-text">Constructor Overloading</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inheritance"><span class="nav-number">23.2.</span> <span class="nav-text">Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Inheritance"><span class="nav-number">23.3.</span> <span class="nav-text">Multiple Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Property"><span class="nav-number">23.4.</span> <span class="nav-text">Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataclass"><span class="nav-number">23.5.</span> <span class="nav-text">Dataclass</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Inline-1"><span class="nav-number">23.5.1.</span> <span class="nav-text">Inline:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slots"><span class="nav-number">23.6.</span> <span class="nav-text">Slots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy"><span class="nav-number">23.7.</span> <span class="nav-text">Copy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duck-Types"><span class="nav-number">24.</span> <span class="nav-text">Duck Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparable"><span class="nav-number">24.1.</span> <span class="nav-text">Comparable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hashable"><span class="nav-number">24.2.</span> <span class="nav-text">Hashable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sortable"><span class="nav-number">24.3.</span> <span class="nav-text">Sortable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterator-1"><span class="nav-number">24.4.</span> <span class="nav-text">Iterator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-has-many-different-iterator-objects"><span class="nav-number">24.4.1.</span> <span class="nav-text">Python has many different iterator objects:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Callable"><span class="nav-number">24.5.</span> <span class="nav-text">Callable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Manager"><span class="nav-number">24.6.</span> <span class="nav-text">Context Manager</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterable-Duck-Types"><span class="nav-number">25.</span> <span class="nav-text">Iterable Duck Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterable"><span class="nav-number">25.1.</span> <span class="nav-text">Iterable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collection"><span class="nav-number">25.2.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sequence"><span class="nav-number">25.3.</span> <span class="nav-text">Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections-abc-Sequence"><span class="nav-number">25.4.</span> <span class="nav-text">Collections.abc.Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Table-of-required-and-automatically-available-special-methods"><span class="nav-number">25.4.1.</span> <span class="nav-text">Table of required and automatically available special methods:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enum"><span class="nav-number">26.</span> <span class="nav-text">Enum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inline-2"><span class="nav-number">26.1.</span> <span class="nav-text">Inline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions-can-not-be-values-so-they-must-be-wrapped"><span class="nav-number">26.1.1.</span> <span class="nav-text">Functions can not be values, so they must be wrapped:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exceptions"><span class="nav-number">27.</span> <span class="nav-text">Exceptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Example"><span class="nav-number">27.1.</span> <span class="nav-text">Basic Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complex-Example"><span class="nav-number">27.2.</span> <span class="nav-text">Complex Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Catching-Exceptions"><span class="nav-number">27.3.</span> <span class="nav-text">Catching Exceptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Raising-Exceptions"><span class="nav-number">27.4.</span> <span class="nav-text">Raising Exceptions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Re-raising-caught-exception"><span class="nav-number">27.4.1.</span> <span class="nav-text">Re-raising caught exception:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Useful-built-in-exceptions"><span class="nav-number">27.4.2.</span> <span class="nav-text">Useful built-in exceptions:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Common-Built-in-Exceptions"><span class="nav-number">27.5.</span> <span class="nav-text">Common Built-in Exceptions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections-and-their-exceptions"><span class="nav-number">27.5.1.</span> <span class="nav-text">Collections and their exceptions:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-defined-Exceptions"><span class="nav-number">27.6.</span> <span class="nav-text">User-defined Exceptions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Print"><span class="nav-number">28.</span> <span class="nav-text">Print</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pretty-Print"><span class="nav-number">28.1.</span> <span class="nav-text">Pretty Print</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">29.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-Line-Arguments"><span class="nav-number">30.</span> <span class="nav-text">Command Line Arguments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Argparse"><span class="nav-number">30.1.</span> <span class="nav-text">Argparse</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Open"><span class="nav-number">31.</span> <span class="nav-text">Open</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modes"><span class="nav-number">31.1.</span> <span class="nav-text">Modes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exceptions-1"><span class="nav-number">31.2.</span> <span class="nav-text">Exceptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File-Object"><span class="nav-number">31.3.</span> <span class="nav-text">File Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Text-from-File"><span class="nav-number">31.4.</span> <span class="nav-text">Read Text from File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Text-to-File"><span class="nav-number">31.5.</span> <span class="nav-text">Write Text to File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Path"><span class="nav-number">32.</span> <span class="nav-text">Path</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DirEntry"><span class="nav-number">32.1.</span> <span class="nav-text">DirEntry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path-Object"><span class="nav-number">32.2.</span> <span class="nav-text">Path Object</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS-Commands"><span class="nav-number">33.</span> <span class="nav-text">OS Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Files-and-Directories"><span class="nav-number">33.1.</span> <span class="nav-text">Files and Directories</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell-Commands"><span class="nav-number">33.2.</span> <span class="nav-text">Shell Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-subprocess"><span class="nav-number">33.2.1.</span> <span class="nav-text">Using subprocess:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">34.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Object-from-JSON-File"><span class="nav-number">34.1.</span> <span class="nav-text">Read Object from JSON File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Object-to-JSON-File"><span class="nav-number">34.2.</span> <span class="nav-text">Write Object to JSON File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pickle"><span class="nav-number">35.</span> <span class="nav-text">Pickle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Object-from-File"><span class="nav-number">35.1.</span> <span class="nav-text">Read Object from File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Object-to-File"><span class="nav-number">35.2.</span> <span class="nav-text">Write Object to File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSV"><span class="nav-number">36.</span> <span class="nav-text">CSV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read"><span class="nav-number">36.1.</span> <span class="nav-text">Read</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write"><span class="nav-number">36.2.</span> <span class="nav-text">Write</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameters"><span class="nav-number">36.3.</span> <span class="nav-text">Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dialects"><span class="nav-number">36.4.</span> <span class="nav-text">Dialects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Rows-from-CSV-File"><span class="nav-number">36.5.</span> <span class="nav-text">Read Rows from CSV File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Rows-to-CSV-File"><span class="nav-number">36.6.</span> <span class="nav-text">Write Rows to CSV File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLite"><span class="nav-number">37.</span> <span class="nav-text">SQLite</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect"><span class="nav-number">37.1.</span> <span class="nav-text">Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-1"><span class="nav-number">37.2.</span> <span class="nav-text">Read</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-1"><span class="nav-number">37.3.</span> <span class="nav-text">Write</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Or"><span class="nav-number">37.3.1.</span> <span class="nav-text">Or:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Placeholders"><span class="nav-number">37.4.</span> <span class="nav-text">Placeholders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">37.5.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL"><span class="nav-number">37.6.</span> <span class="nav-text">MySQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bytes"><span class="nav-number">38.</span> <span class="nav-text">Bytes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encode-1"><span class="nav-number">38.1.</span> <span class="nav-text">Encode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Decode-1"><span class="nav-number">38.2.</span> <span class="nav-text">Decode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Bytes-from-File"><span class="nav-number">38.3.</span> <span class="nav-text">Read Bytes from File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Bytes-to-File"><span class="nav-number">38.4.</span> <span class="nav-text">Write Bytes to File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Struct"><span class="nav-number">39.</span> <span class="nav-text">Struct</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">39.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Format-2"><span class="nav-number">39.2.</span> <span class="nav-text">Format</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#For-standard-sizes-start-format-string-with"><span class="nav-number">39.2.1.</span> <span class="nav-text">For standard sizes start format string with:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Integer-types-Use-capital-letter-for-unsigned-type-Standard-sizes-are-in-brackets"><span class="nav-number">39.2.2.</span> <span class="nav-text">Integer types. Use capital letter for unsigned type. Standard sizes are in brackets:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Floating-point-types"><span class="nav-number">39.2.3.</span> <span class="nav-text">Floating point types:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">40.</span> <span class="nav-text">Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-View"><span class="nav-number">41.</span> <span class="nav-text">Memory View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Decode-2"><span class="nav-number">41.1.</span> <span class="nav-text">Decode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deque"><span class="nav-number">42.</span> <span class="nav-text">Deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Threading"><span class="nav-number">43.</span> <span class="nav-text">Threading</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread"><span class="nav-number">43.1.</span> <span class="nav-text">Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock"><span class="nav-number">43.2.</span> <span class="nav-text">Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Or-1"><span class="nav-number">43.2.1.</span> <span class="nav-text">Or:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-Pool-Executor"><span class="nav-number">43.3.</span> <span class="nav-text">Thread Pool Executor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Future"><span class="nav-number">43.3.1.</span> <span class="nav-text">Future:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">43.4.</span> <span class="nav-text">Queue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operator"><span class="nav-number">44.</span> <span class="nav-text">Operator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introspection"><span class="nav-number">45.</span> <span class="nav-text">Introspection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Variables"><span class="nav-number">45.1.</span> <span class="nav-text">Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attributes-1"><span class="nav-number">45.2.</span> <span class="nav-text">Attributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameters-1"><span class="nav-number">45.3.</span> <span class="nav-text">Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metaprograming"><span class="nav-number">46.</span> <span class="nav-text">Metaprograming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-1"><span class="nav-number">46.1.</span> <span class="nav-text">Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Meta-Class"><span class="nav-number">46.2.</span> <span class="nav-text">Meta Class</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Or-2"><span class="nav-number">46.2.1.</span> <span class="nav-text">Or:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metaclass-Attribute"><span class="nav-number">46.3.</span> <span class="nav-text">Metaclass Attribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Diagram"><span class="nav-number">46.4.</span> <span class="nav-text">Type Diagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inheritance-Diagram"><span class="nav-number">46.5.</span> <span class="nav-text">Inheritance Diagram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Eval"><span class="nav-number">47.</span> <span class="nav-text">Eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coroutine"><span class="nav-number">48.</span> <span class="nav-text">Coroutine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Helper-Decorator"><span class="nav-number">48.1.</span> <span class="nav-text">Helper Decorator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipeline-Example"><span class="nav-number">48.2.</span> <span class="nav-text">Pipeline Example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Libraries"><span class="nav-number"></span> <span class="nav-text">Libraries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Progress-Bar"><span class="nav-number">1.</span> <span class="nav-text">Progress Bar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plot"><span class="nav-number">2.</span> <span class="nav-text">Plot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Table"><span class="nav-number">3.</span> <span class="nav-text">Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Prints-a-CSV-file-as-an-ASCII-table"><span class="nav-number">3.0.1.</span> <span class="nav-text">Prints a CSV file as an ASCII table:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Curses"><span class="nav-number">4.</span> <span class="nav-text">Curses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Clears-the-terminal-prints-a-message-and-waits-for-an-ESC-key-press"><span class="nav-number">4.0.1.</span> <span class="nav-text">Clears the terminal, prints a message and waits for an ESC key press:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logging"><span class="nav-number">5.</span> <span class="nav-text">Logging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exceptions-2"><span class="nav-number">5.1.</span> <span class="nav-text">Exceptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotation"><span class="nav-number">5.2.</span> <span class="nav-text">Rotation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retention"><span class="nav-number">5.3.</span> <span class="nav-text">Retention</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scraping"><span class="nav-number">6.</span> <span class="nav-text">Scraping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrapes-Python%E2%80%99s-URL-version-number-and-logo-from-Wikipedia-page"><span class="nav-number">6.0.1.</span> <span class="nav-text">Scrapes Python’s URL, version number and logo from Wikipedia page:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web"><span class="nav-number">7.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Run"><span class="nav-number">7.1.</span> <span class="nav-text">Run</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-Request"><span class="nav-number">7.2.</span> <span class="nav-text">Static Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Request"><span class="nav-number">7.3.</span> <span class="nav-text">Dynamic Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-Request"><span class="nav-number">7.4.</span> <span class="nav-text">REST Request</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Test"><span class="nav-number">7.4.1.</span> <span class="nav-text">Test:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Profiling"><span class="nav-number">8.</span> <span class="nav-text">Profiling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stopwatch"><span class="nav-number">8.1.</span> <span class="nav-text">Stopwatch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#High-performance"><span class="nav-number">8.1.1.</span> <span class="nav-text">High performance:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Timing-a-Snippet"><span class="nav-number">8.2.</span> <span class="nav-text">Timing a Snippet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Profiling-by-Line"><span class="nav-number">8.3.</span> <span class="nav-text">Profiling by Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call-Graph"><span class="nav-number">8.4.</span> <span class="nav-text">Call Graph</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generates-a-PNG-image-of-a-call-graph-with-highlighted-bottlenecks"><span class="nav-number">8.4.1.</span> <span class="nav-text">Generates a PNG image of a call graph with highlighted bottlenecks:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NumPy"><span class="nav-number">9.</span> <span class="nav-text">NumPy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Indexing"><span class="nav-number">9.1.</span> <span class="nav-text">Indexing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broadcasting"><span class="nav-number">9.2.</span> <span class="nav-text">Broadcasting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-If-array-shapes-differ-in-length-left-pad-the-shorter-shape-with-ones"><span class="nav-number">9.2.1.</span> <span class="nav-text">1. If array shapes differ in length, left-pad the shorter shape with ones:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-If-any-dimensions-differ-in-size-expand-the-ones-that-have-size-1-by-duplicating-their-elements"><span class="nav-number">9.2.2.</span> <span class="nav-text">2. If any dimensions differ in size, expand the ones that have size 1 by duplicating their elements:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-If-neither-non-matching-dimension-has-size-1-rise-an-error"><span class="nav-number">9.2.3.</span> <span class="nav-text">3. If neither non-matching dimension has size 1, rise an error.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2"><span class="nav-number">9.3.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#For-each-point-returns-index-of-its-nearest-point-0-1-0-6-0-8-gt-1-2-1"><span class="nav-number">9.3.1.</span> <span class="nav-text">For each point returns index of its nearest point ([0.1, 0.6, 0.8] &#x3D;&gt; [1, 2, 1]):</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image"><span class="nav-number">10.</span> <span class="nav-text">Image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modes-1"><span class="nav-number">10.1.</span> <span class="nav-text">Modes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">10.2.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creates-a-PNG-image-of-a-rainbow-gradient"><span class="nav-number">10.2.1.</span> <span class="nav-text">Creates a PNG image of a rainbow gradient:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adds-noise-to-a-PNG-image"><span class="nav-number">10.2.2.</span> <span class="nav-text">Adds noise to a PNG image:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Drawing"><span class="nav-number">10.3.</span> <span class="nav-text">Drawing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">11.</span> <span class="nav-text">Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creates-a-GIF-of-a-bouncing-ball"><span class="nav-number">11.0.1.</span> <span class="nav-text">Creates a GIF of a bouncing ball:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Audio"><span class="nav-number">12.</span> <span class="nav-text">Audio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Values"><span class="nav-number">12.1.</span> <span class="nav-text">Sample Values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Float-Samples-from-WAV-File"><span class="nav-number">12.2.</span> <span class="nav-text">Read Float Samples from WAV File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Float-Samples-to-WAV-File"><span class="nav-number">12.3.</span> <span class="nav-text">Write Float Samples to WAV File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples-1"><span class="nav-number">12.4.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Saves-a-sine-wave-to-a-mono-WAV-file"><span class="nav-number">12.4.1.</span> <span class="nav-text">Saves a sine wave to a mono WAV file:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adds-noise-to-a-mono-WAV-file"><span class="nav-number">12.4.2.</span> <span class="nav-text">Adds noise to a mono WAV file:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Plays-a-WAV-file"><span class="nav-number">12.4.3.</span> <span class="nav-text">Plays a WAV file:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Text-to-Speech"><span class="nav-number">12.5.</span> <span class="nav-text">Text to Speech</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synthesizer"><span class="nav-number">13.</span> <span class="nav-text">Synthesizer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Plays-Popcorn-by-Gershon-Kingsley"><span class="nav-number">13.0.1.</span> <span class="nav-text">Plays Popcorn by Gershon Kingsley:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Script-Template"><span class="nav-number">14.</span> <span class="nav-text">Basic Script Template</span></a></li></ol></div>
       </div>
-      <!--/noindex-->
-      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Aaron</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">232</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">90</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
 </div>
 
-
-
-      </div>
-
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/01/07/python-cheatsheet/" alt="微信分享二维码">
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Aaron</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
-  </div>
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </div>
 
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
-
-
-
-
-
-
-      </div>
     </footer>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/01/08/Java%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            Java学习建议
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/01/06/%E6%8F%90%E9%97%AE%E7%9A%84%E8%89%BA%E6%9C%AF/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">提问的艺术</div>
+      </a>
+    
+  </nav>
 
   
+   
+     
+</article>
 
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
   
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Aaron&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/travel/">travel</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">about me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
 
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
 </body>
+
 </html>
