@@ -165,6 +165,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7Clojure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuanchen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuanchen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/11/%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7Clojure/" class="post-title-link" itemprop="url">如何评价Clojure</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-11 17:36:40 / Modified: 17:37:52" itemprop="dateCreated datePublished" datetime="2020-04-11T17:36:40-04:00">2020-04-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-Clojure能够吸引人的很重要一点是它是JVM之上的语言，这个决定非常关键。"><a href="#1-Clojure能够吸引人的很重要一点是它是JVM之上的语言，这个决定非常关键。" class="headerlink" title="1.Clojure能够吸引人的很重要一点是它是JVM之上的语言，这个决定非常关键。"></a><strong>1.Clojure能够吸引人的很重要一点是它是JVM之上的语言，这个决定非常关键</strong>。</h4><p>首先，因为根植于JVM之上，并且做到了跟Java语言的相互调用，它能吸引很多成熟的Java开发者。其次，它可以使用Java社区丰富的开源软件，不需要从头去构建一个社区，你可以看到很多Clojure开源代码都是简单地包装Java的开源包，但是通过Clojure高度抽象简单的语法提供更便利的使用的方式；<br>第三，由于JVM平台本身的高度成熟和优化，clojure的编译器生成的byte code跟Java编译器生成的byte code并无二致（不完全是），它的性能和稳定性也能马上得到保证，这比从头构建一个新平台成本低得多。</p>
+<p>构建于JVM之上，Clojure就是一门“严肃”的语言，而非很多人眼中的Lisp“玩具”语言，你学习后可以马上使用并且实践。但是Clojure又是Lisp方言，Lisp的神奇能力它还都保留，这样兼具美学和实用的语言如何让人不爱？我相信很多熟悉Scheme之类方言的童鞋，并且有Java背景的，都会对Clojure有相见恨晚的感觉。</p>
+<h4 id="2-Clojure的设计原则可以概括成5个词汇：简单、专注、实用、一致和清晰。这不是我概括的，而是《The-joy-of-clojure》概括的。"><a href="#2-Clojure的设计原则可以概括成5个词汇：简单、专注、实用、一致和清晰。这不是我概括的，而是《The-joy-of-clojure》概括的。" class="headerlink" title="2.Clojure的设计原则可以概括成5个词汇：简单、专注、实用、一致和清晰。这不是我概括的，而是《The joy of clojure》概括的。"></a><strong>2.Clojure的设计原则可以概括成5个词汇：简单、专注、实用、一致和清晰。这不是我概括的，而是《The joy of clojure》概括的。</strong></h4><p>（1）简单： 鼓励纯函数，极简的语法（少数special form），个人也认为clojure不能算是多范式的语言（有部分OO特性），为了支持多范式引入的复杂度，我们在C++和Scala身上都看到了。<br>（2）专注：前缀运算符不需要去考虑优先级，也没有什么菱形继承的问题，动态类型系统（有利有弊），REPL提供的探索式编程方法（告别修改/编译/运行的死循环，所见即所得）。<br>（3）实用：前面提到，构建在JVM之上，跟Java语言的互操作非常容易。直接调用Java方法，不去发明一套新的调用语法，努力规避Java语言中繁琐的地方(doto,箭头宏等等）。<br>（4）清晰：纯函数（前面提到），immutable var，immutable数据结构，STM避免锁问题。不可变减少了心智的负担，降低了多线程编程的难度，纯函数也更利于测试和调试。<br>（5）一致：语法的一致性：例如doseq和for宏类似，都支持destructring,支持相同的guard语句（when,while）。数据结构的一致性：sequence抽象之上的各种高阶函数。</p>
+<p>具体到STM，我个人认为这个特性在日常编程中，其实你用到的机会不多。在web编程里，你的并发模型Web Container已经帮你处理（tomcat,jetty），事务也是数据库帮你处理，几乎找不到场合去使用STM。这个特性在做一些中间件或者底层framework的时候才可能用到。这个特性的设计上面已经提到，跟clojure的设计目标是紧密相关的，跟immutable数据结构也是密不可分，同时它也不是没有代价，事务历史记录和慢事务频繁回滚的代价，有时候你还是需要退回去使用Java那套锁机制，庆幸的是Clojure不阻止你去使用，并且提供了类似locking这样的宏来方便你使用。</p>
+<h4 id="3-Scheme我对它的了解也就是做过SICP的习题。"><a href="#3-Scheme我对它的了解也就是做过SICP的习题。" class="headerlink" title="3.Scheme我对它的了解也就是做过SICP的习题。"></a>3.Scheme我对它的了解也就是做过SICP的习题。</h4><p>粗粗看过《Programming Scheme》，两者对比的优缺点似乎谈不上来。需要对Scheme更熟悉的专家来做个对比。</p>
+<p><strong>Clojure的设计缺陷不能说是缺陷，这是由于它设计的目标决定的，有得必有失</strong>。</p>
+<p>首先还是JVM，基于JVM有种种好处，但是JVM的启动速度实在悲剧，因此用Clojure写一些小的script处理日常事务，显得还是不够得心应手，这样的工作我还是用Ruby，Python的脚本语言来搞定更便捷。不过目前Clojure有一些其他语言之上的实现，比如<a href="https://link.zhihu.com/?target=https%3A//github.com/rouge-lang/rouge">rouge-lang/rouge · GitHub</a> 和 <a href="https://link.zhihu.com/?target=https%3A//github.com/halgari/clojure-py">halgari/clojure-py 路 GitHub</a>  这些实现应该会比JVM的启动快很多（抱歉，我没测试过）。</p>
+<p>不仅如此，因为Clojure跟JVM平台的绑定如此之深，并且为了真正发挥Clojure的威力，你还需要去熟悉Java平台的东西，熟悉Java语言、类库、内存模型、GC优化、多线程和网络编程、开源类库等等。可以这样认为：<strong>想成为一个好的Clojure程序员，首先需要是一名好的Java程序员</strong>。这也一定程度上阻碍了Clojure的推广，提高了学习成本。</p>
+<p>其次，Clojure的API设计上，有时候不符合你的直觉，而是符合Clojure的哲学，比如contains?函数对vector等数组型集合的调用上。关于这一点，Rich的回答是“<strong>Elegance and familiarity are orthogonal.</strong>”，也就是优雅和熟悉是正交关系的。保持API内在的一致性，比直觉的“熟悉”更重要。Clojure不妥协于你的“直觉”。</p>
+<p>第三，弱类型的好处足够多，灵活，减少声明代码，适合探索式编程；同样，坏处也不是没有，没有类型保障，错误可能要等到运行时才能发现，静态代码检查工具也没有办法帮你发现，这就需要你一定程度的测试代码来保证运行时行为。</p>
+<p>第四，性能上，虽然clojure生成的字节码已经很高效，也有type hint这样的技术来帮助提升性能，但是会有不少的转型(checkcast)、装箱和拆箱（boxing and unboxing）以及类型判断分支跳转的多余指令，这在一些性能敏感的应用里可能会暴露出来。尽管我认为大多数网站型的应用瓶颈都会落在IO上。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%A3%80%E5%AF%9F%E6%97%A5%E6%8A%A5%E7%A7%B0%E3%80%8E%E7%A6%81%E9%A3%9F%E7%8C%AB%E7%8B%97%E8%82%89%E3%80%8F%E7%AB%8B%E6%B3%95%E6%9C%89%E7%A0%B4%E5%86%B0%E6%84%8F%E4%B9%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1282,80 +1351,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E7%89%9B%E9%80%BC%E7%A8%8B%E5%BA%8F%E5%91%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuanchen">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuanchen's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/03/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E7%89%9B%E9%80%BC%E7%A8%8B%E5%BA%8F%E5%91%98/" class="post-title-link" itemprop="url">如何成为牛逼程序员</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-03 21:25:56 / Modified: 21:43:45" itemprop="dateCreated datePublished" datetime="2020-04-03T21:25:56-04:00">2020-04-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我有一个想法，不一定对。</p>
-<p>第一篇文章（<a target="_blank" rel="noopener" href="http://zhuanlan.zhihu.com/vczh-nichijou/19796491">第一篇文章就贡献给投票了 - vczh的日常 - 知乎专栏</a>）果然给了我灵感耶，标题的图片就是从评论里截出来的。为了以后回答那些层出不穷的月经问题，我决定写下这么一篇文章，讲一下我对牛逼的程序员的理解。为什么我要讲这个呢，当然首先我还是觉得自己是很牛逼的，不然我就不会讲这个了（误</p>
-<p>一个牛逼的程序员和一个不牛逼的程序员的区别到底是什么呢？懂的算法多就牛逼吗？懂的API多就牛逼吗？或者懂的工具多机会牛逼吗？其实牛逼不能用这些简单的指标来定义。我们觉得一个人牛逼，通常指的是那个人懂的东西非常多。不过懂的东西多而写出来的程序很蠢的话，或者半天搞不定一个问题，我们就会开始怀疑我们的判断了。那到底什么是牛逼呢？</p>
-<p>其实这就跟聪明区别于傻逼一样——直觉准！</p>
-<p>直觉一半来自于举一反三，举一反三一半来自于那个一，而当你对很多问题都有那个一的时候显然是因为你这些问题都碰过，碰过问题跟只学会知识还不一样，你还要解决他们。那如何才能碰过并解决大量的问题呢？唯一的方法就是熬过那一大段时间，通常是十几二十年。你光是聪明，可以学会很多东西，但是由于实践的时间不够，仍然不足已成为一个牛逼的程序员。<strong>所以牛逼本身不是一个可以速成的东西，它是知识和经验的积累，然后是运用你的知识和经验的熟练程度。</strong></p>
-<p>我一直都跟别人推荐这篇文章（<a href="http://link.zhihu.com/?target=http%3A//www.geekonomics10000.com/317">成年人的思想还能进步么？ « 学而时嘻之</a>）讲的就是如何变成一个牛逼的人的。上面说到要变牛逼首先一定要花费这么多的时间。那这么多的时间难道光刷那些傻逼ACM题目就可以变牛逼吗？你刷半年可以，刷十年呢？显然刷ACM题目只能让你从傻逼变成菜鸟，后面还是有很长的路要走的。文章给我们的一个重要的结论就是，<strong>你自己在利用这一大段时间练习的时候，每次都要给自己足够难但是又刚好可以做出来的题目来做</strong>。等到你把这个题目做出来，你就会觉得很多问题便容易了，这个时候你重复的解决他们只能得到很小的锻炼，于是你要自己寻找更难的题目，一个足够难但是又刚好可以做出来的题目。当然找到一个好的题目也不是那么容易的，反正年轻的时候时间都是不值钱的，<strong>等你试图做几个题目发现自己根本做不出来的时候，你就知道什么叫做刚好可以做出来了</strong>。</p>
-<p>于是逼自己过了这么多年，就算跟我一样整天搞windows，遇到需要用linux的时候也只是问问人看看说明书（不过linux好像没有说明书）的事情了。因为本质困难的东西你都会了，剩下的这些操作问题，只是熟练不熟练的区别而已。</p>
-<p>不过到底什么是足够难又刚好可以做出来呢？其实我觉得我小时候编程的学习过程就是很好的一个例子。刚开始自学的时候的确难度是很大，学会了while循环半年后我还总是控制不住自己通过复制代码来做循环的事情，这种感觉就跟哑巴英语一样，你知道那个东西，但是用的时候就是想不起来。当然随着训练的逐步加深，这是可以克服的。</p>
-<p>当时我是沿着这么一个路线来走的。首先会用函数画几个图做做模糊啊锐化之类的简单滤镜，其实有算法抄那就是几行代码的实情。然后就开始学习如何写出高性能的程序。自己觉得性能差不多了就开始折腾怎么实现一个RPG。每一步大概都花费了几个月，而且步与步之间的跨越是很大的。当然具体到我当时的情况，难免最后会弄失败，这主要是由于思路的问题，因为没人告诉我要怎么做。我记得很清楚初三的时候做一个RPG，结果在VB6里面试图用Picture控件去搞，不死就怪了。过了两年我终于知道什么是靠谱的方法了，于是就做出了这个（<a href="http://link.zhihu.com/?target=http%3A//bbs.gameres.com/thread_5391_1_1.html">作品：《天地传》</a>）。这个链接还能下载到我当初的Delphi写的代码，小时候的代码就是烂，尽管看起来也有点复杂了，啊哈哈哈。</p>
-<p>游戏做完了不能满足于做完，就要开始想模块化的问题了。怎么做一个游戏用的GUI库？怎么做一个游戏用的脚本引擎？怎么给他们制作工具？怎么写一个游戏引擎？怎么写一个RPG Maker？每一个问题想做简单也可以做简单，想做复杂也可以做的很复杂。于是当我问题一个一个的解决之后，都已经来了M$RA了，这也是我为什么后来会做<a href="http://link.zhihu.com/?target=http%3A//www.gaclib.net">GacUI</a> 和各种奇怪的编译器研究各种奇怪的类型系统的原因了。当然现在做到这地步都不是仅仅为了游戏而做，当时当你做出一个游戏可以用得东西之后，你就要开始想怎么把它做成通用的，使得开发软件也可以用。<strong>每一个问题都最终上升了一个台阶，而你觉得容易的问题就不要浪费时间去解决了</strong>。</p>
-<p>我觉得这应该给大家指出了一个道路，这也是为什么我觉得那些花费那么大精力去研究工具的人很浪费时间的原因了。工作要用的事情就应该占用工作时间去研究，课余的时间当然是花在提高自己的<strong>元编程水平</strong>上：大概就是算法啊、架构啊、设计模式啊、单元测试啊各种任何语言都用得上的东西了。不过为了训练这些能力，你总得通过真刀真枪的解决什么困难的问题来得到。于是最好的选择就是big clean problem了。这些问题都是定义很清晰但是非常复杂的问题，譬如说我大四尝试并最终成功的一个问题——怎么把C语言编译成x86。当然这只是一个问题，如果你想把它做得实用，要么你要知道怎么写PE文件，要么你要知道怎么跟C++的数据结构和函数指针无缝的结合起来，这就不那么clean了。解决这些边角问题纯粹靠资料，而跟你的水平是没有关系的，如果没有兴趣的话完全没有需要去解决它。<strong>当然解决它也不是没有好处的，因为解决了你就弄明白了</strong>，你就可以用这些知识来解决你未来的工作里可能会遇到的牛角尖问题了。不过这永远不应该成为你课余学习编程的动力，这就像附加的好处一样。</p>
-<p>说到这里我们可以明白，牛逼的程序员，在于它的元编程水平很高的同时，还知道很多奇怪的知识，以便于你在遇到一个真正的工程问题的时候，能正确地在已经掌握的浩如烟海的知识里面联想到正确的那一个小片段，从而经过简短的研究从而立刻解决它。这也是为什么我们觉得牛逼的人知识很多，因为这是一个必要条件。这也是为什么我们觉得牛逼的人写程序很快，因为这是牛逼的结果。</p>
-<p>当然对于刚入门的菜鸟来讲，他们还处于连一个工具都没用好的状况，那自然应该花点时间去熟悉工具。不过当你已经掌握了C++、C#、Haskell、Erlang之后再花相当多的精力研究什么Go和Swift，就很划不来了。因为Go和Swift所需要研究的问题其实已经包含在前面的C++、C#、Haskell和Erlang的时间里面了，因此在你使用Go的时候，就应该直接用，万一踩到了坑你跳出来也是相当容易的事情，根本无需花时间去研究Go的细节。当然对于只会写几行php和python的人，花时间研究Go也是好的，因为他们仍然处于连一个工具都没用好的状况。那自然应该花点时间去熟悉工具。</p>
-<p>当你至少掌握了一个general purpose的编程语言和一个系统上的API之后，你就不需要花大量的时间去研究另一个类似的general purpose的编程语言和另一个系统的API了，因为这属于举一反三的内容，只要看文档就可以立刻精通了。倘若是完全不同的两门语言，譬如说C#和Haskell，你学会了一门之后还是可以去花时间研究另一门的。</p>
-<p>这些事情都不是绝对的。<strong>你需要花时间做什么，取决于这个问题是不是够难，是不是刚刚好你可以做出来，再难一点点你就做不出来了</strong>。只要你保持这种训练方法长达十年，想不牛逼都难。</p>
-<p>想到这里，不禁回忆起小时候的一些傻逼想法。初三的时候曾经试图用Visual Basic 6.0去做一个Basic的解释器，当然最后做出来了，只是性能巨低，因为我把语法树都保存在表格控件里了……不过在当时的知识下面，能用傻逼方法解决这么个问题，也算是进步了不少。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1426,7 +1421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">231</span>
+          <span class="site-state-item-count">232</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
