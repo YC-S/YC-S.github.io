@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Aaron&#39;s Blog</title>
+  <title>Blog</title>
   
+  <subtitle>Aaron&#39;s Blog</subtitle>
+  <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  
-  <link href="http://yoursite.com/"/>
-  <updated>2021-03-28T06:43:20.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://yc-s.github.io/"/>
+  <updated>2021-03-28T07:43:20.000Z</updated>
+  <id>https://yc-s.github.io/</id>
   
   <author>
     <name>Aaron</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>How it feels to learn JavaScript in 2016</title>
-    <link href="http://yoursite.com/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/"/>
-    <id>http://yoursite.com/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/</id>
-    <published>2021-03-28T06:43:20.000Z</published>
-    <updated>2021-03-28T06:43:20.000Z</updated>
+    <link href="https://yc-s.github.io/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/"/>
+    <id>https://yc-s.github.io/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/</id>
+    <published>2021-03-28T07:43:20.000Z</published>
+    <updated>2021-03-28T07:43:20.000Z</updated>
     
     
       
@@ -35,16 +35,16 @@
     
     
     
-    <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="https://yc-s.github.io/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>读《疯狂的程序员》有感</title>
-    <link href="http://yoursite.com/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/"/>
-    <id>http://yoursite.com/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/</id>
-    <published>2021-03-27T04:02:53.000Z</published>
-    <updated>2021-03-27T04:02:53.000Z</updated>
+    <link href="https://yc-s.github.io/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/"/>
+    <id>https://yc-s.github.io/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/</id>
+    <published>2021-03-27T05:02:53.000Z</published>
+    <updated>2021-03-27T05:02:53.000Z</updated>
     
     
       
@@ -61,16 +61,16 @@
     
     
     
-    <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="读书笔记" scheme="https://yc-s.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>A_Gentle_Introduction_to_Algorithm_Complexity_Analysis</title>
-    <link href="http://yoursite.com/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/"/>
-    <id>http://yoursite.com/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/</id>
-    <published>2020-10-17T02:07:07.000Z</published>
-    <updated>2020-10-17T02:07:07.000Z</updated>
+    <link href="https://yc-s.github.io/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/"/>
+    <id>https://yc-s.github.io/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/</id>
+    <published>2020-10-17T03:07:07.000Z</published>
+    <updated>2020-10-17T03:07:07.000Z</updated>
     
     
       
@@ -84,16 +84,16 @@
     
     
     
-    <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="https://yc-s.github.io/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>GitHub_Arctic_Code_Vault:_Tech_Tree</title>
-    <link href="http://yoursite.com/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/"/>
-    <id>http://yoursite.com/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/</id>
-    <published>2020-08-11T06:25:08.000Z</published>
-    <updated>2020-08-11T06:25:08.000Z</updated>
+    <link href="https://yc-s.github.io/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/"/>
+    <id>https://yc-s.github.io/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/</id>
+    <published>2020-08-11T07:25:08.000Z</published>
+    <updated>2020-08-11T07:25:08.000Z</updated>
     
     
       
@@ -108,16 +108,16 @@
     
     
     
-    <category term="Book" scheme="http://yoursite.com/tags/Book/"/>
+    <category term="Book" scheme="https://yc-s.github.io/tags/Book/"/>
     
   </entry>
   
   <entry>
     <title>sanxingdui</title>
-    <link href="http://yoursite.com/2020/07/25/sanxingdui/"/>
-    <id>http://yoursite.com/2020/07/25/sanxingdui/</id>
-    <published>2020-07-25T04:44:30.000Z</published>
-    <updated>2020-07-25T04:44:30.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/25/sanxingdui/"/>
+    <id>https://yc-s.github.io/2020/07/25/sanxingdui/</id>
+    <published>2020-07-25T05:44:30.000Z</published>
+    <updated>2020-07-25T05:44:30.000Z</updated>
     
     
       
@@ -131,16 +131,16 @@
     
     
     
-    <category term="culture" scheme="http://yoursite.com/tags/culture/"/>
+    <category term="culture" scheme="https://yc-s.github.io/tags/culture/"/>
     
   </entry>
   
   <entry>
     <title>minimum_quotes</title>
-    <link href="http://yoursite.com/2020/07/23/minimum-quotes/"/>
-    <id>http://yoursite.com/2020/07/23/minimum-quotes/</id>
-    <published>2020-07-24T03:37:43.000Z</published>
-    <updated>2020-07-24T03:37:43.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/24/minimum-quotes/"/>
+    <id>https://yc-s.github.io/2020/07/24/minimum-quotes/</id>
+    <published>2020-07-24T04:37:43.000Z</published>
+    <updated>2020-07-24T04:37:43.000Z</updated>
     
     
       
@@ -155,16 +155,16 @@
     
     
     
-    <category term="idea" scheme="http://yoursite.com/tags/idea/"/>
+    <category term="idea" scheme="https://yc-s.github.io/tags/idea/"/>
     
   </entry>
   
   <entry>
     <title>muslim_culture</title>
-    <link href="http://yoursite.com/2020/07/22/muslim-culture/"/>
-    <id>http://yoursite.com/2020/07/22/muslim-culture/</id>
-    <published>2020-07-22T21:54:03.000Z</published>
-    <updated>2020-07-22T21:54:03.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/22/muslim-culture/"/>
+    <id>https://yc-s.github.io/2020/07/22/muslim-culture/</id>
+    <published>2020-07-22T22:54:03.000Z</published>
+    <updated>2020-07-22T22:54:03.000Z</updated>
     
     
       
@@ -186,16 +186,16 @@
     
     
     
-    <category term="religion" scheme="http://yoursite.com/tags/religion/"/>
+    <category term="religion" scheme="https://yc-s.github.io/tags/religion/"/>
     
   </entry>
   
   <entry>
     <title>Always_Invert</title>
-    <link href="http://yoursite.com/2020/07/21/Always-Invert/"/>
-    <id>http://yoursite.com/2020/07/21/Always-Invert/</id>
-    <published>2020-07-22T03:43:35.000Z</published>
-    <updated>2020-07-22T03:43:35.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/22/Always-Invert/"/>
+    <id>https://yc-s.github.io/2020/07/22/Always-Invert/</id>
+    <published>2020-07-22T04:43:35.000Z</published>
+    <updated>2020-07-22T04:43:35.000Z</updated>
     
     
       
@@ -209,16 +209,16 @@
     
     
     
-    <category term="mind" scheme="http://yoursite.com/tags/mind/"/>
+    <category term="mind" scheme="https://yc-s.github.io/tags/mind/"/>
     
   </entry>
   
   <entry>
     <title>crazy_rally_drivers</title>
-    <link href="http://yoursite.com/2020/07/20/crazy-rally-drivers/"/>
-    <id>http://yoursite.com/2020/07/20/crazy-rally-drivers/</id>
-    <published>2020-07-20T04:12:54.000Z</published>
-    <updated>2020-07-20T04:12:54.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/20/crazy-rally-drivers/"/>
+    <id>https://yc-s.github.io/2020/07/20/crazy-rally-drivers/</id>
+    <published>2020-07-20T05:12:54.000Z</published>
+    <updated>2020-07-20T05:12:54.000Z</updated>
     
     
       
@@ -232,16 +232,16 @@
     
     
     
-    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
     
   </entry>
   
   <entry>
     <title>shamanism</title>
-    <link href="http://yoursite.com/2020/07/18/shamanism/"/>
-    <id>http://yoursite.com/2020/07/18/shamanism/</id>
-    <published>2020-07-19T00:25:38.000Z</published>
-    <updated>2020-07-19T00:25:38.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/18/shamanism/"/>
+    <id>https://yc-s.github.io/2020/07/18/shamanism/</id>
+    <published>2020-07-19T01:25:38.000Z</published>
+    <updated>2020-07-19T01:25:38.000Z</updated>
     
     
       
@@ -255,16 +255,16 @@
     
     
     
-    <category term="religion" scheme="http://yoursite.com/tags/religion/"/>
+    <category term="religion" scheme="https://yc-s.github.io/tags/religion/"/>
     
   </entry>
   
   <entry>
     <title>mongolian_beliefs</title>
-    <link href="http://yoursite.com/2020/07/17/mongolian-beliefs/"/>
-    <id>http://yoursite.com/2020/07/17/mongolian-beliefs/</id>
-    <published>2020-07-17T22:09:31.000Z</published>
-    <updated>2020-07-17T22:09:31.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/17/mongolian-beliefs/"/>
+    <id>https://yc-s.github.io/2020/07/17/mongolian-beliefs/</id>
+    <published>2020-07-17T23:09:31.000Z</published>
+    <updated>2020-07-17T23:09:31.000Z</updated>
     
     
       
@@ -279,16 +279,16 @@
     
     
     
-    <category term="mongolia" scheme="http://yoursite.com/tags/mongolia/"/>
+    <category term="mongolia" scheme="https://yc-s.github.io/tags/mongolia/"/>
     
   </entry>
   
   <entry>
     <title>mongolian_culture</title>
-    <link href="http://yoursite.com/2020/07/17/mongolian-culture/"/>
-    <id>http://yoursite.com/2020/07/17/mongolian-culture/</id>
-    <published>2020-07-17T08:30:48.000Z</published>
-    <updated>2020-07-17T08:30:48.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/17/mongolian-culture/"/>
+    <id>https://yc-s.github.io/2020/07/17/mongolian-culture/</id>
+    <published>2020-07-17T09:30:48.000Z</published>
+    <updated>2020-07-17T09:30:48.000Z</updated>
     
     
       
@@ -303,16 +303,16 @@
     
     
     
-    <category term="culture" scheme="http://yoursite.com/tags/culture/"/>
+    <category term="culture" scheme="https://yc-s.github.io/tags/culture/"/>
     
   </entry>
   
   <entry>
     <title>Darwin_was_wrong</title>
-    <link href="http://yoursite.com/2020/07/15/Darwin-was-wrong/"/>
-    <id>http://yoursite.com/2020/07/15/Darwin-was-wrong/</id>
-    <published>2020-07-16T03:43:13.000Z</published>
-    <updated>2020-07-16T03:43:13.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/16/Darwin-was-wrong/"/>
+    <id>https://yc-s.github.io/2020/07/16/Darwin-was-wrong/</id>
+    <published>2020-07-16T04:43:13.000Z</published>
+    <updated>2020-07-16T04:43:13.000Z</updated>
     
     
       
@@ -326,16 +326,16 @@
     
     
     
-    <category term="philosophy" scheme="http://yoursite.com/tags/philosophy/"/>
+    <category term="philosophy" scheme="https://yc-s.github.io/tags/philosophy/"/>
     
   </entry>
   
   <entry>
     <title>intro_to_mma</title>
-    <link href="http://yoursite.com/2020/07/14/intro-to-mma/"/>
-    <id>http://yoursite.com/2020/07/14/intro-to-mma/</id>
-    <published>2020-07-15T03:25:44.000Z</published>
-    <updated>2020-07-15T03:25:44.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/15/intro-to-mma/"/>
+    <id>https://yc-s.github.io/2020/07/15/intro-to-mma/</id>
+    <published>2020-07-15T04:25:44.000Z</published>
+    <updated>2020-07-15T04:25:44.000Z</updated>
     
     
       
@@ -349,16 +349,16 @@
     
     
     
-    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
     
   </entry>
   
   <entry>
     <title>history_new_york_city</title>
-    <link href="http://yoursite.com/2020/07/13/history-new-york-city/"/>
-    <id>http://yoursite.com/2020/07/13/history-new-york-city/</id>
-    <published>2020-07-14T03:46:23.000Z</published>
-    <updated>2020-07-14T03:46:23.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/14/history-new-york-city/"/>
+    <id>https://yc-s.github.io/2020/07/14/history-new-york-city/</id>
+    <published>2020-07-14T04:46:23.000Z</published>
+    <updated>2020-07-14T04:46:23.000Z</updated>
     
     
       
@@ -372,16 +372,16 @@
     
     
     
-    <category term="history" scheme="http://yoursite.com/tags/history/"/>
+    <category term="history" scheme="https://yc-s.github.io/tags/history/"/>
     
   </entry>
   
   <entry>
     <title>the_rock_s_workout</title>
-    <link href="http://yoursite.com/2020/07/12/the-rock-s-workout/"/>
-    <id>http://yoursite.com/2020/07/12/the-rock-s-workout/</id>
-    <published>2020-07-12T22:55:24.000Z</published>
-    <updated>2020-07-12T22:55:24.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/12/the-rock-s-workout/"/>
+    <id>https://yc-s.github.io/2020/07/12/the-rock-s-workout/</id>
+    <published>2020-07-12T23:55:24.000Z</published>
+    <updated>2020-07-12T23:55:24.000Z</updated>
     
     
       
@@ -396,16 +396,16 @@
     
     
     
-    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
     
   </entry>
   
   <entry>
     <title>Baseball_Rules</title>
-    <link href="http://yoursite.com/2020/07/11/Baseball-Rules/"/>
-    <id>http://yoursite.com/2020/07/11/Baseball-Rules/</id>
-    <published>2020-07-11T05:52:25.000Z</published>
-    <updated>2020-07-11T05:52:25.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/11/Baseball-Rules/"/>
+    <id>https://yc-s.github.io/2020/07/11/Baseball-Rules/</id>
+    <published>2020-07-11T06:52:25.000Z</published>
+    <updated>2020-07-11T06:52:25.000Z</updated>
     
     
       
@@ -419,16 +419,16 @@
     
     
     
-    <category term="sport" scheme="http://yoursite.com/tags/sport/"/>
+    <category term="sport" scheme="https://yc-s.github.io/tags/sport/"/>
     
   </entry>
   
   <entry>
     <title>American_football_rules</title>
-    <link href="http://yoursite.com/2020/07/10/American-football-rules/"/>
-    <id>http://yoursite.com/2020/07/10/American-football-rules/</id>
-    <published>2020-07-10T21:58:58.000Z</published>
-    <updated>2020-07-10T21:58:58.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/10/American-football-rules/"/>
+    <id>https://yc-s.github.io/2020/07/10/American-football-rules/</id>
+    <published>2020-07-10T22:58:58.000Z</published>
+    <updated>2020-07-10T22:58:58.000Z</updated>
     
     
       
@@ -442,16 +442,16 @@
     
     
     
-    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
     
   </entry>
   
   <entry>
     <title>David_Hume</title>
-    <link href="http://yoursite.com/2020/07/08/David-Hume/"/>
-    <id>http://yoursite.com/2020/07/08/David-Hume/</id>
-    <published>2020-07-08T16:55:00.000Z</published>
-    <updated>2020-07-08T16:55:00.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/08/David-Hume/"/>
+    <id>https://yc-s.github.io/2020/07/08/David-Hume/</id>
+    <published>2020-07-08T17:55:00.000Z</published>
+    <updated>2020-07-08T17:55:00.000Z</updated>
     
     
       
@@ -465,16 +465,16 @@
     
     
     
-    <category term="philosophy" scheme="http://yoursite.com/tags/philosophy/"/>
+    <category term="philosophy" scheme="https://yc-s.github.io/tags/philosophy/"/>
     
   </entry>
   
   <entry>
     <title>New_Jersey_Introduction</title>
-    <link href="http://yoursite.com/2020/07/08/New-Jersey-Introduction/"/>
-    <id>http://yoursite.com/2020/07/08/New-Jersey-Introduction/</id>
-    <published>2020-07-08T05:42:20.000Z</published>
-    <updated>2020-07-08T05:42:20.000Z</updated>
+    <link href="https://yc-s.github.io/2020/07/08/New-Jersey-Introduction/"/>
+    <id>https://yc-s.github.io/2020/07/08/New-Jersey-Introduction/</id>
+    <published>2020-07-08T06:42:20.000Z</published>
+    <updated>2020-07-08T06:42:20.000Z</updated>
     
     
       
@@ -488,7 +488,7 @@
     
     
     
-    <category term="US" scheme="http://yoursite.com/tags/US/"/>
+    <category term="US" scheme="https://yc-s.github.io/tags/US/"/>
     
   </entry>
   
