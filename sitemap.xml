@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yc-s.github.io/2021/03/28/Your-Timeline-for-Learning-React/</loc>
+    
+    <lastmod>2021-03-28</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/photos/index.html</loc>
     
     <lastmod>2021-03-28</lastmod>
@@ -1866,13 +1873,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/US/</loc>
-    <lastmod>2021-03-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/Code-Review/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
@@ -1880,14 +1880,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Paul-Graham/</loc>
-    <lastmod>2021-03-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yc-s.github.io/tags/network/</loc>
+    <loc>https://yc-s.github.io/tags/US/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1901,7 +1894,21 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/network/</loc>
+    <lastmod>2021-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/OP/</loc>
+    <lastmod>2021-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/Paul-Graham/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1922,14 +1929,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/SQL/</loc>
+    <loc>https://yc-s.github.io/tags/React/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/React/</loc>
+    <loc>https://yc-s.github.io/tags/SQL/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1992,13 +1999,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/AI/</loc>
-    <lastmod>2021-03-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/military/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
@@ -2007,6 +2007,13 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/Git/</loc>
+    <lastmod>2021-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/AI/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2048,14 +2055,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/idea/</loc>
+    <loc>https://yc-s.github.io/tags/Database/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Database/</loc>
+    <loc>https://yc-s.github.io/tags/idea/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2223,14 +2230,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Coronavirus/</loc>
+    <loc>https://yc-s.github.io/tags/Art/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Art/</loc>
+    <loc>https://yc-s.github.io/tags/Coronavirus/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2265,14 +2272,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/douban/</loc>
+    <loc>https://yc-s.github.io/tags/Finance/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Finance/</loc>
+    <loc>https://yc-s.github.io/tags/douban/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
