@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Aaron&#39;s Blog</title>
+  
+  
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2021-03-28T06:43:20.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Aaron</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How it feels to learn JavaScript in 2016</title>
+    <link href="http://yoursite.com/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/"/>
+    <id>http://yoursite.com/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/</id>
+    <published>2021-03-28T06:43:20.000Z</published>
+    <updated>2021-03-28T06:43:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Hey, I got this new web project, but to be honest I haven’t coded much web in a few years and I’ve heard the landscape changed a bit.</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读《疯狂的程序员》有感</title>
+    <link href="http://yoursite.com/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/"/>
+    <id>http://yoursite.com/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/</id>
+    <published>2021-03-27T04:02:53.000Z</published>
+    <updated>2021-03-27T04:02:53.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;书的内容讲述21世纪初绝影（作者）从大学开始第一次接触编程到毕业后工作然后创业失败的故事。&lt;/p&gt;
+&lt;p&gt;作者从菜鸟到老鸟的转变有很多细节描写，比如坚持到底做完事情。同时在社会中受到很多骗也是因为有点天真。&lt;/p&gt;
+&lt;p&gt;如果我是作者的话，我应该不会去学汇编。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A_Gentle_Introduction_to_Algorithm_Complexity_Analysis</title>
+    <link href="http://yoursite.com/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/"/>
+    <id>http://yoursite.com/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/</id>
+    <published>2020-10-17T02:07:07.000Z</published>
+    <updated>2020-10-17T02:07:07.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;A lot of programmers that</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub_Arctic_Code_Vault:_Tech_Tree</title>
+    <link href="http://yoursite.com/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/"/>
+    <id>http://yoursite.com/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/</id>
+    <published>2020-08-11T06:25:08.000Z</published>
+    <updated>2020-08-11T06:25:08.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;Introduction: A Guide To The Tech Tree&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;What follows, which we call the Tech Tree, is a selection of works</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Book" scheme="http://yoursite.com/tags/Book/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sanxingdui</title>
+    <link href="http://yoursite.com/2020/07/25/sanxingdui/"/>
+    <id>http://yoursite.com/2020/07/25/sanxingdui/</id>
+    <published>2020-07-25T04:44:30.000Z</published>
+    <updated>2020-07-25T04:44:30.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Among large numbers of Chinese cultural relics, Sanxingdui is considered one of those with the greatest historical and scientific</summary>
+        
+      
+    
+    
+    
+    
+    <category term="culture" scheme="http://yoursite.com/tags/culture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>minimum_quotes</title>
+    <link href="http://yoursite.com/2020/07/23/minimum-quotes/"/>
+    <id>http://yoursite.com/2020/07/23/minimum-quotes/</id>
+    <published>2020-07-24T03:37:43.000Z</published>
+    <updated>2020-07-24T03:37:43.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;“But I deal with this by meditating and by understanding I’ve been put on the planet to serve humanity. I have to remind</summary>
+        
+      
+    
+    
+    
+    
+    <category term="idea" scheme="http://yoursite.com/tags/idea/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>muslim_culture</title>
+    <link href="http://yoursite.com/2020/07/22/muslim-culture/"/>
+    <id>http://yoursite.com/2020/07/22/muslim-culture/</id>
+    <published>2020-07-22T21:54:03.000Z</published>
+    <updated>2020-07-22T21:54:03.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;MUSLIM CULTURE&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;1. One God: ‘Allah’; Prayer</summary>
+        
+      
+    
+    
+    
+    
+    <category term="religion" scheme="http://yoursite.com/tags/religion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Always_Invert</title>
+    <link href="http://yoursite.com/2020/07/21/Always-Invert/"/>
+    <id>http://yoursite.com/2020/07/21/Always-Invert/</id>
+    <published>2020-07-22T03:43:35.000Z</published>
+    <updated>2020-07-22T03:43:35.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Today, we will look at one of my favourite mental models called - The Inversion principle. Mental models are a set of simple, abstract</summary>
+        
+      
+    
+    
+    
+    
+    <category term="mind" scheme="http://yoursite.com/tags/mind/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>crazy_rally_drivers</title>
+    <link href="http://yoursite.com/2020/07/20/crazy-rally-drivers/"/>
+    <id>http://yoursite.com/2020/07/20/crazy-rally-drivers/</id>
+    <published>2020-07-20T04:12:54.000Z</published>
+    <updated>2020-07-20T04:12:54.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Strike that. I &lt;em&gt;drove&lt;/em&gt; a rally car once, which is a totally different thing. In the course of my job, I’ve sampled many rally</summary>
+        
+      
+    
+    
+    
+    
+    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shamanism</title>
+    <link href="http://yoursite.com/2020/07/18/shamanism/"/>
+    <id>http://yoursite.com/2020/07/18/shamanism/</id>
+    <published>2020-07-19T00:25:38.000Z</published>
+    <updated>2020-07-19T00:25:38.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Shamanism is an ancient healing tradition and moreover, a way of life. It is a way to connect with nature and all of creation. The word</summary>
+        
+      
+    
+    
+    
+    
+    <category term="religion" scheme="http://yoursite.com/tags/religion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongolian_beliefs</title>
+    <link href="http://yoursite.com/2020/07/17/mongolian-beliefs/"/>
+    <id>http://yoursite.com/2020/07/17/mongolian-beliefs/</id>
+    <published>2020-07-17T22:09:31.000Z</published>
+    <updated>2020-07-17T22:09:31.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;Tengrism in Mongolia&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The traditional religion of Mongolia is Tengrism, a shamanic faith shared by a number of</summary>
+        
+      
+    
+    
+    
+    
+    <category term="mongolia" scheme="http://yoursite.com/tags/mongolia/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongolian_culture</title>
+    <link href="http://yoursite.com/2020/07/17/mongolian-culture/"/>
+    <id>http://yoursite.com/2020/07/17/mongolian-culture/</id>
+    <published>2020-07-17T08:30:48.000Z</published>
+    <updated>2020-07-17T08:30:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;Culture&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Mongolia is well known for its nomadic traditions. The nomadic way of lifestyle is still practiced today</summary>
+        
+      
+    
+    
+    
+    
+    <category term="culture" scheme="http://yoursite.com/tags/culture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Darwin_was_wrong</title>
+    <link href="http://yoursite.com/2020/07/15/Darwin-was-wrong/"/>
+    <id>http://yoursite.com/2020/07/15/Darwin-was-wrong/</id>
+    <published>2020-07-16T03:43:13.000Z</published>
+    <updated>2020-07-16T03:43:13.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;My friend James McClellan, a distinguished historian of science, likes ribbing me about my insistence that science’s glory days are</summary>
+        
+      
+    
+    
+    
+    
+    <category term="philosophy" scheme="http://yoursite.com/tags/philosophy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>intro_to_mma</title>
+    <link href="http://yoursite.com/2020/07/14/intro-to-mma/"/>
+    <id>http://yoursite.com/2020/07/14/intro-to-mma/</id>
+    <published>2020-07-15T03:25:44.000Z</published>
+    <updated>2020-07-15T03:25:44.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;WHAT-IS-MMA&quot;&gt;&lt;a href=&quot;#WHAT-IS-MMA&quot; class=&quot;headerlink&quot; title=&quot;WHAT IS MMA?&quot;&gt;&lt;/a&gt;&lt;strong&gt;WHAT IS MMA?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Mixed martial</summary>
+        
+      
+    
+    
+    
+    
+    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>history_new_york_city</title>
+    <link href="http://yoursite.com/2020/07/13/history-new-york-city/"/>
+    <id>http://yoursite.com/2020/07/13/history-new-york-city/</id>
+    <published>2020-07-14T03:46:23.000Z</published>
+    <updated>2020-07-14T03:46:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;The first native New Yorkers were the Lenape, an Algonquin people who hunted, fished and farmed in the area between the Delaware and</summary>
+        
+      
+    
+    
+    
+    
+    <category term="history" scheme="http://yoursite.com/tags/history/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>the_rock_s_workout</title>
+    <link href="http://yoursite.com/2020/07/12/the-rock-s-workout/"/>
+    <id>http://yoursite.com/2020/07/12/the-rock-s-workout/</id>
+    <published>2020-07-12T22:55:24.000Z</published>
+    <updated>2020-07-12T22:55:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;Day-1-Legs&quot;&gt;&lt;a href=&quot;#Day-1-Legs&quot; class=&quot;headerlink&quot; title=&quot;Day 1: Legs&quot;&gt;&lt;/a&gt;Day 1: Legs&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Running 30-50 minutes</summary>
+        
+      
+    
+    
+    
+    
+    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Baseball_Rules</title>
+    <link href="http://yoursite.com/2020/07/11/Baseball-Rules/"/>
+    <id>http://yoursite.com/2020/07/11/Baseball-Rules/</id>
+    <published>2020-07-11T05:52:25.000Z</published>
+    <updated>2020-07-11T05:52:25.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Baseball is a sport that dates back as far as 1744 and formats of the game have been in place until the modern era today. The game is</summary>
+        
+      
+    
+    
+    
+    
+    <category term="sport" scheme="http://yoursite.com/tags/sport/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>American_football_rules</title>
+    <link href="http://yoursite.com/2020/07/10/American-football-rules/"/>
+    <id>http://yoursite.com/2020/07/10/American-football-rules/</id>
+    <published>2020-07-10T21:58:58.000Z</published>
+    <updated>2020-07-10T21:58:58.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;American Football is one of the biggest North American sports. Whilst the game is played worldwide, the professional leagues in North</summary>
+        
+      
+    
+    
+    
+    
+    <category term="sports" scheme="http://yoursite.com/tags/sports/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>David_Hume</title>
+    <link href="http://yoursite.com/2020/07/08/David-Hume/"/>
+    <id>http://yoursite.com/2020/07/08/David-Hume/</id>
+    <published>2020-07-08T16:55:00.000Z</published>
+    <updated>2020-07-08T16:55:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;David Hume, (born May 7 [April 26, Old Style], 1711, Edinburgh, Scotland—died August 25, 1776, Edinburgh), Scottish philosopher,</summary>
+        
+      
+    
+    
+    
+    
+    <category term="philosophy" scheme="http://yoursite.com/tags/philosophy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>New_Jersey_Introduction</title>
+    <link href="http://yoursite.com/2020/07/08/New-Jersey-Introduction/"/>
+    <id>http://yoursite.com/2020/07/08/New-Jersey-Introduction/</id>
+    <published>2020-07-08T05:42:20.000Z</published>
+    <updated>2020-07-08T05:42:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;New Jersey, constituent state of the United States of America. One of the original 13 states, it is bounded by New York to the north and</summary>
+        
+      
+    
+    
+    
+    
+    <category term="US" scheme="http://yoursite.com/tags/US/"/>
+    
+  </entry>
+  
+</feed>
