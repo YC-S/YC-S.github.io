@@ -1684,13 +1684,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/food/</loc>
-    <lastmod>2021-03-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/Chinese/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
@@ -1698,7 +1691,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Java/</loc>
+    <loc>https://yc-s.github.io/tags/food/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1706,6 +1699,13 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/tips/</loc>
+    <lastmod>2021-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/Java/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1873,14 +1873,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/network/</loc>
+    <loc>https://yc-s.github.io/tags/US/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/US/</loc>
+    <loc>https://yc-s.github.io/tags/network/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2013,14 +2013,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Google/</loc>
+    <loc>https://yc-s.github.io/tags/google/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/google/</loc>
+    <loc>https://yc-s.github.io/tags/Google/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2048,6 +2048,13 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/Database/</loc>
+    <lastmod>2021-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/idea/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
@@ -2063,13 +2070,6 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/culture/</loc>
-    <lastmod>2021-03-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yc-s.github.io/tags/Database/</loc>
     <lastmod>2021-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
