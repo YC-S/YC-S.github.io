@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-04T22:14:08.000Z</updated>
+  <updated>2021-04-06T04:05:35.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Learn Javascript, Deeply</title>
+    <link href="https://yc-s.github.io/2021/04/06/Learn-Javascript-Deeply/"/>
+    <id>https://yc-s.github.io/2021/04/06/Learn-Javascript-Deeply/</id>
+    <published>2021-04-06T04:05:35.000Z</published>
+    <updated>2021-04-06T04:05:35.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;the creator of WordPress, spoke about JavaScript in his yearly keynote “The State of Word”. In it, he gave the WordPress community</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JavaScript" scheme="https://yc-s.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>MERN learning resources</title>
@@ -467,29 +490,6 @@
     
     
     <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Baseball_Rules</title>
-    <link href="https://yc-s.github.io/2020/07/11/Baseball-Rules/"/>
-    <id>https://yc-s.github.io/2020/07/11/Baseball-Rules/</id>
-    <published>2020-07-11T06:52:25.000Z</published>
-    <updated>2020-07-11T06:52:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Baseball is a sport that dates back as far as 1744 and formats of the game have been in place until the modern era today. The game is</summary>
-        
-      
-    
-    
-    
-    
-    <category term="sport" scheme="https://yc-s.github.io/tags/sport/"/>
     
   </entry>
   
