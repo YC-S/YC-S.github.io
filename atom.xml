@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-07T00:40:48.000Z</updated>
+  <updated>2021-04-08T02:30:30.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>self-study-101</title>
+    <link href="https://yc-s.github.io/2021/04/07/self-study-101/"/>
+    <id>https://yc-s.github.io/2021/04/07/self-study-101/</id>
+    <published>2021-04-08T02:30:30.000Z</published>
+    <updated>2021-04-08T02:30:30.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Find-a-learning-method-that-works-for-you&quot;&gt;&lt;a href=&quot;#Find-a-learning-method-that-works-for-you&quot; class=&quot;headerlink&quot; title=&quot;Find a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="methodology" scheme="https://yc-s.github.io/tags/methodology/"/>
+    
+  </entry>
   
   <entry>
     <title>8 ultimate ressources for web dev in 2021</title>
@@ -466,29 +489,6 @@
     
     
     <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>history_new_york_city</title>
-    <link href="https://yc-s.github.io/2020/07/14/history-new-york-city/"/>
-    <id>https://yc-s.github.io/2020/07/14/history-new-york-city/</id>
-    <published>2020-07-14T04:46:23.000Z</published>
-    <updated>2020-07-14T04:46:23.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;The first native New Yorkers were the Lenape, an Algonquin people who hunted, fished and farmed in the area between the Delaware and</summary>
-        
-      
-    
-    
-    
-    
-    <category term="history" scheme="https://yc-s.github.io/tags/history/"/>
     
   </entry>
   
