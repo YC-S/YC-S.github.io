@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-08T02:30:30.000Z</updated>
+  <updated>2021-04-09T06:16:41.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ten things a serious javascript developer should learn</title>
+    <link href="https://yc-s.github.io/2021/04/09/ten-things-a-serious-javascript-developer-should-learn/"/>
+    <id>https://yc-s.github.io/2021/04/09/ten-things-a-serious-javascript-developer-should-learn/</id>
+    <published>2021-04-09T06:16:41.000Z</published>
+    <updated>2021-04-09T06:16:41.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;I think this is a great question if you take it seriously, because when you think about it critically, it exposes all of the things</summary>
+        
+      
+    
+    
+    
+    
+    <category term="javascript" scheme="https://yc-s.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>self-study-101</title>
@@ -466,29 +489,6 @@
     
     
     <category term="philosophy" scheme="https://yc-s.github.io/tags/philosophy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>intro_to_mma</title>
-    <link href="https://yc-s.github.io/2020/07/15/intro-to-mma/"/>
-    <id>https://yc-s.github.io/2020/07/15/intro-to-mma/</id>
-    <published>2020-07-15T04:25:44.000Z</published>
-    <updated>2020-07-15T04:25:44.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;WHAT-IS-MMA&quot;&gt;&lt;a href=&quot;#WHAT-IS-MMA&quot; class=&quot;headerlink&quot; title=&quot;WHAT IS MMA?&quot;&gt;&lt;/a&gt;&lt;strong&gt;WHAT IS MMA?&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Mixed martial</summary>
-        
-      
-    
-    
-    
-    
-    <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
     
   </entry>
   
