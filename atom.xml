@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-12T06:32:52.000Z</updated>
+  <updated>2021-04-12T20:08:02.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>use console.log() like a pro</title>
+    <link href="https://yc-s.github.io/2021/04/12/use-console-log-like-a-pro/"/>
+    <id>https://yc-s.github.io/2021/04/12/use-console-log-like-a-pro/</id>
+    <published>2021-04-12T20:08:02.000Z</published>
+    <updated>2021-04-12T20:08:02.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Using &lt;code&gt;console.log()&lt;/code&gt; for JavaScript debugging is the most common practice among developers. But, there is more…&lt;/p&gt;
+&lt;p&gt;The</summary>
+        
+      
+    
+    
+    
+    
+    <category term="console" scheme="https://yc-s.github.io/tags/console/"/>
+    
+  </entry>
   
   <entry>
     <title>95%-ile isn&#39;t that good</title>
@@ -465,29 +489,6 @@
     
     
     <category term="sports" scheme="https://yc-s.github.io/tags/sports/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shamanism</title>
-    <link href="https://yc-s.github.io/2020/07/18/shamanism/"/>
-    <id>https://yc-s.github.io/2020/07/18/shamanism/</id>
-    <published>2020-07-19T01:25:38.000Z</published>
-    <updated>2020-07-19T01:25:38.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Shamanism is an ancient healing tradition and moreover, a way of life. It is a way to connect with nature and all of creation. The word</summary>
-        
-      
-    
-    
-    
-    
-    <category term="religion" scheme="https://yc-s.github.io/tags/religion/"/>
     
   </entry>
   
