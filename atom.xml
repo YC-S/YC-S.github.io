@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-11T01:01:18.000Z</updated>
+  <updated>2021-04-12T06:32:52.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>95%-ile isn&#39;t that good</title>
+    <link href="https://yc-s.github.io/2021/04/12/95-ile-isn-t-that-good/"/>
+    <id>https://yc-s.github.io/2021/04/12/95-ile-isn-t-that-good/</id>
+    <published>2021-04-12T06:32:52.000Z</published>
+    <updated>2021-04-12T06:32:52.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Reaching 95%-ile isn’t very impressive because it’s not that hard to do. I think this is one of my most ridiculable ideas. It doesn’t</summary>
+        
+      
+    
+    
+    
+    
+    <category term="practice" scheme="https://yc-s.github.io/tags/practice/"/>
+    
+  </entry>
   
   <entry>
     <title>The Complete Guide to Full Stack Ethereum Development</title>
@@ -465,30 +488,6 @@
     
     
     <category term="religion" scheme="https://yc-s.github.io/tags/religion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mongolian_beliefs</title>
-    <link href="https://yc-s.github.io/2020/07/17/mongolian-beliefs/"/>
-    <id>https://yc-s.github.io/2020/07/17/mongolian-beliefs/</id>
-    <published>2020-07-17T23:09:31.000Z</published>
-    <updated>2020-07-17T23:09:31.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;Tengrism in Mongolia&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The traditional religion of Mongolia is Tengrism, a shamanic faith shared by a number of</summary>
-        
-      
-    
-    
-    
-    
-    <category term="mongolia" scheme="https://yc-s.github.io/tags/mongolia/"/>
     
   </entry>
   
