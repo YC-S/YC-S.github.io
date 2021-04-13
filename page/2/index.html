@@ -107,6 +107,148 @@
     
     
     <article
+  id="post-typescript-for-5-minutes"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/03/typescript-for-5-minutes/"
+    >typescript for 5 minutes</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/03/typescript-for-5-minutes/" class="article-date">
+  <time datetime="2021-04-03T04:58:39.000Z" itemprop="datePublished">2021-04-02</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features, and an additional layer on top of these: TypeScript’s type system.</p>
+<p>For example, JavaScript provides language primitives like <code>string</code>, <code>number</code>, and <code>object</code>, but it doesn’t check that you’ve consistently assigned these. TypeScript does.</p>
+<p>This means that your existing working JavaScript code is also TypeScript code. The main benefit of TypeScript is that it can highlight unexpected behavior in your code, lowering the chance of bugs.</p>
+<p>This tutorial provides a brief overview of TypeScript, focusing on its type system.</p>
+<h2 id="Types-by-Inference"><a href="#Types-by-Inference" class="headerlink" title="Types by Inference"></a>Types by Inference</h2><p>TypeScript knows the JavaScript language and will generate types for you in many cases. For example in creating a variable and assigning it to a particular value, TypeScript will use the value as its type.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let helloWorld &#x3D; &quot;Hello World&quot;;</span><br><span class="line">&#x2F;&#x2F;  ^ &#x3D; let helloWorld: string</span><br></pre></td></tr></table></figure>
+
+<p>By understanding how JavaScript works, TypeScript can build a type-system that accepts JavaScript code but has types. This offers a type-system without needing to add extra characters to make types explicit in your code. That’s how TypeScript knows that <code>helloWorld</code> is a <code>string</code> in the above example.</p>
+<p>You may have written JavaScript in Visual Studio Code, and had editor auto-completion. Visual Studio Code uses TypeScript under the hood to make it easier to work with JavaScript.</p>
+<h2 id="Defining-Types"><a href="#Defining-Types" class="headerlink" title="Defining Types"></a>Defining Types</h2><p>You can use a wide variety of design patterns in JavaScript. However, some design patterns make it difficult for types to be inferred automatically (for example, patterns that use dynamic programming). To cover these cases, TypeScript supports an extension of the JavaScript language, which offers places for you to tell TypeScript what the types should be.</p>
+<p>For example, to create an object with an inferred type which includes <code>name: string</code> and <code>id: number</code>, you can write:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const user &#x3D; &#123;</span><br><span class="line">  name: &quot;Hayes&quot;,</span><br><span class="line">  id: 0,</span><br><span class="line">&#125;;Try</span><br></pre></td></tr></table></figure>
+
+<p>You can explicitly describe this object’s shape using an <code>interface</code> declaration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface User &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  id: number;</span><br><span class="line">&#125;Try</span><br></pre></td></tr></table></figure>
+
+<p>You can then declare that a JavaScript object conforms to the shape of your new <code>interface</code> by using syntax like <code>: TypeName</code> after a variable declaration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const user: User &#x3D; &#123;</span><br><span class="line">  name: &quot;Hayes&quot;,</span><br><span class="line">  id: 0,</span><br><span class="line">&#125;;Try</span><br></pre></td></tr></table></figure>
+
+<p>If you provide an object that doesn’t match the interface you have provided, TypeScript will warn you:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface User &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  id: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const user: User &#x3D; &#123;</span><br><span class="line">  username: &quot;Hayes&quot;,Type &#39;&#123; username: string; id: number; &#125;&#39; is not assignable to type &#39;User&#39;.</span><br><span class="line">  Object literal may only specify known properties, and &#39;username&#39; does not exist in type &#39;User&#39;.Type &#39;&#123; username: string; id: number; &#125;&#39; is not assignable to type &#39;User&#39;.</span><br><span class="line">  Object literal may only specify known properties, and &#39;username&#39; does not exist in type &#39;User&#39;.</span><br><span class="line">  id: 0,</span><br><span class="line">&#125;;Try</span><br></pre></td></tr></table></figure>
+
+<p>Since JavaScript supports classes and object-oriented programming, so does TypeScript. You can use an interface declaration with classes:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface User &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  id: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class UserAccount &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  id: number;</span><br><span class="line"></span><br><span class="line">  constructor(name: string, id: number) &#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">    this.id &#x3D; id;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const user: User &#x3D; new UserAccount(&quot;Murphy&quot;, 1);Try</span><br></pre></td></tr></table></figure>
+
+<p>You can use interfaces to annotate parameters and return values to functions:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function getAdminUser(): User &#123;</span><br><span class="line">  &#x2F;&#x2F;...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function deleteUser(user: User) &#123;</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;Try</span><br></pre></td></tr></table></figure>
+
+<p>There are already a small set of primitive types available in JavaScript: <code>boolean</code>, <code>bigint</code>, <code>null</code>, <code>number</code>, <code>string</code>, <code>symbol</code>, <code>object</code>, and <code>undefined</code>, which you can use in an interface. TypeScript extends this list with a few more, such as <code>any</code> (allow anything), <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/play#example/unknown-and-never"><code>unknown</code></a> (ensure someone using this type declares what the type is), <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/play#example/unknown-and-never"><code>never</code></a> (it’s not possible that this type could happen), and <code>void</code> (a function which returns <code>undefined</code> or has no return value).</p>
+<p>You’ll see that there are two syntaxes for building types: <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/play/?e=83#example/types-vs-interfaces">Interfaces and Types</a>. You should prefer <code>interface</code>. Use <code>type</code> when you need specific features.</p>
+<h2 id="Composing-Types"><a href="#Composing-Types" class="headerlink" title="Composing Types"></a>Composing Types</h2><p>With TypeScript, you can create complex types by combining simple ones. There are two popular ways to do so: with Unions, and with Generics.</p>
+<h3 id="Unions"><a href="#Unions" class="headerlink" title="Unions"></a>Unions</h3><p>With a union, you can declare that a type could be one of many types. For example, you can describe a <code>boolean</code> type as being either <code>true</code> or <code>false</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type MyBool &#x3D; true | false;Try</span><br></pre></td></tr></table></figure>
+
+<p><em>Note:</em> If you hover over <code>MyBool</code> above, you’ll see that it is classed as <code>boolean</code>. That’s a property of the Structural Type System. More on this below.</p>
+<p>A popular use-case for union types is to describe the set of <code>string</code>s or <code>number</code>s <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/literal-types.html">literal</a> that a value is allowed to be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type WindowStates &#x3D; &quot;open&quot; | &quot;closed&quot; | &quot;minimized&quot;;</span><br><span class="line">type LockStates &#x3D; &quot;locked&quot; | &quot;unlocked&quot;;</span><br><span class="line">type OddNumbersUnderTen &#x3D; 1 | 3 | 5 | 7 | 9;Try</span><br></pre></td></tr></table></figure>
+
+<p>Unions provide a way to handle different types too. For example, you may have a function that takes an <code>array</code> or a <code>string</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function getLength(obj: string | string[]) &#123;</span><br><span class="line">  return obj.length;</span><br><span class="line">&#125;Try</span><br></pre></td></tr></table></figure>
+
+<p>To learn the type of a variable, use <code>typeof</code>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Predicate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">string</td>
+<td align="left"><code>typeof s === &quot;string&quot;</code></td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left"><code>typeof n === &quot;number&quot;</code></td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left"><code>typeof b === &quot;boolean&quot;</code></td>
+</tr>
+<tr>
+<td align="left">undefined</td>
+<td align="left"><code>typeof undefined === &quot;undefined&quot;</code></td>
+</tr>
+<tr>
+<td align="left">function</td>
+<td align="left"><code>typeof f === &quot;function&quot;</code></td>
+</tr>
+<tr>
+<td align="left">array</td>
+<td align="left"><code>Array.isArray(a)</code></td>
+</tr>
+</tbody></table>
+<p>For example, you can make a function return different values depending on whether it is passed a string or an array:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function wrapInArray(obj: string | string[]) &#123;</span><br><span class="line">  if (typeof obj &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">    return [obj];&#x2F;&#x2F;          ^ &#x3D; (parameter) obj: string</span><br><span class="line"></span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return obj;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;Try</span><br></pre></td></tr></table></figure>
+
+<h3 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h3><p>Generics provide variables to types. A common example is an array. An array without generics could contain anything. An array with generics can describe the values that the array contains.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type StringArray &#x3D; Array&lt;string&gt;;</span><br><span class="line">type NumberArray &#x3D; Array&lt;number&gt;;</span><br><span class="line">type ObjectWithNameArray &#x3D; Array&lt;&#123; name: string &#125;&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>You can declare your own types that use generics:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface Backpack&lt;Type&gt; &#123;</span><br><span class="line">  add: (obj: Type) &#x3D;&gt; void;</span><br><span class="line">  get: () &#x3D;&gt; Type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; This line is a shortcut to tell TypeScript there is a</span><br><span class="line">&#x2F;&#x2F; constant called &#96;backpack&#96;, and to not worry about where it came from.</span><br><span class="line">declare const backpack: Backpack&lt;string&gt;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; object is a string, because we declared it above as the variable part of Backpack.</span><br><span class="line">const object &#x3D; backpack.get();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Since the backpack variable is a string, you can&#39;t pass a number to the add function.</span><br><span class="line">backpack.add(23);Argument of type &#39;number&#39; is not assignable to parameter of type &#39;string&#39;.Argument of type &#39;number&#39; is not assignable to parameter of type &#39;string&#39;.Try</span><br></pre></td></tr></table></figure>
+
+<h2 id="Structural-Type-System"><a href="#Structural-Type-System" class="headerlink" title="Structural Type System"></a>Structural Type System</h2><p>One of TypeScript’s core principles is that type checking focuses on the <em>shape</em> that values have. This is sometimes called “duck typing” or “structural typing”.</p>
+<p>In a structural type system, if two objects have the same shape, they are considered to be of the same type.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface Point &#123;</span><br><span class="line">  x: number;</span><br><span class="line">  y: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function logPoint(p: Point) &#123;</span><br><span class="line">  console.log(&#96;$&#123;p.x&#125;, $&#123;p.y&#125;&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; logs &quot;12, 26&quot;</span><br><span class="line">const point &#x3D; &#123; x: 12, y: 26 &#125;;</span><br><span class="line">logPoint(point);Try</span><br></pre></td></tr></table></figure>
+
+<p>The <code>point</code> variable is never declared to be a <code>Point</code> type. However, TypeScript compares the shape of <code>point</code> to the shape of <code>Point</code> in the type-check. They have the same shape, so the code passes.</p>
+<p>The shape-matching only requires a subset of the object’s fields to match.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const point3 &#x3D; &#123; x: 12, y: 26, z: 89 &#125;;</span><br><span class="line">logPoint(point3); &#x2F;&#x2F; logs &quot;12, 26&quot;</span><br><span class="line"></span><br><span class="line">const rect &#x3D; &#123; x: 33, y: 3, width: 30, height: 80 &#125;;</span><br><span class="line">logPoint(rect); &#x2F;&#x2F; logs &quot;33, 3&quot;</span><br><span class="line"></span><br><span class="line">const color &#x3D; &#123; hex: &quot;#187ABF&quot; &#125;;</span><br><span class="line">logPoint(color);Argument of type &#39;&#123; hex: string; &#125;&#39; is not assignable to parameter of type &#39;Point&#39;.</span><br><span class="line">  Type &#39;&#123; hex: string; &#125;&#39; is missing the following properties from type &#39;Point&#39;: x, yArgument of type &#39;&#123; hex: string; &#125;&#39; is not assignable to parameter of type &#39;Point&#39;.</span><br><span class="line">  Type &#39;&#123; hex: string; &#125;&#39; is missing the following properties from type &#39;Point&#39;: x, yTry</span><br></pre></td></tr></table></figure>
+
+<p>There is no difference between how classes and objects conform to shapes:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class VirtualPoint &#123;</span><br><span class="line">  x: number;</span><br><span class="line">  y: number;</span><br><span class="line"></span><br><span class="line">  constructor(x: number, y: number) &#123;</span><br><span class="line">    this.x &#x3D; x;</span><br><span class="line">    this.y &#x3D; y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const newVPoint &#x3D; new VirtualPoint(13, 56);</span><br><span class="line">logPoint(newVPoint); &#x2F;&#x2F; logs &quot;13, 56&quot;Try</span><br></pre></td></tr></table></figure>
+
+<p>If the object or class has all the required properties, TypeScript will say they match, regardless of the implementation details.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-Your-Timeline-for-Learning-React"
   class="article article-type-post"
   itemscope
@@ -1322,93 +1464,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mind/" rel="tag">mind</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-crazy-rally-drivers"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/20/crazy-rally-drivers/"
-    >crazy_rally_drivers</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/07/20/crazy-rally-drivers/" class="article-date">
-  <time datetime="2020-07-20T05:12:54.000Z" itemprop="datePublished">2020-07-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Strike that. I <em>drove</em> a rally car once, which is a totally different thing. In the course of my job, I’ve sampled many rally cars, in both amateur and professional spec, including three amateur cars that I helped build. All were loud, obnoxious machines with roll cages, five-point harnesses, and long-travel suspension. At least two and a half of them (you do the math on which) were total pieces of shit. And all had one thing in common.</p>
-<p>Under normal circumstances, they appeared to be driven by lunatics.</p>
-<p>Rally drivers race on closed-off public roads. They run against the clock, one car at a time, on dirt, pavement, and anything in between. They run in all weather, in virtually every country on the planet. The sport is a glorious, lovely thing, all noise and violence and sliding sideways between trees at 100 mph. There is real, palpable risk and skill on display. You stand next to a closed-off rally road—they’re called “stages”—during competition, and it’s instantly obvious why people do this sort of thing.</p>
-<p>Reason 1: They enjoy getting off the couch and having adventures.<br>Reason 2: They are moderately attracted to risk.<br>Reason 3: They think BASE jumping is for narcotized children.</p>
-<p>It’s also clear why the pastime’s apex, the FIA-sanctioned World Rally Championship, is one of the most-watched sporting events in the world.</p>
-<p>If you are not now interested, feel free to leave the room. Or perhaps continue rotting in your casket/urn/final resting place, because you are most likely dead.</p>
-<p>Several years ago, I embarked upon a brief career as an amateur stage-rally co-driver. That’s the guy or gal who rides shotgun, wearing full fire gear and a helmet, and helps the driver go quickly by shouting out instructions. Co-driving taught me much about the sport’s process and genius—these people are some of the most talented hotshots on the planet, and rally is a highly organized matrix of processes. Their driving is less insanity and more a highly developed skill. Call it part art, part science, part unknowable risk. It’s like doing calculus while simultaneously painting a still life and falling out of a plane.</p>
-<p>In a nutshell, a rally driver’s magic is rooted in four things:</p>
-<ol>
-<li>Setting Up the Car<br>Race vehicles are purpose-built to go racing, to be durable and capable in their given environment, withstanding stresses that would rip most road cars to pieces. Road-racing cars are set up for intense forces under braking and cornering. Motocross bikes are designed to take the pounding and lumps of a dirt course without slowing down. And oval machines, like NASCAR stockers or Indy Cars, have to push through the air at ridiculous velocity, but also be ready to hit things at that velocity while maintaining a semblance of driver safety. So they’re generally overbuilt.</li>
-</ol>
-<p>Rally cars do all of that at once. They are also—and this is key—set up to rotate at the drop of a hat.</p>
-<p>“Rally driving is the most exciting form of motorsport because it encompasses the best aspects of all the others,” says Wyatt Knox, special projects director for New Hampshire’s world-renowned Team O’Neil Rally School. Knox is an accomplished rally driver, a part-time co-driver, a great teacher, and just the best kind of multi-talented New England woodland weirdo you’d ever want to meet. (Disclosure: He’s also a friend.)</p>
-<p>“To succeed,” he says, “you need to be a drag racer, a mechanic, an ice racer, a tarmac ace, a navigation expert, a drifter, an endurance racer, and more … all at the same time.”</p>
-<p>Note that he said “drifter.” Rally cars are constantly sliding, partly because that gives the driver the most options: When a car is sliding in rally, it’s generally tail-first, a condition known as oversteer. (Most people know this from snow driving, where most rear-drive street cars will “fishtail” when given too much gas.) Rally cars have suspensions set up to oversteer at the slightest provocation. You turn in sharply, they oversteer. You trail the brakes into a corner, they oversteer. You give them too much throttle in the right conditions, they oversteer.</p>
-<p>Oversteer is inherently unstable, and can lead to a spin. It’s yaw, and yaw in a four-wheeled vehicle generally means the driver has applied a control input—brakes, throttle, steering, a combination of all three—that unsettled the car and broke traction. But it also means a ready change in direction—the instability that comes from a car already up and sliding can be used to quickly change heading. (Remember how that fishtailing car would swing its nose around suddenly if you didn’t use a careful right foot?)</p>
-<p>And that hints at the crucial part of rally: You don’t always know what’s around the next bend, so you have to be able to adjust the car on the fly. Contrast that with a road-racing car, which doesn’t necessarily have an adjustable attitude while sliding at the limit.</p>
-<p>Your grandmother would hop into a pro-grade rally car, drive it down a dirt road, and end up off a cliff in the first five minutes. Other people do astonishing things. Hooray for God-given talent.</p>
-<ol start="2">
-<li>The Co-Driver<br>A rally driver’s job would be possible without a co-driver, but it wouldn’t be anywhere near as compelling. Or, in most circumstances, as fast.</li>
-</ol>
-<p>“The co-driver is essentially just telling the driver what is coming up so that he can plan what to do with the car,” Knox says. “A rally typically covers over a hundred miles of road, often without ever seeing the same turn twice. The co-driver tells the driver about the turns coming up, as well as the lengths of straights, any crests, surface changes, jumps, etc. That information comes from a reconnaissance run, or ‘recce,’ made by teams just before the race, when they have their only chance to see the route.”</p>
-<p>The co-driver calls these notes ahead of time, depending on speed and the driver’s preference. Some drivers want as much information as they can hold in their heads, as far as five turns ahead. Others want as little information as necessary, in just enough time to react.</p>
-<ol start="3">
-<li>The Pace Notes<br>Pace notes are a spoken code. The co-driver narrates them during a rally as the driver runs flat-out down what is usually a tight and winding single-lane road. These notes let the driver haul into blind corners at speed, knowing roughly how fast to go and how much to pivot the car.</li>
-</ol>
-<p>Call this the rally analogue for going to a permanent race track you’ve seen before. Most road-racing drivers are faster on a given race track once they’ve got a few laps there. This is the equivalent, only these guys have never seen or can’t possibly remember the whole race course, and they might never see it again.</p>
-<p>Pace notes can be hard to follow if you don’t know the language, but they’re based in logic, and they make sense. Corner types are numbered to correspond with their radius, landscape features are called out. (A typical line might be “Right 5 tightens over crest,” for example, which means a relatively fast right that decreases in radius over a hill.)</p>
-<p>Notes remove an element of the unpredictable. Only you can’t predict everything in rally, because you’re not on a track, you’re in the real world. Real roads have animals, changing pavement and weather, and boulders in the road that weren’t there a week ago.</p>
-<p>Which brings us to …</p>
-<ol start="4">
-<li>Reacting to the Unknown<br>At its core, this sport is about the unknown. You don’t know what’s in that forest, but you have to race through it. You don’t know what the weather’s going to be—nasty mud? blinding snow? draining heat?—but you have to get through it. All of this, at the limit of your talent and the car’s ability to go quickly. The car will break. You will race over long days and into the night. You will come close to losing your mind from stress and exertion. And many, many things will go wrong, because when you are hauling ass through the woods in the middle of nowhere, there is a lot to go wrong.</li>
-</ol>
-<p>A short list of the things I’ve seen, in less than a decade of spectating and participating: Wheels fall off when you hit things. Windshields come apart when you hit things. (I once saw a team use its car’s rear window, removed and duct-taped into place up front, as a new windshield.) Anything on a car that can blow up, blows up, and you don’t always have the right stuff to fix it. Drivers get sick, co-drivers get sick. Cars roll over and fall off cliffs. They end up in trees.</p>
-<p>“The key to rally driving is simply humility and perseverance,” Knox says, “hopefully coupled with a sense of humor. It’s a long, very complex road to the top and there will be many failures along the way. The key is to learn as much as possible from each and always keep moving forward.</p>
-<p>“The best rally drivers are also typically very humble. They’ll usually blame themselves for any troubles or failures at a race, because that’s how they learn and improve. Drivers who blame their equipment, the conditions, or simple circumstance for their problems usually don’t last long or make it far.”</p>
-<p>And nine times out of ten, the teams, the mechanics, and the drivers find a way to go on. Which is part of what makes the sport great.</p>
-<p>Like any sport, rally is easier to love when you know what’s going on. The above is a good primer, and should help you start watching. If you want more, hit up a school, read, or simply go watch a local NASA, Rally America, or WRC event.</p>
-<p>“The easiest way to get involved is to show up and spectate an event.” Knox says. “Or better yet, volunteer to help the organizers. A rally takes hundreds of volunteers to function, doing everything from HAM radio operation to running time controls and supervising spectator locations. Volunteering also gets you access to a lot of places and people that you’d never get just spectating, and it’s typically a lot of fun.”</p>
-<p>“Rally driving simply changes your entire outlook on life. After sliding through the forest sideways at 90 mph, you realize that most day-to-day problems are pretty insignificant.”</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sports/" rel="tag">sports</a></li></ul>
 
     </footer>
   </div>
