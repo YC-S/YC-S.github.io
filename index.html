@@ -107,6 +107,63 @@
     
     
     <article
+  id="post-Firebase-The-google-API-for-building-Apps"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/16/Firebase-The-google-API-for-building-Apps/"
+    >Firebase The google API for building Apps</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/16/Firebase-The-google-API-for-building-Apps/" class="article-date">
+  <time datetime="2021-04-17T00:06:58.000Z" itemprop="datePublished">2021-04-16</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Firebase-The-google-API-for-building-Apps"><a href="#Firebase-The-google-API-for-building-Apps" class="headerlink" title="Firebase: The google API for building Apps"></a>Firebase: The google API for building Apps</h1><p>Firebase is tool used for the backend and database of any app or website you might create. It’s a template for your app, that can be configured to your specific needs while delivering the basics. It’s made owned by google which makes it even more accessible. I use google for pretty much everything. Emails, writing, and countless other things. I actually didn’t know that something like Firebase existed a year ago. I mean who’s gonna give up a service like this for free-ish. Anyway lets get right into it.</p>
+<h1 id="Firebase-offers-Authentication"><a href="#Firebase-offers-Authentication" class="headerlink" title="Firebase offers Authentication"></a>Firebase offers Authentication</h1><p>This is literally the bread and butter of any application. Users need to be identified and have a secure way of doing so. Firebase authentication consists of google auth, facebook auth, email only auth, github auth, email and password auth, and a few others. Users can safely change passwords, confirm their email, and even change the email they are using. <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/auth">Here’s the link to the docs for auth.</a></p>
+<h1 id="Firebase-offers-2-different-Databases-and-storage"><a href="#Firebase-offers-2-different-Databases-and-storage" class="headerlink" title="Firebase offers 2 different Databases and storage"></a>Firebase offers 2 different Databases and storage</h1><p>Firebase is flexible, like really flexible. There are 2 different databases available: the real-time database, and the firestore. Both are great but personally I recommend the firestore. Storage is just for storing things that you cant keep in either database in your google cloud bucket.</p>
+<ol>
+<li>Storage: <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/storage">https://firebase.google.com/docs/storage</a></li>
+<li>Firestore: <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/firestore">https://firebase.google.com/docs/firestore</a></li>
+<li>Real-time Database: <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/database">https://firebase.google.com/docs/database</a></li>
+</ol>
+<h1 id="Firebase-offers-cloud-functions"><a href="#Firebase-offers-cloud-functions" class="headerlink" title="Firebase offers cloud functions"></a>Firebase offers cloud functions</h1><p>Because of the nature of firebase you don’t have direct access to a server, but cloud functions solve that problem. You can export your functions to be called using triggers. So any server side code can be run no stress. <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/functions">Here’s the link to the docs</a><br>P.S you need to be on a paid plan to use Firebase cloud functions.</p>
+<p>Now that all that’s been said here’s a quick example of how you might implement firebase into a react app.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> firebase <span class="keyword">from</span> <span class="string">&quot;firebase/app&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;firebase/auth&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;firebase/firestore&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = &#123;<span class="comment">/*firebase project config*/</span>&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  firebase.initializeApp(config);</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  !<span class="regexp">/already exists/</span>.test(error.message) &amp;&amp; <span class="built_in">console</span>.error(error); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [show, setShow] = useState(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [messages, setMessages] = useState([]);</span><br><span class="line">  useAuth(setShow);</span><br><span class="line">  useFirestore(setMessages);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h2&gt;</span><br><span class="line">        &#123;</span><br><span class="line">          show </span><br><span class="line">          ? <span class="string">&quot;You&#x27;re signed in yay!&quot;</span></span><br><span class="line">          : <span class="string">&quot;You&#x27;re not signed in. Please sign in.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &lt;/h2&gt;</span><br><span class="line">      &#123;</span><br><span class="line">        show</span><br><span class="line">        ? <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">Messages</span> <span class="attr">addMessage</span>=<span class="string">&#123;addMessage&#125;</span> <span class="attr">messages</span>=<span class="string">&#123;messages&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;logout&#125;</span>&gt;</span>Log Out<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        : <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;login&#125;</span>&gt;</span>Log In<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Messages</span>(<span class="params">&#123; messages, addMessage &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = useState(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &#123;</span><br><span class="line">          messages.map(<span class="function">(<span class="params">message, index</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;message&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &lt;/p&gt; </span><br><span class="line">      &lt;br /&gt;</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        addMessage(value);</span><br><span class="line">        setValue(<span class="string">&quot;&quot;</span>);</span><br><span class="line">      &#125;&#125;&gt;</span><br><span class="line">        &lt;input value=&#123;value&#125; onChange=&#123;<span class="function">(<span class="params">e</span>) =&gt;</span> setValue(e.target.value)&#125; /&gt;</span><br><span class="line">        &lt;br /&gt;</span><br><span class="line">        &lt;button&gt;Send&lt;/button&gt;</span><br><span class="line">      &lt;/form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFirestore</span>(<span class="params">setMessages</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> db = firebase.firestore();</span><br><span class="line">  <span class="keyword">const</span> auth = firebase.auth();</span><br><span class="line">  <span class="keyword">return</span> useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> unsubscribe = auth.currentUser &amp;&amp; db.collection(<span class="string">&quot;userMessages&quot;</span>).doc(auth.currentUser?.uid).onSnapshot(<span class="function">(<span class="params">doc</span>) =&gt;</span> &#123;</span><br><span class="line">      doc.exists &amp;&amp; setMessages([...doc.data().messages]);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="keyword">typeof</span>(unsubscribe) === <span class="string">&quot;function&quot;</span> &amp;&amp; unsubscribe();</span><br><span class="line">    <span class="comment">//eslint-disable-next-line</span></span><br><span class="line">  &#125;, [auth.currentUser]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> provider = <span class="keyword">new</span> firebase.auth.GoogleAuthProvider();</span><br><span class="line">    <span class="keyword">const</span> auth = firebase.auth();</span><br><span class="line">    <span class="keyword">await</span> auth.signInWithPopup(provider);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">logout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> auth = firebase.auth();</span><br><span class="line">  <span class="keyword">await</span> auth.signOut();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useAuth</span>(<span class="params">setShow</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> auth = firebase.auth();</span><br><span class="line">  <span class="keyword">return</span> useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    auth.onAuthStateChanged(<span class="function">(<span class="params">user</span>) =&gt;</span> &#123;</span><br><span class="line">      user?.uid ? setShow(<span class="literal">true</span>) : setShow(<span class="literal">false</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//eslint-disable-next-line</span></span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">addMessage</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> auth = firebase.auth();</span><br><span class="line">  <span class="keyword">const</span> db = firebase.firestore();</span><br><span class="line">  <span class="keyword">await</span> db.collection(<span class="string">&quot;userMessages&quot;</span>).doc(auth.currentUser.uid).set(&#123;</span><br><span class="line">    messages: firebase.firestore.FieldValue.arrayUnion(message)</span><br><span class="line">  &#125;,&#123; </span><br><span class="line">    merge: <span class="literal">true</span> </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">          </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firebase/" rel="tag">firebase</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-15-Free-React-Templates-for-Your-Next-Project"
   class="article article-type-post"
   itemscope
@@ -1188,109 +1245,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-Learn-Javascript-Deeply"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/06/Learn-Javascript-Deeply/"
-    >Learn Javascript, Deeply</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/06/Learn-Javascript-Deeply/" class="article-date">
-  <time datetime="2021-04-06T04:05:35.000Z" itemprop="datePublished">2021-04-05</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>the creator of WordPress, spoke about JavaScript in his yearly keynote “The State of Word”. In it, he gave the WordPress community homework — to <strong>Learn JavaScript, Deeply</strong>. To go out and make 2016 the year that you finally take those steps into getting comfortable with JavaScript.</p>
-<p><a target="_blank" rel="noopener" href="https://youtu.be/KrZx4IY1IgU">https://youtu.be/KrZx4IY1IgU</a></p>
-<p>To see Matt acknowledge this shift in the tech stack has me really excited and it confirms that JavaScript is exploding, and regardless of what you use to build your websites, JavaScript must be a major part of it.</p>
-<blockquote>
-<p>Take Every Opportunity to really beef up your JavaScript Chops — Mall Mullenweg, Creator of WordPress</p>
-</blockquote>
-<p>That said, I know there are many developers in the WordPress community who have been just getting by stringing together themes, jQuery plugins and Stack Overflow answers. There are many developers who feel burned, who feel it’s too hard to learn or just something they can get by without. There will always be varying degrees of JavaScript involvement in your sites, but the one constant is that the types of sites and the interactive interfaces that you make with WordPress are happening more in the browser and are requiring some level of JavaScript knowledge to get going.</p>
-<p>So — how do you learn JavaScript? My answer is always this: Build things, build things, build things!</p>
-<p>And while this is a simple answer to give, and is one you will get from many experienced developers. It’s frustrating to hear, because:</p>
-<ul>
-<li>You aren’t sure what you should build — either from lack of ideas, or that you aren’t 100% sure what you are capable of</li>
-<li>You need at least some fundamentals before you can get started!</li>
-</ul>
-<p>My answer is still to find a project that you are excited about, and invested in and see it through to completion. Along the way you are going to need some resources that will help you out. I’m compiling a list of resources here. This will be a living list — if you have something that has helped you, or something you have created and would like it added, please leave a comment below and I’ll get it added to the site.</p>
-<p>Go forth and learn JavaScript. Will it be hard? Yes! Is everyone else smarter than you and maybe JS just isn’t for you? No! JavaScript doesn’t have a learning curve, it’s more like learning mountains. It’s hard, but push through it with nothing but hustle and repetition and you’ll get it, trust me, I’ve seen this with hundreds of students at <a target="_blank" rel="noopener" href="http://hackeryou.com/">HackerYou</a>.</p>
-<h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://egghead.io/">EggHead.io</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q">FunFunFunctional</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/user/LevelUpTuts">LevelUpTuts</a></li>
-<li><a target="_blank" rel="noopener" href="http://teamtreehouse.com/">Treehouse</a></li>
-<li><a target="_blank" rel="noopener" href="http://frontendmasters.com/">FrontendMasters.com</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.safaribooksonline.com/">Safari</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/Bv_5Zv5c-Ts">Javascript: Understanding the Weird Parts</a></li>
-<li><a target="_blank" rel="noopener" href="https://sub.watchmecode.net/">Watch Me Code</a></li>
-</ul>
-<h3 id="In-Person"><a href="#In-Person" class="headerlink" title="In Person"></a>In Person</h3><p>These are pretty localized - so search in your local area for a coding school - most should have full time, evening and weekend classes.</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://hackeryou.com/">HackerYou</a></li>
-<li><a target="_blank" rel="noopener" href="http://nodeschool.io/chapters.html">NodeSchool</a></li>
-<li><a target="_blank" rel="noopener" href="http://ladieslearningcode.com/">Ladies Learning Code</a></li>
-</ul>
-<h3 id="Books"><a href="#Books" class="headerlink" title="Books"></a>Books</h3><p>There are tons and tons of book roundups - here are a few:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://eloquentjavascript.net/">Eloquent JavaScript</a></li>
-<li><a target="_blank" rel="noopener" href="http://speakingjs.com/">Speaking JS</a></li>
-<li><a target="_blank" rel="noopener" href="http://exploringjs.com/">Exploring ES6</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.javascriptbook.com/">JavaScript + jQuery</a></li>
-<li><a target="_blank" rel="noopener" href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">JS Patterns</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/master/README.md#you-dont-know-js-book-series">You Don’t Know JS</a></li>
-<li><a target="_blank" rel="noopener" href="http://jsbooks.revolunet.com/">JS Books</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/wesbos/ama/issues/61">Best Books AMA</a></li>
-</ul>
-<h3 id="Editor-Based-Code-Alongs"><a href="#Editor-Based-Code-Alongs" class="headerlink" title="Editor Based Code Alongs"></a>Editor Based Code Alongs</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://freecodecamp.com/">FreeCodeCamp.com</a></li>
-<li><a target="_blank" rel="noopener" href="http://codeschool.com/">CodeSchool</a></li>
-</ul>
-<h3 id="Podcasts"><a href="#Podcasts" class="headerlink" title="Podcasts"></a>Podcasts</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://nodeup.com/">Nodeup</a></li>
-<li><a target="_blank" rel="noopener" href="https://devchat.tv/js-jabber/">JS Jabber</a></li>
-<li><a target="_blank" rel="noopener" href="http://javascriptair.com/">Javascript Air</a></li>
-<li><a target="_blank" rel="noopener" href="https://angularair.com/">Angular Air</a></li>
-<li><a target="_blank" rel="noopener" href="http://shoptalkshow.com/">Shop Talk Show</a></li>
-</ul>
-<h3 id="Read-Other-people’s-code"><a href="#Read-Other-people’s-code" class="headerlink" title="Read Other people’s code"></a>Read Other people’s code</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://codepen.io/">CodePen.io</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
     </footer>
   </div>
