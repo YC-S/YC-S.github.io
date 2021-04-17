@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-17T00:06:58.000Z</updated>
+  <updated>2021-04-17T19:56:42.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kafka tutorial</title>
+    <link href="https://yc-s.github.io/2021/04/17/kafka-tutorial/"/>
+    <id>https://yc-s.github.io/2021/04/17/kafka-tutorial/</id>
+    <published>2021-04-17T19:56:42.000Z</published>
+    <updated>2021-04-17T19:56:42.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Apache-Kafka-Tutorial&quot;&gt;&lt;a href=&quot;#Apache-Kafka-Tutorial&quot; class=&quot;headerlink&quot; title=&quot;Apache Kafka Tutorial&quot;&gt;&lt;/a&gt;Apache Kafka</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Kafka" scheme="https://yc-s.github.io/tags/Kafka/"/>
+    
+  </entry>
   
   <entry>
     <title>Firebase The google API for building Apps</title>
@@ -458,30 +481,6 @@
     
     
     <category term="culture" scheme="https://yc-s.github.io/tags/culture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>minimum_quotes</title>
-    <link href="https://yc-s.github.io/2020/07/24/minimum-quotes/"/>
-    <id>https://yc-s.github.io/2020/07/24/minimum-quotes/</id>
-    <published>2020-07-24T04:37:43.000Z</published>
-    <updated>2020-07-24T04:37:43.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;“But I deal with this by meditating and by understanding I’ve been put on the planet to serve humanity. I have to remind</summary>
-        
-      
-    
-    
-    
-    
-    <category term="idea" scheme="https://yc-s.github.io/tags/idea/"/>
     
   </entry>
   

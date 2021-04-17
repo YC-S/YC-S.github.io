@@ -107,6 +107,701 @@
     
     
     <article
+  id="post-kafka-tutorial"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/17/kafka-tutorial/"
+    >kafka tutorial</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/17/kafka-tutorial/" class="article-date">
+  <time datetime="2021-04-17T19:56:42.000Z" itemprop="datePublished">2021-04-17</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Apache-Kafka-Tutorial"><a href="#Apache-Kafka-Tutorial" class="headerlink" title="Apache Kafka Tutorial"></a>Apache Kafka Tutorial</h1><p>Apache Kafka was originated at LinkedIn and later became an open sourced Apache project in 2011, then First-class Apache project in 2012. Kafka is written in Scala and Java. Apache Kafka is publish-subscribe based fault tolerant messaging system. It is fast, scalable and distributed by design.</p>
+<p>This tutorial will explore the principles of Kafka, installation, operations and then it will walk you through with the deployment of Kafka cluster. Finally, we will conclude with real-time applica-tions and integration with Big Data Technologies.</p>
+<h1 id="Audience"><a href="#Audience" class="headerlink" title="Audience"></a>Audience</h1><p>This tutorial has been prepared for professionals aspiring to make a career in Big Data Analytics using Apache Kafka messaging system. It will give you enough understanding on how to use Kafka clusters.</p>
+<h1 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h1><p>Before proceeding with this tutorial, you must have a good understanding of Java, Scala, Dis-tributed messaging system, and Linux environment.</p>
+<h1 id="Apache-Kafka-Introduction"><a href="#Apache-Kafka-Introduction" class="headerlink" title="Apache Kafka - Introduction"></a>Apache Kafka - Introduction</h1><p>In Big Data, an enormous volume of data is used. Regarding data, we have two main challenges.The first challenge is how to collect large volume of data and the second challenge is to analyze the collected data. To overcome those challenges, you must need a messaging system.</p>
+<p>Kafka is designed for distributed high throughput systems. Kafka tends to work very well as a replacement for a more traditional message broker. In comparison to other messaging systems, Kafka has better throughput, built-in partitioning, replication and inherent fault-tolerance, which makes it a good fit for large-scale message processing applications.</p>
+<h2 id="What-is-a-Messaging-System"><a href="#What-is-a-Messaging-System" class="headerlink" title="What is a Messaging System?"></a>What is a Messaging System?</h2><p>A Messaging System is responsible for transferring data from one application to another, so the applications can focus on data, but not worry about how to share it. Distributed messaging is based on the concept of reliable message queuing. Messages are queued asynchronously between client applications and messaging system. Two types of messaging patterns are available − one is point to point and the other is publish-subscribe (pub-sub) messaging system. Most of the messaging patterns follow <strong>pub-sub</strong>.</p>
+<h3 id="Point-to-Point-Messaging-System"><a href="#Point-to-Point-Messaging-System" class="headerlink" title="Point to Point Messaging System"></a>Point to Point Messaging System</h3><p>In a point-to-point system, messages are persisted in a queue. One or more consumers can consume the messages in the queue, but a particular message can be consumed by a maximum of one consumer only. Once a consumer reads a message in the queue, it disappears from that queue. The typical example of this system is an Order Processing System, where each order will be processed by one Order Processor, but Multiple Order Processors can work as well at the same time. The following diagram depicts the structure.</p>
+<p><img src="../images/point_to_point_messaging_system.jpg" alt="point-to-point Messaging system"></p>
+<h3 id="Publish-Subscribe-Messaging-System"><a href="#Publish-Subscribe-Messaging-System" class="headerlink" title="Publish-Subscribe Messaging System"></a>Publish-Subscribe Messaging System</h3><p>In the publish-subscribe system, messages are persisted in a topic. Unlike point-to-point system, consumers can subscribe to one or more topic and consume all the messages in that topic. In the Publish-Subscribe system, message producers are called publishers and message consumers are called subscribers. A real-life example is Dish TV, which publishes different channels like sports, movies, music, etc., and anyone can subscribe to their own set of channels and get them whenever their subscribed channels are available.</p>
+<p><img src="../images/publish_subscribe_messaging_system.jpg" alt="Publish-Subscribe Messaging system"></p>
+<h2 id="What-is-Kafka"><a href="#What-is-Kafka" class="headerlink" title="What is Kafka?"></a>What is Kafka?</h2><p>Apache Kafka is a distributed publish-subscribe messaging system and a robust queue that can handle a high volume of data and enables you to pass messages from one end-point to another. Kafka is suitable for both offline and online message consumption. Kafka messages are persisted on the disk and replicated within the cluster to prevent data loss. Kafka is built on top of the ZooKeeper synchronization service. It integrates very well with Apache Storm and Spark for real-time streaming data analysis.</p>
+<h3 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits"></a>Benefits</h3><p>Following are a few benefits of Kafka −</p>
+<ul>
+<li><strong>Reliability</strong> − Kafka is distributed, partitioned, replicated and fault tolerance.</li>
+<li><strong>Scalability</strong> − Kafka messaging system scales easily without down time..</li>
+<li><strong>Durability</strong> − Kafka uses Distributed commit log which means messages persists on disk as fast as possible, hence it is durable..</li>
+<li><strong>Performance</strong> − Kafka has high throughput for both publishing and subscribing messages. It maintains stable performance even many TB of messages are stored.</li>
+</ul>
+<p>Kafka is very fast and guarantees zero downtime and zero data loss.</p>
+<h3 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h3><p>Kafka can be used in many Use Cases. Some of them are listed below −</p>
+<ul>
+<li><strong>Metrics</strong> − Kafka is often used for operational monitoring data. This involves aggregating statistics from distributed applications to produce centralized feeds of operational data.</li>
+<li><strong>Log Aggregation Solution</strong> − Kafka can be used across an organization to collect logs from multiple services and make them available in a standard format to multiple con-sumers.</li>
+<li><strong>Stream Processing</strong> − Popular frameworks such as Storm and Spark Streaming read data from a topic, processes it, and write processed data to a new topic where it becomes available for users and applications. Kafka’s strong durability is also very useful in the context of stream processing.</li>
+</ul>
+<h3 id="Need-for-Kafka"><a href="#Need-for-Kafka" class="headerlink" title="Need for Kafka"></a>Need for Kafka</h3><p>Kafka is a unified platform for handling all the real-time data feeds. Kafka supports low latency message delivery and gives guarantee for fault tolerance in the presence of machine failures. It has the ability to handle a large number of diverse consumers. Kafka is very fast, performs 2 million writes/sec. Kafka persists all data to the disk, which essentially means that all the writes go to the page cache of the OS (RAM). This makes it very efficient to transfer data from page cache to a network socket.</p>
+<h1 id="Apache-Kafka-Fundamentals"><a href="#Apache-Kafka-Fundamentals" class="headerlink" title="Apache Kafka - Fundamentals"></a>Apache Kafka - Fundamentals</h1><p>Before moving deep into the Kafka, you must aware of the main terminologies such as topics, brokers, producers and consumers. The following diagram illustrates the main terminologies and the table describes the diagram components in detail.</p>
+<p><img src="../images/fundamentals.jpg" alt="Fundamentals"></p>
+<p>In the above diagram, a topic is configured into three partitions. Partition 1 has two offset factors 0 and 1. Partition 2 has four offset factors 0, 1, 2, and 3. Partition 3 has one offset factor 0. The id of the replica is same as the id of the server that hosts it.</p>
+<p>Assume, if the replication factor of the topic is set to 3, then Kafka will create 3 identical replicas of each partition and place them in the cluster to make available for all its operations. To balance a load in cluster, each broker stores one or more of those partitions. Multiple producers and consumers can publish and retrieve messages at the same time.</p>
+<table>
+<thead>
+<tr>
+<th align="center">S.No</th>
+<th align="center">Components and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><strong>Topics</strong>A stream of messages belonging to a particular category is called a topic. Data is stored in topics.Topics are split into partitions. For each topic, Kafka keeps a mini-mum of one partition. Each such partition contains messages in an immutable ordered sequence. A partition is implemented as a set of segment files of equal sizes.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><strong>Partition</strong>Topics may have many partitions, so it can handle an arbitrary amount of data.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"><strong>Partition offset</strong>Each partitioned message has a unique sequence id called as offset.</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"><strong>Replicas of partition</strong>Replicas are nothing but backups of a partition. Replicas are never read or write data. They are used to prevent data loss.</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center"><strong>Brokers</strong>Brokers are simple system responsible for maintaining the pub-lished data. Each broker may have zero or more partitions per topic. Assume, if there are N partitions in a topic and N number of brokers, each broker will have one partition.Assume if there are N partitions in a topic and more than N brokers (n + m), the first N broker will have one partition and the next M broker will not have any partition for that particular topic.Assume if there are N partitions in a topic and less than N brokers (n-m), each broker will have one or more partition sharing among them. This scenario is not recommended due to unequal load distri-bution among the broker.</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center"><strong>Kafka Cluster</strong>Kafka’s having more than one broker are called as Kafka cluster. A Kafka cluster can be expanded without downtime. These clusters are used to manage the persistence and replication of message data.</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center"><strong>Producers</strong>Producers are the publisher of messages to one or more Kafka topics. Producers send data to Kafka brokers. Every time a producer pub-lishes a message to a broker, the broker simply appends the message to the last segment file. Actually, the message will be appended to a partition. Producer can also send messages to a partition of their choice.</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"><strong>Consumers</strong>Consumers read data from brokers. Consumers subscribes to one or more topics and consume published messages by pulling data from the brokers.</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center"><strong>Leader</strong>Leader is the node responsible for all reads and writes for the given partition. Every partition has one server acting as a leader.</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center"><strong>Follower</strong>Node which follows leader instructions are called as follower. If the leader fails, one of the follower will automatically become the new leader. A follower acts as normal consumer, pulls messages and up-dates its own data store.</td>
+</tr>
+</tbody></table>
+<h1 id="Apache-Kafka-Cluster-Architecture"><a href="#Apache-Kafka-Cluster-Architecture" class="headerlink" title="Apache Kafka - Cluster Architecture"></a>Apache Kafka - Cluster Architecture</h1><p>Take a look at the following illustration. It shows the cluster diagram of Kafka.</p>
+<p><img src="../images/cluster_architecture.jpg" alt="Cluster Architecture"></p>
+<p>The following table describes each of the components shown in the above diagram.</p>
+<table>
+<thead>
+<tr>
+<th align="center">S.No</th>
+<th align="center">Components and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><strong>Broker</strong>Kafka cluster typically consists of multiple brokers to maintain load balance. Kafka brokers are stateless, so they use ZooKeeper for maintaining their cluster state. One Kafka broker instance can handle hundreds of thousands of reads and writes per second and each bro-ker can handle TB of messages without performance impact. Kafka broker leader election can be done by ZooKeeper.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><strong>ZooKeeper</strong>ZooKeeper is used for managing and coordinating Kafka broker. ZooKeeper service is mainly used to notify producer and consumer about the presence of any new broker in the Kafka system or failure of the broker in the Kafka system. As per the notification received by the Zookeeper regarding presence or failure of the broker then pro-ducer and consumer takes decision and starts coordinating their task with some other broker.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"><strong>Producers</strong>Producers push data to brokers. When the new broker is started, all the producers search it and automatically sends a message to that new broker. Kafka producer doesn’t wait for acknowledgements from the broker and sends messages as fast as the broker can handle.</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"><strong>Consumers</strong>Since Kafka brokers are stateless, which means that the consumer has to maintain how many messages have been consumed by using partition offset. If the consumer acknowledges a particular message offset, it implies that the consumer has consumed all prior messages. The consumer issues an asynchronous pull request to the broker to have a buffer of bytes ready to consume. The consumers can rewind or skip to any point in a partition simply by supplying an offset value. Consumer offset value is notified by ZooKeeper.</td>
+</tr>
+</tbody></table>
+<h1 id="Apache-Kafka-WorkFlow"><a href="#Apache-Kafka-WorkFlow" class="headerlink" title="Apache Kafka - WorkFlow"></a>Apache Kafka - WorkFlow</h1><p>As of now, we discussed the core concepts of Kafka. Let us now throw some light on the workflow of Kafka.</p>
+<p>Kafka is simply a collection of topics split into one or more partitions. A Kafka partition is a linearly ordered sequence of messages, where each message is identified by their index (called as offset). All the data in a Kafka cluster is the disjointed union of partitions. Incoming messages are written at the end of a partition and messages are sequentially read by consumers. Durability is provided by replicating messages to different brokers.</p>
+<p>Kafka provides both pub-sub and queue based messaging system in a fast, reliable, persisted, fault-tolerance and zero downtime manner. In both cases, producers simply send the message to a topic and consumer can choose any one type of messaging system depending on their need. Let us follow the steps in the next section to understand how the consumer can choose the messaging system of their choice.</p>
+<h2 id="Workflow-of-Pub-Sub-Messaging"><a href="#Workflow-of-Pub-Sub-Messaging" class="headerlink" title="Workflow of Pub-Sub Messaging"></a>Workflow of Pub-Sub Messaging</h2><p>Following is the step wise workflow of the Pub-Sub Messaging −</p>
+<ul>
+<li>Producers send message to a topic at regular intervals.</li>
+<li>Kafka broker stores all messages in the partitions configured for that particular topic. It ensures the messages are equally shared between partitions. If the producer sends two messages and there are two partitions, Kafka will store one message in the first partition and the second message in the second partition.</li>
+<li>Consumer subscribes to a specific topic.</li>
+<li>Once the consumer subscribes to a topic, Kafka will provide the current offset of the topic to the consumer and also saves the offset in the Zookeeper ensemble.</li>
+<li>Consumer will request the Kafka in a regular interval (like 100 Ms) for new messages.</li>
+<li>Once Kafka receives the messages from producers, it forwards these messages to the consumers.</li>
+<li>Consumer will receive the message and process it.</li>
+<li>Once the messages are processed, consumer will send an acknowledgement to the Kafka broker.</li>
+<li>Once Kafka receives an acknowledgement, it changes the offset to the new value and updates it in the Zookeeper. Since offsets are maintained in the Zookeeper, the consumer can read next message correctly even during server outrages.</li>
+<li>This above flow will repeat until the consumer stops the request.</li>
+<li>Consumer has the option to rewind/skip to the desired offset of a topic at any time and read all the subsequent messages.</li>
+</ul>
+<h2 id="Workflow-of-Queue-Messaging-Consumer-Group"><a href="#Workflow-of-Queue-Messaging-Consumer-Group" class="headerlink" title="Workflow of Queue Messaging / Consumer Group"></a>Workflow of Queue Messaging / Consumer Group</h2><p>In a queue messaging system instead of a single consumer, a group of consumers having the same Group ID will subscribe to a topic. In simple terms, consumers subscribing to a topic with same Group ID are considered as a single group and the messages are shared among them. Let us check the actual workflow of this system.</p>
+<ul>
+<li>Producers send message to a topic in a regular interval.</li>
+<li>Kafka stores all messages in the partitions configured for that particular topic similar to the earlier scenario.</li>
+<li>A single consumer subscribes to a specific topic, assume Topic-01 with Group ID as Group-1.</li>
+<li>Kafka interacts with the consumer in the same way as Pub-Sub Messaging until new consumer subscribes the same topic, Topic-01 with the same Group ID as Group-1.</li>
+<li>Once the new consumer arrives, Kafka switches its operation to share mode and shares the data between the two consumers. This sharing will go on until the number of con-sumers reach the number of partition configured for that particular topic.</li>
+<li>Once the number of consumer exceeds the number of partitions, the new consumer will not receive any further message until any one of the existing consumer unsubscribes. This scenario arises because each consumer in Kafka will be assigned a minimum of one partition and once all the partitions are assigned to the existing consumers, the new consumers will have to wait.</li>
+<li>This feature is also called as Consumer Group. In the same way, Kafka will provide the best of both the systems in a very simple and efficient manner.</li>
+</ul>
+<h2 id="Role-of-ZooKeeper"><a href="#Role-of-ZooKeeper" class="headerlink" title="Role of ZooKeeper"></a>Role of ZooKeeper</h2><p>A critical dependency of Apache Kafka is Apache Zookeeper, which is a distributed configuration and synchronization service. Zookeeper serves as the coordination interface between the Kafka brokers and consumers. The Kafka servers share information via a Zookeeper cluster. Kafka stores basic metadata in Zookeeper such as information about topics, brokers, consumer offsets (queue readers) and so on.</p>
+<p>Since all the critical information is stored in the Zookeeper and it normally replicates this data across its ensemble, failure of Kafka broker / Zookeeper does not affect the state of the Kafka cluster. Kafka will restore the state, once the Zookeeper restarts. This gives zero downtime for Kafka. The leader election between the Kafka broker is also done by using Zookeeper in the event of leader failure.</p>
+<p>To learn more on Zookeeper, please refer <a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/zookeeper/index.htm">zookeeper</a></p>
+<p>Let us continue further on how to install Java, ZooKeeper, and Kafka on your machine in the next chapter.</p>
+<h1 id="Apache-Kafka-Installation-Steps"><a href="#Apache-Kafka-Installation-Steps" class="headerlink" title="Apache Kafka - Installation Steps"></a>Apache Kafka - Installation Steps</h1><p>Following are the steps for installing Java on your machine.</p>
+<h2 id="Step-1-Verifying-Java-Installation"><a href="#Step-1-Verifying-Java-Installation" class="headerlink" title="Step 1 - Verifying Java Installation"></a>Step 1 - Verifying Java Installation</h2><p>Hopefully you have already installed java on your machine right now, so you just verify it using the following command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
+
+<p>If java is successfully installed on your machine, you could see the version of the installed Java.</p>
+<h3 id="Step-1-1-Download-JDK"><a href="#Step-1-1-Download-JDK" class="headerlink" title="Step 1.1 - Download JDK"></a>Step 1.1 - Download JDK</h3><p>If Java is not downloaded, please download the latest version of JDK by visiting the following link and download latest version.</p>
+<p><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+<p>Now the latest version is JDK 8u 60 and the file is “jdk-8u60-linux-x64.tar.gz”. Please download the file on your machine.</p>
+<h3 id="Step-1-2-Extract-Files"><a href="#Step-1-2-Extract-Files" class="headerlink" title="Step 1.2 - Extract Files"></a>Step 1.2 - Extract Files</h3><p>Generally, files being downloaded are stored in the downloads folder, verify it and extract the tar setup using the following commands.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd &#x2F;go&#x2F;to&#x2F;download&#x2F;path</span><br><span class="line">$ tar -zxf jdk-8u60-linux-x64.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-1-3-Move-to-Opt-Directory"><a href="#Step-1-3-Move-to-Opt-Directory" class="headerlink" title="Step 1.3 - Move to Opt Directory"></a>Step 1.3 - Move to Opt Directory</h3><p>To make java available to all users, move the extracted java content to usr/local/java/ folder.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ su</span><br><span class="line">password: (type password of root user)</span><br><span class="line">$ mkdir &#x2F;opt&#x2F;jdk</span><br><span class="line">$ mv jdk-1.8.0_60 &#x2F;opt&#x2F;jdk&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-1-4-Set-path"><a href="#Step-1-4-Set-path" class="headerlink" title="Step 1.4 - Set path"></a>Step 1.4 - Set path</h3><p>To set path and JAVA_HOME variables, add the following commands to ~/.bashrc file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME &#x3D;&#x2F;usr&#x2F;jdk&#x2F;jdk-1.8.0_60</span><br><span class="line">export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<p>Now apply all the changes into current running system.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-1-5-Java-Alternatives"><a href="#Step-1-5-Java-Alternatives" class="headerlink" title="Step 1.5 - Java Alternatives"></a>Step 1.5 - Java Alternatives</h3><p>Use the following command to change Java Alternatives.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --install &#x2F;usr&#x2F;bin&#x2F;java java &#x2F;opt&#x2F;jdk&#x2F;jdk1.8.0_60&#x2F;bin&#x2F;java 100</span><br></pre></td></tr></table></figure>
+
+<p><strong>Step 1.6</strong> − Now verify java using verification command (java -version) explained in Step 1.</p>
+<h2 id="Step-2-ZooKeeper-Framework-Installation"><a href="#Step-2-ZooKeeper-Framework-Installation" class="headerlink" title="Step 2 - ZooKeeper Framework Installation"></a>Step 2 - ZooKeeper Framework Installation</h2><h3 id="Step-2-1-Download-ZooKeeper"><a href="#Step-2-1-Download-ZooKeeper" class="headerlink" title="Step 2.1 - Download ZooKeeper"></a>Step 2.1 - Download ZooKeeper</h3><p>To install ZooKeeper framework on your machine, visit the following link and download the latest version of ZooKeeper.</p>
+<p><a target="_blank" rel="noopener" href="http://zookeeper.apache.org/releases.html">http://zookeeper.apache.org/releases.html</a></p>
+<p>As of now, latest version of ZooKeeper is 3.4.6 (ZooKeeper-3.4.6.tar.gz).</p>
+<h3 id="Step-2-2-Extract-tar-file"><a href="#Step-2-2-Extract-tar-file" class="headerlink" title="Step 2.2 - Extract tar file"></a>Step 2.2 - Extract tar file</h3><p>Extract tar file using the following command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd opt&#x2F;</span><br><span class="line">$ tar -zxf zookeeper-3.4.6.tar.gz</span><br><span class="line">$ cd zookeeper-3.4.6</span><br><span class="line">$ mkdir data</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-2-3-Create-Configuration-File"><a href="#Step-2-3-Create-Configuration-File" class="headerlink" title="Step 2.3 - Create Configuration File"></a>Step 2.3 - Create Configuration File</h3><p>Open Configuration File named conf/zoo.cfg using the command vi “conf/zoo.cfg” and all the following parameters to set as starting point.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi conf&#x2F;zoo.cfg</span><br><span class="line">tickTime&#x3D;2000</span><br><span class="line">dataDir&#x3D;&#x2F;path&#x2F;to&#x2F;zookeeper&#x2F;data</span><br><span class="line">clientPort&#x3D;2181</span><br><span class="line">initLimit&#x3D;5</span><br><span class="line">syncLimit&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<p>Once the configuration file has been saved successfully and return to terminal again, you can start the zookeeper server.</p>
+<h3 id="Step-2-4-Start-ZooKeeper-Server"><a href="#Step-2-4-Start-ZooKeeper-Server" class="headerlink" title="Step 2.4 - Start ZooKeeper Server"></a>Step 2.4 - Start ZooKeeper Server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;zkServer.sh start</span><br></pre></td></tr></table></figure>
+
+<p>After executing this command, you will get a response as shown below −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ JMX enabled by default</span><br><span class="line">$ Using config: &#x2F;Users&#x2F;..&#x2F;zookeeper-3.4.6&#x2F;bin&#x2F;..&#x2F;conf&#x2F;zoo.cfg</span><br><span class="line">$ Starting zookeeper ... STARTED</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-2-5-Start-CLI"><a href="#Step-2-5-Start-CLI" class="headerlink" title="Step 2.5 - Start CLI"></a>Step 2.5 - Start CLI</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;zkCli.sh</span><br></pre></td></tr></table></figure>
+
+<p>After typing the above command, you will be connected to the zookeeper server and will get the below response.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Connecting to localhost:2181</span><br><span class="line">................</span><br><span class="line">................</span><br><span class="line">................</span><br><span class="line">Welcome to ZooKeeper!</span><br><span class="line">................</span><br><span class="line">................</span><br><span class="line">WATCHER::</span><br><span class="line">WatchedEvent state:SyncConnected type: None path:null</span><br><span class="line">[zk: localhost:2181(CONNECTED) 0]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-2-6-Stop-Zookeeper-Server"><a href="#Step-2-6-Stop-Zookeeper-Server" class="headerlink" title="Step 2.6 - Stop Zookeeper Server"></a>Step 2.6 - Stop Zookeeper Server</h3><p>After connecting the server and performing all the operations, you can stop the zookeeper server with the following command −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;zkServer.sh stop</span><br></pre></td></tr></table></figure>
+
+<p>Now you have successfully installed Java and ZooKeeper on your machine. Let us see the steps to install Apache Kafka.</p>
+<h2 id="Step-3-Apache-Kafka-Installation"><a href="#Step-3-Apache-Kafka-Installation" class="headerlink" title="Step 3 - Apache Kafka Installation"></a>Step 3 - Apache Kafka Installation</h2><p>Let us continue with the following steps to install Kafka on your machine.</p>
+<h3 id="Step-3-1-Download-Kafka"><a href="#Step-3-1-Download-Kafka" class="headerlink" title="Step 3.1 - Download Kafka"></a>Step 3.1 - Download Kafka</h3><p>To install Kafka on your machine, click on the below link −</p>
+<p><a target="_blank" rel="noopener" href="https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.0/kafka_2.11-0.9.0.0.tgz">https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.0/kafka_2.11-0.9.0.0.tgz</a></p>
+<p>Now the latest version i.e., – <strong>kafka_2.11_0.9.0.0.tgz</strong> will be downloaded onto your machine.</p>
+<h3 id="Step-3-2-Extract-the-tar-file"><a href="#Step-3-2-Extract-the-tar-file" class="headerlink" title="Step 3.2 - Extract the tar file"></a>Step 3.2 - Extract the tar file</h3><p>Extract the tar file using the following command −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd opt&#x2F;</span><br><span class="line">$ tar -zxf kafka_2.11.0.9.0.0 tar.gz</span><br><span class="line">$ cd kafka_2.11.0.9.0.0</span><br></pre></td></tr></table></figure>
+
+<p>Now you have downloaded the latest version of Kafka on your machine.</p>
+<h3 id="Step-3-3-Start-Server"><a href="#Step-3-3-Start-Server" class="headerlink" title="Step 3.3 - Start Server"></a>Step 3.3 - Start Server</h3><p>You can start the server by giving the following command −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-server-start.sh config&#x2F;server.properties</span><br></pre></td></tr></table></figure>
+
+<p>After the server starts, you would see the below response on your screen −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-server-start.sh config&#x2F;server.properties</span><br><span class="line">[2016-01-02 15:37:30,410] INFO KafkaConfig values:</span><br><span class="line">request.timeout.ms &#x3D; 30000</span><br><span class="line">log.roll.hours &#x3D; 168</span><br><span class="line">inter.broker.protocol.version &#x3D; 0.9.0.X</span><br><span class="line">log.preallocate &#x3D; false</span><br><span class="line">security.inter.broker.protocol &#x3D; PLAINTEXT</span><br><span class="line">…………………………………………….</span><br><span class="line">…………………………………………….</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step-4-Stop-the-Server"><a href="#Step-4-Stop-the-Server" class="headerlink" title="Step 4 - Stop the Server"></a>Step 4 - Stop the Server</h2><p>After performing all the operations, you can stop the server using the following command −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-server-stop.sh config&#x2F;server.properties</span><br></pre></td></tr></table></figure>
+
+<p>Now that we have already discussed the Kafka installation, we can learn how to perform basic operations on Kafka in the next chapter.</p>
+<h1 id="Apache-Kafka-Basic-Operations"><a href="#Apache-Kafka-Basic-Operations" class="headerlink" title="Apache Kafka - Basic Operations"></a>Apache Kafka - Basic Operations</h1><p>First let us start implementing single node-single broker configuration and we will then migrate our setup to single node-multiple brokers configuration.</p>
+<p>Hopefully you would have installed Java, ZooKeeper and Kafka on your machine by now. Before moving to the Kafka Cluster Setup, first you would need to start your ZooKeeper because Kafka Cluster uses ZooKeeper.</p>
+<h2 id="Start-ZooKeeper"><a href="#Start-ZooKeeper" class="headerlink" title="Start ZooKeeper"></a>Start ZooKeeper</h2><p>Open a new terminal and type the following command −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;zookeeper-server-start.sh config&#x2F;zookeeper.properties</span><br></pre></td></tr></table></figure>
+
+<p>To start Kafka Broker, type the following command −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-server-start.sh config&#x2F;server.properties</span><br></pre></td></tr></table></figure>
+
+<p>After starting Kafka Broker, type the command jps on ZooKeeper terminal and you would see the following response −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">821 QuorumPeerMain</span><br><span class="line">928 Kafka</span><br><span class="line">931 Jps</span><br></pre></td></tr></table></figure>
+
+<p>Now you could see two daemons running on the terminal where QuorumPeerMain is ZooKeeper daemon and another one is Kafka daemon.</p>
+<h2 id="Single-Node-Single-Broker-Configuration"><a href="#Single-Node-Single-Broker-Configuration" class="headerlink" title="Single Node-Single Broker Configuration"></a>Single Node-Single Broker Configuration</h2><p>In this configuration you have a single ZooKeeper and broker id instance. Following are the steps to configure it −</p>
+<p><strong>Creating a Kafka Topic</strong> − Kafka provides a command line utility named kafka-topics.sh to create topics on the server. Open new terminal and type the below example.</p>
+<p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 </span><br><span class="line">--partitions 1 --topic topic-name</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1   </span><br><span class="line">--partitions 1 --topic Hello-Kafka</span><br></pre></td></tr></table></figure>
+
+<p>We just created a topic named Hello-Kafka with a single partition and one replica factor. The above created output will be similar to the following output −</p>
+<p><strong>Output</strong> − Created topic Hello-Kafka</p>
+<p>Once the topic has been created, you can get the notification in Kafka broker terminal window and the log for the created topic specified in “/tmp/kafka-logs/“ in the config/server.properties file.</p>
+<h2 id="List-of-Topics"><a href="#List-of-Topics" class="headerlink" title="List of Topics"></a>List of Topics</h2><p>To get a list of topics in Kafka server, you can use the following command −</p>
+<p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello-Kafka</span><br></pre></td></tr></table></figure>
+
+<p>Since we have created a topic, it will list out Hello-Kafka only. Suppose, if you create more than one topics, you will get the topic names in the output.</p>
+<h3 id="Start-Producer-to-Send-Messages"><a href="#Start-Producer-to-Send-Messages" class="headerlink" title="Start Producer to Send Messages"></a>Start Producer to Send Messages</h3><p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-producer.sh --broker-list localhost:9092 --topic topic-name</span><br></pre></td></tr></table></figure>
+
+<p>From the above syntax, two main parameters are required for the producer command line client −</p>
+<p><strong>Broker-list</strong> − The list of brokers that we want to send the messages to. In this case we only have one broker. The Config/server.properties file contains broker port id, since we know our broker is listening on port 9092, so you can specify it directly.</p>
+<p>Topic name − Here is an example for the topic name.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-Kafka</span><br></pre></td></tr></table></figure>
+
+<p>The producer will wait on input from stdin and publishes to the Kafka cluster. By default, every new line is published as a new message then the default producer properties are specified in config/producer.properties file. Now you can type a few lines of messages in the terminal as shown below.</p>
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-console-producer.sh --broker-list localhost:9092 </span><br><span class="line">--topic Hello-Kafka[2016-01-16 13:50:45,931] </span><br><span class="line">WARN property topic is not valid (kafka.utils.Verifia-bleProperties)</span><br><span class="line">Hello</span><br><span class="line">My first message</span><br><span class="line">My second message</span><br></pre></td></tr></table></figure>
+
+<h3 id="Start-Consumer-to-Receive-Messages"><a href="#Start-Consumer-to-Receive-Messages" class="headerlink" title="Start Consumer to Receive Messages"></a>Start Consumer to Receive Messages</h3><p>Similar to producer, the default consumer properties are specified in config/consumer.proper-ties file. Open a new terminal and type the below syntax for consuming messages.</p>
+<p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-consumer.sh --zookeeper localhost:2181 —topic topic-name </span><br><span class="line">--from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-consumer.sh --zookeeper localhost:2181 —topic Hello-Kafka </span><br><span class="line">--from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">My first message</span><br><span class="line">My second message</span><br></pre></td></tr></table></figure>
+
+<p>Finally, you are able to enter messages from the producer’s terminal and see them appearing in the consumer’s terminal. As of now, you have a very good understanding on the single node cluster with a single broker. Let us now move on to the multiple brokers configuration.</p>
+<h2 id="Single-Node-Multiple-Brokers-Configuration"><a href="#Single-Node-Multiple-Brokers-Configuration" class="headerlink" title="Single Node-Multiple Brokers Configuration"></a>Single Node-Multiple Brokers Configuration</h2><p>Before moving on to the multiple brokers cluster setup, first start your ZooKeeper server.</p>
+<p><strong>Create Multiple Kafka Brokers</strong> − We have one Kafka broker instance already in con-fig/server.properties. Now we need multiple broker instances, so copy the existing server.prop-erties file into two new config files and rename it as server-one.properties and server-two.prop-erties. Then edit both new files and assign the following changes −</p>
+<h3 id="config-server-one-properties"><a href="#config-server-one-properties" class="headerlink" title="config/server-one.properties"></a>config/server-one.properties</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># The id of the broker. This must be set to a unique integer for each broker.</span><br><span class="line">broker.id&#x3D;1</span><br><span class="line"># The port the socket server listens on</span><br><span class="line">port&#x3D;9093</span><br><span class="line"># A comma seperated list of directories under which to store log files</span><br><span class="line">log.dirs&#x3D;&#x2F;tmp&#x2F;kafka-logs-1</span><br></pre></td></tr></table></figure>
+
+<h3 id="config-server-two-properties"><a href="#config-server-two-properties" class="headerlink" title="config/server-two.properties"></a>config/server-two.properties</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># The id of the broker. This must be set to a unique integer for each broker.</span><br><span class="line">broker.id&#x3D;2</span><br><span class="line"># The port the socket server listens on</span><br><span class="line">port&#x3D;9094</span><br><span class="line"># A comma seperated list of directories under which to store log files</span><br><span class="line">log.dirs&#x3D;&#x2F;tmp&#x2F;kafka-logs-2</span><br></pre></td></tr></table></figure>
+
+<p><strong>Start Multiple Brokers</strong>− After all the changes have been made on three servers then open three new terminals to start each broker one by one.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Broker1</span><br><span class="line">bin&#x2F;kafka-server-start.sh config&#x2F;server.properties</span><br><span class="line">Broker2</span><br><span class="line">bin&#x2F;kafka-server-start.sh config&#x2F;server-one.properties</span><br><span class="line">Broker3</span><br><span class="line">bin&#x2F;kafka-server-start.sh config&#x2F;server-two.properties</span><br></pre></td></tr></table></figure>
+
+<p>Now we have three different brokers running on the machine. Try it by yourself to check all the daemons by typing <strong>jps</strong> on the ZooKeeper terminal, then you would see the response.</p>
+<h2 id="Creating-a-Topic"><a href="#Creating-a-Topic" class="headerlink" title="Creating a Topic"></a>Creating a Topic</h2><p>Let us assign the replication factor value as three for this topic because we have three different brokers running. If you have two brokers, then the assigned replica value will be two.</p>
+<p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 </span><br><span class="line">-partitions 1 --topic topic-name</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 </span><br><span class="line">-partitions 1 --topic Multibrokerapplication</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">created topic “Multibrokerapplication”</span><br></pre></td></tr></table></figure>
+
+<p>The Describe command is used to check which broker is listening on the current created topic as shown below −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --describe --zookeeper localhost:2181 </span><br><span class="line">--topic Multibrokerappli-cation</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --describe --zookeeper localhost:2181 </span><br><span class="line">--topic Multibrokerappli-cation</span><br><span class="line"></span><br><span class="line">Topic:Multibrokerapplication    PartitionCount:1 </span><br><span class="line">ReplicationFactor:3 Configs:</span><br><span class="line">   </span><br><span class="line">Topic:Multibrokerapplication Partition:0 Leader:0 </span><br><span class="line">Replicas:0,2,1 Isr:0,2,1</span><br></pre></td></tr></table></figure>
+
+<p>From the above output, we can conclude that first line gives a summary of all the partitions, showing topic name, partition count and the replication factor that we have chosen already. In the second line, each node will be the leader for a randomly selected portion of the partitions.</p>
+<p>In our case, we see that our first broker (with broker.id 0) is the leader. Then Replicas:0,2,1 means that all the brokers replicate the topic finally Isr is the set of in-sync replicas. Well, this is the subset of replicas that are currently alive and caught up by the leader.</p>
+<h3 id="Start-Producer-to-Send-Messages-1"><a href="#Start-Producer-to-Send-Messages-1" class="headerlink" title="Start Producer to Send Messages"></a>Start Producer to Send Messages</h3><p>This procedure remains the same as in the single broker setup.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-producer.sh --broker-list localhost:9092 </span><br><span class="line">--topic Multibrokerapplication</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-producer.sh --broker-list localhost:9092 --topic Multibrokerapplication</span><br><span class="line">[2016-01-20 19:27:21,045] WARN Property topic is not valid (kafka.utils.Verifia-bleProperties)</span><br><span class="line">This is single node-multi broker demo</span><br><span class="line">This is the second message</span><br></pre></td></tr></table></figure>
+
+<h3 id="Start-Consumer-to-Receive-Messages-1"><a href="#Start-Consumer-to-Receive-Messages-1" class="headerlink" title="Start Consumer to Receive Messages"></a>Start Consumer to Receive Messages</h3><p>This procedure remains the same as shown in the single broker setup.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-consumer.sh --zookeeper localhost:2181 </span><br><span class="line">—topic Multibrokerapplica-tion --from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-console-consumer.sh --zookeeper localhost:2181 </span><br><span class="line">—topic Multibrokerapplica-tion —from-beginning</span><br><span class="line">This is single node-multi broker demo</span><br><span class="line">This is the second message</span><br></pre></td></tr></table></figure>
+
+<h2 id="Basic-Topic-Operations"><a href="#Basic-Topic-Operations" class="headerlink" title="Basic Topic Operations"></a>Basic Topic Operations</h2><p>In this chapter we will discuss the various basic topic operations.</p>
+<h3 id="Modifying-a-Topic"><a href="#Modifying-a-Topic" class="headerlink" title="Modifying a Topic"></a>Modifying a Topic</h3><p>As you have already understood how to create a topic in Kafka Cluster. Now let us modify a created topic using the following command</p>
+<p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh —zookeeper localhost:2181 --alter --topic topic_name </span><br><span class="line">--parti-tions count</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">We have already created a topic “Hello-Kafka” with single partition count and one replica factor. </span><br><span class="line">Now using “alter” command we have changed the partition count.</span><br><span class="line">bin&#x2F;kafka-topics.sh --zookeeper localhost:2181 </span><br><span class="line">--alter --topic Hello-kafka --parti-tions 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WARNING: If partitions are increased for a topic that has a key, </span><br><span class="line">the partition logic or ordering of the messages will be affected</span><br><span class="line">Adding partitions succeeded!</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deleting-a-Topic"><a href="#Deleting-a-Topic" class="headerlink" title="Deleting a Topic"></a>Deleting a Topic</h3><p>To delete a topic, you can use the following syntax.</p>
+<p><strong>Syntax</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --zookeeper localhost:2181 --delete --topic topic_name</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;kafka-topics.sh --zookeeper localhost:2181 --delete --topic Hello-kafka</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; Topic Hello-kafka marked for deletion</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note −</strong>This will have no impact if <strong>delete.topic.enable</strong> is not set to true</p>
+<h1 id="Apache-Kafka-Simple-Producer-Example"><a href="#Apache-Kafka-Simple-Producer-Example" class="headerlink" title="Apache Kafka - Simple Producer Example"></a>Apache Kafka - Simple Producer Example</h1><p>Let us create an application for publishing and consuming messages using a Java client. Kafka producer client consists of the following API’s.</p>
+<h2 id="KafkaProducer-API"><a href="#KafkaProducer-API" class="headerlink" title="KafkaProducer API"></a>KafkaProducer API</h2><p>Let us understand the most important set of Kafka producer API in this section. The central part of the KafkaProducer API is KafkaProducer class. The KafkaProducer class provides an option to connect a Kafka broker in its constructor with the following methods.</p>
+<ul>
+<li>KafkaProducer class provides send method to send messages asynchronously to a topic. The signature of send() is as follows</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">producer.send(new ProducerRecord&lt;byte[],byte[]&gt;(topic, </span><br><span class="line">partition, key1, value1) , callback);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>ProducerRecord</strong> − The producer manages a buffer of records waiting to be sent.</p>
+</li>
+<li><p><strong>Callback</strong> − A user-supplied callback to execute when the record has been acknowl-edged by the server (null indicates no callback).</p>
+</li>
+<li><p>KafkaProducer class provides a flush method to ensure all previously sent messages have been actually completed. Syntax of the flush method is as follows −</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void flush()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>KafkaProducer class provides partitionFor method, which helps in getting the partition metadata for a given topic. This can be used for custom partitioning. The signature of this method is as follows −</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public Map metrics()</span><br></pre></td></tr></table></figure>
+
+<p>It returns the map of internal metrics maintained by the producer.</p>
+<ul>
+<li>public void close() − KafkaProducer class provides close method blocks until all previously sent requests are completed.</li>
+</ul>
+<h2 id="Producer-API"><a href="#Producer-API" class="headerlink" title="Producer API"></a>Producer API</h2><p>The central part of the Producer API is Producer class. Producer class provides an option to connect Kafka broker in its constructor by the following methods.</p>
+<h3 id="The-Producer-Class"><a href="#The-Producer-Class" class="headerlink" title="The Producer Class"></a>The Producer Class</h3><p>The producer class provides send method to <strong>send</strong> messages to either single or multiple topics using the following signatures.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public void send(KeyedMessaget&lt;k,v&gt; message) </span><br><span class="line">- sends the data to a single topic,par-titioned by key using either sync or async producer.</span><br><span class="line">public void send(List&lt;KeyedMessage&lt;k,v&gt;&gt;messages)</span><br><span class="line">- sends data to multiple topics.</span><br><span class="line">Properties prop &#x3D; new Properties();</span><br><span class="line">prop.put(producer.type,”async”)</span><br><span class="line">ProducerConfig config &#x3D; new ProducerConfig(prop);</span><br></pre></td></tr></table></figure>
+
+<p>There are two types of producers – <strong>Sync</strong> and <strong>Async</strong>.</p>
+<p>The same API configuration applies to Sync producer as well. The difference between them is a sync producer sends messages directly, but sends messages in background. Async producer is preferred when you want a higher throughput. In the previous releases like 0.8, an async producer does not have a callback for send() to register error handlers. This is available only in the current release of 0.9.</p>
+<h3 id="public-void-close"><a href="#public-void-close" class="headerlink" title="public void close()"></a>public void close()</h3><p>Producer class provides <strong>close</strong> method to close the producer pool connections to all Kafka bro-kers.</p>
+<h2 id="Configuration-Settings"><a href="#Configuration-Settings" class="headerlink" title="Configuration Settings"></a>Configuration Settings</h2><p>The Producer API’s main configuration settings are listed in the following table for better under-standing −</p>
+<table>
+<thead>
+<tr>
+<th>S.No</th>
+<th align="center">Configuration Settings and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="center"><strong>client.id</strong>identifies producer application</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center"><strong>producer.type</strong>either sync or async</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center"><strong>acks</strong>The acks config controls the criteria under producer requests are con-sidered complete.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center"><strong>retries</strong>If producer request fails, then automatically retry with specific value.</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="center"><strong>bootstrap.servers</strong>bootstrapping list of brokers.</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="center"><strong>linger.ms</strong>if you want to reduce the number of requests you can set linger.ms to something greater than some value.</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="center"><strong>key.serializer</strong>Key for the serializer interface.</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="center"><strong>value.serializer</strong>value for the serializer interface.</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="center"><strong>batch.size</strong>Buffer size.</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="center"><strong>buffer.memory</strong>controls the total amount of memory available to the producer for buff-ering.</td>
+</tr>
+</tbody></table>
+<h3 id="ProducerRecord-API"><a href="#ProducerRecord-API" class="headerlink" title="ProducerRecord API"></a>ProducerRecord API</h3><p>ProducerRecord is a key/value pair that is sent to Kafka cluster.ProducerRecord class constructor for creating a record with partition, key and value pairs using the following signature.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public ProducerRecord (string topic, int partition, k key, v value)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>Topic</strong> − user defined topic name that will appended to record.</p>
+</li>
+<li><p><strong>Partition</strong> − partition count</p>
+</li>
+<li><p><strong>Key</strong> − The key that will be included in the record.</p>
+</li>
+<li></li>
+<li><p><strong>Value</strong> − Record contents</p>
+</li>
+<li></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public ProducerRecord (string topic, k key, v value)</span><br></pre></td></tr></table></figure>
+
+<p>ProducerRecord class constructor is used to create a record with key, value pairs and without partition.</p>
+<ul>
+<li><strong>Topic</strong> − Create a topic to assign record.</li>
+<li><strong>Key</strong> − key for the record.</li>
+<li><strong>Value</strong> − record contents.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public ProducerRecord (string topic, v value)</span><br></pre></td></tr></table></figure>
+
+<p>ProducerRecord class creates a record without partition and key.</p>
+<ul>
+<li><strong>Topic</strong> − create a topic.</li>
+<li><strong>Value</strong> − record contents.</li>
+</ul>
+<p>The ProducerRecord class methods are listed in the following table −</p>
+<table>
+<thead>
+<tr>
+<th>S.No</th>
+<th align="center">Class Methods and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="center"><strong>public string topic()</strong>Topic will append to the record.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center"><strong>public K key()</strong>Key that will be included in the record. If no such key, null will be re-turned here.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center"><strong>public V value()</strong>Record contents.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center"><strong>partition()</strong>Partition count for the record</td>
+</tr>
+</tbody></table>
+<h2 id="SimpleProducer-application"><a href="#SimpleProducer-application" class="headerlink" title="SimpleProducer application"></a>SimpleProducer application</h2><p>Before creating the application, first start ZooKeeper and Kafka broker then create your own topic in Kafka broker using create topic command. After that create a java class named Sim-pleProducer.java and type in the following coding.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;import util.properties packages</span><br><span class="line">import java.util.Properties;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;import simple producer packages</span><br><span class="line">import org.apache.kafka.clients.producer.Producer;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;import KafkaProducer packages</span><br><span class="line">import org.apache.kafka.clients.producer.KafkaProducer;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;import ProducerRecord packages</span><br><span class="line">import org.apache.kafka.clients.producer.ProducerRecord;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;Create java class named “SimpleProducer”</span><br><span class="line">public class SimpleProducer &#123;</span><br><span class="line">   </span><br><span class="line">   public static void main(String[] args) throws Exception&#123;</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F; Check arguments length value</span><br><span class="line">      if(args.length &#x3D;&#x3D; 0)&#123;</span><br><span class="line">         System.out.println(&quot;Enter topic name”);</span><br><span class="line">         return;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;Assign topicName to string variable</span><br><span class="line">      String topicName &#x3D; args[0].toString();</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F; create instance for properties to access producer configs   </span><br><span class="line">      Properties props &#x3D; new Properties();</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;Assign localhost id</span><br><span class="line">      props.put(&quot;bootstrap.servers&quot;, “localhost:9092&quot;);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;Set acknowledgements for producer requests.      </span><br><span class="line">      props.put(&quot;acks&quot;, “all&quot;);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;If the request fails, the producer can automatically retry,</span><br><span class="line">      props.put(&quot;retries&quot;, 0);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;Specify buffer size in config</span><br><span class="line">      props.put(&quot;batch.size&quot;, 16384);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;Reduce the no of requests less than 0   </span><br><span class="line">      props.put(&quot;linger.ms&quot;, 1);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;The buffer.memory controls the total amount of memory available to the producer for buffering.   </span><br><span class="line">      props.put(&quot;buffer.memory&quot;, 33554432);</span><br><span class="line">      </span><br><span class="line">      props.put(&quot;key.serializer&quot;, </span><br><span class="line">         &quot;org.apache.kafka.common.serializa-tion.StringSerializer&quot;);</span><br><span class="line">         </span><br><span class="line">      props.put(&quot;value.serializer&quot;, </span><br><span class="line">         &quot;org.apache.kafka.common.serializa-tion.StringSerializer&quot;);</span><br><span class="line">      </span><br><span class="line">      Producer&lt;String, String&gt; producer &#x3D; new KafkaProducer</span><br><span class="line">         &lt;String, String&gt;(props);</span><br><span class="line">            </span><br><span class="line">      for(int i &#x3D; 0; i &lt; 10; i++)</span><br><span class="line">         producer.send(new ProducerRecord&lt;String, String&gt;(topicName, </span><br><span class="line">            Integer.toString(i), Integer.toString(i)));</span><br><span class="line">               System.out.println(“Message sent successfully”);</span><br><span class="line">               producer.close();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Compilation</strong> − The application can be compiled using the following command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -cp “&#x2F;path&#x2F;to&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;lib&#x2F;*” *.java</span><br></pre></td></tr></table></figure>
+
+<p><strong>Execution</strong> − The application can be executed using the following command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp “&#x2F;path&#x2F;to&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;lib&#x2F;*”:. SimpleProducer &lt;topic-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Message sent successfully</span><br><span class="line">To check the above output open new terminal and type Consumer CLI command to receive messages.</span><br><span class="line">&gt;&gt; bin&#x2F;kafka-console-consumer.sh --zookeeper localhost:2181 —topic &lt;topic-name&gt; —from-beginning</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h2 id="Simple-Consumer-Example"><a href="#Simple-Consumer-Example" class="headerlink" title="Simple Consumer Example"></a>Simple Consumer Example</h2><p>As of now we have created a producer to send messages to Kafka cluster. Now let us create a consumer to consume messages form the Kafka cluster. KafkaConsumer API is used to consume messages from the Kafka cluster. KafkaConsumer class constructor is defined below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public KafkaConsumer(java.util.Map&lt;java.lang.String,java.lang.Object&gt; configs)</span><br></pre></td></tr></table></figure>
+
+<p><strong>configs</strong> − Return a map of consumer configs.</p>
+<p>KafkaConsumer class has the following significant methods that are listed in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>S.No</th>
+<th align="center">Method and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="center"><strong>public java.util.Set<TopicPar-tition> assignment()</strong>Get the set of partitions currently assigned by the con-sumer.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center"><strong>public string subscription()</strong>Subscribe to the given list of topics to get dynamically as-signed partitions.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center"><strong>public void sub-scribe(java.util.List&lt;java.lang.String&gt; topics, ConsumerRe-balanceListener listener)</strong>Subscribe to the given list of topics to get dynamically as-signed partitions.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center"><strong>public void unsubscribe()</strong>Unsubscribe the topics from the given list of partitions.</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="center"><strong>public void sub-scribe(java.util.List&lt;java.lang.String&gt; topics)</strong>Subscribe to the given list of topics to get dynamically as-signed partitions. If the given list of topics is empty, it is treated the same as unsubscribe().</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="center"><strong>public void sub-scribe(java.util.regex.Pattern pattern, ConsumerRebalanceLis-tener listener)</strong>The argument pattern refers to the subscribing pattern in the format of regular expression and the listener argument gets notifications from the subscribing pattern.</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="center"><strong>public void as-sign(java.util.List<TopicParti-tion> partitions)</strong>Manually assign a list of partitions to the customer.</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="center"><strong>poll()</strong>Fetch data for the topics or partitions specified using one of the subscribe/assign APIs. This will return error, if the topics are not subscribed before the polling for data.</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="center"><strong>public void commitSync()</strong>Commit offsets returned on the last poll() for all the sub-scribed list of topics and partitions. The same operation is applied to commitAsyn().</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="center"><strong>public void seek(TopicPartition partition, long offset)</strong>Fetch the current offset value that consumer will use on the next poll() method.</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="center"><strong>public void resume()</strong>Resume the paused partitions.</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="center"><strong>public void wakeup()</strong>Wakeup the consumer.</td>
+</tr>
+</tbody></table>
+<h2 id="ConsumerRecord-API"><a href="#ConsumerRecord-API" class="headerlink" title="ConsumerRecord API"></a>ConsumerRecord API</h2><p>The ConsumerRecord API is used to receive records from the Kafka cluster. This API consists of a topic name, partition number, from which the record is being received and an offset that points to the record in a Kafka partition. ConsumerRecord class is used to create a consumer record with specific topic name, partition count and &lt;key, value&gt; pairs. It has the following signature.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public ConsumerRecord(string topic,int partition, long offset,K key, V value)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Topic</strong> − The topic name for consumer record received from the Kafka cluster.</li>
+<li><strong>Partition</strong> − Partition for the topic.</li>
+<li><strong>Key</strong> − The key of the record, if no key exists null will be returned.</li>
+<li><strong>Value</strong> − Record contents.</li>
+</ul>
+<h2 id="ConsumerRecords-API"><a href="#ConsumerRecords-API" class="headerlink" title="ConsumerRecords API"></a>ConsumerRecords API</h2><p>ConsumerRecords API acts as a container for ConsumerRecord. This API is used to keep the list of ConsumerRecord per partition for a particular topic. Its Constructor is defined below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public ConsumerRecords(java.util.Map&lt;TopicPartition,java.util.List</span><br><span class="line">&lt;Consumer-Record&gt;K,V&gt;&gt;&gt; records)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>TopicPartition</strong> − Return a map of partition for a particular topic.</p>
+</li>
+<li></li>
+<li><p><strong>Records</strong> − Return list of ConsumerRecord.</p>
+</li>
+</ul>
+<p>ConsumerRecords class has the following methods defined.</p>
+<table>
+<thead>
+<tr>
+<th>S.No</th>
+<th align="center">Methods and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="center"><strong>public int count()</strong>The number of records for all the topics.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center"><strong>public Set partitions()</strong>The set of partitions with data in this record set (if no data was returned then the set is empty).</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center"><strong>public Iterator iterator()</strong>Iterator enables you to cycle through a collection, obtaining or re-moving elements.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center"><strong>public List records()</strong>Get list of records for the given partition.</td>
+</tr>
+</tbody></table>
+<h2 id="Configuration-Settings-1"><a href="#Configuration-Settings-1" class="headerlink" title="Configuration Settings"></a>Configuration Settings</h2><p>The configuration settings for the Consumer client API main configuration settings are listed below −</p>
+<table>
+<thead>
+<tr>
+<th>S.No</th>
+<th align="center">Settings and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="center"><strong>bootstrap.servers</strong>Bootstrapping list of brokers.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center"><strong>group.id</strong>Assigns an individual consumer to a group.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center"><strong>enable.auto.commit</strong>Enable auto commit for offsets if the value is true, otherwise not committed.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center"><strong>auto.commit.interval.ms</strong>Return how often updated consumed offsets are written to ZooKeeper.</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="center"><strong>session.timeout.ms</strong>Indicates how many milliseconds Kafka will wait for the ZooKeeper to respond to a request (read or write) before giving up and continuing to consume messages.</td>
+</tr>
+</tbody></table>
+<h2 id="SimpleConsumer-Application"><a href="#SimpleConsumer-Application" class="headerlink" title="SimpleConsumer Application"></a>SimpleConsumer Application</h2><p>The producer application steps remain the same here. First, start your ZooKeeper and Kafka broker. Then create a SimpleConsumer application with the java class named SimpleCon-sumer.java and type the following code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Properties;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import org.apache.kafka.clients.consumer.KafkaConsumer;</span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerRecords;</span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerRecord;</span><br><span class="line"></span><br><span class="line">public class SimpleConsumer &#123;</span><br><span class="line">   public static void main(String[] args) throws Exception &#123;</span><br><span class="line">      if(args.length &#x3D;&#x3D; 0)&#123;</span><br><span class="line">         System.out.println(&quot;Enter topic name&quot;);</span><br><span class="line">         return;</span><br><span class="line">      &#125;</span><br><span class="line">      &#x2F;&#x2F;Kafka consumer configuration settings</span><br><span class="line">      String topicName &#x3D; args[0].toString();</span><br><span class="line">      Properties props &#x3D; new Properties();</span><br><span class="line">      </span><br><span class="line">      props.put(&quot;bootstrap.servers&quot;, &quot;localhost:9092&quot;);</span><br><span class="line">      props.put(&quot;group.id&quot;, &quot;test&quot;);</span><br><span class="line">      props.put(&quot;enable.auto.commit&quot;, &quot;true&quot;);</span><br><span class="line">      props.put(&quot;auto.commit.interval.ms&quot;, &quot;1000&quot;);</span><br><span class="line">      props.put(&quot;session.timeout.ms&quot;, &quot;30000&quot;);</span><br><span class="line">      props.put(&quot;key.deserializer&quot;, </span><br><span class="line">         &quot;org.apache.kafka.common.serializa-tion.StringDeserializer&quot;);</span><br><span class="line">      props.put(&quot;value.deserializer&quot;, </span><br><span class="line">         &quot;org.apache.kafka.common.serializa-tion.StringDeserializer&quot;);</span><br><span class="line">      KafkaConsumer&lt;String, String&gt; consumer &#x3D; new KafkaConsumer</span><br><span class="line">         &lt;String, String&gt;(props);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;Kafka Consumer subscribes list of topics here.</span><br><span class="line">      consumer.subscribe(Arrays.asList(topicName))</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;print the topic name</span><br><span class="line">      System.out.println(&quot;Subscribed to topic &quot; + topicName);</span><br><span class="line">      int i &#x3D; 0;</span><br><span class="line">      </span><br><span class="line">      while (true) &#123;</span><br><span class="line">         ConsumerRecords&lt;String, String&gt; records &#x3D; con-sumer.poll(100);</span><br><span class="line">         for (ConsumerRecord&lt;String, String&gt; record : records)</span><br><span class="line">         </span><br><span class="line">         &#x2F;&#x2F; print the offset,key and value for the consumer records.</span><br><span class="line">         System.out.printf(&quot;offset &#x3D; %d, key &#x3D; %s, value &#x3D; %s\n&quot;, </span><br><span class="line">            record.offset(), record.key(), record.value());</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Compilation</strong> − The application can be compiled using the following command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -cp “&#x2F;path&#x2F;to&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;lib&#x2F;*” *.java</span><br></pre></td></tr></table></figure>
+
+<p><strong>Execution −</strong> The application can be executed using the following command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp “&#x2F;path&#x2F;to&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;lib&#x2F;*”:. SimpleConsumer &lt;topic-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Input</strong> − Open the producer CLI and send some messages to the topic. You can put the smple input as ‘Hello Consumer’.</p>
+<p><strong>Output</strong> − Following will be the output.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Subscribed to topic Hello-Kafka</span><br><span class="line">offset &#x3D; 3, key &#x3D; null, value &#x3D; Hello Consumer</span><br></pre></td></tr></table></figure>
+
+<h1 id="Apache-Kafka-Consumer-Group-Example"><a href="#Apache-Kafka-Consumer-Group-Example" class="headerlink" title="Apache Kafka - Consumer Group Example"></a>Apache Kafka - Consumer Group Example</h1><p>Consumer group is a multi-threaded or multi-machine consumption from Kafka topics.</p>
+<h2 id="Consumer-Group"><a href="#Consumer-Group" class="headerlink" title="Consumer Group"></a>Consumer Group</h2><ul>
+<li>Consumers can join a group by using the samegroup.id.</li>
+<li>The maximum parallelism of a group is that the number of consumers in the group ← no of partitions.</li>
+<li>Kafka assigns the partitions of a topic to the consumer in a group, so that each partition is consumed by exactly one consumer in the group.</li>
+<li>Kafka guarantees that a message is only ever read by a single consumer in the group.</li>
+<li>Consumers can see the message in the order they were stored in the log.</li>
+</ul>
+<h3 id="Re-balancing-of-a-Consumer"><a href="#Re-balancing-of-a-Consumer" class="headerlink" title="Re-balancing of a Consumer"></a>Re-balancing of a Consumer</h3><p>Adding more processes/threads will cause Kafka to re-balance. If any consumer or broker fails to send heartbeat to ZooKeeper, then it can be re-configured via the Kafka cluster. During this re-balance, Kafka will assign available partitions to the available threads, possibly moving a partition to another process.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Properties;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import org.apache.kafka.clients.consumer.KafkaConsumer;</span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerRecords;</span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerRecord;</span><br><span class="line"></span><br><span class="line">public class ConsumerGroup &#123;</span><br><span class="line">   public static void main(String[] args) throws Exception &#123;</span><br><span class="line">      if(args.length &lt; 2)&#123;</span><br><span class="line">         System.out.println(&quot;Usage: consumer &lt;topic&gt; &lt;groupname&gt;&quot;);</span><br><span class="line">         return;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      String topic &#x3D; args[0].toString();</span><br><span class="line">      String group &#x3D; args[1].toString();</span><br><span class="line">      Properties props &#x3D; new Properties();</span><br><span class="line">      props.put(&quot;bootstrap.servers&quot;, &quot;localhost:9092&quot;);</span><br><span class="line">      props.put(&quot;group.id&quot;, group);</span><br><span class="line">      props.put(&quot;enable.auto.commit&quot;, &quot;true&quot;);</span><br><span class="line">      props.put(&quot;auto.commit.interval.ms&quot;, &quot;1000&quot;);</span><br><span class="line">      props.put(&quot;session.timeout.ms&quot;, &quot;30000&quot;);</span><br><span class="line">      props.put(&quot;key.deserializer&quot;,          </span><br><span class="line">         &quot;org.apache.kafka.common.serialization.ByteArraySerializer&quot;);</span><br><span class="line">      props.put(&quot;value.deserializer&quot;, </span><br><span class="line">         &quot;org.apache.kafka.common.serializa-tion.StringDeserializer&quot;);</span><br><span class="line">      KafkaConsumer&lt;String, String&gt; consumer &#x3D; new KafkaConsumer&lt;String, String&gt;(props);</span><br><span class="line">      </span><br><span class="line">      consumer.subscribe(Arrays.asList(topic));</span><br><span class="line">      System.out.println(&quot;Subscribed to topic &quot; + topic);</span><br><span class="line">      int i &#x3D; 0;</span><br><span class="line">         </span><br><span class="line">      while (true) &#123;</span><br><span class="line">         ConsumerRecords&lt;String, String&gt; records &#x3D; consumer.poll(100);</span><br><span class="line">            for (ConsumerRecord&lt;String, String&gt; record : records)</span><br><span class="line">               System.out.printf(&quot;offset &#x3D; %d, key &#x3D; %s, value &#x3D; %s\n&quot;, </span><br><span class="line">               record.offset(), record.key(), record.value());</span><br><span class="line">      &#125;     </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Compilation"><a href="#Compilation" class="headerlink" title="Compilation"></a>Compilation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -cp “&#x2F;path&#x2F;to&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;libs&#x2F;*&quot; ConsumerGroup.java</span><br></pre></td></tr></table></figure>
+
+<h3 id="Execution"><a href="#Execution" class="headerlink" title="Execution"></a>Execution</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;java -cp “&#x2F;path&#x2F;to&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;libs&#x2F;*&quot;:. </span><br><span class="line">ConsumerGroup &lt;topic-name&gt; my-group</span><br><span class="line">&gt;&gt;java -cp &quot;&#x2F;home&#x2F;bala&#x2F;Workspace&#x2F;kafka&#x2F;kafka_2.11-0.9.0.0&#x2F;libs&#x2F;*&quot;:. </span><br><span class="line">ConsumerGroup &lt;topic-name&gt; my-group</span><br></pre></td></tr></table></figure>
+
+<p>Here we have created a sample group name as my-group with two consumers. Similarly, you can create your group and number of consumers in the group.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Open producer CLI and send some messages like −</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Test consumer group 01</span><br><span class="line">Test consumer group 02</span><br></pre></td></tr></table></figure>
+
+<h3 id="Output-of-the-First-Process"><a href="#Output-of-the-First-Process" class="headerlink" title="Output of the First Process"></a>Output of the First Process</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Subscribed to topic Hello-kafka</span><br><span class="line">offset &#x3D; 3, key &#x3D; null, value &#x3D; Test consumer group 01</span><br></pre></td></tr></table></figure>
+
+<h3 id="Output-of-the-Second-Process"><a href="#Output-of-the-Second-Process" class="headerlink" title="Output of the Second Process"></a>Output of the Second Process</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Subscribed to topic Hello-kafka</span><br><span class="line">offset &#x3D; 3, key &#x3D; null, value &#x3D; Test consumer group 02</span><br></pre></td></tr></table></figure>
+
+<p>Now hopefully you would have understood SimpleConsumer and ConsumeGroup by using the Java client demo. Now you have an idea about how to send and receive messages using a Java client. Let us continue Kafka integration with big data technologies in the next chapter.</p>
+<h1 id="Apache-Kafka-Applications"><a href="#Apache-Kafka-Applications" class="headerlink" title="Apache Kafka - Applications"></a>Apache Kafka - Applications</h1><p>Kafka supports many of today’s best industrial applications. We will provide a very brief overview of some of the most notable applications of Kafka in this chapter.</p>
+<h2 id="Twitter"><a href="#Twitter" class="headerlink" title="Twitter"></a>Twitter</h2><p>Twitter is an online social networking service that provides a platform to send and receive user tweets. Registered users can read and post tweets, but unregistered users can only read tweets. Twitter uses Storm-Kafka as a part of their stream processing infrastructure.</p>
+<h2 id="LinkedIn"><a href="#LinkedIn" class="headerlink" title="LinkedIn"></a>LinkedIn</h2><p>Apache Kafka is used at LinkedIn for activity stream data and operational metrics. Kafka mes-saging system helps LinkedIn with various products like LinkedIn Newsfeed, LinkedIn Today for online message consumption and in addition to offline analytics systems like Hadoop. Kafka’s strong durability is also one of the key factors in connection with LinkedIn.</p>
+<h2 id="Netflix"><a href="#Netflix" class="headerlink" title="Netflix"></a>Netflix</h2><p>Netflix is an American multinational provider of on-demand Internet streaming media. Netflix uses Kafka for real-time monitoring and event processing.</p>
+<h2 id="Mozilla"><a href="#Mozilla" class="headerlink" title="Mozilla"></a>Mozilla</h2><p>Mozilla is a free-software community, created in 1998 by members of Netscape. Kafka will soon be replacing a part of Mozilla current production system to collect performance and usage data from the end-user’s browser for projects like Telemetry, Test Pilot, etc.</p>
+<h2 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h2><p>Oracle provides native connectivity to Kafka from its Enterprise Service Bus product called OSB (Oracle Service Bus) which allows developers to leverage OSB built-in mediation capabilities to implement staged data pipelines.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kafka/" rel="tag">Kafka</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-Firebase-The-google-API-for-building-Apps"
   class="article article-type-post"
   itemscope
@@ -1180,71 +1875,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/methodology/" rel="tag">methodology</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-8-ultimate-ressources-for-web-dev-in-2021"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/06/8-ultimate-ressources-for-web-dev-in-2021/"
-    >8 ultimate ressources for web dev in 2021</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/06/8-ultimate-ressources-for-web-dev-in-2021/" class="article-date">
-  <time datetime="2021-04-07T00:40:48.000Z" itemprop="datePublished">2021-04-06</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="1-Git-🔧"><a href="#1-Git-🔧" class="headerlink" title="1. Git 🔧"></a>1. Git 🔧</h2><p>As you know as web developper Git is an essential tools.</p>
-<p><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></p>
-<p>It’s the best tool about learning Git ! If you have any issue about learning git, go into this ! You will not regret I promise you.</p>
-<h2 id="2-CSS-🎨"><a href="#2-CSS-🎨" class="headerlink" title="2. CSS 🎨"></a>2. CSS 🎨</h2><p>Three important things about CSS is :</p>
-<h4 id="a-CSS-Selector"><a href="#a-CSS-Selector" class="headerlink" title="a. CSS Selector"></a>a. CSS Selector</h4><p><a target="_blank" rel="noopener" href="https://flukeout.github.io/">https://flukeout.github.io/</a></p>
-<p>Learn how CSS Selector works with animation !</p>
-<h4 id="b-Grid"><a href="#b-Grid" class="headerlink" title="b. Grid"></a>b. Grid</h4><p><a target="_blank" rel="noopener" href="https://cssgridgarden.com/">https://cssgridgarden.com/</a></p>
-<p>Learn Grid CSS as gardener !</p>
-<h4 id="c-Flexbox"><a href="#c-Flexbox" class="headerlink" title="c. Flexbox"></a>c. Flexbox</h4><p><a target="_blank" rel="noopener" href="https://flexboxfroggy.com/">https://flexboxfroggy.com/</a></p>
-<p>Learn Flexbox in CSS as a Frog !</p>
-<h2 id="3-VIM-📝"><a href="#3-VIM-📝" class="headerlink" title="3. VIM 📝"></a>3. VIM 📝</h2><p>Learn about this famous text editor across a game ! Yes in fact it’s possible !</p>
-<p><a target="_blank" rel="noopener" href="https://vim-adventures.com/">https://vim-adventures.com/</a></p>
-<h2 id="4-Regex-🔣"><a href="#4-Regex-🔣" class="headerlink" title="4. Regex 🔣"></a>4. Regex 🔣</h2><p>Who loves and know 100 % about Regex ? Yes it’s a pain to learn this and apply them.</p>
-<p>Across these both ressources you will :</p>
-<h4 id="a-Learn-Regex"><a href="#a-Learn-Regex" class="headerlink" title="a. Learn Regex"></a>a. Learn Regex</h4><p><a target="_blank" rel="noopener" href="https://regexone.com/">https://regexone.com/</a></p>
-<h4 id="b-CheatList-about-Regex-Pattern-email-password-phone-number-ect"><a href="#b-CheatList-about-Regex-Pattern-email-password-phone-number-ect" class="headerlink" title="b. CheatList about Regex Pattern (email, password, phone number, ect..)"></a>b. CheatList about Regex Pattern (email, password, phone number, ect..)</h4><p><a target="_blank" rel="noopener" href="https://ihateregex.io/">https://ihateregex.io/</a></p>
-<h2 id="5-Javascript-🖥️"><a href="#5-Javascript-🖥️" class="headerlink" title="5. Javascript 🖥️"></a>5. Javascript 🖥️</h2><p>Just one ressource about Javascript, I will share with you the BEST ressource about learning javascript <code>Properly</code></p>
-<p><a target="_blank" rel="noopener" href="https://javascript.info/">https://javascript.info/</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li></ul>
 
     </footer>
   </div>
