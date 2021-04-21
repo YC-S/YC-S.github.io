@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-20T00:33:16.000Z</updated>
+  <updated>2021-04-21T03:09:05.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>introduction to using redux in react native app</title>
+    <link href="https://yc-s.github.io/2021/04/20/introduction-to-using-redux-in-react-native-app/"/>
+    <id>https://yc-s.github.io/2021/04/20/introduction-to-using-redux-in-react-native-app/</id>
+    <published>2021-04-21T03:09:05.000Z</published>
+    <updated>2021-04-21T03:09:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Introduction-to-Using-Redux-in-a-React-Native-App&quot;&gt;&lt;a href=&quot;#Introduction-to-Using-Redux-in-a-React-Native-App&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redux react" scheme="https://yc-s.github.io/tags/redux-react/"/>
+    
+  </entry>
   
   <entry>
     <title>git commands 手册</title>
@@ -457,29 +480,6 @@
     
     
     <category term="读书笔记" scheme="https://yc-s.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A_Gentle_Introduction_to_Algorithm_Complexity_Analysis</title>
-    <link href="https://yc-s.github.io/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/"/>
-    <id>https://yc-s.github.io/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/</id>
-    <published>2020-10-17T03:07:07.000Z</published>
-    <updated>2020-10-17T03:07:07.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;A lot of programmers that</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Algorithm" scheme="https://yc-s.github.io/tags/Algorithm/"/>
     
   </entry>
   
