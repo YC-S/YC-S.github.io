@@ -1824,6 +1824,13 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/Java/</loc>
+    <lastmod>2021-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/Chinese/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
@@ -1832,13 +1839,6 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/tips/</loc>
-    <lastmod>2021-04-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yc-s.github.io/tags/Java/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1894,14 +1894,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/AWS/</loc>
+    <loc>https://yc-s.github.io/tags/Algorithm/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Algorithm/</loc>
+    <loc>https://yc-s.github.io/tags/AWS/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1915,14 +1915,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/mind/</loc>
+    <loc>https://yc-s.github.io/tags/Amazon/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Amazon/</loc>
+    <loc>https://yc-s.github.io/tags/mind/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1999,13 +1999,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Github/</loc>
-    <lastmod>2021-04-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/Book/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
@@ -2013,14 +2006,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/LeetCode/</loc>
+    <loc>https://yc-s.github.io/tags/Github/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Hacker/</loc>
+    <loc>https://yc-s.github.io/tags/LeetCode/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2035,6 +2028,13 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/English/</loc>
+    <lastmod>2021-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/Hacker/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2104,13 +2104,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/SQL/</loc>
-    <lastmod>2021-04-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/React/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
@@ -2118,7 +2111,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Methodology/</loc>
+    <loc>https://yc-s.github.io/tags/SQL/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2132,6 +2125,13 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/Methodology/</loc>
+    <lastmod>2021-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/Language/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
@@ -2139,14 +2139,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Cryptography/</loc>
+    <loc>https://yc-s.github.io/tags/C/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/C/</loc>
+    <loc>https://yc-s.github.io/tags/Cryptography/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2244,13 +2244,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Database/</loc>
-    <lastmod>2021-04-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/Linux/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
@@ -2266,6 +2259,13 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/mongolia/</loc>
+    <lastmod>2021-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/Database/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2321,14 +2321,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/TypeScript/</loc>
+    <loc>https://yc-s.github.io/tags/console/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/console/</loc>
+    <loc>https://yc-s.github.io/tags/TypeScript/</loc>
     <lastmod>2021-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
