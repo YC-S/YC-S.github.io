@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>Bash入门 |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Bash入门"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Bash入门
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/05/Bash%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2020-04-05T19:10:02.000Z" itemprop="datePublished">2020-04-05</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">8.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">30 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Shell是Linux下经典的文本互动方式，而Bash是现在最常用的一种Shell。我在这里总结了Bash的要点知识。</p>
+<h2 id="1-Shell综述"><a href="#1-Shell综述" class="headerlink" title="1. Shell综述"></a>1. Shell综述</h2><p>Linux图形化桌面算不上精美。幸好，Linux提供了更好的与树莓派互动的方式：Shell。打开终端（Terminal），桌面上就会出现一个黑色背景的窗口，里面就运行着一个Shell。如果你敲击键盘，会发现字符会显示在$提示符的后面，形成一串文本形式的命令。所谓的Shell，就是运行在终端中的文本互动程序。Shell分析你的文本输入，然后把文本转换成相应的计算机动作。</p>
+<p>在后面的内容中，我将用$来表示Linux系统Shell的命令提示符。比如说输入date命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$date</span></span><br></pre></td></tr></table></figure>
+
+<p>date用于日期时间的相关功能。敲击回车键Enter后，Shell会显示出系统当前的时间。</p>
+<p>Shell看起来简陋，但实际上比图形化桌面强大得多。它是Unix体系下的文本交互界面。你只需要用键盘来输入文本，就可以和操作系统交互。但这还是不够具体。说到底，Shell其实是一个运行着的程序。这个程序接收到你按下回车键之间的输入，就会对输入的文本进行分析。比如下面这个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$free</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>包括空格在内总共7个字符。Shell程序会通过空格，区分出命令的不同部分。第一个部分是命令名。剩下的部分是选项和参数。在这个例子中，Shell会进一步分析第二个部分，发现这一部分的开头是”-“字符，从而知道它是一个选项。</p>
+<p>有了命令名，Shell下一步就要执行该命令名对应的动作。这听起来就像是在戏剧舞台上，演员按照脚本演戏。Shell命令可以分为如下三类：</p>
+<ul>
+<li>Shell内建函数（built-in function）</li>
+<li>可执行文件（executable file）</li>
+<li>别名（alias）</li>
+</ul>
+<p>Shell的内建函数是Shell自带的功能，而可执行文件是保存在Shell之外的脚本，提供了额外的功能。Shell必须在系统中找到对应命令名的可执行文件，才能正确执行。我们可以用绝对路径来告诉Shell可执行文件所在的位置。如果用户只是给出了命令名，而没有给出准确的位置，那么Shell必须自行搜索一些特殊的位置，也就是所谓的默认路径。Shell会执行第一个名字和命令名相同的可执行文件。这就相当于，Shell帮我们自动补齐了可执行文件的位置信息。我们可以通过which命令，来确定命令名对应的是哪个可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$which</span> date</span><br></pre></td></tr></table></figure>
+
+
+
+<p>别名是给某个命令一个简称，以后在Shell中就可以通过这个简称来调用对应的命令。在Shell中，我们可以用alias来定义别名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$alias</span> freak=<span class="string">&quot;free -h&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Shell会记住我们的别名定义。以后我在这个Shell中输入命令freak时，都将等价于输入free -h。</p>
+<p>在Shell中，我们可以通过type命令来了解命令的类型。如果一个命令是可执行文件，那么type将打印出文件的路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$type</span> date</span><br><span class="line"><span class="variable">$type</span> <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<p>总的来说，Shell就是根据空格和其他特殊符号，来让电脑理解并执行用户要求的动作。到了后面，我们还将看到Shell中其他的特殊符号。</p>
+<h2 id="2-Shell的选择"><a href="#2-Shell的选择" class="headerlink" title="2. Shell的选择"></a>2. Shell的选择</h2><p>Shell是文本解释器程序的统称，所以包括了不止一种Shell。常见的Shell有sh、bash、ksh、rsh、csh等。在树莓派中，就安装了sh和bash两个Shell解释器。sh的全名是Bourne Shell。名字中的玻恩就是这个Shell的作者。而bash的全名是Bourne Again Shell。最开始在Unix系统中流行的是sh，而bash作为sh的改进版本，提供了更加丰富的功能。一般来说，都推荐使用bash作为默认的Shell。树莓派，以及其他Linux系统中广泛安装sh，都是出于兼容历史程序的目的。</p>
+<p>我们可以通过下面的命令来查看当前的Shell类型：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$echo $SHELL</span><br></pre></td></tr></table></figure>
+
+<p>echo用于在终端打印出文本。而$是一个新的Shell特殊符号。它提示Shell，后面跟随的不是一般的文本，而是用于存储数据的变量。Shell会根据变量名找到真正的文本，替换到变量所在的位置。SHELL变量存储了当前使用的Shell的信息你可以在bash中用sh命令启动sh，并可以用exit命令从中退出。</p>
+<h2 id="3-命令的选项和参数"><a href="#3-命令的选项和参数" class="headerlink" title="3. 命令的选项和参数"></a>3. 命令的选项和参数</h2><p>我们已经看到，一行命令里还可以包含着选项和参数。总的来说，选项用于控制命令的行为，而参数说明了命令的作用对象。比如说：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uname</span> -m</span><br></pre></td></tr></table></figure>
+
+<p>在上面的命令中，选项-m影响了命令uname的行为，导致uname输出了树莓派的CPU型号。如果不是该选项的影响，uname输出的将是”Linux”。我们不妨把每个命令看做多功能的瑞士军刀，而选项让命令在不同的功能间切换。由一个”-“引领一个英文字母，这成为短选项。多个短选项的字母可以合在一起，跟在同一个”-“后面。比如，下面的两个命令就等价：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uname</span> -m -r</span><br><span class="line"><span class="variable">$uname</span> -mr</span><br></pre></td></tr></table></figure>
+
+
+
+<p>此外还有一种长选项，是用”–”引领一整个英文单词，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$date</span> --version</span><br></pre></td></tr></table></figure>
+
+<p>上面的命令将输出date程序的版本信息。</p>
+<p>如果说选项控制了瑞士军刀的行为，那么参数就提供了瑞士军刀发挥用场的原材料。就拿echo这个命令来说，它能把字符打印到终端。它选择打印的对象，正是它的参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> hello</span><br></pre></td></tr></table></figure>
+
+
+
+<p>有的时候，选项也会携带变量，以便来说明选项行为的原材料。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date --<span class="built_in">set</span>=<span class="string">&quot;1999-01-01 08:00:00&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>选项”–set”用于设置时间，用等号连接的，就是它的参数。date会把日期设置成这一变量所代表的日期。如果用短选项，那么就要用空格取代等号了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> date -s <span class="string">&quot;1999-01-01 08:00:00&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，Shell对空格敏感。当一整个参数信息中包含了空格时，我们需要用引号把参数包裹起来，以便Shell能识别出这是一个整体。</p>
+<p>所谓的选项和参数提供给命令的附加信息。因此，命令最终会拿这些字符串做什么，是由命令自己决定的。因此，有时会发现一些特异的选项或参数用法。这个时候，你就要从文档中寻找答案。</p>
+<h2 id="4-变量"><a href="#4-变量" class="headerlink" title="4. 变量"></a>4. 变量</h2><p>我们可以在Bash中输入一行的命令。Bash会把输入的命令转化为特定的动作。从这一节起，我们将看到Bash的可编程性。Bash提供了某些类似于C语言那样的编程语法，从而允许你用编程的方式，来组合使用Linux系统。我们首先看Bash用变量存储数据的能力。正如我们在C语言中看到的，变量是内存中的一块儿空间，可以用于存储数据。我们可以通过变量名来引用变量中保持的数据。借助变量，程序员可以复用出现过的数据。Bash中也有变量，但Bash的变量只能存储文本。</p>
+<p><strong>1）变量赋值</strong></p>
+<p>Bash和C类似，同样用“=”来表示赋值。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=World</span><br></pre></td></tr></table></figure>
+
+<p>就是把文本World存入名为var的变量，即赋值。根据Bash的语法，赋值符号“=”的前后不留空格。赋值号右边的文本内容会存入赋值号左边的变量。</p>
+<p>如果文本中包含空格，那么你可以用单引号或双引号来包裹文本。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">&#x27;abc bcd&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=<span class="string">&quot;abc bcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在Bash中，我们可以把一个命令输出的文本直接赋予给一个变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$now</span>=`date`</span><br></pre></td></tr></table></figure>
+
+<p>借助``符号，date命令的输出存入了变量now。</p>
+<p>我们还可以把一个变量中的数据赋值给另一个变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$another</span>=<span class="variable">$var</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2）引用变量</strong></p>
+<p>我们可以用$var的方式来引用变量。在Bash中，所谓的引用变量就是把变量翻译成变量中存储的文本。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=World</span><br><span class="line"><span class="variable">$echo</span> <span class="variable">$var</span></span><br></pre></td></tr></table></figure>
+
+<p>就会打印出World，即变量中保存的文本。</p>
+<p>在Bash中，你还可以在一段文本中嵌入变量。Bash也会把变量替换成变量中保存的文本。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> Hello<span class="variable">$var</span></span><br></pre></td></tr></table></figure>
+
+<p>文本将打印出HelloWorld。</p>
+<p>为了避免变量名和尾随的普通文本混淆，我们也可以换用${}的方式来标识变量。比如说：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="variable">$varIsGood</span></span><br></pre></td></tr></table></figure>
+
+<p>由于Bash中并没有varIsGood这个变量，所以Bash将打印空白行。但如果将命令改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="variable">$&#123;var&#125;</span>IsGood</span><br></pre></td></tr></table></figure>
+
+<p>Bash通过${}识别出变量var，并把它替换成数据。最终echo命令打印出WorldIsGood。</p>
+<p>在Bash中，为了把一段包含空格的文本当做单一参数，就需要用到单引号或双引号。你可以在双引号中使用变量。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">&quot;Hello <span class="variable">$var</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>将打印Hello World。与此相对，Bash会忽视单引号中的变量引用，所以单引号中的变量名只会被当做普通文本，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="string">&#x27;Hello $var&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>将打印Hello $var。</p>
+<h2 id="5-数学运算"><a href="#5-数学运算" class="headerlink" title="5. 数学运算"></a>5. 数学运算</h2><p>在Bash中，数字和运算符都被当做普通文本。所以你无法像C语言一样便捷地进行数学运算。比如执行下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=1+2</span><br><span class="line"><span class="variable">$echo</span> <span class="variable">$result</span></span><br></pre></td></tr></table></figure>
+
+<p>Bash并不会进行任何运算。它只会打印文本“1+2”。</p>
+<p>在Bash中，你还可以通过$(())语法来进行数值运算。在双括号中你可以放入整数的加减乘除表达式。Bash会对其中的内容进行数值运算。比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> $((<span class="number">2</span> + (<span class="number">5</span>*<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>将打印运算结果12。此外，在$(())中，你也可以使用变量。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$var</span>=1</span><br><span class="line"><span class="variable">$echo</span> $((<span class="variable">$var</span> + (<span class="number">5</span>*<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>将打印运算结果11。</p>
+<p>你可以用Bash实现多种整数运算：</p>
+<ul>
+<li>加法：$(( 1 + 6 ))。结果为7。</li>
+<li>减法：$(( 5 – 3 ))。结果为2。</li>
+<li>乘法：$(( 2*2 ))。结果为4。</li>
+<li>除法：$(( 9/3 ))。结果为3。</li>
+<li>求余：$(( 5%3 ))。结果为2。</li>
+<li>乘方：$(( 2**3 ))。结果为8。</li>
+</ul>
+<p>现在，你就可以把数学运算结果存入变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span>=$(( <span class="number">1</span> + <span class="number">2</span> ))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-返回代码"><a href="#6-返回代码" class="headerlink" title="6. 返回代码"></a>6. 返回代码</h2><p>在Linux中，每个可执行程序会有一个整数的返回代码。按照Linux惯例，当程序正常运行完毕并返回时，将返回整数0。因此，C程序中返回0的语句，都出现在C程序中main函数的最后一句。例如下面的foo.c程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">int</span> b;</span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line"></span><br><span class="line">  a = <span class="number">6</span>;</span><br><span class="line">  b = <span class="number">2</span>;</span><br><span class="line">  c = <span class="number">6</span>/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段程序可以正常运行。因此，它将在最后一句执行return语句，程序的返回代码是0。在Shell中，我们运行了程序后，可以通过$?变量来获知返回码。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$gcc</span> foo.c</span><br><span class="line">$./a.out</span><br><span class="line"><span class="variable">$echo</span> $?</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果一个程序运行异常，那么这个程序将返回非0的返回代码。比如删除一个不存在的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> none_exist.file</span><br><span class="line"><span class="variable">$echo</span> $?</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在Linux中，可以在一个行命令中执行多个程序。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$touch</span> demo.file; ls;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在执行多个程序时，我们可以让后一个程序的运行参考前一个程序的返回代码。比如说，只有前一个程序返回成功代码0，才让后一个程序运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;rm succeed&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果rm命令顺利运行，那么第二个echo命令将执行。</p>
+<p>还有一种情况，是等到前一个程序失败了，才运行后一个程序，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rm</span> demo.file || <span class="built_in">echo</span> <span class="string">&quot;rm fail&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果rm命令失败，第二个echo命令才会执行。</p>
+<h2 id="7-Bash脚本"><a href="#7-Bash脚本" class="headerlink" title="7. Bash脚本"></a>7. Bash脚本</h2><p>你还可以把多行的Bash命令写入一个文件，成为所谓的Bash脚本。当Bash脚本执行时，Shell将逐行执行脚本中的命令。编写Bash脚本，是我们开始实现Bash代码复用的第一步。</p>
+<p><strong>1）脚本的例子</strong></p>
+<p>用文本编辑器编写一个Bash脚本hello_world.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> Hello</span><br><span class="line"><span class="built_in">echo</span> World</span><br></pre></td></tr></table></figure>
+
+<p>脚本的第一行说明了该脚本使用的Shell，即/bin/bash路径的Bash程序。脚本正文是两行echo命令。运行脚本的方式和运行可执行程序的方式类似，都是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./hello_world.bash</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，如果用户不具有执行Bash脚本文件的权限，那么他将无法执行Bash脚本。此时，用户必须更换文件权限，或者以其他身份登录，才能执行脚本。当脚本运行时，两行命令将按照由上至下的顺序依次执行。Shell将打印两行文本：</p>
+<blockquote>
+<p>Hello<br>World</p>
+</blockquote>
+<p>Bash脚本是一种复用代码的方式。我们可以用Bash脚本实现特定的功能。由于该功能记录在脚本中，因此我可以反复地运行同一个文件来实现相同的功能，而不是每次想用的时候都要重新敲一遍命令。我们看一个简单的Bash脚本hw_info.bash，它将计算机的信息存入到名为log的文件中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Information of yc&#x27;s computer:&quot;</span> &gt; <span class="built_in">log</span></span><br><span class="line">lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">free –h &gt;&gt; <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2）脚本参数</strong></p>
+<p>和可执行程序类似，Bash脚本运行时，也可以携带参数。这些参数可以在Bash脚本中以变量的形式使用。比如test_arg.bash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$1</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$2</span></span><br></pre></td></tr></table></figure>
+
+<p>在Bash中，你可以用$0、$1、$2……的方式，来获得Bash脚本运行时的参数。我们用下面的方式运行Bash脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./test_arg.bash hello world</span><br></pre></td></tr></table></figure>
+
+<p>$0是命令的第一部分，也就是./test_arg.bash。$1代表了参数hello，而$2代表了参数world。因此，上面程序将打印：</p>
+<blockquote>
+<p>./test_arg.bash<br>hello<br>world</p>
+</blockquote>
+<p>如果变更参数，同一段脚本将有不同的行为。这大大提高了Bash脚本的灵活性。上面的hw_info.bash脚本中，我们把输出文件名写死成log。我们也可以修改脚本，用参数作为输出文件的文件名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Information of yc&#x27;s computer:&quot;</span> &gt; <span class="variable">$1</span></span><br><span class="line">lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">free –h &gt;&gt; <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>借助参数，我们就可以自由地设置输出文件的名字：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./hw_info.bash output.file</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3）脚本的返回代码</strong></p>
+<p>和可执行程序类似，脚本也可以有返回代码。还是按照惯例，脚本正常退出时返回代码0。在脚本的末尾，我们可以用exit命令来设置脚本的返回代码。我们修改hello_world.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> Hello</span><br><span class="line"><span class="built_in">echo</span> World</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>其实在脚本的末尾加一句exit 0并不必要。一个脚本如果正常运行完最后一句，会自动的返回代码0。在脚本运行后，我们可以通过$?变量查询脚本的返回代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$./hello_world.bash</span><br><span class="line"><span class="variable">$echo</span> $?</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果在脚本中部出现exit命令，脚本会直接在这一行停止，并返回该exit命令给出的返回代码。比如下面的demo_exit.bash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> hello</span><br><span class="line"><span class="built_in">exit</span> 1 <span class="built_in">echo</span> world</span><br></pre></td></tr></table></figure>
+
+<p>你可以运行该脚本，检查其输出结果，并查看其返回代码。</p>
+<h2 id="8-函数"><a href="#8-函数" class="headerlink" title="8. 函数"></a>8. 函数</h2><p>在Bash中，脚本和函数有很多相似的地方。脚本实现了一整个脚本文件的程序复用，而函数复用了脚本内部的部分程序。一个函数可以像脚本一个包含多个指令，用于说明该函数如果被调用会执行哪些活动。在定义函数时，我们需要花括号来标识函数包括的部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  free –h &gt;&gt; <span class="built_in">log</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my_info</span><br></pre></td></tr></table></figure>
+
+<p>脚本一开始定义了函数my_info，my_info是函数名。关键字function和花括号都提示了该部分是函数定义。因此，function关键字并不是必须的。上面的脚本等效于：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  uname –a &gt;&gt; <span class="built_in">log</span></span><br><span class="line">  free –h &gt;&gt; <span class="built_in">log</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my_info</span><br></pre></td></tr></table></figure>
+
+<p>花括号中的三行命令，就说明了函数执行时需要执行的命令。需要强调的是，函数定义只是食谱，并没有转化成具体的动作。脚本的最后一行是在调用函数。只有通过函数调用，函数内包含的命令才能真正执行。调用函数时，只需要一个函数名就可以了。</p>
+<p>像脚本一样，函数调用时还可以携带参数。在函数内部，我们同样可以用$1、$2这种形式的变量来使用参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  free –h &gt;&gt; <span class="variable">$1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my_info output.file</span><br><span class="line">my_info another_output.file</span><br></pre></td></tr></table></figure>
+
+<p>在上面的脚本中，进行了两次函数调用。函数调用时，分别携带了参数output.file和another_output.file。</p>
+<h2 id="9-跨脚本调用"><a href="#9-跨脚本调用" class="headerlink" title="9. 跨脚本调用"></a>9. 跨脚本调用</h2><p>在Bash中使用source命令，可以实现函数的跨脚本调用。命令source的作用是在同一个进程中执行另一个文件中的Bash脚本。比如说，有两个脚本，my_info.bash和app.bash。脚本my_info.sh中的内容是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">my_info</span></span> ()&#123;</span><br><span class="line">  lscpu &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  uname –a &gt;&gt; <span class="variable">$1</span> </span><br><span class="line">  free –h &gt;&gt; <span class="variable">$1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>脚本app.bash中的内容是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> my_info.bash</span><br><span class="line">my_info output.file</span><br></pre></td></tr></table></figure>
+
+<p>运行app.bash时，执行到source命令那一行时，就会执行my_info.bash脚本。在app.bash的后续部分，就可以使用my_info.bash中的my_info函数。</p>
+<h2 id="10-逻辑判断"><a href="#10-逻辑判断" class="headerlink" title="10. 逻辑判断"></a>10. 逻辑判断</h2><p>我们已经介绍了函数和脚本两种组合命令的方式。这两种方式都可以把多行命令合并起来，组成一个功能单元。函数和脚本都实现了一定程度的代码复用。从这一节起，我们将看到选择和循环两种语法结构，这两种语法结构可以改变脚本的运行顺序，从而编写出更加灵活的程序。Bash除了可以进行数值运算，还可以进行逻辑判断。逻辑判断是决定某个说法的真假。我们在生活中很自然地进行各种各样的逻辑判断。比如“3大于2”这个说法，我们会说它是真的。逻辑判断就是对一个说法判断真假。在Bash中，我们可以用test命令来进行逻辑判断：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$test</span> 3 -gt 2; <span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>命令test后面跟有一个判断表达式，其中的-gt表示大于，即greater than。由于“3大于2”这一表达式为真，所以命令的返回代码将是0。如果表达式为1，那么命令的返回代码是1：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$test</span> 3 -lt 2; <span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>表达式中的-lt表示小于，即less than。</p>
+<p>数值大小和相等关系的判断，是最常见的逻辑判断。除了上面的大于和小于判断，我们还可以进行以下的数值判断：</p>
+<ul>
+<li>等于： $test 3 -eq 3; echo $?</li>
+<li>不等于： $test 3 -ne 1; echo $?</li>
+<li>大于等于： $test 5 -ge 2; echo $?</li>
+<li>小于等于： $test 3 -le 1; echo $?</li>
+</ul>
+<p>Bash中最常见的数据形式是文本，因此也提供了很多关于文本的判断：</p>
+<ul>
+<li>文本相同: $test abc = abx; echo $?</li>
+<li>文本不同： $test abc != abx; echo $?</li>
+<li>按照词典顺序，一个文本在另一个文本之前： $test apple &gt; tea; echo $?</li>
+<li>按照词典顺序，一个文本在另一个文本之后： $test apple &lt; tea; echo $?</li>
+</ul>
+<p>Bash还可以对文件的状态进行逻辑判断：</p>
+<ul>
+<li>检查一个文件是否存在： $test –e a.out; echo $?</li>
+<li>检查一个文件是否存在，而且是普通文件： $test –f file.txt; echo $?</li>
+<li>检查一个文件是否存在，而且是目录文件： $test –d myfiles; echo $?</li>
+<li>检查一个文件是否存在，而且是软连接： $test –L a.out; echo $?</li>
+<li>检查一个文件是否可读： $test –r file.txt; echo $?</li>
+<li>检查一个文件是否可写： $test –w file.txt; echo $?</li>
+<li>检查一个文件是否可执行： $test –x file.txt; echo $?</li>
+</ul>
+<p>在做逻辑判断时，可以把多个逻辑判断条件用“与、或、非”的关系组合起来，形成复合的逻辑判断。</p>
+<ul>
+<li>非，与expression的真假相反：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! expression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>与，必须expression1和expression2都为真时，结果才为真：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –a expression2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>或，只要expression1和expression2的一个为真时，结果就为真：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 –o expression2</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="11-选择结构"><a href="#11-选择结构" class="headerlink" title="11. 选择结构"></a>11. 选择结构</h2><p>逻辑判断可以获得计算机和进程的状态。进一步，Bash可以根据逻辑判断，让程序有条件地运行，这也就是所谓的选择结构。选择结构是一种语法结构，可以让程序根据条件决定执行哪一部分的指令。最早的程序都是按照指令顺序依次执行。选择结构打破了这一顺序，给程序带来更高的灵活性。最简单的，我们可以根据条件来决定是否执行某一部分程序，比如下面的demo_if.bash脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">&quot;root&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are root&quot;</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are my God.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>这个脚本中使用了最简单的if结构。关键字if后面跟着[]，里面是一个逻辑表达式。这个逻辑表达式就是if结构的条件。如果条件成立，那么if将执行then到fi之间包含的语句，我们称之为隶属于then的代码块。如果条件不成立，那么then的代码块不执行。这个例子的条件是判断用户是否为root。因此，如果是非root用户执行该脚本，那么Shell不会打印任何内容。</p>
+<p>我们还可以通过if…then…else…结构，让Bash脚本从两个代码块中选择一个执行。该选择结构同样有一个条件。如果条件成立，那么将执行then附属的代码块，否则执行else附属的代码块。下面的demo_if_else.bash脚本是一个小例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">filename=<span class="variable">$1</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -e <span class="variable">$filename</span> ]</span><br><span class="line"><span class="keyword">then</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$filename</span> exists&quot;</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$filename</span> NOT exists&quot;</span> </span><br><span class="line"><span class="keyword">fi</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;The End&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>if后面的“-e $filename”作为判断条件。如果条件成立，即文件存在，那么执行then部分的代码块。如果文件不存在，那么脚本将执行else语句中的echo命令。末尾的fi结束整个语法结构。脚本继续以顺序的方式执行剩余内容。运行脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./demo_if_else.bash a.out</span><br></pre></td></tr></table></figure>
+
+<p>脚本会根据a.out是否存在，打印出不同的内容。</p>
+<p>我们看到，在使用if…then…else…结构时，我们可以实现两部分代码块的选择执行。而在then代码块和else代码块内部，我们可以继续嵌套选择结构，从而实现更多个代码块的选择执行。比如脚本demo_nest.bash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;You are <span class="variable">$var</span>&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">&quot;root&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&quot;You are my God.&quot;</span> </span><br><span class="line"><span class="keyword">else</span>   </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$var</span> = <span class="string">&quot;yc&quot;</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">&quot;You are a happy user.&quot;</span></span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">&quot;You are the Others.&quot;</span></span><br><span class="line">   <span class="keyword">fi</span> </span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在Bash下，我们还可以用case语法来实现多程序块的选择执行。比如下面的脚本demo_case.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">var=`whoami`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;You are <span class="variable">$var</span>&quot;</span> </span><br><span class="line"><span class="keyword">case</span> <span class="variable">$var</span> <span class="keyword">in</span></span><br><span class="line">root)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are God.&quot;</span></span><br><span class="line">;;</span><br><span class="line">yc)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are a happy user.&quot;</span></span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;You are the Others.&quot;</span></span><br><span class="line">;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+<p>这个脚本和上面的demo_nest.bash功能完全相同。可以看到case结构与if结构的区别。关键字case后面不再是逻辑表达式，而是一个作为条件的文本。后面的代码块分为三个部分，都以文本标签)的形式开始，以;;结束。在case结构运行时，会逐个检查文本标签。当条件文本和文本标签可以对应上时，Bash就会执行隶属于该文本标签的代码块。如果是用户yc执行该Bash脚本，那么条件文本和yc标签对应上，脚本就会打印：</p>
+<blockquote>
+<p>You are a happy user.</p>
+</blockquote>
+<p>文本标签除了是一串具体的文本，还可以包含文本通配符。结构case中常用的通配符包括：</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+<th>文本标签例子</th>
+<th>符合条件的文本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>任意文本</td>
+<td>*</td>
+<td>Xyz, 12a3, …</td>
+</tr>
+<tr>
+<td>？</td>
+<td>任意一个字符</td>
+<td>a?c</td>
+<td>abc, axc, …</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>范围内一个</td>
+<td>[1-5] [b-d]</td>
+<td>2b, 3d, …</td>
+</tr>
+</tbody></table>
+<p>上面的程序中最后一个文本标签是通配符*，即表示任意条件文本都可以触发此段代码块的运行。当然，前提是前面的几个文本标签都没有“截胡”。</p>
+<h2 id="12-循环结构"><a href="#12-循环结构" class="headerlink" title="12. 循环结构"></a>12. 循环结构</h2><p>循环结构是编程语言中另一种常见的语法结构。循环结构的功能是重复执行某一段代码，直到计算机的状态符合某一条件。在while语法中，Bash会循环执行隶属于while的代码块，直到逻辑表达式不成立。比如下面的demo_while.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">now=`date +<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>`</span><br><span class="line">deadline=`date --date=<span class="string">&#x27;1 hour&#x27;</span> +<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$now</span> -lt <span class="variable">$deadline</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   date</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&quot;not yet&quot;</span></span><br><span class="line">   sleep 10</span><br><span class="line">   now=`date +<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>`</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;now, deadline reached&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>关键字do和done之间的代码是隶属于该循环结构的代码块。在while后面跟着条件，该条件决定了代码块是否重复执行下去。这个条件是用当前的时间与目标时间对比。如果当前时间小于目标时间，那么代码块就会重复执行下去。否则，Bash将跳出循环，继续执行后面的语句。</p>
+<p>如果while的条件始终是真，那么循环会一直进行下去。下面的程序就是以无限循环的形式，不断播报时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  date</span><br><span class="line">  sleep 1 </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>语法while的终止条件是一个逻辑判断。如果在循环过程中改变逻辑判断的内容，那么我们很难在程序执行之前预判循环进行的次数。正如我们之前在demo_while.bash中看到的，我们在循环进行过程中改变着作为条件的逻辑表达式，不断地更新参与逻辑判断的当前时间。与while语法对应的是for循环。这种语法会在程序进行前确定好循环进行的次数，比如demo_for.bash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> `ls <span class="built_in">log</span>*`</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  rm <span class="variable">$var</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，命令ls log*将返回所有以log开头的文件名。这些文件名之间由空格分隔。循环进行时，Bash会依次取出一个文件名，赋值给变量var，并执行do和done之间隶属于for结构的程序块。由于ls命令返回的内容在是确定的，因此for循环进行的次数也会在一开始确定下来。</p>
+<p>在for语法中，我们也可以使用自己构建一个由空格分隔的文本。由空格区分出来的每个子文本会在循环中赋值给变量。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> yc anna yutian</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$user</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>此外，for循环还可以和seq命令配合使用。命令seq用于生成一个等差的整数序列。命令后面可以跟3个参数，第一个参数表示整数序列的开始数字，第二个参数表示每次增加多少，最后一个参数表示序列的终点。因此，下面命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$seq</span> 1 2 10</span><br></pre></td></tr></table></figure>
+
+<p>将返回：</p>
+<blockquote>
+<p>1 3 5 7 9</p>
+</blockquote>
+<p>可以看到，seq返回的也是由空格分隔开的文本。因此，seq的返回结果也可用于for循环。</p>
+<p>结合for循环和seq命令，我们可以解一些有趣的数学问题。比如高斯求和，是要计算从1到100的所有整数的和。我们可以用Bash解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0 </span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> `seq 1 1 100`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个问题还可以用do while循环来求解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0</span><br><span class="line">number=1 </span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$number</span> -gt 100 ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">break</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line">  number=$((<span class="variable">$number</span> + <span class="number">1</span>))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+
+<p>这里break语句的作用是在满足条件时跳出循环。</p>
+<p>如果想计算1到100所有不被3整数的和，则可以使用continue语句，跳过所有被3整数的数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">total=0 </span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> `seq 1 1 100`</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">if</span> (( <span class="variable">$number</span> % 3 == 0 )) </span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">continue</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  total=$(( <span class="variable">$total</span> + <span class="variable">$number</span> ))</span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$total</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="13-Bash与C语言"><a href="#13-Bash与C语言" class="headerlink" title="13. Bash与C语言"></a>13. Bash与C语言</h2><p>到了这里，我们已经介绍完Bash语言的基本语法。Bash语言和C语言都是Linux下的常用语言。它们都能通过特定的语法来编写程序，而程序运行后都能实现某些功能。尽管在语法细节上存在差异，但两种语言都有以下语法：</p>
+<ul>
+<li>变量：在内存中储存数据</li>
+<li>循环结构：重复执行代码块</li>
+<li>选择结构：根据条件执行代码块</li>
+<li>函数：复用代码块</li>
+</ul>
+<p>编程语言的作者在设计语言时，往往会借鉴已有编程语言的优点。这是编程语言之间相似性的一大原因。程序员往往要掌握不止一套编程语言。相似的语法特征，会让程序员在学习新语言时感到亲切，从而促进语言的推广。</p>
+<p>Bash和C的相似性，也来自于它们共同遵守的编程范式——面向过程编程。支持面向过程编程的语言，一般都会提供类似于函数的代码封装方式。函数把多行指令包装成一个功能。只要知道了函数名，程序可以通过调用函数来使用函数功能，最终实现代码复用。除了面向过程编程，还有面向对象和函数式的编程范式。每种编程范式都提供了特定的代码封装方式，并达到代码复用的目的。值得注意的是，近年来出现的新语言往往会支持不止一种编程范式。</p>
+<p>除了相似性，我们还应该注意到Bash和C程序的区别。Bash的变量只能是文本类型，C的变量却可以有整数、浮点数、字符等类型。Bash的很多功能，如加减乘除运算，都是调用其他程序实现的。而C直接就可以进行加减乘除运算。可以说，C语言是一门真正的编程语言。C程序最终会编译成二进制的可执行文件。CPU可以直接理解这些文件中的指令。</p>
+<p>另一方面，Bash是一个Shell。它本质上是一个命令解释器程序，而不是编程语言。用户可以通过命令行的方式，来调用该程序的某些功能。所谓的Bash编程，只是命令解释器程序提供的一种互动方法。Bash脚本只能和Bash进程互动。它不能像C语言一样，直接调用CPU的功能。因此，Bash能实现的功能会受限，运行速度上也比不上可执行文件。</p>
+<p>但另一反面，Bash脚本也有它的好处。 C语言能接触到很底层的东西，但使用起来也很复杂。有时候，即使你已经知道如何用C实现一个功能，写代码依然是一个很繁琐的过程。Bash正相反。由于Bash可以便捷地调用已有的程序，因此很多工作可以用数行的脚本解决。此外，Bash脚本不需要编辑，就可以由Bash进程理解并执行。因此，开发Bash脚本比写C程序要快很多。Linux的系统运维工作，如定期备份、文件系统管理等，就经常使用到Bash脚本。总之，Bash编程知识是晋级为资深Linux用户的必要条件。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2020/04/05/Bash%E5%85%A5%E9%97%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/" rel="tag">Bash</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/04/06/%E5%85%A5%E5%85%B3%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            入关学导论
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%E6%9E%B6%E6%9E%84%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">微服务和服务网格架构概念整理</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

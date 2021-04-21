@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>AWS_EC2 |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-AWS-EC2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  AWS_EC2
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/02/21/AWS-EC2/" class="article-date">
+  <time datetime="2020-02-22T00:50:55.000Z" itemprop="datePublished">2020-02-21</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="EC2简介"><a href="#EC2简介" class="headerlink" title="EC2简介"></a>EC2简介</h1><h2 id="1-EC2的特性"><a href="#1-EC2的特性" class="headerlink" title="1. EC2的特性"></a>1. EC2的特性</h2><ul>
+<li>EC2是AWS提供的一种计算服务，它以EC2实例（EC2 Instance）的形式存在，因此一个EC2实例可以被认为是一个虚拟机</li>
+<li>预配置的EC2镜像被称之为Amazon Machine Images (AMI)，一个AMI包含了你打包的好操作系统，以及相应的应用程序和配置</li>
+<li>不同的EC2实例类型包含了不同的CPU，内存，存储和网络性能</li>
+<li>AWS默认以及建议使用密钥对（Key Pair）的形式访问EC2实例，AWS将保存公钥，您将负责保存私钥</li>
+<li>EC2实例存储（Instance store volumes）是一种短暂性的存储，一旦您停止或者终止您的EC2实例，这个存储内的数据将永久消失</li>
+<li>EBS存储（Amazon EBS volumes）是一种持续性的存储，不管EC2实例是什么状态，你都可以保留EBS存储内的数据。这种类型的存储对于进行数据盘的迁移非常方便，使用场景也比较多。</li>
+<li>安全组（Security Group）会通过检测数据包的端口、协议、源IP地址从而从当防火墙的作用</li>
+<li>弹性IP（Elastic IP address）可以方便您为您的EC2实例分配一个固定的公网IP地址，并且保证每次关机重启该地址依旧有效。</li>
+<li>虚拟私有云（Virtual Private Cloud, VPC）是AWS的网络组件，可以让你的AWS资源与其他用户的资源在逻辑上进行隔离。您也可以使用VPC与您的物理数据中心进行连接。</li>
+</ul>
+<h2 id="2-如何访问EC2"><a href="#2-如何访问EC2" class="headerlink" title="2. 如何访问EC2"></a>2. 如何访问EC2</h2><p>AWS提供了非常多的方法方便您来访问EC2实例，下面将一一进行列举。并且会在后续课程通过视频的方式为大家进行演示。</p>
+<ul>
+<li>AWS 命令行（CLI）- 您可以通过一些终端软件并利用命令行的方式访问您的Windows，Mac和Linux实例</li>
+<li>AWS EC2管理平台 – 您可以通过基于web的用户界面来访问您的EC2实例（通过java等插件）</li>
+<li>AWS CLI工具 – 您可以通过AWS CLI工具来访问AWS的多个组件</li>
+<li>Windows Powershell</li>
+<li>AWS API</li>
+<li>AWS SDK</li>
+</ul>
+<h2 id="3-EC2实例的计费类型"><a href="#3-EC2实例的计费类型" class="headerlink" title="3. EC2实例的计费类型"></a>3. EC2实例的计费类型</h2><p>EC2的实例计费类型有很多种，每一种都有自己的使用场景，不同的客户可能对计费类型的需求也不一样。</p>
+<p>官网：</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/instance-types/">https://aws.amazon.com/cn/ec2/instance-types/</a></p>
+<ul>
+<li>On-Demand Instances （按需实例）</li>
+<li>Reserved Instances （预留实例）</li>
+<li>Spot Instances （竞价实例）</li>
+<li>Scheduled Reserved Instances （计划的预留实例）</li>
+<li>Dedicated Instances （专用的实例）</li>
+<li>Dedicated Hosts（专用的主机）</li>
+</ul>
+<p>针对考试的朋友只着重看前三种实例的计费类型即可。</p>
+<h4 id="3-1-On-Demand-Instances-（按需实例）"><a href="#3-1-On-Demand-Instances-（按需实例）" class="headerlink" title="3.1 On-Demand Instances （按需实例）"></a>3.1 On-Demand Instances （按需实例）</h4><p>这是最基本的实例计费类型，也应该是使用率最高的类型了。这种实例是用多少收费多少，精确到秒。在实例处于停止状态的时候，AWS不会收取你关于EC2的任何费用。只有在实例处于运行状态的时候，才会产生花销。</p>
+<p>这种EC2的实例类型非常灵活，你可以在任何时间和地点开启并使用你的实例，然后在不需要的时候将其终止（Terminate）。你的消费只取决于你使用的时间，而没有其他的额外成本或者初始投资成本。</p>
+<p>在传统的数据中心内，如果你要部署一个新的应用程序，那么你可能需要先去申请购买硬件服务器，然后安装操作系统，物理接上网络甚至存储，安装和调试应用程序以及代码。这一系列的过程会消耗你几个月甚至大半年的时间。</p>
+<p>而是用AWS EC2实例，你只需要一个浏览器，以及几分钟的操作就可以创建你所需要的应用程序了！</p>
+<p>如果你不需要这个应用程序，直接将其删除即可。这样的模式特别适合初创企业开发新的应用程序并进行试错。</p>
+<p>这也是云计算带来的优势。</p>
+<p>On-Demand Instances （按需实例）总结特点如下：</p>
+<ul>
+<li>按秒收费（以前是按小时收费，现在AWS更改了），用多少收费多少</li>
+<li>EC2实例可以根据业务需求实时增加或减少规模</li>
+<li>不会有昂贵的初始投资成本</li>
+<li>适合用来部署有突发性，爆发性流量的应用程序，比如双11</li>
+<li>适合用来测试和开发新的应用程序</li>
+</ul>
+<h4 id="3-2-Reserved-Instances-（预留实例）"><a href="#3-2-Reserved-Instances-（预留实例）" class="headerlink" title="3.2 Reserved Instances （预留实例）"></a>3.2 Reserved Instances （预留实例）</h4><p>这种预留实例你需要和AWS签订1年或3年的合同，并且会以单价低于同等规格的按需实例的价格买到预留的实例，需要一次性付费。在合同有效的期限内，实例不管处于任何状态，费用都不会有变化。</p>
+<p>如果你需要使用某种需要不间断运行（24x7x365）的应用程序，那么这种预留实例则会非常适合你，因为你会获得单位时间内最便宜的EC2实例。</p>
+<p>1年的合同可以获得40%左右的折扣，3年的合同可以获得60%的折扣。</p>
+<p>Reserved Instances （预留实例）总结特点如下：</p>
+<ul>
+<li>更低的每小时运行成本</li>
+<li>买断了一定的计算资源，不会出现AWS计算资源不足而无法创建EC2的情况</li>
+<li>费用在合同期内是固定的，因此费用可预期</li>
+<li>适合需要长期运行、稳定的、可预估的应用程序</li>
+</ul>
+<h4 id="3-3-Spot-Instances-（竞价实例）"><a href="#3-3-Spot-Instances-（竞价实例）" class="headerlink" title="3.3 Spot Instances （竞价实例）"></a>3.3 Spot Instances （竞价实例）</h4><p>AWS的计算资源会提供给全球成千上万的客户，因为客户使用计算资源的程度不同，也会影响AWS的总体计算资源消耗的程度。AWS向客户提供的这种竞价实例的每小时价格是浮动的，在计算资源紧张的时候价格较高，在计算资源较为空闲的时候价格较低。</p>
+<p>因此客户可以设定规则，在实例价格低于某个阀值的情况下申请并使用该实例，而达到最大的性价比。</p>
+<p>这种实例一般比较适合仅进行计算和分析的任务，并且可以随时中断。</p>
+<p>(扩展阅读）可以查看<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/spot/testimonials/">客户评价和案例研究</a>，目前已经非常多公司通过使用竞价实例有效地降低非常大的成本。</p>
+<p>Spot Instances （竞价实例）总结特点如下：</p>
+<ul>
+<li>每个小时都会变化，依据是竞价实力的供需关系</li>
+<li>可以非常有效地降低运行EC2实例的成本（特别对于有大数量实例需求的情况下）</li>
+<li>在其上安装的应用程序随时可以中断，也就是数据和任务处理结果都需要保存在外部存储上</li>
+<li>对实例运行开始的时间没有太多要求</li>
+</ul>
+<h4 id="3-4-Scheduled-Reserved-Instances-（计划的预留实例）"><a href="#3-4-Scheduled-Reserved-Instances-（计划的预留实例）" class="headerlink" title="3.4 Scheduled Reserved Instances （计划的预留实例）"></a>3.4 Scheduled Reserved Instances （计划的预留实例）</h4><p>这个类型的实例和预留实例很相似，但不一样的地方是你可以定义该类型的实例在每天，每周，每个月的某个时间段运行，其他时间段处于关闭的状态。</p>
+<p>这种实例比较适合于例如只在上班时间运行的应用程序，或者每周末进行的数据批处理等。</p>
+<h4 id="3-5-Dedicated-Instances-（专用的实例）"><a href="#3-5-Dedicated-Instances-（专用的实例）" class="headerlink" title="3.5 Dedicated Instances （专用的实例）"></a>3.5 Dedicated Instances （专用的实例）</h4><p>和按需实例差不多，但是实例会运行在专用的AWS硬件上。您的专用实例与属于其他 AWS 账户的实例在主机硬件级别是实体隔离的。</p>
+<h4 id="3-6-Dedicated-Hosts（专用的主机）"><a href="#3-6-Dedicated-Hosts（专用的主机）" class="headerlink" title="3.6 Dedicated Hosts（专用的主机）"></a>3.6 Dedicated Hosts（专用的主机）</h4><p>相当于购买了一整台AWS的物理服务器，针对许可证会绑定CPU或者Socket的软件特别有用处。</p>
+<h2 id="4-EC2实例的运行平台"><a href="#4-EC2实例的运行平台" class="headerlink" title="4. EC2实例的运行平台"></a>4. EC2实例的运行平台</h2><p>目前，EC2上可以运行基于Windows和Linux操作系统的实例，不支持任何非X86架构的实例。</p>
+<p>另外，在2017 Re:Invent会议上AWS发布了一种新型的实例，可以让你操作AWS的裸机（不含任何操作系统），因此方便你在上面直接安装类似VMware Esx的虚拟操作系统。</p>
+<h2 id="5-EC2的实例类型"><a href="#5-EC2的实例类型" class="headerlink" title="5. EC2的实例类型"></a>5. EC2的实例类型</h2><p>目前，AWS提供了70种以上的不同类型的EC2实例，解决客户的不同需求，并且这个类型的数量在逐年增加。</p>
+<p>总体来说，EC2的实例类型可以分为通用型、计算优化型、内存优化型、存储优化型、加速计算型。</p>
+<p>更高级别的实例会给你带来更多的CPU，内存，I/O，存储等等，当然价格也是越来越高。</p>
+<p>举个例子，AWS提供的1年免费套餐中所包含的实例类型是t2.micro，这种实例类型提供了1个vCPU和1G的内存容量，而其他的参数例如网络，I/O则是所有在同一个物理主机中的实例一起共享的。</p>
+<p>更多实例相关的内容，可以查看官网的<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/instance-types/">Amazon EC2 实例类型</a>介绍。</p>
+<h2 id="6-EC2实例信息综述"><a href="#6-EC2实例信息综述" class="headerlink" title="6. EC2实例信息综述"></a>6. EC2实例信息综述</h2><h3 id="6-1-EC2-Elastic-Cloud-Compute"><a href="#6-1-EC2-Elastic-Cloud-Compute" class="headerlink" title="6.1 EC2 (Elastic Cloud Compute)"></a>6.1 EC2 (Elastic Cloud Compute)</h3><ul>
+<li>了解不同EC2实例类型的区别，要知道在不同的使用场景需要使用哪一种类型的EC2<ul>
+<li>按需实例（On Demand Instance）- 用多少时间付费多少，费用精确到秒，不用则可以随时关闭/终止并停止费用的产生</li>
+<li>竞价实例（Spot Instance）- 以低于按需实例的价格竞得实例，但价格高于设定得价格后会自动被终止</li>
+<li>保留实例（Reserved Instance） – 相当于买断一个实例1年/3年，期间不管实例开不开都需要付总得费用，但平均下来费用会比按需实例便宜</li>
+<li>专用主机实例（Dedicated Hosts）- 涉及到软件许可证的时候，会考虑使用专用主机实例</li>
+</ul>
+</li>
+<li>终止一个竞价实例<ul>
+<li>如果主动终止一个竞价实例，需要为当前这个完整小时付费</li>
+<li>如果因为价格上涨，AWS终止了你的竞价实例，那么这个小时的费用会被免费</li>
+</ul>
+</li>
+<li>实例的终止保护（Termination Protection）功能是默认关闭的，有需要必须手动开启。开启后实例将无法被终止，除非先将终止保护关闭</li>
+<li>使用EBS为存储的实例，默认情况下如果该实例被终止，这个根EBS卷也会被随之删除<ul>
+<li>但也可以设置为实例被终止的时候保留根EBS卷</li>
+</ul>
+</li>
+</ul>
+<h3 id="EBS-Elastic-Block-Storage"><a href="#EBS-Elastic-Block-Storage" class="headerlink" title="EBS (Elastic Block Storage)"></a>EBS (Elastic Block Storage)</h3><ul>
+<li>EBS的不同类型，需要了解不同类型的EBS主要的使用场景<ul>
+<li>通用型SSD – GP2 (高达10,000 IOPS)，适用于启动盘，低延迟的应用程序等</li>
+<li>预配置型SSD – IO1 (超过10,000 IOPS)，适用于IO密集型的数据库</li>
+<li>吞吐量优化型HDD -ST1，适用于数据仓库，日志处理</li>
+<li>HDD Cold – SC1 – 适合较少使用的冷数据</li>
+<li>HDD, Magnetic</li>
+</ul>
+</li>
+<li>不能将EBS挂载到多个EC2实例上，一个EBS只能挂载到1个EC2实例上。<ul>
+<li>如果有共享数据盘的需求，请使用EFS (Elastic File System)</li>
+</ul>
+</li>
+<li>根EBS卷默认是不能进行加密的，但可以使用第三方的加密工具（例如BitLocker）对其进行加密<ul>
+<li>除了根磁盘外的其他卷是可以加密的</li>
+</ul>
+</li>
+</ul>
+<h3 id="EBS快照（Snapshot）"><a href="#EBS快照（Snapshot）" class="headerlink" title="EBS快照（Snapshot）"></a>EBS快照（Snapshot）</h3><ul>
+<li>EBS的快照会被保存到S3（Simple Storage System）上</li>
+<li>你可以对一个EBS卷创建一个快照，这个快照会被保存到S3上</li>
+<li>快照实际上是增量备份，只有在上次进行快照之后更改的数据才会被添加的S3上<ul>
+<li>因此第一次快照所花费的时间比较长</li>
+<li>而第二次以后的快照所花费的时间相对短很多</li>
+</ul>
+</li>
+<li>对加密的EBS卷创建快照，创建后的快照也会是加密的</li>
+<li>从加密的快照恢复的EBS卷也会是加密的</li>
+<li>你可以分享快照给其他账户或AWS市场，但仅限于这个快照是没有进行过加密的</li>
+<li>要为一个作为根设备的EBS卷创建快照的话，建议停止这个实例再做快照</li>
+</ul>
+<h3 id="实例存储（Instance-Store）"><a href="#实例存储（Instance-Store）" class="headerlink" title="实例存储（Instance Store）"></a>实例存储（Instance Store）</h3><ul>
+<li>实例存储也叫做短暂性存储（Ephemeral Storage）</li>
+<li>实例存储的实例不能被停止（只能重启或终止），如果这个实例出现故障，那么在上面的所有数据将会丢失</li>
+<li>使用EBS的实例可以被停止，停止后EBS上的数据不会丢失</li>
+<li>重启使用实例存储的实例或者重启使用EBS的实例都不会导致数据丢失</li>
+</ul>
+<h3 id="亚马逊系统镜像（AMI）"><a href="#亚马逊系统镜像（AMI）" class="headerlink" title="亚马逊系统镜像（AMI）"></a>亚马逊系统镜像（AMI）</h3><ul>
+<li>AMI是区域化的，只能使用本区域的AMI来创建实例；但你可以将AMI从一个区域复制到另一个区域</li>
+</ul>
+<h3 id="角色（Role）"><a href="#角色（Role）" class="headerlink" title="角色（Role）"></a>角色（Role）</h3><ul>
+<li>使用角色（Role）比使用Access Key和Secret Access Key要安全很多</li>
+<li>角色更容易管理和变更</li>
+<li>角色可以在EC2实例启动之后再分配，并且可以随时更改角色以及角色关联的策略<ul>
+<li>在旧版本考试中，角色只能在EC2创建的时候分配，并且实例启动之后不能对角色进行任何更改</li>
+</ul>
+</li>
+<li>角色是跨区域的，创建的角色可以在任何区域中使用</li>
+</ul>
+<h3 id="实例Meta-data"><a href="#实例Meta-data" class="headerlink" title="实例Meta-data"></a>实例Meta-data</h3><ul>
+<li>用来获取实例自身的一些信息，例如公网IP地址</li>
+<li>使用<a target="_blank" rel="noopener" href="http://169.254.169.254/latest/meta-data/来获取meta-data">http://169.254.169.254/latest/meta-data/来获取meta-data</a></li>
+</ul>
+<h3 id="EC2置放群组（Placement-Group）"><a href="#EC2置放群组（Placement-Group）" class="headerlink" title="EC2置放群组（Placement Group）"></a>EC2置放群组（Placement Group）</h3><p>EC2 置放群组（Placement Group）逻辑性地把一些实例放置在一个组里面，在这个组里面的实例能享受低延迟、高网络吞吐的网络。</p>
+<p>Placement Group的特点</p>
+<ul>
+<li>EC2 Placement Group分为集群模式（Cluster）和分布模式（Spread）<ul>
+<li>集群模式（Cluster）即传统的置放群组，所有的实例需要在同一个可用区内</li>
+<li>分布模式（Spread）是将实例分布到不同的底层硬件，可以在不同的可用区内。你最多可以在每一个置放群组的每一个可用区内创建7个实例</li>
+</ul>
+</li>
+<li>Placement Group提供了低延迟，高速率的网络，可提供高达10 Gbps的速度</li>
+<li>EC2 Placement Group的命名需要在你的AWS账户内唯一，不能有命名重复</li>
+<li>只有特定的EC2实例类型可以放在配置Placement Group内（某些计算优化型、GPU、内存优化型和存储优化型的实例）</li>
+<li>AWS建议在一个Placement Group内的所有EC2实例是一模一样的，否则会有短板效应</li>
+<li>不可以合并多个EC2 Placement Group</li>
+<li>不可以将一个正在运行的EC2实例放到一个EC2 Placement Group中；只能为这个EC2实例创建一个AMI，然后基于AMI创建一个新的实例并且加入到Placement Group内</li>
+<li>Placement Group可以跨越peerd VPC，但要保证在同一个可用区内</li>
+<li>如果在Placement Group中创建实例的时候出现“capacity error”的错误，可以停止再启动组中的所有实例，再重新创建刚才的实例<ul>
+<li>停止再启动组中的所有实例可以改变这些实例所在的底层物理设备，从而带来更多的性能和空间启动新的实例</li>
+</ul>
+</li>
+<li>Placement Group的创建会告诉AWS将组里的实例安置在物理上接近的AWS设备内</li>
+</ul>
+<p>使用Placement Group的最佳实践</p>
+<ul>
+<li>组内使用一样类型的EC2实例</li>
+<li>在同一时间启动组内所有EC2实例，这样可以减少出现“capacity error”错误的概率</li>
+<li>可以通过更改最大传输单元（MTU），从默认的1500改成9001来进一步增加Placement Group内实例之间的传输速度</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2020/02/21/AWS-EC2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/02/22/linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E5%92%8C%E7%BD%91%E7%BB%9C/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            linux系统_内存和网络
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/02/20/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">分布式锁</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

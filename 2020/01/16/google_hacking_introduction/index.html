@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>Google Hacking Introduction |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-google_hacking_introduction"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Google Hacking Introduction
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/01/16/google_hacking_introduction/" class="article-date">
+  <time datetime="2020-01-17T01:27:57.000Z" itemprop="datePublished">2020-01-16</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="一、Google-Hacking介绍"><a href="#一、Google-Hacking介绍" class="headerlink" title="一、Google Hacking介绍"></a>一、Google Hacking介绍</h2><p>Google是一个伟大的信息收集工具，在如今的互联网时代，想想看一个人可以轻易的从搜索引擎中获取你详细的个人信息是件多么叫人激动又害怕的事情？Google也可以当作我们的第二个“社工库”。</p>
+<p>搜索引擎的组成：</p>
+<ul>
+<li>爬行器（机器人、蜘蛛）</li>
+<li>索引生成器</li>
+<li>查询检索器</li>
+</ul>
+<h2 id="二、Google-Hacking基本搜索"><a href="#二、Google-Hacking基本搜索" class="headerlink" title="二、Google Hacking基本搜索"></a>二、Google Hacking基本搜索</h2><p>Intext 搜索出现的关键词</p>
+<p>Inurl 搜索包含关键词的url</p>
+<p>Intitle 搜索包含关键词的标题</p>
+<p>Site 搜索包含关键词的站点</p>
+<p>filetype 搜索包含关键词的文件类型</p>
+<p>Link 对于页面包含的外部链接搜索</p>
+<p>Daterange 搜索特定的日期范围</p>
+<h2 id="三、Google搜索基本规则"><a href="#三、Google搜索基本规则" class="headerlink" title="三、Google搜索基本规则"></a>三、Google搜索基本规则</h2><p>Google 不分大小写</p>
+<p>Google 可以使用通配符：*表示一个词/字</p>
+<p>Google 会智能地保留一些内容，比如一些过时的词，一些不适合呈现的内容（比如违法信息）</p>
+<p>最常用的：”关键字” ，双引号会使Google强制搜索包含关键字的内容</p>
+<p>布尔操作符：AND(+) 、NOT(-) 、OR(|)，AND 现在已不需要，多个关键字google会都匹配到</p>
+<h2 id="四、Google-Hacking常用语法"><a href="#四、Google-Hacking常用语法" class="headerlink" title="四、Google Hacking常用语法"></a>四、Google Hacking常用语法</h2><p><strong>1、搜索标题</strong></p>
+<p>标题一般是一个网站内容的高度概括，比如后台登陆？WEBSHELL？例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intitle:&quot;Java &quot; [ Sec. Info ], [ Files ], [ Console ], [ Sql ], [ Php ], [ Safe mode ], [ String tools ], [ Bruteforce ], [ Network ], [ Self remove ] </span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2、搜索正文</strong></p>
+<p>正文的话就各式各样了，试试login?、admin?、内容编辑？往往会有意想不到的收获。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intitle:&quot;index&quot; intext:&quot;Login to the Administrative Interface&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3、关键网站/网址的搜索</strong></p>
+<p>网站-&gt;site:</p>
+<p>网址-&gt;inurl:</p>
+<p>site：往往我们在对一个大型厂商进行测试时，除了利用工具进行域名爆破，还可以通过Google来帮助，例如site:qq.com；</p>
+<p>inurl：是In-系指令中最强大的一个，换句话说，这个高级指令能够直接从网站的URL入手挖掘信息，只要略微了解普通网站的URL格式，就可以极具针对性地找到你所需要的资源，甚至隐藏内容。网站构建者通常将某一类信息集中在一个网站的目录中，所以搜索URL中的词本身就是对某一方面内容的一个限定。如果在加上一定的词进行组配，搜索结果将更贴近需求。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site:xxx.com inurl:phpmyadmin&#x2F;index.php &amp; (intext:username &amp; password &amp; &quot;Welcome to&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>4、文档类型的搜索</strong></p>
+<p>filetype 爱查资料的人应该不陌生，当它配合上我们其他的关键词时有意思的东西可能就会出现。</p>
+<p>目标文件类型：.pwl口令文件、.tmp临时文件、.cfg配置文件、.ini系统文件、.hlp帮助文件、.dat数据文件、.log日志文件、.par交换文件</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filetype:sql site:com and &quot;insert into&quot; admin &quot;2014&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>文档示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Filetype:xls username password email</span><br><span class="line">Filetype:xls inurl: “password.xls”</span><br><span class="line">Filetype;xls private</span><br><span class="line">Inurl:admin filetype:xls</span><br><span class="line">Filetype:xls inurl:contact</span><br><span class="line">Filetype:xls inurl: “email.xls”</span><br><span class="line">Allinurl:admin mdb</span><br><span class="line">Filetype:mdb inurl:users.mdb</span><br><span class="line">Inurl:email filetype:mdb</span><br><span class="line">Inurl:backup filetype:mdb</span><br><span class="line">Inurl:profiles filetype:mdb</span><br><span class="line">Inurl:*db filetype:mdb</span><br></pre></td></tr></table></figure>
+
+
+
+<p>SQL数据库示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nurl:nuke filetype:sql</span><br><span class="line">Filetype:sql password</span><br><span class="line">Filetype:sql “indetified by” –cvs</span><br><span class="line">“#dumping data for table username user users password”</span><br><span class="line">“#mysql dump” filetype:sql</span><br><span class="line">“#phpmyadmin mysql-dump” filetype:txt</span><br><span class="line">“#phpmyadmin mysql-dump”</span><br><span class="line">“insert into” –”the</span><br></pre></td></tr></table></figure>
+
+
+
+<p>数据库文件示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Filetype:cfm “cfapplication name ” password</span><br><span class="line">Filetype:mdb inurl:user.mdb</span><br><span class="line">Inurl:email filetype:mdb</span><br><span class="line">Inurl:forum filetype:mdb</span><br><span class="line">Inurl:&#x2F;db&#x2F;main.mdb</span><br><span class="line">Inurl:profiles filetype:mdb</span><br><span class="line">Filetype:asp dbq&#x3D;”* server.mappath(“mdb”)”</span><br><span class="line">Allinurl;admin mdb</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>5、link搜索</strong></p>
+<p>link: 可以得到一个所有包含了某个指定URL的页面列表；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查找后台地址：site:域名 inurl:login|admin|manage|member|admin_login|login_admin|system|login|user|main|cms</span><br><span class="line">查找文本内容：site:域名 intext:管理|后台|登陆|用户名|密码|验证码|系统|帐号|admin|login|sys|managetem|password|username</span><br><span class="line">查找可注入点：site:域名 inurl:aspx|jsp|php|asp</span><br><span class="line">查找上传漏洞：site:域名 inurl:file|load|editor|Files</span><br><span class="line">查找eweb编辑器：site:域名 inurl:ewebeditor|editor|uploadfile|eweb|edit</span><br><span class="line">查找存在的数据库：site:域名 filetype:mdb|asp|#</span><br><span class="line">查看脚本类型：site:域名 filetype:asp&#x2F;aspx&#x2F;php&#x2F;jsp</span><br><span class="line">迂回策略入侵：inurl:cms&#x2F;data&#x2F;templates&#x2F;images&#x2F;index&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>各种敏感数据收集：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filetyle:xls inurl:gov username passwordinurl:phpmyadmin&#x2F;main.php </span><br><span class="line">intitle:phpmyadminfiletype:inc inurl:config.inc hostfiletype:sql cdb_members </span><br><span class="line">inurl:forumdatafiletype:txt inurl:&quot;新建文本文档.txt&quot;密码inurl:phpinfo.php </span><br><span class="line">intitle:&quot;phpinfo()&quot;&quot;PHP Version&quot;+&quot;Server API&quot;filetype:log inurl:log mdb</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>6、缓存、快照搜索</strong></p>
+<p>没有突破口时，缓存可能是一大杀器。通过爬虫，快照，在管理者不经意的情况下记录下敏感信息。</p>
+<p>案例：</p>
+<p>曾经碰到过一个学生可能都比较熟悉的名为教育技术服务平台的信息泄露，它们无意中把自己gitlab公开在外网，当然没有任何防范爬虫的措施，虽然设有登陆密码但是可以通过google快照来查看里面的各种敏感代码。</p>
+<p><strong>如何访问谷歌的缓存链接？</strong></p>
+<ol>
+<li>在你的计算机上，使用 Google 搜索查找所需网页。</li>
+<li>点击相应网站网址右侧的绿色向下箭头。</li>
+<li>点击<strong>网页快照</strong>。</li>
+<li>打开缓存版页面后，点击“当前页”链接即可返回实际页面。</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2020/01/16/google_hacking_introduction/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/google/" rel="tag">google</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/01/17/%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E6%96%B9%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            技术的发展方式
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/01/15/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%9D%82%E8%B0%88/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">软件设计杂谈</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

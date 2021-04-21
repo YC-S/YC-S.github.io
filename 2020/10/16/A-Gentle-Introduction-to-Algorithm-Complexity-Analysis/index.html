@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>A_Gentle_Introduction_to_Algorithm_Complexity_Analysis |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-A-Gentle-Introduction-to-Algorithm-Complexity-Analysis"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  A_Gentle_Introduction_to_Algorithm_Complexity_Analysis
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/" class="article-date">
+  <time datetime="2020-10-17T03:07:07.000Z" itemprop="datePublished">2020-10-16</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">20 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>A lot of programmers that make some of the coolest and most  useful software today, such as many of the stuff we see on the Internet  or use daily, don’t have a theoretical computer science background.  They’re still pretty awesome and creative programmers and we thank them  for what they build.</p>
+<p>However, theoretical computer science has its uses and  applications and can turn out to be quite practical. In this article,  targeted at programmers who know their art but who don’t have any  theoretical computer science background, I will present one of the most  pragmatic tools of computer science: Big O notation and algorithm  complexity analysis. As someone who has worked both in a computer  science academic setting and in building production-level software in  the industry, this is the tool I have found to be one of the truly  useful ones in practice, so I hope after reading this article you can  apply it in your own code to make it better. After reading this post,  you should be able to understand all the common terms computer  scientists use such as “big O”, “asymptotic behavior” and “worst-case  analysis”.</p>
+<p>This text is also targeted at the junior high school and high school students from Greece or anywhere else internationally competing  in the <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/International_Olympiad_in_Informatics">International Olympiad in Informatics</a>, an algorithms competition for students, or other similar competitions.  As such, it does not have any mathematical prerequisites and will give  you the background you need in order to continue studying algorithms  with a firmer understanding of the theory behind them. As someone who  used to compete in these student competitions, I highly advise you to  read through this whole introductory material and try to fully  understand it, because it will be necessary as you study algorithms and  learn more advanced techniques.</p>
+<p>I believe this text will be helpful for industry programmers  who don’t have too much experience with theoretical computer science (it is a fact that some of the most inspiring software engineers never went to college). But because it’s also for students, it may at times sound a little bit like a textbook. In addition, some of the topics in this  text may seem too obvious to you; for example, you may have seen them  during your high school years. If you feel you understand them, you can  skip them. Other sections go into a bit more depth and become slightly  theoretical, as the students competing in this competition need to know  more about theoretical algorithms than the average practitioner. But  these things are still good to know and not tremendously hard to follow, so it’s likely well worth your time. As the original text was targeted  at high school students, no mathematical background is required, so  anyone with some programming experience (i.e. if you know what recursion is) will be able to follow through without any problem.</p>
+<p>Throughout this article, you will find various pointers that  link you to interesting material often outside the scope of the topic  under discussion. If you’re an industry programmer, it’s likely that  you’re familiar with most of these concepts. If you’re a junior student  participating in competitions, following those links will give you clues about other areas of computer science or software engineering that you  may not have yet explored which you can look at to broaden your  interests.</p>
+<p>Big O notation and algorithm complexity analysis is something a lot of industry programmers and junior students alike find hard to  understand, fear, or avoid altogether as useless. But it’s not as hard  or as theoretical as it may seem at first. Algorithm complexity is just a way to formally measure how fast a program or algorithm runs, so it  really is quite pragmatic. Let’s start by motivating the topic a little  bit.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>We already know there are tools to measure how fast a program runs. There are programs called <em>profilers</em> which measure running time in milliseconds and can help us optimize our code by spotting bottlenecks. While this is a useful tool, it isn’t  really relevant to algorithm complexity. Algorithm complexity is  something designed to compare two algorithms at the idea level —  ignoring low-level details such as the implementation programming  language, the hardware the algorithm runs on, or the instruction set of  the given CPU. We want to compare algorithms in terms of just what they  are: Ideas of how something is computed. Counting milliseconds won’t  help us in that. It’s quite possible that a bad algorithm written in a  low-level programming language such as <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Assembly_language">assembly</a> runs much quicker than a good algorithm written in a high-level programming language such as <a target="_blank" rel="noopener" href="http://www.python.org/">Python</a> or <a target="_blank" rel="noopener" href="http://www.ruby-lang.org/en/">Ruby</a>. So it’s time to define what a “better algorithm” really is.</p>
+<p>As algorithms are programs that perform just a computation,  and not other things computers often do such as networking tasks or user input and output, complexity analysis allows us to measure how fast a  program is when it performs computations. Examples of operations that  are purely <em>computational</em> include numerical <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Floating_point">floating-point operations</a> such as addition and multiplication; searching within a database that  fits in RAM for a given value; determining the path an  artificial-intelligence character will walk through in a video game so  that they only have to walk a short distance within their virtual world; or running a <a target="_blank" rel="noopener" href="http://www.regular-expressions.info/">regular expression</a> pattern match on a string. Clearly, computation is ubiquitous in computer programs.</p>
+<p>Complexity analysis is also a tool that allows us to explain  how an algorithm behaves as the input grows larger. If we feed it a  different input, how will the algorithm behave? If our algorithm takes 1 second to run for an input of size 1000, how will it behave if I double the input size? Will it run just as fast, half as fast, or four times  slower? In practical programming, this is important as it allows us to  predict how our algorithm will behave when the input data becomes  larger. For example, if we’ve made an algorithm for a web application  that works well with 1000 users and measure its running time, using  algorithm complexity analysis we can have a pretty good idea of what  will happen once we get 2000 users instead. For algorithmic  competitions, complexity analysis gives us insight about how long our  code will run for the largest testcases that are used to test our  program’s correctness. So if we’ve measured our program’s behavior for a small input, we can get a good idea of how it will behave for larger  inputs. Let’s start by a simple example: Finding the maximum element in  an array.</p>
+<h2 id="Counting-instructions"><a href="#Counting-instructions" class="headerlink" title="Counting instructions"></a>Counting instructions</h2><p>In this article, I’ll use various programming languages for  the examples. However, don’t despair if you don’t know a particular  programming language. Since you know programming, you should be able to  read the examples without any problem even if you aren’t familiar with  the programming language of choice, as they will be simple and I won’t  use any esoteric language features. If you’re a student competing in  algorithms competitions, you most likely work with <a target="_blank" rel="noopener" href="http://www.cplusplus.com/doc/tutorial/">C++</a>, so you should have no problem following through. In that case I recommend working on the exercises using C++ for practice.</p>
+<p>The maximum element in an array can be looked up using a simple piece of code such as this piece of <a target="_blank" rel="noopener" href="http://www.quirksmode.org/js/intro.html">Javascript</a> code. Given an input array A of size n:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M = A[ <span class="number">0</span> ];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</span><br><span class="line">  <span class="keyword">if</span> ( A[ i ] &gt;= M ) &#123;</span><br><span class="line">  	M = A[ i ];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, the first thing we’ll do is count how many <em>fundamental instructions</em> this piece of code executes. We will only do this once and it won’t be  necessary as we develop our theory, so bear with me for a few moments as we do this. As we analyze this piece of code, we want to break it up  into simple instructions; things that can be executed by the CPU  directly - or close to that. We’ll assume our processor can execute the  following operations as one instruction each:</p>
+<ul>
+<li>Assigning a value to a variable</li>
+<li>Looking up the value of a particular element in an array</li>
+<li>Comparing two values</li>
+<li>Incrementing a value</li>
+<li>Basic arithmetic operations such as addition and multiplication</li>
+</ul>
+<p>We’ll assume branching (the choice between <code>if</code> and <code>else</code> parts of code after the <code>if</code> condition has been evaluated) occurs instantly and won’t count these  instructions. In the above code, the first line of code is:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M = A[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>This requires 2 instructions: One for looking up A[ 0 ] and one for assigning the value to M (we’re assuming that n is always at least 1). These two instructions  are always required by the algorithm, regardless of the value of n. The <code>for</code> loop initialization code also has to always run. This gives us two more instructions; an assignment and a comparison:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span>;</span><br><span class="line">i &lt; n;</span><br></pre></td></tr></table></figure>
+
+<p>These will run before the first <code>for</code> loop iteration. After each <code>for</code> loop iteration, we need two more instructions to run, an increment of i and a comparison to check if we’ll stay in the loop:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">++i;</span><br><span class="line">i &lt; n;</span><br></pre></td></tr></table></figure>
+
+<p>So, if we ignore the loop body, the number of instructions this  algorithm needs is 4 + 2n. That is, 4 instructions at the beginning of  the <code>for</code> loop and 2 instructions at the end of each iteration of which we have n. We can now define a mathematical function f( n ) that, given an n, gives us the number of instructions the algorithm needs. For an empty <code>for</code> body, we have f( n ) = 4 + 2n.</p>
+<h2 id="Worst-case-analysis"><a href="#Worst-case-analysis" class="headerlink" title="Worst-case analysis"></a>Worst-case analysis</h2><p>Now, looking at the <code>for</code> body, we have an array lookup operation and a comparison that happen always:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( A[ i ] &gt;= M ) &#123; ...</span><br></pre></td></tr></table></figure>
+
+<p>That’s two instructions right there. But the <code>if</code> body may run or may not run, depending on what the array values actually are. If it happens to be so that <code>A[ i ] &gt;= M</code>, then we’ll run these two additional instructions — an array lookup and an assignment:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M = A[ i ]</span><br></pre></td></tr></table></figure>
+
+<p>But now we can’t define an f( n ) as easily, because our number of instructions doesn’t depend solely on n but also on our input. For example, for <code>A = [ 1, 2, 3, 4 ]</code> the algorithm will need more instructions than for <code>A = [ 4, 3, 2, 1 ]</code>. When analyzing algorithms, we often consider the worst-case scenario.  What’s the worst that can happen for our algorithm? When does our  algorithm need the most instructions to complete? In this case, it is  when we have an array in increasing order such as <code>A = [ 1, 2, 3, 4 ]</code>. In that case, M needs to be replaced every single time and so that yields the most  instructions. Computer scientists have a fancy name for that and they  call it <em>worst-case analysis</em>; that’s nothing more than just  considering the case when we’re the most unlucky. So, in the worst case, we have 4 instructions to run within the <code>for</code> body, so we  have f( n ) = 4 + 2n + 4n = 6n + 4. This function f, given a problem  size n, gives us the number of instructions that would be needed in the  worst-case.</p>
+<h2 id="Asymptotic-behavior"><a href="#Asymptotic-behavior" class="headerlink" title="Asymptotic behavior"></a>Asymptotic behavior</h2><p>Given such a function, we have a pretty good idea of how fast an algorithm is. However, as I promised, we won’t be needing to go  through the tedious task of counting instructions in our program.  Besides, the number of actual CPU instructions needed for each  programming language statement depends on the compiler of our  programming language and on the available CPU instruction set (i.e.  whether it’s an AMD or an Intel Pentium on your PC, or a MIPS processor  on your Playstation 2) and we said we’d be ignoring that. We’ll now run  our “f” function through a “filter” which will help us get rid of those  minor details that computer scientists prefer to ignore.</p>
+<p>In our function, 6n + 4, we have two terms: 6n and 4. In  complexity analysis we only care about what happens to the  instruction-counting function as the program input (n) grows  large. This really goes along with the previous ideas of “worst-case  scenario” behavior: We’re interested in how our algorithm behaves when  treated badly; when it’s challenged to do something hard. Notice that  this is really useful when comparing algorithms. If an algorithm beats  another algorithm for a large input, it’s most probably true that the  faster algorithm remains faster when given an easier, smaller input. <strong>From the terms that we are considering, we’ll drop all the terms that grow  slowly and only keep the ones that grow fast as n becomes larger.</strong> Clearly 4 remains a 4 as n grows larger, but 6n grows larger and larger, so it tends to matter  more and more for larger problems. Therefore, the first thing we will do is drop the 4 and keep the function as f( n ) = 6n.</p>
+<p>This makes sense if you think about it, as the 4 is simply an “initialization constant”. Different programming languages may require a different time to set up. For example, Java needs some time to  initialize its <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Java_virtual_machine">virtual machine</a>. Since we’re ignoring programming language differences, it only makes sense to ignore this value.</p>
+<p>The second thing we’ll ignore is the constant multiplier in front of n, and so our function will become f( n ) = n. As you can see this  simplifies things quite a lot. Again, it makes some sense to drop this  multiplicative constant if we think about how different programming  languages compile. The “array lookup” statement in one language may  compile to different instructions in different programming languages.  For example, in C, doing <code>A[ i ]</code> does not include a check that i is within the declared array size, while in <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Pascal_(programming_language)">Pascal</a> it does. So, the following Pascal code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M := A[ i ]</span><br></pre></td></tr></table></figure>
+
+<p>Is the equivalent of the following in C:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">0</span> &amp;&amp; i &lt; n) &#123;</span><br><span class="line">  M = A[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>So it’s reasonable to expect that different programming languages  will yield different factors when we count their instructions. In our  example in which we are using a dumb compiler for Pascal that is  oblivious of possible optimizations, Pascal requires 3 instructions for  each array access instead of the 1 instruction C requires. Dropping this factor goes along the lines of ignoring the differences between  particular programming languages and compilers and only analyzing the  idea of the algorithm itself.</p>
+<p>This filter of “dropping all factors” and of “keeping the largest growing term” as described above is what we call <em>asymptotic behavior</em>. So the asymptotic behavior of f( n ) = 2n + 8 is described by the  function f( n ) = n. Mathematically speaking, what we’re saying here is  that we’re interested in the limit of function f as n tends  to infinity; but if you don’t understand what that phrase formally  means, don’t worry, because this is all you need to know. (On a side  note, in a strict mathematical setting, we would not be able to drop the constants in the limit; but for computer science purposes, we want to  do that for the reasons described above.) Let’s work a couple of  examples to familiarize ourselves with the concept.</p>
+<p>Let us find the asymptotic behavior of the following example  functions by dropping the constant factors and by keeping the terms that grow the fastest.</p>
+<ol>
+<li><p>f( n ) = 5n + 12 gives f( n ) = n.</p>
+<p>By using the exact same reasoning as above.</p>
+</li>
+<li><p>f( n ) = 109 gives f( n ) = 1.</p>
+<p>We’re dropping the multiplier 109 * 1, but we still have to put a 1 here to indicate that this function has a non-zero value.</p>
+</li>
+<li><p>f( n ) = n2 + 3n + 112 gives f( n ) = n2</p>
+<p>Here, n2 grows larger than 3n for sufficiently large n, so we’re keeping that.</p>
+</li>
+<li><p>f( n ) = n3 + 1999n + 1337 gives f( n ) = n3</p>
+<p>Even though the factor in front of n is quite large, we can still find a large enough n so that n3 is bigger than 1999n. As we’re interested in the behavior for very large values of n, we only keep n3 (See <strong>Figure 2</strong>).</p>
+</li>
+<li><p>f( n ) = n + (n)^(1/2) gives f( n ) = n</p>
+<p>This is so because n grows faster than (n)^(1/2)as we increase n.</p>
+</li>
+</ol>
+<h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>So what this is telling us is that since we can drop all  these decorative constants, it’s pretty easy to tell the asymptotic  behavior of the instruction-counting function of a program. In fact, any program that doesn’t have any loops will have f( n ) = 1, since the  number of instructions it needs is just a constant (unless it uses  recursion; see below). Any program with a single loop which goes from 1  to n will have f( n ) = n, since it will do a constant number of instructions before the loop, a constant number of instructions  after the loop, and a constant number of instructions within the loop  which all run n times.</p>
+<p>This should now be much easier and less tedious than counting individual instructions, so let’s take a look at a couple of examples  to get familiar with this. The following <a target="_blank" rel="noopener" href="http://php.net/">PHP</a> program checks to see if a particular value exists within an array A of size n:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="variable">$exists</span> = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; n; ++<span class="variable">$i</span> ) &#123;</span><br><span class="line">		<span class="keyword">if</span> ( <span class="variable">$A</span>[ <span class="variable">$i</span> ] == <span class="variable">$value</span> ) &#123;</span><br><span class="line">			<span class="variable">$exists</span> = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>This method of searching for a value within an array is called <em>linear search</em>. This is a reasonable name, as this program has f( n ) = n (we’ll define exactly what “linear” means in the next section). You may notice that  there’s a “break” statement here that may make the program terminate  sooner, even after a single iteration. But recall that we’re interested  in the worst-case scenario, which for this program is for the array A to not contain the value. So we still have f( n ) = n.</p>
+<h1 id="Rule-of-thumb"><a href="#Rule-of-thumb" class="headerlink" title="Rule of thumb"></a>Rule of thumb</h1><ol>
+<li>Simple programs can be analyzed by counting the nested loops of the  program. A single loop over n items yields f( n ) = n. A loop within a  loop yields f( n ) = n^2. A loop within a loop within a loop yields f( n ) = n^3.</li>
+<li>Given a series of for loops that are sequential, the slowest of them  determines the asymptotic behavior of the program. Two nested loops  followed by a single loop is asymptotically the same as the nested loops alone, because the nested loops <em>dominate</em> the simple loop.</li>
+<li>Programs with a bigger Θ run slower than programs with a smaller Θ.</li>
+<li>It’s easier to figure out the O-complexity of an algorithm than its Θ-complexity.</li>
+<li>While all the symbols O, o, Ω, ω and Θ are useful at times, O is the  one used more commonly, as it’s easier to determine than Θ and more  practically useful than Ω.</li>
+<li>For competition algorithms implemented in C++, once you’ve analyzed your complexity, you can get a rough estimate of how fast your program will  run by expecting it to perform about 1,000,000 operations per second,  where the operations you count are given by the asymptotic behavior  function describing your algorithm. For example, a Θ( n ) algorithm  takes about a second to process the input for n = 1,000,000.</li>
+<li>Improving the asymptotic running time of a program often tremendously  increases its performance, much more than any smaller “technical”  optimizations such as using a faster programming language.</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            读《疯狂的程序员》有感
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">GitHub_Arctic_Code_Vault:_Tech_Tree</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

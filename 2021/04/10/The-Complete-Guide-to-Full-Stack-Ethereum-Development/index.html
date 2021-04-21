@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>The Complete Guide to Full Stack Ethereum Development |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-The-Complete-Guide-to-Full-Stack-Ethereum-Development"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  The Complete Guide to Full Stack Ethereum Development
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/10/The-Complete-Guide-to-Full-Stack-Ethereum-Development/" class="article-date">
+  <time datetime="2021-04-11T01:01:18.000Z" itemprop="datePublished">2021-04-10</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">27 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Building-Full-Stack-dApps-with-React-Ethers-js-Solidity-and-Hardhat"><a href="#Building-Full-Stack-dApps-with-React-Ethers-js-Solidity-and-Hardhat" class="headerlink" title="Building Full Stack dApps with React, Ethers.js, Solidity, and Hardhat"></a>Building Full Stack dApps with React, Ethers.js, Solidity, and Hardhat</h2><blockquote>
+<p>The code for this project is located <a target="_blank" rel="noopener" href="https://github.com/dabit3/full-stack-ethereum">here</a></p>
+</blockquote>
+<p>I recently joined <a target="_blank" rel="noopener" href="https://twitter.com/edgeandnode">Edge &amp; Node</a> as a Developer Relations Engineer and have been diving deeper into smart contract development with Ethereum. I have settled upon what I think is the best stack for building full stack dApps with Solidity:</p>
+<p>▶︎ Client Framework - <strong>React</strong><br>▶︎ Ethereum development environment - <a target="_blank" rel="noopener" href="https://hardhat.org/"><strong>Hardhat</strong></a><br>▶︎ Ethereum Web Client Library - <a target="_blank" rel="noopener" href="https://docs.ethers.io/v5/"><strong>Ethers.js</strong></a><br>▶︎ API layer - <a target="_blank" rel="noopener" href="https://thegraph.com/">The Graph Protocol</a></p>
+<p>The problem that I ran into though while learning this was that while there was fairly good documentation out there for each of these things individually, there was nothing really out there for how to put all of these things together and understand how they worked with each other. There are some really good boilerplates out there like <a target="_blank" rel="noopener" href="https://github.com/austintgriffith/scaffold-eth">scaffold-eth</a> (which also includes Ethers, Hardhat, and The Graph), but may be too much to pick up for people just getting started.</p>
+<p>I wanted an end to end guide to show me how to build full stack Ethereum apps using the most up to date resources, libraries, and tooling.</p>
+<p>The things I was interested in were this:</p>
+<ol>
+<li>How to create, deploy, and test Ethereum smart contracts to local, test, and mainnet</li>
+<li>How to switch between local, test, and production environments / networks</li>
+<li>How to connect to and interact with the contracts using various environments from a front end like React, Vue, Svelte, or Angular</li>
+</ol>
+<p>After spending some time figuring all of this out and getting going with the stack that I felt really happy with, I thought it would be nice to write up how to build and test a full stack Ethereum app using this stack not only for other people out there who may be interested in this stack, but also for myself for future reference. This is that reference.</p>
+<h2 id="The-pieces"><a href="#The-pieces" class="headerlink" title="The pieces"></a>The pieces</h2><p>Let’s go over the main pieces we will be using and how they fit into the stack.</p>
+<h3 id="1-Ethereum-development-environment"><a href="#1-Ethereum-development-environment" class="headerlink" title="1. Ethereum development environment"></a>1. Ethereum development environment</h3><p>When building smart contracts, you will need a way to deploy your contracts, run tests, and debug Solidity code without dealing with live environments.</p>
+<p>You will also need a way to compile your Solidity code into code that can be run in a client-side application – in our case, a React app. We’ll learn more about how this works a little later.</p>
+<p>Hardhat is an Ethereum development environment and framework designed for full stack development and is the framework that I will be using for this tutorial.</p>
+<p>Other similar tools in the ecosystem are <a target="_blank" rel="noopener" href="https://www.trufflesuite.com/ganache">Ganache</a> and <a target="_blank" rel="noopener" href="https://www.trufflesuite.com/">Truffle</a>.</p>
+<h3 id="2-Ethereum-Web-Client-Library"><a href="#2-Ethereum-Web-Client-Library" class="headerlink" title="2. Ethereum Web Client Library"></a>2. Ethereum Web Client Library</h3><p>In our React app, we will need a way to interact with the smart contracts that have been deployed. We will need a way to read for data as well as send new transactions. </p>
+<p><a target="_blank" rel="noopener" href="https://docs.ethers.io/v5/">ethers.js</a> aims to be a complete and compact library for interacting with the Ethereum Blockchain and its ecosystem from client-side JavaScript applications like React, Vue, Angular, or Svelte. It is the library we’ll be using.</p>
+<p>Another popular option in the ecosystem is <a target="_blank" rel="noopener" href="https://web3js.readthedocs.io/en/v1.3.4/">web3.js</a></p>
+<h3 id="3-Metamask"><a href="#3-Metamask" class="headerlink" title="3. Metamask"></a>3. Metamask</h3><p><a target="_blank" rel="noopener" href="https://metamask.io/download.html">Metamask</a> helps to handle account management and connecting the current user to the blockchain. MetaMask enables users to manage their accounts and keys in a few different ways while isolating them from the site context.</p>
+<p>Once a user has connected their MetaMask wallet, you as a developer can interact with the globally available Ethereum API (<code>window.ethereum</code>) that identifies the users of web3-compatible browsers (like MetaMask users), and whenever you request a transaction signature, MetaMask will prompt the user in as comprehensible a way as possible.</p>
+<h3 id="4-React"><a href="#4-React" class="headerlink" title="4. React"></a>4. React</h3><p>React is a front end JavaScript library for building web applications, user interfaces, and UI components. It’s maintained by Facebook and many many individual developers and companies.</p>
+<p>React and its large ecosystem of metaframeworks like <a target="_blank" rel="noopener" href="https://nextjs.org/">Next.js</a>, <a target="_blank" rel="noopener" href="https://www.gatsbyjs.com/">Gatsby</a>, <a target="_blank" rel="noopener" href="https://redwoodjs.com/">Redwood</a>, <a target="_blank" rel="noopener" href="https://blitzjs.com/">Blitz.js</a>, and others enable all types of deployment targets including traditional SPAs, static site generators, server-side rendering, and a combination of all three. React continues to be seemingly dominating the front-end space and I think will continue to do so for at least the near future.</p>
+<h3 id="5-The-Graph"><a href="#5-The-Graph" class="headerlink" title="5. The Graph"></a>5. The Graph</h3><p>For most apps built on blockchains like Ethereum, it’s hard and time-intensive to read data directly from the chain, so you used to see people and companies building their own centralized indexing server and serving API requests from these servers. This requires a lot of engineering and hardware resources and breaks the security properties required for decentralization.</p>
+<p>The Graph is an indexing protocol for querying blockchain data that enables the creation of fully decentralized applications and solves this problem, exposing a rich GraphQL query layer that apps can consume. In this guide we won’t be building a subgraph for our app but will do so in a future tutorial.</p>
+<h2 id="What-we-will-be-building"><a href="#What-we-will-be-building" class="headerlink" title="What we will be building"></a>What we will be building</h2><p>In this tutorial, we’ll be building, deploying, and connecting to a couple of basic smart contracts: </p>
+<ol>
+<li>A contract for creating and updating a message on the Ethereum blockchain</li>
+<li>A contract for minting tokens, then allowing the owner of the contract to send tokens to others and to read the token balances, and for owners of the new tokens to also send them to others.</li>
+</ol>
+<p>We will also build out a React front end that will allow a user to:</p>
+<ol>
+<li>Read the greeting from the contract deployed to the blockchain</li>
+<li>Update the greeting</li>
+<li>Send the newly minted tokens from their address to another address</li>
+<li>Once someone has received tokens, allow them to also send their tokens to someone else</li>
+<li>Read the token balance from the contract deployed to the blockchain</li>
+</ol>
+<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ol>
+<li>Node.js installed on your local machine</li>
+<li><a target="_blank" rel="noopener" href="https://metamask.io/">MetaMask</a> Chrome extension installed in your browser</li>
+</ol>
+<p>You do not need to own any Ethereum for this guide as we will be using fake / test Ether on a test network for the entire tutorial.</p>
+<h2 id="Getting-started"><a href="#Getting-started" class="headerlink" title="Getting started"></a>Getting started</h2><p>To get started, we’ll create a new React application:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app react-dapp</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Next, change into the new directory and install <a target="_blank" rel="noopener" href="https://docs.ethers.io/v5/"><code>ethers.js</code></a> and <a target="_blank" rel="noopener" href="https://github.com/nomiclabs/hardhat"><code>hardhat</code></a> using either <strong>NPM</strong> or <strong>Yarn</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ethers hardhat @nomiclabs&#x2F;hardhat-waffle ethereum-waffle chai @nomiclabs&#x2F;hardhat-ethers</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Installing-amp-configuring-an-Ethereum-development-environment"><a href="#Installing-amp-configuring-an-Ethereum-development-environment" class="headerlink" title="Installing &amp; configuring an Ethereum development environment"></a>Installing &amp; configuring an Ethereum development environment</h3><p>Next, initialize a new Ethereum Development Environment with Hardhat:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat</span><br><span class="line"></span><br><span class="line">? What do you want to do? Create a sample project</span><br><span class="line">? Hardhat project root: &lt;Choose default path&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Now you should see the following artifacts created for you in your root directory:</p>
+<p><strong>hardhat.config.js</strong> - The entirety of your Hardhat setup (i.e. your config, plugins, and custom tasks) is contained in this file.<br><strong>scripts</strong> - A folder containing a script named <strong>sample-script.js</strong> that will deploy your smart contract when executed<br><strong>test</strong> - A folder containing an example testing script<br><strong>contracts</strong> - A folder holding an example Ethereum smart contract</p>
+<p>Because of <a target="_blank" rel="noopener" href="https://hardhat.org/metamask-issue.html">a MetaMask configuration issue</a>, we need to update the chain ID on our HardHat configuration to be <strong>1337</strong>. We also need to update the location for the <a target="_blank" rel="noopener" href="https://hardhat.org/guides/compile-contracts.html#artifacts">artifacts</a> for our compiled contracts to be in the <strong>src</strong> directory of our React app.</p>
+<p>To make these updates, open <strong>hardhat.config.js</strong> and update the <code>module.exports</code>to look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  solidity: &quot;0.8.3&quot;,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    artifacts: &#39;.&#x2F;src&#x2F;artifacts&#39;,</span><br><span class="line">  &#125;,</span><br><span class="line">  networks: &#123;</span><br><span class="line">    hardhat: &#123;</span><br><span class="line">      chainId: 1337</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Our-smart-contract"><a href="#Our-smart-contract" class="headerlink" title="Our smart contract"></a>Our smart contract</h2><p>Next, let’s have a look at the example contract given to us at <strong>contracts/Greeter.sol</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;SPDX-License-Identifier: Unlicense</span><br><span class="line">pragma solidity ^0.7.0;</span><br><span class="line"></span><br><span class="line">import &quot;hardhat&#x2F;console.sol&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">contract Greeter &#123;</span><br><span class="line">  string greeting;</span><br><span class="line"></span><br><span class="line">  constructor(string memory _greeting) &#123;</span><br><span class="line">    console.log(&quot;Deploying a Greeter with greeting:&quot;, _greeting);</span><br><span class="line">    greeting &#x3D; _greeting;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function greet() public view returns (string memory) &#123;</span><br><span class="line">    return greeting;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function setGreeting(string memory _greeting) public &#123;</span><br><span class="line">    console.log(&quot;Changing greeting from &#39;%s&#39; to &#39;%s&#39;&quot;, greeting, _greeting);</span><br><span class="line">    greeting &#x3D; _greeting;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>This is a very basic smart contract. When deployed, it sets a Greeting variable and exposes a function (<code>greet</code>) that can be called to return the greeting.</p>
+<p>It also exposes a function that allows a user to update the greeting (<code>setGreeting</code>). When deployed to the Ethereum blockchain, these methods will be available for a user to interact with.</p>
+<p>Let’s make one small modification to the smart contract. Since we set the solidity version of our compiler to <code>0.8.3</code> in <strong>hardhat.config.js</strong>, let’s also be sure to update our contract to use the same version of solidity:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; contracts&#x2F;Greeter.sol</span><br><span class="line">pragma solidity ^0.8.3;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Reading-and-writing-to-the-Ethereum-blockchain"><a href="#Reading-and-writing-to-the-Ethereum-blockchain" class="headerlink" title="Reading and writing to the Ethereum blockchain"></a>Reading and writing to the Ethereum blockchain</h3><p>There are two types of ways to interact with a smart contract, reading or writing / transactions. In our contract, <code>greet</code> can be considered reading, and <code>setGreeting</code>can be considered writing / transactional.</p>
+<p>When writing or initializing a transaction, you have to pay for the transaction to be written to the blockchain. To make this work, you need to pay [gas](<a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/g/gas-ethereum.asp#:~:text=What">https://www.investopedia.com/terms/g/gas-ethereum.asp#:~:text=What</a> Is Gas (Ethereum)%3F,on the Ethereum blockchain platform) which is the fee, or price, required to successfully conduct a transaction and execute a contract on the Ethereum blockchain.</p>
+<p>As long as you are only reading from the blockchain and not changing or updating anything, you don’t need to carry out a transaction and there will be no gas or cost to do so. The function you call is then carried out only by the node you are connected to, so you don’t need to pay any gas and the read is free.</p>
+<p>From our React app, the way that we will interact with the smart contract is using a combination of the <code>ethers.js</code> library, the contract address, and the <a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.5.3/abi-spec.html">ABI</a> that will be created from the contract by hardhat.</p>
+<p>What is an ABI? ABI stands for application binary interface. You can think of it as the interface between your client-side application and the Ethereum blockchain where the smart contract you are going to be interacting with is deployed.</p>
+<p>ABIs are typically compiled from Solidity smart contracts by a development framework like HardHat. You can also often find the ABIs for a smart contract on <a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a></p>
+<h3 id="Compiling-the-ABI"><a href="#Compiling-the-ABI" class="headerlink" title="Compiling the ABI"></a>Compiling the ABI</h3><p>Now that we have gone over the basic smart contract and know what ABIs are, let’s compile an ABI for our project.</p>
+<p>To do so, go to the command line and run the following command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat compile</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Now, you should see a new folder named <strong>artifacts</strong> in the <strong>src</strong> directory. The <strong>artifacts/contracts/Greeter.json</strong> file contains the ABI as one of the properties. When we need to use the ABI, we can import it from our JavaScript file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Greeter from &#39;.&#x2F;artifacts&#x2F;contracts&#x2F;Greeter.sol&#x2F;Greeter.json&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>We can then reference the ABI like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;Greeter ABI: &quot;, Greeter.abi)</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>Note that Ethers.js also enables <a target="_blank" rel="noopener" href="https://blog.ricmoo.com/human-readable-contract-abis-in-ethers-js-141902f4d917">human readable ABIs</a>, but will will not be going into this during this tutorial.</p>
+</blockquote>
+<h3 id="Deploying-and-using-a-local-network-blockchain"><a href="#Deploying-and-using-a-local-network-blockchain" class="headerlink" title="Deploying and using a local network / blockchain"></a>Deploying and using a local network / blockchain</h3><p>Next, let’s deploy our smart contract to a local blockchain so that we can test it out.</p>
+<p>To deploy to the local network, you first need to start the local test node. To do so, open the CLI and run the following command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat node</span><br></pre></td></tr></table></figure>
+
+
+
+<p>When we run this command, you should see a list of addresses and private keys. </p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--A_zc2Dpd--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e176nc82ik77hei3a48s.jpg"><img src="../images/e176nc82ik77hei3a48s.jpg" alt="Hardhat node addresses"></a></p>
+<p>These are 20 test accounts and addresses created for us that we can use to deploy and test our smart contracts. Each account is also loaded up with 10,000 fake Ether. In a moment, we’ll learn how to import the test account into MetaMask so that we can use it.</p>
+<p>Next, we need to deploy the contract to the test network. First update the name of <strong>scripts/sample-script.js</strong> to <strong>scripts/deploy.js</strong>.</p>
+<p>Now we can run the deploy script and give a flag to the CLI that we would like to deploy to our local network:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat run scripts&#x2F;deploy.js --network localhost</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Once this script is executed, the smart contract should be deployed to the local test network and we should be then able to start interacting with it.</p>
+<blockquote>
+<p>When the contract was deployed, it used the first account that was created when we started the local network.</p>
+</blockquote>
+<p>If you look at the output from the CLI, you should be able to see something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Greeter deployed to: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>This address is what we will use in our client application to talk to the smart contract. Keep this address available as we will need to use it when connecting to it from the client application.</p>
+<p>To send transactions to the smart contract, we will need to connect our MetaMask wallet using one of the accounts created when we ran <code>npx hardhat node</code>. In the list of contracts that the CLI logs out, you should see both an <strong>Account number</strong> as well as a <strong>Private Key</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  react-defi-stack git:(main) npx hardhat node</span><br><span class="line">Started HTTP and WebSocket JSON-RPC server at http:&#x2F;&#x2F;127.0.0.1:8545&#x2F;</span><br><span class="line"></span><br><span class="line">Accounts</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">Account #0: 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 (10000 ETH)</span><br><span class="line">Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+
+
+<p>We can import this account into MetaMask in order to start using some of the fake Eth available there. To do so, first open MetaMask and update the network to be Localhost 8545:</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--UIsqf9Wh--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qnbsbcm4y1md6cwjttpx.jpg"><img src="../images/qnbsbcm4y1md6cwjttpx.jpg" alt="MetaMask Localhost"></a></p>
+<p>Next, in MetaMask click on <strong>Import Account</strong> from the accounts menu:</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--rUGcfvYR--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n7vbzlov869gwk9rtwl1.jpg"><img src="../images/n7vbzlov869gwk9rtwl1.jpg" alt="Import account"></a></p>
+<p>Copy then paste one of the <strong>Private Keys</strong> logged out by the CLI and click <strong>Import</strong>. Once the account is imported, you should see the Eth in the account:</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s---AfAcDFH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x5lob4yug3jznhy9z0qt.jpg"><img src="../images/x5lob4yug3jznhy9z0qt.jpg" alt="Imported account"></a></p>
+<p>Now that we have a smart contract deployed and an account ready to use, we can start interacting with it from the React app.</p>
+<h3 id="Connecting-the-React-client"><a href="#Connecting-the-React-client" class="headerlink" title="Connecting the React client"></a>Connecting the React client</h3><p>In this tutorial we are not going to be worrying about building a beautiful UI with CSS and all of that, we are focused 100% on the core functionality to get you up and running. From there, you can take it and make it look good if you’d like.</p>
+<p>With that being said, let’s review the two objectives that we want from our React application:</p>
+<ol>
+<li>Fetch the current value of <code>greeting</code> from the smart contract</li>
+<li>Allow a user to update the value of the <code>greeting</code></li>
+</ol>
+<p>With those things being understood, how do we accomplish this? Here are the things we need to do to make this happen:</p>
+<ol>
+<li>Create an input field and some local state to manage the value of the input (to update the <code>greeting</code>)</li>
+<li>Allow the application to connect to the user’s MetaMask account to sign transactions</li>
+<li>Create functions for reading and writing to the smart contract</li>
+</ol>
+<p>To do this, open <code>src/App.js</code> and update it with the following code, setting the value of <code>greeterAddress</code> to the address of your smart contract.:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">import &#39;.&#x2F;App.css&#39;;</span><br><span class="line">import &#123; useState &#125; from &#39;react&#39;;</span><br><span class="line">import &#123; ethers &#125; from &#39;ethers&#39;</span><br><span class="line">import Greeter from &#39;.&#x2F;artifacts&#x2F;contracts&#x2F;Greeter.sol&#x2F;Greeter.json&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Update with the contract address logged out to the CLI when it was deployed </span><br><span class="line">const greeterAddress &#x3D; &quot;your-contract-address&quot;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  &#x2F;&#x2F; store greeting in local state</span><br><span class="line">  const [greeting, setGreetingValue] &#x3D; useState()</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; request access to the user&#39;s MetaMask account</span><br><span class="line">  async function requestAccount() &#123;</span><br><span class="line">    await window.ethereum.request(&#123; method: &#39;eth_requestAccounts&#39; &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; call the smart contract, read the current greeting value</span><br><span class="line">  async function fetchGreeting() &#123;</span><br><span class="line">    if (typeof window.ethereum !&#x3D;&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">      const provider &#x3D; new ethers.providers.Web3Provider(window.ethereum)</span><br><span class="line">      const contract &#x3D; new ethers.Contract(greeterAddress, Greeter.abi, provider)</span><br><span class="line">      try &#123;</span><br><span class="line">        const data &#x3D; await contract.greet()</span><br><span class="line">        console.log(&#39;data: &#39;, data)</span><br><span class="line">      &#125; catch (err) &#123;</span><br><span class="line">        console.log(&quot;Error: &quot;, err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; call the smart contract, send an update</span><br><span class="line">  async function setGreeting() &#123;</span><br><span class="line">    if (!greeting) return</span><br><span class="line">    if (typeof window.ethereum !&#x3D;&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">      await requestAccount()</span><br><span class="line">      const provider &#x3D; new ethers.providers.Web3Provider(window.ethereum);</span><br><span class="line">      const signer &#x3D; provider.getSigner()</span><br><span class="line">      const contract &#x3D; new ethers.Contract(greeterAddress, Greeter.abi, signer)</span><br><span class="line">      const transaction &#x3D; await contract.setGreeting(greeting)</span><br><span class="line">      await transaction.wait()</span><br><span class="line">      fetchGreeting()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div className&#x3D;&quot;App&quot;&gt;</span><br><span class="line">      &lt;header className&#x3D;&quot;App-header&quot;&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;fetchGreeting&#125;&gt;Fetch Greeting&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;setGreeting&#125;&gt;Set Greeting&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;input onChange&#x3D;&#123;e &#x3D;&gt; setGreetingValue(e.target.value)&#125; placeholder&#x3D;&quot;Set greeting&quot; &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;header&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>To test it out, start the React server:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+
+
+<p>When the app loads, you should be able to fetch the current greeting and log it out to the console. You should also be able to make updates to the greeting by signing the contract with your MetaMask wallet and spending the fake Ether.</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--AWIvD2l3--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9a57jbzrwylr2l0rujxm.png"><img src="../images/9a57jbzrwylr2l0rujxm.png" alt="Setting and getting the greeting value"></a></p>
+<h3 id="Deploying-and-using-a-live-test-network"><a href="#Deploying-and-using-a-live-test-network" class="headerlink" title="Deploying and using a live test network"></a>Deploying and using a live test network</h3><p>There are several Ethereum test networks like Ropsten, Rinkeby, or Kovan that we can also deploy to in order to have a publicly accessible version of our contract available without having to deploy it to mainnet. In this tutorial we’ll be deploying to the <strong>Ropsten</strong> test network.</p>
+<p>To start off, first update your MetaMask wallet to connect to the Ropsten network.</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--HSvy3DUN--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k85gplgp26wp58l95bhr.jpg"><img src="../images/k85gplgp26wp58l95bhr.jpg" alt="Ropsten network"></a></p>
+<p>Next, send yourself some test Ether to use during the rest of this tutorial by visiting <a target="_blank" rel="noopener" href="https://faucet.ropsten.be/">this test faucet</a>.</p>
+<p>We can get access to Ropsten (or any of the other test networks) by signing up with a service like <a target="_blank" rel="noopener" href="https://infura.io/dashboard/ethereum/cbdf7c5eee8b4e2b91e76b77ffd34533/settings">Infura</a> or <a target="_blank" rel="noopener" href="https://www.alchemyapi.io/">Alchemy</a> (I’m using Infura for this tutorial).</p>
+<p>Once you’ve created the app in Infura or Alchemy, you will be given an endpoint that looks something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;ropsten.infura.io&#x2F;v3&#x2F;your-project-id</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Be sure to set the <strong>ALLOWLIST ETHEREUM ADDRESSES</strong> in the Infura or Alchemy app configuration to include the wallet address of the account you will be deploying from.</p>
+<p>To deploy to the test network we need to update our hardhat config with some additional network information. One of the things we need to set is the private key of the wallet we will be deploying from.</p>
+<p>To get the private key, you can export it from MetaMask.</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--_g7R_Fdh--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/deod3d6qix8us12t17i4.jpg"><img src="../images/deod3d6qix8us12t17i4.jpg" alt="Export private key"></a></p>
+<blockquote>
+<p>I’d suggest not hardcoding this value in your app but instead setting it as something like an environment variable.</p>
+</blockquote>
+<p>Next, add a <code>networks</code> property with the following configuration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  defaultNetwork: &quot;hardhat&quot;,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    artifacts: &#39;.&#x2F;src&#x2F;artifacts&#39;,</span><br><span class="line">  &#125;,</span><br><span class="line">  networks: &#123;</span><br><span class="line">    hardhat: &#123;&#125;,</span><br><span class="line">    ropsten: &#123;</span><br><span class="line">      url: &quot;https:&#x2F;&#x2F;ropsten.infura.io&#x2F;v3&#x2F;your-project-id&quot;,</span><br><span class="line">      accounts: [&#96;0x$&#123;your-private-key&#125;&#96;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  solidity: &quot;0.7.3&quot;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>To deploy, run the following script:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat run scripts&#x2F;deploy.js --network ropsten</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Once your contract is deployed you should be able to start interacting with it. You should be now able to view the live contract on <a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/">Etherscan Ropsten Testnet Explorer</a></p>
+<h2 id="Minting-tokens"><a href="#Minting-tokens" class="headerlink" title="Minting tokens"></a>Minting tokens</h2><p>One of the most common use cases of smart contracts is creating tokens, let’s look at how we can do that. Since we know a little more about how all of this works, we’ll be going a little faster.</p>
+<p>In the main <strong>contracts</strong> directory create a new file named <strong>Token.sol</strong>.</p>
+<p>Next, update <strong>Token.sol</strong> with the following smart contract:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;SPDX-License-Identifier: Unlicense</span><br><span class="line">pragma solidity ^0.8.3;</span><br><span class="line"></span><br><span class="line">import &quot;hardhat&#x2F;console.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract Token &#123;</span><br><span class="line">  string public name &#x3D; &quot;Nader Dabit Token&quot;;</span><br><span class="line">  string public symbol &#x3D; &quot;NDT&quot;;</span><br><span class="line">  uint public totalSupply &#x3D; 1000000;</span><br><span class="line">  address public owner;</span><br><span class="line">  mapping(address &#x3D;&gt; uint) balances;</span><br><span class="line"></span><br><span class="line">  constructor() &#123;</span><br><span class="line">    balances[msg.sender] &#x3D; totalSupply;</span><br><span class="line">    owner &#x3D; msg.sender;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function transfer(address to, uint amount) external &#123;</span><br><span class="line">    require(balances[msg.sender] &gt;&#x3D; amount, &quot;Not enough tokens&quot;);</span><br><span class="line">    balances[msg.sender] -&#x3D; amount;</span><br><span class="line">    balances[to] +&#x3D; amount;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function balanceOf(address account) external view returns (uint) &#123;</span><br><span class="line">    return balances[account];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>Note that this token contract is for demo purposes only and is not <a target="_blank" rel="noopener" href="https://eips.ethereum.org/EIPS/eip-20">ERC20</a>compliant. For an example of an ERC20 token, check out <a target="_blank" rel="noopener" href="https://solidity-by-example.org/app/erc20/">this contract</a></p>
+</blockquote>
+<p>This contract will create a new token called “Nader Dabit Token” and set the supply to 1000000.</p>
+<p>Next, compile this contract:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat compile</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Now, update the deploy script at <strong>scripts/deploy.js</strong> to include this new Token contract:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">const hre &#x3D; require(&quot;hardhat&quot;);</span><br><span class="line"></span><br><span class="line">async function main() &#123;</span><br><span class="line">  const [deployer] &#x3D; await hre.ethers.getSigners();</span><br><span class="line"></span><br><span class="line">  console.log(</span><br><span class="line">    &quot;Deploying contracts with the account:&quot;,</span><br><span class="line">    deployer.address</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  const Greeter &#x3D; await hre.ethers.getContractFactory(&quot;Greeter&quot;);</span><br><span class="line">  const greeter &#x3D; await Greeter.deploy(&quot;Hello, World!&quot;);</span><br><span class="line"></span><br><span class="line">  const Token &#x3D; await hre.ethers.getContractFactory(&quot;Token&quot;);</span><br><span class="line">  const token &#x3D; await Token.deploy();</span><br><span class="line"></span><br><span class="line">  await greeter.deployed();</span><br><span class="line">  await token.deployed();</span><br><span class="line"></span><br><span class="line">  console.log(&quot;Greeter deployed to:&quot;, greeter.address);</span><br><span class="line">  console.log(&quot;Token deployed to:&quot;, token.address);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">  .then(() &#x3D;&gt; process.exit(0))</span><br><span class="line">  .catch(error &#x3D;&gt; &#123;</span><br><span class="line">    console.error(error);</span><br><span class="line">    process.exit(1);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Now, we can deploy this new contract to the local or Ropsten network:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx run scripts&#x2F;deploy.js --network localhost</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Once the contract is deployed, you can start sending these tokens to other addresses.</p>
+<p>To do so, let’s update the client code we will need in order to make this work:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">import &#39;.&#x2F;App.css&#39;;</span><br><span class="line">import &#123; useState &#125; from &#39;react&#39;;</span><br><span class="line">import &#123; ethers &#125; from &#39;ethers&#39;</span><br><span class="line">import Greeter from &#39;.&#x2F;artifacts&#x2F;contracts&#x2F;Greeter.sol&#x2F;Greeter.json&#39;</span><br><span class="line">import Token from &#39;.&#x2F;artifacts&#x2F;contracts&#x2F;Token.sol&#x2F;Token.json&#39;</span><br><span class="line"></span><br><span class="line">const greeterAddress &#x3D; &quot;your-contract-address&quot;</span><br><span class="line">const tokenAddress &#x3D; &quot;your-contract-address&quot;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  const [greeting, setGreetingValue] &#x3D; useState()</span><br><span class="line">  const [userAccount, setUserAccount] &#x3D; useState()</span><br><span class="line">  const [amount, setAmount] &#x3D; useState()</span><br><span class="line"></span><br><span class="line">  async function requestAccount() &#123;</span><br><span class="line">    await window.ethereum.request(&#123; method: &#39;eth_requestAccounts&#39; &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  async function fetchGreeting() &#123;</span><br><span class="line">    if (typeof window.ethereum !&#x3D;&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">      const provider &#x3D; new ethers.providers.Web3Provider(window.ethereum)</span><br><span class="line">      console.log(&#123; provider &#125;)</span><br><span class="line">      const contract &#x3D; new ethers.Contract(greeterAddress, Greeter.abi, provider)</span><br><span class="line">      try &#123;</span><br><span class="line">        const data &#x3D; await contract.greet()</span><br><span class="line">        console.log(&#39;data: &#39;, data)</span><br><span class="line">      &#125; catch (err) &#123;</span><br><span class="line">        console.log(&quot;Error: &quot;, err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  async function getBalance() &#123;</span><br><span class="line">    if (typeof window.ethereum !&#x3D;&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">      const [account] &#x3D; await window.ethereum.request(&#123; method: &#39;eth_requestAccounts&#39; &#125;)</span><br><span class="line">      console.log(&#123; account &#125;)</span><br><span class="line">      const provider &#x3D; new ethers.providers.Web3Provider(window.ethereum);</span><br><span class="line">      const signer &#x3D; provider.getSigner()</span><br><span class="line">      const contract &#x3D; new ethers.Contract(tokenAddress, Token.abi, signer)</span><br><span class="line">      contract.balanceOf(account).then(data &#x3D;&gt; &#123;</span><br><span class="line">        console.log(&quot;data: &quot;, data.toString())</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  async function setGreeting() &#123;</span><br><span class="line">    if (!greeting) return</span><br><span class="line">    if (typeof window.ethereum !&#x3D;&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">      await requestAccount()</span><br><span class="line">      const provider &#x3D; new ethers.providers.Web3Provider(window.ethereum);</span><br><span class="line">      console.log(&#123; provider &#125;)</span><br><span class="line">      const signer &#x3D; provider.getSigner()</span><br><span class="line">      const contract &#x3D; new ethers.Contract(greeterAddress, Greeter.abi, signer)</span><br><span class="line">      const transaction &#x3D; await contract.setGreeting(greeting)</span><br><span class="line">      await transaction.wait()</span><br><span class="line">      fetchGreeting()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  async function sendCoins() &#123;</span><br><span class="line">    if (typeof window.ethereum !&#x3D;&#x3D; &#39;undefined&#39;) &#123;</span><br><span class="line">      await requestAccount()</span><br><span class="line">      const provider &#x3D; new ethers.providers.Web3Provider(window.ethereum);</span><br><span class="line">      const signer &#x3D; provider.getSigner()</span><br><span class="line">      const contract &#x3D; new ethers.Contract(tokenAddress, Token.abi, signer)</span><br><span class="line">      contract.transfer(userAccount, amount).then(data &#x3D;&gt; console.log(&#123; data &#125;))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div className&#x3D;&quot;App&quot;&gt;</span><br><span class="line">      &lt;header className&#x3D;&quot;App-header&quot;&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;fetchGreeting&#125;&gt;Fetch Greeting&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;setGreeting&#125;&gt;Set Greeting&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;input onChange&#x3D;&#123;e &#x3D;&gt; setGreetingValue(e.target.value)&#125; placeholder&#x3D;&quot;Set greeting&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;br &#x2F;&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;getBalance&#125;&gt;Get Balance&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;sendCoins&#125;&gt;Send Coins&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;input onChange&#x3D;&#123;e &#x3D;&gt; setUserAccount(e.target.value)&#125; placeholder&#x3D;&quot;Account ID&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input onChange&#x3D;&#123;e &#x3D;&gt; setAmount(e.target.value)&#125; placeholder&#x3D;&quot;Amount&quot; &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;header&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Next, run the app:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+
+
+<p>We should be able to click on <strong>Get Balance</strong> and see that we have 1,000,000 coins in our account logged out to the console.</p>
+<p>You should also be able to view them in MetaMask by clicking on <strong>Add Token</strong>:</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--bYhSNJ4P--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0t2ip26i5d2ltjc9j2a6.jpg"><img src="../images/0t2ip26i5d2ltjc9j2a6.jpg" alt="Add token"></a></p>
+<p>Next click on <strong>Custom Token</strong> and enter the token contract address and then <strong>Add Token</strong>. Now the tokens should be available in your wallet:</p>
+<p><a target="_blank" rel="noopener" href="https://res.cloudinary.com/practicaldev/image/fetch/s--tLmPpIH8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5op32iqbeszizri72qc0.jpg"><img src="../images/5op32iqbeszizri72qc0.jpg" alt="NDT"></a></p>
+<p>Next, let’s try to send those coins to another address.</p>
+<p>To do so, copy the address of another account and send them to that address using the updated React UI. When you check the token amount, it should be equal to the original amount minus the amount you sent to the address.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Ok, we covered a lot here but for me this is kind of the bread and butter / core of getting started with this stack and is kind of what I wanted to have not only as someone who was learning all of this stuff, but also in the future if I ever need to reference anything I may need in the future. I hope you learned a lot.</p>
+<p>If you want to support multiple wallets in addition to MetaMask, check out <a target="_blank" rel="noopener" href="https://github.com/Web3Modal/web3modal">Web3 Modal</a> which makes it easy to implement support for multiple providers in your app with a fairly simple and customizable configuration.</p>
+<p>In my future tutorials and guides I’ll be diving into more complex smart contract development and also how to deploy them as <a target="_blank" rel="noopener" href="https://thegraph.com/docs/define-a-subgraph">subgraphs</a> to expose a GraphQL API on top of them and implement things like pagination and full text search.</p>
+<p>I’ll also be going into how to use technologies like IPFS and Web3 databases to store data in a decentralized way.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2021/04/10/The-Complete-Guide-to-Full-Stack-Ethereum-Development/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cryptography/" rel="tag">Cryptography</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/04/12/95-ile-isn-t-that-good/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            95%-ile isn&#39;t that good
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/04/09/5-ways-to-become-better-coder/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">5 ways to become better coder</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

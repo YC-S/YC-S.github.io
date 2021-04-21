@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title> Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      
+<section class="cover">
+	<div class="cover-frame">
+		<div class="bg-box">
+			<img src="/images/cover3.jpg" alt="image frame" />
+		</div>
+		<div class="cover-inner text-center text-white">
+			<h1><a href="/">Blog</a></h1>
+			<div id="subtitle-box">
+				
+				<span id="subtitle"></span>
+				
+			</div>
+			<div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="cover-learn-more">
+		<a href="javascript:void(0)" class="anchor"
+			><i class="ri-arrow-down-line"></i
+		></a>
+	</div>
+</section>
+ 
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+<script>
+	try {
+	  var typed = new Typed("#subtitle", {
+	    strings: ['It doesn&#39;t work...... why?', 'It works...... why?', 'I used to have a life... But Now I&#39;m a programmer.'],
+	    startDelay: 100,
+	    typeSpeed: 50,
+	    loop: false,
+	    backSpeed: 20,
+	    showCursor: true
+	  });
+	} catch (err) {
+	  console.log(err)
+	}
+</script>
+
+
+<div id="main">
+  <section class="outer">
+  
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-A-Gentle-Introduction-to-Algorithm-Complexity-Analysis"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/"
+    >A_Gentle_Introduction_to_Algorithm_Complexity_Analysis</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/16/A-Gentle-Introduction-to-Algorithm-Complexity-Analysis/" class="article-date">
+  <time datetime="2020-10-17T03:07:07.000Z" itemprop="datePublished">2020-10-16</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>A lot of programmers that make some of the coolest and most  useful software today, such as many of the stuff we see on the Internet  or use daily, don’t have a theoretical computer science background.  They’re still pretty awesome and creative programmers and we thank them  for what they build.</p>
+<p>However, theoretical computer science has its uses and  applications and can turn out to be quite practical. In this article,  targeted at programmers who know their art but who don’t have any  theoretical computer science background, I will present one of the most  pragmatic tools of computer science: Big O notation and algorithm  complexity analysis. As someone who has worked both in a computer  science academic setting and in building production-level software in  the industry, this is the tool I have found to be one of the truly  useful ones in practice, so I hope after reading this article you can  apply it in your own code to make it better. After reading this post,  you should be able to understand all the common terms computer  scientists use such as “big O”, “asymptotic behavior” and “worst-case  analysis”.</p>
+<p>This text is also targeted at the junior high school and high school students from Greece or anywhere else internationally competing  in the <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/International_Olympiad_in_Informatics">International Olympiad in Informatics</a>, an algorithms competition for students, or other similar competitions.  As such, it does not have any mathematical prerequisites and will give  you the background you need in order to continue studying algorithms  with a firmer understanding of the theory behind them. As someone who  used to compete in these student competitions, I highly advise you to  read through this whole introductory material and try to fully  understand it, because it will be necessary as you study algorithms and  learn more advanced techniques.</p>
+<p>I believe this text will be helpful for industry programmers  who don’t have too much experience with theoretical computer science (it is a fact that some of the most inspiring software engineers never went to college). But because it’s also for students, it may at times sound a little bit like a textbook. In addition, some of the topics in this  text may seem too obvious to you; for example, you may have seen them  during your high school years. If you feel you understand them, you can  skip them. Other sections go into a bit more depth and become slightly  theoretical, as the students competing in this competition need to know  more about theoretical algorithms than the average practitioner. But  these things are still good to know and not tremendously hard to follow, so it’s likely well worth your time. As the original text was targeted  at high school students, no mathematical background is required, so  anyone with some programming experience (i.e. if you know what recursion is) will be able to follow through without any problem.</p>
+<p>Throughout this article, you will find various pointers that  link you to interesting material often outside the scope of the topic  under discussion. If you’re an industry programmer, it’s likely that  you’re familiar with most of these concepts. If you’re a junior student  participating in competitions, following those links will give you clues about other areas of computer science or software engineering that you  may not have yet explored which you can look at to broaden your  interests.</p>
+<p>Big O notation and algorithm complexity analysis is something a lot of industry programmers and junior students alike find hard to  understand, fear, or avoid altogether as useless. But it’s not as hard  or as theoretical as it may seem at first. Algorithm complexity is just a way to formally measure how fast a program or algorithm runs, so it  really is quite pragmatic. Let’s start by motivating the topic a little  bit.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>We already know there are tools to measure how fast a program runs. There are programs called <em>profilers</em> which measure running time in milliseconds and can help us optimize our code by spotting bottlenecks. While this is a useful tool, it isn’t  really relevant to algorithm complexity. Algorithm complexity is  something designed to compare two algorithms at the idea level —  ignoring low-level details such as the implementation programming  language, the hardware the algorithm runs on, or the instruction set of  the given CPU. We want to compare algorithms in terms of just what they  are: Ideas of how something is computed. Counting milliseconds won’t  help us in that. It’s quite possible that a bad algorithm written in a  low-level programming language such as <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Assembly_language">assembly</a> runs much quicker than a good algorithm written in a high-level programming language such as <a target="_blank" rel="noopener" href="http://www.python.org/">Python</a> or <a target="_blank" rel="noopener" href="http://www.ruby-lang.org/en/">Ruby</a>. So it’s time to define what a “better algorithm” really is.</p>
+<p>As algorithms are programs that perform just a computation,  and not other things computers often do such as networking tasks or user input and output, complexity analysis allows us to measure how fast a  program is when it performs computations. Examples of operations that  are purely <em>computational</em> include numerical <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Floating_point">floating-point operations</a> such as addition and multiplication; searching within a database that  fits in RAM for a given value; determining the path an  artificial-intelligence character will walk through in a video game so  that they only have to walk a short distance within their virtual world; or running a <a target="_blank" rel="noopener" href="http://www.regular-expressions.info/">regular expression</a> pattern match on a string. Clearly, computation is ubiquitous in computer programs.</p>
+<p>Complexity analysis is also a tool that allows us to explain  how an algorithm behaves as the input grows larger. If we feed it a  different input, how will the algorithm behave? If our algorithm takes 1 second to run for an input of size 1000, how will it behave if I double the input size? Will it run just as fast, half as fast, or four times  slower? In practical programming, this is important as it allows us to  predict how our algorithm will behave when the input data becomes  larger. For example, if we’ve made an algorithm for a web application  that works well with 1000 users and measure its running time, using  algorithm complexity analysis we can have a pretty good idea of what  will happen once we get 2000 users instead. For algorithmic  competitions, complexity analysis gives us insight about how long our  code will run for the largest testcases that are used to test our  program’s correctness. So if we’ve measured our program’s behavior for a small input, we can get a good idea of how it will behave for larger  inputs. Let’s start by a simple example: Finding the maximum element in  an array.</p>
+<h2 id="Counting-instructions"><a href="#Counting-instructions" class="headerlink" title="Counting instructions"></a>Counting instructions</h2><p>In this article, I’ll use various programming languages for  the examples. However, don’t despair if you don’t know a particular  programming language. Since you know programming, you should be able to  read the examples without any problem even if you aren’t familiar with  the programming language of choice, as they will be simple and I won’t  use any esoteric language features. If you’re a student competing in  algorithms competitions, you most likely work with <a target="_blank" rel="noopener" href="http://www.cplusplus.com/doc/tutorial/">C++</a>, so you should have no problem following through. In that case I recommend working on the exercises using C++ for practice.</p>
+<p>The maximum element in an array can be looked up using a simple piece of code such as this piece of <a target="_blank" rel="noopener" href="http://www.quirksmode.org/js/intro.html">Javascript</a> code. Given an input array A of size n:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M = A[ <span class="number">0</span> ];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</span><br><span class="line">  <span class="keyword">if</span> ( A[ i ] &gt;= M ) &#123;</span><br><span class="line">  	M = A[ i ];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, the first thing we’ll do is count how many <em>fundamental instructions</em> this piece of code executes. We will only do this once and it won’t be  necessary as we develop our theory, so bear with me for a few moments as we do this. As we analyze this piece of code, we want to break it up  into simple instructions; things that can be executed by the CPU  directly - or close to that. We’ll assume our processor can execute the  following operations as one instruction each:</p>
+<ul>
+<li>Assigning a value to a variable</li>
+<li>Looking up the value of a particular element in an array</li>
+<li>Comparing two values</li>
+<li>Incrementing a value</li>
+<li>Basic arithmetic operations such as addition and multiplication</li>
+</ul>
+<p>We’ll assume branching (the choice between <code>if</code> and <code>else</code> parts of code after the <code>if</code> condition has been evaluated) occurs instantly and won’t count these  instructions. In the above code, the first line of code is:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M = A[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>This requires 2 instructions: One for looking up A[ 0 ] and one for assigning the value to M (we’re assuming that n is always at least 1). These two instructions  are always required by the algorithm, regardless of the value of n. The <code>for</code> loop initialization code also has to always run. This gives us two more instructions; an assignment and a comparison:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span>;</span><br><span class="line">i &lt; n;</span><br></pre></td></tr></table></figure>
+
+<p>These will run before the first <code>for</code> loop iteration. After each <code>for</code> loop iteration, we need two more instructions to run, an increment of i and a comparison to check if we’ll stay in the loop:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">++i;</span><br><span class="line">i &lt; n;</span><br></pre></td></tr></table></figure>
+
+<p>So, if we ignore the loop body, the number of instructions this  algorithm needs is 4 + 2n. That is, 4 instructions at the beginning of  the <code>for</code> loop and 2 instructions at the end of each iteration of which we have n. We can now define a mathematical function f( n ) that, given an n, gives us the number of instructions the algorithm needs. For an empty <code>for</code> body, we have f( n ) = 4 + 2n.</p>
+<h2 id="Worst-case-analysis"><a href="#Worst-case-analysis" class="headerlink" title="Worst-case analysis"></a>Worst-case analysis</h2><p>Now, looking at the <code>for</code> body, we have an array lookup operation and a comparison that happen always:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( A[ i ] &gt;= M ) &#123; ...</span><br></pre></td></tr></table></figure>
+
+<p>That’s two instructions right there. But the <code>if</code> body may run or may not run, depending on what the array values actually are. If it happens to be so that <code>A[ i ] &gt;= M</code>, then we’ll run these two additional instructions — an array lookup and an assignment:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M = A[ i ]</span><br></pre></td></tr></table></figure>
+
+<p>But now we can’t define an f( n ) as easily, because our number of instructions doesn’t depend solely on n but also on our input. For example, for <code>A = [ 1, 2, 3, 4 ]</code> the algorithm will need more instructions than for <code>A = [ 4, 3, 2, 1 ]</code>. When analyzing algorithms, we often consider the worst-case scenario.  What’s the worst that can happen for our algorithm? When does our  algorithm need the most instructions to complete? In this case, it is  when we have an array in increasing order such as <code>A = [ 1, 2, 3, 4 ]</code>. In that case, M needs to be replaced every single time and so that yields the most  instructions. Computer scientists have a fancy name for that and they  call it <em>worst-case analysis</em>; that’s nothing more than just  considering the case when we’re the most unlucky. So, in the worst case, we have 4 instructions to run within the <code>for</code> body, so we  have f( n ) = 4 + 2n + 4n = 6n + 4. This function f, given a problem  size n, gives us the number of instructions that would be needed in the  worst-case.</p>
+<h2 id="Asymptotic-behavior"><a href="#Asymptotic-behavior" class="headerlink" title="Asymptotic behavior"></a>Asymptotic behavior</h2><p>Given such a function, we have a pretty good idea of how fast an algorithm is. However, as I promised, we won’t be needing to go  through the tedious task of counting instructions in our program.  Besides, the number of actual CPU instructions needed for each  programming language statement depends on the compiler of our  programming language and on the available CPU instruction set (i.e.  whether it’s an AMD or an Intel Pentium on your PC, or a MIPS processor  on your Playstation 2) and we said we’d be ignoring that. We’ll now run  our “f” function through a “filter” which will help us get rid of those  minor details that computer scientists prefer to ignore.</p>
+<p>In our function, 6n + 4, we have two terms: 6n and 4. In  complexity analysis we only care about what happens to the  instruction-counting function as the program input (n) grows  large. This really goes along with the previous ideas of “worst-case  scenario” behavior: We’re interested in how our algorithm behaves when  treated badly; when it’s challenged to do something hard. Notice that  this is really useful when comparing algorithms. If an algorithm beats  another algorithm for a large input, it’s most probably true that the  faster algorithm remains faster when given an easier, smaller input. <strong>From the terms that we are considering, we’ll drop all the terms that grow  slowly and only keep the ones that grow fast as n becomes larger.</strong> Clearly 4 remains a 4 as n grows larger, but 6n grows larger and larger, so it tends to matter  more and more for larger problems. Therefore, the first thing we will do is drop the 4 and keep the function as f( n ) = 6n.</p>
+<p>This makes sense if you think about it, as the 4 is simply an “initialization constant”. Different programming languages may require a different time to set up. For example, Java needs some time to  initialize its <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Java_virtual_machine">virtual machine</a>. Since we’re ignoring programming language differences, it only makes sense to ignore this value.</p>
+<p>The second thing we’ll ignore is the constant multiplier in front of n, and so our function will become f( n ) = n. As you can see this  simplifies things quite a lot. Again, it makes some sense to drop this  multiplicative constant if we think about how different programming  languages compile. The “array lookup” statement in one language may  compile to different instructions in different programming languages.  For example, in C, doing <code>A[ i ]</code> does not include a check that i is within the declared array size, while in <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Pascal_(programming_language)">Pascal</a> it does. So, the following Pascal code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M := A[ i ]</span><br></pre></td></tr></table></figure>
+
+<p>Is the equivalent of the following in C:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">0</span> &amp;&amp; i &lt; n) &#123;</span><br><span class="line">  M = A[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>So it’s reasonable to expect that different programming languages  will yield different factors when we count their instructions. In our  example in which we are using a dumb compiler for Pascal that is  oblivious of possible optimizations, Pascal requires 3 instructions for  each array access instead of the 1 instruction C requires. Dropping this factor goes along the lines of ignoring the differences between  particular programming languages and compilers and only analyzing the  idea of the algorithm itself.</p>
+<p>This filter of “dropping all factors” and of “keeping the largest growing term” as described above is what we call <em>asymptotic behavior</em>. So the asymptotic behavior of f( n ) = 2n + 8 is described by the  function f( n ) = n. Mathematically speaking, what we’re saying here is  that we’re interested in the limit of function f as n tends  to infinity; but if you don’t understand what that phrase formally  means, don’t worry, because this is all you need to know. (On a side  note, in a strict mathematical setting, we would not be able to drop the constants in the limit; but for computer science purposes, we want to  do that for the reasons described above.) Let’s work a couple of  examples to familiarize ourselves with the concept.</p>
+<p>Let us find the asymptotic behavior of the following example  functions by dropping the constant factors and by keeping the terms that grow the fastest.</p>
+<ol>
+<li><p>f( n ) = 5n + 12 gives f( n ) = n.</p>
+<p>By using the exact same reasoning as above.</p>
+</li>
+<li><p>f( n ) = 109 gives f( n ) = 1.</p>
+<p>We’re dropping the multiplier 109 * 1, but we still have to put a 1 here to indicate that this function has a non-zero value.</p>
+</li>
+<li><p>f( n ) = n2 + 3n + 112 gives f( n ) = n2</p>
+<p>Here, n2 grows larger than 3n for sufficiently large n, so we’re keeping that.</p>
+</li>
+<li><p>f( n ) = n3 + 1999n + 1337 gives f( n ) = n3</p>
+<p>Even though the factor in front of n is quite large, we can still find a large enough n so that n3 is bigger than 1999n. As we’re interested in the behavior for very large values of n, we only keep n3 (See <strong>Figure 2</strong>).</p>
+</li>
+<li><p>f( n ) = n + (n)^(1/2) gives f( n ) = n</p>
+<p>This is so because n grows faster than (n)^(1/2)as we increase n.</p>
+</li>
+</ol>
+<h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>So what this is telling us is that since we can drop all  these decorative constants, it’s pretty easy to tell the asymptotic  behavior of the instruction-counting function of a program. In fact, any program that doesn’t have any loops will have f( n ) = 1, since the  number of instructions it needs is just a constant (unless it uses  recursion; see below). Any program with a single loop which goes from 1  to n will have f( n ) = n, since it will do a constant number of instructions before the loop, a constant number of instructions  after the loop, and a constant number of instructions within the loop  which all run n times.</p>
+<p>This should now be much easier and less tedious than counting individual instructions, so let’s take a look at a couple of examples  to get familiar with this. The following <a target="_blank" rel="noopener" href="http://php.net/">PHP</a> program checks to see if a particular value exists within an array A of size n:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="variable">$exists</span> = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; n; ++<span class="variable">$i</span> ) &#123;</span><br><span class="line">		<span class="keyword">if</span> ( <span class="variable">$A</span>[ <span class="variable">$i</span> ] == <span class="variable">$value</span> ) &#123;</span><br><span class="line">			<span class="variable">$exists</span> = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>This method of searching for a value within an array is called <em>linear search</em>. This is a reasonable name, as this program has f( n ) = n (we’ll define exactly what “linear” means in the next section). You may notice that  there’s a “break” statement here that may make the program terminate  sooner, even after a single iteration. But recall that we’re interested  in the worst-case scenario, which for this program is for the array A to not contain the value. So we still have f( n ) = n.</p>
+<h1 id="Rule-of-thumb"><a href="#Rule-of-thumb" class="headerlink" title="Rule of thumb"></a>Rule of thumb</h1><ol>
+<li>Simple programs can be analyzed by counting the nested loops of the  program. A single loop over n items yields f( n ) = n. A loop within a  loop yields f( n ) = n^2. A loop within a loop within a loop yields f( n ) = n^3.</li>
+<li>Given a series of for loops that are sequential, the slowest of them  determines the asymptotic behavior of the program. Two nested loops  followed by a single loop is asymptotically the same as the nested loops alone, because the nested loops <em>dominate</em> the simple loop.</li>
+<li>Programs with a bigger Θ run slower than programs with a smaller Θ.</li>
+<li>It’s easier to figure out the O-complexity of an algorithm than its Θ-complexity.</li>
+<li>While all the symbols O, o, Ω, ω and Θ are useful at times, O is the  one used more commonly, as it’s easier to determine than Θ and more  practically useful than Ω.</li>
+<li>For competition algorithms implemented in C++, once you’ve analyzed your complexity, you can get a rough estimate of how fast your program will  run by expecting it to perform about 1,000,000 operations per second,  where the operations you count are given by the asymptotic behavior  function describing your algorithm. For example, a Θ( n ) algorithm  takes about a second to process the input for n = 1,000,000.</li>
+<li>Improving the asymptotic running time of a program often tremendously  increases its performance, much more than any smaller “technical”  optimizations such as using a faster programming language.</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-GitHub-Arctic-Code-Vault-Tech-Tree"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/"
+    >GitHub_Arctic_Code_Vault:_Tech_Tree</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/08/11/GitHub-Arctic-Code-Vault-Tech-Tree/" class="article-date">
+  <time datetime="2020-08-11T07:25:08.000Z" itemprop="datePublished">2020-08-11</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>Introduction: A Guide To The Tech Tree</strong></p>
+<p>What follows, which we call the Tech Tree, is a selection of works intended to describe how the world makes and uses software today, as well as an overview of how computers work and the foundational technologies required to make and use computers. The purpose of the GitHub Archive Program is to preserve open source software for future generations. This implies also preserving the knowledge of other technologies on which open-source software runs, along with a depiction of the open-source movement which brought this software into being.</p>
+<p>In addition to this technical documentation, we have also included a selection of artistic, cultural, and historical works, to help describe the overall cultural context in which this archive was created, and a series of dictionaries, to aid translation into several of the world’s most widespread other languages.</p>
+<p>This initial version of the Tech Tree will consist almost entirely of copies of pre-existing works, none of which were written for an unknown audience a long way into the future. As such it is not so much a guide as a collection of resources that we hope will be historically interesting and/or useful. We have tried to strike a balance between abstract/theoretical and concrete/practical work, and to provide at least an overview of the entire technical stack on which modern software engineering rests.</p>
+<p>Please note that this document is currently a loose “wish list” of works that we may like to include, which we are making public for the purpose of actively soliciting further suggestions and input, rather than a finalized register of selected works. Note also that the prospect of copying works onto microfilm in a human-readable form implies both potential copyright issues and the practical consideration of acquiring a copyable digital version of the work in question. Certain publishers (Packt, O’Reilly, Springer, and Wiley) have indicated they are happy to work with us, while the status for most other publishers and copyright holders remains indeterminate.</p>
+<p>The proposed Tech Tree is loosely divided into the following sixteen sections:</p>
+<ol>
+<li><em>Fundamentals of computing and the Internet:</em> the essentials of how computers work, and, at least as important to today’s world, how they are connected together into a single planetary network which includes most of the computers on Earth.</li>
+<li><em>Algorithms and data structures</em>: processes, sets of rules, and methods of arranging data to solve common categories of problems in efficient ways. Metaphorically, algorithms are the intelligence in a software program, and data structures are its storage.</li>
+<li><em>Compilers, assembler, and operating systems:</em> how written source code becomes the machine code which causes the electrical signals inside a computer to change in a controlled manner, and the theory of operating systems, the software which supports a computer’s basic functions and provides the fundamental, low-level functionality that all other software ultimately calls upon.</li>
+<li><em>Programming languages:</em> some of the world’s most popular and widely used programming languages described in detail. While, fundamentally, any program can be written in any language, certain languages are better or worse at particular tasks.</li>
+<li><em>Networking and connectivity</em>: how computers connect to one another, via physical wires and radio signals, both one-on-one and in larger networks. Includes descriptions of the structure of the global “network of networks” known as the Internet, which connects most of the computers on Earth.</li>
+<li><em>Modern software development:</em> the processes and procedures of dealing with software projects, tools, and services at scale, with constant monitoring and communication, at assured levels of quality.</li>
+<li><em>Modern software applications:</em> in-depth description of applications such as Web development (the Web is, essentially, that part of the Internet used to display output and receive input from human beings); scientific research and analysis; image processing; pattern recognition and generation via neural networks; software distributed across many different computers; cryptocurrencies, which can be used as a platform for trustless decentralized software; and the new field of quantum computing.</li>
+<li><em>Hardware architectures:</em> the concepts, structures, and layout of computer hardware. Hardware refers to physical electronic components; hardware architecture refers to how those components are structured and connected in order to run software; and software ultimately becomes ephemeral patterns of electricity within those physical components.</li>
+<li><em>Hardware development:</em> how to build simple computers from collections of electronic components, along with technical descriptions of drones, robots, and digital cameras.</li>
+<li><em>Electronic components, transistors, semiconductor manufacturing</em>: those electronic components which predated computers, along with individual transistors, the component from which computers are made, and an overview of the technologies and processes of fabricating interconnected transistors at scale.</li>
+<li><em>Electricity, radios, and other industrial technologies:</em> fundamental pre-computer technologies, regarding generating usable electrical power, transmitting it over wires, using it to convey information without wires over great distances via radio, and basic industrial metalworking.</li>
+<li><em>Pre-industrial technologies:</em> technologies of eras which predated electricity.</li>
+<li><em>Women and technology:</em> an overview of the oft-erased role of women in the development of software and other technologies.</li>
+<li><em>Languages</em>: a dictionary of English along with translational dictionaries intended to help readers convert from English to Arabic, Chinese, Hindi, and Spanish, the world’s other four most-used languages.</li>
+<li><em>Arts, culture, and history</em>: human histories and changing human cultures, mostly through the lens of celebrated fictional narratives written over the last 150 years.</li>
+<li><em>Cultural context</em>: information about humanity at the time the Tech Tree was created; in particular, a snapshot of Wikipedia, a collectively generated repository of all sorts of information about our world. Due to Wikipedia’s enormous size, this section is provided as encoded data, like the rest of the archive, rather than as visual/readable pages.</li>
+</ol>
+<p>The first seven sections are devoted to software, the purpose and content of the GitHub Arctic Code Vault, and its uses and applications. The next five sections describe the technologies required to construct computers on which software might run. The remaining three are intended to illustrate the human context in which these technologies have been developed, the stories the cultures of our era told, the languages in which we told them, and the factual background and descriptions of the world in which we lived.</p>
+<p>The Tech Tree is part of the much larger GitHub Arctic Code Vault. As such, it also includes, as an appendix, visual copies of the Guide to the GitHub Code Vault, along with an index of the archive’s fifteen thousand most significant code repositories, including brief descriptions and locations within the archive.</p>
+<p>It is perhaps worth noting that our advisory board stressed that ours is likely to be the best-documented era in human history by far, so bundling the Tech Tree with the archive is likely to be more convenient than essential for its inheritors. As such, it is entirely possible – indeed quite likely – that its value will consist largely of providing context regarding the era and culture in which the archive was created, rather than as a source of new and unavailable knowledge, though of course there are imaginable futures in which it plays the latter role.</p>
+<p>What follows is a brief summary of each section, describing both the general topics it covers, and the works the Tech Tree includes to document our current understanding of those topics.</p>
+<p><strong>Fundamentals of computing and the Internet</strong></p>
+<p>These books describe what computers are, from the silicon up – electricity, transistors, binary logic, digital gates, bits, bytes, chips, ALUs, microprocessors, software – as well as introducing what they can do. It also includes books which describe, at a high level, how computers can be connected together, and what that means. The works in question are:</p>
+<p><em>The Pattern On The Stone</em> by W. Daniel Hills (Basic Books)</p>
+<p><em>But How Do It Know?</em> by J. Clark Scott (John C Scott)</p>
+<p><em>Code: The Hidden Language of Computer Hardware and Software</em> by Charles Petzold (Pearson Education)</p>
+<p><em>The Elements of Computing Systems: Building a Modern Computer from First Principles</em> by Noam Nisan (MIT Press)</p>
+<p><em>Tubes: A Journey To The Center Of The Internet</em> by Andrew Blum (HarperCollins)</p>
+<p><em>Introduction to Networking: How the Internet Works</em> by Charles Severance, illustrated by Mauro Toselli and Aimee Andrion (Charles Severance)</p>
+<p><strong>Algorithms and data structures</strong></p>
+<p>These are the fundamentals of computer science, and hence the foundation of software engineering; describing how data is structured and stored, and the most effective and efficient ways in which it can be processed.</p>
+<p><em>The Art of Computer Programming</em> by Donald Knuth (Pearson)</p>
+<p><em>Sequential and Parallel Algorithms and Data Structures</em> by Peter Sanders, Kurt Mehlhorn, Martin Dietzfelbinger, Roman Dementiev (Springer)</p>
+<p><em>Cryptography</em> by Simon Rubinstein-Salzedo (Springer)</p>
+<p><em>Introduction to Parallel Algorithms and Architectures</em> by F. Thomson Leighton (Elsevier)</p>
+<p><em>Mastering SciPy</em> by Francisco J. Blanco-Silva (Packt)</p>
+<p><em>Everyday Data Structures</em> by William Smith (Packt)</p>
+<p><em>Database Internals</em> by Alex Petrov (O’Reilly)</p>
+<p><em>Understanding MySQL Internals</em> by Sasha Pachev (O’Reilly)</p>
+<p><em>Physical Database Design</em> by Sam S. Lightstone, Toby J. Teorey, and Tom Nadeau (Elsevier)</p>
+<p><em>Learning MySQL and MariaDB</em> by Russell J. T. Dyer (O’Reilly)</p>
+<p><em>PostgreSQL Development Essentials</em> by Manpreet Kaur, Baji Shaik (Packt)</p>
+<p><strong>Compilers, assembler, and operating systems</strong></p>
+<p>The purpose of the Archive Program is to preserve software, and these are the fundamental building blocks of software. These books help to explain how high-level written software becomes low-level electrical impulses:</p>
+<p><em>Compilers: Principles, Techniques, Tools</em> by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman (Addison Wesley)</p>
+<p><em>Practical Compiler Construction</em> by Des Watson (Springer)</p>
+<p><em>Engineering a Compiler</em> by Keith Cooper and Linda Torczon (Elsevier) or <em>Modern Compiler Design</em> by Dick Grune, Kees van Reeuwijk, Henri E. Bal, Ceriel J.H. Jacobs, Koen Langendoen (Springer)</p>
+<p><em>The Art of Assembly Language</em> by Randall Hyde (No Starch)</p>
+<p><em>Modern Assembly Language Programming with the ARM Processor</em> by Larry D. Pyeatt (Elsevier)</p>
+<p><em>Understanding the Linux Kernel</em> by Daniel P. Bovet and Marco Cesati (O’Reilly)</p>
+<p><em>Mastering Linux Kernel Development</em> by Raghu Bharadwaj (Packt)</p>
+<p><strong>Programming languages</strong></p>
+<p>There are hundreds of programming languages; the enormous chart visualizing their evolution at the Computer History Museum is worth visiting if you’re a developer, and we don’t intend to document them all. Still, accessible book-length descriptions of a selection of the world’s major languages seems desirable.</p>
+<p><em>Introducing Python</em> by Bill Lubanovic (O’Reilly)</p>
+<p><em>Comprehensive Ruby Programming</em> by Jordan Hudgens (Packt)</p>
+<p><em>LISP, Lore, and Logic</em> by W. Richard Stark (Springer)</p>
+<p><em>The C Programming Language</em> by Kernighan and Ritchie (Pearson)</p>
+<p><em>Learn C The Hard Way</em> by Zed Shaw (Pearson) or <em>Head First C</em> by David Griffiths, Dawn Griffiths (O’Reilly)</p>
+<p><em>The C++ Primer</em> by Stanley B. Lippman, Josée Lajoie, and Barbara E. Moo (Pearson)</p>
+<p><em>Programming Rust</em> by Jim Blandy and Jason Orendorff (O’Reilly)</p>
+<p><em>The Go Programming Language</em> by Alan A. A. Donovan and Brian W. Kernighan (Pearson) or <em>Head First Go</em> by Jay McGavren (O’Reilly)</p>
+<p><em>Learning Java</em> by Patrick Niemeyer and Daniel Leuck (O’Reilly)</p>
+<p><em>The Java Virtual Machine Specification</em> by Tim Lindholm, Frank Yellin, Gilad Bracha, and Alex Buckley (Pearson)</p>
+<p><em>Learning JavaScript</em> by Ethan Brown (O’Reilly)</p>
+<p><em>Mastering JavaScript Functional Programming</em> by Federico Kereki (Packt)</p>
+<p><em>Learning Swift</em> by Jonathon Manning, Paris Buttfield-Addison, and Tim Nugent (O’Reilly)</p>
+<p><em>Introducing Erlang</em> by Simon St. Laurent (O’Reilly)</p>
+<p><em>Clojure Programming</em> by Chas Emerick, Brian Carper, and Christophe Grand (O’Reilly)</p>
+<p><strong>Networking and connectivity</strong></p>
+<p>Computers are great, but in a way, so 20th century; it’s <em>networked</em> computers which are, at least arguably, the real technical revolution of the 21st. As such our networking protocols and technologies deserve considerable attention. We might hope our inheritors will either have long surpassed our networking, or will have the freedom to design anew rather than be shackled by all the compromises we’ve needed to make for the sake of backwards compatibility but either way, hopefully they can learn something from what we’ve done. Which is described by:</p>
+<p><em>Cabling: The Complete Guide To Copper and Fiber-Optic Networking</em> by Andrew Oliviero and Bill Woodward (Wiley)</p>
+<p><em>Ethernet: The Definitive Guide</em> by Charles E. Spurgeon and Joann Zimmerman (O’Reilly)</p>
+<p><em>Understanding TCP/IP</em> by Alena Kabelová and Libor Dostálek (Packt)</p>
+<p><em>TCP/IP Essentials</em> by Shivendra S. Panwar, Shiwen Mao, Jeong-dong Ryoo, and Yihan Li (Cambridge)</p>
+<p><em>Routing TCP/IP</em> by Jeff Doyle and Jennifer DeHaven Carroll (Pearson)</p>
+<p><em>DNS and BIND</em> by Cricket Liu and Paul Albitz (O’Reilly)</p>
+<p><em>BGP</em> by Iljitsch van Beijnum (O’Reilly)</p>
+<p><em>HTTP: The Definitive Guide</em> by David Gourley, Brian Totty, Marjorie Sayer, Anshu Aggarwal, and Sailu Reddy (O’Reilly)</p>
+<p><em>Implementing SSL / TLS Using Cryptography and PKI</em> by Joshua Davies (Wiley)</p>
+<p><em>Nginx HTTP Server</em> by Martin Fjordvald and Clement Nedelcu (Packt)</p>
+<p><em>sendmail</em> by Bryan Costales, Claus Assmann, George Jansen, and Gregory Neil Shapiro (O’Reilly)</p>
+<p><em>Programming Internet Email</em> by David Wood (O’Reilly)</p>
+<p><em>Computer and Information Security Handbook</em> by John R. Vacca (Elsevier)</p>
+<p><strong>Modern software development</strong></p>
+<p>The line-by-line act of writing software is quite different from the team-by-team process of developing, testing, integrating, and deploying it. A few key approaches, tools, and roles are described here, including, for obvious reasons, unpacking Git itself.</p>
+<p><em>Working in Public: The Making and Maintenance of Open Source Software</em> by Nadia Eghbal (Stripe Press)</p>
+<p><em>The Manager’s Path</em> by Camille Fournier (O’Reilly)</p>
+<p><em>Learning Agile</em> by Andrew Stellman and Jennifer Greene (O’Reilly)</p>
+<p><em>Pro Git</em> by Scott Chacon and Ben Straub (Apress)</p>
+<p><em>Professional Git</em> by Brent Laster (Wiley)</p>
+<p><em>Software Testing</em> by Paul C. Jorgensen (CRC Press)</p>
+<p><em>Agile Testing: A Practical Guide for Testers and Agile Teams</em> by Lisa Crispin and Janet Gregory (Addison Wesley)</p>
+<p><em>Refactoring</em> by Martin Fowler with Kent Beck (Addison Wesley)</p>
+<p><em>Patterns of Enterprise Application Architecture</em> by Martin Fowler with Dave Rice, Matthew Foemmel, Edward Hiatt, Robert Mee, and Randy Stafford (Addison Wesley)</p>
+<p><em>Effective DevOps</em> by Jennifer Davis and Ryn Daniels (O’Reilly)</p>
+<p><em>Accelerate: The Science of Lean Software and DevOps</em> by Nicole Forsgren, Jez Humble, and Gene Kim (IT Revolution)</p>
+<p><em>Continuous Delivery</em> by Jez Humble and Dave Farley (Addison Wesley)</p>
+<p><em>The Phoenix Project</em> by Gene Kim, Kevin Behr, and George Spafford (IT Revolution Press)</p>
+<p><em>DevOps Handbook: How to Create World Class Agility, Reliability, &amp; Security in Technology Organizations</em> by Gene Kim, Jez Humble, Patrick Debois, and John Willis (IT Revolution)</p>
+<p><em>Site Reliability Engineering</em> edited by Betsy Beyer, Chris Jone, Jennifer Petoff &amp; Niall Richard Murphy (O’Reilly)</p>
+<p><em>Designing Distributed Systems</em> by Brendan Burns (O’Reilly)</p>
+<p><strong>Modern software applications</strong></p>
+<p>It would take a tech forest, not a tree, to even try to describe all of the uses to which software is put. However, some depictions of how individual projects and libraries are knit together into powerful networked applications seem valuable, as do overviews of e.g. virtualization, “big data” software, and especially machine learning.</p>
+<p>Web development:</p>
+<p><em>Web Development with Node and Express</em> by Ethan Brown (O’Reilly)</p>
+<p><em>Flask Web Development</em> by Miguel Grinberg (O’Reilly)</p>
+<p><em>RESTful Web APIs</em> by Leonard Richardson, Mike Amundsen, Sam Ruby (O’Reilly)</p>
+<p><em>Ruby on Rails Tutorial</em> by Michael Hartl (Pearson)</p>
+<p>Scientific computing:</p>
+<p><em>Mastering Scientific Computing with R</em> by Paul Gerrard and Radia M. Johnson (Packt)</p>
+<p><em>Computer Vision and Image Processing</em> by Linda Shapiro (Elsevier)</p>
+<p><em>Image Processing: Principles and Applications</em> by Tinku Acharya and Ajoy K. Ray (Wiley) –</p>
+<p>Machine learning:</p>
+<p><em>Deep Learning from Scratch</em> by Seth Weidman (O’Reilly)</p>
+<p><em>Fundamentals of Deep Learning</em> by Nikhil Buduma and Nicholas Locascio (O’Reilly)</p>
+<p><em>Practical Convolutional Neural Networks</em> by Mohit Sewak, Md. Rezaul Karim, and Pradeep Pujari (Packt)</p>
+<p><em>Generative Deep Learning</em> by David Foster (O’Reilly)</p>
+<p><em>Strengthening Deep Neural Networks</em> by Katy Warr (O’Reilly)</p>
+<p>Virtualization and containers:</p>
+<p><em>Virtualization Essentials</em> by Matthew Portnoy (Wiley)</p>
+<p><em>Mastering Docker</em> by Scott Gallagher (Packt)</p>
+<p><em>Kubernetes: Up and Running</em> by Brendan Burns, Joe Beda, and Kelsey Hightower (O’Reilly)</p>
+<p><em>Spark: The Definitive Guide</em> by Bill Chambers, Matei Zaharia (O’Reilly)</p>
+<p><em>Pervasive Computing</em> by Ciprian Dobre and Fatos Xhafa (Elsevier)</p>
+<p>Reliability and scaling:</p>
+<p><em>Database Reliability Engineering</em> by Laine Campbell and Charity Majors (O’Reilly)</p>
+<p><em>The Art of Capacity Planning</em> by Arun Kejariwal and John Allspaw (O’Reilly)</p>
+<p>Economics and sociotechnical systems:</p>
+<p><em>The Economics of Information Technology</em> by Hal Varian, Joseph Farrell and Carl Shapiro (Cambridge University Press)</p>
+<p><strong>Hardware architectures</strong></p>
+<p>The spectrum of complexity from a single analog transistor to a modern multicore processor is, needless to say, difficult to summarize. This section tries to describe the basics of digital circuits and microprocessors, along with a few key references, before going on to hardware architectures and hardware design languages.</p>
+<p>Fundamental electronics and elements:</p>
+<p><em>TTL Cookbook</em></p>
+<p><em>CMOS Cookbook</em> by Don Lancaster and Howard M. Berlin (Elsevier)</p>
+<p><em>Foundations of Analog and Digital Electronic Circuits</em> by Anant Agarwal and Jeffrey Lang (Elsevier)</p>
+<p><em>Electronics Simplified</em> by Ian Sinclair (Elsevier)</p>
+<p><em>Complete Digital Design: A Comprehensive Guide to Digital Electronics and Computer System Architecture</em> by Mark Balch (Wiley) –</p>
+<p><em>Microprocessor Design</em> by Grant McFarland (McGraw-Hill) –</p>
+<p><em>Programming Microcontrollers in C</em> by Ted VanSickle (Elsevier)</p>
+<p><em>Introduction to Microprocessors and Microcontrollers</em> by John Crisp (Elsevier)</p>
+<p>Modern hardware architecture:</p>
+<p><em>Fundamentals of Computer Organization and Architecture</em> by Mostafa Abd-El-Barr and Hesham El-Rewini (Wiley) –</p>
+<p><em>Computer Architecture</em> by John L. Hennessy and David A. Patterson (Elsevier)</p>
+<p><em>Microprocessor Architecture</em> by Jean-Loup Baer (Cambridge) –</p>
+<p><em>Hardware and Computer Organization</em> by Arnold Ss. Berger (Elsevier)</p>
+<p><em>Digital Design and Computer Architecture</em> by Sarah Harris and David Harris (Elsevier)</p>
+<p><em>Introduction to Parallel Processing</em> by Behrooz Parhami (Springer)</p>
+<p>HDLs:</p>
+<p><em>IEEE Standard VHDL Language Reference Manual</em> (IEEE)</p>
+<p><em>IEEE Standard for SystemVerilog</em> (IEEE)</p>
+<p><em>VHDL 101</em> by William Kafig (Elsevier)</p>
+<p>Example architecture details:</p>
+<p><em>See MIPS Run, 2nd Edition</em> by Dominic Sweetman (Elsevier)</p>
+<p><em>Arduino: A Technical Reference</em> by J. M. Hughes (O’Reilly)</p>
+<p><em>RISC-V Specifications</em> by the RISC-V International Technical Committee</p>
+<p><em>ARM Architecture Reference Manual</em> by ARM</p>
+<p><em>Intel® 64 and IA-32 Architectures Software Developer’s Manuals</em> by Intel</p>
+<p>GPUs and FPGAs:</p>
+<p><em>Reconfigurable Computing</em> by Scott Hauck and André DeHon (Elsevier)</p>
+<p><em>Learning FPGAs</em> by Justin Rajewski (O’Reilly) –</p>
+<p><em>Advanced FPGA Design</em> by Steve Kitts (Wiley) –</p>
+<p><em>Multicore and GPU Programming</em> by Gerassimos Barlas (Elsevier)</p>
+<p><strong>Hardware development</strong></p>
+<p>Here we try to provide some examples and explanations of hardware development beyond that of computer I/O devices; imaging, drones, and robots.</p>
+<p><em>Digital Computer Electronics</em> by Albert P. Malvino and Jerald A Brown (Career Education)</p>
+<p><em>Computer Time Travel</em> by JS Walker (Oldfangled)</p>
+<p><em>High Performance Silicon Imaging</em> by Daniel Durini (Elsevier)</p>
+<p><em>Getting Started With Drones</em> by Terry Kilby and Belinda Kilby (Make)</p>
+<p><em>Theory, Design, and Applications of Unmanned Aerial Vehicles</em> by A.R. Jha (CRC Press)</p>
+<p><em>Modern Robotics</em> by Kevin Lynch and Frank Park (Cambridge University Press)</p>
+<p><em>How to Make a Robot</em> by Gordon McComb (Make)</p>
+<p><em>Mastering ROS for Robotics Programming</em> by Lentin Joseph (Packt)</p>
+<p><strong>Electronic components, transistors, semiconductor manufacturing</strong></p>
+<p>A more low-level analysis of fundamental electronic components and transistor-based circuitry, along with textbooks describing lithography and chip manufacturing. Obviously such manufacturing is essentially impossible to recreate from scratch (Moore’s lesser-known second law described how fabricator costs increase just as chip density decreases) but these works could conceivably be of historical or even practical significance.</p>
+<p><em>Encyclopedia of Electronic Components</em> by Charles Platt and Fredrik Jansson (Make)</p>
+<p><em>Understanding Modern Transistors and Diodes</em> by David L. Pulfrey (Cambridge)</p>
+<p><em>Principles of Transistor Circuits</em> by S W Amos and Mike James (Elsevier)</p>
+<p><em>System Integration: From Transistor Design to Large Scale Integrated Circuits</em> by Kurt Hoffman (Wiley)</p>
+<p><em>Fundamental Principles of Optical Lithography</em> by Chris Mack (Wiley)</p>
+<p><em>Principles of Lithography</em> by Harry J,. Levinson (SPIE)</p>
+<p><em>Demystifying Chipmaking</em> by Richard F. Yanda, Michael Heynes, and Anne Miller (Elsevier)</p>
+<p><em>Fundamentals of Semiconductor Manufacturing</em> by Gary S. May and Simon M. Sze (Wiley)</p>
+<p><em>Fundamentals of Semiconductor Manufacturing and Process Control</em> by Gary S. May and Costas J. Spanos (Wiley)</p>
+<p><em>Semiconductor Manufacturing Handbook</em> (both editions) by Hwaiyu Geng (McGraw-Hill)</p>
+<p><strong>Radio, television, and other industrial technologies</strong></p>
+<p>Descriptions of other technologies which have helped to define our era, ranging from electrical power grids to radio and television.</p>
+<p><em>Practical Transformer Handbook</em> by Irving Gottleib (Elsevier)</p>
+<p><em>Electric Power Distribution Handbook</em> by Thomas Allen Short (CRC) –</p>
+<p><em>Inductors and Transformers for Power Electronics</em> by Vencislav Cekov Valchev, Alex Van den Bossche (CRC)</p>
+<p><em>Basic Radio</em> by Ian Poole (Elsevier)</p>
+<p><em>Radio-Frequency Electronics</em> by Jon B Hagen (Cambridge) –</p>
+<p><em>Newnes Guide to Radio and Communications Technology</em> by Ian Poole (Elsevier)</p>
+<p><em>Newnes Guide to Television and Video Technology</em> by K. F. Ibrahim (Elsevier)</p>
+<p><em>Satellite Communications Systems</em> by Gerard Maral, Michel Bousquet, Zhili Sun (Wiley) –</p>
+<p><strong>Pre-industrial technologies</strong></p>
+<p>These are the works which address the “romantic catastrophe” image of the archive’s inheritors, who seek to reboot all of modern technological civilization from pre-industrial scratch. Such possible futures do exist, although they seem unlikely; furthermore, it seems possible that these works might help fill in gaps which arise in historical knowledge.</p>
+<p><em>The Knowledge</em> by Lewis Dartnell (Penguin)</p>
+<p><em>The Story Of Writing</em> by Andrew Robinson (Thames &amp; Hudson)</p>
+<p><em>Caveman Chemistry</em> by Kevin Dunn (Universal)</p>
+<p><em>The Backyard Blacksmith</em> by Lorelei Sims (Crestine)</p>
+<p><em>Practical Blacksmithing</em> by M.T. Richardson (Weathervane)</p>
+<p><em>Seeds: The Definitive Guide</em> by Peter Loewer (Macmillan General Reference)</p>
+<p><em>Materials Handbook</em> by George S. Brady Henry R. Clauser, and John A. Vaccari (McGraw-Hill)</p>
+<p><em>Build Your Own Metal Working Shop From Scrap Series by David Gingery</em> (David Gingery)</p>
+<p><em>Practical Self-Sufficiency</em> by Dick and James Strawbridge (DK)</p>
+<p><em>Where There Is No Doctor</em> by David Werner (Hesperian)</p>
+<p><em>Where There Is No Dentist</em> by Murray Dickson (Hesperian)</p>
+<p><em>Foxfire Books 1-6</em> by Eliot Wigginton (Anchor)</p>
+<p><em>Oxford Handbook of Infectious Diseases and Microbiology</em> by Estée Török, Ed Moran, and Fiona Cooke (OUP)</p>
+<p><strong>Women and Technology</strong></p>
+<p>We believe women’s unique role in founding and shaping computing and technology deserves its own section. Women’s erasure in the field has meant there aren’t always primary sources from the original time of contribution (like books authored by women), and historians are finding that women’s contributions have been quite significant. Including this section allows us to appropriately acknowledge the work. Special thanks to Mar Hicks; many references in this section borrow from their Women in Computing course at the University of Wisconsin-Madison. We also include literature discussing tech’s negative impact on women.</p>
+<p><em>Ada’s Algorithm: How Lord Byron’s Daughter Ada Lovelace Launched the Digital Age</em> by James Essinger (Melville House)</p>
+<p><em>Programmed Inequality: How Britain Discarded Women Technologists and Lost Its Edge in Computing</em> by Mar Hicks (MIT Press)</p>
+<p><em>Saving Bletchley Park</em> by Sue Black with Stevyn Colgan (Random House UK)</p>
+<p><em>Pioneer Programmer: Jean Jennings Bartik and the Computer that Changed the World</em> by Jean Jennings Bartik with editors Jon T. Rickman and Kim D. Todd (Truman University Press)</p>
+<p><em>Hidden Figures: The True Story of Four Black Women and the Space Race</em> by Margot Lee Shetterly (William Morrow Paperbacks)</p>
+<p><em>Grace Hopper and the Invention of the Information Age</em> by Kurt Beyer (MIT Press)</p>
+<p><em>Gender Codes: Why Women are Leaving Computing</em> by Thomas J. Misa (Wiley)</p>
+<p><strong>Languages</strong></p>
+<p>Our professional linguistic advice was that, contrary to popular belief, the drift of English syntax and grammar has slowed dramatically, and barring some massive catastrophe it’s very likely that English will both survive and be largely recognizable a thousand years from now. To hedge our bets, though, we have included a “Rosetta” guide translated into Arabic, Hindi, Spanish, and Chinese in every reel of the Archive, along with the Universal Declaration of Human Rights in every available written language, and will similarly include dictionaries and a couple of linguistic works here.</p>
+<p><em>The Oxford Dictionary of English</em> (OUP)</p>
+<p><em>Oxford Picture Dictionary English-Arabic</em> Edition (OUP)</p>
+<p><em>Oxford Picture Dictionary English-Chinese</em> Edition (OUP)</p>
+<p><em>Oxford Picture Dictionary English-Spanish</em> Edition (OUP)</p>
+<p><em>The History Of Languages: An Introduction</em> by Tore Janson (OUP)</p>
+<p><em>Linguistic Diversity</em> by Daniel Nettle (OUP)</p>
+<p><strong>Fiction, culture, and history</strong></p>
+<p>It is our belief that culture is often best expressed through great works of fiction. As such, we sought to assemble a list of notable literary works (including / beginning with a few books of nonfiction) to convey, on a human level, the history and culture of our time. These are:</p>
+<p><em>Chapman’s Homer</em></p>
+<p><em>The Complete Works of William Shakespeare</em></p>
+<p><em>The Tale of Genji</em> by Murasaki Shikibu</p>
+<p><em>Crime and Punishment</em> by Fyodor Dostoevsky</p>
+<p><em>I, Claudius</em> by Robert Graves</p>
+<p><em>Star Maker</em> by Olaf Stapledon</p>
+<p><em>Things Fall Apart</em> by Chinua Achebe (Penguin)</p>
+<p><em>Brave New World</em> by Aldous Huxley (Harper Perennial)</p>
+<p><em>1984</em> by George Orwell (Signet Classics)</p>
+<p><em>A Canticle For Leibowitz</em> by Walter M. Miller Jr. (Spectra)</p>
+<p><em>The Cairo Trilogy</em> by Naguib Mahfouz (Everyman’s)</p>
+<p><em>Cyberiad</em> by Stanislaw Lem (Mariner)</p>
+<p><em>The Moon is a Harsh Mistress</em> by Robert Heinlein (Ace)</p>
+<p><em>The Dispossessed</em> by Ursula K. Le Guin (HarperCollins)</p>
+<p><em>One Hundred Years Of Solitude</em> by Gabriel García Márquez (Harper Perennial)</p>
+<p><em>Parable of the Sower</em> by Octavia Butler (Grand Central)</p>
+<p><em>Wild Swans</em> by Jung Chang (Simon &amp; Schuster)</p>
+<p><em>The Conservationist</em> by Nadine Gordimer (Penguin)</p>
+<p><em>The Book of the New Sun</em> by Gene Wolfe (Tor)</p>
+<p><em>Midnight’s Children</em> by Salman Rushdie (Random House)</p>
+<p><em>The Famished Road</em> by Ben Okri (Anchor)</p>
+<p><em>Beloved</em> by Toni Morrison (Vintage)</p>
+<p><em>A Place Of Greater Safety</em> by Hilary Mantel (Holt)</p>
+<p><em>Foucault’s Pendulum</em> by Umberto Eco (Mariner)</p>
+<p><em>Alias Grace</em> by Margaret Atwood (Anchor)</p>
+<p><em>Blood Meridian</em> by Cormac McCarthy (Vintage)</p>
+<p><em>The Stone Diaries</em> by Carol Shields (Penguin)</p>
+<p><em>The God of Small Things</em> by Arundhati Roy (Random House)</p>
+<p><em>The Wind-Up Bird Chronicle</em> by Haruki Murakami (Vintage)</p>
+<p><em>Anathem</em> by Neal Stephenson (William Morrow)</p>
+<p><em>2666</em> by Roberto Bolaño (Picador)</p>
+<p><em>The Goldfinch</em> by Donna Tartt (Little, Brown)</p>
+<p><em>The Peripheral</em> by William Gibson (Berkley)</p>
+<p><em>A Short History of Nearly Everything</em> by Bill Bryson (Broadway)</p>
+<p><em>The Visual Display of Quantitative Information</em> by Edward Tufte (Graphics Press)</p>
+<p><em>Extraordinary Popular Delusions and the Madness Of Crowds</em> by Charles Mackay</p>
+<p><strong>Cultural context</strong></p>
+<p>This section of the Tech Tree is intended to convey both useful practical information from our culture, and a depiction of what it was like at the time the archive was written. It will consist of encoded data, rather than imaged pages, largely because its centerpiece, a snapshot of Wikipedia, is far too large for the latter format.</p>
+<p>Wikipedia, while not without its flaws and omissions, is the most readily available proxy for “a written summary of our world.” Note that this section is by no means intended as a complete depiction of humanity today: as our advisors stressed, this era is likely to be the best documented in all of human history, and such information is very unlikely to be difficult to find. Rather, it is intended as a convenience to indicate to the archive’s inheritors the specific, particular context of the era in which the archive was written.</p>
+<p>This section will also include several other data sources recommended by GitHub’s community:</p>
+<ul>
+<li>Wiktionary</li>
+<li>Wikispecies</li>
+<li>The File Formats Archive</li>
+</ul>
+<p><strong>The GitHub Arctic Code Vault</strong></p>
+<p>As the Tech Tree is a companion piece to the GitHub Arctic Code Vault, it will contain an index with the name, brief description, and film reel number for all of the GitHub repositories stored in the Arctic Code Vault, i.e. every active public GitHub repo as of 02/02/2020.</p>
+<p>This index will also highlight the 15,000 GitHub repositories which are the most-starred or most-depended-on at the time the archive was written. (These are also the repositories which will be stored in the two-reel “greatest hits” subsets of the archive, to be kept with partners such as Oxford’s Bodleian Library and others.)</p>
+<p>It is worth noting that every individual reel of the Arctic Code Vault also has its own index itemizing its contents, along with all of the instructions and information required to decode the information stored in that reel. This master index will be a superset of all of those indexes, to serve as a backup and a convenience for the archive’s inheritors.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Book/" rel="tag">Book</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-sanxingdui"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/25/sanxingdui/"
+    >sanxingdui</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/25/sanxingdui/" class="article-date">
+  <time datetime="2020-07-25T05:44:30.000Z" itemprop="datePublished">2020-07-25</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Among large numbers of Chinese cultural relics, Sanxingdui is considered one of those with the greatest historical and scientific significance.</p>
+<h1 id="Bronze-Wares"><a href="#Bronze-Wares" class="headerlink" title="Bronze Wares"></a>Bronze Wares</h1><p>Masks are an important part of bronze ware. They include man-face masks and vertical-eyed masks with a pair of post-shaped bulging eyes and a pair of fully expanded ears. On their foreheads, a kui-dragon (a special shape) crown was castled. The largest one of the vertical-eyed masks is 65 cm high and 138 cm wide. It is really the King of all masks in the world. It is considered a combination of gods and a human being; this was regarded as the idol of the ancient Shu people.</p>
+<p>Animal-face masks are another kind of special structure, with nine types altogether. Animal-face masks have Kui-dragon ears, open mouths and grinning teeth, and look like neither a human being nor any known animal. They were considered a kind of god by ancient people.</p>
+<p>The 50 bronze images from the two pits are the nucleus of bronze ware. The faces are almost the same: all with sword-shaped eyebrows, chestnut eyes, towering noses and open mouths; but the hairstyles are different from each other. Some busts are bald, while others wear a crown; some have hair coiled up and some wear hair clasps; but all are lively. So many bronzes are sure to be a collection of worshiped images, representing people of imperial or leading groups. They reflect the character of the ancient Shu society in which gods and humans were considered to be connected each other, and also politics and religion.</p>
+<p>The bronze animal sculptures of dragons, snakes, tigers, birds, chicks, are vivid. They reflect the ancient Shu people’s ideology that all things have spirits and show their sincerity to gods. Among them, the sincerity to birds is the core. Birds, such as Canchong, Yufu, Duyu, etc, are the names of several ancient Shu dynasties. Birds were also regarded as the symbol of the sun.</p>
+<h2 id="Bronze-zun-and-bronze-lei-a-special-drinking-vessel-are-the-biggest-of-the-bronze-wares-In-ancient-times-Zun-and-lei-were-used-for-wine"><a href="#Bronze-zun-and-bronze-lei-a-special-drinking-vessel-are-the-biggest-of-the-bronze-wares-In-ancient-times-Zun-and-lei-were-used-for-wine" class="headerlink" title="Bronze zun and bronze lei (a special drinking vessel) are the biggest of the bronze wares. In ancient times, Zun and lei were used for wine."></a>Bronze zun and bronze lei (a special drinking vessel) are the biggest of the bronze wares. In ancient times, Zun and lei were used for wine.</h2><p>The jade wares include tablets, bi (a jade ring), yuan (a jade ring with a large hole), zhong (a jade ware), and daggers, axes, chisels, axes, knives, swords etc. The guard of honor used many models of tools and weapons. Most of them are jade ceremonial utensils. The jade wares reflect the high artistic level of that time.</p>
+<p>The bronze sculptures are unique among Chinese relics. Among them, the large standing man sculpture was called the “head of the wizards”.</p>
+<h2 id="Bronze-Man"><a href="#Bronze-Man" class="headerlink" title="Bronze Man"></a>Bronze Man</h2><p>It weighs 180 kg. It was composed of two parts: the square base is 90 cm high, the figure 172 cm.</p>
+<p>The image wears a tubular crown. There are bracelets round the bare feet. There is a rectangular hole in the back of head. The edges of the crown have animal designs. The image wears three pieces of clothing on which are patterns of dragons, birds and worms. The belt is an imperial symbol. The encircling hands are extremely exaggerated.</p>
+<p>The standing man represents such figures as a king and wizard. In ancient people’s minds, he is a combination of god, wizard, and king.</p>
+<h2 id="Bronze-Vertical-Mask"><a href="#Bronze-Vertical-Mask" class="headerlink" title="Bronze Vertical Mask"></a>Bronze Vertical Mask</h2><p>The face of the bronze vertical-eyed mask appears curried, and the section appears U-shaped. It has bushy eyebrows and large eyes, the brow tips rise upward. The eyes are crossed and the eyeballs are extremely exaggerated, bulging forward like a round-post; the muscle was pulled out and attached to the eyebrow like a circle. The eyeballs are hollow. It has square-shaped ears; the upper part expands outward like peaches. The nose is short, and the mouth is large and deep. The mouth corners are lifted upward, as if smiling. There is a square hole in the forehead. The bronze vertical eyed mask the biggest among all the Sanxingdui masks, being 65 cm high and 138 cm wide.</p>
+<h2 id="Bronze-Scared-Tree"><a href="#Bronze-Scared-Tree" class="headerlink" title="Bronze Scared Tree"></a>Bronze Scared Tree</h2><p>The whole height of the sacred tree is 395 cm with nine branches on the trunk. There were three kinds of fruits on every branch, including peaches. The sacred tree in Sanxingdui symbolizes Fushang and Ruomu, which are considered to be connected with the Heaven and the Earth.</p>
+<h2 id="Jade-Wares"><a href="#Jade-Wares" class="headerlink" title="Jade Wares"></a>Jade Wares</h2><p>There is a tablet among the unearthed jades from No.2 pit that is 54.5 cm long. It is the most representative cultural object in the Sanxingdui jade wares. Its chief value is that there is full design on it.</p>
+<p>Its two sides have the same figure designs, a symmetrical arrangement. Two designs are almost the same, except the lower one is a little short and there were only two figures on it.</p>
+<p>Each design is made up of five pictures: in the lower picture, there are two hills and some cloud-air-designs with circles in their centers. They may be the symbol of the sun. There are some unexplained objects like winding hooks between the hills. There is an ivory tablet on each outer edge of the two hills. The teeth-shaped edges are very clear. In the second picture, there are three figures bending down, with vault-like hats. On the hat there is one pot-design. There are two interlined ear ornaments. The figures wear a skirt without sleeves, the two hands encircled, which is taken as a special gesture. The third picture is the geometrical-shaped design. In the fourth picture there are two hills similar to the ones in the first one below. There are some designs like boats between hills. Outside the hills, it seems that a man makes a fist with a thumb pressing against the bend of the hill. In the top picture, there were three figures, whose feet present a special character (two figures stand below). The upper one wears a crown with a pot-design. There are some bell-like ear ornaments. Again, the two make a strange gesture, which is the same as the figure at the bottom.</p>
+<p>The design is rarely seen, very precious and full of puzzles. For example: what is the relationship between the bending-down man in the lower picture and the standing man above? Perhaps the lower one is the earth, while the upper is heaven, or the sacrificial relationship.</p>
+<h1 id="Gold-Wares"><a href="#Gold-Wares" class="headerlink" title="Gold Wares"></a>Gold Wares</h1><h2 id="Gold-Scepter"><a href="#Gold-Scepter" class="headerlink" title="Gold Scepter"></a>Gold Scepter</h2><p>Gold objects have a special position in the collections of Sanxingdui cultural relics. Among them, gold-scepters and bronze images with gold masks are the most significant ones. They include men wearing gold masks. Besides, there are gold tigers, leaves, belts, tablets, and blocks.</p>
+<p>The scepter is 142 cm long and the diameter is 2.3 cm. It weighs 46.3 gm. A strip of gold was beaten first, then wrapped around a wooden stick, and then the gold scepter was made. When it was unearthed, their remained some carbonized wood pits. The most precious point is there are some sculptural designs on the top, which are 46 cm long and include three Groups. On this group near the end, if closed, there are two images that are symmetrical and wear fire-tooth crowns, with triangular eardrums, showing pleasant smiles. The designs of the next two groups are the same. There are two birds in the opposite direction below, two fish back to back above. At the necks of the birds and the heads of the fish, there are arrow-like objects. Someone suggests an arrow shot both the birds and the fish, while others argue that is a spike-shaped object, and then inferred that there was rice planting in agriculture at that time. In the design, the images, fish and birds are closely connected. What did this mean? No one knows. Although some scholars made some interpretation, it isn’t perfect. The designs on the scepter are also a big puzzle among the many puzzles of Sanxingdui.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/culture/" rel="tag">culture</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-minimum-quotes"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/24/minimum-quotes/"
+    >minimum_quotes</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/24/minimum-quotes/" class="article-date">
+  <time datetime="2020-07-24T04:37:43.000Z" itemprop="datePublished">2020-07-23</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ul>
+<li><em>“But I deal with this by meditating and by understanding I’ve been put on the planet to serve humanity. I have to remind myself to live simply and not overindulge, which is a constant battle in a material world.”</em> <strong>-Sandra Cisneros</strong>, <strong>1954.</strong></li>
+<li><em>“There are two ways to be rich: One is by acquiring much, and the other is by desiring little.”</em> <strong>-Jackie French Koller</strong>, <strong>1948.</strong> </li>
+<li><em>“Simplicity involves unburdening your life, and living more lightly with fewer distractions that interfere with a high quality life, as defined uniquely by each individual.”</em> <strong>-Linda Breen Pierce</strong>, <strong>1947.</strong></li>
+<li><em>“One of the advantages of being born in an affluent society is that if one has any intelligence at all, one will realize that having more and more won’t solve the problem, and happiness does not lie in possessions, or even relationships: The answer lies within ourselves. If we can’t find peace and happiness there, it’s not going to come from the outside.”</em> <strong>-Tenzin Palmo</strong>, <strong>1943.</strong></li>
+<li><em>“The intention of voluntary simplicity is not to dogmatically live with less. It’s a more demanding intention of living with balance. This is a middle way that moves between the extremes of poverty and indulgence.”</em> <strong>-Duane Elgin, 1940s.</strong></li>
+<li><em>“We really must understand that the lust for affluence in contemporary society is psychotic. It is psychotic because it has completely lost touch with reality. We crave things we neither need nor enjoy.”</em> <strong>-Richard Foster, 1940s.</strong></li>
+<li><em>“The trouble with simple living is that, though it can be joyful, rich, and creative, it isn’t simple.”</em> <strong>-Doris Janzen Longacre, 1940.</strong></li>
+<li><em>“Any half-awake materialist well knows – that which you hold holds you.”</em> –<strong>Tom Robbins, 1936.</strong></li>
+<li><em>“The simplest things are often the truest.”</em> <strong>-Richard Bach, 1936.</strong></li>
+<li><em>“Our souls are not hungry for fame, comfort, wealth, or power. Our souls are hungry for meaning, for the sense that we have figured out how to live so that our lives matter.”</em> <strong>-Harold Kushner, 1935.</strong></li>
+<li><em>“If one’s life is simple, contentment has to come. Simplicity is extremely important for happiness. Having few desires, feeling satisfied with what you have, is very vital: satisfaction with just enough food, clothing, and shelter to protect yourself from the elements.”</em> <strong>-The Dalai Lama, 1935.</strong></li>
+<li><em>“Smile, breathe and go slowly.”</em> <strong>-Thich Nhat Hanh, 1926.</strong></li>
+<li><em>“The consumption society has made us feel that happiness lies in having things, and has failed to teach us the happiness of not having things.”</em> <strong>-Elise Boulding, 1920.</strong></li>
+<li><em>“You have succeeded in life when all you really want is only what you really need.”</em> <strong>-Vernon Howard, 1918.</strong></li>
+<li><em>“Any intelligent fool can make things bigger, more complex, and more violent. It takes a touch of genius – and a lot of courage – to move in the opposite direction.”</em> <strong>-E.F. Schumacher, 1911.</strong></li>
+<li><em>“Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.”</em> <strong>-Antoine de Saint-Exupery, 1900.</strong></li>
+<li><em>“Reduce the complexity of life by eliminating the needless wants of life, and the labors of life reduce themselves.”</em> <strong>-Edwin Way Teale, 1899.</strong></li>
+<li><em>“Besides the noble art of getting things done, there is the noble art of leaving things undone. The wisdom of life consists in the elimination of non-essentials.”</em> <strong>-Lin Yutang, 1895.</strong></li>
+<li><strong>Mies Van Der Rohe.</strong> <em>“<a target="_blank" rel="noopener" href="https://www.becomingminimalist.com/less-is-more/">Less is more</a>.”</em> <strong>-Mies Van Der Rohe, 1886.</strong></li>
+<li><em>“Make things as simple as possible but no simpler.”</em> <strong>-Albert Einstein, 1879.</strong></li>
+<li><em>“Too many people spend money they haven’t earned, to buy things they don’t want, to impress people they don’t like.”</em> <strong>-Will Rogers, 1879.</strong></li>
+<li><em>“Simplicity is an acquired taste. Mankind, left free, instinctively complicates life.”</em> <strong>Katharine Fullerton Gerould, 1879.</strong></li>
+<li><em>“One can furnish a room very luxuriously by taking out furniture rather than putting it in.”</em> <strong>-Francis Jourdain, 1876.</strong></li>
+<li><em>“It is preoccupation with possession, more than anything else, that prevents men from living freely and nobly.”</em> <strong>-Bertrand Russell, 1872.</strong></li>
+<li><em>“We go on multiplying our conveniences only to multiply our cares. We increase our possessions only to the enlargement of our anxieties.”</em> <strong>-Anna C. Brackett, 1836.</strong></li>
+<li><em>“Have nothing in your homes that you do not know to be useful or believe to be beautiful.”</em> <strong>-William Morris, 1834.</strong></li>
+<li><em>“You say, ‘If I had a little more, I should be very satisfied.’ You make a mistake. If you are not content with what you have, you would not be satisfied if it were doubled.”</em> <strong>-Charles Spurgeon, 1834.</strong></li>
+<li><em>“There is no greatness where there is not simplicity, goodness, and truth.”</em> <strong>-Leo Tolstoy, 1828.</strong></li>
+<li><em>“Cultivate poverty like a garden herb, like sage. Do not trouble yourself much to get new things, whether clothes or friends. Things do not change, we change. Sell your clothes and keep your thoughts.”</em> <strong>-Henry David Thoreau, 1817.</strong></li>
+<li><em>“Be generous in prosperity, and thankful in adversity. Be worthy of the trust of thy neighbor, and look upon him with a bright and friendly face. Be a treasure to the poor, an admonisher to the rich, an answerer of the cry of the needy, a preserver of the sanctity of thy pledge.”</em> <strong>-Baha’u’llah, 1817.</strong></li>
+<li><em>“It is the heart that makes a man rich. He is rich according to what he is, not according to what he has.”</em> <strong>-Henry David Beecher, 1813.</strong></li>
+<li><em>“Simplicity is the most difficult thing to secure in this world; it is the last limit experience and the last effort of genius.”</em> <strong>-George Sand, 1804.</strong></li>
+<li><em>“My riches consist, not in the extent of my possessions, but in the fewness of my wants.”</em> <strong>-Joseph Brotherton, 1783.</strong></li>
+<li><em>“Live simply so that others may simply live.”</em> <strong>-Elizabeth Ann Seton, 1774.</strong></li>
+<li><em>“Real happiness is cheap enough, yet how dearly we pay for its counterfeit.”</em> <strong>-Hosea Ballou, 1771.</strong></li>
+<li><em>“With a few flowers in my garden, half a dozen pictures and some books, I live without envy.”</em> <strong>-Lope de Vega, 1562.</strong></li>
+<li><strong><em>“*</em></strong>Simplicity is the ultimate sophistication.”* <strong>-Leonardo da Vinci, 1452.</strong></li>
+<li><em>“Purity and simplicity are the two wings with which man soars above the earth and all temporary nature.”</em> <strong>-Thomas a Kempis, 1380.</strong></li>
+<li><em>“If your mind isn’t clouded by unnecessary things, then this is the best season of your life.”</em> <strong>-Wu-Men, 864.</strong></li>
+<li><em>“Poverty is my pride.”</em> <strong>-Muhammed, 570.</strong></li>
+<li><em>“If one had taken what is necessary to cover one’s needs and had left the rest to those who are in need, no one would be rich, no one would be poor, no one would be in need.”</em> <strong>-Saint Basil, 330.</strong></li>
+<li><em>“Contentment comes not so much from great wealth as from few wants.”</em> <strong>-Epictetus, 55.</strong></li>
+<li><em>“It is not the man who has too little, but the man who craves more, that is poor.”</em> <strong>-Seneca, 1 BCE.</strong></li>
+<li><em>“Sell your possessions and give to the poor.”</em> <strong>-Jesus Christ, 5 BCE.</strong></li>
+<li><em>“The man who has two tunics is to share with him who has none; and he who has food is to do likewise.”</em> <strong>-John the Baptist, 6 BCE.</strong></li>
+<li><em>“Nothing is enough for the man to whom enough is too little.”</em> <strong>-Epicurus, 341 BCE.</strong></li>
+<li><em>“The secret of happiness, you see, is not found in seeking more, but in developing the capacity to enjoy less.”</em> <strong>-Socrates, 469 BCE.</strong></li>
+<li><em>“Be content with what you have; rejoice in the way things are. When you realize there is nothing lacking, the whole world belongs to you.”</em> <strong>-Lao Tzu, 500 BCE.</strong></li>
+<li><em>“Life is really simple, but we insist on making it complicated.”</em> <strong>-Confucious, 551 BCE.</strong></li>
+<li><em>“To live a pure unselfish life, one must count nothing as one’s own in the midst of abundance.”</em> <strong>-Buddha, 563 BCE.</strong></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/idea/" rel="tag">idea</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-muslim-culture"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/22/muslim-culture/"
+    >muslim_culture</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/22/muslim-culture/" class="article-date">
+  <time datetime="2020-07-22T22:54:03.000Z" itemprop="datePublished">2020-07-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <table>
+<thead>
+<tr>
+<th align="left">MUSLIM CULTURE</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1. One God: ‘Allah’; Prayer Customs at Home, during Travel, and In the Mosque</td>
+<td>Muslims believe that the Creator of all mankind is one God (called ‘Allah’ in Arabic), and that the God of all Abrahamic religions is the same God. Muslims believe Islam is the continuation and culmination of Judaism and Christianity.Muslims are required to pray five times a day. Men are encouraged to pray in the mosques instead of at home to strengthen community bonds, while women are granted a special concession if they wish to pray at home due to their family responsibilities. Depending on lifestyle and work schedules, many Muslims pray at home, in the workplace, or during travel in the car, the train or an airplane whenever the time for either one of the five daily prayers approaches. It is not uncommon for Muslims to keep a prayer mat in their cars and simply stop anywhere at the time of prayer and spread it out on the ground, offering their prayers toward the direction of Ka’aba, the center and starting point of Islam, in Mecca.While reciting the prayer, full meditative concentration is required. Talking or paying attention to surroundings is not permissible, except in emergencies. Old people or those of ill-health may recite prayer while sitting or lying in bed, as comfortable. Friday is a special day of prayer when most Muslims prefer to go to the mosque. Inside the mosques, since Muslims pray on rugs and prostrate before God, it is considered disrespectful to step on prayer mats with shoes. In Western cultures where non-Muslim guests are invited for interfaith gatherings, a complete wall-to-wall rug is spread over the prayer mats so that guests do not have to take their shoes off. Inside homes, there is no specific designated place of worship, but prayer mats may be spread in any room at the time of prayer.</td>
+</tr>
+<tr>
+<td align="left">2. Role of <em>Imam</em>, or Prayer Leader</td>
+<td>The traditional role of an <em>Imam</em> (Arabic word, meaning, ‘stand in front of’) is to lead a group in prayer, guide in the matters of worship, and perform services like marriage or funeral rites etc. They may also provide spiritual support or guidance. There is no clergy in Islam, and an Imam can be any Muslim community member in good standing, hired or selected for this purpose. He is chosen for his deep spiritual understanding and knowledge of the various Islamic disciplines. Muslims believe in a direct spiritual connection with God; hence, the Imam is not considered an intercessor. In the absence of a designated Imam, any member (usually an elder) present at the time of prayer can step up to fill the position of Imam.</td>
+</tr>
+<tr>
+<td align="left">3. Prayer protocol and Pets</td>
+<td>Cleanliness is considered of utmost importance, especially as prerequisite to prayer, for one’s person and the place of prayer. Animal saliva is considered unclean and must be washed off before prayer can be offered. To avoid having to wash excessively, many Muslims generally do not keep pets, including dogs, inside their homes and avoid contact with them beyond patting. In Western cultures, where many pet-owners consider them part of the family, the avoidance may be mistaken for dislike and cause offense where none is intended.</td>
+</tr>
+<tr>
+<td align="left">4. Drawing visual depictions of  prophets</td>
+<td>This is a sensitive issue for Muslims and has been the cause of much controversy. It is considered highly disrespectful to draw a visual representation of any prophet. The historical perspective is to discourage idol worshipping in accordance with the concept of monotheism, which is a central tenet of Islam. Written accounts of the prophets’ physical appearance are, however, present in historical texts. Muslims acknowledge the status of both, the Bible and Torah, as Holy Scriptures sent by God to the Prophets Jesus and Moses. In the Islamic faith, Muslims accord the same respect and consideration to all prophets of God as they give to Prophet Muhammad.</td>
+</tr>
+<tr>
+<td align="left">5. Dietary Restrictions</td>
+<td>Pork and its products and alcoholic drink are <em>haram</em> (forbidden) in Islam. Muslims eat <em>halal</em> meat which is meat slaughtered in the Islamic way and blessed with the name of God. Use of alcohol in products for medicinal purposes is allowed.</td>
+</tr>
+<tr>
+<td align="left">6.Celebrations: Eid-ui-Fitr and Eid-ul-Adha</td>
+<td>The Islamic calendar is based on the lunar cycle, which is 11 days shorter than the Solar calendar. Hence, Islamic holidays shift each year. Muslims believe the Quran was revealed to Prophet Muhammad in the month of <strong>Ramadan,</strong> which is the ninth month of Islamic calendar. During fasting, Muslims refrain from consuming food and drinking liquids from dawn until sunset. They are encouraged to practice reflection, forgiveness and charity during this month, and capitalize on it for the rest of the year. <strong>Eid-ul-Fitr</strong> marks the end of fasting. The greeting of “<em>Eid Mubarak<em>” (Happy Eid) is used to wish Muslims well on this day. *</em>Eid al-Adha** begins on the 10th day of Dhu’l-Hijja, the 12th month of the Islamic calendar. Lasting for three days, it occurs at the conclusion of the annual *Haj</em>, or pilgrimage to Mecca. Eid-ul-Adha is an occasion to commemorate Abraham’s obedience to God. The <strong>Islamic New Year</strong> begins with the month of Muharram, 20 days after Haj. Unlike most Western holidays, the welcoming of the new year is a quiet event marked with prayer.</td>
+</tr>
+<tr>
+<td align="left">7. Wearing the <em>Hijab</em></td>
+<td>Islam encourages Muslims to dress modestly. Muslim women from diverse backgrounds observe modesty in their own way and that explains the variation in their dress codes across cultures. Wearing the Hijab (head covering) is a mark of devotion and commitment to Faith. In some countries, wearing the Hijab is obligatory, but in others (as in the United States) it is considered a personal choice. It is not a symbol of repression and separation. In either case, it would be disrespectful to criticize women for wearing it.</td>
+</tr>
+<tr>
+<td align="left">8. Politeness and Respect for Elders</td>
+<td>Muslims are very particular about showing respect for elders. Many gestures that might seem okay for young adults to indulge in are considered rude in the presence of elders, e.g. one may beckon a peer with the index finger, but never an older person. Such expressions from small children are not considered offensive. A certain amount of decorum is always expected, e.g. calling elders by their first name or their last name without the prefix of Mr., Mrs., or Miss is considered very rude. it is best to start with more formality and let them clarify how they want to be addressed. Second generations living in Western societies may be more flexible on this. Standing up to greet guests, especially elders, opening doors for them, giving one’s seat up for them, not interrupting and maintaining a generally respectful demeanor towards them is highly appreciated.Voicing open and strong opposition to the views of elders is perceived as an insult. However, polite insertion of views is appreciated.</td>
+</tr>
+<tr>
+<td align="left">9. Emergency Treatment</td>
+<td>Generally, a doctor or paramedic of the same gender is preferred by most Muslims, especially Muslim women. However, in emergency situations to save a life or prevent injury, it is acceptable to be treated and handled by the opposite gender. The presence of a family member who might want to be present is also appreciated.</td>
+</tr>
+<tr>
+<td align="left">10. Shaking Hands</td>
+<td>In Western societies where this is a common form of greeting, a handshake with a person of the opposite gender is widely practiced. However, some Muslims prefer not to do so. To avoid hurt American feelings should a handshake not be returned (and to avoid discomfort on the part of Muslim women when they try to avoid this), it is preferable to wait to see if they offer their hand and then follow accordingly, or greet with a slight nod of the head accompanied by a smile.</td>
+</tr>
+<tr>
+<td align="left">11. Social Distance</td>
+<td>“Social distance” is especially important to maintain when interacting with Muslim women. The difference may be obvious when dealing with a woman from a more conservative group. If she takes a small step backward it is indicative that, though interested in the conversation, she is uncomfortable and it would be kind to respect her space.</td>
+</tr>
+<tr>
+<td align="left">12. Eye Contact</td>
+<td>Maintaining eye contact when talking might make Muslim women and the elderly uncomfortable. A better way is to look into their eyes briefly every so often and then look away (perhaps at the collar, or an imaginary spot on the side) at the same time tilting the head and/or nodding now and then to show interest in the conversation. Most of these people now living in Western societies are used to this and don’t mind direct eye contact at all. Children in some Muslim and Asian societies are taught not to stare into the eyes of elders, or authority figures, as it is considered disrespectful or challenging. In Western cultures, this expression of respect may be erroneously interpreted as a sign of guilt.</td>
+</tr>
+<tr>
+<td align="left">13. Sitting with soles of feet or shoes facing a person sitting close by/accidental touching of feet</td>
+<td>This may be considered impolite in some Muslim countries. Touching of feet to another’s body is considered disrespectful and, if that happens, an apology is expected and appreciated.</td>
+</tr>
+<tr>
+<td align="left">14. Removing shoes when entering the home</td>
+<td>Removing shoes when entering a Muslim house is appreciated for cleanliness reasons, especially when shoes are muddy. Many Muslims keep separate shoes for wearing indoors. It is best to ask hosts if they would like the guests to remove their shoes, and follow accordingly. <em>Emergency responders are not expected to follow any such custom.</em></td>
+</tr>
+<tr>
+<td align="left">15. The “Namaste” greeting common to some Indian-Hindu groups</td>
+<td>This slight bow (palms together slightly under the chin) is not acknowledged in a similar manner by most Muslims, which may cause some unpleasantness to Hindus and to Japanese people who use a bow in greeting. No offense is meant to cultures which practice this form of greeting; it is only so because of the Islamic belief that Muslims only bow to God.</td>
+</tr>
+<tr>
+<td align="left">16. Passing an item to someone with the left hand</td>
+<td>This may be considered rude by some Muslims. It is also regarded as an impolite gesture in Italy.</td>
+</tr>
+</tbody></table>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/religion/" rel="tag">religion</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-Always-Invert"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/22/Always-Invert/"
+    >Always_Invert</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/22/Always-Invert/" class="article-date">
+  <time datetime="2020-07-22T04:43:35.000Z" itemprop="datePublished">2020-07-21</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Today, we will look at one of my favourite mental models called - The Inversion principle. Mental models are a set of simple, abstract but useful principles that help us make sense of the world around us.</p>
+<p>I came across the Inversion principle on the Farnam Street blog. It is also a favourite of Charlie Munger (Vice Chairman of Berkshire Hathaway and Warren Buffets mate) - “…it is in the nature of things that many hard problems are best solved when they are addressed backward”, he pontificates.</p>
+<p>In another interview, he recalls how, as an Air Force meteorologist during World War II, instead of asking what would keep pilots safe, he asked what would kill them and focussed all his efforts “on trying to predict snow, ice or fog—and to ignore pretty much everything else.”.</p>
+<p>I could write a book on all the other cool stuff Charlie Munger has said so I’ll stop here.</p>
+<h2 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h2><p>Inversion is based on the maxim - invert, always, invert. It is about considering an inverse (usually a negative) outcome and listing the reasons for these. It forces you to either stop doing certain things or avoid the actions that lead to the negative outcomes. It gives us new possibilities and capabilities that we might not have considered otherwise.</p>
+<p>The algorithm for inversion is very simple:</p>
+<ul>
+<li><p>Define the problem - what is it that  you’re trying to achieve?</p>
+</li>
+<li><p>Invert it - what would guarantee the failure to achieve this outcome?</p>
+</li>
+<li><p>Finally, consider solutions to avoid this failure</p>
+<p>This is very abstract and vague, so let’s look at a few examples:</p>
+</li>
+</ul>
+<ol>
+<li><p>Instead of asking how do we increase the adoption of a product or feature? You could instead consider - what are some of things preventing adoption? This would lead to a list like this that you could potentially fix:<br>Slow load time i.e. performance issues<br>Not enough marketing, or marketing on the platform, or to the wrong audience<br>The user guide instructions are not clear … you get the idea</p>
+</li>
+<li><p>Following the inversion principle it is better to ask what is preventing me from reading all the unread books on my kindle/bookshelf, instead of asking how can i read more books? Possible reasons and something you could give up:</p>
+</li>
+</ol>
+<ul>
+<li>I spend a lot of time on social media</li>
+<li>I watch too many shows on Netflix or Disney +</li>
+<li>Spend a lot of time on reddit or browsing hacker news</li>
+</ul>
+<ol start="3">
+<li>Instead of wondering how do I always choose a winning stock during investing, ask yourself how do you prevent losses in the long term?</li>
+</ol>
+<ul>
+<li><p>Am I diversifying enough to prevent long term loss?</p>
+</li>
+<li><p>Am I investing  based on sound principles, or am I speculating?</p>
+<p>Hopefully this  gives you a flavour of how powerful inversion is as a mental model. I should add that it is NOT a silver bullet and it won’t always give you concrete answers, but it will act as a forcing function to avoid obvious lapses in judgment. I’ll leave you with another one of my favourite quotes about Inversion from Charlie.</p>
+</li>
+</ul>
+<blockquote>
+<p>“It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent.”</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mind/" rel="tag">mind</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-crazy-rally-drivers"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/20/crazy-rally-drivers/"
+    >crazy_rally_drivers</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/20/crazy-rally-drivers/" class="article-date">
+  <time datetime="2020-07-20T05:12:54.000Z" itemprop="datePublished">2020-07-20</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Strike that. I <em>drove</em> a rally car once, which is a totally different thing. In the course of my job, I’ve sampled many rally cars, in both amateur and professional spec, including three amateur cars that I helped build. All were loud, obnoxious machines with roll cages, five-point harnesses, and long-travel suspension. At least two and a half of them (you do the math on which) were total pieces of shit. And all had one thing in common.</p>
+<p>Under normal circumstances, they appeared to be driven by lunatics.</p>
+<p>Rally drivers race on closed-off public roads. They run against the clock, one car at a time, on dirt, pavement, and anything in between. They run in all weather, in virtually every country on the planet. The sport is a glorious, lovely thing, all noise and violence and sliding sideways between trees at 100 mph. There is real, palpable risk and skill on display. You stand next to a closed-off rally road—they’re called “stages”—during competition, and it’s instantly obvious why people do this sort of thing.</p>
+<p>Reason 1: They enjoy getting off the couch and having adventures.<br>Reason 2: They are moderately attracted to risk.<br>Reason 3: They think BASE jumping is for narcotized children.</p>
+<p>It’s also clear why the pastime’s apex, the FIA-sanctioned World Rally Championship, is one of the most-watched sporting events in the world.</p>
+<p>If you are not now interested, feel free to leave the room. Or perhaps continue rotting in your casket/urn/final resting place, because you are most likely dead.</p>
+<p>Several years ago, I embarked upon a brief career as an amateur stage-rally co-driver. That’s the guy or gal who rides shotgun, wearing full fire gear and a helmet, and helps the driver go quickly by shouting out instructions. Co-driving taught me much about the sport’s process and genius—these people are some of the most talented hotshots on the planet, and rally is a highly organized matrix of processes. Their driving is less insanity and more a highly developed skill. Call it part art, part science, part unknowable risk. It’s like doing calculus while simultaneously painting a still life and falling out of a plane.</p>
+<p>In a nutshell, a rally driver’s magic is rooted in four things:</p>
+<ol>
+<li>Setting Up the Car<br>Race vehicles are purpose-built to go racing, to be durable and capable in their given environment, withstanding stresses that would rip most road cars to pieces. Road-racing cars are set up for intense forces under braking and cornering. Motocross bikes are designed to take the pounding and lumps of a dirt course without slowing down. And oval machines, like NASCAR stockers or Indy Cars, have to push through the air at ridiculous velocity, but also be ready to hit things at that velocity while maintaining a semblance of driver safety. So they’re generally overbuilt.</li>
+</ol>
+<p>Rally cars do all of that at once. They are also—and this is key—set up to rotate at the drop of a hat.</p>
+<p>“Rally driving is the most exciting form of motorsport because it encompasses the best aspects of all the others,” says Wyatt Knox, special projects director for New Hampshire’s world-renowned Team O’Neil Rally School. Knox is an accomplished rally driver, a part-time co-driver, a great teacher, and just the best kind of multi-talented New England woodland weirdo you’d ever want to meet. (Disclosure: He’s also a friend.)</p>
+<p>“To succeed,” he says, “you need to be a drag racer, a mechanic, an ice racer, a tarmac ace, a navigation expert, a drifter, an endurance racer, and more … all at the same time.”</p>
+<p>Note that he said “drifter.” Rally cars are constantly sliding, partly because that gives the driver the most options: When a car is sliding in rally, it’s generally tail-first, a condition known as oversteer. (Most people know this from snow driving, where most rear-drive street cars will “fishtail” when given too much gas.) Rally cars have suspensions set up to oversteer at the slightest provocation. You turn in sharply, they oversteer. You trail the brakes into a corner, they oversteer. You give them too much throttle in the right conditions, they oversteer.</p>
+<p>Oversteer is inherently unstable, and can lead to a spin. It’s yaw, and yaw in a four-wheeled vehicle generally means the driver has applied a control input—brakes, throttle, steering, a combination of all three—that unsettled the car and broke traction. But it also means a ready change in direction—the instability that comes from a car already up and sliding can be used to quickly change heading. (Remember how that fishtailing car would swing its nose around suddenly if you didn’t use a careful right foot?)</p>
+<p>And that hints at the crucial part of rally: You don’t always know what’s around the next bend, so you have to be able to adjust the car on the fly. Contrast that with a road-racing car, which doesn’t necessarily have an adjustable attitude while sliding at the limit.</p>
+<p>Your grandmother would hop into a pro-grade rally car, drive it down a dirt road, and end up off a cliff in the first five minutes. Other people do astonishing things. Hooray for God-given talent.</p>
+<ol start="2">
+<li>The Co-Driver<br>A rally driver’s job would be possible without a co-driver, but it wouldn’t be anywhere near as compelling. Or, in most circumstances, as fast.</li>
+</ol>
+<p>“The co-driver is essentially just telling the driver what is coming up so that he can plan what to do with the car,” Knox says. “A rally typically covers over a hundred miles of road, often without ever seeing the same turn twice. The co-driver tells the driver about the turns coming up, as well as the lengths of straights, any crests, surface changes, jumps, etc. That information comes from a reconnaissance run, or ‘recce,’ made by teams just before the race, when they have their only chance to see the route.”</p>
+<p>The co-driver calls these notes ahead of time, depending on speed and the driver’s preference. Some drivers want as much information as they can hold in their heads, as far as five turns ahead. Others want as little information as necessary, in just enough time to react.</p>
+<ol start="3">
+<li>The Pace Notes<br>Pace notes are a spoken code. The co-driver narrates them during a rally as the driver runs flat-out down what is usually a tight and winding single-lane road. These notes let the driver haul into blind corners at speed, knowing roughly how fast to go and how much to pivot the car.</li>
+</ol>
+<p>Call this the rally analogue for going to a permanent race track you’ve seen before. Most road-racing drivers are faster on a given race track once they’ve got a few laps there. This is the equivalent, only these guys have never seen or can’t possibly remember the whole race course, and they might never see it again.</p>
+<p>Pace notes can be hard to follow if you don’t know the language, but they’re based in logic, and they make sense. Corner types are numbered to correspond with their radius, landscape features are called out. (A typical line might be “Right 5 tightens over crest,” for example, which means a relatively fast right that decreases in radius over a hill.)</p>
+<p>Notes remove an element of the unpredictable. Only you can’t predict everything in rally, because you’re not on a track, you’re in the real world. Real roads have animals, changing pavement and weather, and boulders in the road that weren’t there a week ago.</p>
+<p>Which brings us to …</p>
+<ol start="4">
+<li>Reacting to the Unknown<br>At its core, this sport is about the unknown. You don’t know what’s in that forest, but you have to race through it. You don’t know what the weather’s going to be—nasty mud? blinding snow? draining heat?—but you have to get through it. All of this, at the limit of your talent and the car’s ability to go quickly. The car will break. You will race over long days and into the night. You will come close to losing your mind from stress and exertion. And many, many things will go wrong, because when you are hauling ass through the woods in the middle of nowhere, there is a lot to go wrong.</li>
+</ol>
+<p>A short list of the things I’ve seen, in less than a decade of spectating and participating: Wheels fall off when you hit things. Windshields come apart when you hit things. (I once saw a team use its car’s rear window, removed and duct-taped into place up front, as a new windshield.) Anything on a car that can blow up, blows up, and you don’t always have the right stuff to fix it. Drivers get sick, co-drivers get sick. Cars roll over and fall off cliffs. They end up in trees.</p>
+<p>“The key to rally driving is simply humility and perseverance,” Knox says, “hopefully coupled with a sense of humor. It’s a long, very complex road to the top and there will be many failures along the way. The key is to learn as much as possible from each and always keep moving forward.</p>
+<p>“The best rally drivers are also typically very humble. They’ll usually blame themselves for any troubles or failures at a race, because that’s how they learn and improve. Drivers who blame their equipment, the conditions, or simple circumstance for their problems usually don’t last long or make it far.”</p>
+<p>And nine times out of ten, the teams, the mechanics, and the drivers find a way to go on. Which is part of what makes the sport great.</p>
+<p>Like any sport, rally is easier to love when you know what’s going on. The above is a good primer, and should help you start watching. If you want more, hit up a school, read, or simply go watch a local NASA, Rally America, or WRC event.</p>
+<p>“The easiest way to get involved is to show up and spectate an event.” Knox says. “Or better yet, volunteer to help the organizers. A rally takes hundreds of volunteers to function, doing everything from HAM radio operation to running time controls and supervising spectator locations. Volunteering also gets you access to a lot of places and people that you’d never get just spectating, and it’s typically a lot of fun.”</p>
+<p>“Rally driving simply changes your entire outlook on life. After sliding through the forest sideways at 90 mph, you realize that most day-to-day problems are pretty insignificant.”</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sports/" rel="tag">sports</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-shamanism"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/18/shamanism/"
+    >shamanism</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/18/shamanism/" class="article-date">
+  <time datetime="2020-07-19T01:25:38.000Z" itemprop="datePublished">2020-07-18</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Shamanism is an ancient healing tradition and moreover, a way of life. It is a way to connect with nature and all of creation. The word <em>shaman</em> originates from the Tungus tribe in Siberia. Anthropologists coined this term and have used it to refer to the spiritual and ceremonial leaders among indigenous cultures worldwide. The word <em>shamanism</em> can be used to describe the ancient spiritual practices of these indigenous cultures. Clearly, the countless similarities between various ancient traditions played a role in the continual generalization of the word.</p>
+<p>Over the past few decades, the term “<em>shamanism</em>” has been popularized throughout the western world, especially in new-age circles. Today, it can be difficult to distinguish between traditional forms of shamanism and modernized, often esoteric practices that utilize the term.</p>
+<p>One could view shamanism as the universal spiritual wisdom inherent to all indigenous tribes. As all ancient spiritual practices are rooted in nature, shamanism is the method by which we as human beings can strengthen that natural connection.</p>
+<h2 id="Aspects-of-Shamanism"><a href="#Aspects-of-Shamanism" class="headerlink" title="Aspects of Shamanism"></a>Aspects of Shamanism</h2><h4 id="CONNECTION-WITH-NATURE"><a href="#CONNECTION-WITH-NATURE" class="headerlink" title="CONNECTION WITH NATURE"></a>CONNECTION WITH NATURE</h4><p>Shamanism stems from nature itself. Shamanic practices tap into the power Mother Earth has to offer and the ancient indigenous teachings are derived from the simple truths of nature.</p>
+<h4 id="HEALING-OF-SELF-amp-COMMUNITY"><a href="#HEALING-OF-SELF-amp-COMMUNITY" class="headerlink" title="HEALING OF SELF &amp; COMMUNITY"></a>HEALING OF SELF &amp; COMMUNITY</h4><p>Shamanism is not only concerned with the health of the individual, but also with the health of the entire community. This includes all people, plants, animals, and all of life.</p>
+<h4 id="SPIRITUAL-PRACTICE"><a href="#SPIRITUAL-PRACTICE" class="headerlink" title="SPIRITUAL PRACTICE"></a>SPIRITUAL PRACTICE</h4><p>Daily spiritual practice allows for the continued and exponential growth of both body and soul. The goal is to create internal and external harmony with all creation.</p>
+<h4 id="PILGRIMAGE-TO-SACRED-PLACES"><a href="#PILGRIMAGE-TO-SACRED-PLACES" class="headerlink" title="PILGRIMAGE TO SACRED PLACES"></a>PILGRIMAGE TO SACRED PLACES</h4><p>Learning to approach and connect with sacred places is an intrinsic part of shamanism. By honoring natural wonders such as rivers, lakes, mountains, and caves, we reawaken and invigorate the energy of the land.</p>
+<h4 id="VISION-amp-CEREMONY"><a href="#VISION-amp-CEREMONY" class="headerlink" title="VISION &amp; CEREMONY"></a>VISION &amp; CEREMONY</h4><p>Ceremonies to honor the spirits of nature help promote harmony and balance. The path of shamanism never ends. It is believed that so long as these ceremonies continue, the world will go on.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/religion/" rel="tag">religion</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-mongolian-beliefs"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/17/mongolian-beliefs/"
+    >mongolian_beliefs</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/17/mongolian-beliefs/" class="article-date">
+  <time datetime="2020-07-17T23:09:31.000Z" itemprop="datePublished">2020-07-17</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>Tengrism in Mongolia</strong></p>
+<p>The traditional religion of Mongolia is Tengrism, a shamanic faith shared by a number of Eurasian steppe cultures. Its major deity, Tengri of the eternal blue sky, is a supreme creator being who sees and understands all things. Lesser gods like the Earth-Mother, Eje, and ancestral spirits are also worshipped. Tengrism emphasizes spiritual harmony with the universe and nature. People find happiness and meaning by leading virtuous lives within their society. In the same way, a virtuous ruler passes prosperity on to his subjects. Shamans work and negotiate with the gods and spirits, though regular people may conduct sacred rites as well.</p>
+<p><strong>Religious Diversity in the Mongol Empire</strong></p>
+<p>Genghis Khan practiced Tengrism and attributed his success to Tengri, but the empire he founded was known for its religious tolerance. The shamanic faith did not need to convert other populations, and it taught that any righteous person could find favor in Tengri. The Mongols’ respect for the customs of conquered nations allowed them to rule over Muslim, Buddhist, Christian, Taoist, Jewish, and Confucian subjects, among others. Citizens of all faiths served in Mongol courts as advisers and bureaucrats. Emperors like Kublai Khan even hosted debates between scholars from different religions. Kublai was known to admire Buddhism, Confucianism, and Christianity in particular. In 1295, the leader of the Middle Eastern Ilkhanate, Mahmud Gazan, converted to Islam. Buddhism and Islam proved especially popular throughout the empire.</p>
+<p><strong>Buddhism and Modern Worship in Mongolia</strong></p>
+<p>Mongol rule in China ended in 1368 with the fall of the Yuan dynasty. In time, Mongolia itself came under the control of Qing China. During this period, Tibetan Buddhism became its most popular religion. Buddhist monasteries, once nomadic as well, grew to be the major power centers of Mongolia. They offered education and community in Mongolian society, and about a third of men joined their ranks as lamas. Tibetan Buddhism shrank during the socialist era, sometimes by violent repression. Buddhism has seen a recent surge in popularity in Mongolia today, alongside a new appreciation for its ancestral shamanism.</p>
+<p>According to the CIA World Factbook, the current religious makeup of Mongolia is as follows:</p>
+<ul>
+<li>Buddhist: 53%</li>
+<li>None: 38.6%</li>
+<li>Muslim: 3%</li>
+<li>Shamanist: 2.9%</li>
+<li>Christian: 2.2%</li>
+<li>Other: 0.4%</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongolia/" rel="tag">mongolia</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+    <article
+  id="post-mongolian-culture"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/17/mongolian-culture/"
+    >mongolian_culture</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/17/mongolian-culture/" class="article-date">
+  <time datetime="2020-07-17T09:30:48.000Z" itemprop="datePublished">2020-07-17</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>Culture</strong></p>
+<p>Mongolia is well known for its nomadic traditions. The nomadic way of lifestyle is still practiced today in the rural areas of the country. Nomads follow a seasonal routine raising and breeding the five main types of stock – goat, sheep, cattle (including yaks), camel and horse, migrating from place to place following the most favorable pastures and campsites.</p>
+<p><strong>Language</strong></p>
+<p>The Mongolian language is the official language of Mongolia. It belongs to the Ural-Altaic language family, which includes Kazakh, Turkish, Korean and Finnish. Today more than 10 million people speak Mongolian. They live in Mongolia, Buriat republic of Russian federation, Inner Mongolia in China, Shingjan and Gansu regions of China, Tibet and even a few number of people living in the State of New Jersey in the USA . In Mongolia, the Khalkha dialect, written in Cyrillic, is predominant. The classical Mongolian script, also known as Uyghurjin, was the first writing system created specifically for the Mongolian language, and was the most successful until the introduction of Cyrillic in 1946.</p>
+<p><strong>Religion</strong></p>
+<p>Shamanism – Shamanism goes back in Mongolian history long before Chinggis Khan’s time, but it was Chinggis Khan that made it into such a fundamental part of the Mongolian tradition. At that time the Mongolians were worshipped “Hoh Tenger” (blue skies). According to this belief the skies are the father, and the earth is the mother of all beings in the universe. As a civilization totally dependent on the forces of nature, the Mongolians worshipped the various elements of nature, praying to their ancestors who have transformed into mythical spiritual animals to provide them with good weather, health and success. Though oppressed during communist time, Shamanism is still practiced in Mongolia, and people who seek help will approach a Shaman for a blessing or cure and even to get hints about their future.</p>
+<p>Buddhism- Mongolians have followed Buddhism since the 16th century, when the Mongolian king, Altan Khan, was converted by Tibetan lamas. Mongolians follow Tibetan Buddhist teachings, (also called Lamaism), the body of religious Buddhist doctrine and institutions characteristic of Tibet and the Himalayan region. Today, Mongolia still embraces its Buddhist heritage. Monasteries are being restored, and are once again crowded with worshippers. The Dalai Lama is an enormously popular figure and has visited the country several times. For many Mongolians, the practice of Buddhism is flavored with traces of Shamanism, an even more ancient spirituality.</p>
+<p>Other Religions- Mongolia also has a small Muslim community — about 6 per cent of the population. These are mostly ethnic Kazakhs living in the far west of the country.</p>
+<p><strong>Food</strong></p>
+<p>The foundation of the traditional Mongolian food is based on the products of the animal nomadic herders raise in the Mongolian steppes – meat and milk. Those simple materials are processed with a variety of methods, and combined with vegetables and flour.</p>
+<p><strong>Arts</strong></p>
+<p>Mongolian traditional music composes a wide range of instruments and uses for the human voice found almost nowhere else. For instance, the Mongol Khoomii may be fascinating for foreigners. It is a musical, which can be delivered with a help of a guttural voice and specific way of breathing. One tone comes out as a whistle-like sound, the result of the locked breath in the chest being forced out through the throat in a specific way, while a lower tone sounds as a base.</p>
+<p>The unique traditional singing style is known as Urtiin duu or long songs. It is one of the most ancient genres of Mongolian musical art, a professional classical art of the 13th century. Urtiin duu involves extraordinarily complicated, drawn-out vocal sounds. It has philosophical style, evocative of vast, wide spaces and it demands great skill and talent from the singers in their breathing abilities and guttural singing techniques.</p>
+<p>Another popular form of art in Mongolia is the playing of the Morin Khuur, the Horse Headed Fiddle. It is used in Khoomii singing and in other forms of traditional music. The origins of the Morin Khuur lie with the Chinese two-stringed fiddle. With its typical horse-head carving crowning the instrument, it plays a major part in all classic Mongolian forms of music. To this day people of all ages play it.</p>
+<p><strong>Sports</strong></p>
+<p>National sports include wrestling, archery and horseracing and they are known as the Three Games of Men, rooted in the mists of antiquity and continue to be very popular among the Mongolians today. Every <em>year in mid-July, communities across Mongolia celebrate these sports. This celebration is the Naadam Festival.</em></p>
+<p>Wrestling is the most popular of all Mongolian sports and is the highlight of the Naadam. Historians claim that Mongol-style wrestling originated some seven thousand years ago. Hundreds of wrestlers from different cities and aimags take part in the national wrestling competition. There are no weight categories or age limits. Each wrestler has his own attendant herald. The aim of the sport is to knock one’s opponent off balance and throw him down, making him touch the ground with his elbow and knee.</p>
+<p>Horseracing is an important part of the Naadam Festival. The riders are aged from five to 12. Mongolian kids are excellent riders, for both girls and boys have been riding since infancy. As a popular saying goes, “The nomad is born in the saddle”. Competitions are not held on special racetracks, but right across the steppe, where riders are confronted with various obstacles like rivers, ravines and hills. The distance varies according to the ages of horses, between 15 and 35 km.</p>
+<p>Information about archery can be found in literary and historical documents of the 13th century Mongolia and even before. According to historians, archery contests began in the 11th century. The Mongols use a compound bow, built up of layers of horn, sinew, bark and wood.</p>
+<p>Beginning the 20th century modem types of sport started to develop in Mongolia.  After the Mongolian Sports Committee was founded in 1947 voluntary sports clubs and associations were formed. These organizations played a tangible role in promoting sport as a mass movement. Nowadays, track and field sports, football, basketball, volleyball, skating, skiing, motorcycle racing, mountain climbing, chess and other sports are widely played in Mongolia.</p>
+<p><strong>Traditional housing – The Mongolian Ger</strong></p>
+<p>With a history of over a thousand years, this portable dwelling made of wood lashed together with leather thongs and covered with felt is the home of the Mongolian nomads. Easy to erect and dismantle, the ger, its furnishings, and the stove inside can be carried by just three camels, or wagons pulled by yaks making it ideal for the nomadic way of life.</p>
+<p>The average ger is small but spacious enough to provide adequate living space for a family, is wind resistant, and has good ventilation. Gers are constructed of a latticed wood structure covered with layers of felt and canvas. The felt helps the ger retain heat and the canvas over it sheds rain.</p>
+<p><strong>National Holidays</strong></p>
+<p>Naadam Festival- probably the most well-known Mongolian Festival. Originating from the beginning of the previous century, the festival consists of the “three manly sports”- wrestling, horse riding and archery, accompanies by festivities, dancing, singing and socializing. The event is celebrated all over Mongolia, with the main events taking place in the capital.</p>
+<p>Tsagaan Sar- the “white moon” celebrations are celebrated at the Lunar New Year. It is a tradition to climb a sacred mountain on the first day of the New Year, to welcome the first morning of the New Year on the mountain peak. On the three following days, Mongolians visit their relatives and friends, and enjoy traditional food and drink.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/culture/" rel="tag">culture</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+
+
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">prev page</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/4/">next page</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

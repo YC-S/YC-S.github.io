@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>数据库基础知识复习 |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-数据库基础知识复习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据库基础知识复习
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time datetime="2020-05-03T18:37:56.000Z" itemprop="datePublished">2020-05-03</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ol>
+<li>数据视图与数据模型</li>
+</ol>
+<p>数据抽象共有三个层次：物理层、逻辑层和视图层。在逻辑层使用的数据模型包括两类：一类是概念数据模型，主要用于数据库设计，它能被一般的用户理解，与人的思维表达方式比较接近。这样的模型有实体-联系模型（ERM）；另一类是逻辑数据模型，按计算机系统的观点对数据建模，使得数据更适合用计算机加以表示。这里模型主要用于DBMS的实现，比如关系模型、面向对象模型、层次模型和网状模型。设计师构建数据库模式的方法通常是首先使用E-R模型在高层对数据建模，然后再将其转变成关系模型。在物理层使用的数据模型称为物理数据模型。</p>
+<p>数据模型通常由数据结构、数据操作和完整性约束三部分组成。</p>
+<ol start="2">
+<li>数据库语言</li>
+</ol>
+<p>根据功能不同，可以将数据库系统提供的语言分成三种类型：1）数据定义语言（DDL），用于定义数据库模式；2）数据操纵语言（DML），用于对数据库进行查询和更新；3）数据控制语言（DCL），用于对数据进行权限管理。</p>
+<ol start="3">
+<li>数据库模式</li>
+</ol>
+<p>根据数据的不同抽象层次，数据库有三级模式：物理模式（内模式）在物理层描述数据库中全体存储结构和存取方法，而逻辑模式（概念模式）则在逻辑层描述数据库中全体数据的逻辑结构和特征。在视图层也可分为若干模式，称为子模式（外模式），它描述了数据库用户能够看见和使用的局部数据的逻辑结构和特征。通常一个数据库只有一个物理模式和一个逻辑模式，但是子模式有若干个。</p>
+<ol start="4">
+<li>E-R图</li>
+</ol>
+<p>E-R图由以下元素构成：1）矩形，代表实体型；2）椭圆，代表属性；3）菱形，代表联系；4）线段，将属性和实体性相连，或将实体型和联系相连。</p>
+<ol start="5">
+<li>关系模型</li>
+</ol>
+<p>关系模型由关系数据结构、关系操作集合和关系完整性约束三部分构成。在关系模型中，现实世界实体以及实体间的联系均用关系来表示。</p>
+<p>关系模型中常用的关系操作包括：选择、投影、连接、除、并、交、差等查询操作和增加、删除、修改两大部分。关系操作的特点是集合操作方式，即操作的对象和结果都是集合。关系操作可以使用两种方式定义：基于代数的定义称为关系代数；基于逻辑的定义称为关系演算。由于使用变量的不同，关系演算又分为元组关系演算和域关系演算。</p>
+<p>关系模型允许定义三类完整性约束：实体完整性、参照完整性和用户定义完整性。其中实体完整性和参照完整性是关系模型必须满足的完整性约束条件。实体完整性规则是：关系的主码不能取空值。参照完整性规则是：外码必须是另一个表中主码的有效值，或者是“空值”。</p>
+<ol start="6">
+<li>连接运算</li>
+</ol>
+<p>连接运算是从两个关系的乘运算结果中选取属性间满足一定条件的元组，构成新的关系。连接运算有两种：等值连接和自然连接。自然连接要求两个关系中进行比较的分量必须是相同的属性组，并且在结果中把重复的属性列去掉。</p>
+<ol start="7">
+<li>SQL</li>
+</ol>
+<p>关系数据库系统支持三级模式结构，其模式（数据库）、外模式和内模式中的基本对象有表、视图和索引。因此SQL的数据定义功能包括模式定义、表定义、视图定义和索引定义。SQL通常不提供修改模式定义、修改视图定义和修改索引定义。用户如果想修改这些对象，只能先将它们删除，然后再重建。</p>
+<ol start="8">
+<li>基本表的操作</li>
+</ol>
+<p>1)       创建表</p>
+<p>create table 基本表名</p>
+<p>(列名类型，</p>
+<p>……</p>
+<p>完整性约束，</p>
+<p>……</p>
+<p>)</p>
+<p>完整性约束主要有三种子句：主键子句（primary key）、外键子句（foreignkey）和检查子句（check）。</p>
+<p>2)       修改表</p>
+<p>alter  table  &lt;基本表名&gt;  add  &lt;列名&gt;  &lt;类型&gt;</p>
+<p>alter  table  &lt;基本表名&gt;  drop  &lt;列名&gt;  &lt;类型&gt;  [cascade | restrict]（cascade表示所有引用到该列的视图和约束也要一起自动删除；restrict表示在没有视图或约束引用该属性时，才能在本表中删除该列，否则拒绝删除。）</p>
+<p>alter  table  &lt;基本表名&gt;  modify  &lt;列名&gt;  &lt;类型&gt;</p>
+<p>3)       撤销表</p>
+<p>drop  table  &lt;基本表名&gt;  [cascade | restrict]</p>
+<ol start="9">
+<li>SQL查询</li>
+</ol>
+<p>where子句中可以使用下列运算符：</p>
+<p>l  算术运算符</p>
+<p>l  逻辑运算符</p>
+<p>l  字符串匹配运算符，包括like，not like</p>
+<p>l  集合成员资格运算符，包括in，not in</p>
+<p>l  谓词，包括exists，all，some，unique</p>
+<p>l  聚合函数，包括avg，min，max，sum和count</p>
+<p>l  还可以是另一个select语句</p>
+<p>select语句完整语法：</p>
+<pre><code>select  目标表的列名或列表达式序列
+
+from 基本表名和（或）视图序列
+
+[where 行条件表达式]
+
+[group by  列名序列]
+
+       [having  组条件表达式]
+
+[order by 列名[asc | desc]]</code></pre><p>整个语句的执行过程如下：</p>
+<p>1)       读取from子句中基本表、视图的数据，执行笛卡尔积操作；</p>
+<p>2)       选取满足where子句中给出的条件表达式的元组；</p>
+<p>3)       按group子句中指定列的值分组，同时提取满足having子句中组条件表达式的那些组；</p>
+<p>4)       按select子句中给出的列名或列表达式求值输出；</p>
+<p>5)       order子句对输出的目标表进行排序，按附加说明asc升序排列，或按desc降序排列。</p>
+<ol start="10">
+<li>视图</li>
+</ol>
+<p>创建视图：</p>
+<pre><code>create view &lt;视图名&gt; [&lt;列名&gt; &lt;列名&gt;…]
+
+as &lt;子查询&gt;
+
+[with check option]</code></pre><p>with checkoption表示对视图进行增删改是要保证操作的行满足视图定义中的谓词条件（即子查询中的条件表达式）。</p>
+<p>视图最终是定义在基本表之上的，对视图的一切操作最终也要转换为对基本表的操作。视图的好处：</p>
+<p>l  视图能够简化用户的操作</p>
+<p>l  视图是用户能以多种角度看待同一数据</p>
+<p>l  视图对重构数据库提供了一定程度的逻辑独立性</p>
+<p>l  视图能够对机密数据提供安全保护</p>
+<ol start="11">
+<li>事务</li>
+</ol>
+<p>事务是一系列的数据库操作，是数据库应用程序的基本单元，是反映现实世界需要以完整单位提交的一项工作。事务是用户定义的一个数据库操作序列。</p>
+<p>事务的四个特征：原子性、一致性、隔离性和持久性。</p>
+<p>事务处理包括数据库恢复和并发控制。数据库恢复有两个目的：保证事务的原子性和使数据库能恢复到正确状态。</p>
+<p>数据恢复的原理概括为冗余，建立冗余数据最常用的技术是数据转储和登录日志文件。数据转储是由DBA定期地将整个数据库复制到磁盘或另一个磁盘上保存起来的过程。</p>
+<ol start="12">
+<li>触发器</li>
+</ol>
+<p>一个触发器用来定义一个条件以及在该条件为真时需要执行的动作。通常，触发器的条件以断言的形式定义。动作以过程的形式定义。</p>
+<ol start="13">
+<li>索引</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2020/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/" rel="tag">database</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/05/03/%E7%9C%8B%E4%B8%8D%E8%A7%81%E7%9A%84%E2%80%9C%E9%81%8D%E5%8E%86%E2%80%9D/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            看不见的“遍历”
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/03/%E4%B8%BA%E5%95%A5%E6%84%9F%E8%A7%89%E7%BE%8E%E5%9B%BD%E7%8E%B0%E5%9C%A8%E6%81%A8%E4%B8%8D%E5%BE%97%E4%B8%AD%E5%9B%BD%E5%BD%BB%E5%BA%95%E5%BA%9F%E6%8E%89%E6%89%8D%E7%94%98%E5%BF%83/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">为啥感觉美国现在恨不得中国彻底废掉才甘心</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

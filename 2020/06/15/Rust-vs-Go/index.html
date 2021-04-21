@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+	
+
+		<head>
+			<meta charset="utf-8" />
+			 
+			<meta name="keywords" content="life,think,work,blog,code" />
+			 
+			<meta name="description" content="a place holder" />
+			
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, maximum-scale=1"
+			/>
+			<meta
+				name="google-site-verification"
+				content="Xe5wkkWgdmMwA81kCWOHLlJSlYSRE47NKPlVzl8ynK8"
+			/>
+			<title>Rust_vs_Go |  Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+			
+			<link rel="shortcut icon" href="/favicon.ico" />
+			 
+<link rel="stylesheet" href="/dist/main.css">
+
+			<link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+			/>
+			
+<link rel="stylesheet" href="/css/custom.css">
+ 
+			<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+			 
+ 
+
+		<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+	</html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Rust-vs-Go"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Rust_vs_Go
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/06/15/Rust-vs-Go/" class="article-date">
+  <time datetime="2020-06-16T01:10:53.000Z" itemprop="datePublished">2020-06-15</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>In less than a decade, two new programming languages have emerged as major options for enterprise development: <a target="_blank" rel="noopener" href="https://www.infoworld.com/article/3201037/whats-new-in-googles-go-language.html">Go</a>, which was created at Google, and <a target="_blank" rel="noopener" href="https://www.infoworld.com/article/3218074/what-is-rust-safe-fast-and-easy-software-development.html">Rust</a>, which was created at Mozilla.</p>
+<p>Both languages offer indispensable features for modern software development: a sophisticated and integrated toolchain, memory safety, an open source development model, and strong communities of users.</p>
+<p>Apart from those similarities, Rust and Go are dramatically different. They were built to scratch different itches, fulfill different demands, and write different kinds of programs.</p>
+<p>Thus, comparing Rust and Go isn’t about which language is “objectively better,” but about which language is best for a given programming task. With that in mind, let’s look at the main ways Rust and Go differ, and the kinds of work each is best suited for.</p>
+<h2 id="Rust-vs-Go-Performance"><a href="#Rust-vs-Go-Performance" class="headerlink" title="Rust vs. Go: Performance"></a>Rust vs. Go: Performance</h2><p>On the list of Rust’s major advantages, performance ranks right at the top with safety and ease, and may be <em>the</em> number-one item. Rust programs are designed to run at or near the speed of C and C++, thanks to Rust’s zero-cost runtime abstractions for memory handling and processing.</p>
+<p>It’s always possible to write a slow Rust program, but at least you can be sure that Rust is not preemptively sacrificing performance for safety or convenience. What Rust <em>does</em> cost is an effort on the part of the developer to learn and master the language’s abstractions for memory management. (More on memory management below.)</p>
+<p>Go, by contrast, does trade some runtime speed for developer convenience. Memory management is handled by the Go runtime (again, more below), so there is an inevitable amount of runtime-associated overhead. But for many scenarios, this trade-off is negligible. Go is by default many times faster than other languages of convenience (e.g., Python).</p>
+<p>In short, Rust <em>is</em> faster overall, but for most workaday use cases the difference in speed between Rust and Go will be marginal. In cases where performance is an absolute requirement, Rust can excel in ways that Go cannot.</p>
+<h2 id="Rust-vs-Go-Memory-management"><a href="#Rust-vs-Go-Memory-management" class="headerlink" title="Rust vs. Go: Memory management"></a>Rust vs. Go: Memory management</h2><p>Memory management in Rust and Go are strongly related to the performance behaviors in both languages.</p>
+<p>Rust uses compile-time ownership strategies for memory management by way of zero-cost abstractions. This means the vast majority of memory management issues can be caught before a Rust program ever goes live. If a Rust program isn’t memory safe, then it doesn’t compile. Given how much of our world is built atop software that is routinely found to be unsafe due to bad memory management, the Rust approach is way overdue.</p>
+<p>As noted above, this safety comes at the cost of Rust’s more challenging learning curve: Programmers must know how to use Rust’s memory management idioms properly, and that requires time and practice. Developers coming from the worlds of C, C++, C#, or Java must rethink how they write code when they sit down with Rust.</p>
+<p>Like Rust, Go is memory safe, but that’s because memory management is handled automatically at runtime. Programmers can write thousands of lines of Go code and never once have to think about allocating or releasing memory. Programmers do have some control over the garbage collector at runtime. You can <a target="_blank" rel="noopener" href="https://blog.cloudflare.com/go-dont-collect-my-garbage/">change garbage collection thresholds</a> or trigger collections manually to prevent garbage collection cycles from interfering with operations.</p>
+<p>Programmers can also perform <em>some</em> manual memory management in Go, but the language deliberately stacks the deck against doing so. For instance, you can use pointers to access variables, but you can’t perform pointer arithmetic to access arbitrary areas of memory unless you use the <code>unsafe</code> package, an unwise choice for software that runs in production.</p>
+<p>If the programming task at hand requires you to allocate and release memory manually—e.g., for low-level hardware or maximum-performance scenarios—Rust is designed to accommodate those needs. Nevertheless, don’t assume that Go’s automatic memory management disqualifies it from creating robust software for your task.</p>
+<h2 id="Rust-vs-Go-Development-speed"><a href="#Rust-vs-Go-Development-speed" class="headerlink" title="Rust vs. Go: Development speed"></a>Rust vs. Go: Development speed</h2><p>Sometimes development speed is more important than program speed. Python has made a career out of being not-the-fastest language to run, but among the fastest languages to <em>write</em> software in. Go has the same appeal; its directness and simplicity make for a speedy development process. Compile times are short, and the Go runtime is faster than Python (and other interpreted, developer-friendly languages) by orders of magnitude.</p>
+<p>In short, Go offers both simplicity and speed. So what’s missing? Some features found in other languages (e.g., generics) have been omitted to make the language easier to learn, easier to master, and easier to maintain. The downside is that some programming tasks aren’t possible without a fair amount of boilerplate.</p>
+<p>Rust has more language features than Go, and it takes longer to learn and master. Rust’s compile times also tend to be longer than equivalent Go programs, especially for applications with large dependency trees. This remains true even after a concerted effort by the Rust project to shorten compile times. </p>
+<p>If a fast development cycle and the need to bring people on board a project quickly are top priorities, Go is the better choice. If you’re less concerned about development speed, and more concerned with memory safety and execution speed, pick Rust.</p>
+<h2 id="Rust-vs-Go-Concurrency-and-parallelism"><a href="#Rust-vs-Go-Concurrency-and-parallelism" class="headerlink" title="Rust vs. Go: Concurrency and parallelism"></a>Rust vs. Go: Concurrency and parallelism</h2><p>Modern hardware is multi-core, and modern applications are networked and distributed. Languages that don’t plan for these realities are behind the curve. Programmers need to be able to run tasks independently, whether on a single thread or multiple threads, and to share state between tasks without risking data corruption. Rust and Go both provide ways to do this.</p>
+<p>Concurrency was baked into the Go language’s syntax from the beginning, by way of goroutines (lightweight threads) and channels (communication mechanisms for goroutines). These primitives make it easy to write applications (such as network services) that must handle many tasks concurrently without risking common issues like race conditions. Go doesn’t make race conditions <em>impossible</em>, but provides native test mechanisms to warn the programmer if race conditions could occur at runtime.</p>
+<p>Rust only recently gained native concurrency syntax, in the form of <a target="_blank" rel="noopener" href="https://rust-lang.github.io/async-book/03_async_await/01_chapter.html">the <code>async/``.await</code> keywords</a>. Before <code>async</code>/<code>.await</code>, concurrency came by way of a crate or package for Rust called <code>futures</code>. Although Rust’s concurrency lacks the years of consolidated developer experience behind Go’s concurrency, it inherits the advantage of Rust’s memory safety—that is, Rust code that could expose race conditions simply won’t compile. Concurrent or asynchronous operations will be harder to write in Rust, due to Rust’s syntax rules, but it will be durable in the long run.</p>
+<h2 id="Rust-vs-Go-Interoperability-with-legacy-code"><a href="#Rust-vs-Go-Interoperability-with-legacy-code" class="headerlink" title="Rust vs. Go: Interoperability with legacy code"></a>Rust vs. Go: Interoperability with legacy code</h2><p>New languages like Rust and Go aim for memory safety and programmer convenience in ways that earlier languages didn’t fathom. But the new always has to co-exist to some degree with the old. To that end, Rust and Go both interoperate with legacy C code, although with different restrictions in each case.</p>
+<p>Rust can talk directly to C libraries by way of the <code>extern</code> keyword and the <code>libc</code> “crate” (Rust’s name for a package), but all calls to such libraries have to be tagged as unsafe. In other words, Rust can’t guarantee their memory or thread safety; you need to <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/nomicon/ffi.html#creating-a-safe-interface">manually ensure that interfaces to C code are safe</a>. Calling into C++ code, on the other hand, isn’t supported at all (at least, not yet) unless said code has a C-compatible interface. Many examples of how to wrap code with Rust’s FFI (Foreign Function Interface)—for C and other languages—can be found at the <a target="_blank" rel="noopener" href="http://jakegoulding.com/rust-ffi-omnibus/">Rust FFI Omnibus</a> website.</p>
+<p>Go provides the <code>cgo</code> package for working with C. The <code>cgo</code> package allows you to call into C libraries, use C header files in your Go code, and convert common data types between C and Go (e.g., strings). However, because Go is memory-managed and garbage-collected, you have to <a target="_blank" rel="noopener" href="https://golang.org/cmd/cgo/#hdr-Passing_pointers">ensure that any pointers you pass to C</a> are handled correctly. </p>
+<p>In short, Rust is slightly friendlier regarding C interop than Go, so anything with major dependencies on existing C may tip the scale toward Rust. In both Rust and Go, though, interoperability with C comes at some cost to the developer: more conceptual overhead, slower compile times, more complex tooling, harder debugging.</p>
+<p>Note that Rust and Go can always interface with other code at higher levels—e.g., exchanging data via network sockets or named pipes rather than function calls—but these alternatives come at the cost of speed.</p>
+<h2 id="Rust-vs-Go-Summing-up"><a href="#Rust-vs-Go-Summing-up" class="headerlink" title="Rust vs. Go: Summing up"></a>Rust vs. Go: Summing up</h2><p>Choosing between Rust and Go for a software development project is mainly about picking the language that has the qualities you need most for that project. For Rust and Go, you can sum up those qualities as follows. </p>
+<p>Rust advantages:</p>
+<ul>
+<li>Correctness at runtime (common mistakes simply don’t compile)</li>
+<li>Top-tier execution speed</li>
+<li>Memory safety without garbage collection</li>
+<li>Hardware-level code</li>
+</ul>
+<p>Go advantages:</p>
+<ul>
+<li>Quick development cycles</li>
+<li>High-tier execution speed</li>
+<li>Memory safety by way of garbage collection</li>
+<li>Developer convenience</li>
+<li>Straightforward code</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!--comments -->
+    
+    <section id="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-yc-s-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yc-s.github.io/2020/06/15/Rust-vs-Go/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming/" rel="tag">Programming</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/06/16/%E5%96%84%E7%94%A8%E5%B7%A5%E5%85%B7/" class="article-nav-link">
+        <strong class="article-nav-caption">prev post</strong>
+        <div class="article-nav-title">
+          
+            善用工具
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/06/14/Spring-Annotations-Cheat-Sheet/" class="article-nav-link">
+        <strong class="article-nav-caption">next post</strong>
+        <div class="article-nav-title">Spring_Annotations_Cheat_Sheet</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+
+
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Aaron
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+  
+</footer>
+
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">🏡</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">🏛</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">📚</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">🏷</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
