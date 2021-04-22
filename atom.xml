@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-21T03:09:05.000Z</updated>
+  <updated>2021-04-23T00:02:21.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ultimate cheat sheets compilation</title>
+    <link href="https://yc-s.github.io/2021/04/22/ultimate-cheat-sheets-compilation/"/>
+    <id>https://yc-s.github.io/2021/04/22/ultimate-cheat-sheets-compilation/</id>
+    <published>2021-04-23T00:02:21.000Z</published>
+    <updated>2021-04-23T00:02:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;Hello World&lt;/code&gt; Today I wanted to share with you my Cheatsheet Compilation that every dev should know about.&lt;/p&gt;
+&lt;p&gt;The most</summary>
+        
+      
+    
+    
+    
+    
+    <category term="cheatsheet" scheme="https://yc-s.github.io/tags/cheatsheet/"/>
+    
+  </entry>
   
   <entry>
     <title>introduction to using redux in react native app</title>
@@ -454,32 +478,6 @@
     
     
     <category term="JavaScript" scheme="https://yc-s.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读《疯狂的程序员》有感</title>
-    <link href="https://yc-s.github.io/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/"/>
-    <id>https://yc-s.github.io/2021/03/27/%E8%AF%BB%E3%80%8A%E7%96%AF%E7%8B%82%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E3%80%8B%E6%9C%89%E6%84%9F/</id>
-    <published>2021-03-27T05:02:53.000Z</published>
-    <updated>2021-03-27T05:02:53.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;书的内容讲述21世纪初绝影（作者）从大学开始第一次接触编程到毕业后工作然后创业失败的故事。&lt;/p&gt;
-&lt;p&gt;作者从菜鸟到老鸟的转变有很多细节描写，比如坚持到底做完事情。同时在社会中受到很多骗也是因为有点天真。&lt;/p&gt;
-&lt;p&gt;如果我是作者的话，我应该不会去学汇编。&lt;/p&gt;
-</summary>
-        
-      
-    
-    
-    
-    
-    <category term="读书笔记" scheme="https://yc-s.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
