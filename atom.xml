@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-23T00:02:21.000Z</updated>
+  <updated>2021-04-23T23:46:27.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java cheatsheet</title>
+    <link href="https://yc-s.github.io/2021/04/23/java-cheatsheet/"/>
+    <id>https://yc-s.github.io/2021/04/23/java-cheatsheet/</id>
+    <published>2021-04-23T23:46:27.000Z</published>
+    <updated>2021-04-23T23:46:27.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;We summarize the most commonly used Java language features and APIs in the textbook.&lt;/p&gt;
+&lt;h3 id=&quot;Hello-World&quot;&gt;&lt;a href=&quot;#Hello-World&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="https://yc-s.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>ultimate cheat sheets compilation</title>
@@ -455,29 +479,6 @@
     
     
     <category term="React" scheme="https://yc-s.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How it feels to learn JavaScript in 2016</title>
-    <link href="https://yc-s.github.io/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/"/>
-    <id>https://yc-s.github.io/2021/03/28/How-it-feels-to-learn-JavaScript-in-2016/</id>
-    <published>2021-03-28T07:43:20.000Z</published>
-    <updated>2021-03-28T07:43:20.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Hey, I got this new web project, but to be honest I haven’t coded much web in a few years and I’ve heard the landscape changed a bit.</summary>
-        
-      
-    
-    
-    
-    
-    <category term="JavaScript" scheme="https://yc-s.github.io/tags/JavaScript/"/>
     
   </entry>
   
