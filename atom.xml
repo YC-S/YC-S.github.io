@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-24T20:50:48.000Z</updated>
+  <updated>2021-04-27T19:54:12.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node.js interview questions</title>
+    <link href="https://yc-s.github.io/2021/04/27/node-js-interview-questions/"/>
+    <id>https://yc-s.github.io/2021/04/27/node-js-interview-questions/</id>
+    <published>2021-04-27T19:54:12.000Z</published>
+    <updated>2021-04-27T19:54:12.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Table-of-Contents&quot;&gt;&lt;a href=&quot;#Table-of-Contents&quot; class=&quot;headerlink&quot; title=&quot;Table of Contents&quot;&gt;&lt;/a&gt;Table of</summary>
+        
+      
+    
+    
+    
+    
+    <category term="node" scheme="https://yc-s.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>虎扑上的经典爱情故事</title>
@@ -456,29 +479,6 @@
     
     
     <category term="Resource" scheme="https://yc-s.github.io/tags/Resource/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>typescript for 5 minutes</title>
-    <link href="https://yc-s.github.io/2021/04/03/typescript-for-5-minutes/"/>
-    <id>https://yc-s.github.io/2021/04/03/typescript-for-5-minutes/</id>
-    <published>2021-04-03T04:58:39.000Z</published>
-    <updated>2021-04-03T04:58:39.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features, and an additional layer on</summary>
-        
-      
-    
-    
-    
-    
-    <category term="TypeScript" scheme="https://yc-s.github.io/tags/TypeScript/"/>
     
   </entry>
   
