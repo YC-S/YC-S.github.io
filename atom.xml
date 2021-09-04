@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-04-27T19:54:12.000Z</updated>
+  <updated>2021-09-04T13:26:55.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scalability-for-dummies</title>
+    <link href="https://yc-s.github.io/2021/09/04/scalability-for-dummies/"/>
+    <id>https://yc-s.github.io/2021/09/04/scalability-for-dummies/</id>
+    <published>2021-09-04T13:26:55.000Z</published>
+    <updated>2021-09-04T13:26:55.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Just recently I was asked what it would take to make a web service massively scalable. My answer was lengthy and maybe it is also for</summary>
+        
+      
+    
+    
+    
+    
+    <category term="system design" scheme="https://yc-s.github.io/tags/system-design/"/>
+    
+  </entry>
   
   <entry>
     <title>node.js interview questions</title>
@@ -299,8 +322,8 @@
   
   <entry>
     <title>95%-ile isn&#39;t that good</title>
-    <link href="https://yc-s.github.io/2021/04/12/95-ile-isn-t-that-good/"/>
-    <id>https://yc-s.github.io/2021/04/12/95-ile-isn-t-that-good/</id>
+    <link href="https://yc-s.github.io/2021/04/11/95-ile-isn-t-that-good/"/>
+    <id>https://yc-s.github.io/2021/04/11/95-ile-isn-t-that-good/</id>
     <published>2021-04-12T06:32:52.000Z</published>
     <updated>2021-04-12T06:32:52.000Z</updated>
     
@@ -369,8 +392,8 @@
   
   <entry>
     <title>ten things a serious javascript developer should learn</title>
-    <link href="https://yc-s.github.io/2021/04/09/ten-things-a-serious-javascript-developer-should-learn/"/>
-    <id>https://yc-s.github.io/2021/04/09/ten-things-a-serious-javascript-developer-should-learn/</id>
+    <link href="https://yc-s.github.io/2021/04/08/ten-things-a-serious-javascript-developer-should-learn/"/>
+    <id>https://yc-s.github.io/2021/04/08/ten-things-a-serious-javascript-developer-should-learn/</id>
     <published>2021-04-09T06:16:41.000Z</published>
     <updated>2021-04-09T06:16:41.000Z</updated>
     
@@ -438,8 +461,8 @@
   
   <entry>
     <title>Learn Javascript, Deeply</title>
-    <link href="https://yc-s.github.io/2021/04/06/Learn-Javascript-Deeply/"/>
-    <id>https://yc-s.github.io/2021/04/06/Learn-Javascript-Deeply/</id>
+    <link href="https://yc-s.github.io/2021/04/05/Learn-Javascript-Deeply/"/>
+    <id>https://yc-s.github.io/2021/04/05/Learn-Javascript-Deeply/</id>
     <published>2021-04-06T04:05:35.000Z</published>
     <updated>2021-04-06T04:05:35.000Z</updated>
     
@@ -456,29 +479,6 @@
     
     
     <category term="JavaScript" scheme="https://yc-s.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MERN learning resources</title>
-    <link href="https://yc-s.github.io/2021/04/04/MERN-learning-resources/"/>
-    <id>https://yc-s.github.io/2021/04/04/MERN-learning-resources/</id>
-    <published>2021-04-04T22:14:08.000Z</published>
-    <updated>2021-04-04T22:14:08.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;MEAN-MERN-Stack-100-Learning-Resources-FREE&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Resource" scheme="https://yc-s.github.io/tags/Resource/"/>
     
   </entry>
   
