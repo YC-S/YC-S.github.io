@@ -6,7 +6,7 @@
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
-  <updated>2021-09-04T13:26:55.000Z</updated>
+  <updated>2022-04-05T18:31:47.000Z</updated>
   <id>https://yc-s.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Five Refactor Books</title>
+    <link href="https://yc-s.github.io/2022/04/05/Five-Refactor-Books/"/>
+    <id>https://yc-s.github.io/2022/04/05/Five-Refactor-Books/</id>
+    <published>2022-04-05T18:31:47.000Z</published>
+    <updated>2022-04-05T18:31:47.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;This list has books that have</summary>
+        
+      
+    
+    
+    
+    
+    <category term="refactor" scheme="https://yc-s.github.io/tags/refactor/"/>
+    
+  </entry>
   
   <entry>
     <title>scalability-for-dummies</title>
@@ -456,29 +479,6 @@
     
     
     <category term="front-end" scheme="https://yc-s.github.io/tags/front-end/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Learn Javascript, Deeply</title>
-    <link href="https://yc-s.github.io/2021/04/05/Learn-Javascript-Deeply/"/>
-    <id>https://yc-s.github.io/2021/04/05/Learn-Javascript-Deeply/</id>
-    <published>2021-04-06T04:05:35.000Z</published>
-    <updated>2021-04-06T04:05:35.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;the creator of WordPress, spoke about JavaScript in his yearly keynote “The State of Word”. In it, he gave the WordPress community</summary>
-        
-      
-    
-    
-    
-    
-    <category term="JavaScript" scheme="https://yc-s.github.io/tags/JavaScript/"/>
     
   </entry>
   
