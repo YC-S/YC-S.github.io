@@ -1852,14 +1852,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/food/</loc>
+    <loc>https://yc-s.github.io/tags/Clean/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Clean/</loc>
+    <loc>https://yc-s.github.io/tags/food/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1915,14 +1915,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/javascript/</loc>
+    <loc>https://yc-s.github.io/tags/front-end/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/front-end/</loc>
+    <loc>https://yc-s.github.io/tags/javascript/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1936,14 +1936,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/AWS/</loc>
+    <loc>https://yc-s.github.io/tags/Algorithm/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Algorithm/</loc>
+    <loc>https://yc-s.github.io/tags/AWS/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2006,14 +2006,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/database/</loc>
+    <loc>https://yc-s.github.io/tags/philosophy/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/philosophy/</loc>
+    <loc>https://yc-s.github.io/tags/database/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2034,14 +2034,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/refactor/</loc>
+    <loc>https://yc-s.github.io/tags/firebase/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/firebase/</loc>
+    <loc>https://yc-s.github.io/tags/refactor/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2111,13 +2111,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/US/</loc>
-    <lastmod>2022-04-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/Dynamic-Programming/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
@@ -2132,6 +2125,13 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/US/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/Paul-Graham/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
@@ -2140,13 +2140,6 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/Software-Engineering/</loc>
-    <lastmod>2022-04-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yc-s.github.io/tags/React/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2174,13 +2167,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Language/</loc>
-    <lastmod>2022-04-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/Interview/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
@@ -2188,7 +2174,21 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Cryptography/</loc>
+    <loc>https://yc-s.github.io/tags/React/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/Language/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/C/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2202,7 +2202,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/C/</loc>
+    <loc>https://yc-s.github.io/tags/Cryptography/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2230,13 +2230,6 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/AI/</loc>
-    <lastmod>2022-04-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yc-s.github.io/tags/military/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
@@ -2244,14 +2237,21 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/google/</loc>
+    <loc>https://yc-s.github.io/tags/Git/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Git/</loc>
+    <loc>https://yc-s.github.io/tags/AI/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yc-s.github.io/tags/google/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2286,7 +2286,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Kafka/</loc>
+    <loc>https://yc-s.github.io/tags/Database/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2307,7 +2307,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Database/</loc>
+    <loc>https://yc-s.github.io/tags/Kafka/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2349,6 +2349,13 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/methodology/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/Ship/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
@@ -2356,14 +2363,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/python/</loc>
-    <lastmod>2022-04-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yc-s.github.io/tags/methodology/</loc>
+    <loc>https://yc-s.github.io/tags/Strategy/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2377,7 +2377,7 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Strategy/</loc>
+    <loc>https://yc-s.github.io/tags/python/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2433,14 +2433,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://yc-s.github.io/tags/Front-end/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Front-end/</loc>
+    <loc>https://yc-s.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2475,6 +2475,13 @@
   </url>
   
   <url>
+    <loc>https://yc-s.github.io/tags/Joke/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yc-s.github.io/tags/Docker/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
@@ -2483,13 +2490,6 @@
   
   <url>
     <loc>https://yc-s.github.io/tags/Kubernate/</loc>
-    <lastmod>2022-04-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yc-s.github.io/tags/Joke/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2510,14 +2510,14 @@
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Art/</loc>
+    <loc>https://yc-s.github.io/tags/Technology/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yc-s.github.io/tags/Technology/</loc>
+    <loc>https://yc-s.github.io/tags/Art/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

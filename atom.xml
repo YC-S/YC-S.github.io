@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Aaron&#39;s Blog</title>
+  <title>Henry&#39;s Blog</title>
   
-  <subtitle>Aaron&#39;s Blog</subtitle>
+  <subtitle>Henry&#39;s Blog</subtitle>
   <link href="https://yc-s.github.io/atom.xml" rel="self"/>
   
   <link href="https://yc-s.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://yc-s.github.io/</id>
   
   <author>
-    <name>Aaron</name>
+    <name>Henry</name>
     
   </author>
   
